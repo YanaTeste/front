@@ -1,0 +1,15 @@
+<?php
+
+function mobify_install() {
+  db_query("UPDATE {system} SET weight = -10 WHERE name = 'mobify'");
+}
+
+/**
+* Implementation of hook_uninstall()
+*/
+function mobify_uninstall() {
+  // Remove the module from the system table
+  db_query("DELETE FROM {system} WHERE name = 'mobify'");
+}
+
+

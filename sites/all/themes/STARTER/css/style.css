@@ -1,0 +1,125 @@
+/* ------- Quciktabs (default = "no style") -------*/
+.quicktabs_wrapper {
+}
+
+ul.quicktabs-style-nostyle {
+font-size: 13px;
+font-weight: bold;
+border-bottom: 1px solid #ccc;
+overflow: auto;
+}
+
+ul.quicktabs-style-nostyle li {
+padding: 6px 16px;
+margin-right: 4px;
+background: url(./images/grey-grad-bg.png) 0 0 repeat-x;
+-moz-border-radius-topleft: 2px;
+-moz-border-radius-topright: 2px;
+display: block;
+float: left;
+}
+
+ul.quicktabs-style-nostyle a:link, ul.quicktabs-style-nostyle a:visited {
+color: #25385E;
+}
+
+ul.quicktabs-style-nostyle li.active, ul.quicktabs-style-nostyle li:hover {
+background: url(./images/nav.png) -10px -10px no-repeat;
+}
+
+ul.quicktabs-style-nostyle li.active a, ul.quicktabs-style-nostyle li:hover a{
+color: #fff;
+}
+
+/**/
+
+/* ------- Tables ------ */
+
+table {
+width:100%;
+border-top:1px solid #e5eff8;
+border-right:1px solid #e5eff8;
+margin:1em auto;
+border-collapse:collapse;
+}
+
+th {
+background:#F4F9FE none repeat scroll 0 0;
+font-size-adjust:none;
+font-stretch:normal;
+font-style:normal;
+font-variant:normal;
+font-weight:bold;
+line-height:2em;
+text-align:left;
+border-bottom: none;
+}
+
+thead tr {
+border-left: 1px solid #e5eff8;
+}
+
+td {
+border-bottom:1px solid #e5eff8;
+border-left:1px solid #e5eff8;
+padding:.3em 1em;
+text-align:left;
+}
+
+tbody {
+border-top: 1px solid #e5eff8;
+}
+
+tr.odd td {
+background:#fff;
+}
+
+tr.even td {
+background:#f9fcfe;
+}
+/**/
+
+/* UI improvments  */
+
+#edit-title{
+	font-size: 24px;
+}
+#system-themes-form img{
+	width:100px;
+}
+.form-item .description{
+	font-style:italic;
+	line-height:1.2em;
+	font-size:0.8em;
+	margin-top:5px;
+	color:#777;
+}
+#edit-delete{
+	color:#c00;
+}
+
+/**
+ * Console, style from Slate theme
+ */
+div.messages {
+  padding: 9px;
+  margin: 1em 0;
+  color: #036;
+  background: #bdf;
+  border: 1px solid #ace;
+}
+div.warning {
+  color: #840;
+  background: #fe6;
+  border-color: #ed5;
+}
+div.error {
+  color: #fff;
+  background: #e63;
+  border-color: #d52;
+}
+div.status {
+  color: #360;
+  background: #cf8;
+  border-color: #be7;
+}

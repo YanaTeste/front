@@ -1,0 +1,63 @@
+
+/** Font styles 
+---------------------------------*/
+
+/* General classes */
+
+.float-left {
+  float: left;
+}
+
+/* UI improvments  */
+
+#edit-title{
+	font-size: 24px;
+}
+#system-themes-form img{
+	width:100px;
+}
+.form-item .description{
+	font-style:italic;
+	line-height:1.2em;
+	font-size:0.8em;
+	margin-top:5px;
+	color:#777;
+}
+#edit-delete{
+	color:#c00;
+}
+
+/**
+ * Console, style from Slate theme
+ */
+div.messages {
+  padding: 9px;
+  margin: 1em 0;
+  color: #036;
+  background: #bdf;
+  border: 1px solid #ace;
+}
+div.warning {
+  color: #840;
+  background: #fe6;
+  border-color: #ed5;
+}
+div.error {
+  color: #fff;
+  background: #e63;
+  border-color: #d52;
+}
+div.status {
+  color: #360;
+  background: #cf8;
+  border-color: #be7;
+}
+
+/** Region Colors
+---------------------------------
+*  delete when starting a new theme */
+
+#header, #footer { background-color: #efefef; }
+#sidebar-first {	background: #e7edff; }
+#sidebar-second { background: #ffd075; }
+#navigation { background-color: #feffa5; }

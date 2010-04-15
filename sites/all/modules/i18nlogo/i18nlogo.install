@@ -1,0 +1,20 @@
+<?php
+// $Id: i18nlogo.install,v 1.1.2.1 2009/10/02 13:03:43 roychri Exp $
+
+/**
+ * @file
+ * Installation file for the I18n Logo (i18nlogo) module.
+ */
+
+/**
+ * Implementation of hook_uninstall().
+ *
+ * Removes all variables created by the module.
+ */
+
+function i18nlogo_uninstall() {
+  $result = db_query("SELECT * FROM {variables} WHERE name LIKE 'i18nlogo\_%'");
+  while ($row = db_fetch_object($result)) {
+    variable_del($row->name);
+  }
+}

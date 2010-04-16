@@ -1,0 +1,85 @@
+<?php
+?>
+<!DOCTYPE HTML>
+<head>
+  <title><?php print $head_title; ?></title>
+  <?php print $head; ?>
+  <?php print $styles; ?>
+  <?php print $scripts; ?>
+</head>
+
+<body class="<?php print $body_classes; ?> show-grid">
+  <div id="header-top">
+    <div id="header-top-inner">
+      <div id="tweet-latest">
+        <span>@mortennicolay ah! sa ut som en flink fyr! moro. fulle mugger her ogsa! i tillegg til utvikling av egne sider...puh, tar tid :)</span>
+      </div>
+      <?php print $secondary_menu_links; ?>
+    </div>
+  </div>
+  <div id="site-header" class="clear-block">
+    <div id="site-header-inner">
+      <div id="branding" class="grid-3 clear-block">
+        <span id="logo" class="grid-1 alpha"><?php print $linked_logo_img; ?></span>
+      </div>
+      <div id="nav" class="grid-9">
+        <div id="main-menu" class="grid-6 alpha"><?php print $main_menu_links; ?></div>
+        <div id="search-box" class="grid-3 alpha last"><?php print $search_box; ?></div>
+      </div>
+    </div>
+  </div>
+  <div id="page" class="container-12 clear-block">
+    <?php if ($header): ?>
+      <div id="header-region" class="region <?php print ns('grid-14', $mission, 7); ?> clear-block">
+        <?php print $header; ?>
+      </div>
+    <?php endif; ?>
+    <div id="breadcrumbs" class="grid-12"><?php print $breadcrumb; ?></div>
+    <div id="main" class="column <?php print ns('grid-12', $left, 4, $right, 4) . ' ' . ns('push-4', !$left, 4); ?>">
+      <?php if ($title): ?>
+        <h1 class="title" id="page-title"><?php print $title; ?></h1>
+      <?php endif; ?>
+      <?php if ($tabs): ?>
+        <div class="tabs"><?php print $tabs; ?></div>
+      <?php endif; ?>
+      <?php print $messages; ?>
+      <?php print $help; ?>
+
+      <div id="main-content" class="region clear-block">
+        <?php print $content; ?>
+      </div>
+
+    </div>
+
+  <?php if ($left): ?>
+    <div id="sidebar-left" class="column sidebar region grid-4 pull-8">
+      <?php print $left; ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if ($right): ?>
+    <div id="sidebar-right" class="column sidebar region grid-4">
+      <?php print $right; ?>
+    </div>
+  <?php endif; ?>
+
+
+  <div id="footer" class="prefix-1 suffix-1">
+    <?php if ($footer): ?>
+      <div id="footer-region" class="region grid-14 clear-block">
+        <?php print $footer; ?>
+      </div>
+    <?php endif; ?>
+
+    <?php if ($footer_message): ?>
+      <div id="footer-message" class="grid-14">
+        <?php print $footer_message; ?>
+      </div>
+    <?php endif; ?>
+  </div>
+
+
+  </div>
+  <?php print $closure; ?>
+</body>
+</html>

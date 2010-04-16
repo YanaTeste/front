@@ -1,6 +1,15 @@
+-------------------------------------------------------------------------------------
+6.x-2.1 2010-04-15
+-------------------------------------------------------------------------------------
+- #722000 by swentel: make taxonomy vocabularies fields available.
+- #724420 by swentel: make sure RSS feeds work for real now.
+- #744832 by swentel: panels/ctools support.
+- #743872 by swentel: node templates now rendering ok.
+- Following #722852: separate nd region css.
+- added tests for region to block plugin.
 
 -------------------------------------------------------------------------------------
 6.x-2.0 2010-02-04
 -------------------------------------------------------------------------------------
 
-/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.60.2.3 2010/02/04 19:58:38 swentel Exp $ */
+/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.60.2.10 2010/04/15 15:52:23 swentel Exp $ */

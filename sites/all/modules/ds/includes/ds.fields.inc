@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.fields.inc,v 1.1.2.26 2010/02/03 08:33:04 swentel Exp $
+// $Id: ds.fields.inc,v 1.1.2.33 2010/04/06 16:58:54 swentel Exp $
 
 /**
  * @file
@@ -71,20 +71,11 @@ function ds_fields($module) {
   }
   // Custom fields overview form
   else {
-    if (empty($db_fields)) {
-      $output .= '<p>'. t('You have not defined any custom fields.') .'</p>';
-    }
-    else {
-      $output .= '<p>'. t('This is a list of custom fields either defined in code or via the UI.') .'</p>';
-
-      $header = array(
-        t('Title'), t('Key'), t('Type'), t('Status'), t('Operations'),
-      );
-
-      $rows = array();
-      foreach ($db_fields as $key => $value) {
+    $rows = array();
+    foreach ($db_fields as $key => $value) {
+      if ($value['type'] != DS_FIELD_TYPE_GROUP) {
         $row = array();
-        $row[] = check_plain($value['title']);
+        $row[] = l($value['title'], 'admin/ds/'. $module .'/fields/edit/'. $key);
         $row[] = $key;
         $row[] = ds_human_name($value['type'], 'type');
         $row[] = ds_human_name($value['status'], 'status');
@@ -96,11 +87,21 @@ function ds_fields($module) {
         $row[] = $operations;
         $rows[] = $row;
       }
-
-      $output .= theme('table', $header, $rows);
     }
 
-    // New fields form.
+    if (!empty($rows)) {
+      $header = array(
+        t('Title'), t('Key'), t('Type'), t('Status'), t('Operations'),
+      );
+
+      $output .= '<p>'. t('This is a list of fields either defined in code or via the UI.') .'</p>';
+      $output .= theme('table', $header, $rows);
+    }
+    else {
+      $output .= '<p>'. t('You have not defined any fields.') .'</p>';
+    }
+
+    // New field form.
     $output .= drupal_get_form('ds_code_field_form', $module, $all_fields, $api_info['object']);
     // Block field form.
     $output .= drupal_get_form('ds_block_field_form', $module, $all_fields);
@@ -129,6 +130,7 @@ function ds_code_field_form($form_state, $module, $all_fields, $object = '', $ke
       'status' => DS_FIELD_STATUS_CUSTOM,
       'properties' => array(
         'code' => '',
+        'css-class' => '',
         'token' => FALSE
       )
     );
@@ -149,7 +151,7 @@ function ds_code_field_form($form_state, $module, $all_fields, $object = '', $ke
   if (!empty($key)) {
     $form['code_identity']['code_key']['#disabled'] = TRUE;
     $form['code_identity']['code_key']['#value'] = $key;
-    $form['code_identity']['code_key']['#description'] = t('The machine-readable name of this field. Note: you can not edit this field.');
+    $form['code_identity']['code_key']['#description'] = t('The machine-readable name of this field. Note: you can not edit this key.');
   }
   $form['code_identity']['code_title'] = array(
     '#type' => 'textfield',
@@ -158,6 +160,13 @@ function ds_code_field_form($form_state, $module, $all_fields, $object = '', $ke
     '#required' => TRUE,
     '#default_value' => $field['title']
   );
+  $form['code_identity']['code_class'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Field class'),
+    '#description' => t('The classes you want to add to this field. This will replace the automatic class that Display Suite generates.'),
+    '#default_value' => isset($field['properties']['css-class']) ? $field['properties']['css-class'] : '',
+  );
+
   $api_info = ds_api_info($module);
   if (isset($api_info['types']) && count($api_info['types']()) > 1) {
     $types = array();
@@ -260,8 +269,8 @@ function ds_code_field_form_validate($form, &$form_state) {
       form_set_error('code_key', t('This field already exists.'));
     }
 
-    if (!preg_match('!^[a-z_]+$!', $form_state['values']['code_key'])) {
-      form_set_error('code_key', t('The machine-readable name must contain only lowercase letters and underscores.'));
+    if (!preg_match('!^[a-z_0-9]+$!', $form_state['values']['code_key'])) {
+      form_set_error('code_key', t('The machine-readable name must contain only lowercase letters, numbers and underscores.'));
     }
   }
 }
@@ -272,7 +281,9 @@ function ds_code_field_form_validate($form, &$form_state) {
 function ds_code_field_form_submit($form, &$form_state) {
   $module = $form['#module'];
   $fields = variable_get($module .'_fields', array());
-  $fields[$form_state['values']['code_key']] = array(
+
+  $key = $form_state['values']['code_key'];
+  $fields[$key] = array(
     'title' => $form_state['values']['code_title'],
     'exclude' => $form_state['values']['code_exclude'],
     'type' => DS_FIELD_TYPE_CODE,
@@ -285,6 +296,11 @@ function ds_code_field_form_submit($form, &$form_state) {
       'token' => $form_state['values']['code_token'],
     ),
   );
+
+  // Code class.
+  if (!empty($form_state['values']['code_class'])) {
+    $fields[$key]['properties']['css-class'] = $form_state['values']['code_class'];
+  }
 
   // Safe field and invalidate cached fields.
   variable_set($module .'_fields', $fields);
@@ -314,6 +330,7 @@ function ds_block_field_form($form_state, $module, $all_fields, $object = '', $k
       'type' => DS_FIELD_TYPE_BLOCK,
       'status' => DS_FIELD_STATUS_CUSTOM,
       'properties' => array(
+        'css-class' => '',
         'block' => '',
         'render' => DS_BLOCK_TEMPLATE
       )
@@ -344,6 +361,13 @@ function ds_block_field_form($form_state, $module, $all_fields, $object = '', $k
     '#required' => TRUE,
     '#default_value' => $field['title']
   );
+  $form['block_identity']['block_class'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Field class'),
+    '#description' => t('The classes you want to add to this field. This will replace the automatic class that Display Suite generates.'),
+    '#default_value' => isset($field['properties']['css-class']) ? $field['properties']['css-class'] : '',
+  );
+
   $api_info = ds_api_info($module);
   if (isset($api_info['types']) && count($api_info['types']()) > 1) {
     $types = array();
@@ -365,7 +389,7 @@ function ds_block_field_form($form_state, $module, $all_fields, $object = '', $k
     );
   }
   else {
-    $form['code_identity']['code_exclude'] = array(
+    $form['code_identity']['block_exclude'] = array(
       '#type' => 'value',
       '#value' => array(),
     );
@@ -429,8 +453,8 @@ function ds_block_field_form_validate($form, &$form_state) {
       form_set_error('block_key', t('This field already exists.'));
     }
 
-    if (!preg_match('!^[a-z_]+$!', $form_state['values']['block_key'])) {
-      form_set_error('block_key', t('The machine-readable name must contain only lowercase letters and underscores.'));
+    if (!preg_match('!^[a-z_0-9]+$!', $form_state['values']['block_key'])) {
+      form_set_error('block_key', t('The machine-readable name must contain only lowercase letters, numbers and underscores.'));
     }
   }
 }
@@ -441,7 +465,9 @@ function ds_block_field_form_validate($form, &$form_state) {
 function ds_block_field_form_submit($form, &$form_state) {
   $module = $form['#module'];
   $fields = variable_get($module .'_fields', array());
-  $fields[$form_state['values']['block_key']] = array(
+
+  $key = $form_state['values']['block_key'];
+  $fields[$key] = array(
     'type' => DS_FIELD_TYPE_BLOCK,
     'status' => $form['#field_status'],
     'title' => $form_state['values']['block_title'],
@@ -451,6 +477,11 @@ function ds_block_field_form_submit($form, &$form_state) {
       'render' => $form_state['values']['block_render'],
     ),
   );
+
+  // Block class.
+  if (!empty($form_state['values']['block_class'])) {
+    $fields[$key]['properties']['css-class'] = $form_state['values']['block_class'];
+  }
 
   // Safe field and invalidate cached fields.
   variable_set($module .'_fields', $fields);

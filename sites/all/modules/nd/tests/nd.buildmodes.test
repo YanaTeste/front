@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.buildmodes.test,v 1.1.2.11.2.4 2010/01/29 12:29:35 swentel Exp $
+// $Id: nd.buildmodes.test,v 1.1.2.11.2.5 2010/04/06 16:59:01 swentel Exp $
 
 /**
  * @file
@@ -168,6 +168,6 @@ class NodeDisplaysBuildModes extends DrupalWebTestCase {
       'name' => 'Test label'
     );
     $this->drupalPost('admin/ds/nd/buildmodes', $edit, t('Save build mode'));
-    $this->assertText(t('The machine-readable name must contain only lowercase letters and underscores.'), 'Key is not valid', t('Custom build modes'));
+    $this->assertText(t('The machine-readable name must contain only lowercase letters, numbers and underscores.'), 'Key is not valid', t('Custom build modes'));
   }
 }

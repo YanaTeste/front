@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.tpl.php,v 1.1.2.2 2010/02/02 11:17:46 swentel Exp $
+// $Id: nd.tpl.php,v 1.1.2.3 2010/03/15 19:19:48 swentel Exp $
 
 /**
  * @file
@@ -11,10 +11,8 @@
  */
 ?>
 
-<div class="node <?php if (isset($node_classes)): print $node_classes; endif; ?><?php if ($is_front): print ' front-node'; endif; ?><?php if ($sticky && $node->build_mode == 'sticky'): print ' sticky'; endif; ?><?php if (!$status): print ' node-unpublished'; endif; ?> clear-block" id="node-<?php print $node->nid; ?>">
-  <div class="node-inner">
-    <div class="buildmode-<?php print $node->build_mode; ?>">
-      <?php print $content; ?>
-    </div>
-  </div> <!-- /node-inner -->
-</div> <!-- /node -->
+<div class="buildmode-<?php print $node->build_mode; ?>">
+  <div class="node node-type-<?php print $node->type; ?> <?php if (isset($node_classes)): print $node_classes; endif; ?><?php if ($sticky && $node->build_mode == 'sticky'): print ' sticky'; endif; ?><?php if (!$status): print ' node-unpublished'; endif; ?> clear-block">
+    <?php print $content; ?>
+  </div> <!-- /node -->
+</div> <!-- /buildmode -->

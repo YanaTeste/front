@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.install,v 1.1.2.1 2010/02/02 11:04:30 swentel Exp $
+// $Id: ds.install,v 1.1.2.2 2010/03/15 19:39:40 swentel Exp $
 
 /**
  * @file
@@ -12,4 +12,14 @@
 function ds_uninstall() {
   db_query("DELETE FROM {variable} WHERE name LIKE 'ds_%%'");
   cache_clear_all('variables', 'cache');
+}
+
+/**
+ * Implementation of hook_update_N().
+ *
+ * We simply return an array here. We want the people to
+ * run update.php because new theming functions got introduced.
+ */
+function ds_update_1() {
+  return array();
 }

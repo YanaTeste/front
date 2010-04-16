@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.fields.test,v 1.1.2.13.2.10 2010/02/02 11:17:46 swentel Exp $
+// $Id: nd.fields.test,v 1.1.2.13.2.14 2010/04/06 16:59:01 swentel Exp $
 
 /**
  * @file
@@ -26,11 +26,38 @@ class NodeDisplaysFields extends DrupalWebTestCase {
   }
 
   /**
+   * Test styles
+   */
+  function testNdStyles() {
+    $admin_user = $this->drupalCreateUser(array('administer nodes', 'access display suite', 'administer nd', 'configure layout for nd', 'export and import settings', 'revert overridden settings', 'use PHP in custom fields'));
+    $this->drupalLogin($admin_user);
+
+    // Setup styles.
+    $edit = array('ds_styles' => 'test-class|Test class');
+    $this->drupalPost('admin/ds/layout/styles', $edit, t('Save configuration'));
+    $page_node = $this->drupalCreateNode();
+
+    // Save layout and assert class is default.
+    $edit = array('title[full][region]' => 'middle');
+    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalGet('node/'. $page_node->nid);
+    $this->assertNoRaw('test-class', t('Normal class'), t('Styles tests'));
+
+    // Save layout and assert class is .
+    $edit = array('title[full][region]' => 'middle', 'title[full][css-class]' => 'test-class');
+    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalGet('node/'. $page_node->nid);
+    $this->assertRaw('field-title test-class', t('Test class found class'), t('Styles tests'));
+  }
+
+  /**
    * Test custom fields.
    */
   function testNdCustomFields() {
     $admin_user = $this->drupalCreateUser(array('administer nodes', 'access display suite', 'administer nd', 'configure layout for nd', 'export and import settings', 'revert overridden settings', 'use PHP in custom fields'));
     $this->drupalLogin($admin_user);
+
+    // Fields
     $this->drupalGet('admin/ds/nd/fields');
 
     // Test being empty.
@@ -111,7 +138,7 @@ class NodeDisplaysFields extends DrupalWebTestCase {
       'code_code' => 'test code',
     );
     $this->drupalPost('admin/ds/nd/fields', $edit, t('Save code field'));
-    $this->assertText(t('The machine-readable name must contain only lowercase letters and underscores.'), 'Key is not valid', t('Fields'));
+    $this->assertText(t('The machine-readable name must contain only lowercase letters, numbers and underscores.'), 'Key is not valid', t('Fields'));
 
     // Add new field and test with real code :)
     $edit = array(
@@ -133,16 +160,19 @@ class NodeDisplaysFields extends DrupalWebTestCase {
     // See if it's rendered.
     $this->drupalGet('node/'. $page_node->nid);
     $this->assertText('Day: '. date("d", $page_node->created), t('Custom field executed.'), t('Fields'));
+    $this->assertRaw('field-test-field-real', t('Custom field uses default class'), t('Custom fields'));
 
     // Change same field and see if it's changed (cached fields clear test);
     $edit = array(
       'code_key' => 'test_field_real',
       'code_title' => 'Real field',
       'code_code' => '<?php echo "Day month: ". date("d M", $object->created); ?>',
+      'code_class' => 'custom-class',
     );
     $this->drupalPost('admin/ds/nd/fields/edit/test_field_real', $edit, t('Save code field'));
     $this->drupalGet('node/'. $page_node->nid);
     $this->assertText('Day month: '. date("d M", $page_node->created), t('Custom field executed and changed (cached fields is cleared).'), t('Fields'));
+    $this->assertRaw('custom-class', t('Custom field uses default class'), t('Custom fields'));
 
 
     // Test with token module (if available).
@@ -286,6 +316,58 @@ class NodeDisplaysFields extends DrupalWebTestCase {
     $out = $this->drupalGet('node/'. $page_node->nid);
     $this->assertText('New Title', t('The title label is changed.'), t('Labels'));
     $this->assertText('Unreal field', t('The custom field label is changed.'), t('Labels'));
+
+  }
+
+  /**
+   * Test fieldgroups.
+   */
+  function testNdFieldgroups() {
+    $admin_user = $this->drupalCreateUser(array('administer nodes', 'access display suite', 'administer nd', 'configure layout for nd', 'export and import settings', 'revert overridden settings', 'use PHP in custom fields'));
+    $this->drupalLogin($admin_user);
+    $this->drupalGet('admin/ds/nd/fieldgroups');
+
+    $fields = variable_get('nd_fields', array());
+
+    // Add a new fieldgroup.
+    $edit = array(
+      'key' => 'test_group',
+      'name' => 'Test group',
+    );
+    $this->drupalPost('admin/ds/nd/fieldgroups', $edit, t('Save fieldgroup'));
+    $fields = variable_get('nd_fields', array());
+    $this->assertTrue(array_key_exists('ds_group_test_group', $fields), t('test_group exists'), t('Fieldgroups'));
+    $this->assertEqual($fields['ds_group_test_group']['title'], $edit['name'], t('Title equals Test group'), t('Fieldgroups'));
+
+    // Make sure we can use the fields for this test.
+    $edit = array(
+      'title[full][region]' => 'header',
+      'title[full][label][format]' => 'above',
+      'ds_group_test_group[full][region]' => 'header',
+      'ds_group_test_group[full][label][format]' => 'above',
+    );
+    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+
+    // Create page.
+    $page_node = $this->drupalCreateNode(array('title' => 'MyTitle'));
+
+    // Title must be shown, test group not.
+    $this->drupalGet('node/'. $page_node->nid);
+    $this->assertText('Title', t('Title is shown on page.'), t('Fieldgroups'));
+    $this->assertNoText('Test group', t('Test group is not shown on page.'), t('Fieldgroups'));
+
+    // Put title in the test group fieldset.
+    // Note: run this patch on D6 to allow posts to hidden fields:
+    // http://drupal.org/node/488810#comment-1693662 .
+    $edit = array(
+      'title[full][parent_id]' => 'ds_group_test_group',
+    );
+    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+
+    // Title must be shown, inside the fieldgroup div.
+    $this->drupalGet('node/'. $page_node->nid);
+    $this->assertText('Title', t('Title is shown on page.'), t('Fieldgroups'));
+    $this->assertText('Test group', t('Test group is not shown on page.'), t('Fieldgroups'));
 
   }
 }

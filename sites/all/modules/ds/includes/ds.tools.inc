@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.tools.inc,v 1.1.2.19 2010/02/02 11:04:30 swentel Exp $
+// $Id: ds.tools.inc,v 1.1.2.20 2010/04/14 15:36:31 swentel Exp $
 
 /**
  * @file
@@ -123,7 +123,7 @@ function ds_export(&$form_state) {
 
         // Content types.
         foreach ($api_info['types']() as $tkey => $type) {
-          $options[$module .'-'. $tkey] = $type->name;
+          $options[$module .'-'. $type->type] = $type->name;
           $global_exclude = variable_get($module .'_type_'. $tkey, FALSE);
           if ($global_exclude == TRUE) {
             $ds_variables[] = $module .'_type_'. $tkey;

@@ -1,6 +1,7 @@
-/* $Id: ds.css,v 1.1.2.9 2010/01/28 14:47:28 swentel Exp $ */
+/* $Id: ds.css,v 1.1.2.13 2010/03/15 20:59:58 swentel Exp $ */
 
-// Display fields overview screen.
+/* Display fields overview screen. */
+
 #fields td.region {
   font-weight: bold;
 }
@@ -51,6 +52,10 @@ span.label-field {
 span.label-edit {
   font-size: 11px;
   float: right;
+}
+
+span.field-group {
+  font-weight: bold;
 }
 
 .ds-display {

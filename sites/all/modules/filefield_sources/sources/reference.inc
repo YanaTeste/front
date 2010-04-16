@@ -1,5 +1,5 @@
 <?php
-// $Id: reference.inc,v 1.2 2010/02/21 04:49:05 quicksketch Exp $
+// $Id: reference.inc,v 1.3 2010/03/02 19:20:13 quicksketch Exp $
 
 /**
  * @file
@@ -151,7 +151,7 @@ function filefield_source_reference_autocomplete($type_name, $field_name, $filen
 function theme_filefield_source_reference_autocomplete_item($file) {
   $output = '';
   $output .= '<div class="filefield-source-reference-item">';
-  $output .= '<span class="filename">' . $file->filename . '</span> <span class="filesize">(' . format_size($file->filesize) . ')<span>';
+  $output .= '<span class="filename">' . $file->filename . '</span> <span class="filesize">(' . format_size($file->filesize) . ')</span>';
   $output .= '</div>';
   return $output;
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_ds_object_view.inc,v 1.1.2.6 2010/01/30 20:14:11 swentel Exp $
+// $Id: views_plugin_ds_object_view.inc,v 1.1.2.9 2010/03/26 17:29:28 swentel Exp $
 
 /**
  * @file
@@ -46,7 +46,8 @@ class views_plugin_ds_object_view extends views_plugin_row {
     foreach ($build_modes as $module => $modes) {
       $function = $module .'_ds_api';
       $api_info = $function();
-      if ($api_info['views_base'] == $views_base_table) {
+      // $api_info['views_base'] can either be a string or an array.
+      if ((is_array($api_info['views_base']) && in_array($views_base_table, $api_info['views_base'])) || (is_string($api_info['views_base']) && $api_info['views_base'] == $views_base_table)) {
         foreach ($modes as $key => $title) {
           $build_mode_options[$key] = $title['title'];
         }
@@ -64,9 +65,8 @@ class views_plugin_ds_object_view extends views_plugin_row {
     $form['advanced'] = array(
       '#type' => 'checkbox',
       '#title' => t('Use the advanced build mode selector'),
-      '#description' => t('This gives you the opportunity to have more control in a list, eg the first build mode on the object is A and the rest B.<br /> There is no UI for this, you need to create a function named like this: ds_views_row_adv_VIEWSNAME. All logic is in that function.<br/>Note: the build mode selected above is not passed in that function, only the variables.'),
+      '#description' => t('This gives you the opportunity to have more control in a list, eg the first build mode on the object is A and the rest B.<br /> There is no UI for this, you need to create a function named like this: <strong><em>ds_views_row_adv_@VIEWSNAME(&$variables, $build_mode)</em></strong>.<br />See <a href="http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME">http://drupal.org/node/697320#ds_views_row_adv_VIEWSNAME</a> for an example.', array('@VIEWSNAME' => $this->view->name)),
       '#default_value' => $this->options['advanced'],
     );
-
   }
 }

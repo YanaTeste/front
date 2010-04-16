@@ -13,9 +13,9 @@ dependencies[] = locale
 core = 6.x
 
 
-; Information added by drupal.org packaging script on 2009-09-29
-version = "6.x-1.6"
+; Information added by drupal.org packaging script on 2010-03-18
+version = "6.x-1.7"
 core = "6.x"
 project = "language_sections"
-datestamp = "1254247547"
+datestamp = "1268908506"
 

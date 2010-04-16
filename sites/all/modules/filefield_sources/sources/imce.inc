@@ -1,5 +1,5 @@
 <?php
-// $Id: imce.inc,v 1.3 2010/02/20 16:53:20 quicksketch Exp $
+// $Id: imce.inc,v 1.4 2010/03/02 20:01:27 quicksketch Exp $
 
 /**
  * @file
@@ -140,7 +140,6 @@ function filefield_source_imce_value($element, &$item) {
  * Theme the output of the autocomplete field.
  */
 function theme_filefield_source_imce_element($element) {
-  drupal_add_js(drupal_get_path('module', 'filefield_sources') .'/sources/imce.js');
   $output = theme('markup', $element['display_path']) . theme('hidden', $element['file_path']) . theme('submit', $element['select']);
   return '<div class="filefield-source filefield-source-imce clear-block">' . theme('form_element', $element, $output) . '</div>';
 }

@@ -1,6 +1,25 @@
 
 -------------------------------------------------------------------------------------
+6.x-1.1 2010-15-04
+-------------------------------------------------------------------------------------
+- Fix weights of build modes
+- #710094 by swentel: fix small edit link bug in layout overview screen.
+- #722004 by swentel: better description of ds_views_row_adv_VIEWSNAME.
+- #710034 by swentel: region to block plugin.
+- #723916 by swentel: fields title leads to edit screen.
+- #724124 by swentel: Add css-class to field definition.
+- #710782 by swentel: Add option to copy settings from one build mode to other(s).
+- #727224 by swentel: New option for ds_api.
+- #742658 by swentel: Rename ds_show_links() to ds_show_field().
+- #722852 by swentel and jyve: Theming optimizations.
+- #582618 by swentel, stalski, zuupermand and Jyve: Support for fieldgroups.
+- #763516 by swentel: validation of keys for fields, fieldgroups & buildmodes 
+                      can contain numbers.
+- #763024 by swentel: support for (cck) tabs.
+
+-------------------------------------------------------------------------------------
 6.x-1.0 2010-02-04
 -------------------------------------------------------------------------------------
+- Initial release.
 
-/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.1 2010/02/04 19:58:25 swentel Exp $ */
+/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.15 2010/04/15 15:50:52 swentel Exp $ */

@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.registry.inc,v 1.1.2.26 2010/02/03 13:15:50 swentel Exp $
+// $Id: ds.registry.inc,v 1.1.2.35 2010/04/11 17:14:25 swentel Exp $
 
 /**
  * @file
@@ -83,6 +83,20 @@ function _ds_menu() {
     'file' => 'includes/ds.display.inc',
     'weight' => 2,
   );
+  $items['admin/ds/layout/overview'] = array(
+      'title' => 'Overview',
+      'type' => MENU_DEFAULT_LOCAL_TASK,
+      'weight' => 0,
+  );
+  $items['admin/ds/layout/styles'] = array(
+    'title' => 'Styles',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('ds_styles'),
+    'access arguments' => array('access display suite'),
+    'file' => 'includes/ds.display.inc',
+    'type' => MENU_LOCAL_TASK,
+    'weight' => 1,
+  );
 
   foreach (module_implements('ds_api') as $module) {
     $api_info = ds_api_info($module);
@@ -115,6 +129,17 @@ function _ds_menu() {
       'weight' => 1,
     );
 
+    // Field groups
+    $items['admin/ds/'. $module .'/fieldgroups'] = array(
+      'title' => 'Fieldgroups',
+      'page callback' => 'ds_fieldgroups',
+      'page arguments' => array($module),
+      'access arguments' => array('administer '. $module),
+      'file' => 'includes/ds.groups.inc',
+      'type' => MENU_LOCAL_TASK,
+      'weight' => 2,
+    );
+
     // Build modes.
     $items['admin/ds/'. $module .'/buildmodes'] = array(
       'title' => 'Build modes',
@@ -123,7 +148,7 @@ function _ds_menu() {
       'access arguments' => array('administer '. $module),
       'file' => 'includes/ds.buildmodes.inc',
       'type' => MENU_LOCAL_TASK,
-      'weight' => 2,
+      'weight' => 3,
     );
 
     // Plugins.
@@ -134,11 +159,12 @@ function _ds_menu() {
       'access arguments' => array('administer '. $module),
       'file' => 'includes/ds.plugins.inc',
       'type' => MENU_LOCAL_TASK,
-      'weight' => 3,
+      'weight' => 4,
     );
 
     // Displays.
     $build_modes = $all_build_modes[$module];
+    $first_title = '';
     $first_build_mode = key($build_modes);
     if (!empty($build_modes)) {
       foreach ($api_info['types']() as $tkey => $type) {
@@ -177,13 +203,14 @@ function _ds_menu() {
           // Store the first build_mode
           if ($first == 0) {
             $first++;
+            $first_title = $type->name;
             $first_build_mode = $key;
           }
         }
 
         // Default callback.
         $items['admin/ds/layout/'. $type_url_str] = array(
-          'title' => drupal_ucfirst($type_url_str),
+          'title' => drupal_ucfirst($first_title),
           'page callback' => 'drupal_get_form',
           'page arguments' => array('ds_display_overview_form', $type_name, "$first_build_mode", $module),
           'access arguments' => array('configure layout for '. $module),
@@ -226,11 +253,20 @@ function _ds_theme() {
       'arguments' => array('form' => NULL),
     ),
 
+    // Regions theming.
+    'ds_regions' => array(
+      'arguments' => array(
+        'object_display' => NULL,
+        'module' => '',
+      ),
+      'file' => 'theme.inc',
+      'path' => $path .'/theme',
+    ),
+
     // General theming field.
     'ds_field' => array(
       'arguments' => array(
         'content' => NULL,
-        'field_key' => NULL,
         'field' => NULL,
       ),
       'file' => 'theme.inc',
@@ -254,6 +290,35 @@ function _ds_theme() {
       'path' => $path .'/theme',
     ),
 
+    // We'll only use one function for the fieldsets.
+    'ds_group_fieldset_open' => array(
+      'arguments' => array(
+        'content' => NULL,
+        'field' => NULL,
+      ),
+      'file' => 'theme.inc',
+      'path' => $path .'/theme',
+      'function' => 'ds_group_fieldset',
+    ),
+    'ds_group_fieldset_collapsible' => array(
+      'arguments' => array(
+        'content' => NULL,
+        'field' => NULL,
+      ),
+      'file' => 'theme.inc',
+      'path' => $path .'/theme',
+      'function' => 'ds_group_fieldset',
+    ),
+    'ds_group_fieldset_collapsed' => array(
+      'arguments' => array(
+        'content' => NULL,
+        'field' => NULL,
+      ),
+      'file' => 'theme.inc',
+      'path' => $path .'/theme',
+      'function' => 'ds_group_fieldset',
+    ),
+
     // Theming for fields which are shared across objects (name, picture etc).
     'ds_author_link' => array(
       'arguments' => array('object' => NULL),
@@ -271,6 +336,15 @@ function _ds_theme() {
       'path' => $path .'/theme',
     ),
   );
+
+  // Tabs support
+  if (module_exists('tabs')) {
+    $theme_functions['ds_tabs'] = array(
+      'arguments' => array('object' => NULL),
+      'file' => 'theme.inc',
+      'path' => $path .'/theme',
+    );
+  }
 
   return $theme_functions;
 }
@@ -313,10 +387,10 @@ function _ds_register_build_modes() {
     if (!empty($db_build_modes)) {
       foreach ($db_build_modes as $key => $name) {
         $build_modes[$module][$key] = array(
+          'weight' => $weight++,
           'title' => check_plain($name),
           'build modes' => array(
             $key => array(
-              'weight' => $weight++,
               'title' => check_plain($name),
             ),
           ),
@@ -333,6 +407,48 @@ function _ds_register_build_modes() {
   variable_set('ds_all_build_modes', $build_modes);
 
   return $build_modes;
+}
+
+/**
+ * Return blocks.
+ */
+function _ds_block_list() {
+  $blocks = array();
+  $all_blocks = array();
+
+  foreach (module_implements('ds_api') as $module) {
+    $plugins = variable_get($module .'_plugin_settings', array());
+    if (!empty($plugins)) {
+      foreach ($plugins as $key => $data) {
+        if (isset($data['filename']) && isset($data['class'])) {
+          require_once($data['filename']);
+          $class = $data['class'];
+          $plugin = new $class();
+          if (method_exists($plugin, 'block_list')) {
+            $plugin->block_list($module, $all_blocks, $data);
+          }
+        }
+      }
+    }
+  }
+
+  if (!empty($all_blocks)) {
+    $i = 0;
+    $ds_blocks = array();
+    foreach ($all_blocks as $key => $block) {
+      if (isset($block['info']) && isset($block['key']) && isset($block['data'])) {
+        // Calculating the md5 from the key is effective here, because we'll
+        // get back an int which is exactly 32 characters long, the length
+        // of the delta field of the blocks table.
+        $hash = md5($block['key']);
+        $blocks[$hash] = array('info' => $block['info']);
+        $ds_blocks[$hash] = $block;
+      }
+    }
+    variable_set('ds_blocks', $ds_blocks);
+  }
+
+  return $blocks;
 }
 
 /**
@@ -354,6 +470,14 @@ function _ds_plugins() {
       'class' => 'ds_cssoverrider',
       'description' => t('Override region CSS with inline styles or add extra classes.'),
       'file' => 'ds_cssoverrider.inc',
+      'path' => $path .'/plugins',
+      'target' => 'all',
+    ),
+    'regiontoblock' => array(
+      'title' => t('Region to block'),
+      'class' => 'ds_regiontoblock',
+      'description' => t('Render a display suite region into a theme region. That region will be made available as a block.'),
+      'file' => 'ds_regiontoblock.inc',
       'path' => $path .'/plugins',
       'target' => 'all',
     ),

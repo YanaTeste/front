@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.install,v 1.1.2.4 2009/10/24 16:02:43 swentel Exp $
+// $Id: nd.install,v 1.1.2.4.2.1 2010/02/22 20:52:35 swentel Exp $
 
 /**
  * @file
@@ -26,4 +26,14 @@ function nd_install() {
 function nd_uninstall() {
   db_query("DELETE FROM {variable} WHERE name LIKE 'nd_%%'");
   variable_del('ds_build_mode_4');
+}
+
+/**
+ * Implementation of hook_update_N().
+ *
+ * We simply return an array here. We want the people to
+ * run update.php because new theming functions got introduced.
+ */
+function nd_update_1() {
+  return array();
 }

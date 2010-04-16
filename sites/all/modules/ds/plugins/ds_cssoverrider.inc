@@ -1,5 +1,5 @@
 <?php
-// $Id: ds_cssoverrider.inc,v 1.1.2.6 2010/02/02 11:04:30 swentel Exp $
+// $Id: ds_cssoverrider.inc,v 1.1.2.7 2010/02/23 00:06:12 swentel Exp $
 
 /**
  * @file
@@ -69,7 +69,7 @@ class ds_cssoverrider {
   /**
    * process().
    */
-  public function execute(&$vars, &$display, $display_settings, $object_type) {
+  public function execute(&$vars, &$display, $display_settings, $object_type, $module) {
 
     foreach ($display->themed_regions as $region_name => $region_data) {
 

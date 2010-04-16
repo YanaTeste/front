@@ -4,9 +4,9 @@ description = "Core functions for the Display Suite module."
 core = "6.x"
 package = "Display suite"
 
-; Information added by drupal.org packaging script on 2010-02-04
-version = "6.x-1.0"
+; Information added by drupal.org packaging script on 2010-04-15
+version = "6.x-1.1"
 core = "6.x"
 project = "ds"
-datestamp = "1265317811"
+datestamp = "1271347813"
 

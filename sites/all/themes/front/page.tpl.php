@@ -22,9 +22,9 @@
       <div id="branding" class="grid-3 clear-block">
         <span id="logo" class="grid-1 alpha"><?php print $linked_logo_img; ?></span>
       </div>
-      <div id="nav" class="grid-9">
-        <div id="main-menu" class="grid-6 alpha"><?php print $main_menu_links; ?></div>
-        <div id="search-box" class="grid-3 alpha last"><?php print $search_box; ?></div>
+      <div id="nav">
+        <div id="main-menu"><?php print $main_menu_links; ?></div>
+        <div id="search-box"><?php print $search_box; ?></div>
       </div>
     </div>
   </div>
@@ -44,7 +44,13 @@
       <?php endif; ?>
       <?php print $messages; ?>
       <?php print $help; ?>
-
+      <?php if ($content_top): ?>
+        <div id="content-top" class="grid-12">
+          <div id="content-top-inner">
+            <?php print $content_top; ?>
+          </div>  
+        </div>
+      <?php endif; ?>
       <div id="main-content" class="region clear-block">
         <?php print $content; ?>
       </div>

@@ -50,6 +50,7 @@ width: 960px;
 }
 
 #nav {
+width: 738px;
 float: left;
 font-size: 12px;
 text-transform: uppercase;
@@ -80,8 +81,14 @@ margin-right: 10px;
 margin-right: 0;
 }
 
+#main-menu {
+float: left;
+margin-top: 3px;
+}
+
 /* Search box*/
 #search-box {
+float: right;
 }
 
 #search-theme-form {
@@ -89,6 +96,7 @@ background: #fff;
 border: 1px solid #ccc;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
+width: 172px;
 }
 
 .form-text {

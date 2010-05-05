@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbsapi.module,v 1.1.2.6 2009/11/29 03:54:11 mgn Exp $
+// $Id: custom_breadcrumbsapi.module,v 1.1.2.8 2010/05/03 22:49:15 mgn Exp $
 /**
  * @file
  * Provide custom breadcrumbs for module pages.
@@ -7,13 +7,13 @@
 module_load_include('inc', 'custom_breadcrumbs', 'custom_breadcrumbs.admin');
 
 /**
- * Implementation of hook_cb_breadcrumb_info().
+ * Implements hook_cb_breadcrumb_info().
  *
- *   @return an array with elements
- *     'table' indicating the db_table to load the breadcrumb from,
- *     'field' a unique field of the database table used to identify the breadcrumb
- *     'type' a string used for indicating the breadcrumb type on the admin list
- *     'name_constructor' a function which generates the breadcrumb name from the breadcrumb
+ * @return an array with elements:
+ *   'table' indicating the db_table to load the breadcrumb from,
+ *   'field' a unique field of the database table used to identify the breadcrumb,
+ *   'type' a string used for indicating the breadcrumb type on the admin list,
+ *   'name_constructor' a function which generates the breadcrumb name from the breadcrumb.
  */
 function custom_breadcrumbsapi_cb_breadcrumb_info() {
   $breadcrumb_type_info = array();
@@ -27,13 +27,13 @@ function custom_breadcrumbsapi_cb_breadcrumb_info() {
 }
 
 /**
- * Construct a default name to display in the admin screen.
+ * Constructs a default name to display in the admin screen.
  *
  * @param $breadcrumb
- *  The breadcrumb object.
+ *   The breadcrumb object.
  *
  * @return
- *  A text string that will be used as the breadcrumb name.
+ *   A text string that will be used as the breadcrumb name.
  */
 function _custom_breadcrumbsapi_breadcrumb_name($breadcrumb) {
   if (isset($breadcrumb->module_page)) {
@@ -42,7 +42,7 @@ function _custom_breadcrumbsapi_breadcrumb_name($breadcrumb) {
 }
 
 /**
- * Implementation of hook_help().
+ * Implements hook_help().
  */
 function custom_breadcrumbsapi_help($path, $arg) {
   switch ($path) {
@@ -55,7 +55,7 @@ function custom_breadcrumbsapi_help($path, $arg) {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function custom_breadcrumbsapi_menu() {
   $items = array();
@@ -77,7 +77,7 @@ function custom_breadcrumbsapi_menu() {
 }
 
 /**
- * Implementation of hook_breadcrumb_alter().
+ * Implements hook_breadcrumb_alter().
  *
  * Provide a function for module developers to provide custom breadcrumbs for module pages.
  * Modules wishing to provide custom breadcrumbs access to specific pages should include
@@ -167,6 +167,9 @@ function custom_breadcrumbsapi_form(&$form_state, $type) {
   return $form;
 }
 
+/**
+ * Implements hook_preprocess().
+ */
 function  custom_breadcrumbsapi_preprocess(&$variables, $hook) {
   // Check to see if hook has a defined custom breadcrumb.
   static $tried = array();
@@ -179,6 +182,7 @@ function  custom_breadcrumbsapi_preprocess(&$variables, $hook) {
     if (!empty($breadcrumbs)) {
       if ($breadcrumb = custom_breadcrumbs_select_breadcrumb($breadcrumbs, array('variables' => $variables))) {
         custom_breadcrumbs_set_breadcrumb($breadcrumb, array('variables' => $variables));
+        $variables['breadcrumb'] = theme('breadcrumb', drupal_get_breadcrumb());
       }
     }
   }

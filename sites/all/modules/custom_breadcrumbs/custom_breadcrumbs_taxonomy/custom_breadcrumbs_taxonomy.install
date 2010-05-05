@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs_taxonomy.install,v 1.1.2.6 2009/09/28 18:24:42 mgn Exp $
+// $Id: custom_breadcrumbs_taxonomy.install,v 1.1.2.8 2010/05/04 04:03:42 mgn Exp $
 
 /**
  * @file
@@ -7,7 +7,7 @@
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function custom_breadcrumbs_taxonomy_install() {
   // Create tables.
@@ -53,7 +53,7 @@ function custom_breadcrumbs_taxonomy_install() {
 }
 
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function custom_breadcrumbs_taxonomy_uninstall() {
   // Remove tables.
@@ -71,7 +71,7 @@ function custom_breadcrumbs_taxonomy_uninstall() {
 }
 
 /**
- * Implementation of hook_schema().
+ * Implements hook_schema().
  */
 function custom_breadcrumbs_taxonomy_schema() {
   $schema['custom_breadcrumbs_taxonomy_term'] = array(
@@ -189,7 +189,7 @@ function custom_breadcrumbs_taxonomy_schema() {
 }
 
 /**
- * Set weight of custom_breadcrumbs_taxonomy to be greater than taxonomy, views, and custom_breadcrumbs.
+ * Sets weight of custom_breadcrumbs_taxonomy to be greater than taxonomy, views, and custom_breadcrumbs.
  */
 function custom_breadcrumbs_taxonomy_update_6000() {
   $ret = array();
@@ -197,12 +197,12 @@ function custom_breadcrumbs_taxonomy_update_6000() {
   $views_weight = (int) db_result(db_query("SELECT weight FROM {system} WHERE name = 'views'"));
   $cb_weight = (int) db_result(db_query("SELECT weight FROM {system} WHERE name = 'custom_breadcrumbs'"));
   $cb_tax_weight = max($tax_weight, $views_weight, $cb_weight) + 2;
-  db_query("UPDATE {system} SET weight = %d WHERE name = 'custom_breadcrumbs_taxonomy'", $cb_tax_weight);
+  $ret[] = update_sql("UPDATE {system} SET weight = ". $cb_tax_weight ." WHERE name = 'custom_breadcrumbs_taxonomy'");
   return $ret;
 }
 
 /**
- * Add name field for improved organization of breadcrumbs
+ * Adds name field for improved organization of breadcrumbs
  * Remove set_active_menu field because it is no longer used.
  */
 function custom_breadcrumbs_taxonomy_update_6200() {

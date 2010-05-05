@@ -1,17 +1,20 @@
 <?php
-// $Id: custom_breadcrumbsapi.install,v 1.1.2.2 2009/09/28 18:24:42 mgn Exp $
+// $Id: custom_breadcrumbsapi.install,v 1.1.2.3 2010/05/03 22:49:15 mgn Exp $
 /**
  * @file
  * Install file for the custom_breadcrumbsapi module.
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function custom_breadcrumbsapi_install() {
   drupal_install_schema('custom_breadcrumbsapi');
 }
 
+/**
+ * Implements hook_schema().
+ */
 function custom_breadcrumbsapi_schema() {
   $schema['custom_breadcrumbsapi'] = array(
     'description' => 'Stores custom breadcrumb for module pages.',
@@ -71,7 +74,7 @@ function custom_breadcrumbsapi_schema() {
 }
 
 /**
- * Add name field for improved organization of breadcrumbs
+ * Adds name field for improved organization of breadcrumbs
  * Remove set_active_menu field because it is no longer used.
  */
 function custom_breadcrumbsapi_update_6200() {
@@ -79,6 +82,10 @@ function custom_breadcrumbsapi_update_6200() {
   db_add_field($ret, 'custom_breadcrumbsapi', 'name', array('type' => 'varchar', 'length' => 128, 'NOT NULL' => FALSE, 'description' => 'An optional name for the custom breadcrumb.'));
   return $ret;
 }
+
+/**
+ * Implements hook_uninstall().
+ */
 function custom_breadcrumbsapi_uninstall() {
   drupal_uninstall_schema('custom_breadcrumbsapi');
 }

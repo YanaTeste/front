@@ -294,6 +294,13 @@ margin-left: 60px;
 	color:#c00;
 }
 
+/* Grids */
+.view-tjenester .grid-4 {
+min-height: 200px;
+}
+
+/**/
+
 /**
  * Console, style from Slate theme
  */

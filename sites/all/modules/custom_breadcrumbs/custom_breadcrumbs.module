@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs.module,v 1.6.2.5.2.30 2009/11/29 03:54:11 mgn Exp $
+// $Id: custom_breadcrumbs.module,v 1.6.2.5.2.37 2010/05/03 22:49:15 mgn Exp $
 
 /**
  * @file
@@ -8,7 +8,7 @@
  */
 
 /**
- * Implementation of hook_cb_breadcrumb_info().
+ * Implements hook_cb_breadcrumb_info().
  *
  * @return
  *   An array of arrays describing the breadcrumbs provided by the module.
@@ -30,7 +30,7 @@ function custom_breadcrumbs_cb_breadcrumb_info() {
 }
 
 /**
- * Construct a default name to display in the admin screen.
+ * Constructs a default name to display in the admin screen.
  */
 function _custom_breadcrumbs_breadcrumb_name($breadcrumb) {
   if (isset($breadcrumb->node_type)) {
@@ -39,7 +39,7 @@ function _custom_breadcrumbs_breadcrumb_name($breadcrumb) {
 }
 
 /**
- * Implementation of hook_theme().
+ * Implements hook_theme().
  */
 function custom_breadcrumbs_theme() {
   return array(
@@ -62,7 +62,7 @@ function custom_breadcrumbs_theme() {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function custom_breadcrumbs_menu() {
   $items = array();
@@ -113,39 +113,45 @@ function custom_breadcrumbs_menu() {
 }
 
 /**
- * Implementation of hook_init().
+ * Implements hook_preprocess().
  */
-function custom_breadcrumbs_init() {
-  if (!custom_breadcrumbs_exclude_path()) {
-    if (variable_get('custom_breadcrumbs_set_global_home_breadcrumb', FALSE)) {
-      // Use default menu structure to set the breadcrumb.
-      $trail = drupal_get_breadcrumb();
-      if (!empty($trail)) {
-        array_shift($trail);
-        $cb_home = custom_breadcrumbs_home_crumb();
-        if (!empty($cb_home)) {
-          array_unshift($trail, array_pop($cb_home));
+function custom_breadcrumbs_preprocess(&$variables, $hook) {
+  static $tried = array();
+  // Only respond to the first call for this hook.
+  if (!isset($tried[$hook])) {
+    $tried[$hook] = TRUE;
+    if (!custom_breadcrumbs_exclude_path()) {
+      if (variable_get('custom_breadcrumbs_set_global_home_breadcrumb', FALSE)) {
+        $trail = drupal_get_breadcrumb();
+        if (!empty($trail)) {
+          array_shift($trail);
+          $cb_home = custom_breadcrumbs_home_crumb();
+          if (!empty($cb_home)) {
+            array_unshift($trail, array_pop($cb_home));
+          }
+          drupal_set_breadcrumb($trail);
+          $variables['breadcrumb'] = theme('breadcrumb', drupal_get_breadcrumb());
         }
-        drupal_set_breadcrumb($trail);
       }
-    }
-
-    if (variable_get('custom_breadcrumbs_set_menu_breadcrumb', FALSE)) {
-      // Use default menu structure to set the breadcrumb.
-      custom_breadcrumbs_set_menu_breadcrumb();
+      if (variable_get('custom_breadcrumbs_set_menu_breadcrumb', FALSE)) {
+        // Use default menu structure to set the breadcrumb.
+        if (custom_breadcrumbs_set_menu_breadcrumb()) {
+          $variables['breadcrumb'] = theme('breadcrumb', drupal_get_breadcrumb());;
+        }
+      }
     }
   }
 }
 
 /**
- * Implementation of hook_perm().
+ * Implements hook_perm().
  */
 function custom_breadcrumbs_perm() {
   return array('administer custom breadcrumbs', 'use php in custom breadcrumbs');
 }
 
 /**
- * Implementation of hook_help().
+ * Implements hook_help().
  */
 function custom_breadcrumbs_help($path, $arg) {
   switch ($path) {
@@ -154,9 +160,8 @@ function custom_breadcrumbs_help($path, $arg) {
       $output .= '<p>'. t("On the <em>Node Type</em> page, select the node type the breadcrumb will apply to. There are two text fields below-- 'Titles' and 'Paths.' When creating  a breadcrumb, you are simply creating a link. In the custom breadcrumbs interface 'Titles' describes the text of the breadcrumb while 'Paths' describes the Drupal path the breadcrumb links to. Each Title must have a corresponding Path.") .'</p>';
       $output .= '<p>'. t("To give a very simple example of how to use this module, let's say I have a blog on my web site called 'Deep Thoughts.' To create this, I use the Views module to create a page at /blog that displays all the node types 'blog post.' Whenever a user views a blog post I want the breadcrumb to show Home > Deep Thoughts instead of simply Home. To do this I would simply type 'Deep Thoughts' in the 'Titles' field and and 'blog' in the 'Paths' field and save my breadcrumb.") .'</p>';
       $output .= '<p>'. t("Using the Tokens module, the Custom breadcrumbs module becomes much more flexible because breadcrumbs can become dynamic. You can create a breadcrumb like Home > Deep Thoughts > [Month of Blog Post] [Year of Blog Post], where 'Deep Thoughts' links to my main blog page and '[Month of Blog Post] [Year of Blog Post]' links to a view that shows only blog posts from the month and year the blog post was created (e.g. June 2007). For this, you would do the following:") .'</p>';
-      $output .= '<p>'. t("Node Type:<br />Blog Post<br /><br />Titles:<br />Deep Thoughts<br />[month] [yyyy]<br /><br />Paths:<br />blog<br />blog/[mm]_[yyyy]<br />(where of course, blog/[mm]_[yyyy] is the path to the view of blog posts from that month and year). So if you created a blog pos on June 13, 2007 your breadcrumb would show Home > Deep Thoughts > June 2007 and 'June 2007' links to 'blog/06_2007' which is a view of all blog posts from June 2007.") .'</p>';
-      $output .= '<p>'. t("Also, note that Custom Breadcrumbs doesn't actually check to be sure that a particular path 
-exists, so you'll have to check yourself to avoid 404 errors.") .'</p>';
+      $output .= '<p>'. t("Node Type:<br />Blog Post<br /><br />Titles:<br />Deep Thoughts<br />[month] [yyyy]<br /><br />Paths:<br />blog<br />blog/[mm]_[yyyy]<br />(where of course, blog/[mm]_[yyyy] is the path to the view of blog posts from that month and year). So if you created a blog post on June 13, 2007 your breadcrumb would show Home > Deep Thoughts > June 2007 and 'June 2007' links to 'blog/06_2007' which is a view of all blog posts from June 2007.") .'</p>';
+      $output .= '<p>'. t("Also, note that Custom Breadcrumbs doesn't actually check to be sure that a particular path exists, so you'll have to check yourself to avoid 404 errors.") .'</p>';
       $output .= '<p>'. t("Only users with 'administer custom breadcrumbs' permission will be allowed to create or modify custom breadcrumbs.") .'</p>';
       $output .= '<h2>'. t("Breadcrumb Visibility") .'</h2>';
       $output .= '<p>'. t("Users given 'use php in custom breadcrumbs' permission can include php code snippet that returns TRUE or FALSE to control whether or not the breadcrumb is displayed. Note that this code has access to the %node variable, and can check its type or any other property.", array('%node' => '$node')) .'</p>';
@@ -164,16 +169,17 @@ exists, so you'll have to check yourself to avoid 404 errors.") .'</p>';
       $output .= '<p>'. t("The following identifiers can be used to achieve a special behavior:");
       $output .= '<ul><li>'. t("%pathauto - will clean any path using the current pathauto module settings, if that module is installed.", array('%pathauto' => '<pathauto>')) .'</li>';
       $output .= '<li>'. t("%none - can be used as a path to have a breadcrumb element that is not hyperlinked.", array('%none' => '<none>')) .'</li></ul>';
-      $output .= '<p>'. t("Identifiers should be added to the paths area in the following format: identifier|path. To be recognized, the idenfier must be enclosed in angular brackets, and proceed any part of the path. For example: %pathauto|[ogname-raw]", array('%pathauto' => '<pathauto>')) .'</p>';
+      $output .= '<p>'. t("Identifiers should be added to the paths area in the following format: identifier|path. To be recognized, the identifier must be enclosed in angular brackets and proceed any part of the path. For example: %pathauto|[ogname-raw]", array('%pathauto' => '<pathauto>')) .'</p>';
       return $output;
     case 'admin/build/custom_breadcrumbs':
-      $output = t("To create a custom breadcrumb, choose one of the breadcrumbs types listed above. The following table lists all of the custom breadcrumbs that have been defined. The list can be filtered by breadcrumb type or language, or sorted by clicking on one of the column headings.");
+      $output = '<p>'. t("To create a custom breadcrumb, choose one of the breadcrumb types listed above. The following table lists all of the custom breadcrumbs that have been defined. The list can be filtered by breadcrumb type or language, or sorted by clicking on one of the column headings.") .'</p>';
+      $output .= '<p>'. t('You can configure Custom Breadcrumb settings at <a href="@link">admin/settings/custom-breadcrumbs</a>.', array('@link' => url('admin/settings/custom-breadcrumbs'))) .'</p>';
       return $output;
-  } 
+  }
 }
 
 /**
- * Implementation of hook_nodeapi().
+ * Implements hook_nodeapi().
  */
 function custom_breadcrumbs_nodeapi($node, $op, $teaser, $page) {
   if ($op == 'alter' && empty($teaser) && !empty($page)) {
@@ -191,7 +197,7 @@ function custom_breadcrumbs_nodeapi($node, $op, $teaser, $page) {
 }
 
 /**
- * Implementation of hook_form_alter().
+ * Implements hook_form_alter().
  */
 function custom_breadcrumbs_form_alter(&$form, $form_state, $form_id) {
   // Provide custom breadcrumbs for comment forms associated with nodes.
@@ -199,14 +205,14 @@ function custom_breadcrumbs_form_alter(&$form, $form_state, $form_id) {
     $node = node_load($form['nid']['#value']);
     // Call custom_breadcrumbs_nodeapi to provide a custom_breadcrumb for this comment.
     custom_breadcrumbs_nodeapi($node, 'alter', array(), array(1));
-  } 
+  }
   elseif (user_access('administer custom breadcrumbs') && isset($form['type']) && isset($form['#node']) && $form['type']['#value'] .'_node_form' == $form_id) {
     // Provide a custom breadcrumbs fieldset for node edit forms.
     $node = $form['#node'];
     // Load all custom breadcrumbs for this node type.
     $breadcrumbs = custom_breadcrumbs_load_breadcrumbs('custom_breadcrumbs', 'custom_breadcrumb', array('node_type' => $form['type']['#value']));
     foreach (module_implements('cb_node_form_table') as $module) {
-      $func = $module .'_cb_node_form_table'; 
+      $func = $module .'_cb_node_form_table';
       $more = $func($node);
       if (!empty($more)) {
         $breadcrumbs = array_merge($breadcrumbs, $more);
@@ -225,6 +231,7 @@ function custom_breadcrumbs_form_alter(&$form, $form_state, $form_id) {
       '#type'           => 'fieldset',
       '#title'          => t('Custom Breadcrumbs'),
       '#access'         => user_access('administer custom breadcrumbs'),
+      '#group'          => 'additional_settings',
       '#collapsible'    => TRUE,
       '#collapsed'      => TRUE,
       '#weight'         => -50,
@@ -234,14 +241,14 @@ function custom_breadcrumbs_form_alter(&$form, $form_state, $form_id) {
 }
 
 /**
- * Select a breadcrumb from an array of breadcrumbs.
+ * Selects a breadcrumb from an array of breadcrumbs.
  *
- * @param $breadcrumbs 
+ * @param $breadcrumbs
  *   The array of breadcrumb objects that the breadcrumb will be selected from.
- * @param $obj
- *   An optional object (node, view, ...) to aid in the selection process.
+ * @param $objs
+ *   An array of optional object (node, view, ...) to aid in the selection process.
  *
- * @return $breadcrumb 
+ * @return $breadcrumb
  *   The selected breadcrumb object.
  */
 function custom_breadcrumbs_select_breadcrumb($breadcrumbs, $objs = array()) {
@@ -253,70 +260,169 @@ function custom_breadcrumbs_select_breadcrumb($breadcrumbs, $objs = array()) {
 }
 
 /**
- * Set the custom breadcrumb.
+ * Sets the custom breadcrumb.
  *
  * This can be used by submodules, but they could also provide their own function.
  * @param $breadcrumb
  *   The breadcrumb object
- * @param $obj
- *   A node object (if available) for building token substituions.
+ * @param $objs
+ *   An array of objects (if available) for building token substituions.
  */
 function custom_breadcrumbs_set_breadcrumb($breadcrumb, $objs = array()) {
   if ($breadcrumb && !custom_breadcrumbs_exclude_path()) {
-    $location = array();
-    $trail = custom_breadcrumbs_home_crumb();
-    if (!empty($trail)) {
-      $title = variable_get('custom_breadcrumb_home', t('Home'));
-      $location = array('title' => variable_get('custom_breadcrumb_home', t('Home')), 'href' => '<front>', 'localized_options' => array());
-    }
-    if (variable_get('custom_breadcrumbs_use_php_in_titles', FALSE)) {
-      $titles = extract_php($breadcrumb->titles, $objs);
-      // Titles and paths arrays can also be provided as elements of an associative array.
-      if (isset($titles['titles']) && is_array($titles['titles']) && isset($titles['paths']) && is_array($titles['paths'])) {
-        $paths = $titles['paths'];
-        $titles = $titles['titles'];
-      }
-      else {
-        $paths = extract_php($breadcrumb->paths, $objs);
-      }
-    }
-    if (!isset($titles) || is_null($titles)) {
-      $titles = preg_split("/[\n]+/", $breadcrumb->titles);
-    }
-    if (!isset($paths) || is_null($paths)) {
-      $paths = preg_split("/[\n]+/", $breadcrumb->paths);
-    }
-
-    if (module_exists('token')) {
-      // Do token replacement.
-      $types = custom_breadcrumbs_token_types($objs);
-      $titles = token_replace_multiple($titles, $types);
-      $paths = token_replace_multiple($paths, $types);
-    }
-  
-    for ($i = 0; $i < count($titles); $i++) {
-      $title = trim($titles[$i]);
-      if (($title != '') && ($title != '<none>')) {
-        // Create breadcrumb only if there is a title.
-        $trail[] = _custom_breadcrumbs_create_crumb($title, trim($paths[$i]));
-        $location[] = array('title' => $title, 'href' => drupal_get_normal_path(trim($paths[$i])));
-      }
-    }
+    $locations = array();
+    $trail = _custom_breadcrumbs_get_breadcrumb($breadcrumb, $objs, $locations);
     if (variable_get('custom_breadcrumbs_force_active_trail', FALSE)) {
-      menu_set_active_trail($location);
+      menu_set_active_trail($locations);
     }
     drupal_set_breadcrumb($trail);
+    // Optionally save the unique breadcrumb id of the last set breadcrumb.
+    custom_breadcrumbs_unique_breadcrumb_id($breadcrumb->breadcrumb_type, $breadcrumb->bid);
   }
 }
 
 /**
- *  Helper function to prepare some common contexts for token substitution.
+ * Gets the custom breadcrumb.
  *
- *  @param $objs
- *    An array of objects to be used in token replacement. Array keys indicate type of object.
+ * This function is used to retrieve the breadcrumb trail before actually setting it.
+ * @see custom_breadcrumbs_get_breadcrumb().
  *
- *  @return $types
- *    An array of substitution classes for token_replace_multiple().
+ * @param $breadcrumb
+ *   The breadcrumb object.
+ * @param $objs
+ *   An array of object (if available) for building token substituions.
+ * @param $locations
+ *   Locations array to be able to set active menu trail - passed by reference.
+ *
+ * @return
+ *   array of html crumbs
+ */
+function _custom_breadcrumbs_get_breadcrumb($breadcrumb, $objs, &$locations) {
+  // Assure locations is an array.
+  if (!is_array($locations)) {
+    $locations = array();
+  }
+  // Avoid invalid nesting.
+  elseif (isset($locations['title']) || isset($locations['href'])) {
+    $locations = array($locations);
+  }
+
+  $trail = custom_breadcrumbs_home_crumb();
+  if (!empty($trail)) {
+    $title = variable_get('custom_breadcrumb_home', t('Home'));
+    $locations[] = array('title' => variable_get('custom_breadcrumb_home', t('Home')), 'href' => '<front>', 'localized_options' => array());
+  }
+
+  if (variable_get('custom_breadcrumbs_use_php_in_titles', FALSE)) {
+    $titles = extract_php($breadcrumb->titles, $objs);
+    // Titles and paths arrays can also be provided as elements of an associative array.
+    if (isset($titles['titles']) && is_array($titles['titles']) && isset($titles['paths']) && is_array($titles['paths'])) {
+      $paths = $titles['paths'];
+      $titles = $titles['titles'];
+    }
+    else {
+      $paths = extract_php($breadcrumb->paths, $objs);
+    }
+  }
+  if (!isset($titles) || is_null($titles)) {
+    $titles = preg_split("/[\n]+/", $breadcrumb->titles);
+  }
+  if (!isset($paths) || is_null($paths)) {
+    $paths = preg_split("/[\n]+/", $breadcrumb->paths);
+  }
+
+  // Token replacement for titles and paths
+  if (module_exists('token')) {
+    // Do token replacement.
+    $types = custom_breadcrumbs_token_types($objs);
+    $titles = token_replace_multiple($titles, $types);
+    $paths = token_replace_multiple($paths, $types);
+  }
+  $items = _custom_breadcrumbs_get_trail_items($breadcrumb, $titles, $paths);
+
+  // Use the returned items to set the trail.
+  foreach ($items as $item) {
+    if ($item['crumb']) {
+      $trail[] = $item['crumb'];
+    }
+    if ($set_active_trail) {  // TODO: only do this if $item['href'] is set?
+      $locations[] = array('title' => $item['title'], 'href' => drupal_get_normal_path(trim($item['href'])));
+    }
+  }
+
+  return $trail;
+}
+
+/**
+ * Builds the trail items for a given breadcrumb specification.
+ *
+ * @param $breadcrumb
+ *   The breadcrumb object.
+ * @param $titles
+ *   An array of titles (after token replacement).
+ * @param $paths
+ *   An array of paths (after token replacement) that may contain special identifiers.
+ *
+ * @return
+ *   An associative array of trail items with keys
+ *   'title' - the title of the item
+ *   'href' -  the path of the item used to set the active trail
+ *   'crumb'- the html crumb for use in the breadcrumb
+ */
+function _custom_breadcrumbs_get_trail_items($breadcrumb, $titles, $paths) {
+  $trail_items = array();
+
+  for ($i = 0; $i < count($titles); $i++) {
+    $title = trim($titles[$i]);
+
+    if (($title != '') && ($title != '<none>')) {
+      // Create a breadcrumb only if there is a title.
+      // Include optional html attributes.
+      $options = _custom_breadcrumbs_identifiers_option($i+1, $breadcrumb->bid);
+      $crumb_items = _custom_breadcrumbs_create_crumb_items($title, trim($paths[$i]), $options);
+      $trail_items = array_merge($trail_items, $crumb_items);
+    }
+  }
+  return $trail_items;
+}
+
+/**
+ * Sets or gets the unique breadcrumb id.
+ *
+ * @param $type
+ *   The breadcrumb type, used to set the unique breadcrumb id.
+ * @param $bid
+ *   The breadcrumb id, used to set the unique breadcrumb id.
+ *
+ * @return $cbid
+ *   A string containing the unique id for this breadcrumb.
+ */
+function custom_breadcrumbs_unique_breadcrumb_id($type = NULL, $bid = NULL) {
+  static $stored_breadcrumb_id;
+  if (variable_get('custom_breadcrumbs_type_class', FALSE)) {
+    if (isset($type)) {
+      $base = 'custom-breadcrumbs';
+      $cbid = $base .'-'. $type;
+      if (variable_get('custom_breadcrumbs_append_bid_class', FALSE) && isset($bid)) {
+        $cbid .= '-'. $bid;
+      }
+      $stored_breadcrumb_id = $cbid;
+    }
+    else {
+      $cbid = $stored_breadcrumb_id;
+    }
+  return $cbid;
+  }
+}
+
+/**
+ * Prepares some common contexts for token substitution.
+ *
+ * @param $objs
+ *   An array of objects to be used in token replacement. Array keys indicate type of object.
+ *
+ * @return $types
+ *   An array of substitution classes for token_replace_multiple().
  */
 function custom_breadcrumbs_token_types($objs = array()) {
   if (!isset($objs['user'])) {
@@ -332,12 +438,12 @@ function custom_breadcrumbs_token_types($objs = array()) {
 }
 
 /**
- * Private function to save breadcrumb.
+ * Saves the custom breadcrumb.
  *
  * @param $module
  *   The name of the custom breadcrumbs submodule that created the breadcrumb.
  * @param $key
- *   The breadcrumb to save.
+ *   The type of breadcrumb to save.
  * @param $breadcrumb
  *   Any additional submodule function to call after breadcrumb has been saved.
  */
@@ -363,18 +469,18 @@ function _custom_breadcrumbs_save_breadcrumb($module, $key, $breadcrumb) {
 }
 
 /**
- * Private function to delete breadcrumb.
+ * Deletes the custom breadcrumb.
  *
- * @param $table
- *   The table to delete the breadcrumb from.
+ * @param $module
+ *   The name of the custom breadcrumbs submodule that created the breadcrumb.
+ * @param $key
+ *   An array key indicating the type of custom breadrumb that is to be deleted.
  * @param $bid
  *   The id for the breadcrumb that is to be deleted.
- * @param $func
- *   Any additional submodule function to call after breadcrumb has been deleted.
  */
 function _custom_breadcrumbs_delete_breadcrumb($module, $key, $bid) {
-  $info = module_invoke($module, 'cb_breadcrumb_info'); 
-  if (isset($info[$key]['table'])) {  
+  $info = module_invoke($module, 'cb_breadcrumb_info');
+  if (isset($info[$key]['table'])) {
     db_query('DELETE FROM {'. $info[$key]['table'] .'} WHERE bid = %d', $bid);
   }
 }
@@ -388,7 +494,9 @@ function _custom_breadcrumbs_delete_breadcrumb($module, $key, $bid) {
 function custom_breadcrumbs_home_crumb() {
   $hometext = variable_get('custom_breadcrumb_home', t('Home'));
   if ($hometext != '') {
-    $trail = array(l($hometext, '<front>'));
+    // Add any html identifiers.
+    $options = _custom_breadcrumbs_identifiers_option();
+    $trail = array(l($hometext, '<front>', $options));
   }
   else {
     $trail = array();
@@ -397,17 +505,23 @@ function custom_breadcrumbs_home_crumb() {
 }
 
 /**
- * Private function for custom breadcrumb to create a crumb item.
+ * Creates one or more crumb items out of a custom breadcrumb definition line.
  *
  * @param $title
- *   The human readable title to be rendered by the browser.
+ *   Title string of the custom breadcrumb definition (after token replacement).
  * @param $original_path
- *   The desired URI and/or special identifier.
- *
+ *   Path string of the custom breadcrumb definition (after token replacment)
+ *   which may contain a special identifier.
+ * @param $attributes
+ *   An array of additional attributes for the breadcrumb item.
  * @return
- *   An HTML string containing a link to the original path.
+ *   An array of one or multiple crumb items. 
+ *   In most cases, especially without an identifier, it is only an array of one item.
  */
-function _custom_breadcrumbs_create_crumb($title, $original_path) {
+function _custom_breadcrumbs_create_crumb_items($title, $original_path, $attributes = array()) {
+  // The array to return.
+  $crumbs = array();
+
   // Decode title to properly handle special characters.
   $title = decode_entities($title);
   // Collapse double slashes to one.
@@ -415,31 +529,41 @@ function _custom_breadcrumbs_create_crumb($title, $original_path) {
   // Removing leading and trailing slashes.
   $original_path = preg_replace('/^\/|\/+$/', '', $original_path);
   list($identifier, $path) = explode("|", $original_path, 2);
-  if (isset($path) && $path !== '') {
-    $options = parse_url($path);
-    switch (trim($identifier)) {
-      case '<pathauto>':
-        if (module_exists('pathauto')) {
-          module_load_include('inc', 'pathauto', 'pathauto');
-          $crumb = l($title, pathauto_cleanstring($options['path'], FALSE), $options);
-        }
-        break;
-      default:
-        $crumb = l($title, $options['path'], $options);
+  $identifier = trim($identifier);
+  // Replace identifiers provided by modules implementing hook_cb_identifier_values.
+  $values = NULL;
+  $obj = array('title' => $title, 'path' => $path, 'attributes' => $attributes);
+  foreach (module_implements('cb_identifier_values') as $module) {
+    $values = module_invoke($module, 'cb_identifier_values', $identifier, $obj);
+    if (isset($values)) break;
+  }
+  if (isset($values)) {
+    // Ease return values for callbacks.
+    if (!is_array($values)) {
+      $crumbs[] = array('crumb' => $values, 'title' => $title, 'href' => $path);
+    }
+    elseif (isset($values['crumb']) || isset($values['title']) || isset($values['href'])) {
+      $crumbs[] = $values;
+    }
+    else {
+      $crumbs = $values;
     }
   }
   else {
-    // This may be just be a single identifier.
-    $options = parse_url($original_path);
-    switch ($identifier) {
-      case '<none>':
-        $crumb = check_plain($title);
-        break;
-      default:
-        $crumb = l($title, $options['path'], $options);
+    // Use original path if no pipe was given.
+    if (!isset($path)) {
+      $path = $original_path;
     }
+    $options = parse_url($path);
+    $options = array_merge($options, $attributes);
+    $crumbs[] = array(
+      'crumb' => l($title, $options['path'], $options),
+      'title' => $title,
+      'href'  => $options['path'],
+    );
   }
-  return $crumb;
+
+  return $crumbs;
 }
 
 /**
@@ -448,26 +572,29 @@ function _custom_breadcrumbs_create_crumb($title, $original_path) {
  * @ingroup themeable
  */
 function theme_custom_breadcrumbs_help_identifiers()  {
+
+  $identifiers = module_invoke_all('cb_identifier_list');
   $headers = array(t('Identifier'), t('Behaviour'));
   $rows = array();
-  $row = array();
-  // <none> identifier.
-  $row[] = check_plain('<none>');
-  $row[] = t('This will result in a plain text crumb. This identifier should not be used with the pipe (|) symbol.');
-  $rows[] = $row;
 
-  // <pathauto> identifier.
-  if (module_exists('pathauto')) {
-    $row = array();
-    $row[] = check_plain('<pathauto>');
-    $row[] = t('Cleans the given path using your pathauto replacement rules.');
-    $rows[] = $row;
+  if (!empty($identifiers)) {
+    foreach ($identifiers as $id => $description) {
+      $rows[] = array(check_plain($id), $description);
+    }
+  }
+  else {
+    $rows[] = array(
+      array(
+        'data' => t('No special identifiers have been defined. You must <a href="@link">enable the custom breadcrumbs identifiers module</a> or another module that implements hook_cb_identifier_list and hook_cb_identifier_values to enable this feature.', array('@link' => url('admin/build/modules'))),
+        'colspan' => 2,
+      ),
+    );
   }
   return theme('table', $headers, $rows, array('class' => 'description'));
 }
 
 /**
- * Load the custom breadcrumb from submodule table.
+ * Loads the custom breadcrumb from submodule table.
  *
  *  @param $module
  *    The name of the custom breadcrumbs submodule managing the requested breadcrumb.
@@ -481,7 +608,7 @@ function theme_custom_breadcrumbs_help_identifiers()  {
  *    if $param is empty, all breadcrumbs from the table will be returned as an array
  *    otherwise a single breadcrumb object is be returned.
  */
-function custom_breadcrumbs_load_breadcrumbs($module, $table = NULL,  $param = array(), $languages = array()) {
+function custom_breadcrumbs_load_breadcrumbs($module, $table = NULL, $param = array(), $languages = array()) {
   $breadcrumbs = array();
   $bc_info = module_invoke($module, 'cb_breadcrumb_info');
   foreach ($bc_info as $info) {
@@ -519,22 +646,22 @@ function custom_breadcrumbs_load_breadcrumbs($module, $table = NULL,  $param = a
 }
 
 /**
- *  Use PHP code to determine the breadcrumb visibility.
+ * Determines breadcrumb visibility by evaluating PHP code.
  *
- *  @param $breadcrumb
- *    The breadcrumb object.
- *  @param $objs
- *    An array of objects (node, taxonomy, or view) that can be used in the php code.
+ * @param $breadcrumb
+ *   The breadcrumb object.
+ * @param $objs
+ *   An array of objects (node, taxonomy, or view) that can be used in the php code.
  *
- *  @return
- *    TRUE if the breadcrumb should be displayed, FALSE otherwise.
+ * @return
+ *   TRUE if the breadcrumb should be displayed, FALSE otherwise.
  */
 function custom_breadcrumbs_is_visible($breadcrumb, $objs = array()) {
   $visibility = TRUE;
   if (isset($breadcrumb)) {
     // Provide access to objects by standard variable names.
     foreach ($objs as $key => $obj) {
-      $$key = $obj;
+      $$key = is_object($obj) ? drupal_clone($obj) : $obj;
     }
     // Guard against hidden spaces.
     if (isset($breadcrumb->visibility_php) && ($trimmed = trim($breadcrumb->visibility_php)) != '' ) {
@@ -547,7 +674,7 @@ function custom_breadcrumbs_is_visible($breadcrumb, $objs = array()) {
 }
 
 /**
- * Load all breadcrumbs from all submodules.
+ * Loads all breadcrumbs from all submodules.
  *
  * Current breadcrumbs are held as static variable.
  *
@@ -572,8 +699,8 @@ function _custom_breadcrumbs_load_all_breadcrumbs($refresh = FALSE) {
 }
 
 /**
- * Set the breadcrumb trail to match the menu structure.
- * 
+ * Sets the breadcrumb trail to match the menu structure.
+ *
  * This function uses the same approach as in the menu_breadcrumb module.
  */
 function custom_breadcrumbs_set_menu_breadcrumb() {
@@ -583,11 +710,12 @@ function custom_breadcrumbs_set_menu_breadcrumb() {
   $menus =  variable_get('custom_breadcrumbs_menu_list', array() );
   if (in_array($use_menu, $menus)) {
     menu_set_active_menu_name($use_menu);
+    return TRUE;
   }
 }
 
 /**
- * Implementation of hook_theme_registry_alter().
+ * Implements hook_theme_registry_alter().
  */
 function custom_breadcrumbs_theme_registry_alter(&$theme_registry) {
   if (variable_get('custom_breadcrumbs_force_active_trail', FALSE) && !empty($theme_registry['links'])) {
@@ -607,7 +735,7 @@ function custom_breadcrumbs_theme_registry_alter(&$theme_registry) {
 }
 
 /**
- * Helper function to determine if a link is in the active trail.
+ * Determines if a link is in the active trail.
  *
  * @param $link
  *   A menu link.
@@ -663,7 +791,7 @@ function custom_breadcrumbs_override_links($links, $attributes = array('class' =
         $output .= l($link['title'], $link['href'], $link);
       }
       elseif (!empty($link['title'])) {
-        // Some links are actually not links, but we wrap these in <span> for adding title and class attributes
+        // Some links are actually not links, but we wrap these in <span> for adding title and class attributes.
         if (empty($link['html'])) {
           $link['title'] = check_plain($link['title']);
         }
@@ -836,7 +964,7 @@ function _custom_breadcrumbs_menu_index($tree, $ancestors = array(), $parent = N
 }
 
 /**
- * Keep track of ID attributes and add a suffix to make it unique (when necessary).
+ * Tracks the ID attributes and add a suffix to make it unique (when necessary).
  *
  * @param $id
  *   The link id.
@@ -856,7 +984,7 @@ function _custom_breadcrumbs_menu_unique_id($id) {
 }
 
 /**
- * Helper function for storing recursion levels.
+ * Stores the recursion levels.
  *
  * @param $link
  *   If a menu item link is passed, it will be appended to the stack.
@@ -876,7 +1004,7 @@ function _custom_breadcrumbs_menu_stack($link = FALSE) {
 }
 
 /**
- * Helper function to retrieve the module weight.
+ * Retrieves the module weight.
  *
  * @param $name
  *   The module name.
@@ -890,7 +1018,7 @@ function _custom_breadcrumbs_get_module_weight($name) {
 }
 
 /**
- * Helper function to determine if a text string is php code and if it is, evaluate it.
+ * Determines if a text string is php code and if it is, evaluate it.
  *
  * @param $text
  *   A potential code snippet to evaluate.
@@ -906,7 +1034,7 @@ function extract_php($text, $objs = array()) {
     // Strip php tags.
     $text = str_replace(array('<?php', '?>'), '', $text);
     foreach ($objs as $key => $obj) {
-      $$key = $obj;
+      $$key = is_object($obj) ? drupal_clone($obj) : $obj;
     }
     ob_start();
     $output = eval($text);
@@ -916,7 +1044,7 @@ function extract_php($text, $objs = array()) {
 }
 
 /**
- * Helper function to determine if current path is in the excluded list.
+ * Determines if the current path is in the excluded list.
  *
  * @return
  *   TRUE if the current path is on the custom breadcrumbs excluded path list,
@@ -938,4 +1066,35 @@ function custom_breadcrumbs_exclude_path() {
     }
   }
   return FALSE;
+}
+
+/**
+ * Adds optional html identifiers to breadcrumb links.
+ *
+ * @param $part
+ *   A postive integer indicating the breadcrumb segment (home crumb = 0).
+ *
+ * @param $bid
+ *   The breadcrumb id.
+ *
+ * @return
+ *   An associative array containing the HTML attributes to apply to the anchor tag.
+ */
+function _custom_breadcrumbs_identifiers_option($part = 0, $bid = NULL) {
+  $options = array('attributes' => array());
+  $classes = array();
+  $base = 'custom-breadcrumbs';
+  if (variable_get('custom_breadcrumbs_home_id', FALSE) && ($part == 0)) {
+    $options['attributes']['id'] = $base .'-home';
+  }
+  elseif (variable_get('custom_breadcrumbs_parts_class', FALSE) && ($part > 0)) {
+    $classes[] = $base .'-item-'. $part;
+  }
+  if (variable_get('custom_breadcrumbs_even_odd_class', FALSE)) {
+    $classes[] = ($part % 2 == 0) ? 'even' : 'odd';
+  }
+  if (!empty($classes)) {
+    $options['attributes']['class'] = implode(' ', $classes);
+  }
+  return $options;
 }

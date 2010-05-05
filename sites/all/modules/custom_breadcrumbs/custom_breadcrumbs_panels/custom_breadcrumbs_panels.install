@@ -1,17 +1,20 @@
 <?php
-// $Id: custom_breadcrumbs_panels.install,v 1.1.2.2 2009/09/28 18:24:41 mgn Exp $
+// $Id: custom_breadcrumbs_panels.install,v 1.1.2.3 2010/05/03 22:49:15 mgn Exp $
 /**
  * @file
  * Install file for the custom_breadcrumbs_panels module.
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function custom_breadcrumbs_panels_install() {
   drupal_install_schema('custom_breadcrumbs_panels');
 }
 
+/**
+ * Implements of hook_schema().
+ */
 function custom_breadcrumbs_panels_schema() {
   $schema['custom_breadcrumbs_panels'] = array(
     'description' => 'Stores custom breadcrumb trail overrides for panels pages.',
@@ -71,7 +74,7 @@ function custom_breadcrumbs_panels_schema() {
 }
 
 /**
- * Add name field for improved organization of breadcrumbs
+ * Adds name field for improved organization of breadcrumbs
  * Remove set_active_menu field because it is no longer used.
  */
 function custom_breadcrumbs_panels_update_6200() {
@@ -80,10 +83,12 @@ function custom_breadcrumbs_panels_update_6200() {
   return $ret;
 }
 
+/**
+ * Implements hook_uninstall().
+ */
 function custom_breadcrumbs_panels_uninstall() {
   drupal_uninstall_schema('custom_breadcrumbs_panels');
 
   // Remove persistent variables.
   variable_del('custom_breadcrumbs_taxonomy_panels');
-
 }

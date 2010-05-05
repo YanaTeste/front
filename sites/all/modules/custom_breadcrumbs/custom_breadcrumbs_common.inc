@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs_common.inc,v 1.1.2.6 2009/11/29 03:54:11 mgn Exp $
+// $Id: custom_breadcrumbs_common.inc,v 1.1.2.9 2010/05/03 22:49:15 mgn Exp $
 
 /**
  * @file
@@ -7,7 +7,7 @@
  */
 
 /**
- * Helper function to determine if two paths match, allowing for wildcards and aliases.
+ * Determines if two paths match, allowing for wildcards and aliases.
  *
  * @param $curpath
  *   The current Drupal path.
@@ -28,7 +28,7 @@ function _custom_breadcrumbs_match_path($curpath, $breadcrumb_path) {
 }
 
 /**
- * Helper function to construct the view path replacing wildcards with arguments.
+ * Constructs the view path replacing wildcards with arguments.
  *
  * @param $display
  *   The view $display object.
@@ -38,33 +38,37 @@ function _custom_breadcrumbs_match_path($curpath, $breadcrumb_path) {
  * @return $viewpath
  *   The complete path to the view.
  */
-function _custom_breadcrumbs_construct_view_path($display, $viewargs) {
+function _custom_breadcrumbs_construct_view_path($display) {
   $bits = explode('/', $display->display_options['path']);
+  $args = arg();
   foreach ($bits as $pos => $bit) {
-    if ($bit == '%' && !empty($viewargs)) {
-      $bits[$pos] = array_shift($viewargs);
+    if (!empty($args)) {
+      $arg = array_shift($args);
+      if ($bit == '%') {
+        $bits[$pos] = $arg;
+      }
     }
   }
-  if (!empty($viewargs)) {
+  if (!empty($args)) {
     // Add any additional arguments to end of path.
-    $bits = array_merge($bits, $viewargs);
+    $bits = array_merge($bits, $args);
   }
   $viewpath = implode('/', $bits);
   return $viewpath;
 }
 
 /**
- *  Helper function to specify allowed views displays for breadcrumb placement.
+ *  Determines if a view display is appropriate for assigning a custom breadcrumb.
  *
  * @param $display
  *   The view $display object.
  *
  * @return
- *    TRUE if the display should be considered for a custom breadcrumb, FALSE otherwise.
+ *   TRUE if the display should be considered for a custom breadcrumb, FALSE otherwise.
  */
 function _custom_breadcrumbs_allowed_display($display) {
-
-  if (drupal_substr($display->id, 0, 4)  == 'page' || drupal_substr($display->id, 0, 8)  == 'calendar') {
+  $allowed_display_types = array('page', 'calendar', 'image_gallery');
+  if (in_array($display->display_plugin, $allowed_display_types)) {
     if (!(isset($display->handler->view->is_attachment) && $display->handler->view->is_attachment)) {
       if (isset($display->display_options['path']) ) {
         if (module_exists('panels') && panels_get_current_page_display()) {
@@ -78,7 +82,7 @@ function _custom_breadcrumbs_allowed_display($display) {
 }
 
 /**
- *  Helper function to obtain the appropriate type and value of each view argument.
+ *  Returns the appropriate type and value of each view argument.
  *
  * @param $display_argument_ids
  *   An array of ids for each argument of the view.
@@ -117,7 +121,7 @@ function _custom_breadcrumbs_views_parse_args($arguments, $viewargs) {
 }
 
 /**
- *  Helper function to obtain the appropriate objects for token type replacement for this view.
+ * Obtains the appropriate objects for token type replacement for a view display.
  *
  * @param $display
  *   The view $display object.
@@ -150,10 +154,11 @@ function _custom_breadcrumbs_views_token_types($display) {
 }
 
 /**
- *  Helper function to extract the views display option arguments array from the display.
+ * Extracts the views display option arguments array from the display.
  *
  * @param $display
  *   The view $display object.
+ *
  * @return $arguments
  *   The view display option arguments array.
  */

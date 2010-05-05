@@ -1,12 +1,12 @@
 <?php
-// $Id: custom_breadcrumbs.admin.inc,v 1.1.2.3.2.23 2009/11/30 00:09:55 mgn Exp $
+// $Id: custom_breadcrumbs.admin.inc,v 1.1.2.3.2.27 2010/05/03 22:49:15 mgn Exp $
 /**
  * @file
  * Admin page callback file for the custom_breadcrumbs module.
  */
 
 /**
- *  Lists all current custom breadcrumbs, and provides a link to the edit page.
+ * Lists all current custom breadcrumbs and provides a link to the edit page.
  */
 function custom_breadcrumbs_page() {
   $custom_breadcrumbs_sort = variable_get('custom_breadcrumbs_sort', array(
@@ -97,7 +97,7 @@ function custom_breadcrumbs_page() {
 }
 
 /**
- * Helper function for usort to sort two custom_breadcrumbs objects by name, type, or language.
+ * Sorts two custom_breadcrumbs objects by name, type, or language.
  *
  * Each column can be independently sorted as asc or desc.
  *
@@ -140,7 +140,10 @@ function _custom_breadcrumbs_sort_cmp($bc1, $bc2) {
 }
 
 /**
- * Form builder; Provide an edit form for a custom breadcrumb record.
+ * Form builder to edit a custom breadcrumb record.
+ *
+ * @param $type
+ *   The type of custom breadcrumb to edit.
  *
  * @ingroup forms
  * @see custom_breadcrumbs_form_validate()
@@ -181,7 +184,15 @@ function custom_breadcrumbs_form(&$form_state, $type) {
   return $form;
 }
 
+/**
+ * Form validation handler for custom_breadcrumbs_form().
+ *
+ * @see custom_breadcrumbs_form()
+ * @see custom_breadcrumbs_form_submit()
+ */
 function custom_breadcrumbs_form_validate($form, &$form_state) {
+  // Check to make sure there are an equal number of paths and titles.
+  $check = TRUE;
   if (!user_access('use php in custom breadcrumbs') || !variable_get('custom_breadcrumbs_use_php_in_titles', FALSE)) {
     // Strip any PHP tags from paths and titles since they are not allowed.
     $elements = array('titles', 'paths');
@@ -193,38 +204,28 @@ function custom_breadcrumbs_form_validate($form, &$form_state) {
     }
   }
   else {
-    // PHP is allowed.
-    $paths = $form_state['values']['paths'];
-    $titles = $form_state['values']['titles'];
-    // Check to see if paths and titles are being specified via PHP code.
-    $php_titles = extract_php($titles);
-    $php_paths = extract_php($paths);
-    if (!is_null($php_titles)) {
-      if (isset($php_titles['titles']) && isset($php_titles['paths'])) {
-        // Check to make sure they have the same number of elements
-        $title_count = count($php_titles['titles']);
-        $path_count = count($php_titles['paths']);
-      }
-      else {
-        $title_count = count($php_titles);
-      }
-    }
-    if (!isset($path_count) && !is_null($php_paths)) {
-      $path_count = count($php_paths);
+    // If PHP is used, don't validate number of paths and titles.
+    if ((strpos($form_state['values']['titles'], '<?php') !== FALSE) || 
+        (strpos($form_state['values']['paths'], '<?php') !== FALSE)) {
+      $check = FALSE;
     }
   }
-  if (!isset($path_count)) {
+  if ($check) {
     $path_count = count(explode("\n", trim($form_state['values']['paths'])));
-  }
-  if (!isset($title_count)) {
     $title_count = count(explode("\n", trim($form_state['values']['titles'])));
-  }
-  if (isset($title_count) && isset($path_count) && $title_count != $path_count) {
-    $error_field = ($title_count < $path_count) ? 'titles' : 'paths';
-    form_set_error($error_field, t('Every link path must have a matching title. There are !paths paths, and !titles titles.', array('!paths' => $path_count, '!titles' => $title_count)));
+    if ($title_count != $path_count) {
+      $error_field = ($title_count < $path_count) ? 'titles' : 'paths';
+      form_set_error($error_field, t('Every link path must have a matching title. There are !paths paths, and !titles titles.', array('!paths' => $path_count, '!titles' => $title_count)));
+    }
   }
 }
 
+/**
+ * Form submission handler for custom_breadcrumbs_form().
+ *
+ * @see custom_breadcrumbs_form()
+ * @see custom_breadcrumbs_form_validate()
+ */
 function custom_breadcrumbs_form_submit($form, &$form_state) {
   $breadcrumb = (object)$form_state['values'];
   _custom_breadcrumbs_save_breadcrumb($form['#module'], $form['#infokey'], $breadcrumb);
@@ -241,12 +242,15 @@ function custom_breadcrumbs_form_cancel($form, &$form_state) {
 }
 
 /**
- * Helper function to provides form elements commonly used by custom breadcrumbs submodules.
+ * Provides form elements commonly used by custom breadcrumbs submodules.
  *
  * @param $bid
  *   The breadcrumb id.
  * @param $breadcrumb;
  *   The breadcrumb object.
+ *
+ * @return $form
+ *   A form array with common custom breadcrumb elements.
  */
 function custom_breadcrumbs_common_form_elements($bid, $breadcrumb) {
   // TODO: consider removing the $bid parameter since its part of the breadcrumb object.
@@ -261,6 +265,13 @@ function custom_breadcrumbs_common_form_elements($bid, $breadcrumb) {
     '#description'   => t('This name will only appear when listing custom breadcrumbs. If left blank, a name for this breadcrumb will be generated for you.'),
     '#weight'        => -50,
   );
+
+  $cbid = custom_breadcrumbs_unique_breadcrumb_id($breadcrumb->breadcrumb_type, $breadcrumb->bid);
+  if (isset($cbid)) {
+    $form['classid'] = array(
+      '#value'       => '<strong>'. t('The CSS class name for this breadcrumb is !name', array('!name' => $cbid)) .'</strong>',
+    );
+  }
 
   $multilingual = _custom_breadcrumbs_multilingual();
   if ($multilingual) {
@@ -464,6 +475,52 @@ function custom_breadcrumbs_admin_settings() {
     '#description'   => t("A comma delimited set of paths to exclude from custom breadcrumbs. The '*' character can be used as a wildcard."),
   );
 
+  $form['adv_settings']['custom_breadcrumbs_identifiers'] = array(
+    '#type'          => 'fieldset',
+    '#title'         => t('HTML element identifiers'),
+    '#description'   => t("Enabling one or more of these options will provide html identifiers (class or id) for theming custom breadcrumbs links. Style rules can then be defined in the styles.css file located in the site's theme directory."),
+    '#collapsible'   => TRUE,
+    '#collapsed'     => FALSE,
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options'] = array(
+    '#type'          => 'fieldset',
+    '#collapsible'   => FALSE,
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options']['custom_breadcrumbs_home_id'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t("Add a custom-breadcrumbs-home ID attribute to the home breadcrumb item."),
+    '#default_value' => variable_get('custom_breadcrumbs_home_id', FALSE),
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options']['custom_breadcrumbs_parts_class'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t("Add a numbered class attribute for each breadcrumb item."),
+    '#description'   => t("If enabled, a custom-breadcrumbs-item-N class attribute will be assigned for each item, where N designates the item number, starting with the first item after the home breadcrumb."),
+    '#default_value' => variable_get('custom_breadcrumbs_parts_class', FALSE),
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options']['custom_breadcrumbs_even_odd_class'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t("Add even and odd classes to breadcrumb items."),
+    '#default_value' => variable_get('custom_breadcrumbs_even_odd_class', FALSE),
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options']['custom_breadcrumbs_type_class'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t("Store an identifier for breadcrumb theming."),
+    '#description'   => t("If enabled, the breadcrumb class 'custom-breadcrumbs-<em>type</em>' (where <em>type</em> is the breadcrumb type) can be retrieved and used in the breadcrumb theme override. The function <strong>custom_breadcrumbs_unique_breadcrumb_id()</strong> will return a string containing the class name."),
+    '#default_value' => variable_get('custom_breadcrumbs_type_class', FALSE),
+  );
+
+  $form['adv_settings']['custom_breadcrumbs_identifiers']['cb_identifier_options']['custom_breadcrumbs_append_bid_class'] = array(
+    '#type'          => 'checkbox',
+    '#title'         => t("Append a unique breadcrumb id number to the custom-breadcrumbs-<em>type</em> identifier."),
+    '#description'   => t("If this option and 'Store an identifier for breadcrumb theming' are both enabled, the identifer will be custom-breadcrumbs-<em>type</em>-<em>id</em>, where id is the unique breadcrumb id number."),
+    '#default_value' => variable_get('custom_breadcrumbs_append_bid_class', FALSE),
+  );
+
   $form['adv_settings']['module_weights'] = array(
     '#type'          => 'fieldset',
     '#title'         => t('Module weights'),
@@ -490,6 +547,11 @@ function custom_breadcrumbs_admin_settings() {
   return system_settings_form($form);
 }
 
+/**
+ * Form submission handler for custom_breadcrumbs_admin_settings().
+ *
+ * @see custom_breadcrumbs_admin_settings()
+ */
 function custom_breadcrumbs_admin_settings_submit($form, &$form_state) {
   if (!empty($form['adv_settings']['module_weights']['table']) && $form_state['values']['custom_breadcrumbs_adjust_module_weights']) {
     // Set the initial weight of the lightest module to zero.
@@ -527,9 +589,8 @@ function custom_breadcrumbs_admin_settings_submit($form, &$form_state) {
 }
 
 /**
- * Form builder; List and manage custom breadcrumb module weights.
+ * Lists and manages custom breadcrumb module weights.
  *
- * @ingroup forms
  * @see theme_custom_breadcrumbs_module_weight()
  * @see custom_breadcrumbs_admin_settings_submit()
  */
@@ -553,7 +614,7 @@ function custom_breadcrumbs_module_weight() {
 }
 
 /**
- * Theme the module weights as a sortable list.
+ * Returns HTML for the module weights as a sortable list.
  *
  * @ingroup themeable
  * @see custom_breadcrumbs_module_weight()
@@ -580,14 +641,14 @@ function theme_custom_breadcrumbs_module_weight($form) {
 }
 
 /**
- * Check whether the administration interface should show multilingual features.
+ * Checks whether the administration interface should show multilingual features.
  */
 function _custom_breadcrumbs_multilingual() {
   return module_exists('locale');
 }
 
 /**
- * List custom_breadcrumbs administration filters that can be applied.
+ * Lists custom_breadcrumbs administration filters that can be applied.
  */
 function custom_breadcrumbs_filters() {
   $filters = array();
@@ -678,7 +739,9 @@ function custom_breadcrumbs_filter_form() {
 }
 
 /**
- * Process result from custom_breadcrumbs administration filter form.
+ * Form submission handler for custom_breadcrumbs_filter_form().
+ *
+ * @see custom_breadcrumbs_filter_form()
  */
 function custom_breadcrumbs_filter_form_submit($form, &$form_state) {
   $op = $form_state['values']['op'];
@@ -709,7 +772,7 @@ function custom_breadcrumbs_filter_form_submit($form, &$form_state) {
 }
 
 /**
- * Theme custom_breadcrumbs filter form.
+ * Returns HTML for the custom_breadcrumbs filter form.
  *
  * @ingroup themeable
  */
@@ -722,7 +785,7 @@ function theme_custom_breadcrumbs_filter_form($form) {
 }
 
 /**
- * Theme custom_breadcrumbs filter selector.
+ * Returns HTML for the custom_breadcrumbs filter selector.
  *
  * @ingroup themeable
  */
@@ -757,7 +820,7 @@ function theme_custom_breadcrumbs_filters($form) {
 }
 
 /**
- * Provide a simple breadcrumb table for the node edit form.
+ * Provides a simple breadcrumb table for the node edit form.
  *
  * @param $breadcrumbs
  *   An array of breadcrumbs that apply to the node.

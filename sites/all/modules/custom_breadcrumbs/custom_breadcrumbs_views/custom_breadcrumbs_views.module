@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs_views.module,v 1.1.2.18 2009/11/29 03:54:11 mgn Exp $
+// $Id: custom_breadcrumbs_views.module,v 1.1.2.21 2010/05/03 22:49:15 mgn Exp $
 /**
  * @file
  * Provide custom breadcrumbs for views pages.
@@ -8,12 +8,13 @@ module_load_include('inc', 'custom_breadcrumbs', 'custom_breadcrumbs.admin');
 module_load_include('inc', 'custom_breadcrumbs', 'custom_breadcrumbs_common');
 
 /**
- * Implementation of hook_cb_breadcrumb_info().
- *   @return an array with elements 
- *     'table' indicating the db_table to load the breadcrumb from,
- *     'field' a unique field of the database table used to identify the breadcrumb
- *     'type' a string used for indicating the breadcrumb type on the admin list
- *     'name_constructor' a function which generates the breadcrumb name from the breadcrumb
+ * Implements hook_cb_breadcrumb_info().
+ *
+ * @return an array with elements:
+ *   'table' indicating the db_table to load the breadcrumb from,
+ *   'field' a unique field of the database table used to identify the breadcrumb,
+ *   'type' a string used for indicating the breadcrumb type on the admin list,
+ *   'name_constructor' a function which generates the breadcrumb name from the breadcrumb.
  */
 function custom_breadcrumbs_views_cb_breadcrumb_info() {
   $breadcrumb_type_info = array();
@@ -27,7 +28,7 @@ function custom_breadcrumbs_views_cb_breadcrumb_info() {
 }
 
 /**
- * Construct a default name to display in the admin screen.
+ * Constructs a default name to display in the admin screen.
  *
  * @param $breadcrumb
  *   The breadcrumb object.
@@ -42,7 +43,7 @@ function _custom_breadcrumbs_views_breadcrumb_name($breadcrumb) {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function custom_breadcrumbs_views_menu() {
   $items = array();
@@ -69,7 +70,7 @@ function custom_breadcrumbs_views_menu() {
 }
 
 /**
- * Implementation of hook_views_pre_render().
+ * Implements hook_views_pre_render().
  */
 function custom_breadcrumbs_views_views_pre_render(&$view) {
   // Don't really do anything with the view. This is just a pretense to insert a breadcrumb.
@@ -81,7 +82,7 @@ function custom_breadcrumbs_views_views_pre_render(&$view) {
   foreach ($view->display as $id => $display) {
     // Identify allowed displays for breadcrumb replacement.
     if (!_custom_breadcrumbs_allowed_display($display)) continue;
-    $viewpath = _custom_breadcrumbs_construct_view_path($display, $view->args);
+    $viewpath = _custom_breadcrumbs_construct_view_path($display);
     if (_custom_breadcrumbs_match_path($curpath, $viewpath)) {
       $loadpath = $display->display_options['path'];
       $breadcrumbs = custom_breadcrumbs_load_breadcrumbs('custom_breadcrumbs_views', NULL, array('views_path' => $loadpath), $languages);
@@ -100,6 +101,7 @@ function custom_breadcrumbs_views_views_pre_render(&$view) {
   }
   if (isset($candidate)) {
     $objs = _custom_breadcrumbs_views_token_types($view->display[$max_id]);
+    $objs['view'] = $view;
     if (!isset($objs['node']) && isset($view->result[0]->nid)) {
       $node = node_load(array('nid' => $view->result[0]->nid));
       $objs['node'] = $node;
@@ -115,6 +117,9 @@ function custom_breadcrumbs_views_views_pre_render(&$view) {
 
 /**
  * Form builder; Displays an edit form for a views breadcrumb.
+ *
+ * @param $type
+ *   The type of custom breadcrumb to edit.
  *
  * @ingroup forms
  * @see custom_breadcrumbs_form_validate()

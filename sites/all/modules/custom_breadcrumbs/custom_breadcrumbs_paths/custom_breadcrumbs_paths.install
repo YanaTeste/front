@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs_paths.install,v 1.1.2.6 2009/10/10 14:59:54 mgn Exp $
+// $Id: custom_breadcrumbs_paths.install,v 1.1.2.7 2010/05/03 22:49:15 mgn Exp $
 
 /**
  * @file
@@ -7,7 +7,7 @@
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function custom_breadcrumbs_paths_install() {
   drupal_install_schema('custom_breadcrumbs_paths');
@@ -34,6 +34,9 @@ function custom_breadcrumbs_paths_install() {
   }
 }
 
+/**
+ * Implements hook_schema().
+ */
 function custom_breadcrumbs_paths_schema() {
   $schema['custom_breadcrumbs_paths'] = array(
     'description' => 'Stores custom breadcrumb trails for specific paths.',
@@ -93,7 +96,7 @@ function custom_breadcrumbs_paths_schema() {
 }
 
 /**
- * Add indices to custom_breadcrumb table to improve performance.
+ * Adds indices to custom_breadcrumb table to improve performance.
  */
 function custom_breadcrumbs_paths_update_6000() {
   $ret = array();
@@ -103,7 +106,7 @@ function custom_breadcrumbs_paths_update_6000() {
 }
 
 /**
- * Add name field for improved organization of breadcrumbs
+ * Adds name field for improved organization of breadcrumbs
  * Remove set_active_menu field because it is no longer used.
  */
 function custom_breadcrumbs_paths_update_6200() {
@@ -113,6 +116,9 @@ function custom_breadcrumbs_paths_update_6200() {
   return $ret;
 }
 
+/**
+ * Implements hook_uninstall().
+ */
 function custom_breadcrumbs_paths_uninstall() {
   drupal_uninstall_schema('custom_breadcrumbs_paths');
 

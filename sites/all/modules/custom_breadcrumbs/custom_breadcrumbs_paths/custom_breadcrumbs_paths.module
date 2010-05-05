@@ -1,5 +1,5 @@
 <?php
-// $Id: custom_breadcrumbs_paths.module,v 1.1.2.20 2009/11/29 03:54:11 mgn Exp $
+// $Id: custom_breadcrumbs_paths.module,v 1.1.2.22 2010/05/03 22:49:15 mgn Exp $
 
 /**
  * @file
@@ -9,13 +9,13 @@ module_load_include('inc', 'custom_breadcrumbs', 'custom_breadcrumbs.admin');
 module_load_include('inc', 'custom_breadcrumbs', 'custom_breadcrumbs_common');
 
 /**
- * Implementation of hook_cb_breadcrumb_info().
+ * Implements hook_cb_breadcrumb_info().
  *
- *   @return an array with elements
- *     'table' indicating the db_table to load the breadcrumb from,
- *     'field' a unique field of the database table used to identify the breadcrumb
- *     'type' a string used for indicating the breadcrumb type on the admin list
- *     'name_constructor' a function which generates the breadcrumb name from the breadcrumb
+ * @return an array with elements:
+ *   'table' indicating the db_table to load the breadcrumb from,
+ *   'field' a unique field of the database table used to identify the breadcrumb,
+ *   'type' a string used for indicating the breadcrumb type on the admin list,
+ *   'name_constructor' a function which generates the breadcrumb name from the breadcrumb.
  */
 function custom_breadcrumbs_paths_cb_breadcrumb_info() {
   $breadcrumb_type_info = array();
@@ -29,13 +29,13 @@ function custom_breadcrumbs_paths_cb_breadcrumb_info() {
 }
 
 /**
- * Construct a default name to display in the admin screen.
+ * Constructs a default name to display in the admin screen.
  *
  * @param $breadcrumb
- *  The breadcrumb object.
+ *   The breadcrumb object.
  *
  * @return
- *  A text string that will be used as the breadcrumb name.
+ *   A text string that will be used as the breadcrumb name.
  */
 function _custom_breadcrumbs_paths_breadcrumb_name($breadcrumb) {
   if (isset($breadcrumb->specific_path)) {
@@ -44,7 +44,7 @@ function _custom_breadcrumbs_paths_breadcrumb_name($breadcrumb) {
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function custom_breadcrumbs_paths_menu() {
   $items = array();
@@ -67,16 +67,16 @@ function custom_breadcrumbs_paths_menu() {
 }
 
 /**
- * Implementation of hook_init().
+ * Implements hook_preprocess().
  */
-function custom_breadcrumbs_paths_init() {
+function custom_breadcrumbs_paths_preprocess(&$variables, $hook) {
   // Check for a match to cover module callback pages.
   // Can't do token replacement without context.
   _custom_breadcrumbs_paths_set_breadcrumb();
 }
 
 /**
- * Implementation of hook_nodeapi().
+ * Implements hook_nodeapi().
  */
 function custom_breadcrumbs_paths_nodeapi($node, $op, $teaser, $page) {
   if ($op == 'alter' && empty($teaser) && !empty($page)) {
@@ -86,7 +86,7 @@ function custom_breadcrumbs_paths_nodeapi($node, $op, $teaser, $page) {
 }
 
 /**
- * Implementation of hook_views_pre_render().
+ * Implements hook_views_pre_render().
  */
 function custom_breadcrumbs_paths_views_pre_render(&$view) {
   // Don't really do anything with the view. This is just a pretense to insert a breadcrumb.
@@ -96,7 +96,7 @@ function custom_breadcrumbs_paths_views_pre_render(&$view) {
   foreach ($view->display as $display) {
     // We're only interested in main page views.
     if (!_custom_breadcrumbs_allowed_display($display)) continue;
-    $viewpath = _custom_breadcrumbs_construct_view_path($display, $view->args);
+    $viewpath = _custom_breadcrumbs_construct_view_path($display);
     $viewpage = $viewpage || _custom_breadcrumbs_match_path($curpath, $viewpath);
   }
   if ($viewpage) {
@@ -106,7 +106,7 @@ function custom_breadcrumbs_paths_views_pre_render(&$view) {
 }
 
 /**
- * Check for a custom breadcrumb at the current path and set if one is found.
+ * Checks for a custom breadcrumb at the current path and sets it if one is found.
  *
  * @param $objs
  *    An array of objects to be used in token replacement. Array keys indicate type of object.
@@ -141,11 +141,13 @@ function _custom_breadcrumbs_paths_set_breadcrumb($objs = array()) {
 }
 
 /**
- * Helper function to get custom_breadcrumbs_paths breadcrumbs from the database.
+ * Gets the custom_breadcrumbs_paths breadcrumbs.
  *
  * @param $matchpath
  *   If TRUE, then load all paths breadcrumbs to allow wildcard matching,
  *   otherwise only the current path is queried.
+ * @param $path
+ *   The drupal path to match against.
  *
  * @return $breadcrumbs
  *   An array of breadcrumb objects meeting the query criteria.
@@ -169,10 +171,10 @@ function _custom_breadcrumbs_paths_get_breadcrumbs($matchpath = FALSE, $path = N
 }
 
 /**
- * Helper function to determine if the current path matches the breadcrumb specific path.
+ * Determines if the current path matches the breadcrumb specific path.
  *
  * @param $breadcrumb
- *   The breadcrumb object
+ *   The breadcrumb object.
  *
  * @return $page_match
  *   TRUE if the current path matches the breadcrumb specific path, FALSE otherwise.
@@ -200,10 +202,10 @@ function _custom_breadcrumbs_paths_page_match($breadcrumb) {
 }
 
 /**
- * Implementation of hook_cb_node_form_table.
+ * Implements hook_cb_node_form_table().
  *
  * @param $node
- *   The node object being edited
+ *   The node object being edited.
  *
  * @return $breadcrumbs
  *   An array of breadcrumb objects with the same path as the node
@@ -262,9 +264,7 @@ function custom_breadcrumbs_paths_form(&$form_state, $type) {
 }
 
 /**
- * Implementation of hook_form_alter().
- *
- * @return NONE
+ * Implements hook_form_alter().
  */
 function custom_breadcrumbs_paths_form_alter(&$form, $form_state, $form_id) {
   if ($form_id == 'custom_breadcrumbs_admin_settings') {

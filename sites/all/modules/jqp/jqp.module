@@ -1,5 +1,5 @@
 <?php
-// $Id: jqp.module,v 1.7 2010/02/15 13:29:52 skilip Exp $
+// $Id: jqp.module,v 1.8 2010/05/01 13:09:23 skilip Exp $
 
 /**
  * @file
@@ -28,7 +28,7 @@ function jqp_help($path, $arg) {
       $output[] = '</ul>';
       $output[] = '<p>'. t('If this directory exists, this should be the place to place all libraries as separate folders, containing all required files for the library. If a library folder contains a .info file, this will be used to register the library. Here\'s an example of how a .info file should be written:', $replacements) .'</p>';
       $output[] = '<pre>';
-      $output[] = '; $Id: jqp.module,v 1.7 2010/02/15 13:29:52 skilip Exp $';
+      $output[] = '; $Id: jqp.module,v 1.8 2010/05/01 13:09:23 skilip Exp $';
       $output[] = 'name = Library Name';
       $output[] = 'description = Description of the library';
       $output[] = 'project_url = http://www.library_project_page.org';
@@ -43,17 +43,15 @@ function jqp_help($path, $arg) {
       $output[] = '<h4>'. t('hook_jqp()') .'</h4>';
       $output[] = '<p>'. t('Modules can also register their own libraries using the provided hook function.') .'</p>';
       $output[] = '<p><strong>'. t('Definition') .':</strong></p>';
-      $output[] = '<p><code>hook_jqp(&amp;$libraries)</code></p>';
+      $output[] = '<p><code>hook_jqp()</code></p>';
       $output[] = '<p><strong>'. t('Description') .':</strong></p>';
       $output[] = '<p>'. t('Provide other modules a hook to add custom libraries or alter already registered libraries.') .'</p>';
-      $output[] = '<p><strong>'. t('Parameters') .':</strong></p>';
-      $output[] = '<p><code>$libraries</code>: '. t('An associative array in which the library register is built up.') .'</p>';
       $output[] = '<p><strong>'. t('Code') .':</strong></p>';
       $output[] = '<pre class="php">';
       $output[] = '/**';
       $output[] = ' * Implemantation of hook_jqp().';
       $output[] = ' */';
-      $output[] = 'function hook_jqp(&amp;$libraries) {';
+      $output[] = 'function hook_jqp() {';
       $output[] = '  $libraries[\'plugin1\'] = array(';
       $output[] = '    \'name\' => \'Plugin 1\',';
       $output[] = '    \'description\' => \'This plugin is registered by a module.\',';
@@ -69,6 +67,7 @@ function jqp_help($path, $arg) {
       $output[] = '      ),';
       $output[] = '    ),';
       $output[] = '  );';
+      $output[] = '  return $libraries;';      
       $output[] = '}';
       $output[] = '</pre>';
       $output[] = '</li>';

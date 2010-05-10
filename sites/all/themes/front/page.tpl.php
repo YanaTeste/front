@@ -8,12 +8,9 @@
   <?php print $scripts; ?>
 </head>
 
-<body class="<?php print $body_classes; ?> show-grid">
+<body class="<?php print $body_classes; ?>">
   <div id="header-top">
     <div id="header-top-inner">
-      <div id="tweet-latest">
-        <span>@mortennicolay ah! sa ut som en flink fyr! moro. fulle mugger her ogsa! i tillegg til utvikling av egne sider...puh, tar tid :)</span>
-      </div>
       <?php print $secondary_menu_links; ?>
     </div>
   </div>

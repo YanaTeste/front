@@ -1,42 +1,51 @@
 /* ------- Header ------ */
+#site-header {
+background: url(./images/site-header-bg.png) 0 0 repeat-x;
+border-bottom: 1px solid #ccc;
+}
+
 #header-top {
-background: #303030;
-border-bottom: 2px solid #4A4A4A;
-border-top: 1px solid #2A2A2A;
+background: url(./images/header-top-bg.png) 0 0 repeat-x;
+border-bottom: 1px solid #4A4A4A;
 }
 
 #header-top-inner {
 margin: 0 auto;
 width: 940px;
 overflow: auto;
-padding: 6px 0;
-
 }
 
-#tweet-latest {
-font-size: 10px;
-color: #fff;
-float: left;
-}
 
 #header-top ul {
 float: right;
-font-size: 11px;
-text-transform: uppercase;
+}
+
+#header-top li {
+float: left;
 }
 
 #header-top ul a {
-color: #D7D7D7;
-padding: 4px 6px;
-background: transparent;
+border-color:transparent;
+border-style:solid;
+border-width:0 1px;
+color:#FFFFFF;
+display:block;
+font-family:"Lucida Grande",arial,sans-serif;
+font-size:12px;
+line-height: 12px;
+margin:0;
+padding:10px 15px;
+text-decoration:none;
+text-shadow:1px 1px 0.5px #333;
 }
 
 #header-top ul a.active, #header-top ul a:hover {
-background: #EEEEEE;
-color: #000;
--moz-border-radius: 4px;
--webkit-border-radius: 4px;
+background:url("./images/top-links-active.png") repeat-x 0 0;
+border-left:1px solid #649E15;
+border-right:1px solid #69A922;
+text-shadow:1px 1px 0.5px #417F09;
 }
+
 
 #site-header {
 padding-top: 10px;
@@ -64,13 +73,9 @@ padding: 5px 8px;
 
 #nav a.active, #nav a:hover {
 color: #fff;
-background: #378BCA;
+background:url("./images/main-menu-active.png") repeat-x 0 0;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
-}
-
-#header-top ul a:hover, #nav a:hover {
-background-color: #FF26A4;
 }
 
 #nav li {
@@ -85,6 +90,9 @@ margin-right: 0;
 float: left;
 margin-top: 3px;
 }
+
+
+
 
 /* Search box*/
 #search-box {
@@ -127,6 +135,14 @@ padding: 0;
 
 ul.menu {
 list-style: none;
+}
+
+/**/
+
+
+/* Page */
+#page {
+margin-top: 10px;
 }
 
 /**/

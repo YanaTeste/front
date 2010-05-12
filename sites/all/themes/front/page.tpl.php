@@ -8,7 +8,7 @@
   <?php print $scripts; ?>
 </head>
 
-<body class="<?php print $body_classes; ?>">
+<body class="<?php print $body_classes; ?> show-grid">
   <div id="header-top">
     <div id="header-top-inner">
       <?php print $secondary_menu_links; ?>
@@ -22,6 +22,15 @@
       <div id="nav">
         <div id="main-menu"><?php print $main_menu_links; ?></div>
         <div id="search-box"><?php print $search_box; ?></div>
+      </div>
+    </div>
+  </div>
+  <div id="twitter">
+    <div id="twitter-inner">
+      <div id="tweet"><a href="#">@perandre</a> ah! s&aring; ut som en flink fyr! moro. fulle mugger her ogs&aring;! i tillegg til utvikling av egne sider...puh, tar tid :)
+      </div>
+      <div id="follow">
+        <a href="http://twitter.com/frontkom">F&oslash;lg oss p&aring; Twitter</a>
       </div>
     </div>
   </div>
@@ -65,23 +74,24 @@
       <?php print $right; ?>
     </div>
   <?php endif; ?>
-
-
+  </div>
   <div id="footer" class="prefix-1 suffix-1">
+    <div id="footer-top">
+      <div id="footer-top-inner"><?php print $breadcrumb; ?></div>
+    </div>
+    <div id="footer-inner"
     <?php if ($footer): ?>
-      <div id="footer-region" class="region grid-14 clear-block">
+      <div id="footer-region" class="region grid-12 clear-block alpha">
         <?php print $footer; ?>
       </div>
     <?php endif; ?>
 
     <?php if ($footer_message): ?>
-      <div id="footer-message" class="grid-14">
+      <div id="footer-message" class="grid-12 alpha">
         <?php print $footer_message; ?>
       </div>
     <?php endif; ?>
-  </div>
-
-
+    </div>
   </div>
   <?php print $closure; ?>
 </body>

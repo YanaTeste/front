@@ -97,6 +97,24 @@ float: left;
 margin-top: 3px;
 }
 
+#twitter {
+background: #E6E6E6;
+font-size: 11px;
+}
+
+#tweet {
+background: #fff;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+margin-left: 20px;
+display: inline;
+padding: 4px;
+}
+
+#follow {
+float: right;
+}
+
 /* other menus */
 #block-menu_block-1 li {
 float: left;
@@ -187,14 +205,14 @@ margin:0;
 
 /**/
 
-/* Other Panels */
+/* Other Panels and views grid stuff */
 
-.panel-3col-33-stacked .panel-pane {
+.panel-3col-33-stacked .panel-pane, .view .grid-4 {
 padding-top: 15px;
 border-top: 1px solid #ccc;
 }
 
-.panel-col-top .panel-pane {
+.panel-col-top .panel-pane, .panel-col-bottom .panel-pane {
 padding: 0;
 border: 0;
 }
@@ -208,6 +226,7 @@ border: 1px solid #ccc;
 #related-links ul {
 margin: 0;
 }
+
 
 /**/
 
@@ -395,9 +414,26 @@ padding:5px 10px 6px;
 color: 
 }
 
+/**/
+#footer {
+background: #1D252A;
+min-height: 200px;
+}
 
+#footer-top {
+height: 38px;
+background: #232D33;
+}
+
+#footer-inner, #footer-top-inner, #twitter-inner {
+width: 940px;
+margin: 0 auto;
+}
 
 /**/
+
+
+
 
 /* Buttons and links */
 

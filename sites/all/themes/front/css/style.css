@@ -187,7 +187,18 @@ margin:0;
 
 /**/
 
-/* Drupal intro */
+/* Other Panels */
+
+.panel-3col-33-stacked .panel-pane {
+padding-top: 15px;
+border-top: 1px solid #ccc;
+}
+
+.panel-col-top .panel-pane {
+padding: 0;
+border: 0;
+}
+
 #related-links {
 padding: 15px 20px;
 background: #F6FAFF;

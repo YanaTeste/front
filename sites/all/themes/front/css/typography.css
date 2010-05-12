@@ -26,6 +26,15 @@ h2 { font-size: 20px; line-height: 34px;}
 h3 { font-size: 16; line-height: 22px; }
 h4 { font-size: 15; line-height: 22px; }
 
+.panel-col-bottom h2 {
+font-family: georgia;
+font-style: italic;
+font-size: 20px;
+color: #666;
+border-bottom: 1px solid #ccc;
+padding-bottom: 6px;
+}
+
 
 h1 img, h2 img, h3 img,
 h4 img, h5 img, h6 img {

@@ -1,3 +1,9 @@
+/* Display none */
+.field-field-slider-content h2 {
+display: none;
+}
+
+
 /* ------- Header ------ */
 #site-header {
 background: url(./images/site-header-bg.png) 0 0 repeat-x;
@@ -91,7 +97,23 @@ float: left;
 margin-top: 3px;
 }
 
+/* other menus */
+#block-menu_block-1 li {
+float: left;
+margin-right: 20px;
+}
+#block-menu_block-1 li a{
+	display:inline-block;
+	padding:5px 10px 6px;
+	text-decoration:none;
+	border-bottom:1px solid transparent;
+	position:relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 12px;
+}
 
+/**/
 
 
 /* Search box*/
@@ -143,6 +165,37 @@ list-style: none;
 /* Page */
 #page {
 margin-top: 10px;
+}
+
+/**/
+
+/* Panels 960gs */
+
+.panel-3col-33-stacked .panel-col, .panel-3col-33-stacked .panel-col-first {
+width: 300px;
+margin-right: 20px;
+}
+
+.panel-3col-33-stacked .panel-col-last {
+margin-right: 0;
+width: 300px;
+}
+
+.panel-3col-33-stacked .panel-col .inside, .panel-3col-33-stacked .panel-col-last .inside  {
+margin:0;
+}
+
+/**/
+
+/* Drupal intro */
+#related-links {
+padding: 15px 20px;
+background: #F6FAFF;
+border: 1px solid #ccc;
+}
+
+#related-links ul {
+margin: 0;
 }
 
 /**/
@@ -337,7 +390,7 @@ color:
 
 /* Buttons and links */
 
-.awesome,.awesome:visited, ul.quicktabs-style-nostyle .active a:link, ul.quicktabs-style-nostyle .active a:visited {
+.awesome,.awesome:visited, ul.quicktabs-style-nostyle .active a:link, ul.quicktabs-style-nostyle .active a:visited, #block-menu_block-1 .active a, #block-menu_block-1 .active a:visited {
 	background:#666 url(./images/alert-overlay.png) repeat-x;
 	display:inline-block;
 	padding:5px 10px 6px;

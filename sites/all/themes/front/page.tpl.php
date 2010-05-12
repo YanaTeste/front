@@ -36,18 +36,18 @@
       <?php if ($title): ?>
         <h1 class="title" id="page-title"><?php print $title; ?></h1>
       <?php endif; ?>
-      <?php if ($tabs): ?>
-        <div class="tabs"><?php print $tabs; ?></div>
-      <?php endif; ?>
-      <?php print $messages; ?>
-      <?php print $help; ?>
       <?php if ($content_top): ?>
-        <div id="content-top" class="grid-12">
+        <div id="content-top" class="grid-12 alpha">
           <div id="content-top-inner">
             <?php print $content_top; ?>
           </div>  
         </div>
       <?php endif; ?>
+      <?php if ($tabs): ?>
+        <div class="tabs"><?php print $tabs; ?></div>
+      <?php endif; ?>
+      <?php print $messages; ?>
+      <?php print $help; ?>
       <div id="main-content" class="region clear-block">
         <?php print $content; ?>
       </div>

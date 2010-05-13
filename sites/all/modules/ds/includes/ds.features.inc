@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.features.inc,v 1.1.2.12 2010/02/02 11:04:30 swentel Exp $
+// $Id: ds.features.inc,v 1.1.2.15 2010/04/24 16:51:32 swentel Exp $
 
 /**
  * @file
@@ -35,7 +35,19 @@ function _ds_features_get_types() {
   $types = array();
   foreach (module_implements('ds_api') as $module) {
     $api_info = ds_api_info($module);
-    $types[$module] = $api_info['title'];
+
+    foreach ($api_info['types']() as $tkey => $type) {
+
+      $global_exclude = variable_get($module .'_type_'. $tkey, FALSE);
+
+      // Views displays is special case.
+      if ($module == 'vd') {
+        if ($global_exclude == TRUE) {
+          continue;
+        }
+      }
+      $types[$module .'-'. $type->type] = $type->name;
+    }
   }
   return $types;
 }
@@ -47,7 +59,8 @@ function ds_features_export($data, &$export, $module_name = '') {
   $pipe = array();
 
   foreach ($data as $module) {
-    $export['dependencies'][$module] = $module;
+    list($dependency, $feature) = explode('-', $module);
+    $export['dependencies'][$dependency] = $dependency;
     $export['features']['ds'][$module] = $module;
   }
 
@@ -64,21 +77,14 @@ function ds_features_export_render($module = 'foo', $data) {
 
   // Create nice build data.
   $build_data = array();
-  foreach ($data as $module) {
-    $api_info = ds_api_info($module);
-    foreach ($api_info['types']() as $key => $type) {
-      $build_data[$module .'-'. $type->type] = $module .'-'. $type->type;
-    }
+  foreach ($data as $ds_setting) {
+    $build_data[$ds_setting] = $ds_setting;
   }
   $export = ds_export_build($build_data);
 
   // Display settings.
   if (isset($export['ds']['settings'])) {
     $return['ds_default_settings'] = '  $data = '. ds_var_export($export['ds']['settings']) .";\n  return \$data;";
-  }
-  // Fields.
-  if (isset($export['ds']['fields'])) {
-    $return['ds_fields'] = '  $data = '. ds_var_export($export['ds']['fields']) .";\n  return \$data;";
   }
 
   if (!empty($return)) {
@@ -90,9 +96,10 @@ function ds_features_export_render($module = 'foo', $data) {
  * Implementation of hook_features_export_revert().
  */
 function ds_features_revert($module = NULL) {
-  // We currently only reset the display settings. Fields aren't recognized yet as overridden.
-  $data = module_invoke($module, 'ds_default_settings');
-  foreach ($data as $ds_module => $settings) {
+
+  // Display settings.
+  $display_settings = module_invoke($module, 'ds_default_settings');
+  foreach ($display_settings as $ds_module => $settings) {
     foreach ($settings as $object_type => $setting) {
       variable_set($ds_module .'_display_settings_'. $object_type, $setting);
     }

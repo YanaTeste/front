@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.install,v 1.1.2.2 2010/03/15 19:39:40 swentel Exp $
+// $Id: ds.install,v 1.1.2.3 2010/04/24 19:04:04 swentel Exp $
 
 /**
  * @file
@@ -21,5 +21,15 @@ function ds_uninstall() {
  * run update.php because new theming functions got introduced.
  */
 function ds_update_1() {
+  return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ */
+function ds_update_2() {
+  // Enable the UI module, not everyone knows that the module UI
+  // and core are separated now.
+  module_enable(array('ds_ui'));
   return array();
 }

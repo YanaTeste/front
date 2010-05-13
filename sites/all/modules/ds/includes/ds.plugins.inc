@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.plugins.inc,v 1.1.2.5 2010/01/28 00:49:28 swentel Exp $
+// $Id: ds.plugins.inc,v 1.1.2.6 2010/04/24 19:04:04 swentel Exp $
 
 /**
  * @file
@@ -50,32 +50,6 @@ function ds_plugins_submit($form, &$form_state) {
     }
   }
   variable_set($form['#module'] .'_plugin_settings', $plugin_settings);
-}
-
-/**
- * Theme the form.
- */
-function theme_ds_plugins($form) {
-
-  $output = drupal_render($form['info']);
-
-  $header = array(
-    t('Status'),
-    t('Info'),
-  );
-
-  $rows = array();
-  foreach ($form['#plugins'] as $key => $plugin) {
-    $row = array();
-    $row[] = array('data' => drupal_render($form['plugin_'. $plugin['key']]));
-    $row[] = array('data' => '<strong>'. $plugin['title'] .'</strong>: '. $plugin['description']);
-    $rows[] = $row;
-  }
-
-  $output .= theme('table', $header, $rows);
-  $output .= drupal_render($form);
-
-  return $output;
 }
 
 /**

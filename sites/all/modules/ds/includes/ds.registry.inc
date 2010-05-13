@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.registry.inc,v 1.1.2.35 2010/04/11 17:14:25 swentel Exp $
+// $Id: ds.registry.inc,v 1.1.2.39 2010/04/27 19:53:35 swentel Exp $
 
 /**
  * @file
@@ -9,9 +9,10 @@
 /**
  * Return permissions.
  */
-function _ds_perm() {
+function _ds_ui_perm() {
   $perms = array(
     'access display suite',
+    'administer styles',
     'use PHP in custom fields',
     'revert overridden settings',
     'export and import settings',
@@ -26,9 +27,7 @@ function _ds_perm() {
 /**
  * Return menu items and import default settings.
  */
-function _ds_menu() {
-
-  ds_import_default_data();
+function _ds_ui_menu() {
 
   $items = array();
   $all_build_modes = ds_get_build_modes(NULL, TRUE);
@@ -92,7 +91,7 @@ function _ds_menu() {
     'title' => 'Styles',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('ds_styles'),
-    'access arguments' => array('access display suite'),
+    'access arguments' => array('administer styles'),
     'file' => 'includes/ds.display.inc',
     'type' => MENU_LOCAL_TASK,
     'weight' => 1,
@@ -122,12 +121,26 @@ function _ds_menu() {
       'title' => 'Fields',
       'page callback' => 'ds_fields',
       'page arguments' => array($module),
-      'access callback' => '_ds_menu_access',
+      'access callback' => '_ds_ui_menu_access',
       'access arguments' => array('administer '. $module, 'use PHP in custom fields'),
       'file' => 'includes/ds.fields.inc',
       'type' => MENU_LOCAL_TASK,
       'weight' => 1,
     );
+
+    // Fields examples.
+    if (!isset($api_info['no_fields_examples'])) {
+      $items['admin/ds/'. $module .'/fields-examples'] = array(
+        'title' => 'Field examples',
+        'page callback' => 'ds_fields_examples',
+        'page arguments' => array($module),
+        'access callback' => '_ds_ui_menu_access',
+        'access arguments' => array('administer '. $module, 'use PHP in custom fields'),
+        'file' => 'includes/ds.fields.inc',
+        'type' => MENU_CALLBACK,
+        'weight' => 1,
+      );
+    }
 
     // Field groups
     $items['admin/ds/'. $module .'/fieldgroups'] = array(
@@ -233,26 +246,6 @@ function _ds_theme() {
   $path = drupal_get_path('module', 'ds');
 
   $theme_functions = array(
-    // Display overview form.
-    'ds_display_overview_form' => array(
-      'template' => 'ds-display-overview-form',
-      'file' => 'theme.inc',
-      'path' => $path .'/theme',
-      'arguments' => array('form' => NULL),
-    ),
-    // Build modes matrix.
-    'ds_buildmodes_matrix_form' => array(
-      'file' => 'ds.buildmodes.inc',
-      'path' => $path .'/includes',
-      'arguments' => array('form' => NULL),
-    ),
-    // Plugins form.
-    'ds_plugins' => array(
-      'file' => 'ds.plugins.inc',
-      'path' => $path .'/includes',
-      'arguments' => array('form' => NULL),
-    ),
-
     // Regions theming.
     'ds_regions' => array(
       'arguments' => array(
@@ -345,6 +338,44 @@ function _ds_theme() {
       'path' => $path .'/theme',
     );
   }
+
+  return $theme_functions;
+}
+
+/**
+ * Return theme functions for ds ui.
+ */
+function _ds_theme_ui() {
+  $path = drupal_get_path('module', 'ds');
+
+  $theme_functions = array(
+    // Display overview form.
+    'ds_display_overview_form' => array(
+      'template' => 'ds-display-overview-form',
+      'file' => 'theme_ui.inc',
+      'path' => $path .'/theme',
+      'arguments' => array('form' => NULL),
+    ),
+    // Display overview form for views
+    'ds_display_overview_views_form' => array(
+      'template' => 'ds-display-overview-views-form',
+      'file' => 'theme_ui.inc',
+      'path' => $path .'/theme',
+      'arguments' => array('form' => NULL),
+    ),
+    // Build modes matrix.
+    'ds_buildmodes_matrix_form' => array(
+      'file' => 'theme_ui.inc',
+      'path' => $path .'/theme',
+      'arguments' => array('form' => NULL),
+    ),
+    // Plugins form.
+    'ds_plugins' => array(
+      'file' => 'theme_ui.inc',
+      'path' => $path .'/theme',
+      'arguments' => array('form' => NULL),
+    ),
+  );
 
   return $theme_functions;
 }

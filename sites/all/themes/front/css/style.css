@@ -77,7 +77,7 @@ color: #555;
 padding: 5px 8px;
 }
 
-#nav a.active, #nav a:hover {
+#nav a.active, #nav a:hover, #nav .active-trail a {
 color: #fff;
 background:url("./images/main-menu-active.png") repeat-x 0 0;
 -moz-border-radius: 4px;

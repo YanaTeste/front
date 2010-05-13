@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.module,v 1.1.2.65 2010/04/11 17:14:25 swentel Exp $
+// $Id: ds.module,v 1.1.2.68 2010/04/24 19:04:04 swentel Exp $
 
 /**
  * Core functions for the Display Suite module.
@@ -47,22 +47,6 @@ define('DS_DEFAULT_LABEL_FORMAT', 'hidden');
 define('DS_DEFAULT_WEIGHT', -19);
 
 /**
- * Implementation of hook_perm().
- */
-function ds_perm() {
-  require_once('includes/ds.registry.inc');
-  return _ds_perm();
-}
-
-/**
- * Implementation of hook_menu().
- */
-function ds_menu() {
-  require_once('includes/ds.registry.inc');
-  return _ds_menu();
-}
-
-/**
  * Implementation of hook_theme().
  */
 function ds_theme() {
@@ -94,6 +78,18 @@ function ds_ds_plugins() {
 function ds_features_api() {
   require_once('includes/ds.features.inc');
   return _ds_features_api();
+}
+
+/**
+ * Implementation of hook_flush_caches().
+ */
+function ds_flush_caches() {
+  // Reset fields cache.
+  variable_del('ds_fields_cached');
+
+  // Import default settings.
+  ds_import_default_data();
+  return array();
 }
 
 /**
@@ -268,7 +264,12 @@ function ds_build_fields_and_regions(&$object, $module) {
         switch ($field['type']) {
           case DS_FIELD_TYPE_PREPROCESS:
           case DS_FIELD_TYPE_IGNORE:
-            $ds_preprocess_fields[$key] = $field['type'];
+            if (isset($field['properties']['key']) && !empty($field['properties']['key'])) {
+              $ds_preprocess_fields[$key] = array('type' => $field['type'], 'key' => $field['properties']['key']);
+            }
+            else {
+              $ds_preprocess_fields[$key] = $field['type'];
+            }
             break;
           case DS_FIELD_TYPE_CODE:
             $format = (isset($field_settings[$key]['format'])) ? $field_settings[$key]['format'] : 'ds_eval_code';
@@ -330,10 +331,20 @@ function ds_render_content($object, $module, $vars, $theme_function = 'ds_field'
   // Create key_rendered fields from DS_FIELD_TYPE_PREPROCESS and DS_FIELD_TYPE_IGNORE.
   if (!empty($object->preprocess_fields)) {
     foreach ($object->preprocess_fields as $key => $type) {
+      $vars_key = NULL;
+      if (is_array($type)) {
+        $vars_key = $type['key'];
+        $type = $type['type'];
+      }
       switch ($type) {
         case DS_FIELD_TYPE_PREPROCESS:
           $field_key = $key .'_rendered';
-          $vars[$field_key] = $vars[$key];
+          if (!empty($vars_key)) {
+            $vars[$field_key] = $vars[$key][$vars_key];
+          }
+          else {
+            $vars[$field_key] = $vars[$key];
+          }
           break;
         case DS_FIELD_TYPE_IGNORE:
           $field_key = $key .'_rendered';
@@ -651,9 +662,9 @@ function ds_regions($regions = 'all', $render = FALSE) {
     else {
       return array(
         'header' => t('Header'),
+        'middle' => t('Middle'),
         'left' => t('Left'),
         'right' => t('Right'),
-        'middle' => t('Middle'),
         'footer' => t('Footer'),
         'disabled' => t('Disabled'),
       );
@@ -697,17 +708,4 @@ function ds_import_default_data($module = '', $type = '', $build_mode = '') {
     module_load_include('inc', 'ds', 'includes/ds.tools');
     ds_import_data($data, FALSE, FALSE, $module, $type, $build_mode);
   }
-}
-
-/**
- * Helper function to check access.
- *
- * @param string $perm_1 a permission.
- * @param string $perm_2 a permission.
- */
-function _ds_menu_access($perm_1, $perm_2) {
-  if (user_access($perm_1) && user_access($perm_2)) {
-    return TRUE;
-  }
-  return FALSE;
 }

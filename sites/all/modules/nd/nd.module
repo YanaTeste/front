@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.module,v 1.1.2.123.2.43 2010/04/10 14:51:05 swentel Exp $
+// $Id: nd.module,v 1.1.2.123.2.44 2010/04/26 09:52:12 swentel Exp $
 
 /**
  * @file
@@ -24,7 +24,7 @@ function nd_ds_api() {
     'title' => 'Node displays',
     'module' => 'nd',
     'object' => 'node',
-    'views_base' => array('node'),
+    'views_base' => array('node', 'apachesolr'),
     'types' => 'node_get_types',
     'extra' => array('has_body'),
     'plugins_exclude' => array(NODE_BUILD_RSS),
@@ -220,6 +220,24 @@ function _nd_preprocess_node(&$vars, $hook) {
  * @param string $build_mode The build mode to use on this object.
  */
 function ds_views_row_node(&$vars, $build_mode) {
+  nd_views_node_helper($vars, $build_mode);
+}
+
+/**
+ * Render the apachesolr object through the DS views plugin.
+ *
+ * @param array $vars The variables to manipulate.
+ * @param string $build_mode The build mode to use on this object.
+ */
+function ds_views_row_apachesolr(&$vars, $build_mode) {
+  nd_views_node_helper($vars, $build_mode);
+}
+
+/**
+ * Helper function for views node plugin.
+ */
+function nd_views_node_helper(&$vars, $build_mode) {
+
   $nid = $vars['row']->nid;
   if (!is_numeric($nid)) {
     return;

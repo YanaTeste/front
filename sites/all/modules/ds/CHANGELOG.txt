@@ -1,6 +1,17 @@
+-------------------------------------------------------------------------------------
+6.x-1.2 2010-05-07
+-------------------------------------------------------------------------------------
+- #770368 by swentel and zuuperman: views fields ds plugin.
+- #722852 by jyve: theming optimisations.
+- #777290 by swentel: fix empty region plugin order of regions.
+- #771134 by swentel: Add support for preprocess fields via UI and selecting a key in variables.
+- #737008 by swentel: Support feature integration per object type.
+- #779040 by swentel: DS now has a UI module. 
+- #781882 by swentel: add example outputs from objects.
+- #783106 by swentel: styles do not necessarily need friendly names.
 
 -------------------------------------------------------------------------------------
-6.x-1.1 2010-15-04
+6.x-1.1 2010-04-15
 -------------------------------------------------------------------------------------
 - Fix weights of build modes
 - #710094 by swentel: fix small edit link bug in layout overview screen.
@@ -22,4 +33,4 @@
 -------------------------------------------------------------------------------------
 - Initial release.
 
-/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.15 2010/04/15 15:50:52 swentel Exp $ */
+/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.24 2010/05/07 11:33:16 swentel Exp $ */

@@ -1,19 +1,23 @@
-/* $Id: nd_regions.css,v 1.1.2.1 2010/03/15 19:13:52 swentel Exp $ */
+/* $Id: nd_regions.css,v 1.1.2.2 2010/04/19 12:22:08 swentel Exp $ */
 
 .nd-region-header {
   clear: both;
 }
 
 .nd-region-left {
-  clear: left;
+  display: inline;
   float: left;
 }
 
-.nd-region-middle {
-  clear: none;
+.nd-region-middle-wrapper {
+  display: inline;
+  float: left;
+  width: 100%;
+  margin-right: -100%;
 }
 
 .nd-region-right {
+  display: inline;
   float: right;
 }
 
@@ -33,20 +37,18 @@
 
 /* middle region */
 
-.nd-no-sidebars {
+.nd-no-sidebars .nd-region-middle {
 }
 
-.nd-sidebar-left {
+.nd-sidebar-left .nd-region-middle {
   margin-left: 25%;
-  overflow: hidden;
 }
 
-.nd-sidebar-right {
+.nd-sidebar-right .nd-region-middle {
   margin-right: 25%;
-  overflow: hidden;  
 }
 
-.nd-two-sidebars {
+.nd-two-sidebars .nd-region-middle {
   margin-left: 25%;
   margin-right: 25%;
 }

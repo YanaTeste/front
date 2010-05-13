@@ -1,9 +1,9 @@
 <?php
-// $Id: views_plugin_ds_object_view.inc,v 1.1.2.9 2010/03/26 17:29:28 swentel Exp $
+// $Id: views_plugin_ds_object_view.inc,v 1.1.2.11 2010/04/26 11:57:55 swentel Exp $
 
 /**
  * @file
- * Contains the ds view style plugin.
+ * Contains the ds views node style plugin.
  */
 
 /**
@@ -28,6 +28,7 @@ class views_plugin_ds_object_view extends views_plugin_row {
       'node' => 'nid',
       'users' => 'uid',
       'comments' => 'cid',
+      'apachesolr' => 'nid',
     );
     return $base_table_fields[$this->base_table];
   }

@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.display.inc,v 1.1.2.50 2010/03/31 12:33:31 swentel Exp $
+// $Id: ds.display.inc,v 1.1.2.55 2010/04/27 19:53:35 swentel Exp $
 
 /**
  * @file
@@ -61,13 +61,52 @@ function ds_layout_overview() {
           }
         }
       }
-      if (!empty($rows)) {
-        $content = theme('table', array(), $rows, array('id' => 'ds-overview-page'));
-      }
     }
   }
 
-  if (empty($content)) {
+  // Special listing for views which are using the views fields style plugin.
+  if (module_exists('views')) {
+    $views_rows = array();
+    $views_ui = (module_exists('views_ui') && user_access('administer views'));
+    $views = views_get_all_views();
+    foreach ($views as $v => $view) {
+      foreach ($view->display as $d => $display) {
+        if (isset($display->display_options['row_plugin']) && $display->display_options['row_plugin'] == 'ds_fields') {
+          $views_row = array();
+          $views_row[] = ucfirst($view->name);
+          $views_row[] = '';
+          if ($views_ui) {
+            $views_row[] = l(t('Edit'), 'admin/build/views/edit/'. $view->name);
+          }
+          else {
+            $views_row[] = '';
+          }
+          $views_rows[] = array('data' => $views_row, 'class' => 'ds-row-type');
+          break;
+        }
+      }
+    }
+    if (!empty($views_rows)) {
+      $views_fields_explanation = 'This list of views are using the Display Suite fields plugin to render fields in regions.';
+      if ($views_ui) {
+        $views_fields_explanation .= ' The edit link will lead you to the edit screen of the view.';
+      }
+      else {
+        $views_fields_explanation .= ' Views interface is disabled or you do not have access to edit the view.';
+      }
+      // Add empty row first and then the header of the views.
+      $rows[] = array(array('data' => '&nbsp;', 'colspan' => '3', 'class' => 'ds-row-type'));
+      $rows[] = array(array('data' => t('Views fields'), 'colspan' => '3', 'class' => 'ds-row-title'));
+      $rows[] = array(array('data' => t($views_fields_explanation), 'colspan' => '3'));
+      // Views rows
+      $rows = array_merge($rows, $views_rows);
+    }
+  }
+
+  if (!empty($rows)) {
+    $content = theme('table', array(), $rows, array('id' => 'ds-overview-page'));
+  }
+  else {
     $content = t('No items found.');
   }
 
@@ -97,9 +136,8 @@ function ds_styles(&$form_state) {
 
   $form['ds_styles'] = array(
     '#type' => 'textarea',
-    '#title' => t('Field styles'),
     '#default_value' => variable_get('ds_styles', ''),
-    '#description' => t('Configure styles which you can add to fields in the overview screen. Add multiple styles line per line and separate class and friendly name by | eg: <em>class_name|Friendly name.</em>')
+    '#description' => t('Configure styles which you can add to fields in the overview screen. Add multiple styles line per line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>')
   );
 
   return system_settings_form($form);
@@ -168,7 +206,7 @@ function ds_display_overview_form(&$form_state, $type, $build_mode = 'full', $mo
 /**
  * Add fields to display overview form.
  */
-function ds_fields_display_form(&$form, $display_settings) {
+function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
 
   global $base_url;
 
@@ -177,7 +215,9 @@ function ds_fields_display_form(&$form, $display_settings) {
   $type = $form['#type_name'];
   $extra = $form['#extra'];
 
-  $fields = ds_get_fields($module, $type, $build_mode, $extra, TRUE);
+  if (empty($fields)) {
+    $fields = ds_get_fields($module, $type, $build_mode, $extra, TRUE);
+  }
 
   // Break form build in case no fields
   if (empty($fields)) {
@@ -479,8 +519,10 @@ function ds_field_classes() {
   if (!empty($extra_styles)) {
     $extra_styles = explode("\n", $extra_styles);
     foreach ($extra_styles as $key => $value) {
-      list($style_key, $style_name) = explode("|", $value);
-      $styles[$style_key] = $style_name;
+      $classes = explode("|", $value);
+      $key = $classes[0];
+      $name = isset($classes[1]) ? $classes[1] : $key;
+      $styles[$key] = $name;
     }
   }
 

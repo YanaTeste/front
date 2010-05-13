@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.buildmodes.inc,v 1.1.2.18 2010/04/06 16:58:54 swentel Exp $
+// $Id: ds.buildmodes.inc,v 1.1.2.19 2010/04/24 19:04:04 swentel Exp $
 
 /**
  * @file
@@ -250,46 +250,6 @@ function ds_buildmodes_matrix_form($form_state, $module, $types) {
   );
 
   return $form;
-}
-
-/**
- * Theme build modes matrix form.
- */
-function theme_ds_buildmodes_matrix_form($form) {
-  $output = '';
-
-  // Header.
-  $header = array(0 => '');
-  foreach ($form['#build_modes'] as $key => $mode) {
-    $header[] = $mode['title'];
-  }
-
-  // Checkboxes.
-  $rows = array();
-  foreach ($form['#types'] as $key => $type) {
-    $row = array();
-    $row[] = array('data' => drupal_ucfirst($type->name));
-    foreach ($form['#build_modes'] as $bkey => $mode) {
-      $row[] = array('data' => drupal_render($form['exclude'][$key][$key .'-'. $bkey]));
-    }
-    $rows[] = $row;
-  }
-
-  // Theme as table.
-  $table = theme('table', $header, $rows);
-  $table .= drupal_render($form['exclude']['submit']);
-
-  $fieldset = array(
-    '#title' => t('Exclude matrix'),
-    '#description' => t('Toggle per type which build modes you want to exclude from rendering. The "Toggle" checkbox will exclude/include all build modes at once.'),
-    '#children' => $table,
-    '#attributes' => array(),
-  );
-
-  $output = theme('fieldset', $fieldset);
-  $output .= drupal_render($form);
-
-  return $output;
 }
 
 /**

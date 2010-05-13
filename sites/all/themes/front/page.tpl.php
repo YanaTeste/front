@@ -25,10 +25,14 @@
       </div>
     </div>
   </div>
-  <div id="twitter">
-    <div id="twitter-inner">
-      <div id="tweet"><a href="#">@perandre</a> ah! s&aring; ut som en flink fyr! moro. fulle mugger her ogs&aring;! i tillegg til utvikling av egne sider...puh, tar tid :)
-      </div>
+  <div id="status">
+    <div id="status-inner">
+      <?php print $breadcrumb; ?>
+      <?php if ($status): ?>
+        <div id="tweet">
+          <?php print $status; ?>
+        </div>
+      <?php endif; ?>
       <div id="follow">
         <a href="http://twitter.com/frontkom">F&oslash;lg oss p&aring; Twitter</a>
       </div>
@@ -36,11 +40,10 @@
   </div>
   <div id="page" class="container-12 clear-block">
     <?php if ($header): ?>
-      <div id="header-region" class="region <?php print ns('grid-14', $mission, 7); ?> clear-block">
+      <div id="header-region" class="region <?php print ns('grid-12', $mission, 7); ?> clear-block">
         <?php print $header; ?>
       </div>
     <?php endif; ?>
-    <div id="breadcrumbs" class="grid-12"><?php print $breadcrumb; ?></div>
     <div id="main" class="column <?php print ns('grid-12', $left, 4, $right, 4) . ' ' . ns('push-4', !$left, 4); ?>">
       <?php if ($title): ?>
         <h1 class="title" id="page-title"><?php print $title; ?></h1>
@@ -59,6 +62,7 @@
       <?php print $help; ?>
       <div id="main-content" class="region clear-block">
         <?php print $content; ?>
+        <?php print $content_bottom; ?>
       </div>
 
     </div>
@@ -79,7 +83,7 @@
     <div id="footer-top">
       <div id="footer-top-inner"><?php print $breadcrumb; ?></div>
     </div>
-    <div id="footer-inner"
+    <div id="footer-inner">
     <?php if ($footer): ?>
       <div id="footer-region" class="region grid-12 clear-block alpha">
         <?php print $footer; ?>

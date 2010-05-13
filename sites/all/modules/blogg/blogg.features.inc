@@ -28,6 +28,15 @@ function blogg_ctools_plugin_api() {
 }
 
 /**
+ * Implementation of hook_ds_default_settings().
+ */
+function blogg_ds_default_settings() {
+  module_load_include('inc', 'blogg', 'blogg.features.ds');
+  $args = func_get_args();
+  return call_user_func_array('_blogg_ds_default_settings', $args);
+}
+
+/**
  * Implementation of hook_imagecache_default_presets().
  */
 function blogg_imagecache_default_presets() {

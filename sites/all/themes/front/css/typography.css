@@ -67,6 +67,10 @@ clear:both;
 }
 
 
+.buildmode-forside .field-teasertext p {
+font-size: 20px;
+}
+
 blockquote p {margin: 0;}
 
 strong      { font-weight: bold; }
@@ -121,8 +125,8 @@ caption     { background: #eee; }
 /* Misc classes
 -------------------------------------------------------------- */
 
-.small      { font-size: .8em; margin-bottom: 1.875em; line-height: 1.875em; }
-.large      { font-size: 1.2em; line-height: 2.5em; margin-bottom: 1.25em; }
+.small      { font-size: 9px; margin-bottom: inherit; line-height: inherit; }
+.large      { font-size: 22px; line-height: 22px; margin-bottom: inherit; }
 .hide       { display: none; }
 
 .quiet      { color: #666; }

@@ -17,7 +17,7 @@ border-bottom: 1px solid #4A4A4A;
 
 #header-top-inner {
 margin: 0 auto;
-width: 940px;
+width: 986px;
 overflow: auto;
 }
 
@@ -61,12 +61,12 @@ padding-bottom: 10px;
 
 #site-header-inner {
 margin: 0 auto;
-width: 960px;
+width: 986px;
 }
 
 #nav {
 width: 738px;
-float: left;
+float: right;
 font-size: 12px;
 text-transform: uppercase;
 padding-top: 10px;
@@ -97,11 +97,12 @@ float: left;
 margin-top: 3px;
 }
 
-#status {
-background: #E6E6E6;
+#status, #footer-top {
+background: #eee url(./images/alert-overlay.png) repeat-x;
 font-size: 11px;
 padding-bottom: 1px;
 min-height: 20px;
+border-bottom: 1px solid #ccc;
 }
 
 #tweet {
@@ -189,7 +190,11 @@ list-style: none;
 
 /* Page */
 #page {
+padding-top: 24px;
+background: url(./images/page-bg.gif) center 0 no-repeat;
+margin: 0 auto;
 margin-top: 10px;
+width: 1000px;
 }
 
 /**/
@@ -272,7 +277,7 @@ margin-bottom: 10px;
 border-color: #555;
 }
 
-#tjenester a:hover {
+#tjenester a:hover, #footer a:hover {
 color: #222;
 background: #B5D5FF;
 }
@@ -465,23 +470,39 @@ color:
 
 /**/
 #footer {
-background: #1D252A;
+background: #1a1a1a url("./images/header-top-bg.png") 0 25px repeat-x;
 min-height: 200px;
+padding-bottom: 40px;
+overflow: auto;
 }
 
-#footer-top {
-height: 38px;
-background: #232D33;
-}
-
-#footer-inner, #footer-top-inner, #status-inner {
-width: 940px;
+#status-inner {
+width: 980px;
 margin: 0 auto;
 }
 
+#footer .block {
+display: inline-block;
+width: 220px;
+float: left;
+margin-right: 20px;
+}
+
+#footer #block-block-1 {
+margin-right: 0; /* last one */
+}
+
+
+#footer-inner, #footer-top-inner {
+margin: 0 auto;
+width: 940px;
+}
+
+#footer-region {
+margin: 20px 0;
+}
+
 /**/
-
-
 
 
 /* Buttons and links */

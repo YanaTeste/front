@@ -1,4 +1,4 @@
-// $Id: README.txt,v 1.1.4.2 2009/06/22 01:10:09 weitzman Exp $
+// $Id: README.txt,v 1.1.4.3 2010/05/13 17:37:03 weitzman Exp $
 
 OVERVIEW
 --------
@@ -8,7 +8,8 @@ pages after they have submitted a node. It can be turned on for each content
 type and is off by default.
 
 This module is useful if you or your users repeatedly submit content, and would
-like to speed up the process.
+like to speed up the process. Form field values are now copied to the next form 
+as you save nodes.
 
 INSTALL
 -------

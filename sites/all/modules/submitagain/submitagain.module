@@ -1,5 +1,5 @@
 <?php
-// $Id: submitagain.module,v 1.2.2.5 2009/06/22 01:08:28 weitzman Exp $
+// $Id: submitagain.module,v 1.2.2.6 2010/05/13 17:26:28 weitzman Exp $
 
 /**
  * @file
@@ -29,7 +29,7 @@ function submitagain_node_form_submit($form, &$form_state) {
   $node = node_load($form_state['nid']);
   $link = l(t('Visit your new post.'), 'node/'. $node->nid);
   drupal_set_message($link);
-  $form_state['redirect'] =   'node/add/'. str_replace('_', '-', $node->type);
+  $form_state['redirect'] = FALSE;
 }
 
 /**
@@ -39,7 +39,7 @@ function submitagain_form_node_type_form_alter(&$form, &$form_state) {
   if (isset($form['identity']['type'])) {
     $form['submission']['submitagain'] = array(
       '#type' => 'checkbox',
-      '#title' => t('Submit Again?'),
+      '#title' => t('Submit again?'),
       '#default_value' => variable_get('submitagain_'. $form['#node_type']->type, FALSE),
       '#description' => t('Enable this checkbox if you want to provide a "Save and create another" button for your users.')
     );

@@ -158,7 +158,7 @@ width: 172px;
 .form-text {
 font-size: 12px;
 color: #555;
-font-style: italic;
+outline: none;
 }
 
 #search-box input[type="text"] {
@@ -201,7 +201,7 @@ width: 1000px;
 
 /* --- Blog  full --- */
 
-.field-teasertext {
+.buildmode-full .field-teasertext {
 border-bottom: 1px solid #666;
 margin-bottom: 16px;
 }
@@ -209,7 +209,7 @@ margin-bottom: 16px;
 /**/
 
 /* --- Blog  teaser --- */
-.buildmode-teaser .node-type-blog {
+.not.front .buildmode-teaser .node-type-blog {
 padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
 }

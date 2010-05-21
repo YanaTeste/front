@@ -11,7 +11,7 @@ border-bottom: 1px solid #ccc;
 }
 
 #header-top {
-background: url(./images/header-top-bg.png) 0 0 repeat-x;
+background: url(./images/top-menu-bg.png) 0 0 repeat-x;
 border-bottom: 1px solid #4A4A4A;
 }
 
@@ -277,7 +277,7 @@ margin-bottom: 10px;
 border-color: #555;
 }
 
-#tjenester a:hover, #footer a:hover {
+#tjenester a:hover {
 color: #222;
 background: #B5D5FF;
 }
@@ -469,11 +469,32 @@ color:
 }
 
 /**/
+
+
+/* --- Footer --- */
 #footer {
-background: #1a1a1a url("./images/header-top-bg.png") 0 25px repeat-x;
+background: #151516 url("./images/footer-bg.png") 0 24px repeat-x;
 min-height: 200px;
 padding-bottom: 40px;
 overflow: auto;
+}
+
+#footer li {
+padding: 1px 2px 1px 18px;
+background: url(./images/li-arrow.png) 0 50% no-repeat;
+}
+
+#footer li:hover {
+background: #222 url(./images/li-arrow.png) 0 50% no-repeat;
+}
+
+#footer li:hover a, #footer a:hover{
+color: #efefef;
+}
+
+#footer-message {
+font-size: 11px;
+color: #ccc;
 }
 
 #status-inner {
@@ -481,14 +502,14 @@ width: 980px;
 margin: 0 auto;
 }
 
-#footer .block {
+#footer .block, #footer .context-block {
 display: inline-block;
 width: 220px;
 float: left;
 margin-right: 20px;
 }
 
-#footer #block-block-1 {
+#footer #block-block-1, #footer #context-block-block-1 {
 margin-right: 0; /* last one */
 }
 
@@ -499,6 +520,7 @@ width: 940px;
 }
 
 #footer-region {
+background: url(./images/map-fade.png) 710px 150px no-repeat;
 margin: 20px 0;
 }
 

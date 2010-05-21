@@ -199,6 +199,24 @@ width: 1000px;
 
 /**/
 
+/* --- Blog  full --- */
+
+.field-teasertext {
+border-bottom: 1px solid #666;
+margin-bottom: 16px;
+}
+
+/**/
+
+/* --- Blog  teaser --- */
+.buildmode-teaser .node-type-blog {
+padding-bottom: 20px;
+border-bottom: 1px dotted #ccc;
+}
+
+/**/
+
+
 /* Panels 960gs */
 
 .panel-3col-33-stacked .panel-col, .panel-3col-33-stacked .panel-col-first {
@@ -250,7 +268,7 @@ border-bottom: 1px solid #ccc;
 }
 
 .nd-region-middle, .nd-region-right  {
-padding-top: 40px;
+
 }
 
 .front .panel-3col-33-stacked .panel-pane {

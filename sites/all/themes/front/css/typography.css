@@ -53,13 +53,13 @@ color: #fff;
 -------------------------------------------------------------- */
 
 p           { margin: 0 0 22px 0; }
-.node-type-blog p:first-letter { font-size: 20px; font-style: italic; font-weight: bold;}
+.buildmode-teaser .node-type-blog p:first-letter {font-family: Georgia; font-size: 20px; font-style: italic; font-weight: bold; padding-right: 1px;}
 
 p img.left  { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
 p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
 
 a:focus,
-a:hover     { color: #000; }
+a:hover, #footer #footer-top-inner a:hover     { color: #000; }
 a, li a.active      { color: #3A9CD5; text-decoration: none; }
 
 blockquote  {
@@ -73,8 +73,13 @@ background: url(./images/quote.png) 0 14px no-repeat;
 clear:both;
 }
 
+.field-post-date {
+color: #666;
+text-transform: uppercase;
+font-size: 11px;
+}
 
-.buildmode-forside .field-teasertext p {
+.field-teasertext p {
 font-size: 20px;
 }
 

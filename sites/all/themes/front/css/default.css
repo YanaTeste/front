@@ -9,7 +9,9 @@
 
 * { margin: 0; padding: 0; }
 
-
+img, a {
+outline: none;
+}
 /** Clear Floats Without Structural Markup: 
 ---------------------------------
 *  http://www.positioniseverything.net/easyclearing.html

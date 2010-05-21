@@ -206,6 +206,33 @@ border-bottom: 1px solid #666;
 margin-bottom: 16px;
 }
 
+.view-Emner .item-list li{
+list-style: none;
+margin: 0 0 10px 0;
+}
+
+.term a {
+-moz-border-radius:10px 10px 10px 10px;
+border-radius:10px 10px 10px 10px;
+background: #DCE8EE;
+border:1px solid #ccc;
+color:#333;
+padding:3px 8px;
+text-decoration:none;
+font-family: Georgia;
+font-size: 12px;
+}
+
+.term a:hover {
+background: #222 url(./images/header-top-bg.png) 0 0 repeat-x;
+color: #ccc;
+border-color: #ccc;
+}
+
+.term a:active {
+color: #efefef;
+}
+
 /**/
 
 /* --- Blog  teaser --- */

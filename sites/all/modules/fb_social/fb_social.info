@@ -1,0 +1,13 @@
+;$Id: fb_social.info,v 1.3 2010/04/27 01:58:06 ferdi Exp $
+name = fb social plugins
+description = facebook social plugins
+package = "fb social"
+core = 6.x
+
+
+; Information added by drupal.org packaging script on 2010-05-07
+version = "6.x-1.0-alpha4"
+core = "6.x"
+project = "fb_social"
+datestamp = "1273201813"
+

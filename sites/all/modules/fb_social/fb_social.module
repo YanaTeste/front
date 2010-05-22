@@ -1,0 +1,73 @@
+<?php
+// $Id: fb_social.module,v 1.2.2.2 2010/05/04 13:55:42 ferdi Exp $
+
+/**
+ * @file
+ * Common settings for all fb social plugins
+ */
+
+/**
+ * Implementation of hook_menu
+ */
+function fb_social_menu(){
+  $items = array();
+  $items['admin/settings/fb/social'] = array(
+    'type' => MENU_NORMAL_ITEM,
+    'title' => 'Facebook social',
+    'description' => 'Settings for facebook social plugins.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('fb_social_settings_form'),
+    'file' => 'fb_social.admin.inc',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'weight' => 10,
+  );
+  
+  $items['admin/settings/fb/social/settings'] = array(
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'title' => 'Settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('fb_social_settings_form'),
+    'file' => 'fb_social.admin.inc',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer site configuration'),
+    'weight' => 0,
+  );  
+  
+  return $items;
+}
+
+
+/**
+ * Implementation of hook_footer
+ */
+function fb_social_footer($main = 0) {
+  $fb_locale = variable_get('fb_social_locale', 'en_US');
+  $appid = variable_get('fb_social_appid', '');
+
+  $output = '<div id="fb-root"></div>';
+  $output .=  
+  "<script>
+     window.fbAsyncInit = function() {
+       FB.init({
+         appId: " . drupal_to_js($appid) .",
+         status: true, 
+         cookie: true,
+         xfbml: true});
+         
+     };
+     (function() {
+       var e = document.createElement('script'); 
+       e.async = true;
+       e.src = document.location.protocol + '//connect.facebook.net/" . $fb_locale  . "/all.js';
+       document.getElementById('fb-root').appendChild(e);
+     }());
+  </script>";
+  
+  return $output;
+}
+
+// api function can be used by other modules in this package
+
+
+

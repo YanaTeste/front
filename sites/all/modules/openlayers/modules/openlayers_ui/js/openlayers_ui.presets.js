@@ -1,4 +1,4 @@
-// $Id: openlayers_ui.presets.js,v 1.1.2.1 2010/02/02 23:43:36 zzolo Exp $
+// $Id: openlayers_ui.presets.js,v 1.1.2.2 2010/05/18 19:25:57 tmcw Exp $
 
 /**
  * @file
@@ -6,6 +6,30 @@
  *
  * @ingroup openlayers
  */
+
+/**
+ * Test whether function exists, 
+ * even if it is the child of another object
+ * @param head the function name as a string,
+ *  optionally with dots for invoking children
+ * @return bool true or false for existence
+ */
+function function_exists(head) {
+  return _function_exists(String.split(head, '.'), window);
+}
+
+function _function_exists(head, f) {
+  if (head.length == 0) {
+    return true;
+  }
+  h = head.shift();
+  if (typeof f[h] !== 'undefined') {
+    return _function_exists(head, f[h]);
+  }
+  else {
+    return false;
+  }
+}
 
 /**
  * Drupal behaviors for OpenLayers UI form.
@@ -52,6 +76,13 @@ Drupal.behaviors.openlayers_ui = function(context) {
     $(this).change(function() {
       Drupal.openlayers_ui.updateMapCenter();
     });
+  });
+
+  // mark openlayers dependencies as valid or invalid
+  $('.openlayers-dependency-flag').each(function() {
+    if (!function_exists($(this).find('.openlayers-dependency-value').text())) {
+      $(this).find('.openlayers-dependency-broken').show();
+    }
   });
 
   // Run once on load.

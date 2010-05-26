@@ -1,4 +1,4 @@
-// $Id: openlayers_behavior_drawfeatures.js,v 1.1.2.2 2010/04/11 18:39:38 tmcw Exp $
+// $Id: openlayers_behavior_drawfeatures.js,v 1.1.2.6 2010/05/17 12:25:14 zzolo Exp $
 
 /**
  * @file
@@ -24,7 +24,7 @@ function update(features) {
     );
   }
   wkt_value = WktWriter.write(features_copy.features);
-  openlayers_drawfeature_element.text(wkt_value);
+  openlayers_drawfeature_element.val(wkt_value);
 }
 
 /**
@@ -73,7 +73,7 @@ Drupal.behaviors.openlayers_behavior_drawfeatures = function(context) {
     var class_names = {
       'point': 'OpenLayers.Handler.Point',
       'path': 'OpenLayers.Handler.Path',
-      'polygon': 'OpenLayers.Handler.Polygon',
+      'polygon': 'OpenLayers.Handler.Polygon'
     };
 
     var c = [];
@@ -94,7 +94,20 @@ Drupal.behaviors.openlayers_behavior_drawfeatures = function(context) {
     control.controls = c;
     control.redraw();
 
-    var mcontrol = new OpenLayers.Control.ModifyFeature(data_layer);
-    data.openlayers.addControl(mcontrol);
+    var mcontrol = new OpenLayers.Control.ModifyFeature(
+      data_layer, {
+        displayClass: 'olControlModifyFeature',
+        deleteCodes: [46, 68, 100],
+        handleKeypress: function(evt){                              
+          if (this.feature && $.inArray(evt.keyCode, this.deleteCodes) > -1) {
+            // We must unselect the feature before we delete it 
+            var feature_to_delete = this.feature;
+            this.selectControl.unselectAll();
+            this.layer.removeFeatures([feature_to_delete]);
+          }
+        }
+      }
+    );
+    control.addControls(mcontrol);
   }
 };

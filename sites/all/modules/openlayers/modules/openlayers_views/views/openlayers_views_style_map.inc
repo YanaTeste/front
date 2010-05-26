@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_views_style_map.inc,v 1.20.2.8 2010/03/22 23:55:10 zzolo Exp $
+// $Id: openlayers_views_style_map.inc,v 1.20.2.9 2010/05/14 17:02:24 rsoden Exp $
 
 /**
  * @file
@@ -40,6 +40,13 @@ class openlayers_views_style_map extends views_plugin_style {
       '#default_value' => $this->options['preset'] ?
         $this->options['preset'] : variable_get('openlayers_default_preset', 'default'),
     );
+  }
+  
+  /**
+   * Query - override to make sure this doesn't get run
+   */
+  function query() {
+    $this->view->built = TRUE;
   }
 
   /**

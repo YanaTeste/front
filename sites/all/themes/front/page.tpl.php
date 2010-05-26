@@ -8,7 +8,7 @@
   <?php print $scripts; ?>
 </head>
 
-<body class="<?php print $body_classes; ?>">
+<body class="<?php print $body_classes; ?> show-grid">
   <div id="header-top">
     <div id="header-top-inner">
       <?php print $secondary_menu_links; ?>

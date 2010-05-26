@@ -1,4 +1,4 @@
-$Id: CUSTOMIZATION.txt,v 1.1.2.3 2010/03/18 14:25:34 tmcw Exp $
+$Id: CUSTOMIZATION.txt,v 1.1.2.4 2010/05/18 19:25:57 tmcw Exp $
 
 Current for 6.x-2.0-alpha3
 
@@ -42,6 +42,6 @@ buffer should be set to 0 if multiple urls are enabled.
 
 # Custom Behaviors
 
-If behaviors similar to those included is necessary, just clone the behaviors
+If behaviors similar to those included are necessary, just clone the behaviors
 and create a tiny new module that includes the copy. The same goes for layers,
 etc.

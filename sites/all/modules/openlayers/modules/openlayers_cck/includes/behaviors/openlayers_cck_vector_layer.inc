@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_cck_vector_layer.inc,v 1.1.2.2 2010/03/07 15:43:14 zzolo Exp $
+// $Id: openlayers_cck_vector_layer.inc,v 1.1.2.3 2010/05/18 19:25:57 tmcw Exp $
 
 /**
  * @file
@@ -17,6 +17,10 @@ class openlayers_cck_vector_layer extends openlayers_behavior {
     return array(
       'features' => '',
     );
+  }
+
+  function js_dependency() {
+    return array('OpenLayers.Layer.Vector');
   }
 
   /**

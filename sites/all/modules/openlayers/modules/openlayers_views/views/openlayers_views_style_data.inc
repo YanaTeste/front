@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_views_style_data.inc,v 1.1.2.16 2010/04/12 14:39:54 tmcw Exp $
+// $Id: openlayers_views_style_data.inc,v 1.1.2.17 2010/05/13 23:55:38 zzolo Exp $
 
 /**
  * @file
@@ -361,7 +361,7 @@ class openlayers_views_style_data extends views_plugin_style {
         }
         if ($data_source['description_field']) {
           $description_field = $fields[$data_source['description_field']]['field_alias'];
-          $feature['attributes']['description'] = $record->$description_field;
+          $feature['attributes']['description'] = $rendered_record[$description_field];
           $excluded_fields[] = $description_field;
         }
 

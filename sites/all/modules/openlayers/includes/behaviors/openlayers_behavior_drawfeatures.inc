@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_behavior_drawfeatures.inc,v 1.1.2.1 2010/04/06 21:20:31 zzolo Exp $
+// $Id: openlayers_behavior_drawfeatures.inc,v 1.1.2.2 2010/05/07 21:57:45 tmcw Exp $
 
 /**
  * @file
@@ -49,6 +49,8 @@ class openlayers_behavior_drawfeatures extends openlayers_behavior {
    * Render.
    */
   function render(&$map) {
+    drupal_add_css(drupal_get_path('module', 'openlayers') 
+      . '/includes/behaviors/js/openlayers_behavior_drawfeatures.css');
     drupal_add_js(drupal_get_path('module', 'openlayers')
       . '/includes/behaviors/js/openlayers_behavior_drawfeatures.js');
     return $this->options;

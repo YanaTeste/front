@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_test.module,v 1.2.2.12 2010/03/22 23:55:10 zzolo Exp $
+// $Id: openlayers_test.module,v 1.2.2.13 2010/05/02 10:27:31 zzolo Exp $
 
 /**
  * @file
@@ -419,5 +419,31 @@ function openlayers_test_views_default_views() {
       $views['openlayers_test_view'] = $view;
       return $views;
     }
+  }
+}
+
+/**
+ * Impements hook_openlayers_map_preprocess_alter().
+ */
+function openlayers_test_openlayers_map_preprocess_alter(&$map) {
+  // For testing purposes, display a message on the only the Test
+  // page, and only once.
+  static $performed = FALSE;
+  if (!$performed && $_GET['q'] == 'admin/build/openlayers/test') {
+    drupal_set_message(t('OpenLayers preprocess map alter hook fired.'));
+    $performed = TRUE;
+  }
+}
+
+/**
+ * Impements hook_openlayers_map_alter().
+ */
+function openlayers_test_openlayers_map_alter(&$map) {
+  // For testing purposes, display a message on the only the Test
+  // page, and only once.
+  static $performed = FALSE;
+  if (!$performed && $_GET['q'] == 'admin/build/openlayers/test') {
+    drupal_set_message(t('OpenLayers map alter hook fired.'));
+    $performed = TRUE;
   }
 }

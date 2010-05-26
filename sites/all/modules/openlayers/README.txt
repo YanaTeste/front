@@ -1,4 +1,4 @@
-$Id: README.txt,v 1.17.2.6 2010/03/06 22:29:59 zzolo Exp $
+$Id: README.txt,v 1.17.2.7 2010/05/04 20:17:25 tmcw Exp $
 
 Current for 6.x-2.0-alpha2
 
@@ -120,3 +120,4 @@ A [tutorial is available on Drupal.org](http://drupal.org/node/627816)
 * [tmcw](http://drupal.org/user/12664)
 * [brynbellomy](http://drupal.org/user/537416)
 * [bdragon](http://drupal.org/user/53081)
+* [OpenLayers monster by Saman Bemel Benrud](http://www.flickr.com/photos/samanpwbb/)

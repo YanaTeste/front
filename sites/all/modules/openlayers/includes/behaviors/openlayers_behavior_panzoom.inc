@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers_behavior_panzoom.inc,v 1.1.2.2 2010/01/25 22:56:00 tmcw Exp $
+// $Id: openlayers_behavior_panzoom.inc,v 1.1.2.3 2010/05/18 19:25:57 tmcw Exp $
 
 /**
  * @file
@@ -16,6 +16,12 @@ class openlayers_behavior_panzoom extends openlayers_behavior {
   function options_init() {
     return array(
       'panzoom' => '',
+    );
+  }
+
+  function options_form($defaults) {
+    return array(
+      'spec' => openlayers_dependency_widget('OpenLayers.Control.PanZoom')
     );
   }
 

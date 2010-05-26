@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers.presets.inc,v 1.1.2.3 2010/02/21 06:11:54 tmcw Exp $
+// $Id: openlayers.presets.inc,v 1.1.2.4 2010/05/06 14:37:40 tmcw Exp $
 
 /**
  * @file
@@ -26,14 +26,15 @@ function _openlayers_openlayers_presets() {
   $default->data = array(
     'projection' => '900913',
     'width' => 'auto',
-    'default_layer' => 'osm_mapnik',
     'height' => '400px',
+    'default_layer' => 'osm_mapnik',
     'center' => array(
       'initial' => array(
         'centerpoint' => '0,0',
         'zoom' => '2'
       )
     ),
+    // TODO: eliminate
     'options' => array(
       'displayProjection' => '4326',
       'maxExtent' => openlayers_get_extent('4326'),

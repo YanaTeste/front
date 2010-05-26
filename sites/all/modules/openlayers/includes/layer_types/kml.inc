@@ -1,5 +1,5 @@
 <?php
-// $Id: kml.inc,v 1.1.2.6 2010/04/24 17:37:24 tmcw Exp $
+// $Id: kml.inc,v 1.1.2.8 2010/05/15 21:31:37 zzolo Exp $
 
 /**
  * @file
@@ -12,7 +12,7 @@
 class openlayers_layer_type_kml extends openlayers_layer_type {
   function __construct($layer = array(), $map = array()) {
     parent::__construct($layer, $map);
-    if ($this->data) {
+    if (isset($this->data)) {
       $this->data += $this->options_init();
     }
     else {
@@ -27,8 +27,9 @@ class openlayers_layer_type_kml extends openlayers_layer_type {
     return array(
       'layer_type' => 'kml',
       'layer_handler' => 'kml',
-      'projection' => array('4326', '900913'),
+      'projection' => array('4326'),
       'baselayer' => FALSE,
+      'vector' => TRUE,
       'formatOptions' => array(
         'extractStyles' => TRUE,
         'extractAttributes' => TRUE,
@@ -78,7 +79,8 @@ class openlayers_layer_type_kml extends openlayers_layer_type {
    * Render.
    */
   function render(&$map) {
-    drupal_add_js(drupal_get_path('module', 'openlayers') .'/includes/layer_types/kml.js');
+    drupal_add_js(drupal_get_path('module', 'openlayers') 
+      .'/includes/layer_types/kml.js');
     return $this->options;
   }
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: cloudmade.inc,v 1.1.2.13 2010/03/22 23:55:10 zzolo Exp $
+// $Id: cloudmade.inc,v 1.1.2.14 2010/05/09 11:50:46 zzolo Exp $
 
 /**
  * @file
@@ -76,6 +76,9 @@ class openlayers_layer_type_cloudmade extends openlayers_layer_type {
         '#type' => 'textfield',
         '#title' => t('CloudMade Javascript Location'),
         '#default_value' => variable_get('openlayers_layers_cloudmade_js', ''),
+        '#description' => t('The Drupal path or full URL to the location of the ' .
+          '<a href="@url">Cloudmade OpenLayers Javascript library</a>', 
+          array('@url' => 'http://developers.cloudmade.com/projects/show/openlayers-api')),
       ),
     );
   }

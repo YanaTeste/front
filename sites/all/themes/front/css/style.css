@@ -211,6 +211,19 @@ list-style: none;
 margin: 0 0 10px 0;
 }
 
+.jznews_share {
+float: left;
+}
+
+.comment_add {
+float: right;
+}
+
+.field-links {
+clear: both;
+overflow: auto;
+}
+
 .term a {
 -moz-border-radius:10px 10px 10px 10px;
 border-radius:10px 10px 10px 10px;
@@ -233,10 +246,11 @@ border-color: #ccc;
 color: #efefef;
 }
 
+
 /**/
 
-/* --- Blog  teaser --- */
-.not.front .buildmode-teaser .node-type-blog {
+/* --- Blog  teasers --- */
+.not-front .buildmode-teaser .node-type-blog {
 padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
 }
@@ -245,6 +259,14 @@ border-bottom: 1px dotted #ccc;
 
 
 /* Panels 960gs */
+
+.panel-2col .panel-panel {
+width: 460px;
+}
+
+.panel-2col .panel-col-first {
+margin-right: 20px;
+}
 
 .panel-3col-33-stacked .panel-col, .panel-3col-33-stacked .panel-col-first {
 width: 300px;
@@ -256,7 +278,7 @@ margin-right: 0;
 width: 300px;
 }
 
-.panel-3col-33-stacked .panel-col .inside, .panel-3col-33-stacked .panel-col-last .inside  {
+.panel-3col-33-stacked .panel-col .inside, .panel-3col-33-stacked .panel-col-last .inside, .panel-2col .panel-panel .inside  {
 margin:0;
 }
 
@@ -453,6 +475,7 @@ margin-left: 60px;
 	line-height:1.2em;
 	font-size:0.8em;
 	margin-top:5px;
+  margin-bottom: 5px;
 	color:#777;
 }
 #edit-delete{

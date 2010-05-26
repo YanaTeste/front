@@ -81,8 +81,35 @@ color:#FF3399;
 padding: 20px;
 background: #EAF5FB;
 border: 1px solid #f5f5f5;
-
 }
+
+
+/* --- Comment form --- */
+#comment-form .form-item {
+margin: 1px 0;
+}
+
+#comment-form .form-text {
+margin: 2px 0;
+padding: 2px;
+}
+
+#comment-form label {
+color: #666;
+float: left;
+display: block;
+width: 100px;
+}
+
+#edit-comment-wrapper label {
+float: none;
+}
+
+#comment-form #edit-comment-wrapper {
+margin-bottom: 6px;
+}
+
+/**/
 
 
 /* Success, notice and error boxes

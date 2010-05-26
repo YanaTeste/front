@@ -1,5 +1,5 @@
 <?php
-// $Id: openlayers.module,v 1.69.2.65 2010/04/30 15:17:25 tmcw Exp $
+// $Id: openlayers.module,v 1.69.2.70 2010/05/18 19:25:57 tmcw Exp $
 
 /**
  * @defgroup openlayers OpenLayers provides an API and
@@ -70,32 +70,6 @@ function openlayers_ctools_plugin_api($module, $api) {
 }
 
 /**
- * Implementation of hook_features_export().
- */
-function openlayers_layers_features_export($data, &$export, $module_name = '') {
-  $modules = module_implements('openlayers_layer_types');
-  $layer = openlayers_layer_load(current($data));
-
-  /*
-   * ensure that modules which provide layer types are
-   * included as dependencies when the layers those 
-   * layer types generate are exported
-   */
-  foreach ($modules as $module) {
-    $layer_types = module_invoke($module, 'openlayers_layer_types');
-    $export['features']['openlayers'][current($data)] = current($data);
-
-    foreach ($layer_types as $layer_type_name => $layer_type) {
-      if ($layer->data['layer_type'] == $layer_type_name) {
-        $export['dependencies'][$module] = $module;
-      }
-    }
-  }
-
-  return array();
-}
-
-/**
  * Include necessary CSS and JS for OpenLayers.
  *
  * @ingroup openlayers_api
@@ -138,7 +112,6 @@ function openlayers_include() {
 function openlayers_build_map($map = array()) {
   // Get the necessary parts
   openlayers_include();
-
   module_load_include('inc', 'openlayers', 'includes/openlayers.render');
 
   // If no map is specified, use the default preset.
@@ -148,18 +121,20 @@ function openlayers_build_map($map = array()) {
     }
   }
 
-  // Hook to alter map.
-  // Styles, behaviors, layers may all be added here.
-  drupal_alter('openlayers_postrender', $map);
+  // Create ID for map as this will help with alters.
+  $map['id'] = !isset($map['id']) ? 
+    _openlayers_create_map_id() : $map['id'];
+
+  // Hook to alter map before main processing.  Styles, behaviors, 
+  // layers may all be added here.
+  // hook_openlayers_map_preprocess_alter($map)
+  drupal_alter('openlayers_map_preprocess', $map);
 
   // styles and layer styles are not required parameters
   $map['styles'] = isset($map['styles']) ? 
     $map['styles'] : array();
   $map['layer_styles'] = isset($map['layer_styles']) ? 
     $map['layer_styles'] : array();
-
-  $map['id'] = !isset($map['id']) ? 
-    _openlayers_create_map_id() : $map['id'];
 
   $map['layers'] = _openlayers_layers_process($map['layers'], $map);
   $map['behaviors'] = _openlayers_behaviors_render($map['behaviors'], $map);
@@ -168,10 +143,11 @@ function openlayers_build_map($map = array()) {
     $map['layer_styles'], 
     $map);
 
-  // Hook to alter map one last time
-  // Final modification to existing styles, behaviors, layers can happen here,
-  // but nothing new may be added.
-  drupal_alter('openlayers', $map);
+  // Hook to alter map one last time.  Final modification to existing 
+  // styles, behaviors, layers can happen here, but adding new styles,
+  // behaviors will not get rendered.
+  // hook_openlayers_map_alter($map)
+  drupal_alter('openlayers_map', $map);
 
   // Check map for errors
   $map['errors'] = openlayers_error_check_map($map);
@@ -366,9 +342,10 @@ function openlayers_layer_sanity_check($layer, $projection = FALSE, $strict = FA
     return !$strict;
   }
 
-  if ($projection && (!in_array($projection, $layer->data['projection']))) {
+  if ($projection && empty($layer->data['vector']) && 
+    (!in_array($projection, $layer->data['projection']))) {
     watchdog('openlayers',
-      'The layer %layer_name cannot work with the map projection: EPSG: %map_proj',
+      'The layer %layer_name cannot be reprojected to the map projection: EPSG: %map_proj',
       array(
         '%layer_name' => $layer->name,
         '%map_proj' => $map['projection'],
@@ -698,10 +675,22 @@ class openlayers_behavior {
     $this->map = $map;
   }
 
+  /*
+   * @return array of JavaScript functions required to be defined
+   * in order for this function to work
+   */
+  function js_dependency() {
+    return array();
+  }
+
   function options_init() {
     return array();
   }
 
+  /*
+   * @param $defaults default values for the form
+   * @return a FormAPI form
+   */
   function options_form($defaults = array()) {
     return array();
   }
@@ -766,6 +755,24 @@ class openlayers_layer_type {
   }
 
   function render(&$map) {}
+}
+
+/**
+ * Implementation of hook_ctools_plugin
+ */
+function openlayers_ctools_plugin_behaviors() {
+  return array(
+    'use hooks' => TRUE,
+  );
+}
+
+/**
+ * Implementation of hook_ctools_plugin
+ */
+function openlayers_ctools_plugin_layer_types() {
+  return array(
+    'use hooks' => TRUE,
+  );
 }
 
 /**

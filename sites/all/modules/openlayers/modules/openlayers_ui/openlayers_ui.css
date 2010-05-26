@@ -1,4 +1,4 @@
-/* $Id: openlayers_ui.css,v 1.1.2.3 2010/02/02 23:43:36 zzolo Exp $
+/* $Id: openlayers_ui.css,v 1.1.2.4 2010/05/18 19:25:57 tmcw Exp $
 
 /**
  * @file
@@ -36,6 +36,16 @@ div.openlayers-column-left {
 div.openlayers-column-right {
   width:80%;
   float:right;
+  }
+
+span.openlayers-dependency-value {
+  display: none;
+}
+
+span.openlayers-dependency-broken {
+  font-size: smaller;
+  display: none;
+  color: red;
   }
 
 /**

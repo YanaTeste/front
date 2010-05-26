@@ -185,6 +185,10 @@ ul.menu {
 list-style: none;
 }
 
+.field-body {
+margin-bottom: 20px;
+}
+
 /**/
 
 
@@ -219,9 +223,28 @@ float: left;
 float: right;
 }
 
+.field-related {
+margin-bottom: 20px;
+}
+
 .field-links {
 clear: both;
 overflow: auto;
+}
+
+.field-person {
+background: #f7f7f7;
+padding: 10px;
+border: 1px solid #ccc;
+}
+
+.buildmode-mini .node-type-person .field-title h2 {
+font: bold italic 16px/16px Georgia;
+margin: 0;
+}
+
+.buildmode-mini .node-type-person .field-body {
+font-size: 12px;
 }
 
 .term a {
@@ -237,7 +260,7 @@ font-size: 12px;
 }
 
 .term a:hover {
-background: #222 url(./images/header-top-bg.png) 0 0 repeat-x;
+background: #222 0 0;
 color: #ccc;
 border-color: #ccc;
 }
@@ -253,6 +276,14 @@ color: #efefef;
 .not-front .buildmode-teaser .node-type-blog, .not-front .buildmode-teaser .node-type-artikkel {
 padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
+}
+
+.imagecache-blog_medium {
+float: left;
+margin: 0 20px 10px 0;
+display: inline-block;
+padding: 1px;
+border: 1px solid #ccc;
 }
 
 /**/
@@ -314,10 +345,6 @@ margin: 0;
 
 #front-panel .panel-col-top .inside {
 border-bottom: 1px solid #ccc;
-}
-
-.nd-region-middle, .nd-region-right  {
-
 }
 
 .front .panel-3col-33-stacked .panel-pane {
@@ -821,3 +848,12 @@ body.imce ul#ops-list li#op-item-sendto a:hover,
 body.imce ul#ops-list li#op-item-delete a:hover {
   background-position:0 -1181px;
 }
+
+
+/* --- Openlayers maps --- */
+#tooltip {
+background: #fff;
+	-moz-box-shadow:0 1px 3px rgba(0,0,0,0.5);
+	-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5);
+}
+/**/

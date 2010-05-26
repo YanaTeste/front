@@ -50,7 +50,9 @@
     <?php if ($label_display == 'inline') : ?>
       <div class="field-label-inline-first"><?php print t($label) ?>:&nbsp;</div>
     <?php endif; ?>
-    <?php print $items[0]['view'];?>
+    <?php print $items[0]['view'];?><?php if ($item['data']['title']): ?>
+  <div class="image-caption"><?php print $item['data']['title']; ?></div>
+<?php endif; ?>
   <?php endif; ?>
 </div>
 <?php endif; ?>

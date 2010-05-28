@@ -189,7 +189,61 @@ list-style: none;
 margin-bottom: 20px;
 }
 
+.field-field-image {
+float: left;
+clear: both;
+}
+
+.image-description {
+padding: 8px 14px;
+border: 1px solid #999;
+width: 245px;
+font-size: 12px;
+line-height: 16px;
+margin: -6px 0 10px 0;
+}
+
 /**/
+
+
+/* --- Person --- */
+
+.field-person {
+font-size: 12px;
+background: #f7f7f7;
+padding: 10px;
+border: 1px solid #ccc;
+}
+
+#card h2 {
+font: bold italic 16px/16px Georgia;
+margin: 5px 0 0 0;
+}
+
+#card {
+color: #444;
+background: url(./images/book-shadow.png) 0 bottom no-repeat;
+position: relative;
+width: 272px;
+padding-bottom: 8px;
+}
+
+#card-inner {
+background: #fff;
+border-top: 1px solid #ccc;
+border-right: 1px solid #ccc;
+border-left: 1px solid #ccc;
+border-bottom: none;
+overflow: hidden;
+height: 70px;
+}
+
+#card .field-field-image {
+margin-right: 14px;
+}
+
+/**/
+
 
 
 /* Page */
@@ -204,6 +258,18 @@ width: 1000px;
 /**/
 
 /* --- Blog  full --- */
+
+.field-author, .field-post-date, .field-terms {
+text-transform: uppercase;
+font-size: 11px;
+color: #666;
+margin: 0 5px 0 0;
+float: left;
+}
+
+.field-ds-group-bloglinks {
+overflow: auto;
+}
 
 .buildmode-full .field-teasertext {
 border-bottom: 1px solid #666;
@@ -230,21 +296,6 @@ margin-bottom: 20px;
 .field-links {
 clear: both;
 overflow: auto;
-}
-
-.field-person {
-background: #f7f7f7;
-padding: 10px;
-border: 1px solid #ccc;
-}
-
-.buildmode-mini .node-type-person .field-title h2 {
-font: bold italic 16px/16px Georgia;
-margin: 0;
-}
-
-.buildmode-mini .node-type-person .field-body {
-font-size: 12px;
 }
 
 .term a {
@@ -278,12 +329,11 @@ padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
 }
 
-.imagecache-blog_medium {
-float: left;
-margin: 0 20px 10px 0;
+img.imagecache-blog_medium {
+margin: 0 20px 2px 0;
 display: inline-block;
 padding: 1px;
-border: 1px solid #ccc;
+border: 1px solid #999;
 }
 
 /**/

@@ -33,6 +33,7 @@
   <div class="field-items">
     <?php $count = 1;
     foreach ($items as $delta => $item) :
+
       if (!$item['empty']) : ?>
         <div class="field-item <?php print ($count % 2 ? 'odd' : 'even') ?>">
           <?php if ($label_display == 'inline') { ?>
@@ -41,8 +42,8 @@
           <?php } ?>
           <?php print $item['view'] ?>
 
-          <?php if ($item['data']['title']): ?>
-            <div class="image-description"><?php print $item['data']['title']; ?></div>
+          <?php if ($item['data']['description']): ?>
+            <div class="image-description"><?php print $item['data']['description']; ?></div>
           <?php endif; ?>
 
         </div>

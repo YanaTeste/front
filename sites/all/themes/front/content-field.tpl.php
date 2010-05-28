@@ -24,6 +24,7 @@
  *
  * @see template_preprocess_content_field()
  */
+dpm(__FILE__);
 ?>
 <?php if (!$field_empty) : ?>
 <div class="field field-type-<?php print $field_type_css ?> field-<?php print $field_name_css ?>">
@@ -40,6 +41,11 @@
               <?php print t($label) ?>:&nbsp;</div>
           <?php } ?>
           <?php print $item['view'] ?>
+
+          <?php if ($item['data']['title']): ?>
+            <div class="image-description"><?php print $item['data']['title']; ?></div>
+          <?php endif; ?>
+
         </div>
       <?php $count++;
       endif;

@@ -10,6 +10,11 @@ if (theme_get_setting('front_zen_tabs')) {
   drupal_add_css( drupal_get_path('theme', 'front') .'/css/tabs.css', 'theme', 'screen');
 }
 
+function front_theme_registry_alter(&$registry) {
+  $path = drupal_get_path('theme', 'front');
+  array_unshift($registry['content_field']['theme paths'], $path);
+}
+
 /*
  *	 This function creates the body classes that are relative to each page
  *	
@@ -383,5 +388,11 @@ function front_id_safe($string) {
 function front_breadcrumb($breadcrumb) {
   if (!empty($breadcrumb)) {
     return '<div class="breadcrumb">'. implode(' » ', $breadcrumb) .'</div>';
+  }
+}
+
+function front_preprocess_content_field(&$variables) {
+  if ($variables['field']['widget']['module'] == 'imagefield') {
+    $variables['template_files'][] = 'cck_imagefield';
   }
 }

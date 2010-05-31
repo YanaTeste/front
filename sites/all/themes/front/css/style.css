@@ -224,6 +224,60 @@ margin-right: 20px;
 
 /**/
 
+/* --- Quicktabs navlist ---  */
+
+.quicktabs_main.quicktabs-style-navlist {
+background: #EBEBEB;
+padding: 30px;
+border-color: #ddd;
+width: 65%;
+}
+
+ul.quicktabs_tabs.quicktabs-style-navlist {
+width: 25%;
+}
+
+ul.quicktabs_tabs.quicktabs-style-navlist li, ul.quicktabs_tabs.quicktabs-style-navlist li.active {
+border-color: #ddd;
+padding: 20px;
+font-size: 15px;
+font-weight: bold;
+}
+ul.quicktabs_tabs.quicktabs-style-navlist li.active {
+background: #EBEBEB;
+}
+/*
+ul.quicktabs_tabs.quicktabs-style-navlist li.active {
+background: url(./images/navlist-li.png) 0 0 no-repeat;
+padding-bottom: 50px;
+}
+*/
+
+ul.quicktabs_tabs.quicktabs-style-navlist li a {
+text-align: left;
+}
+
+ul.quicktabs_tabs.quicktabs-style-navlist li.active a {
+color: #333;
+}
+
+.block-quicktabs .field-field-image{
+background: url(./images/doubleline-v.png) 0 0 repeat-y;
+padding: 0 0 0 30px;
+float: right;
+margin: 0 0 10px 30px;
+}
+
+.block-quicktabs .field-field-image img {
+-moz-box-shadow:0 1px 3px rgba(0,0,0,0.5);
+-webkit-box-shadow:0 1px 3px rgba(0,0,0,0.5);
+}
+
+.block-quicktabs .field-field-image img:hover {
+background: ;
+}
+/**/
+
 
 /* --- Person --- */
 

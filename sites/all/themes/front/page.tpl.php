@@ -20,21 +20,11 @@
         <span id="logo" class="grid-1 alpha"><?php print $linked_logo_img; ?></span>
       </div>
       <div id="nav">
-        <div id="main-menu"><?php print $main_menu_links; ?></div>
-        <div id="search-box"><?php print $search_box; ?></div>
-      </div>
-    </div>
-  </div>
-  <div id="status">
-    <div id="status-inner">
-      <?php print $breadcrumb; ?>
-      <?php if ($status): ?>
-        <div id="tweet">
-          <?php print $status; ?>
+        <div id="main-menu">
+          <?php print $main_menu_links; ?>
+          <?php print $navbar; ?>
         </div>
-      <?php endif; ?>
-      <div id="follow">
-        <a href="http://twitter.com/frontkom">F&oslash;lg oss p&aring; Twitter</a>
+        <div id="search-box"><?php print $search_box; ?></div>
       </div>
     </div>
   </div>

@@ -49,6 +49,10 @@ input.checkbox, input.radio {
 form.inline { line-height:3; }
 form.inline p { margin-bottom:0; }
 
+.webform-client-form .form-text {
+padding: 3px;
+}
+
 
 /* User login */
 #user-login, #user-pass, #user-register {

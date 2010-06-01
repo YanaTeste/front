@@ -6,9 +6,9 @@ package = "fb social"
 core = 6.x
 
 
-; Information added by drupal.org packaging script on 2010-05-07
-version = "6.x-1.0-alpha4"
+; Information added by drupal.org packaging script on 2010-05-29
+version = "6.x-1.0-beta1"
 core = "6.x"
 project = "fb_social"
-datestamp = "1273201813"
+datestamp = "1275143706"
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: fb_social.module,v 1.2.2.2 2010/05/04 13:55:42 ferdi Exp $
+// $Id: fb_social.module,v 1.2.2.3 2010/05/27 21:28:46 ferdi Exp $
 
 /**
  * @file
@@ -47,7 +47,7 @@ function fb_social_footer($main = 0) {
 
   $output = '<div id="fb-root"></div>';
   $output .=  
-  "<script>
+  "<script type=\"text/javascript\">
      window.fbAsyncInit = function() {
        FB.init({
          appId: " . drupal_to_js($appid) .",

@@ -21,12 +21,16 @@ body {
 
 h2,h3,h4,h5,h6 { font-weight: normal; color: #222; margin-bottom: 22px;}
 
-h1 { font-size: 36px; line-height: 44px;  }
+h1 { font-size: 36px; line-height: 44px; border-bottom: 1px solid #ccc; }
 h2 { font-size: 20px; line-height: 34px;}
 h3 { font-size: 16; line-height: 22px; }
 h4 { font-size: 15; line-height: 22px; }
 
-h1 a {
+.node-type-blog h1, .node-type-artikkel h1 {
+border: none;
+}
+
+h1 a, h2 a, h3 a {
 color: #222;
 }
 
@@ -88,7 +92,7 @@ font-size: 11px;
 margin-bottom: 10px;
 }
 
-.field-teasertext p {
+.field-teasertext p, .view-header p {
 font-size: 20px;
 }
 

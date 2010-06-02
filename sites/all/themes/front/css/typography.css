@@ -92,7 +92,7 @@ font-size: 11px;
 margin-bottom: 10px;
 }
 
-.field-teasertext p, .view-header p {
+.field-teasertext p, .view-header p, #views_slideshow_singleframe_main_front_main-default p {
 font-size: 20px;
 }
 

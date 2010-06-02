@@ -290,6 +290,50 @@ background: ;
 }
 /**/
 
+/* --- Views slideshow  --- */
+#views_slideshow_singleframe_main_front_main-default {
+height: 217px;
+overflow: hidden;
+}
+
+#views_slideshow_singleframe_main_front_main-default img {
+border: none;
+float: left;
+}
+
+#views_slideshow_singleframe_main_front_main-default .nd-sidebar-left .nd-region-middle {
+margin-left:35%;
+}
+.views-slideshow-controls-bottom {
+position: absolute;
+right: 10px;
+bottom: 10px;
+z-index: 999;
+}
+
+.views-slideshow-controls-bottom a{
+margin-right: 20px;
+display: inline-block;
+float: left;
+color: #999;
+font-weight: bold;
+border-bottom: 1px dotted #fff;
+}
+
+.views-slideshow-controls-bottom a:hover {
+color: inherit;
+border-bottom: 1px dotted #ddd;
+}
+
+.view-front-main { /* replace with name of view */
+position: relative;
+border-bottom: 1px solid #ccc;
+}
+
+/**/
+
+
+
 
 /* --- Person --- */
 
@@ -416,7 +460,7 @@ color: #efefef;
 /**/
 
 /* --- Blog  teasers --- */
-.not-front .buildmode-teaser .node-type-blog, .not-front .buildmode-teaser .node-type-artikkel {
+.buildmode-teaser .node-type-blog {
 padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
 }
@@ -455,6 +499,10 @@ width: 300px;
 margin:0;
 }
 
+.panel-col-bottom {
+padding-top: 20px;
+}
+
 /**/
 
 /* Other Panels and views grid stuff */
@@ -462,12 +510,14 @@ margin:0;
 .panel-3col-33-stacked .panel-pane, .view .grid-4 {
 padding-top: 15px;
 border-top: 1px solid #ccc;
+height: 280px;
 }
 
 .panel-col-top .panel-pane, .panel-col-bottom .panel-pane {
 padding: 0;
 border: 0;
 }
+
 
 #related-links {
 padding: 15px 20px;
@@ -484,10 +534,6 @@ margin: 0;
 /**/
 
 /* Front  */
-
-#front-panel .panel-col-top .inside {
-border-bottom: 1px solid #ccc;
-}
 
 .front .panel-3col-33-stacked .panel-pane {
 padding-top: 0;

@@ -4,9 +4,9 @@ core = 6.x
 dependencies[] = openlayers
 
 
-; Information added by drupal.org packaging script on 2010-04-06
-version = "6.x-1.0-alpha2"
+; Information added by drupal.org packaging script on 2010-06-08
+version = "6.x-1.0-alpha3"
 core = "6.x"
 project = "mapbox"
-datestamp = "1270561509"
+datestamp = "1276009810"
 

@@ -129,7 +129,7 @@ ul, ol      { margin: 0; padding-left: 0; }
 
 ul          { list-style-type: none; }
 .node .content ul    { margin-left: 24px; }
-.node .content li    { padding-left: 28px; background: url(./images/checkmark.png) 0 4px no-repeat;}
+.node .content li    { padding-left: 20px; background: url(./images/li-arrow.png) 0 50% no-repeat;}
 .node .content li li { padding-left: 0; background: none; list-style-type: disc;}
 
 ol          { list-style-type: decimal; }

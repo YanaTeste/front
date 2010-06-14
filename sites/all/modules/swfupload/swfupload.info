@@ -14,9 +14,9 @@ project = "swfupload"
 datestamp = "1231503450"
 
 
-; Information added by drupal.org packaging script on 2010-05-05
-version = "6.x-2.0-beta3"
+; Information added by drupal.org packaging script on 2010-06-09
+version = "6.x-2.0-beta5"
 core = "6.x"
 project = "swfupload"
-datestamp = "1273067411"
+datestamp = "1276069208"
 

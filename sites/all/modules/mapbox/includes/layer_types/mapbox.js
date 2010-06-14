@@ -14,17 +14,20 @@ OpenLayers.Layer.MapBox = OpenLayers.Class(OpenLayers.Layer.TMS, {
             urls; // Multiple server URLs with the same contents 
                   // but distributed for performance
         mapbox_logo = "<a class='mapbox-branding' href='http://mapbox.com'></a> | <a href='http://mapbox.com/tos'>Terms of Service</a>";
+        options.isBaseLayer = options.baselayer;
         options = OpenLayers.Util.extend({
             attribution: mapbox_logo,
-            maxExtent: new OpenLayers.Bounds(-20037508.34, -20037508.34, 20037508.34, 20037508.34),
+            maxExtent: new OpenLayers.Bounds(
+              -20037508, -20037508, 20037508, 20037508),
             maxResolution: 156543.0339,
             units: "m",
             type: "png",
             projection: "EPSG:900913",
             isBaseLayer: true,
             numZoomLevels: 19,
-            displayOutsideMaxExtent: true,
-            wrapDateLine: true
+            displayOutsideMaxExtent: false,
+            wrapDateLine: true,
+            buffer: 0
         }, options);
         urls = (options.urls) ? options.urls : [
             "http://a.tile.mapbox.com/",

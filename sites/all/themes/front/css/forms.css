@@ -53,6 +53,9 @@ form.inline p { margin-bottom:0; }
 padding: 3px;
 }
 
+#edit-keys {
+padding: 5px;
+}
 
 /* User login */
 #user-login, #user-pass, #user-register {

@@ -73,6 +73,16 @@ p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
 a:focus,
 a:hover, #footer #footer-top-inner a:hover     { color: #000; }
 a, li a.active      { color: #3A9CD5; text-decoration: none; }
+#footer li a {
+color: #ccc;
+display: block;
+}
+
+#footer li {
+font-size: 12px;
+line-height: 29px;
+border-top: 1px solid #333;
+}
 
 blockquote  {
 float: right;

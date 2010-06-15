@@ -1,0 +1,38 @@
+/* $Id$ */
+
+/**
+* Styling Semantic CCK Form
+*/
+
+fieldset.semantic-cck > .fieldset-wrapper .form-item {
+	float: left;
+	overflow: hidden;
+	width: 30%;
+}
+
+fieldset.semantic-cck > .fieldset-wrapper .form-item + .form-item {
+	margin-left: 5%;
+	width: 65%;
+}
+
+fieldset.semantic-cck > .fieldset-wrapper fieldset {
+	clear: both;
+}
+
+fieldset.semantic-cck .semantic-cck-multiple-values-fields,
+fieldset.semantic-cck .semantic-cck-multiple-values-field,
+fieldset.semantic-cck .semantic-cck-single-values-item {
+	background: transparent;
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+fieldset.semantic-cck #edit-global-use-singlevalue-settings-wrapper,
+fieldset.semantic-cck #edit-global-striping-classes-wrapper,
+fieldset.semantic-cck .semantic-cck-nth-settings .form-item {
+	margin-left: 0 !important;
+	width: 100%;
+}
+
+fieldset.semantic-cck .semantic-cck-single-values-settings .form-item {margin: 0;}

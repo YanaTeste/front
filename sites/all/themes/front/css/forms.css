@@ -57,6 +57,23 @@ padding: 3px;
 padding: 5px;
 }
 
+/* Mailchimp subscribe */
+#mc_embed_signup {
+background: #f9f9f9;
+}
+#mc_embed_signup br {
+display: none;
+}
+
+#mce-EMAIL {
+padding: 5px 8px;
+margin-bottom: 10px;
+}
+#mc-embedded-subscribe {
+position: relative;
+left: 130px;
+}
+
 /* User login */
 #user-login, #user-pass, #user-register {
 background: #f5f5f5;

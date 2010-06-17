@@ -11,6 +11,7 @@
 <body class="<?php print $body_classes; ?>">
   <div id="header-top">
     <div id="header-top-inner">
+      <div id="search-box"><?php print $search_box; ?></div>
       <?php print $secondary_menu_links; ?>
     </div>
   </div>
@@ -22,12 +23,15 @@
       <div id="nav">
         <div id="main-menu">
           <?php print $main_menu_links; ?>
-          <?php print $navbar; ?>
         </div>
-        <div id="search-box"><?php print $search_box; ?></div>
       </div>
     </div>
   </div>
+  <?php if ($navbar): ?>  
+    <div id="nav2">
+      <?php print $navbar; ?>
+    </div>
+  <?php endif; ?>
   <div id="page">
     <div id="page-inner" class="container-12 clear-block">
       <?php if ($header): ?>

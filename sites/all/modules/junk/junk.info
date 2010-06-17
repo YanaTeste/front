@@ -1,0 +1,13 @@
+; $Id: junk.info,v 1.1 2010/01/28 13:37:45 alirasirin Exp $ 
+name = Junk
+description = Enables putting nodes to junk before deleting permanently.
+package = Open Class
+core = 6.x
+version = "6.x-1.0"
+dependencies[] = page_manager
+; Information added by drupal.org packaging script on 2010-04-21
+version = "6.x-1.2"
+core = "6.x"
+project = "junk"
+datestamp = "1271843409"
+

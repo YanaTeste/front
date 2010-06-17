@@ -194,6 +194,7 @@ margin-right: 20px;
 /* Search box*/
 #search-box {
 float: right;
+margin: 6px 0 0 10px;
 }
 
 #search-theme-form {
@@ -212,12 +213,12 @@ outline: none;
 
 #search-box input[type="text"] {
 border: none;
-margin-left: 8px;
+margin: 0 0 0 8px;
 }
 
 #search-box .form-submit {
 float: right;
-margin: 5px 3px 0 0;
+margin: 3px 3px 0 0;
 }
 
 /**/

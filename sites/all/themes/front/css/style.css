@@ -584,25 +584,25 @@ margin: 0;
 /* Front  */
 
 /*Slideshow front*/
-#views_slideshow_singleframe_main_front_main-default .field-title {
+.view-front-main .field-title {
 position: absolute;
 top: 30px;
 left: 300px;
+width: 610px;
 }
-
-#views_slideshow_singleframe_main_front_main-default h1 a{
+.view-front-main h1 a{
 color: #ff3366;
 border-bottom: 1px dotted transparent;
 }
-#views_slideshow_singleframe_main_front_main-default h1 a:hover{
+.view-front-main h1 a:hover{
 color: #ff3366;
 border-bottom: 1px dotted #ddd;
 }
-
-#views_slideshow_singleframe_main_front_main-default .field-teasertext {
+.view-front-main .field-teasertext {
 position: absolute;
 top: 86px;
 left: 300px;
+width: 610px;
 }
 
 /**/

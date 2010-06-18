@@ -31,7 +31,7 @@ font-family:"Lucida Grande",arial,sans-serif;
 font-size:12px;
 line-height: 12px;
 margin:0;
-padding:12px 15px;
+padding:12px 9px;
 text-decoration:none;
 text-shadow:1px 1px 0.5px #333;
 }
@@ -111,23 +111,31 @@ border-bottom: 1px solid #ccc;
 position: relative;
 }
 #nav2 li {
-margin-right: 18px;
+margin-right: 10px;
+padding-right: 12px;
+background: url(./images/nav2-li.png) right 0 no-repeat;
 }
+#nav2 li.last {
+background: none;
+}
+
 #nav2 a {
 color: #555;
 }
 
-#nav2 .active a {
+#nav2 .active a, #nav2 a:hover {
 color: #3A9CD5;
 }
 
 #block-menu_block-3 {
-margin: 0 0 0 321px;
-width: 560px;
+margin: 0 auto;
+width: 960px;
 }
-
+#block-menu_block-3 .block-inner {
+margin: 0 0 0 25%;
+}
 .block-navbar .block-inner{
-padding: 3px;
+padding: 5px;
 overflow: auto;
 width: 535px;
 }
@@ -416,6 +424,7 @@ padding-top: 24px;
 background: url(./images/page-bg.gif) center 0 no-repeat;
 margin: 0 auto;
 width: 1000px;
+margin-top: 12px;
 }
 
 .front #page {
@@ -595,11 +604,29 @@ border-right: 1px solid #ccc;
 #quicktabs-3 .content li {
 overflow: auto;
 border-bottom: 1px solid #e5e5e5;
-padding: 20px 5px;
+padding: 20px 5px 20px 100px;
 margin-right: 20px;
+background: url(./images/sprites_1a.png) 0 26px no-repeat;
+}
+#quicktabs-3 li.tjenester {
+}
+#quicktabs-3 li.losninger {
+background-position: 0 -86px;
+}
+#quicktabs-3 li.teknologi {
+background-position: 0 -212px;
+}
+#quicktabs-3 li.magento {
+background-position: 0 -348px;
+}
+#quicktabs-3 li.drupal {
+background-position: 0 -472px;
+}
+#quicktabs-3 li.open-atrium {
+background-position: 0 -212px;
 }
 #quicktabs-3 .content li:hover {
-background: #D0DEFF;
+background-color: #ebffff;
 }
 #quicktabs-3 img {
 float: left;
@@ -1104,6 +1131,12 @@ background-color:#872300;
 background-color:#A9014B;
 }
 .magenta.button:hover {
+background-color:#630030;
+}
+.pink.button {
+background-color:#ff3399;
+}
+.pink.button:hover {
 background-color:#630030;
 }
 .orange.button {

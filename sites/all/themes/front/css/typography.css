@@ -78,12 +78,6 @@ color: #ccc;
 display: block;
 }
 
-#footer li {
-font-size: 12px;
-line-height: 29px;
-border-top: 1px solid #333;
-}
-
 blockquote  {
 float: right;
 width: 240px;

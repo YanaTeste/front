@@ -24,6 +24,7 @@
         <div id="main-menu">
           <?php print $main_menu_links; ?>
         </div>
+        <div id="twitter-follow"><a href="http://twitter.com/frontkom">F&oslash;lg oss p&aring; Twitter</a></div>
       </div>
     </div>
   </div>

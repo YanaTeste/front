@@ -1011,7 +1011,7 @@ width: 980px;
 margin: 0 auto;
 }
 
-.block-footer {
+.block-footer, #footer .context-block {
 display: inline-block;
 width: 220px;
 float: left;
@@ -1022,7 +1022,7 @@ margin-right: 20px;
 margin-right: 0; /* last one */
 }
 
-block-views-blog-block_2 {
+#block-views-blog-block_2 {
 width: 460px; /*make block go over six columns*/
 }
 

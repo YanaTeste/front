@@ -333,6 +333,7 @@ background: ;
 #views_slideshow_singleframe_main_front_main-default {
 height: 217px;
 overflow: hidden;
+position: relative;
 }
 
 #views_slideshow_singleframe_main_front_main-default img {
@@ -581,6 +582,30 @@ margin: 0;
 /**/
 
 /* Front  */
+
+/*Slideshow front*/
+#views_slideshow_singleframe_main_front_main-default .field-title {
+position: absolute;
+top: 30px;
+left: 300px;
+}
+
+#views_slideshow_singleframe_main_front_main-default h1 a{
+color: #ff3366;
+border-bottom: 1px dotted transparent;
+}
+#views_slideshow_singleframe_main_front_main-default h1 a:hover{
+color: #ff3366;
+border-bottom: 1px dotted #ddd;
+}
+
+#views_slideshow_singleframe_main_front_main-default .field-teasertext {
+position: absolute;
+top: 86px;
+left: 300px;
+}
+
+/**/
 
 .front .panel-3col-33-stacked .panel-col-first {
 width: 620px;

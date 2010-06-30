@@ -1,5 +1,5 @@
 /* Display none */
-.field-field-slider-content h2, .not-front #tweet, .front h1#page-title, .buildmode-teaser .image-description  {
+.field-field-slider-content h2, .not-front #tweet, .front h1#page-title, .buildmode-teaser .image-description, .section-publisering h1#page-title {
 display: none;
 }
 
@@ -551,12 +551,16 @@ width: 460px;
 margin-right: 20px;
 }
 
+.panel-2col-stacked .panel-col-first {
+width: 620px;
+}
+
 .panel-3col-33-stacked .panel-col, .panel-3col-33-stacked .panel-col-first {
 width: 300px;
 margin-right: 20px;
 }
 
-.panel-3col-33-stacked .panel-col-last {
+.panel-3col-33-stacked .panel-col-last, .panel-2col-stacked .panel-col-last {
 margin-right: 0;
 width: 300px;
 }
@@ -595,6 +599,33 @@ margin: 0;
 }
 
 /**/
+
+
+/* Publisering */
+.panel-2col-stacked .panel-col-first .article{
+padding: 20px 0;
+border-bottom: 1px solid #ccc;
+}
+
+.panel-2col-stacked .panel-col-first .buildmode-teaser {
+border-left: 16px solid #ccc;
+padding-left: 40px;
+}
+
+.panel-2col-stacked .panel-col-first .buildmode-teaser:hover {
+border-left: 16px solid #ff3399;
+}
+
+/**/
+
+/* Tjenester */
+.view-tjenester h2 {
+padding-left: 50px;
+background: url(./images/sprites_1a.png) 0 -212px no-repeat;
+}
+
+/**/
+
 
 /* Front  */
 
@@ -1022,7 +1053,7 @@ margin-right: 20px;
 margin-right: 0; /* last one */
 }
 
-#block-views-blog-block_2 {
+#block-views-blog-block_2, #footer #context-block-views-blog-block_2 { 
 width: 460px; /*make block go over six columns*/
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: filefield_sources.module,v 1.6 2010/02/26 12:39:35 quicksketch Exp $
+// $Id: filefield_sources.module,v 1.7 2010/03/13 01:00:59 quicksketch Exp $
 
 /**
  * @file
@@ -87,7 +87,7 @@ function filefield_sources_widget_settings($widget) {
     'filefield_sources',
   );
   $params = array('save', $widget);
-  $settings += filefield_sources_invoke_all('settings', $params);
+  $settings = array_merge($settings, filefield_sources_invoke_all('settings', $params));
   return $settings;
 }
 

@@ -1,5 +1,5 @@
 <?php
-// $Id: theme_ui.inc,v 1.1.2.1 2010/04/24 19:04:04 swentel Exp $
+// $Id: theme_ui.inc,v 1.1.2.12 2010/06/30 10:28:00 swentel Exp $
 
 /**
  * @file
@@ -12,6 +12,15 @@
 function template_preprocess_ds_display_overview_form(&$vars) {
   $form = &$vars['form'];
   $build_mode = $form['#build_mode'];
+
+  // Synced or not?
+  $vars['synced'] = '';
+  if ($form['#synced']) {
+    $vars['synced'] = $form['#synced'];
+    $vars['rows'] = array();
+    $vars['form'] = array();
+    return;
+  }
 
   // Sort fields.
   $order = array();
@@ -50,7 +59,13 @@ function template_preprocess_ds_display_overview_form(&$vars) {
 
       // Render the display fields
       if ($child == $build_mode) {
+
+        $hide_label_position = FALSE;
+
         $row->{$child}->indentation = theme('indentation', $element[$child]['#depth']);
+        if (empty($element[$child]['css-class']['#options'])) {
+          $element[$child]['css-class']['#access'] = FALSE;
+        }
         $row->{$child}->class = drupal_render($element[$child]['css-class']);
 
         // Parent & Field id.
@@ -64,18 +79,27 @@ function template_preprocess_ds_display_overview_form(&$vars) {
           if (substr($element[$child]['format']['#default_value'], 0, 17) == 'ds_group_fieldset'
             || substr($element[$child]['format']['#default_value'], 0, 7) == 'ds_tabs'
             ) {
-            $element[$child]['label']['format']['#attributes']['class'] = 'ds-hidden';
+            $hide_label_position = TRUE;
           }
         }
+
+        // Hide region.
         if (!empty($element[$child]['parent_id']['#default_value'])) {
           $element[$child]['region']['#attributes']['class'] .= ' ds-hidden';
         }
 
+        // Other fields.
         $row->{$child}->region = drupal_render($element[$child]['region']);
         $row->{$child}->format = drupal_render($element[$child]['format']);
         $row->{$child}->label = drupal_render($element[$child]['label']);
-        $row->{$child}->label_edit = drupal_render($element[$child]['label_edit']);
         $row->{$child}->label_value = drupal_render($element[$child]['label_value']);
+
+        if ($hide_label_position) {
+          $row->{$child}->label = str_replace("form-item", "form-item ds-hidden", $row->{$child}->label);
+        }
+
+        // Summary.
+        $row->{$child}->summary = drupal_render($element[$child]['summary']);
       }
       // Render the rest of the fields
       else {
@@ -130,6 +154,26 @@ function template_preprocess_ds_display_overview_form(&$vars) {
       $vars['plugins_tabs'][$key] = $title;
       $vars['plugins_content'][$key] = drupal_render($form[$key]);
     }
+  }
+
+  // Field classes.
+  $vars['show_field_style'] = (isset($form['#all_styles']['fields'])) ? TRUE : FALSE;
+
+  // Region classes.
+  $vars['region_classes'] = array();
+  $vars['region_classes_summary'] = array();
+  foreach($form['#regions'] as $key => $region_name) {
+    if (empty($form['region_styles_'. $key]['#options'])) {
+      $form['region_styles_'. $key]['#access'] = FALSE;
+    }
+    $vars['region_classes'][$key] = drupal_render($form['region_styles_'. $key]);
+    if (!empty($form['region_styles_'. $key .'_summary']['#value'])) {
+      $summary = '<span class="style-info">Styles: '. drupal_render($form['region_styles_'. $key .'_summary']) .'</span>';
+    }
+    else {
+      $summary = '<span class="style-info"></span>';
+    }
+    $vars['region_classes_summary'][$key] = $summary;
   }
 
   $vars['rows'] = $rows;
@@ -201,6 +245,8 @@ function template_preprocess_ds_display_overview_views_form(&$vars) {
             $element[$child]['label']['format']['#attributes']['class'] = 'ds-hidden';
           }
         }
+
+        // Hide region.
         if (!empty($element[$child]['parent_id']['#default_value'])) {
           $element[$child]['region']['#attributes']['class'] .= ' ds-hidden';
         }

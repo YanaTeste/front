@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.install,v 1.1.2.4.2.1 2010/02/22 20:52:35 swentel Exp $
+// $Id: nd.install,v 1.1.2.4.2.4 2010/07/01 21:01:02 swentel Exp $
 
 /**
  * @file
@@ -35,5 +35,15 @@ function nd_uninstall() {
  * run update.php because new theming functions got introduced.
  */
 function nd_update_1() {
+  return array();
+}
+
+/**
+ * Implementation of hook_update_N().
+ * We set the nd_use_date_api to FALSE because otherwhise people
+ * will lose the post date PHP field if they use it.
+ */
+function nd_update_2() {
+  variable_set('nd_use_date_api', FALSE);
   return array();
 }

@@ -1,5 +1,5 @@
 <?php
-// $Id: ds_cssoverrider.inc,v 1.1.2.7 2010/02/23 00:06:12 swentel Exp $
+// $Id: ds_cssoverrider.inc,v 1.1.2.8 2010/05/28 23:44:56 swentel Exp $
 
 /**
  * @file
@@ -77,7 +77,7 @@ class ds_cssoverrider {
       $inline = ds_default_value($display_settings, $display->build_mode, 'cssoverrider', 'inline', $region_name, '');
 
       if (!empty($classes)) {
-        $display->themed_regions[$region_name]['extra_class'] = ' '. $classes;
+        $display->themed_regions[$region_name]['extra_class'] .= ' '. $classes;
       }
 
       if (!empty($inline)) {

@@ -1,9 +1,23 @@
-/* $Id: ds.css,v 1.1.2.13 2010/03/15 20:59:58 swentel Exp $ */
+/* $Id: ds.css,v 1.1.2.23 2010/06/15 08:17:51 swentel Exp $ */
 
 /* Display fields overview screen. */
 
+#fields td {
+	vertical-align: top;
+  white-space: nowrap;
+}
+
+.settings-tab-row {
+	margin: 0.5em 0;
+	line-height: 2.5em;
+}
+
 #fields td.region {
   font-weight: bold;
+}
+
+#fields td.region a {
+  font-weight: normal;
 }
 
 #fields tr.region-message {
@@ -20,6 +34,30 @@
   margin-top: 4px;
   margin-bottom: 4px;
   padding: 3px;
+}
+
+.ds-label-label {
+	float: left;
+	margin-right: 15px;
+}
+
+.ds-label-title {
+	float: left;
+}
+
+.ds-label-title .form-text {
+  width: 130px;
+}
+
+.settings-tab label {
+  display: block;
+  float: left;
+  margin-right: 0.3em;
+  width: 100px;
+}
+
+.region .description, .settings-tab, .ds-normal {
+  font-weight: normal;
 }
 
 tr.region-css-disabled  {

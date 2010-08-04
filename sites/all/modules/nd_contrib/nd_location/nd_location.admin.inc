@@ -1,5 +1,5 @@
 <?php
-// $Id: nd_location.admin.inc,v 1.1.2.1 2010/03/24 12:44:30 swentel Exp $
+// $Id: nd_location.admin.inc,v 1.1.2.3 2010/06/08 00:21:18 swentel Exp $
 
 /**
  * @file
@@ -11,9 +11,9 @@
  */
 function nd_location_settings() {
   $output = '';
-  $type = arg(4);
-  $action = arg(5);
-  $value = arg(6);
+  $type = arg(5);
+  $action = arg(6);
+  $value = arg(7);
   $location_fields = variable_get('nd_location_fields', array());
   $location_formatters = variable_get('nd_location_formatters', array());
 
@@ -53,7 +53,7 @@ function nd_location_settings() {
         $row[] = check_plain($field['name']);
         $row[] = check_plain($field['type']);
         $row[] = $key;
-        $row[] = l(t('Edit'), 'admin/ds/nd/nd_location/field/edit/'. $key) .' - '. l(t('Delete'), 'admin/ds/nd/nd_location/field/delete/'. $key);
+        $row[] = l(t('Edit'), 'admin/build/ds/nd/nd_location/field/edit/'. $key) .' - '. l(t('Delete'), 'admin/build/ds/nd/nd_location/field/delete/'. $key);
         $rows[] = $row;
       }
 
@@ -82,7 +82,7 @@ function nd_location_settings() {
         $row[] = check_plain($field['height']);
         $row[] = check_plain($field['zoom']);
         $row[] = $key;
-        $row[] = l(t('Edit'), 'admin/ds/nd/nd_location/formatter/edit/'. $key) .' - '. l(t('Delete'), 'admin/ds/nd/nd_location/formatter/delete/'. $key);
+        $row[] = l(t('Edit'), 'admin/build/ds/nd/nd_location/formatter/edit/'. $key) .' - '. l(t('Delete'), 'admin/build/ds/nd/nd_location/formatter/delete/'. $key);
         $rows[] = $row;
       }
 
@@ -179,7 +179,7 @@ function nd_location_field_form_submit($form, &$form_state) {
   variable_set('nd_location_fields', $location_fields);
 
   drupal_set_message(t('Location field %loc_field has been saved.', array('%loc_field' => $form_state['values']['key'])));
-  $form_state['redirect'] = 'admin/ds/nd/nd_location';
+  $form_state['redirect'] = 'admin/build/ds/nd/nd_location';
 }
 
 /**
@@ -203,7 +203,7 @@ function nd_location_field_delete_form($form_state, $location_field) {
   $form['buttons']['cancel'] = array(
     '#suffix' => '</div>',
     '#type' => 'markup',
-    '#value' => l('cancel', 'admin/ds/nd/nd_location'),
+    '#value' => l('cancel', 'admin/build/ds/nd/nd_location'),
   );
 
   return $form;
@@ -218,7 +218,7 @@ function nd_location_field_delete_form_submit($form, &$form_state) {
   variable_set('nd_location_fields', $location_fields);
 
   drupal_set_message(t('Custom location field %location_field has been removed.', array('%location_field' => $form_state['values']['display'])));
-  $form_state['redirect'] = 'admin/ds/nd/nd_location';
+  $form_state['redirect'] = 'admin/build/ds/nd/nd_location';
 }
 
 /**
@@ -322,9 +322,10 @@ function nd_location_formatter_form_submit($form, &$form_state) {
     'zoom' => $form_state['values']['zoom'],
   );
   variable_set('nd_location_formatters', $location_formatters);
+  drupal_rebuild_theme_registry();
 
   drupal_set_message(t('Location field %loc_field has been saved.', array('%loc_field' => $form_state['values']['key'])));
-  $form_state['redirect'] = 'admin/ds/nd/nd_location';
+  $form_state['redirect'] = 'admin/build/ds/nd/nd_location';
 }
 
 /**
@@ -348,7 +349,7 @@ function nd_location_formatter_delete_form($form_state, $location_formatter) {
   $form['buttons']['cancel'] = array(
     '#suffix' => '</div>',
     '#type' => 'markup',
-    '#value' => l('cancel', 'admin/ds/nd/nd_location'),
+    '#value' => l('cancel', 'admin/build/ds/nd/nd_location'),
   );
 
   return $form;
@@ -361,7 +362,8 @@ function nd_location_formatter_delete_form_submit($form, &$form_state) {
   $location_formatters = variable_get('nd_location_formatters', array());
   unset($location_formatters[$form_state['values']['display']]);
   variable_set('nd_location_formatters', $location_formatters);
+  drupal_rebuild_theme_registry();
 
   drupal_set_message(t('Custom location formatter %$location_formatter has been removed.', array('%$location_formatter' => $form_state['values']['display'])));
-  $form_state['redirect'] = 'admin/ds/nd/nd_location';
+  $form_state['redirect'] = 'admin/build/ds/nd/nd_location';
 }

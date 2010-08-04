@@ -1,4 +1,13 @@
 -------------------------------------------------------------------------------------
+6.x-2.3 2010-07-18
+-------------------------------------------------------------------------------------
+- #844342 by swentel: use taxonomy_term_path() to get the path of the term.
+- #808508 by swentel: add custom build modes also.
+- #804478 by stijndm: Apply date formatting on post date.
+- #810352 by swentel: don't use taxonomy_get_vocabularies() for vocabularies.
+- #816504 by swentel: support for other book content types.
+
+-------------------------------------------------------------------------------------
 6.x-2.2 2010-05-07
 -------------------------------------------------------------------------------------
 - #651028 by swentel: Integrate with Apache Solr Views
@@ -17,4 +26,4 @@
 6.x-2.0 2010-02-04
 -------------------------------------------------------------------------------------
 
-/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.60.2.12 2010/05/07 11:34:03 swentel Exp $ */
+/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.60.2.18 2010/07/18 11:21:14 swentel Exp $ */

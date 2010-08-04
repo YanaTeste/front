@@ -1,5 +1,5 @@
 <?php
-// $Id: ds_ui.module,v 1.1.2.2 2010/04/26 14:32:26 swentel Exp $
+// $Id: ds_ui.module,v 1.1.2.3 2010/06/08 00:22:20 swentel Exp $
 
 /**
  * @file
@@ -55,7 +55,7 @@ function ds_ui_theme_registry_alter(&$theme_registry) {
  */
 function ds_ui_preprocess_page(&$vars) {
   // Only fire on page examples page.
-  if (arg(3) == 'fields-examples') {
+  if (arg(4) == 'fields-examples') {
     $vars['template_files'][] = 'ds-page-fieldexamples';
   }
 }

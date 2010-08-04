@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.display.inc,v 1.1.2.55 2010/04/27 19:53:35 swentel Exp $
+// $Id: ds.display.inc,v 1.1.2.79 2010/06/30 10:27:59 swentel Exp $
 
 /**
  * @file
@@ -36,7 +36,8 @@ function ds_layout_overview() {
         $exclude_build_modes = variable_get($module .'_buildmodes_exclude', array());
 
         if (!empty($build_modes)) {
-          $rows[] = array(array('data' => drupal_ucfirst($otype->name), 'colspan' => '3', 'class' => 'ds-row-title'));
+
+          $build_mode_rows = array();
           foreach ($build_modes as $bkey => $build_mode) {
 
             $excluded = (isset($exclude_build_modes[$type_name][$bkey]) && $exclude_build_modes[$type_name][$bkey] == TRUE) ? TRUE : FALSE;
@@ -52,12 +53,18 @@ function ds_layout_overview() {
             $row[] = $build_mode['title'];
             $row[] = ds_settings_status($settings_status);
 
-            $operations = l('Edit', 'admin/ds/layout/'. $type_url_str .'/'. $bkey);
+            $operations = l('Edit', 'admin/build/ds/layout/'. $type_url_str .'/'. $bkey);
             if (user_access('revert overridden settings') && $settings_status == DS_SETTINGS_OVERRIDDEN) {
-              $operations .= ' - '. l('Revert', 'admin/ds/tools/revert/'. $module .'/'. $type_url_str .'/'. $bkey);
+              $operations .= ' - '. l('Revert', 'admin/build/ds/tools/revert/'. $module .'/'. $type_url_str .'/'. $bkey);
             }
             $row[] = $operations;
-            $rows[] = array('data' => $row, 'class' => 'ds-row-type');
+            $build_mode_rows[] = array('data' => $row, 'class' => 'ds-row-type');
+          }
+
+          // Any build modes found ?
+          if (!empty($build_mode_rows)) {
+            $rows[] = array(array('data' => drupal_ucfirst($otype->name), 'colspan' => '3', 'class' => 'ds-row-title'));
+            $rows = array_merge($rows, $build_mode_rows);
           }
         }
       }
@@ -131,13 +138,21 @@ function ds_settings_status($status) {
 /**
  * Menu callback, show styles form.
  */
-function ds_styles(&$form_state) {
+function ds_styles_form(&$form_state) {
   $form = array();
 
   $form['ds_styles'] = array(
     '#type' => 'textarea',
+    '#title' => t('Styles for fields'),
     '#default_value' => variable_get('ds_styles', ''),
     '#description' => t('Configure styles which you can add to fields in the overview screen. Add multiple styles line per line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>')
+  );
+
+  $form['ds_styles_regions'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Styles for regions'),
+    '#default_value' => variable_get('ds_styles_regions', ''),
+    '#description' => t('Configure styles which you can add to regions in the overview screen. Add multiple styles line per line.<br />If you want to have a friendly name, separate class and friendly name by |, but this is not required. eg:<br /><em>class_name_1<br />class_name_2|Friendly name<br />class_name_3</em>')
   );
 
   return system_settings_form($form);
@@ -159,7 +174,21 @@ function ds_display_overview_form(&$form_state, $type, $build_mode = 'full', $mo
   $display_settings = variable_get($module .'_display_settings_'. $type, array());
   $settings_status = isset($display_settings[$build_mode]['status']) ? $display_settings[$build_mode]['status'] : DS_SETTINGS_UI;
 
+  // See if this build mode isn't synced from another build mode.
+  $synced = FALSE;
+  foreach ($display_settings as $build_mode_key => $values) {
+    if (isset($values['sync'])) {
+      foreach ($values['sync'] as $sync => $sync_value) {
+        if ($sync == $build_mode) {
+          $synced = $build_mode_key;
+          break;
+        }
+      }
+    }
+  }
+
   $form = array(
+    '#synced' => FALSE,
     '#tree' => TRUE,
     '#module' => $module,
     '#type_name' => $type,
@@ -170,6 +199,43 @@ function ds_display_overview_form(&$form_state, $type, $build_mode = 'full', $mo
     '#status' => $settings_status,
     '#regions' => ds_regions(variable_get('ds_build_mode_'. $build_mode, 'all')),
   );
+
+  if ($synced) {
+    $all_build_modes = ds_get_build_modes('nd');
+    $form['#synced'] = t('You can not edit this buildmode right now because it is synchronised with !bm.', array('!bm' => l($all_build_modes[$synced]['title'], 'admin/build/ds/layout/'. $type .'/'. $synced)));
+  }
+
+  // Build style selects for region classes.
+  $region_style_options = ds_styles('regions');
+  $region_styles = ds_default_value($display_settings, $build_mode, 'region_styles');
+  foreach ($form['#regions'] as $key => $region_name) {
+    if ($key != 'disabled') {
+      $default_value = isset($region_styles[$key]) ? explode(' ', $region_styles[$key]) : array();
+      $form['region_styles_'. $key] = array(
+        '#type' => 'select',
+        '#title' => t('Region style'),
+        '#multiple' => TRUE,
+        '#options' => $region_style_options,
+        '#default_value' => $default_value,
+        '#description' => t('Select styles to apply to this region.'),
+        '#attributes' => array(
+          'class' => 'ds-style-change',
+        ),
+      );
+      $human_names = array();
+      if (!empty($default_value)) {
+        foreach ($default_value as $dv_key => $dv_value) {
+          if (!empty($dv_value)) {
+            $human_names[] = $region_style_options[$dv_value];
+          }
+        }
+      }
+      $form['region_styles_'. $key .'_summary'] = array(
+        '#type' => 'markup',
+        '#value' => implode(', ', $human_names),
+      );
+    }
+  }
 
   // Extra info.
   if (isset($api_info['extra']) && !empty($api_info['extra'])) {
@@ -219,15 +285,18 @@ function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
     $fields = ds_get_fields($module, $type, $build_mode, $extra, TRUE);
   }
 
-  // Break form build in case no fields
+  // Break form build in case no fields.
   if (empty($fields)) {
     return;
   }
 
+  $field_style_options = ds_styles('fields');
   $default_properties = ds_field_default_form_properties($build_mode);
   $default = (!empty($form[key($fields)])) ? $form[key($fields)] : $default_properties;
 
   foreach ($fields as $field => $value) {
+
+    $summary = '';
 
     // Add form variable to let the template system know about the fields.
     $form['#fields'][] = $field;
@@ -240,6 +309,9 @@ function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
 
     // Field key, parent key and depth.
     $parent = ds_default_value($display_settings, $build_mode, 'fields', $field, 'parent', '');
+    if (!isset($fields[$parent])) {
+      $parent = '';
+    }
     $form[$field][$build_mode]['#depth'] = (!empty($parent)) ? 1 : 0;
     $form[$field][$build_mode]['parent_id'] = array(
       '#type' => 'hidden',
@@ -255,19 +327,21 @@ function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
     );
 
     // Populate/override the fields with the saved values
-    $form[$field][$build_mode]['label']['format']['#default_value'] = isset($value['display_settings'][$build_mode]['label']['format']) ? $value['display_settings'][$build_mode]['label']['format'] : ds_default_value($display_settings, $build_mode, 'fields', $field, 'labelformat', DS_DEFAULT_LABEL_FORMAT);
+    $label_format = isset($value['display_settings'][$build_mode]['label']['format']) ? $value['display_settings'][$build_mode]['label']['format'] : ds_default_value($display_settings, $build_mode, 'fields', $field, 'labelformat', DS_DEFAULT_LABEL_FORMAT);
+    $form[$field][$build_mode]['label']['format']['#default_value'] = $label_format;
+    $summary .= '<span class="label-info">Label: '. $label_format .'</span>';
 
     // Labels.
     $label_value = ds_default_value($display_settings, $build_mode, 'fields', $field, 'label_value', '');
     $form[$field][$build_mode]['label_value'] = array(
-      '#type' => 'hidden',
+      '#type' => 'textfield',
+      '#title' => t('Label text'),
       '#default_value' => $label_value,
+      '#description' => (!empty($label_value)) ? t('The original value was: @label', array('@label' => $value['title'])) : t('Change the default label text, which will be translatable.'),
     );
-    $form[$field][$build_mode]['label_edit']['#value'] = l(t('Edit'), $base_url . request_uri(), array(
-      'attributes' => array('onclick' => 'javascript: Drupal.DisplaySuite.changeLabel(this, "'. $label_value .'"); return false;')
-    ));
 
-    $form[$field]['human_name']['#value'] = !empty($label_value) ? $label_value : (isset($value['label']) ? $value['label'] : $value['title']);
+    // Label.
+    $form[$field]['human_name']['#value'] = !empty($label_value) ? check_plain($label_value) : (isset($value['label']) ? $value['label'] : $value['title']);
 
     // Weight.
     $form[$field]['weight']['#default_value'] = ds_default_value($display_settings, $build_mode, 'fields', $field, 'weight', DS_DEFAULT_WEIGHT);
@@ -281,12 +355,36 @@ function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
     }
     $form[$field][$build_mode]['format']['#default_value'] = $format;
     $form[$field][$build_mode]['format']['#access'] = (count($form[$field][$build_mode]['format']['#options']) == 0) ? FALSE : TRUE;
+    if (!empty($format))
+    $summary .= ' - <span class="format-info">Format: '. $form[$field][$build_mode]['format']['#options'][$format] .'</span>';
 
-    // CSS class.
-    $form[$field][$build_mode]['css-class']['#default_value'] = ds_default_value($display_settings, $build_mode, 'fields', $field, 'css-class', '');
+    // Class.
+    $class = ds_default_value($display_settings, $build_mode, 'fields', $field, 'css-class', NULL);
+    $class_values = explode(' ', $class);
+    $human_names = array();
+    if (!empty($class_values)) {
+      foreach ($class_values as $dv_key => $dv_value) {
+        if (!empty($dv_value)) {
+          $human_names[] = $field_style_options[$dv_value];
+        }
+      }
+    }
+    $form[$field][$build_mode]['css-class']['#default_value'] = explode(' ', $class);
+    if (!empty($human_names)) {
+      $summary .= '<span class="style-info"> - Styles: '. implode(', ', $human_names) .'</span>';
+    }
+    else {
+      $summary .= '<span class="style-info"></span>';
+    }
 
-    // Region
+    // Region.
     $form[$field][$build_mode]['region']['#default_value'] = ds_default_value($display_settings, $build_mode, 'fields', $field, 'region', DS_DEFAULT_REGION);
+
+    // Settings summary.
+    $form[$field][$build_mode]['summary'] = array(
+      '#type' => 'markup',
+      '#value' => $summary,
+    );
   }
 }
 
@@ -300,6 +398,8 @@ function ds_fields_display_form(&$form, $display_settings, $fields = array()) {
  * @param string $type_name The name of the type.
  */
 function ds_sync_copy_form(&$form, $display_settings, $current_build_mode, $module, $type_name) {
+  $copy = array();
+  $sync = array();
   $build_modes = array();
   $all_build_modes = ds_get_build_modes($module);
   $exclude_build_modes = variable_get($module .'_buildmodes_exclude', array());
@@ -309,29 +409,35 @@ function ds_sync_copy_form(&$form, $display_settings, $current_build_mode, $modu
     if ($excluded || $key == $current_build_mode) {
       continue;
     }
-    $build_modes[$key] = $build_mode['title'];
+    $copy[$key] = $build_mode['title'];
+    $sync[$key] = t('Keep synchronized');
   }
 
-  if (!empty($build_modes)) {
+  if (!empty($copy)) {
     $form['sync_copy'] = array(
       '#type' => 'fieldset',
       '#description' => t('Copy once or always sync display and plugin settings with other build modes. Syncing options are not saved bi-directional.<br />Watch out when copying field settings to another build mode which has a different set of regions as you can loose some fields for display. A typical example is RSS which only has one region (middle).'),
     );
 
+    $form['sync_copy']['info'] = array(
+      '#type' => 'item',
+      '#value' => t('Copy "!current" to', array('!current' => $all_build_modes[$current_build_mode]['title'])),
+      '#prefix' => '<div style="float: left; margin-right: 10px;">',
+      '#suffix' => '</div>',
+    );
+
     $form['sync_copy']['copy'] = array(
-      '#title' => t('Copy'),
       '#type' => 'checkboxes',
-      '#options' => $build_modes,
-      '#prefix' => '<div style="float: left; margin-right: 30px;">',
+      '#options' => $copy,
+      '#prefix' => '<div style="float: left; margin-right: 30px; margin-top: 10px;">',
       '#suffix' => '</div>',
     );
 
     $form['sync_copy']['sync'] = array(
-      '#title' => t('Synchronize'),
       '#type' => 'checkboxes',
-      '#options' => $build_modes,
+      '#options' => $sync,
       '#default_value' => isset($display_settings[$current_build_mode]['sync']) ? $display_settings[$current_build_mode]['sync'] : array(),
-      '#prefix' => '<div style="float: left;">',
+      '#prefix' => '<div style="float: left; margin-top: 10px;">',
       '#suffix' => '</div>',
     );
   }
@@ -384,7 +490,8 @@ function ds_display_overview_form_submit($form, &$form_state) {
       $display_settings[$build_mode]['fields'][$key]['region'] = $region;
       $display_settings[$build_mode]['fields'][$key]['weight'] = $form_state['values'][$key]['ds_weight'];
       $display_settings[$build_mode]['fields'][$key]['format'] = $form_state['values'][$key][$build_mode]['format'];
-      $display_settings[$build_mode]['fields'][$key]['css-class'] = $form_state['values'][$key][$build_mode]['css-class'];
+      $class = implode(' ', $form_state['values'][$key][$build_mode]['css-class']);
+      $display_settings[$build_mode]['fields'][$key]['css-class'] = $class;
 
       // Label value.
       if (!empty($form_state['values'][$key][$build_mode]['label_value'])) {
@@ -416,6 +523,14 @@ function ds_display_overview_form_submit($form, &$form_state) {
 
   // Sync / copy tab.
   ds_sync_copy_form_submit($form, $form_state, $display_settings);
+
+  // Regions styles.
+  $region_styles = array();
+  foreach ($form['#regions'] as $region_key => $region_name) {
+    if ($region_key != 'disabled')
+    $region_styles[$region_key] = implode(' ', $form_state['values']['region_styles_'. $region_key]);
+  }
+  $display_settings[$build_mode]['region_styles'] = $region_styles;
 
   // Save all these settings.
   variable_set($module .'_display_settings_'. $type, $display_settings);
@@ -511,22 +626,42 @@ function ds_label_options() {
 }
 
 /**
- * Return field classes.
+ * Return styles.
  */
-function ds_field_classes() {
-  $styles = array('' => t('None'));
-  $extra_styles = trim(variable_get('ds_styles', ''));
-  if (!empty($extra_styles)) {
-    $extra_styles = explode("\n", $extra_styles);
-    foreach ($extra_styles as $key => $value) {
-      $classes = explode("|", $value);
-      $key = $classes[0];
-      $name = isset($classes[1]) ? $classes[1] : $key;
-      $styles[$key] = $name;
+function ds_styles($variable = '') {
+  static $run = FALSE;
+  static $styles = array();
+
+  if (!$run) {
+    // Field styles.
+    $field_styles = trim(variable_get('ds_styles', ''));
+    if (!empty($field_styles)) {
+      $styles['fields'][''] = t('None');
+      $field_styles = explode("\n", $field_styles);
+      foreach ($field_styles as $key => $value) {
+        $classes = explode("|", $value);
+        $key = trim($classes[0]);
+        $name = isset($classes[1]) ? trim($classes[1]) : $key;
+        $styles['fields'][$key] = $name;
+      }
     }
+
+    // Region styles.
+    $region_styles = trim(variable_get('ds_styles_regions', ''));
+    if (!empty($region_styles)) {
+      $styles['regions'][''] = t('None');
+      $region_styles = explode("\n", $region_styles);
+      foreach ($region_styles as $key => $value) {
+        $classes = explode("|", $value);
+        $key = trim($classes[0]);
+        $name = isset($classes[1]) ? trim($classes[1]) : $key;
+        $styles['regions'][$key] = $name;
+      }
+    }
+    $run = TRUE;
   }
 
-  return $styles;
+  return (empty($variable)) ? $styles : (isset($styles[$variable]) ? $styles[$variable] : array());
 }
 
 /**
@@ -537,26 +672,42 @@ function ds_field_default_form_properties($build_mode) {
   $field = array(
     'label' => array(
       'format' => array(
+        '#title' => t('Label position'),
         '#type' => 'select',
         '#options' => ds_label_options(),
         '#default_value' => DS_DEFAULT_LABEL_FORMAT,
+        '#description' => t('Position of the label'),
+        '#attributes' => array(
+          'class' => 'ds-label-change'
+        ),
       ),
     ),
     'format' => array(
+      '#title' => t('Field format'),
       '#type' => 'select',
       '#options' => array(),
       '#default_value' => DS_DEFAULT_FORMAT,
+      '#description' => t('Hide the label or select a style.'),
+      '#attributes' => array(
+        'class' => 'ds-format-change',
+      ),
     ),
     'css-class' => array(
+      '#title' => t('Field style'),
       '#type' => 'select',
-      '#options' => ds_field_classes(),
-      '#default_value' => '',
+      '#multiple' => TRUE,
+      '#size' => 5,
+      '#options' => ds_styles('fields'),
+      '#default_value' => array(),
+      '#description' => t('Select styles to apply to this field.'),
+      '#attributes' => array(
+        'class' => 'ds-style-change',
+      ),
     ),
     'region' => array(
       '#type' => 'select',
       '#options' => ds_regions(variable_get('ds_build_mode_'. $build_mode, 'all')),
       '#default_value' => DS_DEFAULT_REGION,
-      //'#size' => 10,
       '#attributes' => array(
         'class' => 'field-region-select',
       ),
@@ -576,26 +727,41 @@ function ds_field_default_form_properties($build_mode) {
     $field[$build_mode] = array(
       'label' => array(
         'format' => array(
+          '#title' => t('Label position'),
           '#type' => 'select',
           '#options' => ds_label_options(),
           '#default_value' => DS_DEFAULT_LABEL_FORMAT,
+          '#description' => t('Hide the label or select a style.'),
+          '#attributes' => array(
+            'class' => 'ds-label-change'
+          ),
         ),
       ),
       'format' => array(
+        '#title' => t('Field format'),
         '#type' => 'select',
         '#options' => array(),
         '#default_value' => DS_DEFAULT_FORMAT,
+        '#description' => t('Select how this field will be displayed.'),
+        '#attributes' => array(
+          'class' => 'ds-format-change',
+        ),
       ),
       'css-class' => array(
+        '#title' => t('Field style'),
         '#type' => 'select',
-        '#options' => ds_field_classes(),
-        '#default_value' => '',
+        '#multiple' => TRUE,
+        '#options' => ds_styles('fields'),
+        '#default_value' => array(),
+        '#description' => t('Select styles to apply to this field.'),
+        '#attributes' => array(
+          'class' => 'ds-style-change',
+        ),
       ),
       'region' => array(
         '#type' => 'select',
         '#options' => ds_regions(variable_get('ds_build_mode_'. $build_mode, 'all')),
         '#default_value' => DS_DEFAULT_WEIGHT,
-        //'#size' => 10,
         '#attributes' => array(
           'class' => 'field-region-select',
         ),

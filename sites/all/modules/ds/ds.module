@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.module,v 1.1.2.68 2010/04/24 19:04:04 swentel Exp $
+// $Id: ds.module,v 1.1.2.74 2010/07/05 19:44:32 swentel Exp $
 
 /**
  * Core functions for the Display Suite module.
@@ -130,7 +130,11 @@ function ds_static_variables($key, $data = NULL) {
     return $variables[$key];
   }
   elseif (!isset($variables[$key]) && isset($data)) {
-    $variables[$key] = $data;
+    $variables[$key] = array();
+    $variables[$key][] = $data;
+  }
+  elseif (isset($variables[$key]) && isset($data)) {
+    $variables[$key][] = $data;
   }
 }
 
@@ -213,6 +217,9 @@ function ds_build_fields_and_regions(&$object, $module) {
         $class = isset($field['properties']['css-class']) ? $field['properties']['css-class'] : 'field-'. strtr($key, '_', '-');
         if (isset($field_settings[$key]['css-class']) && !empty($field_settings[$key]['css-class'])) {
           $class .= ' '. $field_settings[$key]['css-class'];
+        }
+        if ($field['type'] == DS_FIELD_TYPE_GROUP) {
+          $class .= ' field-group';
         }
 
         // Build field key.
@@ -323,6 +330,7 @@ function ds_render_content($object, $module, $vars, $theme_function = 'ds_field'
 
   // Display settings for this module and object.
   $display_settings = variable_get($module .'_display_settings_'. $object->type, array());
+  $region_styles = ds_default_value($display_settings, $object->build_mode, 'region_styles');
 
   $all_regions = ds_regions('all', TRUE);
   $regions = $vars['regions'];
@@ -399,21 +407,25 @@ function ds_render_content($object, $module, $vars, $theme_function = 'ds_field'
       $region_content = '';
       $region = $regions[$region_name];
 
+      $count = 0;
       // Loop through all fields after ordering on weight.
       asort($region);
       foreach ($region as $key => $weight) {
 
         // Theming function. This implies a 'content' key exists.
         if (isset($object->ds_fields[$key]['theme']) && isset($object->ds_fields[$key]['content'])) {
+          $count++;
           $region_content .= theme($object->ds_fields[$key]['theme'], $object->ds_fields[$key]['content'], $object->ds_fields[$key]);
         }
         elseif (isset($object->ds_fields[$key]['tab'])) {
+          $count++;
           $region_content .= theme('ds_tabs', $object->ds_fields[$key]);
         }
         // Default ds_field theming function.
         else {
           $field_content = isset($vars[$key .'_rendered']) ? $vars[$key .'_rendered'] : '';
           if (!empty($field_content)) {
+            $count++;
             $region_content .= theme($theme_function, $field_content, $object->ds_fields[$key]);
           }
         }
@@ -424,7 +436,12 @@ function ds_render_content($object, $module, $vars, $theme_function = 'ds_field'
         if ($region_name == 'left' || $region_name == 'right') {
           $region_classes[$region_name] = $region_name;
         }
-        $themed_regions[$region_name] = array('content' => $region_content);
+        $style = isset($region_styles[$region_name]) ? ' '. $region_styles[$region_name] : '';
+        $themed_regions[$region_name] = array(
+          'content' => $region_content,
+          'extra_class' => $style,
+          'count' => $count,
+        );
       }
     }
   }
@@ -439,15 +456,18 @@ function ds_render_content($object, $module, $vars, $theme_function = 'ds_field'
   ds_plugins_process($module, $api_info['object'], $display_settings, $vars, $object_display);
 
   // Add classes based on regions.
-  $object_display->ds_middle_classes = $module .'-no-sidebars';
-  if (isset($object_display->region_classes['left']) && isset($object_display->region_classes['right'])) {
-    $object_display->ds_middle_classes = $module .'-two-sidebars';
-  }
-  elseif (isset($object_display->region_classes['left'])) {
-    $object_display->ds_middle_classes = $module .'-one-sidebar '. $module .'-sidebar-left';
-  }
-  elseif (isset($object_display->region_classes['right'])) {
-    $object_display->ds_middle_classes = $module .'-one-sidebar '. $module .'-sidebar-right';
+  if (isset($object_display->themed_regions['middle'])) {
+    $middle_class = $module .'-no-sidebars';
+    if (isset($object_display->region_classes['left']) && isset($object_display->region_classes['right'])) {
+      $middle_class = $module .'-two-sidebars';
+    }
+    elseif (isset($object_display->region_classes['left'])) {
+      $middle_class = $module .'-one-sidebar '. $module .'-sidebar-left';
+    }
+    elseif (isset($object_display->region_classes['right'])) {
+      $middle_class = $module .'-one-sidebar '. $module .'-sidebar-right';
+    }
+    $object_display->themed_regions['middle']['extra_class'] .= ' '.$middle_class;
   }
 
   // Theme the regions with their content.

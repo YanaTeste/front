@@ -1,5 +1,5 @@
 <?php
-// $Id: views_plugin_ds_fields_view.inc,v 1.1.2.13 2010/04/24 19:04:04 swentel Exp $
+// $Id: views_plugin_ds_fields_view.inc,v 1.1.2.15 2010/07/08 15:50:38 swentel Exp $
 
 /**
  * @file
@@ -167,6 +167,9 @@ class views_plugin_ds_fields_view extends views_plugin_row {
     foreach ($fields as $key => $field) {
 
       $region = $this->view->style_plugin->row_plugin->options[$key]['region'];
+      if ($region == 'disabled') {
+        continue;
+      }
       $weight = $this->view->style_plugin->row_plugin->options[$key]['weight'];
       $labelformat = $this->view->style_plugin->row_plugin->options[$key]['labelformat'];
       $parent = (isset($this->view->style_plugin->row_plugin->options[$key]['parent'])) ? $this->view->style_plugin->row_plugin->options[$key]['parent'] : FALSE;
@@ -174,7 +177,7 @@ class views_plugin_ds_fields_view extends views_plugin_row {
       // Class.
       $class = $field->class;
       if (!empty($this->view->style_plugin->row_plugin->options[$key]['css-class'])) {
-        $class .= ' '. $this->view->style_plugin->row_plugin->options[$key]['css-class'];
+        $class .= ' '. implode(' ', $this->view->style_plugin->row_plugin->options[$key]['css-class']);
       }
 
       // Build field key in ds_fields.

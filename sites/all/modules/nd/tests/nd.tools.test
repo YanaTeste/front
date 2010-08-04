@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.tools.test,v 1.1.2.3 2010/04/24 19:02:11 swentel Exp $
+// $Id: nd.tools.test,v 1.1.2.4 2010/06/08 00:20:08 swentel Exp $
 
 /**
  * @file
@@ -40,9 +40,9 @@ class NodeDisplaysDefaults extends DrupalWebTestCase {
     $this->assertEqual($settings['full']['status'], DS_SETTINGS_DEFAULT, t('Settings for page full are default'), t('Default settings'));
 
     // Verify that test key is available on page but not on story.
-    $this->drupalGet('admin/ds/layout/page/full');
+    $this->drupalGet('admin/build/ds/layout/page/full');
     $this->assertRaw('edit-test-key-full-label-value', t('Default test key found'), t('Default fields'));
-    $this->drupalGet('admin/ds/layout/story/full');
+    $this->drupalGet('admin/build/ds/layout/story/full');
     $this->assertNoRaw('edit-test-key-full-label-value', t('Default test key not found'), t('Default fields'));
 
     // Verify test key is rendered.
@@ -57,7 +57,7 @@ class NodeDisplaysDefaults extends DrupalWebTestCase {
       'body[full][region]' => 'middle',
       'test_key[full][region]' => 'disabled',
     );
-    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/layout/page/full', $edit, t('Save'));
     $this->drupalGet('node/'. $page_node->nid);
     $this->assertNoText('Test key: '. $page_node->nid, t('Test key not rendered.'), t('Default fields'));
 
@@ -66,7 +66,7 @@ class NodeDisplaysDefaults extends DrupalWebTestCase {
     $this->assertEqual($settings['full']['status'], DS_SETTINGS_OVERRIDDEN, t('Settings for page full are overriden'), t('Default settings'));
 
     // Verify we can revert to default settings and se test key is rendered again.
-    $this->drupalPost('admin/ds/tools/revert/nd/page/full', array(), t('Confirm'));
+    $this->drupalPost('admin/build/ds/tools/revert/nd/page/full', array(), t('Confirm'));
     $this->drupalGet('node/'. $page_node->nid);
     $this->assertText('Test key: '. $page_node->nid, t('Test key rendered.'), t('Default fields'));
 

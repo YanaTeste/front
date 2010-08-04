@@ -1,5 +1,5 @@
 <?php
-// $Id: nd_cck.tpl.php,v 1.1.2.2 2010/02/02 11:26:00 swentel Exp $
+// $Id: nd_cck.tpl.php,v 1.1.2.3 2010/06/07 10:43:12 swentel Exp $
 
 /**
  * @file
@@ -36,21 +36,14 @@
       foreach ($items as $delta => $item) :
         if (!$item['empty']) : ?>
           <div class="field-item <?php print($count % 2 ? 'odd' : 'even') ?>">
-            <?php if ($label_display == 'inline') : ?>
-              <div class="field-label-inline<?php print($delta ? '' : '-first')?>">
-                <?php print t($label) ?>:&nbsp;</div>
-            <?php endif; ?>
-            <?php print $item['view'] ?>
+            <?php if ($label_display == 'inline') : ?><div class="field-label-inline<?php print($delta ? '' : '-first')?>"><?php print t($label) ?>:&nbsp;</div><?php endif; ?><?php print $item['view'] ?>
           </div>
         <?php $count++;
         endif;
       endforeach;?>
     </div>
   <?php else : ?>
-    <?php if ($label_display == 'inline') : ?>
-      <div class="field-label-inline-first"><?php print t($label) ?>:&nbsp;</div>
-    <?php endif; ?>
-    <?php print $items[0]['view'];?>
+    <?php if ($label_display == 'inline') : ?><div class="field-label-inline-first"><?php print t($label) ?>:&nbsp;</div><?php endif; ?><?php print $items[0]['view'];?>
   <?php endif; ?>
 </div>
 <?php endif; ?>

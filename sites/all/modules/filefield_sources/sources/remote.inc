@@ -1,5 +1,5 @@
 <?php
-// $Id: remote.inc,v 1.5 2010/02/21 04:47:43 quicksketch Exp $
+// $Id: remote.inc,v 1.6 2010/03/13 00:09:15 quicksketch Exp $
 
 /**
  * @file
@@ -177,7 +177,8 @@ function filefield_source_remote_value($element, &$item) {
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, FALSE);
     curl_setopt($ch, CURLOPT_WRITEFUNCTION, 'filefield_source_remote_curl_write');
-    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+    // Causes a warning if PHP safe mode is on.
+    @curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
     if (curl_exec($ch) && $file = field_file_save_file($filepath, $element['#upload_validators'], filefield_widget_file_path($field))) {
       $item = array_merge($item, $file);
     }

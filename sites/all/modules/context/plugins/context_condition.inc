@@ -1,5 +1,5 @@
 <?php
-// $Id: context_condition.inc,v 1.1.2.5 2010/05/25 16:06:07 yhahn Exp $
+// $Id: context_condition.inc,v 1.1.2.7 2010/07/29 21:23:34 yhahn Exp $
 
 /**
  * Base class for a context condition.
@@ -136,17 +136,41 @@ class context_condition {
   }
 
   /**
+   * Check whether this condition is used by any contexts. Can be used to
+   * prevent expensive condition checks from being triggered when no contexts
+   * use this condition.
+   */
+  function condition_used() {
+    $map = context_condition_map();
+    return !empty($map[$this->plugin]);
+  }
+
+  /**
    * Retrieve all contexts with the condition value provided.
    */
-  function get_contexts($value) {
+  function get_contexts($value = NULL) {
     $map = context_condition_map();
     $map = isset($map[$this->plugin]) ? $map[$this->plugin] : array();
 
     $contexts = array();
-    if ((is_string($value) || is_numeric($value)) && isset($map[$value]) && is_array($map[$value])) {
-      foreach ($map[$value] as $name) {
-        $context = context_load($name);
-        $contexts[$context->name] = $context;
+    if (isset($value) && (is_string($value) || is_numeric($value))) {
+      if (isset($map[$value]) && is_array($map[$value])) {
+        foreach ($map[$value] as $name) {
+          if (!isset($contexts[$name])) {
+            $context = context_load($name);
+            $contexts[$context->name] = $context;
+          }
+        }
+      }
+    }
+    else {
+      foreach ($map as $submap) {
+        foreach ($submap as $name) {
+          if (!isset($contexts[$name])) {
+            $context = context_load($name);
+            $contexts[$context->name] = $context;
+          }
+        }
       }
     }
     return $contexts;

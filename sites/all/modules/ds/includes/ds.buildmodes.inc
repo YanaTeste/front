@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.buildmodes.inc,v 1.1.2.19 2010/04/24 19:04:04 swentel Exp $
+// $Id: ds.buildmodes.inc,v 1.1.2.21 2010/06/08 00:22:20 swentel Exp $
 
 /**
  * @file
@@ -11,8 +11,8 @@
  */
 function ds_build_modes($module) {
   $output = '';
-  $action = arg(4);
-  $build_mode = arg(5);
+  $action = arg(5);
+  $build_mode = arg(6);
   $build_modes = variable_get($module .'_build_modes', array());
   $api_info = ds_api_info($module);
 
@@ -42,7 +42,7 @@ function ds_build_modes($module) {
           $row = array();
           $row[] = check_plain($name);
           $row[] = $key;
-          $row[] = l(t('Edit'), 'admin/ds/'. $module .'/buildmodes/edit/'. $key) .' - '. l(t('Delete'), 'admin/ds/'. $module .'/buildmodes/delete/'. $key);
+          $row[] = l(t('Edit'), 'admin/build/ds/'. $module .'/buildmodes/edit/'. $key) .' - '. l(t('Delete'), 'admin/build/ds/'. $module .'/buildmodes/delete/'. $key);
           $rows[] = $row;
         }
 
@@ -143,8 +143,9 @@ function ds_build_mode_form_submit($form, &$form_state) {
   variable_set($form['#module'] .'_build_modes', $build_modes);
 
   drupal_set_message(t('Build mode %build_mode has been saved.', array('%build_mode' => $build_modes[$form_state['values']['key']])));
-  $form_state['redirect'] = 'admin/ds/'. $form['#module'] .'/buildmodes';
+  $form_state['redirect'] = 'admin/build/ds/'. $form['#module'] .'/buildmodes';
   menu_rebuild();
+  drupal_rebuild_theme_registry();
 }
 
 /**
@@ -171,7 +172,7 @@ function ds_build_mode_delete_form($form_state, $module, $build_mode) {
   $form['buttons']['cancel'] = array(
     '#suffix' => '</div>',
     '#type' => 'markup',
-    '#value' => l('cancel', 'admin/ds/'. $module .'/buildmodes'),
+    '#value' => l('cancel', 'admin/build/ds/'. $module .'/buildmodes'),
   );
 
   $form['#module'] = $module;
@@ -188,8 +189,9 @@ function ds_build_mode_delete_form_submit($form, &$form_state) {
   variable_set($module .'_build_modes', $build_modes);
 
   drupal_set_message(t('Custom build mode %build_mode has been removed.', array('%build_mode' => $form_state['values']['display'])));
-  $form_state['redirect'] = 'admin/ds/'. $module .'/buildmodes';
+  $form_state['redirect'] = 'admin/build/ds/'. $module .'/buildmodes';
   menu_rebuild();
+  drupal_rebuild_theme_registry();
 }
 
 /**
@@ -276,4 +278,5 @@ function ds_build_modes_matrix_submit($form, &$form_state) {
 
   drupal_set_message(t('Matrix settings have been saved.'));
   menu_rebuild();
+  drupal_rebuild_theme_registry();
 }

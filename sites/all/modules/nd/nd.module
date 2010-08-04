@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.module,v 1.1.2.123.2.44 2010/04/26 09:52:12 swentel Exp $
+// $Id: nd.module,v 1.1.2.123.2.56 2010/07/12 15:06:26 swentel Exp $
 
 /**
  * @file
@@ -13,7 +13,7 @@ function nd_ds_api() {
 
   $help = array(
     t('<h3>Node displays</h3>
-      <p>This module comes with a nd.tpl.php, available in the templates folder, which is optimized for use with Node Displays. You can copy the file to your themes folder to use your own version if you want. Copying the file to your theme folder will only work if node.tpl.php is in the theme folder, so you could also copy the code into node.tpl.php if you don\'t want to have those 2 files in the directory.</p>
+      <p>This module comes with a nd.tpl.php, available in the templates folder, which is optimized for use with Node Displays. You can copy the file to your themes folder to use your own version if you want. Copying the file to your theme folder will only work if node.tpl.php is in the theme folder.</p>
       <p>You can create a file called <strong>nd-<em>node_type</em>.tpl.php</strong>, <strong>nd-<em>node_type</em>-<em>build_mode</em>.tpl.php</strong> or <strong>nd-<em>node_type</em>-<em>build_mode</em>-<em>nid</em>.tpl.php</strong> for even more fine-grained theming.</p>
       <p>If you exclude the RSS build mode, the default node feed is generated, but might render strange content. Make sure you do not choose the "Titles only" as your feed content setting, otherwhise, this screen will not have any effect. Choosing either "Full text" or "Titles + teaser" does not matter, this screen will have effect on both settings, apart from the read more link and the format of the body (full/teaser). Remember that some fields like upload and terms are added automatically to the feed and that this build mode manipulates the $description variable, it does not add extra keys to the feed.</p>
       <p>If you have a problem with the content not being rendered through DS, please read <a href="http://drupal.org/node/572614">http://drupal.org/node/572614</a>.
@@ -67,6 +67,20 @@ function nd_content_build_modes() {
       )
     )
   );
+
+  // Also add this here, so other modules (like views_attach)
+  // can profit from custom build modes from the UI.
+  $db_build_modes = variable_get('nd_build_modes', array());
+  foreach ($db_build_modes as $key => $build_mode) {
+    $build_modes[$key] = array(
+      'title' => $build_mode,
+      'build modes' => array(
+        $key => array(
+          'title' => $build_mode,
+        ),
+      ),
+    );
+  }
 
   return $build_modes;
 }
@@ -164,11 +178,15 @@ function _nd_nodeapi(&$node) {
       if (!isset($node->ds_fields[$field])) {
         $node->content[$field]['#access'] = FALSE;
       }
-      elseif (isset($node->ds_fields[$field]) && $node->ds_fields[$field]['type'] == 'ds') {
-        $key = $field .'_rendered';
-        $node->content[$field]['#value'] = theme('ds_field', $node->{$key}, $node->ds_fields[$field]);
-      }
+      $node->content[$field]['#weight'] = $node->ds_fields[$field]['weight'];
+      unset($node->ds_fields[$field]);
     }
+
+    foreach ($node->ds_fields as $key => $field) {
+      $render_key = $key .'_rendered';
+      $node->content[$key]['#value'] = theme('ds_field', $node->{$render_key}, $node->ds_fields[$key]);
+      $node->content['#content_extra_fields'][$key]['weight'] = $node->ds_fields[$key]['weight'];
+    };
 
     // Body and title are tricky ones since their weights are set
     // in #content_extra_fields, so update the value there!
@@ -277,6 +295,27 @@ function nd_theme() {
     );
   }
 
+  // Post date with Date API.
+  if (variable_get('nd_use_date_api', TRUE)) {
+    if (module_exists('date_api')) {
+      $date_formats = date_get_format_types('', TRUE);
+    }
+    else {
+      $date_formats = array(
+        'small' => array('title' => 'Small', 'type' => 'small'),
+        'medium' => array('title' => 'Medium', 'type' => 'medium'),
+        'large' => array('title' => 'Large', 'type' => 'large'),
+      );
+    }
+
+    foreach ($date_formats as $formatter) {
+      $theme_functions['nd_post_date_'. $formatter['type']] = array(
+        'arguments' => array('node' => NULL),
+        'function' => 'theme_nd_post_date',
+      );
+    }
+  }
+
   // Vocabulary.
   $vocab_formatters  = array(
     'nd_terms_per_vocabulary_space', 'nd_terms_per_vocabulary_linked_space',
@@ -342,7 +381,41 @@ function nd_ds_fields($type_name, $build_mode, $extra) {
         'code' => '<?php echo l(t("Read more"), "node/$object->nid"); ?>'
       ),
     ),
-    'post_date' => array(
+  );
+
+  // Regression. People upgrading from 6.x-2.2 to 6.x-2.3 will lose
+  // the post date PHP code field, we can't do that by default. The
+  // update_2 will make the nd_use_date_api variable false, and
+  // developers can set this variable to 1 in the variable table.
+  if (variable_get('nd_use_date_api', TRUE)) {
+    // Post date formatters
+    if (module_exists('date_api')) {
+      $date_formats = date_get_format_types('', FALSE);
+    }
+    else {
+      $date_formats = array(
+        'small' => array('title' => 'Small', 'type' => 'small'),
+        'medium' => array('title' => 'Medium', 'type' => 'medium'),
+        'large' => array('title' => 'Large', 'type' => 'large'),
+      );
+    }
+
+    $date_formatters = array();
+    foreach ($date_formats as $formatter) {
+      $date_formatters['nd_post_date_'. $formatter['type']] = t($formatter['title']);
+    }
+
+    $fields['post_date'] = array(
+      'title' => t('Post date'),
+      'type' => DS_FIELD_TYPE_THEME,
+      'status' => DS_FIELD_STATUS_STATIC,
+      'properties' => array(
+        'formatters' => $date_formatters,
+      ),
+    );
+  }
+  else {
+    $fields['post_date'] = array(
       'title' => t('Post date'),
       'type' => DS_FIELD_TYPE_CODE,
       'status' => DS_FIELD_STATUS_DEFAULT,
@@ -352,13 +425,13 @@ function nd_ds_fields($type_name, $build_mode, $extra) {
         ),
         'code' => '<?php echo format_date($object->created, "custom", "d/m/Y"); ?>'
       ),
-    ),
-  );
+    );
+  }
 
   // Check for body.
   if (isset($extra['has_body']) && $extra['has_body'] == TRUE) {
     $fields['body'] = array(
-      'title' => t('Core body'),
+      'title' => t('Body'),
       'type' => DS_FIELD_TYPE_THEME,
       'status' => DS_FIELD_STATUS_STATIC,
       'properties' => array(
@@ -371,32 +444,37 @@ function nd_ds_fields($type_name, $build_mode, $extra) {
 
   // Taxonomy support.
   if (module_exists('taxonomy')) {
-    // All terms.
-    $fields['terms'] = array(
-      'title' => t('Taxonomy: all terms'),
-      'type' => DS_FIELD_TYPE_PREPROCESS,
-      'status' => DS_FIELD_STATUS_STATIC,
-    );
+
+    $all = FALSE;
 
     // All vocabularies per content type.
-    $vocabularies = taxonomy_get_vocabularies($type_name);
-    if (count($vocabularies) > 0) {
-      foreach ($vocabularies as $key => $vocabulary) {
-        $fields['terms_'. $vocabulary->vid] = array(
-          'title' => t('Taxonomy: @vocab', array('@vocab' => $vocabulary->name)),
-          'type' => DS_FIELD_TYPE_THEME,
-          'status' => DS_FIELD_STATUS_STATIC,
-          'properties' => array(
-            'css-class' => 'field-terms field-terms-'. $vocabulary->vid,
-            'formatters' => array(
-              'nd_terms_per_vocabulary_space' => t('Separated by space'),
-              'nd_terms_per_vocabulary_linked_space' => t('Separated by space, linked to term'),
-              'nd_terms_per_vocabulary_comma' => t('Separated by comma'),
-              'nd_terms_per_vocabulary_linked_comma' => t('Separated by comma, linked to term'),
-            ),
+    // We can't use taxonomy_get_vocabularies() here, see http://drupal.org/node/810352.
+    $result = db_query("SELECT v.vid, v.*, n.type FROM {vocabulary} v LEFT JOIN {vocabulary_node_types} n ON v.vid = n.vid WHERE n.type = '%s' ORDER BY v.weight, v.name", $type_name);
+    while ($vocabulary = db_fetch_object($result)) {
+      $all = TRUE;
+      $fields['terms_'. $vocabulary->vid] = array(
+        'title' => t('Taxonomy: @vocab', array('@vocab' => $vocabulary->name)),
+        'type' => DS_FIELD_TYPE_THEME,
+        'status' => DS_FIELD_STATUS_STATIC,
+        'properties' => array(
+          'css-class' => 'field-terms field-terms-'. $vocabulary->vid,
+          'formatters' => array(
+            'nd_terms_per_vocabulary_space' => t('Separated by space'),
+            'nd_terms_per_vocabulary_linked_space' => t('Separated by space, linked to term'),
+            'nd_terms_per_vocabulary_comma' => t('Separated by comma'),
+            'nd_terms_per_vocabulary_linked_comma' => t('Separated by comma, linked to term'),
           ),
-        );
-      }
+        ),
+      );
+    }
+
+    if ($all) {
+      // All terms.
+      $fields['terms'] = array(
+        'title' => t('Taxonomy: all terms'),
+        'type' => DS_FIELD_TYPE_PREPROCESS,
+        'status' => DS_FIELD_STATUS_STATIC,
+      );
     }
   }
 
@@ -410,7 +488,7 @@ function nd_ds_fields($type_name, $build_mode, $extra) {
   }
 
   // Book support.
-  if (module_exists('book') && $type_name == 'book') {
+  if (module_exists('book') && book_type_is_allowed($type_name)) {
     $fields['book_navigation'] = array(
       'title' => t('Book navigation'),
       'type' => DS_FIELD_TYPE_FUNCTION,
@@ -488,6 +566,22 @@ function theme_nd_title_p_link($field) {
 }
 
 /**
+ *  Post date formatter.
+ */
+function theme_nd_post_date($field) {
+  $date_format = str_replace('nd_post_date_', '', $field['formatter']);
+
+  if (module_exists('date_api')) {
+    $datetime = date_make_date($field['object']->created, NULL, DATE_UNIX);
+    $format = variable_get('date_format_'. $date_format, 'd/m/Y');
+    return date_format_date($datetime, 'custom', $format);
+  }
+  else {
+    return format_date($field['object']->created, $date_format);
+  }
+}
+
+/**
  * Terms per vocabulary.
  */
 function nd_terms_per_vocabulary($field) {
@@ -504,7 +598,7 @@ function nd_terms_per_vocabulary($field) {
 
     foreach ($field['object']->taxonomy as $tid => $term) {
       if ($term->vid == $vid) {
-        $terms[] = ($linked == 'linked') ? l($term->name, 'taxonomy/term/'. $term->tid) : check_plain($term->name);
+        $terms[] = ($linked == 'linked') ? l($term->name, taxonomy_term_path($term)) : check_plain($term->name);
       }
     }
     if (!empty($terms)) {
@@ -539,7 +633,8 @@ function nd_book_navigation($field) {
  * Add new child for book.
  */
 function theme_nd_book_add_new_child($field) {
-  return l(t('Add child page'), 'node/add/book', array('query' => array('parent' => $field['object']->book['mlid'])));
+  $child = str_replace('_', '-', variable_get('book_child_type', 'book'));
+  return l(t('Add child page'), 'node/add/'. $child, array('query' => array('parent' => $field['object']->book['mlid'])));
 }
 
 /**

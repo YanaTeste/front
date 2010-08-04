@@ -1,5 +1,5 @@
 <?php
-// $Id: theme.inc,v 1.1.2.48 2010/04/24 19:04:04 swentel Exp $
+// $Id: theme.inc,v 1.1.2.55 2010/07/06 22:38:40 swentel Exp $
 
 /**
  * @file
@@ -43,6 +43,9 @@ function theme_ds_field($content, $field) {
  *
  * @param stdClass $object_display The complete object and display properties.
  * @param string $module The module name.
+ *
+ * Other variables which you can use:
+ *  - $region_data['count']: holds the number of fields per region.
  */
 function theme_ds_regions($object_display, $module) {
   $output = '';
@@ -50,23 +53,28 @@ function theme_ds_regions($object_display, $module) {
   foreach ($object_display->themed_regions as $region_name => $region_data) {
     $output .= '<div class="'. $module .'-region-'. $region_name;
 
-    // the middle region has a wrapper region and some sidebar related classes
+    // The middle region has a wrapper region and some sidebar related classes.
     if ($region_name == 'middle') {
-      $output .= '-wrapper '. $object_display->ds_middle_classes;
+      $output .= '-wrapper ';
     }
     if ($region_name == 'header' || $region_name == 'footer') {
       $output .= ' clear-block';
     }
-    if (isset($region_data['extra_class'])) {
+
+    // Extra classes or inline styles.
+    if (!empty($region_data['extra_class'])) {
       $output .= $region_data['extra_class'];
     }
     $output .= '" ';
     if (isset($region_data['inline_css'])) {
       $output .= $region_data['inline_css'];
     }
+
+    // Close the wrapper for middle if necessary.
     if ($region_name == 'middle') {
       $output .= '><div class="'. $module .'-region-'. $region_name .'">'. $region_data['content'] .'</div></div>';
-    } else {
+    }
+    else {
       $output .= '>'. $region_data['content'] .'</div>';
     }
   }
@@ -124,6 +132,20 @@ function theme_ds_eval_block($field) {
       return $content;
     }
   }
+}
+
+/**
+ * Theme a collection of ds objects.
+ *
+ * @param array $data A collection of data to print.
+ * @param array $extra A collection data, ie context etc ..
+ */
+function theme_ds_objects($data, $extra) {
+  $output = '';
+  foreach ($data as $key => $value) {
+    $output .= $value->content;
+  }
+  return $output;
 }
 
 /**
@@ -236,7 +258,7 @@ function template_preprocess_ds_row_object(&$vars) {
 }
 
 /**
- * Preprocess theme function to print a single record from a row, with fields
+ * Preprocess theme function to print a single record from a row, with fields.
  */
 function template_preprocess_ds_row_fields(&$vars) {
   template_preprocess_views_view_fields($vars);

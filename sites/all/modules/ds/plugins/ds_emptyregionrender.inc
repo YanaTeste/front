@@ -1,5 +1,5 @@
 <?php
-// $Id: ds_emptyregionrender.inc,v 1.1.2.8 2010/04/21 10:55:10 swentel Exp $
+// $Id: ds_emptyregionrender.inc,v 1.1.2.9 2010/07/05 19:50:41 swentel Exp $
 
 /**
  * @file
@@ -70,7 +70,7 @@ class ds_emptyregionrender {
       if ($render == TRUE && !isset($display->themed_regions[$region_name])) {
 
         // Add content for this region, simply a whitespace.
-        $themed_regions[$region_name] = array('content' => '&nbsp;');
+        $themed_regions[$region_name] = array('content' => '&nbsp;', 'count' => 1);
 
         if ($region_name == 'left' || $region_name == 'right') {
           $display->region_classes[$region_name] = $region_name;

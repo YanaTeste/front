@@ -1,5 +1,5 @@
 <?php
-// $Id: ds.admin.inc,v 1.1.2.7 2010/01/25 19:24:48 swentel Exp $
+// $Id: ds.admin.inc,v 1.1.2.8 2010/06/08 00:22:20 swentel Exp $
 
 /**
  * @file
@@ -12,7 +12,7 @@
 function ds_general_page() {
 
   // Child pages.
-  $item = menu_get_item('admin/ds');
+  $item = menu_get_item('admin/build/ds');
   if ($content = system_admin_menu_block($item)) {
     $childs = theme('admin_block_content', $content);
   }

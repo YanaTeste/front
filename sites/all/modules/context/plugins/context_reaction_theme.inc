@@ -1,5 +1,5 @@
 <?php
-// $Id: context_reaction_theme.inc,v 1.1.2.1 2009/12/14 22:34:05 yhahn Exp $
+// $Id: context_reaction_theme.inc,v 1.1.2.2 2010/07/30 17:25:28 yhahn Exp $
 
 /**
  * Expose themes as context reactions.
@@ -63,10 +63,9 @@ class context_reaction_theme extends context_reaction {
    * additional classes onto the 'body_classes'.
    */
   function execute(&$vars) {
-    $contexts = context_active_contexts();
     $classes = array();
 
-    foreach ($contexts as $k => $v) {
+    foreach ($this->get_contexts() as $k => $v) {
       if (!empty($v->reactions[$this->plugin]['title']) && !isset($vars['section_title'])) {
         $vars['section_title'] = $v->reactions[$this->plugin]['title'];
       }

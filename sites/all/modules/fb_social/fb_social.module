@@ -1,5 +1,5 @@
 <?php
-// $Id: fb_social.module,v 1.2.2.3 2010/05/27 21:28:46 ferdi Exp $
+// $Id: fb_social.module,v 1.2.2.6 2010/07/14 02:29:42 ferdi Exp $
 
 /**
  * @file
@@ -42,7 +42,21 @@ function fb_social_menu(){
  * Implementation of hook_footer
  */
 function fb_social_footer($main = 0) {
-  $fb_locale = variable_get('fb_social_locale', 'en_US');
+  global $language;
+
+  $languages = _map_active_languages();
+
+  if (fb_social_auto_language()) {
+    if (array_key_exists($language->language, $languages)) {
+      $fb_locale = $languages[$language->language];
+    } else {
+      drupal_set_message("There is no mapping for the current language. Using the default locale.");
+    }
+  } else {
+    $fb_locale = variable_get('fb_social_locale', 'en_US');
+  }
+
+  
   $appid = variable_get('fb_social_appid', '');
 
   $output = '<div id="fb-root"></div>';
@@ -67,7 +81,26 @@ function fb_social_footer($main = 0) {
   return $output;
 }
 
-// api function can be used by other modules in this package
+function fb_social_auto_language() {
+  return variable_get('fb_social_locale_auto', 0);
+}
 
+function _map_active_languages() {
+  $languages = language_list();
+  $mapped = array();
+  foreach ($languages as $key => $language) {
+    $mapped[$language->language] = variable_get('fb_social_language_' . $language->language, '');
+  }
+  return $mapped;
+}
 
+// API functions
 
+/**
+ *  Based on the user settings return the aliased / unaliased version
+ *  of a given $url
+ */
+function fb_social_url($url = NULL){
+  $aliased = variable_get('fb_social_urls_mode', 0);
+  return url($url, array('absolute' => TRUE, 'alias' => $aliased ));
+}

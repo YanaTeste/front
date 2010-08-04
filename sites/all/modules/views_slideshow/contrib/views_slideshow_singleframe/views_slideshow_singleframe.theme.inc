@@ -1,5 +1,5 @@
 <?php
-// $Id: views_slideshow_singleframe.theme.inc,v 1.1.2.1.2.26 2010/05/18 05:16:07 redndahead Exp $
+// $Id: views_slideshow_singleframe.theme.inc,v 1.1.2.1.2.28 2010/07/13 04:02:08 redndahead Exp $
 
 /**
  * @file
@@ -24,6 +24,25 @@ function template_preprocess_views_slideshow_singleframe(&$vars) {
     ),
     $options['views_slideshow_singleframe']
   );
+
+  // We need to go through the current js setting values to make sure the one we
+  // want to add is not already there. If it is already there then append -[num]
+  // to the id to make it unique.
+  $slideshow_count = 1;
+  $current_settings = drupal_add_js();
+  foreach ($current_settings['setting'] AS $current_setting) {
+    if (isset($current_setting['viewsSlideshowSingleFrame'])) {
+      $current_keys = array_keys($current_setting['viewsSlideshowSingleFrame']);
+      if (stristr($current_keys[0], '#views_slideshow_singleframe_main_' . $vss_id)) {
+        $slideshow_count++;
+      }
+    }
+  }
+
+  if ($slideshow_count > 1) {
+    $vss_id .= '-' . $slideshow_count;
+    $settings['vss_id'] = $vss_id;  
+  }
 
   drupal_add_js(array('viewsSlideshowSingleFrame' => array('#views_slideshow_singleframe_main_' . $vss_id => $settings)), 'setting');
 
@@ -63,14 +82,33 @@ function template_preprocess_views_slideshow_singleframe(&$vars) {
  * @ingroup themeable
  */
 function theme_views_slideshow_singleframe_no_display_section($view, $rows, $vss_id, $mode) {
+  // Retrive the number of itmes per frame
+  if (isset($view->display_handler->display->display_options['style_options']['views_slideshow_singleframe']['items_per_slide']) && $view->display_handler->display->display_options['style_options']['views_slideshow_singleframe']['items_per_slide'] > 0) {
+    $items_per_slide = $view->display_handler->display->display_options['style_options']['views_slideshow_singleframe']['items_per_slide'];
+  }
+  elseif (isset($view->display['default']->display_options['style_options']['views_slideshow_singleframe']['items_per_slide']) && $view->display['default']->display_options['style_options']['views_slideshow_singleframe']['items_per_slide'] > 0) {
+    $items_per_slide = $view->display['default']->display_options['style_options']['views_slideshow_singleframe']['items_per_slide'];
+  }
+  else {
+    $items_per_slide = 1;
+  }
+  
   // Add the slideshow elements.
   $attributes['id'] = "views_slideshow_singleframe_teaser_section_" . $vss_id;
   $attributes['class'] = 'views_slideshow_singleframe_teaser_section';
   $attributes = drupal_attributes($attributes);
 
   $output = "<div$attributes>";
+  
+  $items = array();
+  $slideshow_count = 0;
   foreach ($rows as $count => $item) {
-    $output .= theme('views_slideshow_singleframe_no_display_teaser', $item, $vss_id, $count);
+    $items[] = $item;
+    if (count($items) == $items_per_slide || $count == (count($rows)-1)) {
+      $output .= theme('views_slideshow_singleframe_no_display_teaser', $items, $vss_id, $slideshow_count);
+      $items = array();
+      $slideshow_count++;
+    }
   }
   $output .= "</div>\n";
 
@@ -82,7 +120,7 @@ function theme_views_slideshow_singleframe_no_display_section($view, $rows, $vss
  *
  * @ingroup themeable
  */
-function theme_views_slideshow_singleframe_no_display_teaser($item, $vss_id, $count) {
+function theme_views_slideshow_singleframe_no_display_teaser($items, $vss_id, $count) {
   $current = $count + 1;
   $classes = array(
     'views_slideshow_singleframe_slide',
@@ -97,7 +135,25 @@ function theme_views_slideshow_singleframe_no_display_teaser($item, $vss_id, $co
   $attributes['id'] = "views_slideshow_singleframe_div_" . $vss_id . "_" . $count;
   $attributes = drupal_attributes($attributes);
 
-  return "<div$attributes>$item</div>\n";
+  $output = "<div$attributes>";
+  foreach ($items as $item_count => $item) {
+    $item_class = 'views-row views-row-' . $item_count;
+    if (!$item_count) {
+      $item_class .= ' views-row-first';
+    }
+    if ($item_count % 2) {
+      $item_class .= ' views-row-even';
+    }
+    else {
+      $item_class .= ' views-row-odd';
+    }
+    $output .= '<div class="' . $item_class . '">' . "\n";
+    $output .= $item . "\n";
+    $output .= '</div>' . "\n";
+  }
+
+  $output .= "</div>\n";
+  return $output;
 }
 
 /**

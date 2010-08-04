@@ -1,4 +1,4 @@
-/* $Id: nd_regions.css,v 1.1.2.2 2010/04/19 12:22:08 swentel Exp $ */
+/* $Id: nd_regions.css,v 1.1.2.3 2010/05/31 12:16:09 swentel Exp $ */
 
 .nd-region-header {
   clear: both;
@@ -51,4 +51,19 @@
 .nd-two-sidebars .nd-region-middle {
   margin-left: 25%;
   margin-right: 25%;
+}
+
+/* Fix for IE */
+.nd-no-sidebars {
+  display:block;
+  float:none;
+  margin-right:0;
+  width:auto;
+}
+
+.nd-sidebar-right {
+  *display: inline;
+  *float: right;
+  *width: 100%;
+  *margin-left: -100%;
 }

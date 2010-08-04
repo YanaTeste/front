@@ -1,5 +1,5 @@
 <?php
-// $Id: context_ui.module,v 1.13.2.48.2.1.2.12 2010/05/25 16:06:07 yhahn Exp $
+// $Id: context_ui.module,v 1.13.2.48.2.1.2.15 2010/07/28 17:17:25 yhahn Exp $
 
 /**
  * Implementation of hook_theme().
@@ -159,42 +159,12 @@ function context_ui_menu() {
     'type' => MENU_LOCAL_TASK,
   );
 
-  // AHAH callback for block plugin.
-  $items['context/ajax-block-view'] = array(
-    'title' => 'Block view',
-    'description' => 'AJAX callback for rendering a block.',
-    'page callback' => 'context_ui_menu_plugin',
-    'page arguments' => array('reaction', 'block', 'ajax'),
-    'access callback' => 'user_access',
-    'access arguments' => array('access content'),
-    'type' => MENU_CALLBACK,
-  );
-
   foreach ($items as $path => $item) {
     $items[$path]['access callback'] = isset($items[$path]['access callback']) ? $items[$path]['access callback'] : 'user_access';
     $items[$path]['access arguments'] = isset($items[$path]['access arguments']) ? $items[$path]['access arguments'] : array('administer site configuration');
     $items[$path]['file'] = 'context_ui.admin.inc';
   }
   return $items;
-}
-
-/**
- * Router to handle plugin methods as menu callbacks.
- */
-function context_ui_menu_plugin() {
-  $args = func_get_args();
-  if (isset($args[0], $args[1], $args[2])) {
-    $type = array_shift($args);
-    $key = array_shift($args);
-    $method = array_shift($args);
-    if ($plugin = context_get_plugin($type, $key)) {
-      if (method_exists($plugin, $method)) {
-        return call_user_func(array($plugin, $method), $args);
-      }
-    }
-  }
-  drupal_not_found();
-  exit;
 }
 
 /**
@@ -250,6 +220,7 @@ function context_ui_form_admin_settings_form_alter(&$form, $form_state) {
 function context_ui_editor($form_state, $contexts) {
   $form = array(
     '#attributes' => array('class' => 'context-editor'),
+    '#theme' => array('context_ui_editor'),
     'editables' => array('#type' => 'markup'),
     'contexts' => array('#tree' => TRUE),
     'buttons' => array('#tree' => FALSE),
@@ -321,7 +292,7 @@ function context_ui_editor($form_state, $contexts) {
  */
 function context_ui_editor_process($values) {
   $context = $values['context'];
-  foreach (array_keys(context_conditions(TRUE)) as $condition) {
+  foreach (array_keys(context_conditions()) as $condition) {
     if (isset($values['condition'][$condition])) {
       $plugin = context_get_plugin('condition', $condition);
       if ($plugin && method_exists($plugin, 'editor_form_submit')) {
@@ -332,7 +303,7 @@ function context_ui_editor_process($values) {
       unset($context->conditions[$condition]);
     }
   }
-  foreach (array_keys(context_reactions(TRUE)) as $reaction) {
+  foreach (array_keys(context_reactions()) as $reaction) {
     if (isset($values["reaction-{$reaction}"])) {
       $plugin = context_get_plugin('reaction', $reaction);
       if ($plugin && method_exists($plugin, 'editor_form_submit')) {

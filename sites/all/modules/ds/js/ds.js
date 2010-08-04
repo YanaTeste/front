@@ -1,6 +1,7 @@
-// $Id: ds.js,v 1.1.2.14 2010/04/11 17:14:25 swentel Exp $
+// $Id: ds.js,v 1.1.2.27 2010/07/03 09:31:48 swentel Exp $
 
 Drupal.DisplaySuite = Drupal.DisplaySuite || {};
+Drupal.DisplaySuite.fieldopened = '';
 
 /**
  * Move a field in the fields table from one region to another via select list.
@@ -145,7 +146,7 @@ Drupal.behaviors.fieldDrag = function(context) {
     });
 
     var regionRow = $(rowObject.element).prevAll('tr.region').get(0);
-    var regionName =  regionRow.className.replace(/([^ ]+[ ]+)*region-([^ ]+)([ ]+[^ ]+)m*/, '$2');
+    var regionName = regionRow.className.replace(/([^ ]+[ ]+)*region-([^ ]+)([ ]+[^ ]+)m*/, '$2');
     $('.region-' + regionName + '-message').addClass('region-populated');	  
   };
 };
@@ -159,10 +160,10 @@ Drupal.behaviors.fieldgroupFormat = function(context) {
       var field_group_value = $(this).val();
   	  var label_format = $(this).attr('id').replace('format', 'label-format');
       if (field_group_value.substr(0, 17) == 'ds_group_fieldset' || field_group_value.substr(0, 7) == 'ds_tabs') {
-        $('#'+ label_format).addClass('ds-hidden');
+        $('#'+ label_format +'-wrapper').addClass('ds-hidden');
       }
       else {
-        $('#'+ label_format).removeClass('ds-hidden');
+        $('#'+ label_format +'-wrapper').removeClass('ds-hidden');
       }
     });
   });
@@ -191,20 +192,79 @@ Drupal.DisplaySuite.toggleDisplayTab = function(element) {
     }
   });	
 }
- 
+
 /**
- * Change the label of a field instance in a build mode.
+ * Show / hide settings for fields.
  */
-Drupal.DisplaySuite.changeLabel = function(element, title) {
- 
-  var changed = prompt(Drupal.t("Edit label"), title);
-   
-  if (changed == '') {
-    alert(Drupal.t('Field can not be empty'));
-    return false;
-  }
-   
-  var labelcell = $(element).parents(".ds-label");
-  labelcell.find(".label-field").text(changed);
-  labelcell.find("input").val(changed);
+Drupal.behaviors.settingsToggle = function(context) {
+  // remove click from link
+  $('.settings-tab-toggle').click(function(e){
+    e.preventDefault();
+  });
+  
+  // Add click event to entire td
+  $('.settings-tab-toggle').click(function(){
+    var settings = $(this).siblings('.settings-tab');
+    if (Drupal.DisplaySuite.fieldopened != '' && Drupal.DisplaySuite.fieldopened != settings.attr('id')) {
+      $('#' + Drupal.DisplaySuite.fieldopened).hide();
+    }
+
+    if (settings.is(':visible')) {
+      settings.hide();
+    }
+    else {
+      settings.slideDown('normal');
+    }
+    // Store the opened setting.
+    Drupal.DisplaySuite.fieldopened = settings.attr('id');
+  });
 }
+
+/**
+ * Change the info about the label format.
+ */
+Drupal.behaviors.labelChange = function(context) {
+  $('.ds-label-change').change(function(){
+    var label_info = $(this).val();
+    $(this).parents('td').find('.label-info').text('Label: '+ label_info);
+  });
+}
+
+/**
+ * Change the info about the field format.
+ */
+Drupal.behaviors.formatChange = function(context) {
+  $('.ds-format-change, .fieldgroup-format').change(function(){
+	var options = new Array();
+    $('#'+ $(this).attr('id') +' option:selected').each(function(i, selected) {
+       options[i] = $(selected).text();    	
+    });
+    $(this).parents('td').find('.format-info').text('Format: '+ options.join(', '));
+  });
+}
+
+/**
+ * Change the info about the styles for fields or regions.
+ */
+Drupal.behaviors.StyleChange = function(context) {
+  $('.ds-style-change').change(function(){
+    var options = new Array();
+    $('#'+ $(this).attr('id') +' option:selected').each(function(i, selected) {
+      options[i] = $(selected).text();
+    });
+    if (options != '') {
+    	if ($(this).attr('id').substr(0, 18) == 'edit-region-styles') {
+    	  var separator = ''
+    	}
+    	else {
+    	  var separator = ' - ';
+    	}
+        var info = separator + 'Styles: '+ options.join(', ');
+      }
+      else {
+        var info = '';
+      }
+    $(this).parents('td').find('.style-info').text(info);
+  });
+}
+

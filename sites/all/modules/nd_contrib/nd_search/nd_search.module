@@ -1,5 +1,5 @@
 <?php
-// $Id: nd_search.module,v 1.1.2.11.2.21 2010/04/27 20:56:05 swentel Exp $
+// $Id: nd_search.module,v 1.1.2.11.2.28 2010/07/01 12:35:12 swentel Exp $
 
 /**
  * @file
@@ -19,7 +19,7 @@ function nd_search_ds_info_alter(&$help, $module) {
           <li>search_totals_plus_keywords: Your search for "<strong>@search</strong>" gave back @total results.</li>
           <li>search_totals_from_to_end: Displaying @start - @end of @total results.
           </ul></p>
-        ', array('@url' => url('admin/ds/nd/nd_search')));
+        ', array('@url' => url('admin/build/ds/nd/nd_search')));
   }
 }
 
@@ -30,8 +30,8 @@ function nd_search_menu() {
   $items = array();
 
   if (module_exists('ds_ui')) {
-    $items['admin/ds/nd/nd_search'] = array(
-      'title' => 'ND search',
+    $items['admin/build/ds/nd/nd_search'] = array(
+      'title' => 'Search',
       'page callback' => 'drupal_get_form',
       'page arguments' => array('nd_search_settings'),
       'access arguments' => array('administer nd'),
@@ -49,21 +49,26 @@ function nd_search_menu() {
 function nd_search_settings() {
   $form = array();
 
-  $form['nd_search_override_search_page'] = array(
+  $form['general'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('General'),
+  );
+
+  $form['general']['nd_search_override_search_page'] = array(
     '#type' => 'checkbox',
     '#title' => t('Override search page'),
     '#description' => t('Toggle this checkbox if you want to display the result of search with the display suite.'),
     '#default_value' => variable_get('nd_search_override_search_page', FALSE),
   );
 
-  $form['nd_search_deny_user_tab'] = array(
+  $form['general']['nd_search_deny_user_tab'] = array(
     '#type' => 'checkbox',
     '#title' => t('Deny user tab'),
     '#description' => t('Toggle this checkbox if you want to deny access to the user search tab.'),
     '#default_value' => variable_get('nd_search_deny_user_tab', TRUE),
   );
 
-  $form['nd_search_preprocess_vars'] = array(
+  $form['general']['nd_search_preprocess_vars'] = array(
     '#type' => 'select',
     '#options' => array(
       'none' => t('None'),
@@ -76,31 +81,53 @@ function nd_search_settings() {
     '#default_value' => variable_get('nd_search_preprocess_vars', 'none'),
   );
 
+  $form['general']['nd_search_highlight'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Highlight search word'),
+    '#description' => t('Use jQuery to highlight the word in the results.'),
+    '#default_value' => variable_get('nd_search_highlight', FALSE),
+  );
+
+  $form['general']['nd_search_highlight_selector'] = array(
+    '#type' => 'textfield',
+    '#title' => t('HTML selector'),
+    '#description' => t('Enter the css selector, if not sure, leave this by default.'),
+    '#default_value' => variable_get('nd_search_highlight_selector', '.buildmode-3'),
+  );
+
+
+
   if (module_exists('apachesolr')) {
+
+    $form['apachesolor'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('General'),
+    );
+
     $build_modes = ds_get_build_modes('nd');
     foreach ($build_modes as $build_mode => $value) {
       $options[$build_mode] = $value['title'];
     }
-    $form['nd_search_apachesolr_build_mode'] = array(
+    $form['apachesolor']['nd_search_apachesolr_build_mode'] = array(
       '#type' => 'select',
       '#title' => t('Apachesolr build mode'),
       '#description' => 'Select another build mode in favor of the default search build mode. You can hide the search results build mode with matrix form afterwards.',
       '#default_value' => variable_get('nd_search_apachesolr_build_mode', NODE_BUILD_SEARCH_RESULT),
       '#options' => $options,
     );
-    $form['nd_search_apachesolr_show_title'] = array(
+    $form['apachesolor']['nd_search_apachesolr_show_title'] = array(
       '#type' => 'checkbox',
       '#title' => t('Apachesolr show title'),
       '#description' => t('Toggle this checkbox if you want to display the "Search results" title.'),
       '#default_value' => variable_get('nd_search_apachesolr_show_title', FALSE),
     );
-    $form['nd_search_apachesolr_hide_current_filters'] = array(
+    $form['apachesolor']['nd_search_apachesolr_hide_current_filters'] = array(
       '#type' => 'checkbox',
       '#title' => t('Apachesolr retain filters'),
       '#description' => t('Toggle this checkbox if you want to hide the "Retain current filters" checkbox.'),
       '#default_value' => variable_get('nd_search_apachesolr_hide_current_filters', TRUE),
     );
-    $form['nd_search_apachesolr_language'] = array(
+    $form['apachesolor']['nd_search_apachesolr_language'] = array(
       '#type' => 'checkbox',
       '#title' => t('Apachesolr language'),
       '#description' => t('Toggle this checkbox if you want only want to search in the language the site is currently in. Enable this if you have at least 2 languages.'),
@@ -146,7 +173,7 @@ function nd_search_preprocess_search_results(&$variables) {
 }
 
 /**
- * Helper function so it can be used in hoo_search_page().
+ * Helper function so it can be used in hook_search_page().
  *
  * @param array $variables The search variables.
  */
@@ -161,7 +188,7 @@ function _nd_search_preprocess(&$variables) {
   $total = $GLOBALS['pager_total_items'][0];
 
   // perform calculation
-  $start = 10 * $current_page - 9;
+  $start = $items_per_page * $current_page - ($items_per_page - 1);
   $end = $items_per_page * $current_page;
   if ($end > $total) $end = $total;
 
@@ -308,6 +335,20 @@ if (variable_get('nd_search_override_search_page', FALSE)) {
   function node_search_page($results) {
     $output = '';
 
+    // Add highlighting.
+    if (variable_get('nd_search_highlight', FALSE)) {
+      drupal_add_js(drupal_get_path('module', 'nd_search') .'/nd_search.js');
+      drupal_add_css(drupal_get_path('module', 'nd_search') .'/nd_search.css');
+
+      drupal_add_js(array(
+        'nd_search' => array(
+          'selector' => check_plain(variable_get('nd_search_highlight_selector', '.buildmode-3')),
+          'search' => check_plain(arg(2)),
+        ),
+      ), 'setting');
+    }
+
+    // Extra variables.
     if (variable_get('nd_search_preprocess_vars', 'none') != 'none') {
       $variables = array();
       _nd_search_preprocess($variables);
@@ -333,27 +374,51 @@ if (variable_get('nd_search_override_search_page', FALSE)) {
   function apachesolr_search_search_page($results) {
     $output = '';
 
-    // Search form.
-    $type = 'apachesolr_search';
-    $keys = trim(search_get_keys());
-    $output .= drupal_get_form('search_form', NULL, $keys, $type);
+    // Add highlighting.
+    if (variable_get('nd_search_highlight', FALSE)) {
+      drupal_add_js(drupal_get_path('module', 'nd_search') .'/nd_search.js');
+      drupal_add_css(drupal_get_path('module', 'nd_search') .'/nd_search.css');
 
-    // Search results
+      drupal_add_js(array(
+        'nd_search' => array(
+          'selector' => check_plain(variable_get('nd_search_highlight_selector', '.buildmode-3')),
+          'search' => check_plain(arg(2)),
+        ),
+      ), 'setting');
+    }
+
+    // Search results title.
     if (variable_get('nd_search_apachesolr_show_title', FALSE)) {
       $output .= '<h2>'. t('Search results') .'</h2>';
     }
 
+    // Extra variables.
     if (variable_get('nd_search_preprocess_vars', 'none') != 'none') {
       $variables = array();
       _nd_search_preprocess($variables);
       $output .= '<div class="nd-search-extra">'. $variables[variable_get('nd_search_preprocess_vars', 'none')] .'</div>';
     }
 
-    // Content.
+    // Results can either be a node or a user.
+    // User indexing is currently available at http://github.com/SupermanScott/apachesolr_users.
     foreach ($results as $key => $result) {
-      $node = _solr_document_to_node($result);
-      $node->build_mode = variable_get('nd_search_apachesolr_build_mode', NODE_BUILD_SEARCH_RESULT);
-      $output .= node_view($node);
+      // This is most likely a user.
+      if (!isset($result['fields']['nid'])) {
+        $uid = $result['fields']['uid']['value'];
+        $account = user_load($uid);
+        if ($account->uid) {
+          $account->type = 'ds_profile';
+          $account->build_mode = 'search';
+          user_build_content($account);
+          $output .= theme('user_profile', $account);
+        }
+      }
+      // All the rest is a node.
+      else {
+        $node = _solr_document_to_node($result);
+        $node->build_mode = variable_get('nd_search_apachesolr_build_mode', NODE_BUILD_SEARCH_RESULT);
+        $output .= node_view($node);
+      }
     }
 
     // Pager
@@ -370,6 +435,20 @@ if (variable_get('nd_search_override_search_page', FALSE)) {
   function luceneapi_node_search_page($results) {
     $output = '';
 
+    // Add highlighting.
+    if (variable_get('nd_search_highlight', FALSE)) {
+      drupal_add_js(drupal_get_path('module', 'nd_search') .'/nd_search.js');
+      drupal_add_css(drupal_get_path('module', 'nd_search') .'/nd_search.css');
+
+      drupal_add_js(array(
+        'nd_search' => array(
+          'selector' => check_plain(variable_get('nd_search_highlight_selector', '.buildmode-3')),
+          'search' => check_plain(arg(2)),
+        ),
+      ), 'setting');
+    }
+
+    // Extra variables.
     if (variable_get('nd_search_preprocess_vars', 'none') != 'none') {
       $variables = array();
       _nd_search_preprocess($variables);

@@ -1,5 +1,5 @@
 <?php
-// $Id: nd_search.install,v 1.1.2.4 2010/04/07 15:47:00 swentel Exp $
+// $Id: nd_search.install,v 1.1.2.5 2010/07/01 12:35:12 swentel Exp $
 
 /**
  * @file
@@ -17,4 +17,6 @@ function nd_search_uninstall() {
   variable_del('nd_search_apachesolr_hide_current_filters');
   variable_del('nd_search_preprocess_vars');
   variable_del('nd_search_apachesolr_show_title');
+  variable_del('nd_search_highlight');
+  variable_del('nd_search_highlight_selector');
 }

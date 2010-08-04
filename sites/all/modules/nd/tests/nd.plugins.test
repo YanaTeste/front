@@ -1,5 +1,5 @@
 <?php
-// $Id: nd.plugins.test,v 1.1.2.4.2.7 2010/04/24 19:02:11 swentel Exp $
+// $Id: nd.plugins.test,v 1.1.2.4.2.8 2010/06/08 00:20:08 swentel Exp $
 
 /**
  * @file
@@ -52,7 +52,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
     $edit = array(
       'plugin_emptyregionrender' => TRUE,
     );
-    $this->drupalPost('admin/ds/nd/plugins', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/nd/plugins', $edit, t('Save'));
 
     $plugin_settings = variable_get('nd_plugin_settings', array());
     $this->assertTrue(isset($plugin_settings['emptyregionrender']), t('Empty region render enabled.'), t('Plugin tests'));
@@ -65,7 +65,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
       'author[full][region]' => 'middle',
       'body[full][region]' => 'middle',
     );
-    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/layout/page/full', $edit, t('Save'));
 
     // Test that footer is not rendered with the emptyregionrender plugin enabled.
     $this->drupalGet('node/'. $page_node->nid);
@@ -78,7 +78,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
       'body[full][region]' => 'middle',
       'emptyregionrender[region-render-footer]' => TRUE,
     );
-    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/layout/page/full', $edit, t('Save'));
 
     // Test that footer is rendered with the emptyregionrender plugin enabled.
     $this->drupalGet('node/'. $page_node->nid);
@@ -89,7 +89,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
       'plugin_emptyregionrender' => FALSE,
       'plugin_regiontoblock' => TRUE,
     );
-    $this->drupalPost('admin/ds/nd/plugins', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/nd/plugins', $edit, t('Save'));
 
     $plugin_settings = variable_get('nd_plugin_settings', array());
     $this->assertFalse(isset($plugin_settings['emptyregionrender']), t('Empty region render disabled.'), t('Plugin tests'));
@@ -101,7 +101,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
       'body[full][region]' => 'middle',
       'author[full][region]' => 'right',
     );
-    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/layout/page/full', $edit, t('Save'));
 
     // Go to full node and make sure the right ds region is rendered.
     $this->drupalGet('node/'. $page_node->nid);
@@ -114,7 +114,7 @@ class NodeDisplaysPlugins extends DrupalWebTestCase {
       'author[full][region]' => 'right',
       'regiontoblock[region-block-right]' => TRUE,
     );
-    $this->drupalPost('admin/ds/layout/page/full', $edit, t('Save'));
+    $this->drupalPost('admin/build/ds/layout/page/full', $edit, t('Save'));
 
     // Go to blocks page and put this region into right sidebar.
     $edit = array(

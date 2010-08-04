@@ -1,5 +1,5 @@
 <?php
-// $Id: fb_social_like.module,v 1.4.2.3 2010/05/29 01:37:38 ferdi Exp $
+// $Id: fb_social_like.module,v 1.4.2.9 2010/07/09 15:04:50 ferdi Exp $
 
 /**
  * Implementation of hook init
@@ -62,12 +62,10 @@ function fb_social_like_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL){
       if (fb_social_like_type($node->type) && variable_get('fb_social_like_location', 0)) {
         if ($a4 || variable_get('fb_social_like_display_teasers', 1) && $a3) {
           
-          $output = theme('fb_social_like_widget', url('node/' . $node->nid, array(
-              'absolute' => TRUE 
-          )));
-          $weight = content_extra_field_weight($node->type, 'fb_social_like_widget');
+          $output = theme('fb_social_like_widget', fb_social_url('node/' . $node->nid));
+          $weight = (module_exists('content')) ? content_extra_field_weight($node->type, 'fb_social_like_widget') : -10;
           $node->content['fb_social_like_widget'] = array(
-              '#weight' => ! empty($weight) ? $weight : - 10, 
+              '#weight' => $weight, 
               '#value' => $output 
           );
         }
@@ -93,7 +91,7 @@ function fb_social_like_block($op = 'list', $delta = 0, $edit = array()){
     case 'view' :
       switch ($delta) {
         case 'like' :
-          $url = url($_GET['q'], array('absolute' => TRUE, 'alias' => TRUE ));  //unaliased
+          $url = fb_social_url($_GET['q']);  
           return array(
              
            'subject' => t(''), 
@@ -133,7 +131,7 @@ function theme_fb_social_like_widget($url){
   
   $attrs = drupal_attributes($attrs);
   
-  return '<fb:like ' . $attrs . '></fb:like>';
+  return '<div class="fb-social-like-widget"><fb:like ' . $attrs . '></fb:like></div>';
 
 }
 
@@ -158,13 +156,9 @@ function fb_social_like_link($type, $object, $teaser = FALSE){
   // good to go
   $links = array();
   if ($type == 'node' && fb_social_like_type($object -> type)) {
-    $links['jznews_share'] = array(
-        'title' => theme_fb_social_like_widget(url('node/' . $object -> nid, array('absolute' => TRUE))), 
-        'href' => 'node/' . $node->nid, 
-        'attributes' => array(
-            'title' => t('share this new with your friends'),
-        ) ,
-         'html' => TRUE,
+    $links['fb_social_like'] = array(
+      'title' => theme_fb_social_like_widget(fb_social_url('node/' . $object -> nid)), 
+      'html' => TRUE,
     );
   }
   

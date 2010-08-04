@@ -4,9 +4,9 @@ description = Extends FileField to allow referencing of existing files, remote f
 dependencies[] = filefield
 package = CCK
 core = 6.x
-; Information added by drupal.org packaging script on 2010-03-02
-version = "6.x-1.0"
+; Information added by drupal.org packaging script on 2010-06-17
+version = "6.x-1.1"
 core = "6.x"
 project = "filefield_sources"
-datestamp = "1267561511"
+datestamp = "1276807509"
 

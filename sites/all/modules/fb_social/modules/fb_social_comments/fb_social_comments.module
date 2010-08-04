@@ -1,6 +1,6 @@
 <?php
 
-// $Id: fb_social_comments.module,v 1.3.2.5 2010/05/29 03:13:27 ferdi Exp $
+// $Id: fb_social_comments.module,v 1.3.2.7 2010/07/17 19:49:59 ferdi Exp $
 
 
 /**
@@ -68,66 +68,49 @@ function fb_social_comments_block($op = 'list', $delta = 0, $edit = array()){
 }
 
 /**
- * Implementation of hook_menu_alter
+ * Implementation of hook_content_extra_fields.
  */
-function fb_social_comments_menu_alter(&$items){
-  $items['node/%node']['page callback'] = 'fb_social_comments_page_view';
-}
-
-function fb_social_comments_link_alter(&$links, $node){
-  if (! isset($links['comment_add']))
-    return;
-  if (fb_social_comments_type($node->type)) {
-    unset($links['comment_add']);
+function fb_social_comments_content_extra_fields($type_name){
+  if (fb_social_comments_type($type_name)) {
+    $extras['fb_social_comments_widget'] = array(
+        'label' => t('Facebook socials comments widget'), 
+        'description' => t('The facebook comments pluging widget'), 
+        'weight' => 20,  // sink down
+    );
+    return $extras;
   }
 }
 
 /**
- * Menu callback; takes the place of Node module's default function.
+ * Implementation of hook_nodeapi().
  */
-function fb_social_comments_page_view($node, $cid = NULL){
-  drupal_set_title(check_plain($node->title));
-  return fb_social_comments_page_view_show($node, $cid);
+function fb_social_comments_nodeapi(&$node, $op, $a3 = NULL, $a4 = NULL){
+  switch ($op) {
+    case 'view' :
+      if (fb_social_comments_type($node->type)) {
+        if ($a4) {  //only in page view
+          
+          $output = theme('fb_social_comments_block_comments_view', fb_social_url('node/' . $node->nid));
+          $weight = (module_exists('content')) ? content_extra_field_weight($node->type, 'fb_social_comments_widget') : 20;
+          $node->content['fb_social_comments_widget'] = array(
+              '#weight' => $weight, 
+              '#value' => $output 
+          );
+        }
+      }
+      break;
+  }
 }
+
 
 /**
- * Generate a page displaying a single node, along with its comments.
+ * theme function for the fb comments widget
  */
-function fb_social_comments_page_view_show($node, $cid, $message = FALSE){
-  if ($message) {
-    drupal_set_title(t('Revision of %title from %date', array(
-        '%title' => $node->title, 
-        '%date' => format_date($node->revision_timestamp) 
-    )));
-  }
-  $output = node_view($node, FALSE, TRUE);
-  
-  if (fb_social_comments_type($node->type)) {
-    
-    $output .= fb_social_comments_render($node);
-  }
-  elseif ($node->comment && function_exists('comment_render')) {
-    
-    $output .= comment_render($node, $cid);
-  
-  }
-  
-  // Update the history table, stating that this user viewed this node.
-  node_tag_new($node->nid);
-  
-  return $output;
-}
-
-function fb_social_comments_render($node){
+function theme_fb_social_comments_block_comments_view($url){
   $xid = url($_GET['q'], array(
       'absolute' => TRUE, 
       'alias' => TRUE 
-  )); // better way ?
-  
-
-  $url = url($_GET['q'], array(
-      'absolute' => TRUE 
-  ));
+  )); 
   
   $attrs = array(
       'xid' => urlencode($xid),  // why is drupal_urlencode not working ?
@@ -144,9 +127,11 @@ function fb_social_comments_render($node){
     $attrs['css'] = $css;
   }
   
-  $res = '<fb:comments ' . drupal_attributes($attrs) . '>';
+  $res = '<div id="fb-social-comments">';
+  $res .= '<fb:comments ' . drupal_attributes($attrs) . '>';
   //$res .= '<fb:title>Comments on: ' .$node -> title. '</fb:title>';
   $res .= '</fb:comments>';
+  $res .= '</div>';
   return $res;
 }
 

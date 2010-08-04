@@ -1,4 +1,19 @@
 -------------------------------------------------------------------------------------
+6.x-1.3 2010-07-18
+-------------------------------------------------------------------------------------
+- #845416 by swentel: ds_static_variables should hold key values in an array.
+- #843214 by swentel: add counter class on region to indicate how many fields are in it.
+- #824796 by swentel: check for fieldgroup in display because sometimes parent does not exist anymore
+- #818036 by swentel and netsensei: rebuild theme registry when creating new build modes.
+- #794908 by swentel: styles with no friendly names trigger illegal choice detection.
+- #795784 by swentel and jyve: add extra field-group class to fieldgroup.
+- #783050 by swentel: multiple classes on fields.
+- #783196 by swentel: sync/copy little confusing.
+- #786740 by swentel: excluding build modes confused administration logic.
+- #783056 by swentel: add classes to regions via the UI.
+- Move ui to admin/build/ds.
+
+-------------------------------------------------------------------------------------
 6.x-1.2 2010-05-07
 -------------------------------------------------------------------------------------
 - #770368 by swentel and zuuperman: views fields ds plugin.
@@ -33,4 +48,4 @@
 -------------------------------------------------------------------------------------
 - Initial release.
 
-/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.24 2010/05/07 11:33:16 swentel Exp $ */
+/* Last updated: $Id: CHANGELOG.txt,v 1.1.2.36 2010/07/18 11:20:59 swentel Exp $ */

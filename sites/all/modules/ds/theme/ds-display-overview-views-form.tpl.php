@@ -1,5 +1,5 @@
 <?php
-// $Id: ds-display-overview-views-form.tpl.php,v 1.1.2.4 2010/04/23 00:14:29 swentel Exp $
+// $Id: ds-display-overview-views-form.tpl.php,v 1.1.2.5 2010/06/15 09:07:11 swentel Exp $
 
 /**
  * @file
@@ -30,8 +30,8 @@ if ($rows):
       <thead>
         <tr>
           <th><?php print t('Field'); ?></th>
-          <th><?php print t('Label'); ?></th>
-          <th><?php print t('Style'); ?></th>
+          <th></th>
+          <th></th>
           <th><?php print t('Region'); ?></th>
           <th><?php print t('Weight'); ?></th>
         </tr>

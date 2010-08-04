@@ -1,14 +1,5 @@
 <?php
-// $Id: context_layouts.module,v 1.1.2.4 2010/02/25 22:22:40 yhahn Exp $ 
-
-/**
- * Implementation of hook_ctools_plugin_api().
- */
-function context_layouts_ctools_plugin_api($module, $api) {
-  if ($module == 'context' && $api == 'plugins') {
-    return array('version' => 3);
-  }
-}
+// $Id: context_layouts.module,v 1.1.2.5 2010/07/29 14:31:36 yhahn Exp $ 
 
 /**
  * Implementation of hook_context_plugins().

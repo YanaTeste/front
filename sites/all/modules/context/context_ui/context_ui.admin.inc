@@ -1,5 +1,5 @@
 <?php
-// $Id: context_ui.admin.inc,v 1.1.2.7.2.12.2.6 2010/04/26 17:52:58 yhahn Exp $
+// $Id: context_ui.admin.inc,v 1.1.2.7.2.12.2.9 2010/07/29 14:42:08 yhahn Exp $
 
 /**
  * Context listing form. Allows for quick creation of new contexts.
@@ -62,10 +62,6 @@ function context_ui_admin_submit(&$form, &$form_state) {
  *   A Drupal form array.
  */
 function context_ui_form(&$form_state, $op, $context = NULL) {
-  // Set a context to prevent implementation of 
-  // hook_context_reaction_fetch_alter() from running so we can edit the real
-  // values of the context.
-  context_set('context', 'no_alter', TRUE);
   ctools_include('export');
 
   $context = !$context ? ctools_export_new_object('context') : $context;
@@ -155,7 +151,7 @@ function context_ui_form(&$form_state, $op, $context = NULL) {
     ),
     'plugins' => array('#tree' => TRUE),
   );
-  $conditions = array_keys(context_conditions(TRUE));
+  $conditions = array_keys(context_conditions());
   sort($conditions);
   foreach ($conditions as $condition) {
     if ($plugin = context_get_plugin('condition', $condition)) {
@@ -187,7 +183,7 @@ function context_ui_form(&$form_state, $op, $context = NULL) {
     ),
     'plugins' => array('#tree' => TRUE),
   );
-  $reactions = array_keys(context_reactions(TRUE));
+  $reactions = array_keys(context_reactions());
   sort($reactions);
   foreach ($reactions as $reaction) {
     if ($plugin = context_get_plugin('reaction', $reaction)) {
@@ -311,7 +307,7 @@ function context_ui_import_submit($form, &$form_state) {
   $items = array();
   if ($import = $form_state['values']['import']) {
     ob_start();
-    $context = eval($import);
+    eval($import);
     ob_end_clean();
   }
   if (is_object($context)) {
@@ -327,7 +323,7 @@ function context_ui_import_submit($form, &$form_state) {
     }
   }
   else {
-    drupal_set_message(t('An error occurred while importing. Please check your context definition.', 'error'));
+    drupal_set_message(t('An error occurred while importing. Please check your context definition.'), 'error');
     $form_state['redirect'] = 'admin/build/context';
   }
 }
@@ -344,7 +340,9 @@ function context_ui_import_submit($form, &$form_state) {
 function context_ui_export(&$form_state, $context) {
   ctools_include('export');
   drupal_set_title(t('Export %title', array('%title' => $context->name)));
-  return ctools_export_form($form_state, context_export_context($context), t('Export'));
+  $form = ctools_export_form($form_state, context_export_context($context), t('Export'));
+  $form['code']['#description'] = t('To use this context export in a module enable the <strong>Bulk Export</strong> module and select contexts to export on the !bulkexporter page.', array('!bulkexporter' => l(t('Bulk Exporter'), 'admin/build/bulkexport')));
+  return $form;
 }
 
 /**

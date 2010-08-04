@@ -1,5 +1,5 @@
 <?php
-// $Id: ucd.module,v 1.1.2.6 2010/04/24 15:00:22 swentel Exp $
+// $Id: ucd.module,v 1.1.2.8 2010/06/28 16:03:31 swentel Exp $
 
 /**
  * @file
@@ -43,11 +43,10 @@ function ucd_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
   if (uc_product_is_product(array('type' => $node->type))) {
     switch ($op) {
       case 'view':
-        foreach ($node->content as $key => $value) {
-          if (isset($node->content[$key]['#value'])) {
-            $obj_key = 'ucd_'. $key;
-            $node->$obj_key = $node->content[$key]['#value'];
-          }
+        $product_fields = ucd_ubercart_fields();
+        foreach ($product_fields as $key => $value) {
+          $obj_key = 'ucd_'. $value;
+          $node->$obj_key = isset($node->content[$value]['#value']) ? $node->content[$value]['#value'] : '';
         }
       break;
     }
@@ -60,26 +59,46 @@ function ucd_nodeapi(&$node, $op, $teaser = NULL, $page = NULL) {
 function ucd_ds_fields($type_name, $build_mode, $extra) {
   $fields = array();
   if (uc_product_is_product(array('type' => $type_name))) {
-    $product_fields = array(
-      "display_price",
-      "model",
-      "list_price",
-      "cost",
-      "sell_price",
-      "weight",
-      "dimensions",
-      "add_to_cart"
-    );
+
+    $product_fields = ucd_ubercart_fields();
 
     foreach ($product_fields as $key => $value) {
+
+      if ($build_mode == 'teaser' && ($value == 'weight' || $value == 'dimensions')) {
+        continue;
+      }
+
       $fields['ucd_' . $value] = array(
-        'title' => t('ucd_' . $value),
+        'title' => 'Ubercart '. str_replace('_', ' ', $value),
         'type' => DS_FIELD_TYPE_PREPROCESS,
         'status' => DS_FIELD_STATUS_STATIC,
       );
     }
   }
   return array('nd' => $fields);
+}
+
+/**
+ * Return all ubercart fields.
+ */
+function ucd_ubercart_fields() {
+  $product_fields = array(
+    "display_price",
+    "model",
+    "list_price",
+    "cost",
+    "sell_price",
+    "weight",
+    "dimensions",
+    "add_to_cart"
+  );
+
+  // Support for uc options image.
+  if (module_exists('uc_option_image')) {
+    $product_fields[] = 'option_image';
+  }
+
+  return $product_fields;
 }
 
 /*

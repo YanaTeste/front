@@ -602,6 +602,12 @@ margin: 0;
 
 
 /* Publisering */
+
+#publisering-panel .panel-col-top {
+border-bottom: 1px solid #ccc;
+margin-bottom: 20px;
+}
+
 .panel-2col-stacked .panel-col-first .article{
 padding: 20px 0;
 border-bottom: 1px solid #ccc;
@@ -616,12 +622,29 @@ padding-left: 40px;
 border-left: 16px solid #ff3399;
 }
 
+.publisering-intro {
+background: url(./images/arrow-down.png) 265px 204px no-repeat;
+overflow: auto;
+height: 281px;
+}
+
 /**/
 
 /* Tjenester */
 .view-tjenester h2 {
 padding-left: 50px;
-background: url(./images/sprites_1a.png) 0 -212px no-repeat;
+background: url(./images/sprites_1a.png) 0 -708px no-repeat;
+font-style: italic;
+font-family: Georgia;
+color: #666;
+}
+
+h2.tjenester {
+background-position: 0 -616px;
+}
+
+h2.losninger {
+background-position: 0 -660px;
 }
 
 /**/
@@ -669,49 +692,58 @@ height: auto;
 margin-bottom: 26px;
 }
 
-#quicktabs-3 .content ul{
+.content ul.icons{
 border-right: 1px solid #ccc;
 }
-#quicktabs-3 .content li {
+.content .icons li {
 overflow: auto;
 border-bottom: 1px solid #e5e5e5;
 padding: 20px 5px 20px 100px;
 margin-right: 20px;
 background: url(./images/sprites_1a.png) 0 26px no-repeat;
 }
-#quicktabs-3 li.tjenester {
+.icons li.tjenester {
 }
-#quicktabs-3 li.losninger {
+.icons li.losninger {
 background-position: 0 -86px;
 }
-#quicktabs-3 li.teknologi {
+.icons li.teknologi {
 background-position: 0 -212px;
 }
-#quicktabs-3 li.magento {
+.icons li.magento {
 background-position: 0 -348px;
 }
-#quicktabs-3 li.drupal {
+.icons li.drupal {
 background-position: 0 -472px;
 }
-#quicktabs-3 li.open-atrium {
-background-position: 0 -212px;
+.icons li.joomla {
+background-position: 0 -870px;
 }
-#quicktabs-3 .content li:hover {
+.icons li.wordpress {
+background-position: 0 -990px;
+}
+.icons li.open-atrium {
+background-position: 0 -1100px;
+}
+.icons li.syzweb {
+background-position: 0 -1210px;
+}
+.icons li:hover {
 background-color: #ebffff;
 }
-#quicktabs-3 img {
+.icons img {
 float: left;
 margin-right: 20px;
 display: inline-block;
 height: 75px;
 }
-#quicktabs-3 h2 {
+.icons h2 {
 margin-bottom: 4px;
 }
-#quicktabs-3 p{
+.icons p{
 margin-bottom: 0;
 }
-#quicktabs-3 br {
+.icons br {
 display: none;
 }
 
@@ -788,6 +820,23 @@ border-bottom: 1px dotted #ccc;
 /**/
 
 
+/* Tweets page */
+.simple-tweet-timeline {
+padding: 40px;
+}
+
+.simple-tweet-timeline .simple-tweet {
+padding: 20px;
+margin-bottom: 5px;
+background: #f8fffc;
+}
+
+.simple-tweet-timeline .simple-tweet.even {
+background: #ecf8f4;
+}
+
+/**/
+
 /* ------- Sidebar one -------*/
 
 #sidebar-left .menu li {
@@ -839,15 +888,11 @@ border-collapse:collapse;
 }
 
 th {
-background:#F4F9FE none repeat scroll 0 0;
-font-size-adjust:none;
-font-stretch:normal;
-font-style:normal;
-font-variant:normal;
+background: url(./images/top-menu-bg.png) #222 0 0 repeat-x;
 font-weight:bold;
 line-height:2em;
 text-align:left;
-border-bottom: none;
+border: none;
 }
 
 thead tr {
@@ -855,14 +900,24 @@ border-left: 1px solid #e5eff8;
 }
 
 td {
-border-bottom:1px solid #e5eff8;
-border-left:1px solid #e5eff8;
+border-bottom:1px solid #e0e0e0;
+border-left:1px solid #e0e0e0;
 padding:.3em 1em;
 text-align:left;
 }
 
 tbody {
-border-top: 1px solid #e5eff8;
+/*border-top: 1px solid #e5eff8;*/
+}
+
+th.heading {
+-moz-border-radius-topleft: 8px;
+-webkit-border-top-left-radius: 8px;
+}
+
+th.last {
+-moz-border-radius-topright: 8px;
+-webkit-border-top-right-radius: 8px;
 }
 
 tr.odd td {
@@ -870,7 +925,7 @@ background:#fff;
 }
 
 tr.even td {
-background:#f9fcfe;
+background:#f5f5f5;
 }
 /**/
 
@@ -968,6 +1023,10 @@ border-radius: 4px;
 -moz-border-radius: 4px;
 overflow: visible;
 margin-bottom: 16px;
+}
+
+ul.quicktabs-style-nostyle li {
+padding: 2px 12px 2px 2px;
 }
 
 ul.quicktabs-style-nostyle li a{

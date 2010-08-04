@@ -8,7 +8,7 @@
 /* Default font settings. */
 html { font-size:100.01%; }
 body {
-  font-size: 14px;
+  font-size: 13px;
   color: #222;
   background: #fff;
   font-family: Arial, Helvetica, sans-serif;
@@ -96,12 +96,8 @@ font-size: 11px;
 margin-bottom: 10px;
 }
 
-.field-teasertext p, .field-subheading p, .view-header p, #views_slideshow_singleframe_main_front_main-default p {
+.field-subheading, .field-subheading p, .view-header p, #views_slideshow_singleframe_main_front_main-default p {
 font-size: 20px;
-}
-
-.panel-panel .field-teasertext p {
-font-size: 14px;
 }
 
 blockquote p {margin: 0;}
@@ -132,7 +128,7 @@ li ol       { margin: 0; }
 ul, ol      { margin: 0; padding-left: 0; }
 
 ul          { list-style-type: none; }
-/*.node ul    { margin-left: 24px; }*/
+.node ul    { margin-bottom: 22px; }
 .node li    { padding-left: 20px; background: url(./images/li-arrow.png) 0 50% no-repeat;}
 .node li li { padding-left: 0; background: none; list-style-type: disc;}
 
@@ -144,7 +140,7 @@ dd          { margin-left: 1.5em;}
 
 
 /* Tables
--------------------------------------------------------------- */
+-------------------------------------------------------------- 
 
 table       { margin-bottom: 1.4em; width:100%; }
 th          { font-weight: bold; }
@@ -154,7 +150,7 @@ tr.even td  { background: #e5ecf9; }
 tfoot       { font-style: italic; }
 caption     { background: #eee; }
 
-
+*/
 /* Misc classes
 -------------------------------------------------------------- */
 

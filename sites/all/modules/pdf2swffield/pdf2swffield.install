@@ -1,0 +1,25 @@
+<?php
+// $Id$
+
+/**
+ * Implementation of hook_install().
+ */
+function pdf2swffield_install() {
+  drupal_load('module', 'content');
+  content_notify('install', 'pdf2swffield');
+}
+
+function pdf2swffield_uninstall() {
+  drupal_load('module', 'content');
+  content_notify('uninstall', 'pdf2swffield');
+}
+
+function pdf2swffield_enable() {
+  drupal_load('module', 'content');
+  content_notify('enable', 'pdf2swffield');
+}
+
+function pdf2swffield_disable() {
+  drupal_load('module', 'content');
+  content_notify('disable', 'pdf2swffield');
+}

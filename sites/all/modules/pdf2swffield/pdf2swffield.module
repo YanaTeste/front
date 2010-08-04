@@ -1,0 +1,168 @@
+<?php
+// $Id$
+
+/**
+ * @file
+ * Pdf2SwfField core hooks and menu callbacks.
+ */
+
+include_once dirname(__FILE__) . '/pdf2swffield_file.inc';
+include_once dirname(__FILE__) . '/pdf2swffield_widget.inc';
+
+/**
+ * Implementation of hook_init().
+ *
+ * Load required includes.
+ */
+function pdf2swffield_init() {
+  // If FileField is not available, immediately disable Pdf2SwfField.
+  if (!module_exists('filefield')) {
+    module_disable(array('pdf2swffield'));
+    drupal_set_message(t('The Pdf2SwfField module has been disabled. The <a href="http://drupal.org/project/filefield">FileField module</a> needs to be installed for it to work properly.'));
+    return;
+  }
+}
+
+/**
+ * Implementation of hook_theme().
+ */
+function pdf2swffield_theme() {
+  return array(
+    'pdf2swffield' => array(
+      'arguments' => array('file' => NULL, 'parameters' => array()),
+    ),
+    // pdf2swffield_widget form element type theme function.
+    'pdf2swffield_widget' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'pdf2swffield_widget.inc',
+    ),
+    // Theme function for the field item elements. allows you to place children
+    // within the context of the parent.
+    'pdf2swffield_widget_item' => array(
+      'arguments' => array('element' => NULL),
+    ),
+    'pdf2swffield_formatter_swf_plain' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'pdf2swffield_formatter.inc',
+    ),
+  );
+}
+
+/**
+ * Implementation of hook_elements().
+ */
+function pdf2swffield_elements() {
+  $elements = array();
+
+  // An Pdf2SwfField is really just a FileField with extra processing.
+  $filefield_elements = filefield_elements();
+  $elements['pdf2swffield_widget'] = $filefield_elements['filefield_widget'];
+  
+  return $elements;
+}
+
+/**
+ * Implementation of CCK's hook_widget_info().
+ */
+function pdf2swffield_widget_info() {
+  return array(
+    'pdf2swffield_widget' => array(
+      'label' => t('Pdf2Swf'),
+      'field types' => array('filefield'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'callbacks' => array('default value' => CONTENT_CALLBACK_CUSTOM),
+      'description' => t('An edit widget for pdf2swf files.'),
+    ),
+  );
+}
+
+/**
+ * Implementation of CCK's hook_widget_settings().
+ */
+function pdf2swffield_widget_settings($op, $widget) {
+  switch ($op) {
+    case 'form':
+      return pdf2swffield_widget_settings_form($widget);
+    case 'validate':
+      return pdf2swffield_widget_settings_validate($widget);
+    case 'save':
+      return pdf2swffield_widget_settings_save($widget);
+  }
+}
+
+/**
+ * Implementation of CCK's hook_content_is_empty().
+ *
+ * The result of this determines whether content.module will save the value of
+ * the field. Note that content module has some interesting behaviors for empty
+ * values. It will always save at least one record for every node revision,
+ * even if the values are all NULL. If it is a multi-value field with an
+ * explicit limit, CCK will save that number of empty entries.
+ */
+function pdf2swffield_content_is_empty($item, $field) {
+  return empty($item['fid']) || (int)$item['fid'] == 0;
+}
+
+
+/**
+ * Implementation of CCK's hook_widget().
+ *
+ * Assign default properties to item and delegate to FileField.
+ */
+function pdf2swffield_widget(&$form, &$form_state, $field, $items, $delta = 0) {
+  // Start with the FileField widget as a basic start.
+  // Note that FileField needs to modify $form by reference.
+  $element = filefield_widget($form, $form_state, $field, $items, $delta);
+
+  return $element;
+}
+
+/**
+ * Implementation of CCK's hook_field_formatter_info().
+ */
+function pdf2swffield_field_formatter_info() {
+  //$module_path = drupal_get_path('module', 'pdf2swffield');
+  $formatters = array(
+    'swf_plain' => array(
+      'label' => t('SWF file with pager'),
+      'field types' => array('filefield'),
+      'description' => t('Displays converted pdf files in SWF-wrapper.'),
+    ),
+  );
+  return $formatters;
+}
+
+/**
+ * Implementation of CCK's hook_default_value().
+ */
+function pdf2swffield_default_value(&$form, &$form_state, $field, $delta) {
+  return filefield_default_value($form, $form_state, $field, $delta);
+}
+
+/**
+ * @defgroup "Theme Callbacks"
+ * @{
+ * @see pdf2swffield_theme().
+ */
+function theme_pdf2swffield($file, $parameters) {
+  $file = (array)$file;
+ 
+  if (!is_file($file['filepath'] . ".swf")) {
+    return '<!-- File not found: '. $file['filepath'] .' -->';
+  }
+  
+  global $base_url;
+  $path = $base_url . "/" . drupal_get_path("module", "pdf2swffield") . "/pdf2swfviewer.swf";
+  $filepath = base_path() . $file['filepath'] . ".swf";
+
+  return swf($path, array('params' => array('width' => $parameters["width"], 'height' => $parameters["height"]), 'flashvars' => array('filepath' => $filepath)));
+}
+
+function theme_pdf2swffield_widget_item($element) {
+	return theme('filefield_widget_item', $element);
+}
+
+//*/
+/**
+ * @} End defgroup "Theme Callbacks".
+ */

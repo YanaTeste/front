@@ -1,5 +1,5 @@
 <?php
-// $Id: fb_social.module,v 1.2.2.6 2010/07/14 02:29:42 ferdi Exp $
+// $Id: fb_social.module,v 1.2.2.7 2010/07/30 01:44:51 ferdi Exp $
 
 /**
  * @file
@@ -68,7 +68,8 @@ function fb_social_footer($main = 0) {
          status: true, 
          cookie: true,
          xfbml: true});
-         
+       
+         jQuery.event.trigger('fb:init');    
      };
      (function() {
        var e = document.createElement('script'); 

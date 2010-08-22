@@ -1,5 +1,5 @@
 <?php
-// $Id: context_condition_node_taxonomy.inc,v 1.1.2.2 2010/06/14 17:53:08 yhahn Exp $
+// $Id: context_condition_node_taxonomy.inc,v 1.1.2.3 2010/08/03 03:25:23 yhahn Exp $
 
 /**
  * Expose node taxonomy terms as a context condition.
@@ -11,7 +11,7 @@ class context_condition_node_taxonomy extends context_condition_node {
       foreach (taxonomy_get_vocabularies() as $vocab) {
         if (empty($vocab->tags)) {
           foreach (taxonomy_get_tree($vocab->vid) as $term) {
-            $values[$term->tid] = $term->name;
+            $values[$term->tid] = check_plain($term->name);
           }
         }
       }

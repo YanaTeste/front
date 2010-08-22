@@ -1,5 +1,5 @@
 <?php
-//$Id: fb_social_likebox.admin.inc,v 1.1.2.1 2010/05/07 02:48:56 ferdi Exp $
+//$Id: fb_social_likebox.admin.inc,v 1.1.2.2 2010/07/26 00:41:52 ferdi Exp $
 
 /**
  * Settings form for choosing the operating mode of purl
@@ -38,7 +38,7 @@ function fb_social_likebox_settings_form(){
   $form['widget_setings']['fb_social_likebox_connections'] = array(
     '#type' => 'textfield',
     '#title' => t('Connections'),
-    '#description' => t('Note: To provide you with better performance, we cache your stylesheet. If you update your stylesheet, you should use a cachebreaker in the URL to the stylesheet, typically by appending a version number to the .CSS file extension, as in http://www.example.com/my.css?2'),
+    '#description' => t('Show a sample of this many users who have liked this page '),
     '#default_value' => variable_get('fb_social_likebox_connections', 10),
   );
   

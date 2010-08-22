@@ -1,5 +1,5 @@
 <?php
-// $Id: context.reactions.test,v 1.1.2.2 2010/07/30 18:15:36 yhahn Exp $
+// $Id: context.reactions.test,v 1.1.2.3 2010/08/04 18:40:56 jmiccolis Exp $
 
 class ContextReactionBlockTest extends DrupalWebTestCase {
   function getInfo() {
@@ -41,6 +41,29 @@ class ContextReactionBlockTest extends DrupalWebTestCase {
     // @TODO:
     // - Implement & test title overrides (if we plan to support them).
     // - Implement & test core + context block visibility conditions
+  }
+}
+
+class ContextReactionBlockAjaxTest extends DrupalWebTestCase {
+  function getInfo() {
+    return array(
+      'name' => t('Reaction: block ajax'),
+      'description' => t('Test block reaction ajax behavior.'),
+      'group' => t('Context'),
+    );
+  }
+
+  function setUp() {
+    parent::setUp('context', 'ctools');
+  }
+
+  function test() {
+    $this->drupalGet('node', array(
+      'query' => array('context_block' => 'user-3,testcontext')
+    ));
+
+    $this->assertText('"status": 1');
+    $this->assertText("Who\'s online");
   }
 }
 

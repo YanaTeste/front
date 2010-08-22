@@ -1,5 +1,5 @@
 <?php
-// $Id: context_condition.inc,v 1.1.2.7 2010/07/29 21:23:34 yhahn Exp $
+// $Id: context_condition.inc,v 1.1.2.9 2010/08/05 07:15:22 yhahn Exp $
 
 /**
  * Base class for a context condition.
@@ -81,6 +81,13 @@ class context_condition {
   }
 
   /**
+   * Settings form. Provide variable settings for your condition.
+   */
+  function settings_form() {
+    return array();
+  }
+
+  /**
    * Context editor form for conditions.
    */
   function editor_form($context) {
@@ -115,14 +122,16 @@ class context_condition {
   }
 
   /**
-   * Public method that is called from hooks or other integration
-   * points with Drupal.
+   * Public method that is called from hooks or other integration points with
+   * Drupal. Note that it is not implemented in the base class, allowing
+   * extending classes to change the function signature if necessary.
+   *
+   * function execute($value) {
+   *   foreach ($this->get_contexts($value) as $context) {
+   *     $this->condition_met($context, $value);
+   *   }
+   * }
    */
-  function execute($value) {
-    foreach ($this->get_contexts($value) as $context) {
-      $this->condition_met($context, $value);
-    }
-  }
 
   /**
    * Marks a context as having met this particular condition.

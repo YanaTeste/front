@@ -1,5 +1,30 @@
 <?php
-// $Id: context.core.inc,v 1.1.2.3.2.20.2.26 2010/07/30 18:15:36 yhahn Exp $
+// $Id: context.core.inc,v 1.1.2.3.2.20.2.29 2010/08/05 08:03:29 yhahn Exp $
+
+/**
+ * Implementation of hook_help().
+ */
+function context_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#context':
+      $output = file_get_contents(drupal_get_path('module', 'context') .'/README.txt');
+      return module_exists('markdown') ? filter_xss_admin(module_invoke('markdown', 'filter', 'process', 0, -1, $output)) : '<pre>'. check_plain($output) .'</pre>';
+  }
+}
+
+/**
+ * Implementation of hook_menu_alter().
+ * If core block handling is disabled, remove menu items.
+ */
+function context_menu_alter(&$items) {
+  if (variable_get('context_reaction_block_disable_core', FALSE)) {
+    foreach ($items as $path => $item) {
+      if (strpos($path, 'admin/build/block') === 0) {
+        unset($items[$path]);
+      }
+    }
+  }
+}
 
 /**
  * Implementation of hook_theme().
@@ -40,7 +65,7 @@ function context_theme() {
     'file' => 'context_reaction_block.theme.inc',
   );
   $items['context_block_editable_region'] = array(
-    'arguments' => array('region' => '', 'blocks' => array()),
+    'arguments' => array('region' => '', 'blocks' => array(), 'editable' => FALSE),
     'path' => drupal_get_path('module', 'context') . '/theme',
     'template' => 'context-block-editable-region',
     'file' => 'context_reaction_block.theme.inc',

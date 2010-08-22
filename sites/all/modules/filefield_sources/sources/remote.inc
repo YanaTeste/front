@@ -1,5 +1,5 @@
 <?php
-// $Id: remote.inc,v 1.6 2010/03/13 00:09:15 quicksketch Exp $
+// $Id: remote.inc,v 1.9 2010/08/09 04:11:50 quicksketch Exp $
 
 /**
  * @file
@@ -112,30 +112,6 @@ function filefield_source_remote_value($element, &$item) {
   if (isset($item['filefield_remote']['url']) && strlen($item['filefield_remote']['url']) > 0 && valid_url($item['filefield_remote']['url']) && $item['filefield_remote']['url'] != FILEFIELD_SOURCE_REMOTE_HINT_TEXT) {
     $field = content_fields($element['#field_name'], $element['#type_name']);
     $url = $item['filefield_remote']['url'];
-    $pathinfo = pathinfo($url);
-    $filename = rawurldecode(basename($url));
-    $filepath = file_create_filename($filename, file_directory_temp());
-
-    if (empty($pathinfo['extension'])) {
-      form_error($element, t('The remote URL must be a file and have an extension.'));
-      return;
-    }
-
-    // Perform basic extension check on the file before trying to transfer.
-    $extensions = $field['widget']['file_extensions'];
-    $regex = '/\.('. ereg_replace(' +', '|', preg_quote($extensions)) .')$/i';
-    if (!empty($extensions) && !preg_match($regex, $filename)) {
-      form_error($element, t('Only files with the following extensions are allowed: %files-allowed.', array('%files-allowed' => $extensions)));
-      return;
-    }
-
-    $options = array(
-      'key' => $element['#type_name'] . '_' . $element['#field_name'] . '_' . $element['#delta'],
-      'filepath' => $filepath,
-    );
-
-    filefield_source_remote_set_transfer_options($options);
-
 
     // Check the headers to make sure it exists and is within the allowed size.
     $ch = curl_init();
@@ -163,6 +139,28 @@ function filefield_source_remote_value($element, &$item) {
       return;
     }
 
+    // Update the $url variable to reflect any redirects.
+    $url = $info['url'];
+    $url_info = parse_url($url);
+    $pathinfo = pathinfo($url_info['path']);
+    $filename = rawurldecode(basename($url_info['path']));
+    $filename = filefield_sources_clean_filename($filename);
+    $filepath = file_create_filename($filename, file_directory_temp());
+
+    if (empty($pathinfo['extension'])) {
+      form_error($element, t('The remote URL must be a file and have an extension.'));
+      return;
+    }
+
+    // Perform basic extension check on the file before trying to transfer.
+    $extensions = $field['widget']['file_extensions'];
+    $regex = '/\.('. ereg_replace(' +', '|', preg_quote($extensions)) .')$/i';
+    if (!empty($extensions) && !preg_match($regex, $filename)) {
+      form_error($element, t('Only files with the following extensions are allowed: %files-allowed.', array('%files-allowed' => $extensions)));
+      return;
+    }
+
+    // Check file size based off of header information.
     if (!empty($element['#upload_validators']['filefield_validate_size'][0])) {
       $max_size = $element['#upload_validators']['filefield_validate_size'][0];
       $file_size = $info['download_content_length'];
@@ -171,6 +169,13 @@ function filefield_source_remote_value($element, &$item) {
         return;
       }
     }
+
+    // Set progress bar information.
+    $options = array(
+      'key' => $element['#type_name'] . '_' . $element['#field_name'] . '_' . $element['#delta'],
+      'filepath' => $filepath,
+    );
+    filefield_source_remote_set_transfer_options($options);
 
     // Then make the actual request to download the file.
     $ch = curl_init();

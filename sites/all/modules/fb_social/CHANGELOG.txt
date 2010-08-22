@@ -1,4 +1,11 @@
-$Id: CHANGELOG.txt,v 1.1.2.6 2010/07/17 19:58:42 ferdi Exp $
+$Id: CHANGELOG.txt,v 1.1.2.7 2010/08/09 03:02:47 ferdi Exp $
+
+fb_social 6.x-1.0-BETA4, 2010-08-08
+
+#852582 by vectoroc: Integrate with fbconnect
+Wrong callback for fb_social_comment_block
+#858156 Support for enabling the Like button through user permissions
+#864022 wrong description of connections textfield
 
 fb_social 6.x-1.0-BETA3, 2010-06-20
 

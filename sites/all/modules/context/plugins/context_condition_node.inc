@@ -1,5 +1,5 @@
 <?php
-// $Id: context_condition_node.inc,v 1.1.2.3 2010/07/28 21:43:30 yhahn Exp $
+// $Id: context_condition_node.inc,v 1.1.2.4 2010/08/03 03:25:23 yhahn Exp $
 
 /**
  * Trigger context on node view only.
@@ -23,7 +23,7 @@ class context_condition_node extends context_condition {
   function condition_values() {
     $values = array();
     foreach (node_get_types() as $type) {
-      $values[$type->type] = $type->name;
+      $values[$type->type] = check_plain($type->name);
     }
     return $values;
   }

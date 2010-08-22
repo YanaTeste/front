@@ -1,5 +1,5 @@
 <?php
-// $Id: context_reaction_block.inc,v 1.1.2.31 2010/07/30 15:00:33 yhahn Exp $
+// $Id: context_reaction_block.inc,v 1.1.2.35 2010/08/06 16:13:32 jmiccolis Exp $
 
 /**
  * Expose blocks as context reactions.
@@ -125,7 +125,7 @@ class context_reaction_block extends context_reaction {
       if (!isset($once)) {
         $settings = array(
           'path' => url($_GET['q']),
-          'params' => (object) $_GET,
+          'params' => (object) array_diff_key($_GET, array('q' => '')),
           'scriptPlaceholder' => theme('context_block_script_placeholder', ''),
         );
         drupal_add_js(array('contextBlockEditor' => $settings), 'setting');
@@ -146,8 +146,8 @@ class context_reaction_block extends context_reaction {
   }
 
   /**
-  * Submit handler context editor form.
-  */
+   * Submit handler context editor form.
+   */
   function editor_form_submit(&$context, $values) {
     $edited = !empty($values['state']) ? (array) $this->json_decode($values['state']) : array();
 
@@ -183,6 +183,30 @@ class context_reaction_block extends context_reaction {
   }
 
   /**
+   * Settings form for variables.
+   */
+  function settings_form() {
+    $form = array();
+    $form['context_reaction_block_disable_core'] = array(
+      '#title' => t('Core block system'),
+      '#type' => 'select',
+      '#options' => array(
+        FALSE => t('Enabled'),
+        TRUE => t('Disabled'),
+      ),
+      '#default_value' => variable_get('context_reaction_block_disable_core', FALSE),
+      '#description' => t('If enabled Context will include blocks enabled through the core block system when rendering regions. Disable to improve performance and hide the core block administration UI.')
+    );
+    $form['context_reaction_block_all_regions'] = array(
+      '#title' => t('Show all regions'),
+      '#type' => 'checkbox',
+      '#default_value' => variable_get('context_reaction_block_all_regions', FALSE),
+      '#description' => t('Show all regions including those that are empty. Enable if you are administering your site using the inline editor.')
+    );
+    return $form;
+  }
+
+  /**
    * Execute.
    */
   function execute($region) {
@@ -193,9 +217,35 @@ class context_reaction_block extends context_reaction {
       return $this->render_ajax($_GET['context_block']);
     }
     if ($this->is_enabled_region($region)) {
-      return theme('context_block_editable_region', $region, $this->block_list($region));
+      return theme('context_block_editable_region', $region, $this->block_list($region), $this->is_editable());
     }
     return '';
+  }
+
+  /**
+   * Determine whether inline editing requirements are met and that the current
+   * user may edit.
+   */
+  protected function is_editable($reset = FALSE) {
+    // Check requirements.
+    // Generally speaking, it does not make sense to allow anonymous users to
+    // edit a context inline. Though it may be possible to save (and restore)
+    // an edited context to an anonymous user's cookie or session, it's an
+    // edge case and probably not something we want to encourage anyway.
+    static $editable;
+    if (!isset($editable) || $reset) {
+      global $user;
+      if (module_exists('jquery_ui') && $user->uid) {
+        $editable = TRUE;
+        jquery_ui_add(array('ui.draggable', 'ui.droppable', 'ui.sortable'));
+        drupal_add_js(drupal_get_path('module', 'context') .'/plugins/context_reaction_block.js');
+        drupal_add_css(drupal_get_path('module', 'context') .'/plugins/context_reaction_block.css');
+      }
+      else {
+        $editable = FALSE;
+      }
+    }
+    return $editable;
   }
 
   /**
@@ -215,6 +265,7 @@ class context_reaction_block extends context_reaction {
     static $build_queue;
     static $build_contexts;
     static $context_blocks = array();
+    static $empty_blocks = array();
 
     // Static cache a region => block array of blocks that should be built *if*
     // the given region is requested. Note that the blocks are not themselves
@@ -242,19 +293,33 @@ class context_reaction_block extends context_reaction {
     // Context blocks.
     if (!isset($context_blocks[$region])) {
       $context_blocks[$region] = array();
+      $empty_blocks[$region] = array();
       if (!empty($build_queue[$region])) {
         foreach ($build_queue[$region] as $block) {
           $block = $this->build_block($block);
-          $context_blocks[$region][] = $block;
+          if (!empty($block->content)) {
+            $context_blocks[$region][] = $block;
+          }
+          else {
+            $empty_blocks[$region][] = $block;
+          }
         }
       }
     }
-    // Core blocks.
-    $blocks = block_list($region);
-    if (isset($context_blocks[$region])) {
-      $blocks = array_merge($blocks, $context_blocks[$region]);
-      uasort($blocks, array('context_reaction_block', 'block_sort'));
+
+    // Get core blocks only if enabled.
+    $blocks = !variable_get('context_reaction_block_disable_core', FALSE) ? block_list($region) : array();
+    $blocks = array_merge($blocks, $context_blocks[$region]);
+
+    // Only include empty blocks if all regions should be shown or there are
+    // non-empty blocks in the same region.
+    $all_regions = variable_get('context_reaction_block_all_regions', FALSE);
+    if ($this->is_editable() && ($all_regions || !empty($blocks))) {
+      $blocks = array_merge($blocks, $empty_blocks[$region]);
     }
+
+    // Sort everything.
+    uasort($blocks, array('context_reaction_block', 'block_sort'));
     return $blocks;
   }
 
@@ -293,8 +358,11 @@ class context_reaction_block extends context_reaction {
       }
     }
     if (!empty($block->content)) {
-      global $user, $theme_key;
-      $block->title = db_result(db_query("SELECT title FROM {blocks} WHERE module = '%s' AND delta = '%s' AND theme = '%s'", $block->module, $block->delta, $theme_key));
+      // Only query for custom block title if block core compatibility is enabled.
+      if (!variable_get('context_reaction_block_disable_core', FALSE)) {
+        global $user, $theme_key;
+        $block->title = db_result(db_query("SELECT title FROM {blocks} WHERE module = '%s' AND delta = '%s' AND theme = '%s'", $block->module, $block->delta, $theme_key));
+      }
       // Override default block title if a custom display title is present.
       if (!empty($block->title)) {
         // Check plain here to allow module generated titles to keep any markup.
@@ -485,6 +553,13 @@ class context_reaction_block extends context_reaction {
    * is set. See ->execute() for how this is called.
    */
   function render_ajax($param) {
+    // Besure the page isn't a 404 or 403.
+    $headers = drupal_set_header();
+    foreach (explode("\n", $headers) as $header) {
+      if ($header == "HTTP/1.1 404 Not Found" || $header == "HTTP/1.1 403 Forbidden") {
+        return;
+      }
+    }
     // Set the header right away. This will inform any players in the stack
     // that we are in the middle of responding to an AJAX request.
     drupal_set_header('Content-Type: text/javascript; charset=utf-8');

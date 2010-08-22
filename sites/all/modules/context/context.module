@@ -1,5 +1,5 @@
 <?php
-// $Id: context.module,v 1.6.2.6.2.6.2.23 2010/08/01 03:35:52 yhahn Exp $
+// $Id: context.module,v 1.6.2.6.2.6.2.25 2010/08/06 17:56:50 yhahn Exp $
 
 require('context.core.inc');
 
@@ -260,6 +260,30 @@ function context_delete($context) {
 }
 
 /**
+ * Exports the specified context.
+ */
+function context_export($context, $indent = '') {
+  $output = ctools_export_object('context', $context, $indent);
+  $translatables = array();
+  foreach (array('description', 'tag') as $key) {
+    if (!empty($context->{$key})) {
+      $translatables[] = $context->{$key};
+    }
+  }
+  $translatables = array_filter(array_unique($translatables));
+  if (!empty($translatables)) {
+    $output .= "\n";
+    $output .= "{$indent}// Translatables\n";
+    $output .= "{$indent}// Included for use with string extractors like potx.\n";
+    sort($translatables);
+    foreach ($translatables as $string) {
+      $output .= "{$indent}t(" . ctools_var_export($string) . ");\n";
+    }
+  }
+  return $output;
+}
+
+/**
  * API FUNCTIONS ======================================================
  */
 
@@ -273,22 +297,6 @@ function context_context_list() {
     $list[$context->name] = $context->name;
   }
   return $list;
-}
-
-/**
- * CTools export function.
- */
-function context_export_context($context, $indent = '') {
-  $strings = array();
-  foreach (array('description', 'tag') as $id) {
-    if (!empty($context->$id)) {
-      $strings[] = $indent . "  t('" . str_replace("'", "\'", $context->$id) . "'),";
-    }
-  }
-  sort($strings);
-  $extra = implode("\n", array_unique($strings));
-  $extra = "\n". $indent ."\$translatables['" . $context->name . "'] = array(\n". $extra . "\n" . $indent . ");\n";
-  return ctools_export_object('context', $context, $indent) . $extra;
 }
 
 /**

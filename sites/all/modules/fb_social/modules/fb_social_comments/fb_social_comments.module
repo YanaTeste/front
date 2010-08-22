@@ -1,6 +1,6 @@
 <?php
 
-// $Id: fb_social_comments.module,v 1.3.2.7 2010/07/17 19:49:59 ferdi Exp $
+// $Id: fb_social_comments.module,v 1.3.2.8 2010/07/18 20:46:43 ferdi Exp $
 
 
 /**
@@ -58,7 +58,7 @@ function fb_social_comments_block($op = 'list', $delta = 0, $edit = array()){
           if (is_object($node) && $node->nid) {
             return array(
                 'subject' => t(''), 
-                'content' => fb_social_comments_render($node) 
+                'content' => theme('fb_social_comments_block_comments_view', fb_social_url('node/' . $node->nid)),
             );
           
           }

@@ -1,5 +1,5 @@
 /* Display none */
-.field-field-slider-content h2, .not-front #tweet, .front h1#page-title, .buildmode-teaser .image-description, .section-publisering h1#page-title {
+.field-field-slider-content h2, .not-front #twitter-follow, .front h1#page-title, .buildmode-teaser .image-description {
 display: none;
 }
 
@@ -28,8 +28,8 @@ border-width:0 1px;
 color:#eee;
 display:block;
 font-family:"Lucida Grande",arial,sans-serif;
-font-size:12px;
-line-height: 12px;
+font-size:11px;
+line-height: 11px;
 margin:0;
 padding:12px 9px;
 text-decoration:none;
@@ -42,19 +42,33 @@ border-right:1px solid #292929;
 text-shadow:0 1px 0 #292929;
 }
 #site-header {
-padding-top: 9px;
+padding-top: 26px;
 margin-bottom: 0;
-background: url(./images/site-header-bg.png) 0 0 repeat-x;
+/*background: url(./images/site-header-bg.png) 0 0 repeat-x;*/
+background: #fbfbfb;
 height: 52px;
 }
 #site-header-inner {
 margin: 0 auto;
 width: 986px;
+position: relative;
 }
-#twitter-follow {
-margin: -4px 22px 0 0;
-float: right;
 
+#branding {
+margin-top: 2px;
+}
+
+#branding:hover {
+opacity: 0.6;
+}
+
+#twitter-follow {
+/*margin: -4px 22px 0 0;*/
+/*margin: 28px -38px 0 0;*/
+/*float: right;*/
+position: absolute;
+right: -35px;
+top: 35px;
 }
 #nav #twitter-follow a{
 padding-left: 39px;
@@ -72,7 +86,7 @@ padding-top: 10px;
 }
 
 #nav a {
-color: #444;
+color: #555;
 padding: 5px 8px;
 border-left: 1px solid transparent;
 border-top: 1px solid transparent;
@@ -101,7 +115,7 @@ border-right: 1px solid #ccc;
 #nav li, #nav2 li {
 margin-right: 5px;
 float: left;
-font-size: 13px;
+font-size: 14px;
 text-shadow: 0 1px 0 #fff;
 font-weight: bold;
 }
@@ -126,6 +140,7 @@ position: relative;
 margin-right: 10px;
 padding-right: 12px;
 background: url(./images/nav2-li.png) right 0 no-repeat;
+font-size: 13px;
 }
 #nav2 li.last {
 background: none;
@@ -241,6 +256,21 @@ float: right;
 margin: 3px 3px 0 0;
 }
 
+/* Apache Solr */
+html.js #search-box input.form-autocomplete, #search-form input.form-autocomplete {
+background-image: none;
+/*background-position:100% 6px;*/
+}
+
+#autocomplete {
+}
+
+
+#autocomplete ul {
+background: #fff;
+padding: 3px;
+}
+
 /**/
 
 /* ------- General -------*/
@@ -265,20 +295,28 @@ clear: both;
 }
 
 .image-description {
-padding: 8px 14px;
+/*padding: 8px 14px;
 border: 1px solid #999;
-width: 245px;
+width: 245px;*/
 font-size: 12px;
 line-height: 16px;
-margin: -6px 0 10px 0;
+margin: -21px 0 20px 0;
+padding: 2px 4px 2px 12px;
+border-left: 9px solid #bbb;
+font-style: italic;
+background: #f7f7f7;
 }
 
-img.imagecache-214w {
-
+img.imagecache-214w, img.imagecache-6col {
 padding: 2px;
 border: 1px solid #ccc;
 float: left;
 margin-right: 20px;
+}
+
+img.imagecache-6col {
+margin: 0 0 5px 0;
+margin-right: 0;
 }
 
 .read-more {
@@ -287,13 +325,23 @@ float: right;
 .view .item-list ul li {
 list-style: none;
 }
+/*
+span.checkmark {
+text-indent: -9000px;
+display: block;
+background: url("./images/checkmark.png") no-repeat scroll 13px 3px transparent;
+}
+*/
 
+#specs td img {
+margin: 0 15px;
+}
 /**/
 
 /* --- Quicktabs navlist ---  */
 
 .quicktabs_main.quicktabs-style-navlist {
-background: #EBEBEB;
+background: #ecf4fd;
 padding: 30px;
 border-color: #ddd;
 width: 65%;
@@ -310,7 +358,8 @@ font-size: 15px;
 font-weight: bold;
 }
 ul.quicktabs_tabs.quicktabs-style-navlist li.active {
-background: #EBEBEB;
+background: #ecf4fd;
+border-left: 1px solid #ddd;
 }
 /*
 ul.quicktabs_tabs.quicktabs-style-navlist li.active {
@@ -392,8 +441,6 @@ margin-left: 25px;
 /**/
 
 
-
-
 /* --- Person --- */
 
 .field-person {
@@ -401,6 +448,8 @@ font-size: 12px;
 background: #f7f7f7;
 padding: 10px;
 border: 1px solid #ccc;
+-moz-border-radius:3px;
+border-radius:3px;
 }
 
 #card h2 {
@@ -430,17 +479,36 @@ height: 70px;
 margin-right: 14px;
 }
 
+.buildmode-full .field-tittel {
+font-weight: bold;
+}
+
 /**/
 
 
 
-/* Page */
+/* Page design */
+body {
+background: #FBFBFB;
+}
+
 #page {
 padding-top: 24px;
-background: url(./images/page-bg.gif) center 0 no-repeat;
+/*background: url(./images/page-bg.gif) center 0 no-repeat;*/
+background: #fff;
+border: 20px solid #bbb;
 margin: 0 auto;
-width: 1000px;
+width: 1008px;
 margin-top: 12px;
+border-radius: 3px;
+-moz-border-radius: 3px;
+margin-bottom: 20px;
+-moz-box-shadow:0 1px 1px rgba(0,0,0,0.5);
+position: relative;
+}
+
+#page-inner {
+background: #fff;
 }
 
 .front #page {
@@ -452,7 +520,8 @@ margin-top: 20px;
 /* --- Referanser --- */
 .referanser .view-content .alpha, .referanser .view-content .omega {
 margin-bottom: 20px;
-/*height: 300px;*/
+height: 336px;
+overflow: hidden;
 }
 
 /**/
@@ -525,17 +594,28 @@ color: #efefef;
 
 /**/
 
-/* --- Blog  teasers --- */
+/* --- Blog  teasers + shared code --- */
 .buildmode-teaser .node-type-blog {
 padding-bottom: 20px;
 border-bottom: 1px dotted #ccc;
 }
 
-img.imagecache-blog_medium {
-margin: 0 20px 2px 0;
+img.imagecache-blog_medium, .field-body img {
+margin: 0 0 20px 0;
 display: inline-block;
 padding: 1px;
 border: 1px solid #999;
+border-radius: 3px;
+-moz-border-radius: 3px;
+}
+
+.field-body img {
+margin: 20px auto;
+display: block;
+}
+
+.field-body table img {
+border: none;
 }
 
 /**/
@@ -571,6 +651,10 @@ margin:0;
 
 .panel-col-bottom {
 padding-top: 20px;
+}
+
+.panel-pane {
+margin-bottom: 20px;
 }
 
 /**/
@@ -843,13 +927,17 @@ background: #ecf8f4;
 border-top: 1px solid #ccc;
 }
 
+#sidebar-left .menu li.first {
+border:none;
+}
+
 #sidebar-left .menu li a {
 display: block;
-padding: 8px 10px;
+padding: 3px 10px;
 background: transparent;
 text-transform: uppercase;
-font-size: 12px;
-color: #222;
+font-size: 11px;
+/*color: #222;*/
 }
 
 #sidebar-left .menu li.last {
@@ -857,22 +945,36 @@ border-bottom: 1px solid #ccc;
 }
 
 #sidebar-left .menu li a.active, #sidebar-left .menu li a.active:hover  {
-background: #555;
-color: #fff;
+background: #f7f7f7;
 }
 
 #sidebar-left .menu li a:hover {
-background: #e5e5e5;
+background: #f7f7f7;
+color: #555;
 }
 
-#sidebar-left .menu li a:active {
-background: #333;
-color: #fff;
-}
 
 #sidebar-left .menu li li, #sidebar-left .menu li li li, #sidebar-left .menu li li.last {
 border: none;
 }
+
+/**/
+
+
+/* --- Sidebar two --- */
+#sidebar-right h3.block-title, #sidebar-left h3.block-title, .pane-drupal-buzz h2 {
+background: #222 url(./images/top-menu-bg.png) repeat-x 0 -4px;
+border: 1px solid #ccc;
+color: #fff;
+padding: 6px 8px;
+font-size: 17px;
+line-height: 20px;
+margin-bottom: 10px;
+border-radius:3px;
+-moz-border-radius:3px;
+-webkit-background-clip: padding-box;
+}
+
 
 /**/
 
@@ -1519,3 +1621,5 @@ Pink links: #ff3366
 
 */
 
+
+/**/

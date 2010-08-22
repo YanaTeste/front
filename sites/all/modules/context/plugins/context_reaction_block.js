@@ -1,4 +1,4 @@
-// $Id: context_reaction_block.js,v 1.1.2.22 2010/07/30 19:20:51 yhahn Exp $
+// $Id: context_reaction_block.js,v 1.1.2.23 2010/08/05 20:09:11 yhahn Exp $
 
 Drupal.behaviors.contextReactionBlock = function(context) {
   $('form.context-editor:not(.context-block-processed)')
@@ -350,6 +350,7 @@ DrupalContextBlockEditor.prototype.editStart = function(editor, context) {
   // However it's necessary that we trigger this class addition before
   // we call .sortable() as the empty regions need to be visible.
   $(document.body).addClass('context-editing');
+  this.editor.addClass('context-editing');
 
   this.disableTextSelect();
   this.initBlocks($('div.block:has(a.context-block.edit-'+context+')'));
@@ -395,6 +396,7 @@ DrupalContextBlockEditor.prototype.editStart = function(editor, context) {
   * Finish editing. Remove handlers.
   */
 DrupalContextBlockEditor.prototype.editFinish = function() {
+  this.editor.removeClass('context-editing');
   this.enableTextSelect();
 
   // Remove UI elements.

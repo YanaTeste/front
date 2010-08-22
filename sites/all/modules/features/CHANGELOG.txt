@@ -1,4 +1,31 @@
-// $Id: CHANGELOG.txt,v 1.1.2.12 2010/07/30 19:23:41 yhahn Exp $
+// $Id: CHANGELOG.txt,v 1.1.2.14 2010/08/19 22:08:00 yhahn Exp $
+
+features DRUPAL-6--1-0-RC2
+--------------------------
+- #888066 by ptrl: Views message typo.
+- #884624: Better support for custom CTools export callbacks.
+
+features DRUPAL-6--1-0-RC1
+--------------------------
+- #878604 by Coornail: Fix for PHP notice.
+- Add < and > to the list of characters that must be DOM encoded for AHAH safe
+  handling.
+- #878068: escape component identifiers.
+- #880456: Fix for PHP notice.
+- #880186 by yhahn, loosening the iron grip on vocabulary machine names.
+- #881010: Properly refer to menu links when doing a ordered build.
+
+features DRUPAL-6--1-0-BETA12
+-----------------------------
+- #873570: DOM-safe encode #default_value and ecsape '.' character.
+- #872052: Expose CCK field instances in UI for export.
+- Use README.txt for hook_help() page.
+- #872482: Proper failure for features_get_features().
+- #875156: Ensure roles are rebuilt before permissions.
+- #875416: Less confusing export of translatables.
+- #877178: Allow feature human-readable name/description to be changed on recreate.
+- #722952: Only write 'project' key if version or update status URL are provided.
+- #876206 by auzigog: Document hook_[component_defaults]_alter() functions.
 
 features DRUPAL-6--1-0-BETA11
 -----------------------------

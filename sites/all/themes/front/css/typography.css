@@ -10,7 +10,6 @@ html { font-size:100.01%; }
 body {
   font-size: 13px;
   color: #222;
-  background: #fff;
   font-family: Arial, Helvetica, sans-serif;
   line-height: 22px;
 }
@@ -31,6 +30,14 @@ border: none;
 }
 
 h1 a, h2 a, h3 a {
+color: #222;
+}
+
+h1#page-title {
+color: #aaa;
+}
+
+.section-blogg h1#page-title {
 color: #222;
 }
 
@@ -65,7 +72,12 @@ color: #fff;
 -------------------------------------------------------------- */
 
 p           { margin: 0 0 22px 0; }
-.buildmode-teaser .node-type-blog p:first-letter {font-family: Georgia; font-size: 20px; font-style: italic; font-weight: bold; padding-right: 1px;}
+/*.buildmode-teaser .node-type-blog p:first-letter {font-family: Georgia; font-size: 20px; font-style: italic; font-weight: bold; padding-right: 1px;}*/
+
+.buildmode-teaser .node-type-blog p {
+font-size: 16px;
+line-height: 28px;
+}
 
 p img.left  { float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0; }
 p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
@@ -128,8 +140,13 @@ li ol       { margin: 0; }
 ul, ol      { margin: 0; padding-left: 0; }
 
 ul          { list-style-type: none; }
-.node ul    { margin-bottom: 22px; }
-.node li    { padding-left: 20px; background: url(./images/li-arrow.png) 0 50% no-repeat;}
+.node ul {
+margin-bottom: 22px;
+}
+.node li, .item-list ul li {
+padding-left: 20px;
+background: url(./images/li-arrow.png) 0 50% no-repeat;
+}
 .node li li { padding-left: 0; background: none; list-style-type: disc;}
 
 ol          { list-style-type: decimal; }

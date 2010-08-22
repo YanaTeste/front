@@ -1,4 +1,4 @@
-/* $Id: filefield_sources.js,v 1.3 2010/06/17 02:02:08 quicksketch Exp $ */
+/* $Id: filefield_sources.js,v 1.5 2010/08/11 00:19:20 quicksketch Exp $ */
 
 Drupal.behaviors.fileFieldSources = function(context) {
   $('div.filefield-sources-list a', context).click(function() {
@@ -7,15 +7,18 @@ Drupal.behaviors.fileFieldSources = function(context) {
     // Remove the active class.
     $(this).parents('div.filefield-sources-list').find('a.active').removeClass('active');
 
+    // Find the unique FileField Source class name.
+    var fileFieldSourceClass = this.className.match(/filefield-source-[0-9a-z]+/i)[0];
+
     // The default upload element is a special case.
     if ($(this).is('.filefield-source-upload')) {
-      $fileFieldElement.find('div.filefield-upload').parent().show();
-      $fileFieldElement.find('div.filefield-source').hide();
+      $fileFieldElement.find('div.filefield-upload').parent().css('display', '');
+      $fileFieldElement.find('div.filefield-source').css('display', 'none');
     }
     else {
-      $fileFieldElement.find('div.filefield-upload').parent().hide();
-      $fileFieldElement.find('div.filefield-source').not('div.' + this.className.replace(' ', '.')).hide();
-      $fileFieldElement.find('div.' + this.className.replace(' ', '.')).show();
+      $fileFieldElement.find('div.filefield-upload').parent().css('display', 'none');
+      $fileFieldElement.find('div.filefield-source').not('div.' + fileFieldSourceClass).css('display', 'none');
+      $fileFieldElement.find('div.' + fileFieldSourceClass).css('display', '');
     }
 
     // Add the active class.
@@ -47,7 +50,7 @@ Drupal.fileFieldSources = {
       var sourceType = matches[1];
       var defaultText = '';
       var textfield = $(this).find('input.form-text:first').get(0);
-      var defaultText = Drupal.settings.fileFieldSources[sourceType] ? Drupal.settings.fileFieldSources[sourceType].hintText : '';
+      var defaultText = (Drupal.settings.fileFieldSources && Drupal.settings.fileFieldSources[sourceType]) ? Drupal.settings.fileFieldSources[sourceType].hintText : '';
 
       // If the field doesn't exist, just return.
       if (!textfield) {

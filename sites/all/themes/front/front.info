@@ -28,12 +28,12 @@ features[] = primary_links
 features[] = secondary_links
 
 stylesheets[all][] = css/default.css
+stylesheets[all][] = css/typography.css
 stylesheets[all][] = css/style.css
 stylesheets[all][] = css/forms.css
 stylesheets[all][] = css/ie6.css
 stylesheets[all][] = css/ie7.css
 stylesheets[all][] = css/tabs.css
-stylesheets[all][] = css/typography.css
 stylesheets[print][] = css/print.css
 
 scripts[]   = js/css_browser_selector.js

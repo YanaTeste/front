@@ -421,13 +421,29 @@ display: inline-block;
 float: left;
 color: #999;
 font-weight: bold;
-border-bottom: 1px dotted #fff;
+border-bottom: 1px dotted transparent;
 }
 
 .views-slideshow-controls-bottom a:hover {
 color: inherit;
 border-bottom: 1px dotted #ddd;
 }
+
+.view-front-main .views-slideshow-controls-bottom a{
+margin-right: 20px;
+display: inline-block;
+float: left;
+color: #eee;
+font-weight: bold;
+border-bottom: 1px dotted transparent;
+}
+
+.view-front-main .views-slideshow-controls-bottom a:hover {
+color: #999;
+border-bottom: 1px dotted #ddd;
+}
+
+
 
 .view-front-main { /* replace with name of view */
 position: relative;
@@ -740,8 +756,10 @@ background-position: 0 -660px;
 .view-front-main .field-title {
 position: absolute;
 top: 30px;
-left: 300px;
+left: 387px;
 width: 610px;
+color: #f5f5f5;
+text-shadow:0 1px 1px rgba(0,0,0,0.25);
 }
 .view-front-main h1 a{
 color: #ff3366;
@@ -1623,3 +1641,9 @@ Pink links: #ff3366
 
 
 /**/
+
+/* Some more resets */
+.item-list ul li {
+margin: 0;
+list-style: none;
+}

@@ -84,7 +84,10 @@ p img.right { float: right; margin: 1.5em 0 1.5em 1.5em; }
 
 a:focus,
 a:hover, #footer #footer-top-inner a:hover     { color: #000; }
-a, li a.active      { color: #3A9CD5; text-decoration: none; }
+a, li a.active {
+color: #3A9CD5; text-decoration: none; 
+}
+
 #footer li a {
 color: #ccc;
 display: block;

@@ -1,5 +1,5 @@
 /* Display none */
-.field-field-slider-content h2, .not-front #twitter-follow, .front h1#page-title, .buildmode-teaser .image-description {
+.field-field-slider-content h2, .not-front #twitter-follow, .front h1#page-title, .buildmode-teaser .image-description, #block-block-9 {
 display: none;
 }
 
@@ -127,7 +127,7 @@ margin-right: 0;
 #main-menu {
 float: left;
 margin-top: 9px;
-width: 558px;
+width: 579px;
 }
 
 /* Nav level 2 */
@@ -307,11 +307,17 @@ font-style: italic;
 background: #f7f7f7;
 }
 
-img.imagecache-214w, img.imagecache-6col {
+img.imagecache-214w, img.imagecache-6col, img.imagecache-4col  {
 padding: 2px;
 border: 1px solid #ccc;
 float: left;
 margin-right: 20px;
+border-radius: 3px;
+-moz-border-radius: 3px;
+}
+
+img.imagecache-4col {
+margin: 0 0 4px 0;
 }
 
 img.imagecache-6col {
@@ -395,7 +401,7 @@ background: ;
 
 /* --- Views slideshow  --- */
 #views_slideshow_singleframe_main_front_main-default {
-height: 217px;
+height: 300px;
 overflow: hidden;
 position: relative;
 }
@@ -410,9 +416,11 @@ margin-left:35%;
 }
 .views-slideshow-controls-bottom {
 position: absolute;
-right: 10px;
+right: 49px;
 bottom: 10px;
 z-index: 999;
+text-shadow: 1px 1px 1px #000000;
+font-size: 0.8em;
 }
 
 .views-slideshow-controls-bottom a{
@@ -430,7 +438,8 @@ border-bottom: 1px dotted #ddd;
 }
 
 .view-front-main .views-slideshow-controls-bottom a{
-margin-right: 20px;
+margin-right: 0;
+margin-left: 20px;
 display: inline-block;
 float: left;
 color: #eee;
@@ -525,6 +534,7 @@ position: relative;
 
 #page-inner {
 background: #fff;
+padding-bottom: 30px;
 }
 
 .front #page {
@@ -683,6 +693,10 @@ border-top: 1px solid #ccc;
 height: 280px;
 }
 
+.view-drupaldistribusjoner .grid-4 {
+height: 351px;
+}
+
 .panel-col-top .panel-pane, .panel-col-bottom .panel-pane {
 padding: 0;
 border: 0;
@@ -755,25 +769,26 @@ background-position: 0 -660px;
 /*Slideshow front*/
 .view-front-main .field-title {
 position: absolute;
-top: 30px;
-left: 387px;
-width: 610px;
+top: 90px;
+right: 45px;
+width: 525px;
 color: #f5f5f5;
-text-shadow:0 1px 1px rgba(0,0,0,0.25);
+text-shadow: 1px 1px 1px #555;/* before rgba(0,0,0,0.25)*/
+text-align: right;
 }
 .view-front-main h1 a{
 color: #ff3366;
 border-bottom: 1px dotted transparent;
 }
-.view-front-main h1 a:hover{
+.view-front-main h1 a:hover {
 color: #ff3366;
 border-bottom: 1px dotted #ddd;
 }
 .view-front-main .field-teasertext {
 position: absolute;
-top: 86px;
-left: 300px;
-width: 610px;
+top: 159px;
+right: 45px;
+text-align: right;
 }
 
 /**/
@@ -941,15 +956,15 @@ background: #ecf8f4;
 
 /* ------- Sidebar one -------*/
 
-#sidebar-left .menu li {
+.menu-level-3 .menu li {
 border-top: 1px solid #ccc;
 }
 
-#sidebar-left .menu li.first {
+.menu-level-3 .menu li.first {
 border:none;
 }
 
-#sidebar-left .menu li a {
+.menu-level-3 .menu li a {
 display: block;
 padding: 3px 10px;
 background: transparent;
@@ -958,21 +973,21 @@ font-size: 11px;
 /*color: #222;*/
 }
 
-#sidebar-left .menu li.last {
+.menu-level-3 .menu li.last {
 border-bottom: 1px solid #ccc;
 }
 
-#sidebar-left .menu li a.active, #sidebar-left .menu li a.active:hover  {
+.menu-level-3 .menu li a.active, .menu-level-3 .menu li a.active:hover  {
 background: #f7f7f7;
 }
 
-#sidebar-left .menu li a:hover {
+.menu-level-3 .menu li a:hover {
 background: #f7f7f7;
 color: #555;
 }
 
 
-#sidebar-left .menu li li, #sidebar-left .menu li li li, #sidebar-left .menu li li.last {
+.menu-level-3 .menu li li, #sidebar-left .menu li li li, .menu-level-3 .menu li li.last {
 border: none;
 }
 
@@ -980,7 +995,7 @@ border: none;
 
 
 /* --- Sidebar two --- */
-#sidebar-right h3.block-title, #sidebar-left h3.block-title, .pane-drupal-buzz h2 {
+#sidebar-right h3.block-title, #sidebar-left h3.block-title, .panel-col-last h2.pane-title {
 background: #222 url(./images/top-menu-bg.png) repeat-x 0 -4px;
 border: 1px solid #ccc;
 color: #fff;
@@ -1156,11 +1171,16 @@ text-shadow:0 1px 0 #FFFFFF;
 -moz-text-shadow:0 1px 0 #FFFFFF;
 }
 ul.quicktabs-style-nostyle li a:hover, ul.quicktabs-style-nostyle li.active a{
-color: #ff3366;
+/*color: #ff3366;*/
+color: #bF131B;
 }
 
 
 /**/
+
+#block-webformblock-8 {
+padding-top: 20px;
+}
 
 
 /* ------- Quciktabs (default = "no style") button interface -------*/
@@ -1380,10 +1400,10 @@ background-color:#2DAEBF;
 background-color:#007D9A;
 }
 .red.button {
-background-color:#E33100;
+background-color:#eF123B;
 }
 .red.button:hover {
-background-color:#872300;
+background-color:#bF131B;
 }
 .magenta.button {
 background-color:#A9014B;
@@ -1482,6 +1502,9 @@ font-size:11px;
 -moz-border-radius:18px 18px 18px 18px;
 background-position:0 0;
 padding:6px 17px 8px;
+box-shadow: 1px 1px 1px #555;
+-moz-box-shadow: 1px 1px 1px #555;
+-webkit-box-shadow: 1px 1px 1px #555;
 }
 .secondary.button {
 background-color:#FFFFFF;

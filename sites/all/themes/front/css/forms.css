@@ -115,6 +115,8 @@ padding: 20px;
 background: #ECF4FD;
 border: 1px solid #f5f5f5;
 max-width: 658px;
+-moz-border-radius:4px 4px 4px 4px;
+border-radius:4px 4px 4px 4px;
 }
 
 

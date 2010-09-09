@@ -150,7 +150,7 @@ background: none;
 color: #555;
 }
 
-#nav2 .active a, #nav2 a:hover {
+#nav2 .active a, #nav2 a:hover, #nav2 a.active-trail {
 color: #3A9CD5;
 }
 
@@ -630,7 +630,7 @@ img.imagecache-blog_medium, .field-body img {
 margin: 0 0 20px 0;
 display: inline-block;
 padding: 1px;
-border: 1px solid #999;
+border: 1px solid #ccc;
 border-radius: 3px;
 -moz-border-radius: 3px;
 }

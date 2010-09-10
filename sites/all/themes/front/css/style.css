@@ -238,6 +238,7 @@ border: 1px solid #ccc;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 width: 172px;
+overflow:hidden;
 }
 
 .form-text {
@@ -1204,8 +1205,13 @@ padding: 6px 12px;
 display: block;
 border-right: 1px solid transparent;
 }
+
+.safari ul.quicktabs-style-nostyle li a {
+line-height: 13px;
+}
+
 ul.quicktabs-style-nostyle li a:hover, ul.quicktabs-style-nostyle li.active a{
-color: #f9f9f9;
+color: #ddd;
 /*color: #bF131B;*/
 background: #888;
 text-shadow:0 1px 0 #666;
@@ -1214,7 +1220,7 @@ border-right: 1px solid #f9f9f9;
 }
 
 ul.quicktabs-style-nostyle li.first a:hover, ul.quicktabs-style-nostyle li.active.first a {
-border-bottom-left-radius: 3px;
+border-top-left-radius: 3px;
 border-bottom-left-radius: 3px;
 -moz-border-radius-topleft: 3px;
 -moz-border-radius-bottomleft: 3px;

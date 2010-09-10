@@ -1144,6 +1144,11 @@ div.status {
   border-color: #be7;
 }
 
+/* Hide status message for annonymous users */
+.not-logged-in #main div.status {
+	display: none;
+}
+
 /**/
 
 /* ------- Quciktabs (default = "no style") interface 1.0 -------
@@ -1720,4 +1725,9 @@ Pink links: #ff3366
 .item-list ul li {
 margin: 0;
 list-style: none;
+}
+
+/* Hide H1 title on some pages */
+body.no-title #main h1#page-title {
+	display: none;
 }

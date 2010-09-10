@@ -238,6 +238,7 @@ border: 1px solid #ccc;
 -moz-border-radius: 4px;
 -webkit-border-radius: 4px;
 width: 172px;
+overflow:hidden;
 }
 
 .form-text {
@@ -1183,7 +1184,7 @@ color: #bF131B;
 
 ul.quicktabs-style-nostyle {
 font-family: "Lucida Grande", arial;
-background: #f1f1f1;
+background: #f1f1f1 url("./images/36px-blended.png") repeat-x 0 -6px;
 font-size: 11px;
 line-height: 12px;
 font-weight: bold;
@@ -1209,17 +1210,22 @@ padding: 6px 12px;
 display: block;
 border-right: 1px solid transparent;
 }
+
+.safari ul.quicktabs-style-nostyle li a {
+line-height: 13px;
+}
+
 ul.quicktabs-style-nostyle li a:hover, ul.quicktabs-style-nostyle li.active a{
-color: #f9f9f9;
+color: #fff;
 /*color: #bF131B;*/
-background: #888;
+background: #888 url("./images/36px-blended.png") repeat-x 0 -6px;
 text-shadow:0 1px 0 #666;
 -moz-text-shadow:0 1px 0 #666;
-border-right: 1px solid #f9f9f9;
+border-right: 1px solid #999;
 }
 
 ul.quicktabs-style-nostyle li.first a:hover, ul.quicktabs-style-nostyle li.active.first a {
-border-bottom-left-radius: 3px;
+border-top-left-radius: 3px;
 border-bottom-left-radius: 3px;
 -moz-border-radius-topleft: 3px;
 -moz-border-radius-bottomleft: 3px;

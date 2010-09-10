@@ -1721,3 +1721,7 @@ margin: 0;
 list-style: none;
 }
 
+/* Hide H1 title on some pages */
+body.no-title #main h1#page-title {
+	display: none;
+}

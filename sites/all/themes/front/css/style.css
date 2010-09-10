@@ -1150,7 +1150,7 @@ div.status {
 
 /**/
 
-/* ------- Quciktabs (default = "no style") interface 1.0 -------*/
+/* ------- Quciktabs (default = "no style") interface 1.0 -------
 ul.quicktabs-style-nostyle {
 font-family: "Lucida Grande";
 background: #f1f1f1;
@@ -1176,8 +1176,53 @@ text-shadow:0 1px 0 #FFFFFF;
 -moz-text-shadow:0 1px 0 #FFFFFF;
 }
 ul.quicktabs-style-nostyle li a:hover, ul.quicktabs-style-nostyle li.active a{
-/*color: #ff3366;*/
+
 color: #bF131B;
+}*/
+/* ------- Quciktabs (default = "no style") interface 2.0 -------*/
+
+ul.quicktabs-style-nostyle {
+font-family: "Lucida Grande", arial;
+background: #f1f1f1;
+font-size: 11px;
+line-height: 12px;
+font-weight: bold;
+border: 1px solid #cdcdcd;
+border-radius: 4px;
+-moz-border-radius: 4px;
+overflow: visible;
+margin-bottom: 16px;
+overflow: auto;
+}
+
+ul.quicktabs-style-nostyle li {
+padding: 0;
+float: left;
+}
+
+ul.quicktabs-style-nostyle li a{
+color: #555;
+margin-right: 0;
+text-shadow:0 1px 0 #FFFFFF;
+-moz-text-shadow:0 1px 0 #FFFFFF;
+padding: 6px 12px;
+display: block;
+border-right: 1px solid transparent;
+}
+ul.quicktabs-style-nostyle li a:hover, ul.quicktabs-style-nostyle li.active a{
+color: #f9f9f9;
+/*color: #bF131B;*/
+background: #888;
+text-shadow:0 1px 0 #666;
+-moz-text-shadow:0 1px 0 #666;
+border-right: 1px solid #f9f9f9;
+}
+
+ul.quicktabs-style-nostyle li.first a:hover, ul.quicktabs-style-nostyle li.active.first a {
+border-bottom-left-radius: 3px;
+border-bottom-left-radius: 3px;
+-moz-border-radius-topleft: 3px;
+-moz-border-radius-bottomleft: 3px;
 }
 
 

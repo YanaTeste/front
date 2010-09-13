@@ -1029,6 +1029,14 @@ margin:1em auto;
 border-collapse:collapse;
 }
 
+#drupal-intro table#specs {
+	border-top: none;
+}
+
+#drupal-intro table#specs tbody {
+	border-top: none;
+}
+
 th {
 background: url(./images/top-menu-bg.png) #222 0 0 repeat-x;
 font-weight:bold;

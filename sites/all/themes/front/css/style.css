@@ -348,26 +348,32 @@ margin: 0 15px;
 /* --- Quicktabs navlist ---  */
 
 .quicktabs_main.quicktabs-style-navlist {
-background: #ecf4fd;
+background: #F3F3F3;
 padding: 30px;
-border-color: #ddd;
+border: 0px solid #ddd;
 width: 65%;
 }
 
 ul.quicktabs_tabs.quicktabs-style-navlist {
 width: 25%;
+	background:url("images/line_1.png") repeat-y scroll 21px 0 transparent;
+	padding: 0;
 }
 
 ul.quicktabs_tabs.quicktabs-style-navlist li, ul.quicktabs_tabs.quicktabs-style-navlist li.active {
 border-color: #ddd;
-padding: 20px;
+/*padding: 20px;*/
+padding: 5px 0 10px 22px;
 font-size: 15px;
 font-weight: bold;
 }
 ul.quicktabs_tabs.quicktabs-style-navlist li.active {
-background: #ecf4fd;
-border-left: 1px solid #ddd;
+	border: none;
+	background: url(images/fold-left.png) no-repeat scroll 0 0 transparent;
+	padding-bottom: 14px;
+	padding-top: 0;
 }
+
 /*
 ul.quicktabs_tabs.quicktabs-style-navlist li.active {
 background: url(./images/navlist-li.png) 0 0 no-repeat;
@@ -377,10 +383,13 @@ padding-bottom: 50px;
 
 ul.quicktabs_tabs.quicktabs-style-navlist li a {
 text-align: left;
+	padding: 5px 20px;
 }
 
 ul.quicktabs_tabs.quicktabs-style-navlist li.active a {
-color: #333;
+	background-color: #f3f3f3;
+	color: #333333;
+	padding: 25px 20px;
 }
 
 .block-quicktabs .field-field-image{

@@ -408,6 +408,16 @@ margin: 0 0 10px 30px;
 background: ;
 }
 /**/
+/* Prosjektmetode */
+.field-body .steps-bar {
+	border: 0px;
+}
+
+.grid-custom-1 {
+	margin: 0 10px;
+	float: left;
+	width: 168px;
+}
 
 /* --- Views slideshow  --- */
 #views_slideshow_singleframe_main_front_main-default {

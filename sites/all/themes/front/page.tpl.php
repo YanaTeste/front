@@ -6,6 +6,10 @@
   <?php print $head; ?>
   <?php print $styles; ?>
   <?php print $scripts; ?>
+<!-- Start iPhone stuff -->
+<link rel="stylesheet" type="text/css" media="only screen and (max-device-width: 480px)" href="<?php print $base_path . $directory .'/css/iphone.css'; ?>" />
+<meta name="viewport" />
+<!-- End iPhone stuff -->
 </head>
 
 <body class="<?php print $body_classes; ?>">

@@ -738,6 +738,10 @@ border: 1px solid #ccc;
 margin: 0;
 }
 
+.view-people .views-row {
+margin-bottom: 20px;
+}
+
 /**/
 
 

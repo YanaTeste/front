@@ -1,4 +1,35 @@
-$Id: CHANGELOG.txt,v 1.1.2.7 2010/08/09 03:02:47 ferdi Exp $
+
+fb_social 6.x-1.0-BETA6, 2010-03-26
+
+Issue #1035310 : Don't display comments block on node edit pages.
+Issue #988378 : Wrong closing tag for activityfeed 
+Issue #980638 : Like box creates administrative block in Admin's sidebar
+Issue #1053718 by mrfelton: fb_share + fb_like dont display on full node view when  is false
+Issue #1020828 by mongeron, mr.j : Google Analytics integration
+Issue #1004162 by chia : Only load fb js on pages where its required by any plugin
+Issue #1102356 : Moderate Comments posted through Facebook
+Issue #1104446 by phenaproxima: "fb_social_comments: attribute url changed to href" 
+#995394 by AlexisWilke : Should comment block be hidden when node is unpublished
+#988086 : fb social views error
+changed "pageid" to "page url" (href) for likebox ; please update your settings accordingly
+#941842 Likebox Color Scheme
+
+fb_social 6.x-1.0-BETA5, 2010-11-xx
+ 
+#964618 "Share" widget has no "Widget location and display" options
+#930780 All fb social modules should have .install files
+#974036 by taslett : Spotted a incorrect theme call
+#977674 Hide like button from unpublished content'
+Add facepile, livestream, recommendations, activityfeed plugins
+#930792 fb_social_menu in fb_social.module should not be weighted
+light views support for like widget
+#929700 by AlexisWilke: Menu may not exist in hook_init() function
+#917546 : Add box_count to layout styles for like button
+#930792 fb_social_menu in fb_social.module should not be weighted
+#930798 Add administrative option to not write Open Graph protocol meta tags in fb_social_like
+#907644 Anonymous users cannot see likebox + revert #858156
+#919142, 960258 by chia: meta tag og:title needs html encoding
+#893672 test if object is not empty before testing its properties
 
 fb_social 6.x-1.0-BETA4, 2010-08-08
 

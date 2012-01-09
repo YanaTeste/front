@@ -1,64 +1,104 @@
 <?php
 
 /**
- * Implementation of hook_content_default_fields().
- */
-function blogg_content_default_fields() {
-  module_load_include('inc', 'blogg', 'blogg.defaults');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_content_default_fields', $args);
-}
-
-/**
- * Implementation of hook_context_default_contexts().
- */
-function blogg_context_default_contexts() {
-  module_load_include('inc', 'blogg', 'blogg.defaults');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_context_default_contexts', $args);
-}
-
-/**
  * Implementation of hook_ctools_plugin_api().
  */
 function blogg_ctools_plugin_api() {
-  module_load_include('inc', 'blogg', 'blogg.defaults');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_ctools_plugin_api', $args);
-}
-
-/**
- * Implementation of hook_ds_default_settings().
- */
-function blogg_ds_default_settings() {
-  module_load_include('inc', 'blogg', 'blogg.features.ds');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_ds_default_settings', $args);
+  list($module, $api) = func_get_args();
+  if ($module == "context" && $api == "context") {
+    return array("version" => 3);
+  }
 }
 
 /**
  * Implementation of hook_imagecache_default_presets().
  */
 function blogg_imagecache_default_presets() {
-  module_load_include('inc', 'blogg', 'blogg.defaults');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_imagecache_default_presets', $args);
+  $items = array(
+    '214w' => array(
+      'presetname' => '214w',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale_and_crop',
+          'data' => array(
+            'width' => '214',
+            'height' => '224',
+          ),
+        ),
+      ),
+    ),
+    'blog_medium' => array(
+      'presetname' => 'blog_medium',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '614',
+            'height' => '',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
+    'person_medium' => array(
+      'presetname' => 'person_medium',
+      'actions' => array(
+        '0' => array(
+          'weight' => '0',
+          'module' => 'imagecache',
+          'action' => 'imagecache_scale',
+          'data' => array(
+            'width' => '70',
+            'height' => '',
+            'upscale' => 0,
+          ),
+        ),
+      ),
+    ),
+  );
+  return $items;
 }
 
 /**
  * Implementation of hook_node_info().
  */
 function blogg_node_info() {
-  module_load_include('inc', 'blogg', 'blogg.features.node');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_node_info', $args);
+  $items = array(
+    'blog' => array(
+      'name' => t('Blogginnlegg'),
+      'module' => 'features',
+      'description' => t('Et standard innlegg i Löplabbetbloggen'),
+      'has_title' => '1',
+      'title_label' => t('Tittel'),
+      'has_body' => '1',
+      'body_label' => t('Tekst'),
+      'min_word_count' => '0',
+      'help' => '',
+    ),
+    'person' => array(
+      'name' => t('Person'),
+      'module' => 'features',
+      'description' => t('En medarbeider'),
+      'has_title' => '1',
+      'title_label' => t('Navn'),
+      'has_body' => '1',
+      'body_label' => t('Tekst'),
+      'min_word_count' => '0',
+      'help' => '',
+    ),
+  );
+  return $items;
 }
 
 /**
- * Implementation of hook_views_default_views().
+ * Implementation of hook_views_api().
  */
-function blogg_views_default_views() {
-  module_load_include('inc', 'blogg', 'blogg.features.views');
-  $args = func_get_args();
-  return call_user_func_array('_blogg_views_default_views', $args);
+function blogg_views_api() {
+  return array(
+    'api' => '2',
+  );
 }

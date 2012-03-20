@@ -1,5 +1,4 @@
 <?php
-// $Id: ds.tools.inc,v 1.1.2.22 2010/06/08 00:22:20 swentel Exp $
 
 /**
  * @file
@@ -68,8 +67,11 @@ function ds_import_data($data, $dsm = TRUE, $override = TRUE, $revert_module = '
       if ($dsm) {
         drupal_set_message(t('Saved display settings for @module and @type', array('@module' => $module, '@type' => $type)));
       }
-      $old_settings = variable_get($module .'_display_settings_'. $type, array());
+
       foreach ($settings as $build_mode => $setting) {
+
+        $old_settings = ds_get_settings($module, $type, $build_mode);
+
         // Override no matter what. This comes from the import settings screen.
         if ($override) {
           $settings[$build_mode]['status'] = DS_SETTINGS_UI;
@@ -78,28 +80,44 @@ function ds_import_data($data, $dsm = TRUE, $override = TRUE, $revert_module = '
         // a) check if we have old settings and keep them if they are overridden.
         // b) compare $revert_module, $revert_type and $revert_build_mode and revert if necessary.
         else {
-          if (isset($old_settings[$build_mode]['status']) && $old_settings[$build_mode]['status'] == DS_SETTINGS_OVERRIDDEN) {
+          if (isset($old_settings['status']) && $old_settings['status'] == DS_SETTINGS_OVERRIDDEN) {
             if ($module == $revert_module && $type == $revert_type && $build_mode == $revert_build_mode) {
               $settings[$build_mode]['status'] = DS_SETTINGS_DEFAULT;
             }
             else {
-              $settings[$build_mode] = $old_settings[$build_mode];
+              $settings[$build_mode] = $old_settings;
             }
           }
           else {
             $settings[$build_mode]['status'] = DS_SETTINGS_DEFAULT;
           }
         }
-      }
-      // Keep old settings which aren't in the imported ones.
-      if (!empty($old_settings)) {
-        foreach ($old_settings as $build_mode => $setting) {
-          if (!isset($settings[$build_mode])) {
-            $settings[$build_mode] = $old_settings[$build_mode];
+
+        // Remove old settings.
+        db_query("DELETE FROM {ds_settings} WHERE build_mode = '%s' AND module = '%s' AND type = '%s'", $build_mode, $module, $type);
+
+        // Get settings.
+        $store = $settings[$build_mode];
+
+        // Iterate over fields and ditch those which are hidden.
+        // This is for sites have upgraded but haven't re-exported their settings.
+        foreach ($store['fields'] as $field_key => $field_value) {
+          if ($field_value['region'] == 'disabled') {
+            unset($store['fields'][$field_key]);
           }
         }
+
+        // Save new settings.
+        $record = new stdClass();
+        $record->module = $module;
+        $record->type = $type;
+        $record->build_mode = $build_mode;
+        $record->settings = serialize($store);
+        drupal_write_record('ds_settings', $record);
       }
-      variable_set($module .'_display_settings_'. $type, $settings);
+
+      // Act on saving these settings.
+      module_invoke_all('ds_settings_import', $module, $type, $settings);
     }
   }
 }
@@ -132,7 +150,7 @@ function ds_export(&$form_state) {
               continue;
             }
           }
-          $options[$module .'-'. $type->type] = $type->name;
+          $options[$module .'-'. $type->type] = check_plain($type->name);
           if ($global_exclude == TRUE) {
             $ds_variables[] = $module .'_type_'. $tkey;
           }
@@ -257,7 +275,11 @@ function ds_export_build($values) {
     if ($otype === $value) {
       list($module, $type) = explode('-', $value);
       // Display settings.
-      $settings = variable_get($module .'_display_settings_'. $type, array());
+      $settings = array();
+      $records = db_query("SELECT * FROM {ds_settings} WHERE module = '%s' AND type = '%s'", $module, $type);
+      while ($row = db_fetch_object($records)) {
+        $settings[$row->build_mode] = unserialize($row->settings);
+      }
       if (!empty($settings)) {
         foreach ($settings as $build_mode => $setting) {
           $settings[$build_mode]['status'] = DS_SETTINGS_DEFAULT;
@@ -302,15 +324,15 @@ function ds_export_submit($form, &$form_state) {
  */
 function ds_revert_form($form_state, $module = '', $type = '', $build_mode = '') {
 
-  $display_settings = variable_get($module .'_display_settings_'. $type, array());
+  $display_settings = ds_get_settings($module, $type, $build_mode);
 
-  if (isset($display_settings[$build_mode]) &&
-    isset($display_settings[$build_mode]['status']) &&
-    $display_settings[$build_mode]['status'] == DS_SETTINGS_OVERRIDDEN
+  if (!empty($display_settings) &&
+    isset($display_settings['status']) &&
+    $display_settings['status'] == DS_SETTINGS_OVERRIDDEN
     ) {
 
     $question = t('Are you sure you want to revert the display settings for %module, %type and %build_mode. This will bring back the default settings and any changes you have done will be lost.', array('%module' => $module, '%type' => $type, '%build_mode' => $build_mode));
-    $path = 'admin/build/ds/layout';
+    $path = DS_PATH_LAYOUT;
     $form['#module'] = $module;
     $form['#object_type'] = $type;
     $form['#build_mode'] = $build_mode;
@@ -319,7 +341,7 @@ function ds_revert_form($form_state, $module = '', $type = '', $build_mode = '')
   }
   else {
     drupal_set_message(t('Variables not found.'));
-    drupal_goto('admin/build/ds');
+    drupal_goto(DS_PATH_BASE);
   }
 }
 

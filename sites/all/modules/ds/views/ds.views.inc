@@ -1,5 +1,4 @@
 <?php
-// $Id: ds.views.inc,v 1.1.2.6 2010/04/17 18:44:54 swentel Exp $
 
 /**
  * @file
@@ -15,7 +14,7 @@ function ds_views_plugins() {
     'module' => 'ds',
     'row' => array(
       'ds' => array(
-        'title' => t('Display suite node'),
+        'title' => t('Display suite object'),
         'help' => t('Display the object through the Display suite module.'),
         'handler' => 'views_plugin_ds_object_view',
         'theme' => 'ds_row_object',

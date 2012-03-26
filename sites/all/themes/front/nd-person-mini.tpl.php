@@ -16,11 +16,11 @@
     <div id="card">
       <div id="card-inner">
         <?php print $field_image_rendered ?>
-        <?php print $title_rendered ?>
+        <h2><?php print $title ?></h2>
         <?php print $field_tittel_rendered ?>
-        <?php print $field_email_rendered ?> 
+        <?php print $field_email_rendered ?>
       </div>
     </div>
-    <?php print $body_rendered ?>
+    <?php print $node->content['body']['#value'] ?>
   </div> <!-- /node -->
 </div> <!-- /buildmode -->

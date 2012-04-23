@@ -1,0 +1,19 @@
+name = "Migrate Front"
+description = "Migrate front.no Drupal 6 content to Drupal 7"
+package = "Development"
+core = 7.x
+
+dependencies[] = migrate
+; dependencies[] = migrate_extras
+dependencies[] = field
+dependencies[] = file
+dependencies[] = image
+dependencies[] = number
+dependencies[] = text
+dependencies[] = options
+; dependencies[] = taxonomy
+; dependencies[] = date
+; dependencies[] = media
+
+files[] = migrate_front.module
+files[] = migrate_front.user.inc

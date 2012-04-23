@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * @file
+ * TODO: insert description here.
+ */
+
+function migrate_front_migrate_api() {
+  $api = array(
+    'api' => 2,
+  );
+  return $api;
+}

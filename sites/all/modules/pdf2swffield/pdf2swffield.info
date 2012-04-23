@@ -1,8 +1,0 @@
-; $Id$
-name = Pdf2SwfField
-description = Defines an pdf2swf field type.
-core = 6.x
-dependencies[] = content
-dependencies[] = filefield
-dependencies[] = swftools
-package = CCK

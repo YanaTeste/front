@@ -1,5 +1,0 @@
-name = Update custom settings
-description = Custom settings for the notifications of available updates.
-dependencies[] = update
-package = custom
-core = 6.x

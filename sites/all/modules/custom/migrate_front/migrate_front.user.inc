@@ -1,11 +1,16 @@
 <?php
 
 /**
+ * @file
+ * User accounts and content profile migration classes.
+ */
+
+/**
  * User migration class.
  */
 class FrontUserMigration extends Migration {
 
-  private $legacyDb = 'frontd6';
+  protected $legacyDb = 'frontd6';
 
   public function __construct() {
     parent::__construct();
@@ -17,20 +22,18 @@ class FrontUserMigration extends Migration {
     );
 
     $query = db_select($this->legacyDb . '.users', 'u')
-      ->fields('u', array(
-                        'uid',
-                        'name',
-                        'pass',
-                        'mail',
-                        'created',
-                        'access',
-                        'login',
-                        'status',
-                        'init',
-                        'timezone',
-                        'timezone_name',
-                        'language')
-                )
+      ->fields('u', array('uid',
+                          'name',
+                          'pass',
+                          'mail',
+                          'created',
+                          'access',
+                          'login',
+                          'status',
+                          'init',
+                          'timezone',
+                          'timezone_name',
+                          'language'))
       ->condition('u.mail', '%front.no%', 'LIKE')
       ->condition('u.uid', 1, '>');
 
@@ -43,9 +46,9 @@ class FrontUserMigration extends Migration {
           'type' => 'int',
           'unsigned' => TRUE,
           'not null' => TRUE,
-          'description' => 'D6 UID',
+          'description' => 'D6 Unique User ID',
           'alias' => 'u',
-        )
+        ),
       ),
       MigrateDestinationUser::getKeySchema()
     );
@@ -86,3 +89,86 @@ class FrontUserMigration extends Migration {
     return TRUE;
   }
 }
+
+/**
+*
+*/
+class FrontUserProfile2Migration extends Migration {
+
+  protected $legacyDb = 'frontd6';
+
+  public function __construct() {
+    parent::__construct();
+    $this->description = t('Migration of customer profiles into Profile2 entities');
+    $this->dependencies = array('FrontUser');
+
+    $this->map = new MigrateSQLMap($this->machineName,
+      array(
+        'nid' => array(
+          'type' => 'int',
+          'unsigned' => TRUE,
+          'not null' => TRUE,
+          'description' => 'D6 Unique Node ID',
+          'alias' => 'n',
+        )
+      ),
+      MigrateDestinationProfile2::getKeySchema()
+    );
+
+    $query = db_select($this->legacyDb . '.node', 'n')
+      ->fields('n', array('nid',
+                          'vid',
+                          'type',
+                          'language',
+                          'title',
+                          'uid',
+                          'status',
+                          'created',
+                          'changed',
+                          'comment',
+                          'promote',
+                          'moderate',
+                          'sticky',
+                          'tnid',
+                          'translate'))
+      ->condition('n.type', 'person', '=');
+
+    $query->join($this->legacyDb . '.node_revisions', 'nr', 'n.vid = nr.vid');
+    $query->addField('nr', 'body');
+    $query->addField('nr', 'teaser');
+    $query->addField('nr', 'format');
+
+    $query->join($this->legacyDb . '.users', 'u', 'n.uid = u.uid');
+    $query->addField('u', 'name');
+
+    $query->join($this->legacyDb . '.content_type_person', 'ctp', 'n.nid = ctp.nid AND n.vid = ctp.vid');
+    $query->addField('ctp','field_tittel_value');
+    $query->orderBy('n.nid', 'ASC');
+
+    $source_fields = array(
+      'nid' => t('The node ID of the page'),
+      'uid' => t('The user ID of a user'),
+      'lid' => t('The location ID of a location instance'),
+    );
+
+    // Create a MigrateSource object, which manages retrieving the input data.
+    $this->source = new MigrateSourceSQL($query, $source_fields);
+    $this->destination = new MigrateDestinationProfile2('profile');
+
+    $this->addFieldMapping('uid', 'uid')->sourceMigration('FrontUser'); // Connect profile to user
+
+    $this->addFieldMapping('field_name', 'title');
+    $this->addFieldMapping('field_bio', 'body');
+    $this->addFieldMapping('field_title', 'field_tittel_value'); //->callbacks(array($this, 'dsmValue'));
+
+    // Unmapped destination fields.
+    $this->addUnmigratedDestinations(array('id'));
+    $this->addUnmigratedSources(array('vid', 'type', 'language', 'moderate', 'tnid', 'translate', 'teaser', 'format', 'name'));
+  }
+
+  protected function dsmValue($value) {
+    // dsm($value);
+    return $value;
+  }
+}
+

@@ -4,15 +4,15 @@ package = "Development"
 core = 7.x
 
 dependencies[] = migrate
-; dependencies[] = migrate_extras
+dependencies[] = migrate_extras
 dependencies[] = field
 dependencies[] = file
 dependencies[] = image
 dependencies[] = number
 dependencies[] = text
 dependencies[] = options
-; dependencies[] = taxonomy
-; dependencies[] = date
+dependencies[] = taxonomy
+dependencies[] = date
 ; dependencies[] = media
 
 files[] = migrate_front.module

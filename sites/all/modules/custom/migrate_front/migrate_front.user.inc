@@ -6,7 +6,7 @@
  */
 
 /**
- * User migration class.
+ * User account migration class.
  */
 class FrontUserMigration extends Migration {
 
@@ -33,7 +33,8 @@ class FrontUserMigration extends Migration {
                           'init',
                           'timezone',
                           'timezone_name',
-                          'language'))
+                          'language',
+                          'picture'))
       ->condition('u.mail', '%front.no%', 'LIKE')
       ->condition('u.uid', 1, '>');
 
@@ -91,11 +92,12 @@ class FrontUserMigration extends Migration {
 }
 
 /**
-*
-*/
+ * Profile content type migration class.
+ */
 class FrontUserProfile2Migration extends Migration {
 
-  protected $legacyDb = 'frontd6';
+  protected $legacyDb  = 'frontd6';
+  protected $sourceDir = 'http://localhost/front/sites/default/legacy_files/media/images';
 
   public function __construct() {
     parent::__construct();
@@ -110,7 +112,7 @@ class FrontUserProfile2Migration extends Migration {
           'not null' => TRUE,
           'description' => 'D6 Unique Node ID',
           'alias' => 'n',
-        )
+        ),
       ),
       MigrateDestinationProfile2::getKeySchema()
     );
@@ -145,6 +147,12 @@ class FrontUserProfile2Migration extends Migration {
     $query->addField('ctp','field_tittel_value');
     $query->orderBy('n.nid', 'ASC');
 
+    $query->join($this->legacyDb . '.content_field_image', 'cfi', 'n.nid = cfi.nid AND n.vid = cfi.vid');
+    $query->addField('cfi', 'field_image_fid');
+
+    $query->join($this->legacyDb . '.files', 'f', 'f.fid = cfi.field_image_fid');
+    $query->addField('f', 'filename');
+
     $source_fields = array(
       'nid' => t('The node ID of the page'),
       'uid' => t('The user ID of a user'),
@@ -155,11 +163,16 @@ class FrontUserProfile2Migration extends Migration {
     $this->source = new MigrateSourceSQL($query, $source_fields);
     $this->destination = new MigrateDestinationProfile2('profile');
 
-    $this->addFieldMapping('uid', 'uid')->sourceMigration('FrontUser'); // Connect profile to user
+    // Connect profile to user
+    $this->addFieldMapping('uid', 'uid')->sourceMigration('FrontUser');
 
     $this->addFieldMapping('field_name', 'title');
     $this->addFieldMapping('field_bio', 'body');
-    $this->addFieldMapping('field_title', 'field_tittel_value'); //->callbacks(array($this, 'dsmValue'));
+    $this->addFieldMapping('field_title', 'field_tittel_value');
+    // ->callbacks(array($this, 'dsmValue'));
+
+    $this->addFieldMapping('field_image', 'filename');
+    $this->addFieldMapping('field_image:source_dir')->defaultValue($this->sourceDir);
 
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array('id'));
@@ -167,8 +180,7 @@ class FrontUserProfile2Migration extends Migration {
   }
 
   protected function dsmValue($value) {
-    // dsm($value);
+    dsm($value);
     return $value;
   }
 }
-

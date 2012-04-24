@@ -1,36 +1,110 @@
 <?php
 
 /**
+ * @file
+ * Support for media destinations.
+ */
+
+class MigrateMediaFieldHandler extends MigrateFileFieldHandler {
+  public function __construct() {
+    $this->registerTypes(array('media'));
+  }
+
+  protected function destinationDir($field_info, $instance) {
+    // Use the first allowed scheme
+    // TODO: Support an argument to pick a specific scheme
+    foreach ($instance['widget']['settings']['allowed_schemes'] as $scheme => $value) {
+      if (!empty($value)) {
+        // Hard-coded hack for Youtube
+        if ($value == 'youtube') {
+          return $value . '://v';
+        }
+        else {
+          return $value . '://';
+        }
+      }
+    }
+    // Fall back to the system default
+    return file_default_scheme() . '://';
+  }
+}
+
+/**
  * Destination class implementing migration into media entities.
  */
 class MigrateDestinationMedia extends MigrateDestinationFile {
   /**
-   * Call this from the prepare() method of a migration that contains media
-   * image files, if you want to rewrite the IMG tags into media references.
+   * List of node migrations, whose bodies need image references fixed up.
    *
-   * @param $entity
-   *  Entity object being built.
-   * @param $field
-   *  Name of the text field within the entity to be modified. Defaults to 'body'.
+   * @var array
    */
-  static public function rewriteImgTags($entity, $field = 'body') {
-    if (is_array($entity->$field)) {
-      migrate_instrument_start('MigrateDestinationMedia rewriteImgTags');
-      foreach ($entity->$field as $language => $values) {
-        $body = $values[0]['value'];
-        break;
-      }
-      // Quickly skip any non-candidates
-      if (!stristr($body, '<img')) {
-        migrate_instrument_stop('MigrateDestinationMedia rewriteImgTags');
-        return;
-      }
-      // Pass full img tags into the callback
-      $new_body = preg_replace_callback('|<img [^>]*>|i', array(self, 'replaceCallback'),
-        $body);
-      $entity->{$field}[$language][0]['value'] = $new_body;
-      migrate_instrument_stop('MigrateDestinationMedia rewriteImgTags');
+  protected $sourceMigrations = array();
+
+  /**
+   * Node ID of the node whose body is currently being rewritten.
+   *
+   * @var int
+   */
+  protected $parentNid;
+
+  /**
+   * Return an options array for media destinations.
+   *
+   * @param boolean $copy_file
+   *  TRUE to have the file copied from the provided URI to Drupal. Defaults to FALSE.
+   * @param string $copy_destination
+   *  If $copy_file is TRUE, the scheme/directory to use as the destination for the copied file.
+   *  Defaults to 'public://'.
+   * @param string $language
+   *  Default language for files created via this destination class.
+   * @param string $text_format
+   *  Default text format for files created via this destination class.
+   * @param array $source_migrations
+   *  List of node migrations, whose bodies need image references fixed up.
+   */
+  static public function options($copy_file, $copy_destination, $language, $text_format, $source_migrations = array()) {
+    return compact('copy_file', 'copy_destination', 'language', 'text_format', 'source_migrations');
+  }
+
+  /**
+   * Basic initialization
+   *
+   * @param array $options
+   *  Options applied to files.
+   */
+  public function __construct($media_type = 'default', array $options = array()) {
+    if (isset($options['source_migrations'])) {
+      $this->sourceMigrations = $options['source_migrations'];
     }
+    parent::__construct($options, $media_type);
+  }
+
+  /**
+   * Called at the completion of a migration into a media destination. Rewrite
+   * <img> tags into the media module's embedded JSON references.
+   */
+  public function postImport() {
+    migrate_instrument_start('MigrateDestinationMedia postImport');
+    // Scan the destination nodes
+    foreach ($this->sourceMigrations as $source_migration) {
+      $migration = MigrationBase::getInstance($source_migration);
+      $map = $migration->getMap();
+      foreach ($map as $map_row) {
+        $this->parentNid = $map_row->destid1;
+        $node = node_load($this->parentNid);
+        $body = $node->body[LANGUAGE_NONE][0]['value'];
+        // Quickly skip any non-candidates
+        if (!strstr($body, 'img')) {
+          continue;
+        }
+        // Pass full img tags into the callback
+        $new_body = preg_replace_callback('|<img [^>]*>|i', array($this, 'replaceCallback'),
+          $body);
+        $node->body[LANGUAGE_NONE][0]['value'] = $new_body;
+        node_save($node);
+      }
+    }
+    migrate_instrument_stop('MigrateDestinationMedia postImport');
   }
 
   /**
@@ -39,25 +113,30 @@ class MigrateDestinationMedia extends MigrateDestinationFile {
    *
    * @param array $matches
    */
-  static protected function replaceCallback(array $matches) {
+  protected function replaceCallback(array $matches) {
     $src_matches = array();
     // Default to the original <img> tag
     $result = $matches[0];
     // Extract the src parameter
     if (preg_match('|src=[\'"]([^\'"]+)[\'"]|i', $matches[0], $src_matches)) {
-      // Replace the scheme and host portions of the referenced URI with the
+      // Replace the scheme and host portions of the referenced URL with the
       // Drupal scheme as it's saved in the file_unmanaged table
-      $src = $src_matches[1];
-      $fid = db_select('file_managed', 'f')
-             ->fields('f', array('fid'))
-             ->condition('filename', basename($src))
-             ->execute()
-             ->fetchField();
-      if ($fid) {
+      $src = preg_replace('|^https?://[^/]+/|', $this->copyDestination, $src_matches[1]);
+      $file = db_select('file_managed', 'f')
+              ->fields('f', array('fid'))
+              ->condition('filename', basename($src))
+              ->execute()
+              ->fetchObject();
+      if ($file) {
+        // Update file_usage
+        // Note: Usages not cleaned up on file_delete() - NYI in media module
+        file_usage_add($file, 'media', 'node', $this->parentNid);
+
+        // TODO: Anything to do about alt/title?
         $image_info = array(
           'type' => 'media',
           'view_mode' => 'media_large',
-          'fid' => $fid,
+          'fid' => $file->fid,
           'attributes' => array(
             'alt' => '',
             'title' => '',
@@ -70,112 +149,5 @@ class MigrateDestinationMedia extends MigrateDestinationFile {
       }
     }
     return $result;
-  }
-}
-
-/**
- * Class for creating Youtube file entities.
- */
-class MigrateExtrasFileYoutube implements MigrateFileInterface {
-  /**
-   * An option file object to use as a default starting point for building the
-   * file entity.
-   *
-   * @var stdClass
-   */
-  protected $defaultFile;
-
-  public function __construct($arguments = array(), $default_file = NULL) {
-    if ($default_file) {
-      $this->defaultFile = $default_file;
-    }
-    else {
-      $this->defaultFile = new stdClass;
-    }
-  }
-
-  /**
-   * Implementation of MigrateFileInterface::fields().
-   *
-   * @return array
-   */
-  static public function fields() {
-    return array();
-  }
-
-  /**
-   * Setup a file entity object suitable for saving.
-   *
-   * @param $destination
-   *  Path to the Drupal copy of the file.
-   * @param $owner
-   *  Uid of the file owner.
-   * @return stdClass
-   *  A file object ready to be saved.
-   */
-  protected function createFileEntity($destination, $owner) {
-    // If we are replacing an existing file re-use its database record.
-    $existing_files = file_load_multiple(array(), array('uri' => $destination));
-    if (count($existing_files)) {
-      $file = reset($existing_files);
-    }
-    else {
-      $file = clone $this->defaultFile;
-      $file->uri = $destination;
-      $file->uid = $owner;
-      if (!isset($file->filename)) {
-        $file->filename = t('Video title');
-      }
-      if (!isset($file->filemime)) {
-        $file->filemime = 'video/youtube';
-      }
-      if (!isset($file->status)) {
-        $file->status = FILE_STATUS_PERMANENT;
-      }
-    }
-    return $file;
-  }
-
-  /**
-   * By whatever appropriate means, put the file in the right place.
-   *
-   * @param $destination
-   *  Destination path within Drupal.
-   * @return bool
-   *  TRUE if the file is successfully saved, FALSE otherwise.
-   */
-  protected function copyFile($destination) {
-    // No file to be copied in this case
-    return TRUE;
-  }
-
-  /**
-   * Default implementation of MigrateFileInterface::processFiles().
-   *
-   * @param $value
-   *  The URI or local filespec of a file to be imported.
-   * @param $owner
-   *  User ID (uid) to be the owner of the file.
-   * @return object
-   *  The file entity being created or referenced.
-   */
-  public function processFile($value, $owner) {
-    // Convert the Youtube URI into a local stream wrapper.
-    $handler = new MediaInternetYouTubeHandler($value);
-    $destination = $handler->parse($value);
-
-    // Create a file entity object for this Youtube reference, and see if we
-    // can get the video title.
-    $file = file_uri_to_object($destination, TRUE);
-    if (empty($file->fid) && $info = $handler->getOEmbed()) {
-      $file->filename = truncate_utf8($info['title'], 255);
-    }
-    $file = file_save($file);
-    if (is_object($file)) {
-      return $file;
-    }
-    else {
-      return FALSE;
-    }
   }
 }

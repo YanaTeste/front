@@ -22,9 +22,9 @@ files[] = user_relationships.inc
 files[] = webform.inc
 files[] = tests/pathauto.test
 
-; Information added by drupal.org packaging script on 2012-04-21
-version = "7.x-2.3+2-dev"
+; Information added by drupal.org packaging script on 2012-03-21
+version = "7.x-2.3"
 core = "7.x"
 project = "migrate_extras"
-datestamp = "1334968101"
+datestamp = "1332348948"
 

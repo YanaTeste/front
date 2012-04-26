@@ -5,6 +5,13 @@
  * TODO: insert description here.
  */
 
+define('FRONT_MIGRATION_DB', 'frontd6');
+define('FRONT_MIGRATION_FILES', 'http://localhost/front/sites/default/legacy_files');
+define('FRONT_TERM_SECTION', 19);
+define('FRONT_TERM_SECTION_NAME', 'section');
+define('FRONT_TERM_TOPIC', 20);
+define('FRONT_TERM_TOPIC_NAME', 'topic');
+
 function migrate_front_migrate_api() {
   $api = array(
     'api' => 2,

@@ -10,8 +10,6 @@
  */
 class FrontUserMigration extends Migration {
 
-  protected $legacyDb = 'frontd6';
-
   public function __construct() {
     parent::__construct();
     $this->description = t('Migrate legacy users');
@@ -21,7 +19,11 @@ class FrontUserMigration extends Migration {
       'roles' => t('The roles assigned to a user.'),
     );
 
-    $query = db_select($this->legacyDb . '.users', 'u')
+    $or = db_or()
+      ->condition('u.mail', '%front.no%', 'LIKE')
+      ->condition('u.mail', '%perandre%', 'LIKE');
+
+    $query = db_select(FRONT_MIGRATION_DB . '.users', 'u')
       ->fields('u', array('uid',
                           'name',
                           'pass',
@@ -35,7 +37,7 @@ class FrontUserMigration extends Migration {
                           'timezone_name',
                           'language',
                           'picture'))
-      ->condition('u.mail', '%front.no%', 'LIKE')
+      ->condition($or)
       ->condition('u.uid', 1, '>');
 
     $this->source = new MigrateSourceSQL($query, $source_fields);
@@ -75,7 +77,7 @@ class FrontUserMigration extends Migration {
 
   public function prepareRow($current_row) {
     $source_id = $current_row->uid;
-    $query = db_select($this->legacyDb . '.users_roles', 'r')
+    $query = db_select(FRONT_MIGRATION_DB . '.users_roles', 'r')
       ->fields('r', array('uid', 'rid'))
       ->condition('r.uid', $source_id, '=');
 
@@ -85,7 +87,7 @@ class FrontUserMigration extends Migration {
     foreach ($results as $row) {
       $roles[$row->rid] = $row->rid;
     }
-
+dsm($current_row->name);
     $current_row->roles = $roles;
     return TRUE;
   }
@@ -95,9 +97,6 @@ class FrontUserMigration extends Migration {
  * Profile content type migration class.
  */
 class FrontUserProfile2Migration extends Migration {
-
-  protected $legacyDb  = 'frontd6';
-  protected $sourceDir = 'http://localhost/front/sites/default/legacy_files/media/images';
 
   public function __construct() {
     parent::__construct();
@@ -117,7 +116,7 @@ class FrontUserProfile2Migration extends Migration {
       MigrateDestinationProfile2::getKeySchema()
     );
 
-    $query = db_select($this->legacyDb . '.node', 'n')
+    $query = db_select(FRONT_MIGRATION_DB . '.node', 'n')
       ->fields('n', array('nid',
                           'vid',
                           'type',
@@ -135,22 +134,22 @@ class FrontUserProfile2Migration extends Migration {
                           'translate'))
       ->condition('n.type', 'person', '=');
 
-    $query->join($this->legacyDb . '.node_revisions', 'nr', 'n.vid = nr.vid');
+    $query->join(FRONT_MIGRATION_DB . '.node_revisions', 'nr', 'n.vid = nr.vid');
     $query->addField('nr', 'body');
     $query->addField('nr', 'teaser');
     $query->addField('nr', 'format');
 
-    $query->join($this->legacyDb . '.users', 'u', 'n.uid = u.uid');
+    $query->join(FRONT_MIGRATION_DB . '.users', 'u', 'n.uid = u.uid');
     $query->addField('u', 'name');
 
-    $query->join($this->legacyDb . '.content_type_person', 'ctp', 'n.nid = ctp.nid AND n.vid = ctp.vid');
+    $query->join(FRONT_MIGRATION_DB . '.content_type_person', 'ctp', 'n.nid = ctp.nid AND n.vid = ctp.vid');
     $query->addField('ctp','field_tittel_value');
     $query->orderBy('n.nid', 'ASC');
 
-    $query->join($this->legacyDb . '.content_field_image', 'cfi', 'n.nid = cfi.nid AND n.vid = cfi.vid');
+    $query->join(FRONT_MIGRATION_DB . '.content_field_image', 'cfi', 'n.nid = cfi.nid AND n.vid = cfi.vid');
     $query->addField('cfi', 'field_image_fid');
 
-    $query->join($this->legacyDb . '.files', 'f', 'f.fid = cfi.field_image_fid');
+    $query->join(FRONT_MIGRATION_DB . '.files', 'f', 'f.fid = cfi.field_image_fid');
     $query->addField('f', 'filename');
 
     $source_fields = array(
@@ -172,7 +171,7 @@ class FrontUserProfile2Migration extends Migration {
     // ->callbacks(array($this, 'dsmValue'));
 
     $this->addFieldMapping('field_image', 'filename');
-    $this->addFieldMapping('field_image:source_dir')->defaultValue($this->sourceDir);
+    $this->addFieldMapping('field_image:source_dir')->defaultValue(FRONT_MIGRATION_FILES . '/media/images');
 
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array('id'));

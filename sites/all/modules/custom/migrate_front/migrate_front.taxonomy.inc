@@ -10,19 +10,9 @@
  */
 class FrontTaxonomyMigration extends Migration {
 
-  protected $legacyDb;
-
-  protected $termId;
-
-  protected $termName;
-
   public function __construct() {
     parent::__construct();
     $this->description = t('Migrate taxonomy terms');
-
-    $this->legacyDb = 'frontd6';
-    $this->termId   = 20;
-    $this->termName = 'topic';
 
     $this->map = new MigrateSQLMap($this->machineName,
       array(
@@ -37,16 +27,16 @@ class FrontTaxonomyMigration extends Migration {
       MigrateDestinationTerm::getKeySchema()
     );
 
-    $query = db_select($this->legacyDb . '.term_data', 'td')
+    $query = db_select(FRONT_MIGRATION_DB . '.term_data', 'td')
       ->fields('td', array('tid', 'vid', 'name', 'description', 'weight'))
-      ->condition('td.vid', $this->termId, '=');
+      ->condition('td.vid', FRONT_TERM_SECTION, '=');
 
-    $query->join($this->legacyDb . '.term_hierarchy', 'th', 'td.tid = th.tid');
+    $query->join(FRONT_MIGRATION_DB . '.term_hierarchy', 'th', 'td.tid = th.tid');
     $query->addField('th', 'parent');
     $query->orderBy('th.parent', 'ASC');
 
     $this->source = new MigrateSourceSQL($query);
-    $this->destination = new MigrateDestinationTerm($this->termName);
+    $this->destination = new MigrateDestinationTerm(FRONT_TERM_SECTION_NAME);
 
     // Assign mappings TO destination fields FROM source fields.
     $this->addFieldMapping('name', 'name');

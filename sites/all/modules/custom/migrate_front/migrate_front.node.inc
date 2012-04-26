@@ -59,7 +59,7 @@ class FrontArticleMigration extends Migration {
     $query->join(FRONT_MIGRATION_DB . '.term_node', 'tn', 'tn.nid = n.nid');
     $query->addField('tn', 'tid');
 
-    $query->join(FRONT_MIGRATION_DB . '.term_data', 'td', 'td.tid = tn.tid');
+    $query->join(FRONT_MIGRATION_DB . '.term_data', 'td', 'td.tid = tn.tid AND td.vid = ' . FRONT_TERM_SECTION);
     $query->addField('td', 'name');
 
     $source_fields = array(

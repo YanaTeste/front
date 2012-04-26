@@ -83,7 +83,10 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('promote', 'promote');
     $this->addFieldMapping('sticky', 'sticky');
     $this->addFieldMapping('comment', 'comment');
+
     $this->addFieldMapping('path', 'url_alias');
+    $this->addFieldMapping('pathauto')->defaultValue(0);
+
     $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('tnid', 'tnid');
 
@@ -95,6 +98,9 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('body:format', 'format');
     $this->addFieldMapping('body:language', 'language');
     $this->addFieldMapping('log', 'log');
+
+    // Unmapped destination fields.
+    $this->addUnmigratedDestinations(array('field_tags'));
 
     // Unmapped source fields
     $this->addUnmigratedSources(array('vid',

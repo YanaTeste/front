@@ -87,7 +87,7 @@ class FrontUserMigration extends Migration {
     foreach ($results as $row) {
       $roles[$row->rid] = $row->rid;
     }
-dsm($current_row->name);
+
     $current_row->roles = $roles;
     return TRUE;
   }
@@ -175,6 +175,8 @@ class FrontUserProfile2Migration extends Migration {
 
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array('id'));
+
+    // Unmapped source fields
     $this->addUnmigratedSources(array('vid', 'type', 'language', 'moderate', 'tnid', 'translate', 'teaser', 'format', 'name'));
   }
 

@@ -61,12 +61,12 @@ class FrontArticleMigration extends Migration {
     $query->addField('fs', 'field_subheading_value');
 
     // Field Image.
-    $query->leftJoin(FRONT_MIGRATION_DB . '.content_field_image', 'fi', 'n.vid = fi.vid');
+    $query->join(FRONT_MIGRATION_DB . '.content_field_image', 'fi', 'n.vid = fi.vid');
     $query->addField('fi', 'field_image_fid');
+    $query->addField('fi', 'field_image_data');
 
-    $query->leftJoin(FRONT_MIGRATION_DB . '.files', 'f', 'fi.field_image_fid = f.fid');
+    $query->join(FRONT_MIGRATION_DB . '.files', 'f', 'fi.field_image_fid = f.fid');
     $query->addField('f', 'filename');
-    $query->addField('f', 'filepath');
 
     // Terms for Section vocabulary.
     $query->leftJoin(FRONT_MIGRATION_DB . '.term_node', 'tn', 'n.vid = tn.vid');
@@ -105,6 +105,7 @@ class FrontArticleMigration extends Migration {
 
     $this->addFieldMapping('field_subheading', 'field_subheading_value');
     $this->addFieldMapping('field_image', 'filename');
+    $this->addFieldMapping('field_image:alt', 'field_image_data');
     $this->addFieldMapping('field_image:source_dir')->defaultValue(FRONT_MIGRATION_FILES . '/media/images');
     $this->addFieldMapping('field_section', 'td_name')->separator(',');
 
@@ -126,7 +127,8 @@ class FrontArticleMigration extends Migration {
                                       'teaser',
                                       'format',
                                       'name',
-                                      'tid'));
+                                      'tid',
+                                      'field_image_fid'));
   }
 
   public function prepareRow($current_row) {
@@ -166,6 +168,12 @@ class FrontArticleMigration extends Migration {
     // Set neutral if no language code.
     if (empty($current_row->language)) {
       $current_row->language = LANGUAGE_NONE;
+    }
+
+    // Unserialize image data and set an empty array if it has no values.
+    if ($current_row->field_image_data) {
+      $img_data = unserialize($current_row->field_image_data);
+      $current_row->field_image_data = $img_data['description'];
     }
 
     return TRUE;

@@ -18,3 +18,18 @@ function migrate_front_migrate_api() {
   );
   return $api;
 }
+
+/**
+ * Retrieve the set of term associated with a node from the migration database.
+ */
+function migrate_front_migration_get_terms($vid, $tvid) {
+  $query = db_select(FRONT_MIGRATION_DB . '.term_node', 'tn');
+  $query->join(FRONT_MIGRATION_DB . '.term_data', 'td', 'tn.tid = td.tid');
+  $query->addField('td', 'name');
+  $query->condition('tn.vid', $vid, '=');
+  $query->condition('td.vid', $tvid, '=');
+  $query->orderBy('tn.tid', 'ASC');
+  $result = $query->execute()->fetchCol();
+
+  return is_array($result) && !empty($result) ? implode(',', $result) : NULL;
+}

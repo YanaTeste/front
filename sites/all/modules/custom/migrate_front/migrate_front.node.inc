@@ -56,14 +56,15 @@ class FrontArticleMigration extends Migration {
     $query->addField('u', 'name');
     $query->orderBy('n.nid', 'ASC');
 
-    $query->join(FRONT_MIGRATION_DB . '.term_node', 'tn', 'tn.nid = n.nid');
+    $query->leftJoin(FRONT_MIGRATION_DB . '.term_node', 'tn', 'n.vid = tn.vid');
     $query->addField('tn', 'tid');
 
-    $query->join(FRONT_MIGRATION_DB . '.term_data', 'td', 'td.tid = tn.tid AND td.vid = ' . FRONT_TERM_SECTION);
+    $query->leftJoin(FRONT_MIGRATION_DB . '.term_data', 'td', 'td.tid = tn.tid AND td.vid = ' . FRONT_TERM_SECTION);
     $query->addField('td', 'name');
 
     $source_fields = array(
-      'nid' => t('The node ID of the page'),
+      'nid' => t('The node ID of the node'),
+      'url_alias' => t('The url alias of the node'),
     );
 
     $this->source = new MigrateSourceSQL($query, $source_fields);
@@ -85,8 +86,9 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('path', 'url_alias');
     $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('tnid', 'tnid');
+
     $this->addFieldMapping('field_section', 'td_name')->separator(',');
-    $this->addFieldMapping('field_tags', 'tags')->separator(',');
+    // $this->addFieldMapping('field_tags', 'tags')->separator(',');
 
     $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('body:summary', 'teaser');
@@ -102,7 +104,8 @@ class FrontArticleMigration extends Migration {
                                       'translate',
                                       'teaser',
                                       'format',
-                                      'name'));
+                                      'name',
+                                      'tid'));
   }
 
   public function prepareRow($current_row) {

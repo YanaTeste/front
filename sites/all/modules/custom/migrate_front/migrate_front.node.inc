@@ -56,10 +56,14 @@ class FrontArticleMigration extends Migration {
     $query->addField('u', 'name');
     $query->orderBy('n.nid', 'ASC');
 
+    $query->join(FRONT_MIGRATION_DB . '.term_node', 'tn', 'tn.nid = n.nid');
+    $query->addField('tn', 'tid');
+
+    $query->join(FRONT_MIGRATION_DB . '.term_data', 'td', 'td.tid = tn.tid');
+    $query->addField('td', 'name');
+
     $source_fields = array(
-      'nid' => t('The node ID of the article'),
-      'url_alias' => t('The url alias of the node'),
-      'tags' => t('The terms for the node'),
+      'nid' => t('The node ID of the page'),
     );
 
     $this->source = new MigrateSourceSQL($query, $source_fields);
@@ -79,9 +83,9 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('sticky', 'sticky');
     $this->addFieldMapping('comment', 'comment');
     $this->addFieldMapping('path', 'url_alias');
-    $this->addFieldMapping('language')->defaultValue(LANGUAGE_NONE);
+    $this->addFieldMapping('language', 'language');
     $this->addFieldMapping('tnid', 'tnid');
-    // $this->addFieldMapping('field_section', 'category')->separator(',');
+    $this->addFieldMapping('field_section', 'td_name')->separator(',');
     $this->addFieldMapping('field_tags', 'tags')->separator(',');
 
     $this->addFieldMapping('body', 'body');
@@ -93,7 +97,6 @@ class FrontArticleMigration extends Migration {
     // Unmapped source fields
     $this->addUnmigratedSources(array('vid',
                                       'type',
-                                      'language',
                                       'moderate',
                                       'tnid',
                                       'translate',
@@ -129,6 +132,11 @@ class FrontArticleMigration extends Migration {
       else {
         $current_row->uid = 1;
       }
+    }
+
+    // Set neutral if no language code.
+    if (empty($current_row->language)) {
+      $current_row->language = LANGUAGE_NONE;
     }
 
     return true;

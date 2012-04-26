@@ -61,11 +61,11 @@ class FrontArticleMigration extends Migration {
     $query->addField('fs', 'field_subheading_value');
 
     // Field Image.
-    $query->join(FRONT_MIGRATION_DB . '.content_field_image', 'fi', 'n.vid = fi.vid');
+    $query->leftJoin(FRONT_MIGRATION_DB . '.content_field_image', 'fi', 'n.vid = fi.vid');
     $query->addField('fi', 'field_image_fid');
     $query->addField('fi', 'field_image_data');
 
-    $query->join(FRONT_MIGRATION_DB . '.files', 'f', 'fi.field_image_fid = f.fid');
+    $query->leftJoin(FRONT_MIGRATION_DB . '.files', 'f', 'fi.field_image_fid = f.fid');
     $query->addField('f', 'filename');
 
     // Terms for Section vocabulary.
@@ -106,6 +106,7 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('field_subheading', 'field_subheading_value');
     $this->addFieldMapping('field_image', 'filename');
     $this->addFieldMapping('field_image:alt', 'field_image_data');
+    $this->addFieldMapping('field_image:title', 'field_image_data');
     $this->addFieldMapping('field_image:source_dir')->defaultValue(FRONT_MIGRATION_FILES . '/media/images');
     $this->addFieldMapping('field_section', 'td_name')->separator(',');
 
@@ -176,6 +177,24 @@ class FrontArticleMigration extends Migration {
       $current_row->field_image_data = $img_data['description'];
     }
 
+    // Clean up empty fields.
+    foreach ($current_row as $field=>$value) {
+      if (empty($value) && $value != 0) {
+        unset($current_row->$field);
+      }
+    }
+
     return TRUE;
+  }
+
+  /**
+   * Method called by the destination class prepare() method, after it has called all
+   * field-level prepare() methods and immediately before the destination object is saved.
+   */
+  public function prepare($entity, stdClass $row) {
+    // Clean up fields.
+    if (is_null($row->field_subheading_value)) {
+      unset($entity->field_subheading);
+    }
   }
 }

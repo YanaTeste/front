@@ -12,7 +12,7 @@ class FrontArticleMigration extends Migration {
 
   public function __construct() {
     parent::__construct();
-    $this->description = t('Migrate xdeb pages nodes.');
+    $this->description = t('Migrate article nodes.');
     $this->dependencies = array('FrontUser', 'FrontTaxonomy');
 
     $this->map = new MigrateSQLMap($this->machineName,
@@ -104,11 +104,12 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('tnid', 'tnid');
 
     $this->addFieldMapping('field_subheading', 'field_subheading_value');
+    $this->addFieldMapping('field_section', 'td_name')->separator(',');
+
     $this->addFieldMapping('field_image', 'filename');
     $this->addFieldMapping('field_image:alt', 'field_image_data');
     $this->addFieldMapping('field_image:title', 'field_image_data');
     $this->addFieldMapping('field_image:source_dir')->defaultValue(FRONT_MIGRATION_FILES . '/media/images');
-    $this->addFieldMapping('field_section', 'td_name')->separator(',');
 
     $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('body:summary', 'teaser');

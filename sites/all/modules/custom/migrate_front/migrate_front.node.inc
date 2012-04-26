@@ -56,9 +56,17 @@ class FrontArticleMigration extends Migration {
     $query->addField('u', 'name');
     $query->orderBy('n.nid', 'ASC');
 
-    // Field Subheading
+    // Field Subheading.
     $query->leftJoin(FRONT_MIGRATION_DB . '.content_field_subheading', 'fs', 'n.vid = fs.vid');
     $query->addField('fs', 'field_subheading_value');
+
+    // Field Image.
+    $query->leftJoin(FRONT_MIGRATION_DB . '.content_field_image', 'fi', 'n.vid = fi.vid');
+    $query->addField('fi', 'field_image_fid');
+
+    $query->leftJoin(FRONT_MIGRATION_DB . '.files', 'f', 'fi.field_image_fid = f.fid');
+    $query->addField('f', 'filename');
+    $query->addField('f', 'filepath');
 
     // Terms for Section vocabulary.
     $query->leftJoin(FRONT_MIGRATION_DB . '.term_node', 'tn', 'n.vid = tn.vid');
@@ -96,8 +104,9 @@ class FrontArticleMigration extends Migration {
     $this->addFieldMapping('tnid', 'tnid');
 
     $this->addFieldMapping('field_subheading', 'field_subheading_value');
+    $this->addFieldMapping('field_image', 'filename');
+    $this->addFieldMapping('field_image:source_dir')->defaultValue(FRONT_MIGRATION_FILES . '/media/images');
     $this->addFieldMapping('field_section', 'td_name')->separator(',');
-    // $this->addFieldMapping('field_tags', 'tags')->separator(',');
 
     $this->addFieldMapping('body', 'body');
     $this->addFieldMapping('body:summary', 'teaser');
@@ -108,7 +117,7 @@ class FrontArticleMigration extends Migration {
     // Unmapped destination fields.
     $this->addUnmigratedDestinations(array('field_tags'));
 
-    // Unmapped source fields
+    // Unmapped source fields.
     $this->addUnmigratedSources(array('vid',
                                       'type',
                                       'moderate',
@@ -121,18 +130,17 @@ class FrontArticleMigration extends Migration {
   }
 
   public function prepareRow($current_row) {
-    // Don't migrate articles with empty a body text.
-    if (empty($current_row->body)) {
-      // put this back to FALSE once there's no need to debug.
-      // return FALSE;
-    }
-
     $text_formats = array(
       0 => 'filtered_html',
       1 => 'filtered_html',
       2 => 'full_html',
       3 => 'full_html',
     );
+
+    // Don't migrate articles with empty a body text.
+    if (empty($current_row->body)) {
+      return FALSE;
+    }
 
     // Don't save automatic teasers, leave this to D7 config.
     $breakpos = strpos($current_row->body, '<!--break-->');

@@ -7,9 +7,9 @@ dependencies[] = migrate
 files[] = migrate_ui.module
 ;files[] = migrate_ui.pages.inc
 
-; Information added by drupal.org packaging script on 2012-04-24
-version = "7.x-2.3+25-dev"
+; Information added by drupal.org packaging script on 2012-04-28
+version = "7.x-2.3+30-dev"
 core = "7.x"
 project = "migrate"
-datestamp = "1335227152"
+datestamp = "1335572609"
 

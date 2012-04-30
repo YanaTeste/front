@@ -19,4 +19,4 @@ files[] = migrate_front.module
 files[] = migrate_front.user.inc
 files[] = migrate_front.taxonomy.inc
 files[] = migrate_front.node.inc
-files[] = migrate_front.media.inc
+; files[] = migrate_front.media.inc

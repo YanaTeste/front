@@ -17,6 +17,15 @@ function frontd7_js_alter(&$javascript) {
   $javascript['misc/jquery.js']['data'] = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
 }
 
+/**
+ * Implements hook_preprocess().
+ */
+function frontd7_preprocess_page(&$variables) {
+  if (module_exists('search')) {
+    $search_box = drupal_render(drupal_get_form('search_form'));
+    $variables['search_box'] = $search_box;
+  }
+}
 
 /**
  * Return a themed breadcrumb trail

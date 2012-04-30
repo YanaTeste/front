@@ -26,3 +26,12 @@
   }
 }
 
+@mixin hide-text {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+
+@function em($target-px, $context) {
+  @return ($target-px / $context) * 1em;
+}

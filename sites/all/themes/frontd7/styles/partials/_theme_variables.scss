@@ -1,3 +1,14 @@
+// Typography
+// -------------------------
+$baseFontSize:          14px;
+$baseFontFamily:        "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$baseLineHeight:        21px !default;
+$altFontFamily:         Georgia, "Times New Roman", Times, serif !default;
+
+$headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontFamily
+$headingsFontWeight:    bold !default;    // instead of browser default, bold
+$headingsColor:         inherit !default; // empty to use BS default, @textColor
+
 // Fonts directory path
 $font_path: 'fontawesome-webfont';
 

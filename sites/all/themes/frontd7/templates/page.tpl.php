@@ -75,7 +75,7 @@
     </nav> <!-- /#secondary-menu -->
   <?php endif; ?>
 
-<?php if ($logo || $site_name || $main_menu_links || $page['header']): ?>
+<?php if ($logo || $site_name || $main_menu_links || $search_box): ?>
   <div class="header-wrapper">
     <header id="header"role="banner">
       <?php if ($logo || $site_name): ?>
@@ -100,7 +100,7 @@
         </nav><!-- /#navigation -->
       <?php endif; ?>
 
-      <?php print render($page['header']); ?>
+      <?php if ($search_box): print $search_box; endif; ?>
     </header><!-- /#header -->
   </div><!-- .header-wrapper -->
 <?php endif; ?>

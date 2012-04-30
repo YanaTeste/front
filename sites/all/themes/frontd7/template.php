@@ -3,7 +3,7 @@
 /**
  * Implements hook_css_alter().
  */
-function frontstrap_css_alter(&$css) {
+function frontd7_css_alter(&$css) {
   // Remove SASSON files
   // TODO: make this configurable, choosing between TBS reset/grid and SASSON
   unset($css[drupal_get_path('theme', 'sasson') . '/styles/boilerplate.css']);
@@ -12,7 +12,7 @@ function frontstrap_css_alter(&$css) {
 /**
  * Implements hook_js_alter().
  */
-function frontstrap_js_alter(&$javascript) {
+function frontd7_js_alter(&$javascript) {
   // Swap out jQuery to use an updated version of the library.
   $javascript['misc/jquery.js']['data'] = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
 }
@@ -21,7 +21,7 @@ function frontstrap_js_alter(&$javascript) {
 /**
  * Return a themed breadcrumb trail
  */
-function frontstrap_breadcrumb($vars) {
+function frontd7_breadcrumb($vars) {
   $breadcrumb = isset($vars['breadcrumb']) ? $vars['breadcrumb'] : array();
 
   if (theme_get_setting('sasson_breadcrumb_hideonlyfront')) {
@@ -56,7 +56,7 @@ function frontstrap_breadcrumb($vars) {
 /**
  * Implements theme_item_list().
  */
-function frontstrap_item_list($variables) {
+function frontd7_item_list($variables) {
   $items = $variables['items'];
   $title = $variables['title'];
   $type = $variables['type'];

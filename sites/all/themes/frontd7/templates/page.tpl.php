@@ -69,49 +69,41 @@
  */
 ?>
 
-<div id="page">
+  <?php if ($secondary_menu_links): ?>
+    <nav id="secondary-menu" role="navigation">
+      <?php print $secondary_menu_links ?>
+    </nav> <!-- /#secondary-menu -->
+  <?php endif; ?>
 
-  <?php if ($logo || $site_name || $site_slogan || $page['header']): ?>
-    <header id="header" role="banner">
-      <?php if ($logo): ?>
-        <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home" id="logo">
-          <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
-        </a>
-      <?php endif; ?>
+<?php if ($logo || $site_name || $main_menu_links || $page['header']): ?>
+  <div class="header-wrapper">
+    <header id="header"role="banner">
+      <?php if ($logo || $site_name): ?>
+        <h1>
+          <?php if ($logo): ?>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+              <img src="<?php print $logo; ?>" alt="<?php print t('Home'); ?>" />
+            </a>
+          <?php endif; ?>
 
-      <?php if ($site_name): ?>
-          <h1 id="site-name">
-            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home"><span><?php print $site_name; ?></span></a>
-          </h1>
-      <?php endif; ?>
+          <?php if ($site_name): ?>
+            <a href="<?php print $front_page; ?>" title="<?php print t('Home'); ?>" rel="home">
+              <span><?php print $site_name; ?></span>
+            </a>
+          <?php endif; ?>
+        </h1>
+      <?php endif ?>
 
-      <?php if ($site_slogan): ?>
-        <div id="site-slogan"><?php print $site_slogan; ?></div>
+      <?php if ($main_menu_links): ?>
+        <nav id="main-menu" role="navigation">
+          <?php print $main_menu_links; ?>
+        </nav><!-- /#navigation -->
       <?php endif; ?>
 
       <?php print render($page['header']); ?>
     </header><!-- /#header -->
-  <?php endif; ?>
-
-  <?php if ($main_menu_links || $secondary_menu_links): ?>
-    <div class="navbar">
-      <div class="navbar-inner">
-        <div class="container">
-          <?php if ($main_menu_links): ?>
-            <nav id="main-menu" role="navigation">
-              <?php print $main_menu_links; ?>
-            </nav><!-- /#navigation -->
-          <?php endif; ?>
-
-          <?php if ($secondary_menu_links): ?>
-            <nav id="secondary-menu" role="navigation">
-              <?php print $secondary_menu_links ?>
-            </nav> <!-- /#secondary-menu -->
-          <?php endif; ?>
-        </div>
-      </div>
-    </div>
-  <?php endif ?>
+  </div><!-- .header-wrapper -->
+<?php endif; ?>
 
   <?php if ($page['featured']): ?>
     <div id="featured">
@@ -169,5 +161,3 @@
       <?php print render($page['footer']); ?>
     </footer><!-- /#footer -->
   <?php endif; ?>
-
-</div><!-- /#page -->

@@ -21,8 +21,10 @@
  */
 
 /*         Libraries
- *************************************************/
+ ------------------------------------------------*/
 // Compass
+@import 'compass';
+@import '960/grid';
 @import 'compass/css3/text-shadow';
 @import 'compass/css3/border-radius';
 
@@ -61,7 +63,7 @@
 
 // Components: Nav
 @import 'partials/bootstrap/navs';
-@import 'partials/bootstrap/navbar';
+// @import 'partials/bootstrap/navbar';
 @import 'partials/bootstrap/breadcrumbs';
 @import 'partials/bootstrap/pagination';
 @import 'partials/bootstrap/pager';
@@ -86,33 +88,34 @@
 @import 'partials/_theme_bootstrap'; // Override, map classes and extend boottrap for our theme
 
 /*         General Sitewide Styles
- *************************************************/
-  /* Layout */
+------------------------------------------------*/
+/* Layout */
 
-  /* General Styles (Colors, Backgrounds etc.) */
+/* General Styles (Colors, Backgrounds etc.) */
 
-  /* Typography */
+/* Typography */
 
-  /* Links */
+/* Links */
 
-  /* Header */
-#logo {
-  margin-right: 1em;
-}
-#site-name {
-  margin: 1.111111em 0;
+/* Header */
+.header-wrapper {
+  @include background-image(linear-gradient(bottom, #222222, #444444));
+  @include clearfix;
 }
 
-  /* Sidebars */
+#header {
+}
 
-  /* Footer */
+/* Sidebars */
+
+/* Footer */
 
 
 /*         Front Page
- *************************************************/
+------------------------------------------------*/
 
 /*         Inner Pages
- *************************************************/
+------------------------------------------------*/
 
 /*         Forms
- *************************************************/
+------------------------------------------------*/

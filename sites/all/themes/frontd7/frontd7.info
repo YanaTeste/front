@@ -1,7 +1,7 @@
 ; Theme Info --------------------------------------------------------------
 
-name = Frontstrap
-description = Frontstrap, our Bootstrap-friendly sub-theme for Sasson.
+name = Front D7
+description = Base on Frontstrap, our Bootstrap-friendly sub-theme for Sasson.
 screenshot = images/screenshot.jpeg
 core = 7.x
 base theme = sasson
@@ -131,4 +131,3 @@ settings[sasson_feed_icons] = 0
 version = "master-dev"
 project = "frontstrap"
 datestamp = "1335177161"
-

@@ -4584,16 +4584,15 @@ table#blocks select {
   background-image: linear-gradient(#333333, #222222);
 }
 
-#search-form {
+#header .search-form {
   height: 25px;
   position: absolute;
   top: 0.857em;
   right: 1.357em;
 }
-#search-form label {
-  display: none;
-}
-#search-form .form-text {
+#header .search-form .form-text {
+  background: white url("../images/icon_search-textfield.png") no-repeat center right;
+  width: 1em;
   padding: 3px 10px 4px;
   border: none;
   -webkit-border-radius: 1.15em;
@@ -4602,9 +4601,55 @@ table#blocks select {
   -webkit-box-shadow: inset 0 1px 0 black;
   -moz-box-shadow: inset 0 1px 0 black;
   box-shadow: inset 0 1px 0 black;
+  margin: 0;
+  visibility: hidden;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -ms-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.15s;
+  -moz-transition-duration: 0.15s;
+  -ms-transition-duration: 0.15s;
+  -o-transition-duration: 0.15s;
+  transition-duration: 0.15s;
+  -webkit-transition-timing-function: ease-in;
+  -moz-transition-timing-function: ease-in;
+  -ms-transition-timing-function: ease-in;
+  -o-transition-timing-function: ease-in;
+  transition-timing-function: ease-in;
 }
-#search-form .form-submit {
-  display: none;
+#header .search-form .form-text.placeholder {
+  color: white;
+}
+#header .search-form .form-text:-moz-placeholder {
+  color: white;
+}
+#header .search-form .form-text::-webkit-input-placeholder {
+  color: white;
+}
+#header .search-form .form-submit {
+  display: block;
+  position: absolute;
+  top: -2px;
+  right: 2px;
+}
+#header .search-form.search-active .form-text {
+  visibility: visible;
+  width: 20em;
+}
+#header .search-form.search-active .form-text.placeholder {
+  color: #666666;
+}
+#header .search-form.search-active .form-text:-moz-placeholder {
+  color: #666666;
+}
+#header .search-form.search-active .form-text::-webkit-input-placeholder {
+  color: #666666;
+}
+#header .search-form.search-active .form-submit {
+  opacity: 0;
+  filter: alpha(opacity=0);
 }
 
 /* Sidebars */

@@ -32,6 +32,18 @@
   color: transparent;
 }
 
+@mixin input-placeholder($color) {
+  &.placeholder {
+    color: $color;
+  }
+  &:-moz-placeholder {
+    color: $color;
+  }
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
 @function em($target-px, $context) {
   @return ($target-px / $context) * 1em;
 }

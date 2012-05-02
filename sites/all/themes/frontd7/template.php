@@ -128,3 +128,16 @@ function frontd7_item_list($variables) {
   $output .= '</div>';
   return $output;
 }
+
+/**
+ * Implements hook_form_search_form_alter().
+ */
+function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
+  $form['#attributes']['role'] = 'search';
+
+  $form['basic']['keys']['#attributes']['placeholder'] = $form['basic']['keys']['#title'];
+  $form['basic']['keys']['#title'] = '';
+
+  $form['basic']['submit']['#type'] = 'image_button';
+  $form['basic']['submit']['#src'] = drupal_get_path('theme', 'frontd7') . '/images/icon_search-submit.png';
+}

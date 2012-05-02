@@ -1,0 +1,26 @@
+body:after {
+  content: "NARROWEST Layout > partials/_theme-narrowest.scss";
+}
+
+
+/*         General Sitewide Styles
+------------------------------------------------*/
+/* Layout */
+
+/* General Styles (Colors, Backgrounds etc.) */
+
+/* Typography */
+
+/* Links */
+
+/* Header */
+#main-menu {
+  select {
+    margin: em(11px, 14px) 0 0;
+    border: 1px solid red;
+  }
+}
+
+#header {
+  width: 100%;
+}

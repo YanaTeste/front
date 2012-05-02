@@ -4526,6 +4526,8 @@ table#blocks select {
   margin-bottom: 0;
 }
 
+/* Media Queries for a Responsive Design
+------------------------------------------------*/
 /*         General Sitewide Styles
 ------------------------------------------------*/
 /* Layout */
@@ -4633,6 +4635,9 @@ table#blocks select {
   position: absolute;
   top: -2px;
   right: 2px;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 #header .search-form.search-active .form-text {
   visibility: visible;
@@ -4660,3 +4665,76 @@ table#blocks select {
 ------------------------------------------------*/
 /*         Forms
 ------------------------------------------------*/
+@media (max-width: 960px) {
+  body:after {
+    display: block;
+    font-size: 12px;
+    text-align: center;
+    content: "NARROW Layout > partials/_theme-narrow.scss";
+    background-color: #cc9;
+    clear: both;
+  }
+
+  /*         General Sitewide Styles
+  ------------------------------------------------*/
+  /* Layout */
+  /* General Styles (Colors, Backgrounds etc.) */
+  /* Typography */
+  /* Links */
+  /* Header */
+  #main-menu .main-menu a {
+    padding: 1.071em 0.714em 1.214em;
+  }
+
+  #header {
+    width: 97.9167%;
+    margin-left: 1.0417%;
+    margin-right: 1.0417%;
+  }
+}
+@media (max-width: 767px) {
+  body:after {
+    content: "NARROWER Layout > partials/_theme-narrower.scss";
+  }
+
+  /*         General Sitewide Styles
+  ------------------------------------------------*/
+  /* Layout */
+  /* General Styles (Colors, Backgrounds etc.) */
+  /* Typography */
+  /* Links */
+  /* Header */
+  #main-menu .main-menu {
+    font-size: 0.857em;
+  }
+  #main-menu .main-menu a {
+    padding: 1.25em 0.667em 1.417em;
+  }
+
+  #header {
+    width: 97.9167%;
+    margin-left: 1.0417%;
+    margin-right: 1.0417%;
+  }
+}
+@media (max-width: 480px) {
+  body:after {
+    content: "NARROWEST Layout > partials/_theme-narrowest.scss";
+  }
+
+  /*         General Sitewide Styles
+  ------------------------------------------------*/
+  /* Layout */
+  /* General Styles (Colors, Backgrounds etc.) */
+  /* Typography */
+  /* Links */
+  /* Header */
+  #main-menu select {
+    margin: 0.786em 0 0;
+    border: 1px solid red;
+  }
+
+  #header {
+    width: 100%;
+  }
+}

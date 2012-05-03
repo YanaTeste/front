@@ -4531,22 +4531,6 @@ table#blocks select {
 /*         General Sitewide Styles
 ------------------------------------------------*/
 /* Layout */
-html, body {
-  height: 100%;
-}
-
-.page-wrapper {
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto -4.5em;
-  /* the bottom margin is the negative value of the footer's height */
-}
-
-#main {
-  padding-bottom: 4.5em;
-}
-
 #main, #header, #footer {
   margin-left: auto;
   margin-right: auto;
@@ -4557,16 +4541,21 @@ html, body {
 }
 
 /* General Styles (Colors, Backgrounds etc.) */
+html, body {
+  background: #1e1817;
+}
+
+.page-wrapper {
+  background: #fff;
+  padding: 1px 0;
+  /* force box without overflow hidden */
+}
+
 /* Typography */
 /* Links */
 /* Header */
 .header-wrapper {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #444444), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(#444444, #222222);
-  background-image: -moz-linear-gradient(#444444, #222222);
-  background-image: -o-linear-gradient(#444444, #222222);
-  background-image: -ms-linear-gradient(#444444, #222222);
-  background-image: linear-gradient(#444444, #222222);
+  background: #302725;
 }
 
 #header h1 {
@@ -4585,12 +4574,12 @@ html, body {
   height: 25px;
   position: absolute;
   top: 0.857em;
-  right: 1.357em;
+  right: 1em;
 }
 #header .search-form .form-text {
   background: white url("../images/icon_search-textfield.png") no-repeat center right;
   width: 1em;
-  padding: 3px 10px 4px;
+  padding: 4px 10px 3px;
   border: none;
   -webkit-border-radius: 1.15em;
   -moz-border-radius: 1.15em;
@@ -4664,19 +4653,33 @@ html, body {
   color: #efefef;
   display: inline-block;
   padding: 1em 0.857em 1.143em;
+  -webkit-transition-property: background;
+  -moz-transition-property: background;
+  -ms-transition-property: background;
+  -o-transition-property: background;
+  transition-property: background;
+  -webkit-transition-duration: 0.75s;
+  -moz-transition-duration: 0.75s;
+  -ms-transition-duration: 0.75s;
+  -o-transition-duration: 0.75s;
+  transition-duration: 0.75s;
 }
-#main-menu .main-menu a:hover, #main-menu .main-menu a:focus, #main-menu .main-menu a.active {
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
-  background-image: -webkit-linear-gradient(#333333, #222222);
-  background-image: -moz-linear-gradient(#333333, #222222);
-  background-image: -o-linear-gradient(#333333, #222222);
-  background-image: -ms-linear-gradient(#333333, #222222);
-  background-image: linear-gradient(#333333, #222222);
+#main-menu .main-menu a:hover, #main-menu .main-menu a:focus {
+  background: rgba(0, 0, 0, 0.2);
+}
+#main-menu .main-menu a.active {
+  background: rgba(0, 0, 0, 0.1);
 }
 
 /* Sidebars */
+/* Postscript */
+#postscript {
+  background-color: #ddd;
+  overflow: hidden;
+}
+
 /* Footer */
-.footer-wrapper {
+#footer {
   color: #fff;
   background: #1e1817;
 }
@@ -4696,6 +4699,7 @@ html, body {
   font-style: oblique;
 }
 #block-front-custom-front-vcard .social-links {
+  color: #ccc;
   float: right;
 }
 #block-front-custom-front-vcard .social-links a {
@@ -4742,7 +4746,7 @@ html, body {
   /*         General Sitewide Styles
   ------------------------------------------------*/
   /* Layout */
-  #main, #header {
+  #main, #header, #footer {
     width: 97.9167%;
     margin-left: 1.0417%;
     margin-right: 1.0417%;

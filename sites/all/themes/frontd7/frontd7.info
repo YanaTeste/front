@@ -80,7 +80,9 @@ regions[content_bottom] = Content bottom
 regions[sidebar_first] = Sidebar first
 regions[sidebar_second] = Sidebar second
 
+regions[postscript] = Postscript
 regions[footer] = Footer
+
 
 
 ; Theme Settings ----------------------------------------------------------

@@ -1,6 +1,28 @@
 /*         General Sitewide Styles
 ------------------------------------------------*/
 /* Layout */
+$footerHeight: em(21px*2, 14px) + em(21px, 14px);
+
+html, body {
+  height: 100%;
+}
+.page-wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto $footerHeight * -1; /* the bottom margin is the negative value of the footer's height */
+}
+
+#main {
+  padding-bottom: $footerHeight;
+}
+
+#main, #header, #footer {
+  @include grid-container;
+  display: block;
+  position: relative;
+  float: none;
+}
 
 /* General Styles (Colors, Backgrounds etc.) */
 
@@ -14,11 +36,6 @@
 }
 
 #header {
-  @include grid-container;
-  display: block;
-  position: relative;
-  float: none;
-
   h1 {
     display: inline-block;
     line-height: 1;
@@ -30,6 +47,46 @@
     }
     img {
       display: block;
+    }
+  }
+
+  .search-form {
+    height: 25px;
+    position: absolute;
+    top: em(12px, 14px);
+    right: em(19px, 14px);
+
+    .form-text {
+      @include input-placeholder(#fff);
+      background: #fff url('../images/icon_search-textfield.png') no-repeat center right;
+      width: 1em;
+      padding: 3px 10px 4px;
+      border: none;
+      @include border-radius(1.15em);
+      @include box-shadow(inset 0 1px 0 #000);
+      margin: 0;
+      visibility: hidden;
+
+      @include transition-property(all);
+      @include transition-duration(0.15s);
+      @include transition-timing-function(ease-in);
+    }
+    .form-submit {
+      display: block;
+      position: absolute;
+      top: -2px;
+      right: 2px;
+      @include box-shadow(none);
+    }
+    &.search-active {
+      .form-text {
+        @include input-placeholder(#666);
+        visibility: visible;
+        width: 20em;
+      }
+      .form-submit {
+        @include opacity(0);
+      }
     }
   }
 }
@@ -48,49 +105,10 @@
       padding: em(15px, 14px) em(12px, 14px) em(17px, 14px);
 
       &:hover,
-      &:focus {
+      &:focus,
+      &.active {
         @include background-image(linear-gradient(#333333, #222222));
       }
-    }
-  }
-}
-
-#header .search-form {
-  height: 25px;
-  position: absolute;
-  top: em(12px, 14px);
-  right: em(19px, 14px);
-
-  .form-text {
-    @include input-placeholder(#fff);
-    background: #fff url('../images/icon_search-textfield.png') no-repeat center right;
-    width: 1em;
-    padding: 3px 10px 4px;
-    border: none;
-    @include border-radius(1.15em);
-    @include box-shadow(inset 0 1px 0 #000);
-    margin: 0;
-    visibility: hidden;
-
-    @include transition-property(all);
-    @include transition-duration(0.15s);
-    @include transition-timing-function(ease-in);
-  }
-  .form-submit {
-    display: block;
-    position: absolute;
-    top: -2px;
-    right: 2px;
-    @include box-shadow(none);
-  }
-  &.search-active {
-    .form-text {
-      @include input-placeholder(#666);
-      visibility: visible;
-      width: 20em;
-    }
-    .form-submit {
-      @include opacity(0);
     }
   }
 }
@@ -98,7 +116,21 @@
 /* Sidebars */
 
 /* Footer */
+.footer-wrapper {
+  color: #fff;
+  background: #1e1817;
+}
 
+#block-front-custom-front-vcard {
+  padding: em(21px, 14px) 0;
+
+  h2 {
+    @include element-invisible;
+  }
+  .social-links {
+    float: right;
+  }
+}
 
 /*         Front Page
 ------------------------------------------------*/

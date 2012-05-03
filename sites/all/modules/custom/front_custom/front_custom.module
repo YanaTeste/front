@@ -1,0 +1,243 @@
+<?php
+
+/**
+ * @file
+ * Custom blocks, hooks and functions.
+ */
+
+/**
+ * Implements hook_theme().
+ */
+function front_custom_theme($existing, $type, $theme, $path) {
+  return array(
+    'front_vcard' => array(),
+  );
+}
+
+/**
+ * Implements hook_block_info().
+ */
+function front_custom_block_info() {
+  // Front vCard used on footer.
+  $blocks['front_vcard'] = array(
+    'info' => t('Front vCard'),
+  );
+
+  return $blocks;
+}
+
+/**
+ * Implements hook_block_configure().
+ */
+function front_custom_block_configure($delta = '') {
+  $form = array();
+
+  if ($delta == 'front_vcard') {
+    $vcard = array(
+      'given_name' => '',
+      'organization_name' => '',
+      'street_address' => '',
+      'locality' => '',
+      'region' => '',
+      'postal_code' => '',
+      'country' => '',
+      'url' => '',
+      'twitter' => '',
+      'facebook' => '',
+    );
+    $front_vcard = variable_get('front_vcard', '');
+
+    foreach ($vcard as $key => $value) {
+      if (isset($front_vcard[$key])) {
+        $vcard[$key] = $front_vcard[$key];
+      }
+    }
+
+    $form['vcard'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('vCard'),
+      '#collapsible' => FALSE,
+    );
+
+    $form['vcard']['given_name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Given name'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['given_name'],
+    );
+    $form['vcard']['organization_name'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Organization name'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['organization_name'],
+    );
+
+    // Address.
+    $form['vcard']['address'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Address'),
+      '#collapsible' => FALSE,
+    );
+
+    $form['vcard']['address']['street_address'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Street address'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['street_address'],
+    );
+    $form['vcard']['address']['locality'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Locality'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['locality'],
+    );
+    $form['vcard']['address']['region'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Region'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['region'],
+    );
+    $form['vcard']['address']['postal_code'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Postal code'),
+      '#size' => 20,
+      '#maxlength' => 20,
+      '#value' => $vcard['postal_code'],
+    );
+    $form['vcard']['address']['country'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Country'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['country'],
+    );
+
+    // Social links.
+    $form['vcard']['social_links'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Social links'),
+      '#collapsible' => FALSE,
+    );
+
+    $form['vcard']['social_links']['url'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Url'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['url'],
+    );
+    $form['vcard']['social_links']['twitter'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Twitter'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['twitter'],
+    );
+    $form['vcard']['social_links']['facebook'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Facebook'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#value' => $vcard['facebook'],
+    );
+  }
+
+  return $form;
+}
+
+/**
+ * Implements hook_block_save().
+ */
+function front_custom_block_save($delta = '', $edit = array()) {
+  // This example comes from node.module.
+  if ($delta == 'front_vcard') {
+    $vcard = array(
+      'given_name' => '',
+      'organization_name' => '',
+      'street_address' => '',
+      'locality' => '',
+      'region' => '',
+      'postal_code' => '',
+      'country' => '',
+      'url' => '',
+      'twitter' => '',
+      'facebook' => '',
+    );
+
+    foreach ($vcard as $key => $value) {
+      if (isset($edit[$key])) {
+        $vcard[$key] = check_plain($edit[$key]);
+      }
+    }
+    variable_set('front_vcard', $vcard);
+  }
+}
+
+
+
+/**
+ * Implements hook_block_view().
+ */
+function front_custom_block_view($delta = '') {
+  // This example comes from node.module. Note that you can also return a
+  // renderable array rather than rendered HTML for 'content'.
+  $block = array();
+
+  switch ($delta) {
+    case 'front_vcard':
+      $block['subject'] = t('vCard');
+      $block['content'] = theme('front_vcard');
+      break;
+  }
+  return $block;
+}
+
+function theme_front_vcard() {
+  $v = variable_get('front_vcard', '');
+
+  if (empty($v)) return;
+
+  $hcard = '<div id="hcard-' . strtolower($v['given_name']) . '" class="vcard">';
+
+  if (!empty($v['url'])) {
+    $hcard .= '<a class="url fn" href="' . $v['url'] . '">';
+    $hcard .= '<span class="given-name">' . $v['given_name'] . '</span></a>';
+  }
+  else {
+    $hcard .= '<span class="given-name">' . $v['given_name'] . '</span>';
+  }
+
+  if (!empty($v['organization_name'])) {
+    $hcard .= ' <span class="org">' . $v['organization_name'] . '</span>';
+  }
+
+  $hcard .= '<span class="adr">
+              <span class="street-address">' . $v['street_address'] . '</span>,
+              <span class="postal-code">' . $v['postal_code'] . '</span>
+              <span class="locality">' . $v['locality'] . '</span>
+              <span class="region">' . $v['region'] . '</span>,
+              <span class="country-name">' . $v['country'] . '</span>
+            </span>';
+
+  if (!empty($v['twitter']) || !empty($v['facebook'])) {
+    $hcard .= '<div class="social-links">' . t('Follow us on');
+
+    if (!empty($v['twitter'])) {
+      $hcard .= ' <a class="twitter url" href="' . $v['twitter'] . '">Twitter</a>';
+    }
+    if (!empty($v['facebook'])) {
+      $hcard .= ' <a class="facebook url" href="' . $v['facebook'] . '">Facebook</a>';
+    }
+
+    $hcard .= '</div>';
+  }
+
+  $hcard .= '</div>';
+
+  return $hcard;
+}

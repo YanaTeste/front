@@ -26,6 +26,11 @@
   }
 }
 
+@mixin element-invisible {
+    clip: rect(1px, 1px, 1px, 1px);
+    position: absolute !important;
+}
+
 @mixin hide-text {
   font: 0/0 a;
   text-shadow: none;

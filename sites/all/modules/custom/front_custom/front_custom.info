@@ -1,0 +1,6 @@
+name = "Front Custom"
+description = "Custom blocks, hooks and functions for Front D7 site"
+package = "Custom"
+core = 7.x
+
+files[] = front_custom.module

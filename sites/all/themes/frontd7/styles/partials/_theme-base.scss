@@ -43,7 +43,7 @@ html, body {
 
     a {
       display: inline-block;
-      padding: em(10px, 30px) 0 1px;
+      padding: em(10px, 30px) 0 0;
     }
     img {
       display: block;
@@ -92,6 +92,7 @@ html, body {
 }
 
 #main-menu {
+  font-family: $helveticaFontFamily;
   float: right;
   margin-right: em(50px, 14px);
 
@@ -102,7 +103,7 @@ html, body {
     a {
       color: #efefef;
       display: inline-block;
-      padding: em(15px, 14px) em(12px, 14px) em(17px, 14px);
+      padding: em(14px, 14px) em(12px, 14px) em(16px, 14px);
 
       &:hover,
       &:focus,
@@ -122,13 +123,45 @@ html, body {
 }
 
 #block-front-custom-front-vcard {
+  font-weight: lighter;
   padding: em(21px, 14px) 0;
 
-  h2 {
+  h2, .org {
     @include element-invisible;
+  }
+  a {
+    color: #ccc;
+  }
+  .adr {
+    font-style: oblique;
   }
   .social-links {
     float: right;
+
+    a {
+      vertical-align: top;
+      background: url('../images/icon_vcard-links.png') no-repeat;
+      display: inline-block;
+      height: 20px;
+      margin-left: 14px;
+      @include hide-text;
+    }
+    .twitter {
+      background-position: top left;
+      width: 24px;
+
+      &:hover {
+        background-position: bottom left;
+      }
+    }
+    .facebook {
+      background-position: top right;
+      width: 18px;
+
+      &:hover {
+        background-position: bottom right;
+      }
+    }
   }
 }
 

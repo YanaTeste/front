@@ -124,7 +124,7 @@ textarea {
 
 body {
   margin: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
   color: #333333;
@@ -341,7 +341,7 @@ a:hover {
 
 p {
   margin: 0 0 10.5px;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
 }
@@ -639,7 +639,7 @@ label, input, button, select, textarea {
 }
 
 input, button, select, textarea {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 label {
@@ -4576,7 +4576,7 @@ html, body {
 }
 #header h1 a {
   display: inline-block;
-  padding: 0.333em 0 1px;
+  padding: 0.333em 0 0;
 }
 #header h1 img {
   display: block;
@@ -4653,6 +4653,7 @@ html, body {
 }
 
 #main-menu {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   float: right;
   margin-right: 3.571em;
 }
@@ -4662,7 +4663,7 @@ html, body {
 #main-menu .main-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 1.071em 0.857em 1.214em;
+  padding: 1em 0.857em 1.143em;
 }
 #main-menu .main-menu a:hover, #main-menu .main-menu a:focus, #main-menu .main-menu a.active {
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #333333), color-stop(100%, #222222));
@@ -4681,14 +4682,45 @@ html, body {
 }
 
 #block-front-custom-front-vcard {
+  font-weight: lighter;
   padding: 1.5em 0;
 }
-#block-front-custom-front-vcard h2 {
+#block-front-custom-front-vcard h2, #block-front-custom-front-vcard .org {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
 }
+#block-front-custom-front-vcard a {
+  color: #ccc;
+}
+#block-front-custom-front-vcard .adr {
+  font-style: oblique;
+}
 #block-front-custom-front-vcard .social-links {
   float: right;
+}
+#block-front-custom-front-vcard .social-links a {
+  vertical-align: top;
+  background: url("../images/icon_vcard-links.png") no-repeat;
+  display: inline-block;
+  height: 20px;
+  margin-left: 14px;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+}
+#block-front-custom-front-vcard .social-links .twitter {
+  background-position: top left;
+  width: 24px;
+}
+#block-front-custom-front-vcard .social-links .twitter:hover {
+  background-position: bottom left;
+}
+#block-front-custom-front-vcard .social-links .facebook {
+  background-position: top right;
+  width: 18px;
+}
+#block-front-custom-front-vcard .social-links .facebook:hover {
+  background-position: bottom right;
 }
 
 /*         Front Page
@@ -4721,7 +4753,7 @@ html, body {
   /* Links */
   /* Header */
   #main-menu .main-menu a {
-    padding: 1.071em 0.714em 1.214em;
+    padding: 1em 0.714em 1.143em;
   }
 }
 @media (max-width: 767px) {
@@ -4740,7 +4772,7 @@ html, body {
     font-size: 0.857em;
   }
   #main-menu .main-menu a {
-    padding: 1.25em 0.667em 1.417em;
+    padding: 1.167em 0.667em 1.333em;
   }
 
   #header {

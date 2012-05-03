@@ -197,6 +197,9 @@ function front_custom_block_view($delta = '') {
   return $block;
 }
 
+/**
+ * Return vCard data as a hCard.
+ */
 function theme_front_vcard() {
   $v = variable_get('front_vcard', '');
 
@@ -240,4 +243,20 @@ function theme_front_vcard() {
   $hcard .= '</div>';
 
   return $hcard;
+}
+
+/**
+ * Implementation of hook_twitter_pull_blocks().
+ */
+function front_custom_twitter_pull_blocks() {
+  return array(
+    0 => (object) array(
+      'delta' => 'front_custom_twitter_pull',
+      'tweetkey' => 'frontkom',
+      'title' => t('FrontKom on Twitter'),
+      'name' => t('FrontKom on Twitter'),
+      'number_of_items' => '1',
+//      'theme_key'
+    ),
+  );
 }

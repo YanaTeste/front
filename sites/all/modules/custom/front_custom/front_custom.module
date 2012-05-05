@@ -11,6 +11,7 @@
 function front_custom_theme($existing, $type, $theme, $path) {
   return array(
     'front_vcard' => array(),
+    'front_support' => array(),
     'front_custom_simple_tweet' => array(
       'arguments' => array('tweets' => NULL, 'twitkey' => NULL, 'title' => NULL),
       'template' => 'front-custom-simple-tweet'
@@ -25,6 +26,9 @@ function front_custom_block_info() {
   // Front vCard used on footer.
   $blocks['front_vcard'] = array(
     'info' => t('Front vCard'),
+  );
+  $blocks['front_support'] = array(
+    'info' => t('Front Contact/Support'),
   );
 
   return $blocks;
@@ -68,14 +72,14 @@ function front_custom_block_configure($delta = '') {
       '#title' => t('Given name'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['given_name'],
+      '#default_value' => $vcard['given_name'],
     );
     $form['vcard']['organization_name'] = array(
       '#type' => 'textfield',
       '#title' => t('Organization name'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['organization_name'],
+      '#default_value' => $vcard['organization_name'],
     );
 
     // Address.
@@ -90,35 +94,35 @@ function front_custom_block_configure($delta = '') {
       '#title' => t('Street address'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['street_address'],
+      '#default_value' => $vcard['street_address'],
     );
     $form['vcard']['address']['locality'] = array(
       '#type' => 'textfield',
       '#title' => t('Locality'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['locality'],
+      '#default_value' => $vcard['locality'],
     );
     $form['vcard']['address']['region'] = array(
       '#type' => 'textfield',
       '#title' => t('Region'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['region'],
+      '#default_value' => $vcard['region'],
     );
     $form['vcard']['address']['postal_code'] = array(
       '#type' => 'textfield',
       '#title' => t('Postal code'),
       '#size' => 20,
       '#maxlength' => 20,
-      '#value' => $vcard['postal_code'],
+      '#default_value' => $vcard['postal_code'],
     );
     $form['vcard']['address']['country'] = array(
       '#type' => 'textfield',
       '#title' => t('Country'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['country'],
+      '#default_value' => $vcard['country'],
     );
 
     // Social links.
@@ -133,21 +137,84 @@ function front_custom_block_configure($delta = '') {
       '#title' => t('Url'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['url'],
+      '#default_value' => $vcard['url'],
     );
     $form['vcard']['social_links']['twitter'] = array(
       '#type' => 'textfield',
       '#title' => t('Twitter'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['twitter'],
+      '#default_value' => $vcard['twitter'],
     );
     $form['vcard']['social_links']['facebook'] = array(
       '#type' => 'textfield',
       '#title' => t('Facebook'),
       '#size' => 40,
       '#maxlength' => 255,
-      '#value' => $vcard['facebook'],
+      '#default_value' => $vcard['facebook'],
+    );
+  }
+  elseif ($delta == 'front_support') {
+    $support = array(
+      'text' => '',
+      'contact_label' => '',
+      'contact_link' => '',
+      'support_label' => '',
+      'support_link' => '',
+    );
+    $front_support = variable_get('front_support', '');
+
+    foreach ($support as $key => $value) {
+      if (isset($front_support[$key])) {
+        $support[$key] = $front_support[$key];
+      }
+    }
+
+    $form['text'] = array(
+      '#type' => 'text_format',
+      '#title' => t('Contact / Support text'),
+      '#cols' => 60,
+      '#rows' => 5,
+      '#default_value' => (isset($support['text']['value'])) ? $support['text']['value'] : $support['text'],
+      '#format' => (isset($support['text']['format'])) ? $support['text']['format'] : NULL,
+    );
+    $form['contact'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Contact'),
+      '#collapsible' => FALSE,
+    );
+    $form['contact']['contact_label'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Label'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $support['contact_label'],
+    );
+    $form['contact']['contact_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Link'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $support['contact_link'],
+    );
+    $form['support'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Support'),
+      '#collapsible' => FALSE,
+    );
+    $form['support']['support_label'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Label'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $support['support_label'],
+    );
+    $form['support']['support_link'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Link'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $support['support_link'],
     );
   }
 
@@ -180,9 +247,28 @@ function front_custom_block_save($delta = '', $edit = array()) {
     }
     variable_set('front_vcard', $vcard);
   }
+  elseif ($delta == 'front_support') {
+    $support = array(
+      'text' => '',
+      'contact_label' => '',
+      'contact_link' => '',
+      'support_label' => '',
+      'support_link' => '',
+    );
+
+    foreach ($support as $key => $value) {
+      if (isset($edit[$key])) {
+        if ($key == 'text') {
+          $support[$key] = $edit[$key];
+        }
+        else {
+          $support[$key] = check_plain($edit[$key]);
+        }
+      }
+    }
+    variable_set('front_support', $support);
+  }
 }
-
-
 
 /**
  * Implements hook_block_view().
@@ -196,6 +282,11 @@ function front_custom_block_view($delta = '') {
     case 'front_vcard':
       $block['subject'] = t('vCard');
       $block['content'] = theme('front_vcard');
+      break;
+
+    case 'front_support':
+      $block['subject'] = t('Front Support');
+      $block['content'] = theme('front_support');
       break;
   }
   return $block;
@@ -233,20 +324,55 @@ function theme_front_vcard() {
 
   if (!empty($v['twitter']) || !empty($v['facebook'])) {
     $hcard .= '<div class="social-links">' . t('Follow us on');
-
     if (!empty($v['twitter'])) {
       $hcard .= ' <a class="twitter url" href="' . $v['twitter'] . '">Twitter</a>';
     }
     if (!empty($v['facebook'])) {
       $hcard .= ' <a class="facebook url" href="' . $v['facebook'] . '">Facebook</a>';
     }
-
     $hcard .= '</div>';
   }
 
   $hcard .= '</div>';
 
   return $hcard;
+}
+
+/**
+ * Return contact and support information.
+ */
+function theme_front_support() {
+  $support = variable_get('front_support', '');
+
+  if (empty($support)) return;
+
+  $links = array();
+  $output = '';
+
+  if (isset($support['text']['value'])) {
+    $output .= check_markup($support['text']['value'], $support['text']['format']);
+  }
+
+  if (!empty($support['contact_link'])) {
+    $links['contact'] = array(
+      'href'  => $support['contact_link'],
+      'title' => $support['contact_label'],
+    );
+  }
+  if (!empty($support['support_link'])) {
+    $links['support'] = array(
+      'href'  => $support['support_link'],
+      'title' => $support['support_label'],
+    );
+  }
+
+  if (!empty($links)) {
+    $output .= theme('links', array('links' => $links));
+  }
+
+  if (!empty($output)) {
+    return '<article>' . $output . '</article>';
+  }
 }
 
 /**

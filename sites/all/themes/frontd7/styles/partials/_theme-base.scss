@@ -2,10 +2,7 @@
 ------------------------------------------------*/
 /* Layout */
 #main, #header, #footer {
-  @include grid-container;
-  display: block;
-  position: relative;
-  float: none;
+  @include grid-container-center;
 }
 
 /* General Styles (Colors, Backgrounds etc.) */
@@ -116,6 +113,42 @@ html, body {
 #postscript {
   background-color: #302725;
   overflow: hidden;
+}
+
+.block-twitter-pull {
+  background: transparent url('../images/bg_twitter-pull.png') repeat-x center 25px;
+
+
+  .content {
+    @include grid-container-center;
+  }
+  .tweet-author {
+    width: 50px;
+    margin: 0 auto;
+
+    a {
+      @include hide-text;
+      background: transparent url('../images/icon_twitter-tweet.png') no-repeat center center;
+      display: block;
+      width: 50px;
+      height: 50px;
+      @include transition-property(transform);
+      @include transition-duration(0.5s);
+
+      &:hover {
+        @include rotate(-15deg);
+      }
+    }
+  }
+  blockquote {
+    text-align: center;
+    border: none;
+    padding: 0;
+
+    .tweet-meta {
+      display: block;
+    }
+  }
 }
 
 /* Footer */

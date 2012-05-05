@@ -4678,6 +4678,56 @@ html, body {
   overflow: hidden;
 }
 
+.block-twitter-pull {
+  background: transparent url("../images/bg_twitter-pull.png") repeat-x center 25px;
+}
+.block-twitter-pull .content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  display: block;
+  position: relative;
+  float: none;
+}
+.block-twitter-pull .tweet-author {
+  width: 50px;
+  margin: 0 auto;
+}
+.block-twitter-pull .tweet-author a {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background: transparent url("../images/icon_twitter-tweet.png") no-repeat center center;
+  display: block;
+  width: 50px;
+  height: 50px;
+  -webkit-transition-property: -webkit-transform;
+  -moz-transition-property: -moz-transform;
+  -ms-transition-property: -ms-transform;
+  -o-transition-property: -o-transform;
+  transition-property: transform;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.block-twitter-pull .tweet-author a:hover {
+  -webkit-transform: rotate(-15deg);
+  -moz-transform: rotate(-15deg);
+  -ms-transform: rotate(-15deg);
+  -o-transform: rotate(-15deg);
+  transform: rotate(-15deg);
+}
+.block-twitter-pull blockquote {
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+.block-twitter-pull blockquote .tweet-meta {
+  display: block;
+}
+
 /* Footer */
 #footer {
   color: #fff;

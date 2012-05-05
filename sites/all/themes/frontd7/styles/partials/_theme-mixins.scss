@@ -26,6 +26,13 @@
   }
 }
 
+@mixin grid-container-center {
+  @include grid-container;
+  display: block;
+  position: relative;
+  float: none;
+}
+
 @mixin element-invisible {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute !important;

@@ -4675,7 +4675,96 @@ html, body {
 /* Postscript */
 #postscript {
   background-color: #302725;
+  padding-top: 2.5em;
   overflow: hidden;
+}
+
+.block-panels-mini {
+  color: #fff;
+  margin-bottom: 3.571em;
+}
+.block-panels-mini .content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  display: block;
+  position: relative;
+  float: none;
+}
+
+.pane-blog-block-latest-posts .pane-title {
+  font-size: 1em;
+  font-weight: normal;
+  text-transform: uppercase;
+}
+.pane-blog-block-latest-posts article {
+  padding-left: 80px;
+  margin-top: 22px;
+}
+.pane-blog-block-latest-posts .views-field-field-image {
+  float: left;
+  margin-left: -80px;
+}
+.pane-blog-block-latest-posts .views-field-field-image img {
+  background-color: #1e1718;
+  display: inline-block;
+  padding: 7px;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -ms-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.pane-blog-block-latest-posts .views-field-field-image a:hover img {
+  background-color: #403a3a;
+}
+.pane-blog-block-latest-posts .views-field-title {
+  font-size: 1.286em;
+  font-weight: normal;
+  line-height: 1.1em;
+  margin-bottom: 0.2em;
+}
+.pane-blog-block-latest-posts .views-field-created {
+  color: #B9B6B6;
+  font-size: 0.857em;
+}
+.pane-blog-block-latest-posts .views-field-body {
+  margin-bottom: 0.333em;
+}
+.pane-blog-block-latest-posts .views-field-view-node {
+  font-size: 0.786em;
+  text-transform: uppercase;
+}
+.pane-blog-block-latest-posts .views-field-view-node a {
+  text-decoration: none;
+  background-color: #1e1718;
+  display: inline-block;
+  padding: 0 0.5em;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  -webkit-transition-property: all;
+  -moz-transition-property: all;
+  -ms-transition-property: all;
+  -o-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.pane-blog-block-latest-posts .views-field-view-node a:hover {
+  color: #B9B6B6;
+  background-color: #403a3a;
 }
 
 .block-twitter-pull {

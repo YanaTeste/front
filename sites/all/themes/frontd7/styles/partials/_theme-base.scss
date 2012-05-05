@@ -112,12 +112,81 @@ html, body {
 /* Postscript */
 #postscript {
   background-color: #302725;
+  padding-top: em(35px, 14px);
   overflow: hidden;
+}
+
+.block-panels-mini {
+  color: #fff;
+  margin-bottom: em(50px, 14px);
+
+  .content {
+    @include grid-container-center;
+  }
+}
+
+.pane-blog-block-latest-posts {
+  .pane-title {
+    font-size: 1em;
+    font-weight: normal;
+    text-transform: uppercase;
+  }
+  article {
+    @include grid-prefix(1);
+    margin-top: 22px;
+  }
+  .views-field-field-image {
+    float: left;
+    margin-left: -80px;
+
+    img {
+      background-color: #1e1718;
+      display: inline-block;
+      padding: 7px;
+      @include border-radius(2px);
+      @include transition-property(background-color);
+      @include transition-duration(0.5s);
+    }
+    a:hover img {
+      background-color: #403a3a;
+    }
+  }
+  .views-field-title {
+    font-size: em(18px, 14px);
+    font-weight: normal;
+    line-height: 1.1em;
+    margin-bottom: 0.2em;
+  }
+  .views-field-created {
+    color: #B9B6B6;
+    font-size: em(12px, 14px);
+  }
+  .views-field-body {
+    margin-bottom: 0.333em;
+  }
+  .views-field-view-node {
+    font-size: em(11px, 14px);
+    text-transform: uppercase;
+
+    a {
+      text-decoration: none;
+      background-color: #1e1718;
+      display: inline-block;
+      padding: 0 0.5em;
+      @include border-radius(5px);
+      @include transition-property(all);
+      @include transition-duration(0.5s);
+
+      &:hover {
+        color: #B9B6B6;
+        background-color: #403a3a;
+      }
+    }
+  }
 }
 
 .block-twitter-pull {
   background: transparent url('../images/bg_twitter-pull.png') repeat-x center 24px;
-
 
   .content {
     @include grid-container-center;

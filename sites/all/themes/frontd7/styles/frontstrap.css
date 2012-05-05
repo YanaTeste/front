@@ -4679,7 +4679,7 @@ html, body {
 }
 
 .block-twitter-pull {
-  background: transparent url("../images/bg_twitter-pull.png") repeat-x center 25px;
+  background: transparent url("../images/bg_twitter-pull.png") repeat-x center 24px;
 }
 .block-twitter-pull .content {
   margin-left: auto;
@@ -4691,7 +4691,7 @@ html, body {
 }
 .block-twitter-pull .tweet-author {
   width: 50px;
-  margin: 0 auto;
+  margin: 0 auto 0.708em;
 }
 .block-twitter-pull .tweet-author a {
   font: 0/0 a;
@@ -4720,12 +4720,28 @@ html, body {
   transform: rotate(-15deg);
 }
 .block-twitter-pull blockquote {
+  color: #fff;
+  font-style: oblique;
+  font-weight: 300;
   text-align: center;
   border: none;
   padding: 0;
+  margin: 0 auto 0.85em;
 }
 .block-twitter-pull blockquote .tweet-meta {
+  font-size: 0.786em;
+  font-style: normal;
+  text-transform: uppercase;
   display: block;
+  margin-top: 1.2em;
+}
+.block-twitter-pull blockquote .tweet-time {
+  color: #d4d2d1;
+  text-decoration: none;
+  margin-right: 1em;
+}
+.block-twitter-pull blockquote .tweet-time:hover {
+  color: #fff;
 }
 
 /* Footer */

@@ -45,7 +45,7 @@
                 'class' => 'tweet-follow',
               ),
           );
-          $follow_text = t('Follow @username on Twitter', array('@username' => $tweet->username));
+          $follow_text = t('Follow @username on Twitter.', array('@username' => $tweet->username));
 
           print l($follow_text, 'http://twitter.com/' . $tweet->username, $follow_opts);
         ?>

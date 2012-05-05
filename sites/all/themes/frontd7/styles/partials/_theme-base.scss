@@ -116,7 +116,7 @@ html, body {
 }
 
 .block-twitter-pull {
-  background: transparent url('../images/bg_twitter-pull.png') repeat-x center 25px;
+  background: transparent url('../images/bg_twitter-pull.png') repeat-x center 24px;
 
 
   .content {
@@ -124,7 +124,7 @@ html, body {
   }
   .tweet-author {
     width: 50px;
-    margin: 0 auto;
+    margin: 0 auto em(17px, 24px);
 
     a {
       @include hide-text;
@@ -141,12 +141,29 @@ html, body {
     }
   }
   blockquote {
+    color: #fff;
+    font-style: oblique;
+    font-weight: 300;
     text-align: center;
     border: none;
     padding: 0;
+    margin: 0 auto 0.85em;
 
     .tweet-meta {
+      font-size: em(11px, 14px);
+      font-style: normal;
+      text-transform: uppercase;
       display: block;
+      margin-top: 1.2em;
+    }
+    .tweet-time {
+      color: #d4d2d1;
+      text-decoration: none;
+      margin-right: 1em;
+
+      &:hover {
+        color: #fff;
+      }
     }
   }
 }

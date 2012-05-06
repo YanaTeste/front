@@ -359,6 +359,86 @@ html, body {
       @include grid-container-center;
     }
   }
+
+  .pane-services-home-services {
+    background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
+    padding: 2px 0 em(9px, 14px);
+
+    .panel-pane-inner {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      overflow: hidden;
+    }
+    .pane-title {
+      @include element-invisible;
+    }
+    .view-header {
+      color: #4B5F6C;
+      font-weight: 300;
+      text-align: center;
+      margin: em(32px, 14px) perc(120px, 960px) em(38px, 14px);
+
+      p {
+        font-size: em(25px, 14px);
+        line-height: 1.46em;
+      }
+      a {
+        color: #D14C19;
+
+        &:hover {
+          color: darken(#D14C19, 10%);
+        }
+      }
+    }
+    .views-row {
+      @include grid(4.5);
+      @include grid-prefix(1);
+    }
+    .views-row-odd {
+      @include grid-suffix(0.5);
+      clear: both;
+    }
+    .icon {
+      background: transparent url('../images/icons_services-62px.png') no-repeat 0 0;
+      float: left;
+      width: 62px;
+      height: 62px;
+      margin-left: -80px;
+
+      &.icon-drupal {
+        background-position: 0 0;
+      }
+      &.icon-mobile {
+        background-position: -62px 0;
+      }
+      &.icon-cms {
+        background-position: -124px 0;
+      }
+      &.icon-marketing {
+        background-position: -186px 0;
+      }
+      &.icon-commerce {
+        background-position: -248px 0;
+      }
+      &.icon-applications {
+        background-position: -310px 0;
+      }
+      a {
+        @include hide-text;
+        display: block;
+        width: 62px;
+        height: 62px;
+      }
+    }
+    .views-field-title {
+      line-height: em(21px, 18px);
+      font-weight: normal;
+      margin-bottom: em(3px, 18px);
+    }
+    .views-field-body {
+      margin-bottom: em(33px, 14px);
+    }
+  }
+
   .pane-projects-block-latest-projects {
     background: #e1e1e1 url('../images/bg_latest-projects.png') repeat-x center top;
     padding-top: em(25px, 14px);

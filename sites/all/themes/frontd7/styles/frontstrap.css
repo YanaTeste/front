@@ -4967,6 +4967,87 @@ html, body {
   position: relative;
   float: none;
 }
+.page-home .pane-services-home-services {
+  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  padding: 2px 0 0.643em;
+}
+.page-home .pane-services-home-services .panel-pane-inner {
+  background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
+  overflow: hidden;
+}
+.page-home .pane-services-home-services .pane-title {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+.page-home .pane-services-home-services .view-header {
+  color: #4B5F6C;
+  font-weight: 300;
+  text-align: center;
+  margin: 2.286em 12.5% 2.714em;
+}
+.page-home .pane-services-home-services .view-header p {
+  font-size: 1.786em;
+  line-height: 1.46em;
+}
+.page-home .pane-services-home-services .view-header a {
+  color: #D14C19;
+}
+.page-home .pane-services-home-services .view-header a:hover {
+  color: #a33b14;
+}
+.page-home .pane-services-home-services .views-row {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 340px;
+  padding-left: 80px;
+}
+.page-home .pane-services-home-services .views-row-odd {
+  padding-right: 40px;
+  clear: both;
+}
+.page-home .pane-services-home-services .icon {
+  background: transparent url("../images/icons_services-62px.png") no-repeat 0 0;
+  float: left;
+  width: 62px;
+  height: 62px;
+  margin-left: -80px;
+}
+.page-home .pane-services-home-services .icon.icon-drupal {
+  background-position: 0 0;
+}
+.page-home .pane-services-home-services .icon.icon-mobile {
+  background-position: -62px 0;
+}
+.page-home .pane-services-home-services .icon.icon-cms {
+  background-position: -124px 0;
+}
+.page-home .pane-services-home-services .icon.icon-marketing {
+  background-position: -186px 0;
+}
+.page-home .pane-services-home-services .icon.icon-commerce {
+  background-position: -248px 0;
+}
+.page-home .pane-services-home-services .icon.icon-applications {
+  background-position: -310px 0;
+}
+.page-home .pane-services-home-services .icon a {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  display: block;
+  width: 62px;
+  height: 62px;
+}
+.page-home .pane-services-home-services .views-field-title {
+  line-height: 1.167em;
+  font-weight: normal;
+  margin-bottom: 0.167em;
+}
+.page-home .pane-services-home-services .views-field-body {
+  margin-bottom: 2.357em;
+}
 .page-home .pane-projects-block-latest-projects {
   background: #e1e1e1 url("../images/bg_latest-projects.png") repeat-x center top;
   padding-top: 1.786em;

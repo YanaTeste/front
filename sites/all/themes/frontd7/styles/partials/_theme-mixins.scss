@@ -59,3 +59,7 @@
 @function em($target-px, $context) {
   @return ($target-px / $context) * 1em;
 }
+
+@function perc($target-px, $context) {
+  @return ($target-px / $context) * 100%;
+}

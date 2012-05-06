@@ -25,6 +25,9 @@ function frontd7_preprocess_page(&$variables) {
     $search_box = drupal_render(drupal_get_form('search_form'));
     $variables['search_box'] = $search_box;
   }
+  if (isset($variables['tabs']['#primary']) && empty($variables['tabs']['#primary'])) {
+    unset($variables['tabs']);
+  }
 }
 
 /**
@@ -141,3 +144,14 @@ function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
   $form['basic']['submit']['#type'] = 'image_button';
   $form['basic']['submit']['#src'] = drupal_get_path('theme', 'frontd7') . '/images/icon_search-submit.png';
 }
+
+/**
+ * Implements hook_preprocess_panels_pane().
+ */
+function frontd7_preprocess_panels_pane(&$vars) {
+  if (isset($vars['display']->css_id)) {
+    $panel_id = str_replace('-', '_', $vars['display']->css_id);
+    $vars['theme_hook_suggestions'][] = 'panels_pane__' . $panel_id;
+  }
+}
+

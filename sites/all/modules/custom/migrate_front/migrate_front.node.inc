@@ -81,7 +81,7 @@ class FrontArticleMigration extends Migration {
     );
 
     $this->source = new MigrateSourceSQL($query, $source_fields);
-    $this->destination = new MigrateDestinationNode('artikkel');
+    $this->destination = new MigrateDestinationNode('article');
 
     // Assign mappings TO destination fields FROM source fields.
     $this->addFieldMapping('is_new')->defaultValue(TRUE);

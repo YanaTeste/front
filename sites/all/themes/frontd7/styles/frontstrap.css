@@ -4954,6 +4954,67 @@ html, body {
 
 /*         Front Page
 ------------------------------------------------*/
+.page-home #main {
+  width: 100%;
+  margin: -1px auto;
+}
+.page-home #main .tabs,
+.page-home #main .panel-pane-inner {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  display: block;
+  position: relative;
+  float: none;
+}
+.page-home .pane-projects-block-latest-projects {
+  background: #e1e1e1 url("../images/bg_latest-projects.png") repeat-x center top;
+  padding-top: 1.786em;
+  padding-bottom: 2.143em;
+}
+.page-home .pane-projects-block-latest-projects .pane-title {
+  color: #0088cc;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.786em;
+  text-transform: uppercase;
+  margin-left: 10px;
+  margin-bottom: 0.65em;
+}
+.page-home .pane-projects-block-latest-projects .view-content {
+  *zoom: 1;
+}
+.page-home .pane-projects-block-latest-projects .view-content:before, .page-home .pane-projects-block-latest-projects .view-content:after {
+  display: table;
+  content: "";
+}
+.page-home .pane-projects-block-latest-projects .view-content:after {
+  clear: both;
+}
+.page-home .pane-projects-block-latest-projects .views-row {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 300px;
+}
+.page-home .pane-projects-block-latest-projects .views-field-field-image img {
+  background-color: #fff;
+  display: inline-block;
+  margin-bottom: 1em;
+  padding: 7px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+.page-home .pane-projects-block-latest-projects .views-field-field-image a:hover img {
+  -webkit-box-shadow: 0 0 3px #99ddff;
+  -moz-box-shadow: 0 0 3px #99ddff;
+  box-shadow: 0 0 3px #99ddff;
+}
+.page-home .pane-projects-block-latest-projects .views-field-title {
+  font-weight: normal;
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 /*         Forms

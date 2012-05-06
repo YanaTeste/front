@@ -349,6 +349,52 @@ html, body {
 
 /*         Front Page
 ------------------------------------------------*/
+.page-home {
+  #main {
+    width: 100%;
+    margin: -1px auto;
+
+    .tabs,
+    .panel-pane-inner {
+      @include grid-container-center;
+    }
+  }
+  .pane-projects-block-latest-projects {
+    background: #e1e1e1 url('../images/bg_latest-projects.png') repeat-x center top;
+    padding-top: em(25px, 14px);
+    padding-bottom: em(30px, 14px);
+
+    .pane-title {
+      color: $linkColor;
+      font-family: $helveticaFontFamily;
+      font-size: em(11px, 14px);
+      text-transform: uppercase;
+      margin-left: 10px;
+      margin-bottom: 0.65em;
+    }
+    .view-content {
+      @include clearfix;
+    }
+    .views-row {
+      @include grid(4);
+    }
+    .views-field-field-image {
+      img {
+        background-color: #fff;
+        display: inline-block;
+        margin-bottom: 1em;
+        padding: 7px;
+        @include border-radius(1px);
+      }
+      a:hover img {
+        @include box-shadow(0 0 3px lighten($linkColor, 40%));
+      }
+    }
+    .views-field-title {
+      font-weight: normal;
+    }
+  }
+}
 
 /*         Inner Pages
 ------------------------------------------------*/

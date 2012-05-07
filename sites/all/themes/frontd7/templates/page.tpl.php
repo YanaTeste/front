@@ -70,9 +70,10 @@
 ?>
 
 <?php if ($secondary_menu_links): ?>
+  <!--
   <nav id="secondary-menu" role="navigation">
     <?php print $secondary_menu_links ?>
-  </nav> <!-- /#secondary-menu -->
+  </nav> /#secondary-menu -->
 <?php endif; ?>
 
 <?php if ($logo || $site_name || $main_menu_links || $search_box): ?>

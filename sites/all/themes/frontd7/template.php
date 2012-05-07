@@ -149,6 +149,11 @@ function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_preprocess_panels_pane().
  */
 function frontd7_preprocess_panels_pane(&$vars) {
+  // Use custom content machine name on classes.
+  if ($vars['pane']->type == 'custom' && $vars['pane']->subtype != 'custom') {
+    $vars['classes_array'][] = 'pane-custom-'. ctools_cleanstring($vars['pane']->subtype);
+  }
+
   if (isset($vars['display']->css_id)) {
     $panel_id = str_replace('-', '_', $vars['display']->css_id);
     $vars['theme_hook_suggestions'][] = 'panels_pane__' . $panel_id;

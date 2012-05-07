@@ -88,7 +88,7 @@ function front_panels_default_page_manager_pages() {
     $pane->pid = 'new-2';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'services_home-services';
+    $pane->subtype = 'services_block-home';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();

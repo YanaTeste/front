@@ -641,11 +641,11 @@ function front_views_views_default_views() {
   $export['projects_block'] = $view;
 
   $view = new view;
-  $view->name = 'services_home';
+  $view->name = 'services_block';
   $view->description = 'List of all nodes in queue \'Homepage Services\'';
   $view->tag = 'nodequeue';
   $view->base_table = 'node';
-  $view->human_name = 'Services (Homepage)';
+  $view->human_name = 'Services block';
   $view->core = 0;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -828,8 +828,8 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['status_extra']['expose']['operator'] = FALSE;
 
   /* Display: Homepage services */
-  $handler = $view->new_display('panel_pane', 'Homepage services', 'services');
-  $translatables['services_home'] = array(
+  $handler = $view->new_display('panel_pane', 'Homepage services', 'home');
+  $translatables['services_block'] = array(
     t('Defaults'),
     t('Services'),
     t('more'),
@@ -848,7 +848,7 @@ function front_views_views_default_views() {
     t('Homepage services'),
     t('View panes'),
   );
-  $export['services_home'] = $view;
+  $export['services_block'] = $view;
 
   return $export;
 }

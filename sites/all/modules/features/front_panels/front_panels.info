@@ -1,0 +1,14 @@
+name = Front Panels
+description = Panels in use on Front's Drupal 7 site.
+core = 7.x
+package = Front
+version = 7.x-1.0
+project = front_panels
+dependencies[] = ctools
+dependencies[] = page_manager
+dependencies[] = panels_mini
+features[ctools][] = page_manager:pages_default:1
+features[ctools][] = panels_mini:panels_default:1
+features[features_api][] = api:1
+features[page_manager_pages][] = home
+features[panels_mini][] = postscript

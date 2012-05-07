@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Front Styles feature.
+ */
+
+include_once 'front_styles.features.inc';

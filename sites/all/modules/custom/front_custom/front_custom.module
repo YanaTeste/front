@@ -382,7 +382,7 @@ function front_custom_twitter_pull_blocks() {
   return array(
     0 => (object) array(
       'delta' => 'front_custom_twitter_pull',
-      'tweetkey' => 'frontkom',
+      'tweetkey' => '@frontkom',
       'title' => t('FrontKom on Twitter'),
       'name' => t('FrontKom on Twitter'),
       'number_of_items' => '1',

@@ -1277,7 +1277,139 @@ Multiple classes should be separated by spaces.',
           'summary_rows' => 5,
         ),
         'type' => 'text_textarea_with_summary',
-        'weight' => 31,
+        'weight' => '31',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-page-field_page_status'
+  $fields['node-page-field_page_status'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_page_status',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'No work done' => 'No work done',
+          'Some work done, unoptimized' => 'Some work done, unoptimized',
+          'Optimized first draft' => 'Optimized first draft',
+          'Optimized finished' => 'Optimized finished',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'list',
+          'settings' => array(),
+          'type' => 'list_default',
+          'weight' => 2,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_page_status',
+      'label' => 'Page status',
+      'required' => 1,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '33',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-page-field_seo_comments'
+  $fields['node-page-field_seo_comments'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_seo_comments',
+      'foreign keys' => array(
+        'format' => array(
+          'columns' => array(
+            'format' => 'format',
+          ),
+          'table' => 'filter_format',
+        ),
+      ),
+      'indexes' => array(
+        'format' => array(
+          0 => 'format',
+        ),
+      ),
+      'module' => 'text',
+      'settings' => array(
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'text_long',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => 'Internal field that should never be viewed for non admins. Contains info and numbers about the SEO considerations for a page.',
+      'display' => array(
+        'default' => array(
+          'label' => 'hidden',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '1',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_seo_comments',
+      'label' => 'SEO comments',
+      'required' => 0,
+      'settings' => array(
+        'text_processing' => '1',
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'text',
+        'settings' => array(
+          'rows' => '10',
+        ),
+        'type' => 'text_textarea',
+        'weight' => '32',
       ),
     ),
   );
@@ -1512,8 +1644,11 @@ Multiple classes should be separated by spaces.',
   t('Filer');
   t('Files');
   t('Image');
+  t('Internal field that should never be viewed for non admins. Contains info and numbers about the SEO considerations for a page.');
   t('Link');
+  t('Page status');
   t('Related');
+  t('SEO comments');
   t('Seksjon');
   t('Tags');
   t('Teaser');

@@ -12,6 +12,7 @@ dependencies[] = views_slideshow
 dependencies[] = views_slideshow_cycle
 features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
+features[views_view][] = areas_block
 features[views_view][] = blog_block
 features[views_view][] = home_featured
 features[views_view][] = projects_block

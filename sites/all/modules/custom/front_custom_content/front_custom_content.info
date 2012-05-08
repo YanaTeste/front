@@ -1,0 +1,5 @@
+name = Front Custom Content export module
+description = Export objects from CTools
+dependencies[] = ctools
+package = Chaos tool suite
+core = 7.x

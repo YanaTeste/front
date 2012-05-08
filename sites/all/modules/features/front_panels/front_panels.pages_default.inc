@@ -237,10 +237,19 @@ function front_panels_default_page_manager_pages() {
     $pane->pid = 'new-6';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'areas_block-services';
+    $pane->subtype = 'users_block-single';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '1',
+      'arguments' => array(
+        'field_name_value' => 'Per André Rønsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,
@@ -251,6 +260,24 @@ function front_panels_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-6'] = $pane;
     $display->panels['middle'][2] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
+    $pane->panel = 'middle';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'areas_block-services';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['middle'][3] = 'new-7';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

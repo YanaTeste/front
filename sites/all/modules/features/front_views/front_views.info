@@ -17,3 +17,4 @@ features[views_view][] = blog_block
 features[views_view][] = home_featured
 features[views_view][] = projects_block
 features[views_view][] = services_block
+features[views_view][] = users_block

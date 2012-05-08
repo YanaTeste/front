@@ -1,0 +1,10 @@
+name = Front Styles
+description = Media styles in use on Front's Drupal 7 site.
+core = 7.x
+package = Front
+version = 7.x-1.0
+project = front_styles
+dependencies[] = image
+features[features_api][] = api:1
+features[image][] = rectangle_medium
+features[image][] = teaser_thumbnail

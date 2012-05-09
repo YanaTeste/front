@@ -101,7 +101,8 @@ html, body {
         background: rgba(0,0,0,0.2);
       }
       &.active {
-        background: rgba(0,0,0,0.1);
+        color: #F2CB2D;
+        background: rgba(0,0,0,0.1) url('../images/icon_main-active-white.png') no-repeat center bottom;
       }
     }
   }

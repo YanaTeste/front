@@ -5651,6 +5651,30 @@ html, body {
   color: #44799D;
   background: transparent url("../images/icons_howwework-title.png") no-repeat 6px top;
 }
+#panel-slikjobbervi .pane-custom-howwework-utvikle .pane-content ol {
+  color: #44799D;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.786em;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-shadow: 0 1px 0 #fff;
+  background: #DBE0E2;
+  margin: 2.727em 0 4.545em;
+  list-style: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  overflow: hidden;
+}
+#panel-slikjobbervi .pane-custom-howwework-utvikle .pane-content ol li {
+  background: url("../images/bg_process-arrow-white.png") no-repeat right center;
+  float: left;
+  padding: 3.091em 1.455em 3.091em 0.818em;
+}
+#panel-slikjobbervi .pane-custom-howwework-utvikle .pane-content ol li:last-child {
+  background: none;
+  padding-right: 11px;
+}
 #panel-slikjobbervi .field-name-body p {
   margin-bottom: 1.5em;
 }
@@ -5676,6 +5700,18 @@ html, body {
 #panel-slikjobbervi .pane-custom-howwework-optimere .pane-title {
   color: #17593D;
   background: transparent url("../images/icons_howwework-title.png") no-repeat 6px bottom;
+}
+#panel-slikjobbervi .pane-custom-howwework-optimere .pane-content ol {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background: url("../images/bg_process-circle.png") no-repeat;
+  width: 262px;
+  height: 262px;
+  margin: 0 auto;
+}
+#panel-slikjobbervi .pane-custom-howwework-optimere .pane-content p {
+  margin-top: 1.786em;
 }
 #panel-slikjobbervi .pane-users-block-single {
   padding: 4.643em 0;

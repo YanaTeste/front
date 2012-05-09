@@ -925,8 +925,6 @@ html, body {
       .pane-content {
         padding-top: em(30px, 14px);
 
-        ol {
-        }
         p {
           font-size: em(16px, 14px);
           font-style: oblique;
@@ -950,6 +948,32 @@ html, body {
     .pane-title {
       color: #44799D;
       background: transparent url('../images/icons_howwework-title.png') no-repeat 6px top;
+    }
+    .pane-content {
+      ol {
+        color: #44799D;
+        font-family: $helveticaFontFamily;
+        font-size: em(11px, 14px);
+        font-weight: bold;
+        text-transform: uppercase;
+        text-shadow: 0 1px 0 #fff;
+        background: #DBE0E2;
+        margin: em(30px, 11px) 0 em(50px, 11px);
+        list-style: none;
+        @include border-radius(2px);
+        overflow: hidden;
+
+        li {
+          background: url('../images/bg_process-arrow-white.png') no-repeat right center;
+          float: left;
+          padding: em(34px, 11px) em(16px, 11px) em(34px, 11px) em(9px, 11px);
+
+          &:last-child {
+            background: none;
+            padding-right: 11px;
+          }
+        }
+      }
     }
   }
   .field-name-body {
@@ -985,8 +1009,19 @@ html, body {
       color: #17593D;
       background: transparent url('../images/icons_howwework-title.png') no-repeat 6px bottom;
     }
+    .pane-content {
+      ol {
+        @include hide-text;
+        background: url('../images/bg_process-circle.png') no-repeat;
+        width: 262px;
+        height: 262px;
+        margin: 0 auto;
+      }
+      p {
+        margin-top: em(25px, 14px);
+      }
+    }
   }
-
 
   .pane-users-block-single {
     padding: em(65px, 14px) 0;

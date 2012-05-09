@@ -20,6 +20,13 @@ function front_custom_theme($existing, $type, $theme, $path) {
 }
 
 /**
+ * Implements hook_ctools_plugin_directory().
+ */
+function front_custom_ctools_plugin_directory($module, $plugin) {
+  return "plugins/$plugin";
+}
+
+/**
  * Implements hook_block_info().
  */
 function front_custom_block_info() {

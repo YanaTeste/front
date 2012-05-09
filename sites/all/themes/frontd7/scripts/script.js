@@ -18,4 +18,16 @@
         }
     };
 
+    Drupal.behaviors.frontd7 = {
+        attach: function(context) {
+            // Set equalHeights on How We Work
+            if ($('#panel-slikjobbervi').length) {
+                var $hww_panel = $('#panel-slikjobbervi');
+
+                $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
+                $('.center-wrapper .pane-node', $hww_panel).equalHeights();
+            };
+        }
+    };
+
 })(jQuery);

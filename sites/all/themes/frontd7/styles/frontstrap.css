@@ -5543,6 +5543,40 @@ html, body {
   background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
   padding-top: 4.286em;
   padding-bottom: 0.714em;
+  *zoom: 1;
+}
+#panel-slikjobbervi .center-wrapper:before, #panel-slikjobbervi .center-wrapper:after {
+  display: table;
+  content: "";
+}
+#panel-slikjobbervi .center-wrapper:after {
+  clear: both;
+}
+#panel-slikjobbervi .center-wrapper .inside {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 380px;
+  padding-left: 24px;
+  padding-right: 24px;
+  background-color: #fff;
+  -webkit-box-shadow: 0 0 1px rgba(0, 0, 0, 0.075);
+  -moz-box-shadow: 0 0 1px rgba(0, 0, 0, 0.075);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.075);
+}
+#panel-slikjobbervi .center-wrapper .inside:after {
+  content: '';
+  background: transparent url("../images/bg_panel-col-shadow.png") no-repeat right top;
+  display: block;
+  width: 100%;
+  height: 13px;
+  margin-left: -24px;
+  margin-bottom: -13px;
+  padding: 0 24px;
+}
+#panel-slikjobbervi .center-wrapper .panel-col-last .inside {
+  float: right;
 }
 #panel-slikjobbervi .panel-col-bottom .inside {
   margin-left: auto;
@@ -5585,8 +5619,35 @@ html, body {
 #panel-slikjobbervi .pane-custom-howwework-intro .pane-content a:hover {
   color: #a33b14;
 }
+#panel-slikjobbervi .center-wrapper .pane-custom {
+  padding-top: 3.571em;
+  padding-bottom: 1.571em;
+}
+#panel-slikjobbervi .center-wrapper .pane-custom .pane-title {
+  font-size: 2.143em;
+  font-weight: normal;
+  padding-left: 2.067em;
+}
+#panel-slikjobbervi .center-wrapper .pane-custom .pane-content {
+  padding-top: 2.143em;
+}
+#panel-slikjobbervi .center-wrapper .pane-custom .pane-content p {
+  font-size: 1.143em;
+  font-style: oblique;
+  line-height: 1.2em;
+  text-align: center;
+}
+#panel-slikjobbervi .center-wrapper .panel-separator {
+  background: transparent url("../images/bg_hww-panel-separator.png") repeat-x left center;
+  height: 12px;
+  margin: 0 -1.357em;
+}
+#panel-slikjobbervi .center-wrapper .pane-node {
+  color: #525252;
+  padding: 1.786em 0.429em;
+}
 #panel-slikjobbervi .pane-users-block-single {
-  padding: 4.571em 0;
+  padding: 4.643em 0;
 }
 #panel-slikjobbervi .pane-users-block-single .pane-content {
   width: 75%;

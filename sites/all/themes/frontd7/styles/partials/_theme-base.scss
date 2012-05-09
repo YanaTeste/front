@@ -847,7 +847,31 @@ html, body {
     background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
     padding-top: em(60px, 14px);
     padding-bottom: em(10px, 14px);
+    @include clearfix;
+
+    .inside {
+      @include grid(5);
+      @include grid-prefix(0.3);
+      @include grid-suffix(0.3);
+      background-color: #fff;
+      @include box-shadow(0 0 1px rgba(0,0,0,0.075));
+
+      &:after {
+        content: '';
+        background: transparent url('../images/bg_panel-col-shadow.png') no-repeat right top;
+        display: block;
+        width: 100%;
+        height: 13px;
+        margin-left: -24px;
+        margin-bottom: -13px;
+        padding: 0 24px;
+      }
+    }
+    .panel-col-last .inside {
+      float: right;
+    }
   }
+
   .panel-col-bottom {
     .inside {
       @include grid-container-center;
@@ -887,9 +911,42 @@ html, body {
     }
   }
 
+  .center-wrapper {
+    .pane-custom {
+      padding-top: em(50px, 14px);
+      padding-bottom: em(22px, 14px);
+
+      .pane-title {
+        font-size: em(30px, 14px);
+        font-weight: normal;
+        padding-left: em(62px, 30px);
+      }
+      .pane-content {
+        padding-top: em(30px, 14px);
+
+        ol {
+        }
+        p {
+          font-size: em(16px, 14px);
+          font-style: oblique;
+          line-height: 1.2em;
+          text-align: center;
+        }
+      }
+    }
+    .panel-separator {
+      background: transparent url('../images/bg_hww-panel-separator.png') repeat-x left center;
+      height: 12px;
+      margin: 0 em(-19px, 14px);
+    }
+    .pane-node {
+      color: #525252;
+      padding: em(25px, 14px) em(6px, 14px);
+    }
+  }
 
   .pane-users-block-single {
-    padding: em(64px, 14px) 0;
+    padding: em(65px, 14px) 0;
 
     .pane-content {
       width: perc(720px, 960px);

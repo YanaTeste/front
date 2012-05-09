@@ -5620,13 +5620,14 @@ html, body {
   color: #a33b14;
 }
 #panel-slikjobbervi .center-wrapper .pane-custom {
-  padding-top: 3.571em;
+  padding-top: 3.786em;
   padding-bottom: 1.571em;
 }
 #panel-slikjobbervi .center-wrapper .pane-custom .pane-title {
   font-size: 2.143em;
   font-weight: normal;
-  padding-left: 2.067em;
+  line-height: 1.067em;
+  padding-left: 2.1em;
 }
 #panel-slikjobbervi .center-wrapper .pane-custom .pane-content {
   padding-top: 2.143em;
@@ -5645,6 +5646,36 @@ html, body {
 #panel-slikjobbervi .center-wrapper .pane-node {
   color: #525252;
   padding: 1.786em 0.429em;
+}
+#panel-slikjobbervi .pane-custom-howwework-utvikle .pane-title {
+  color: #44799D;
+  background: transparent url("../images/icons_howwework-title.png") no-repeat 6px top;
+}
+#panel-slikjobbervi .field-name-body p {
+  margin-bottom: 1.5em;
+}
+#panel-slikjobbervi .field-name-body ul {
+  margin-left: 1.2em;
+}
+#panel-slikjobbervi .field-name-body ul li {
+  line-height: 1.286em;
+  background: transparent url("../images/icon_bullet-plus-blue.png") no-repeat left 0.25em;
+  padding-left: 2.429em;
+  margin-bottom: 1.286em;
+  list-style: none;
+}
+#panel-slikjobbervi .panel-col-last .field-name-body a {
+  color: #72C66D;
+}
+#panel-slikjobbervi .panel-col-last .field-name-body a:hover {
+  color: #3f933a;
+}
+#panel-slikjobbervi .panel-col-last .field-name-body ul li {
+  background-image: url("../images/icon_bullet-plus-green.png");
+}
+#panel-slikjobbervi .pane-custom-howwework-optimere .pane-title {
+  color: #17593D;
+  background: transparent url("../images/icons_howwework-title.png") no-repeat 6px bottom;
 }
 #panel-slikjobbervi .pane-users-block-single {
   padding: 4.643em 0;

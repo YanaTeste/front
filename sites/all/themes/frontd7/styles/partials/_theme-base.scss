@@ -913,13 +913,14 @@ html, body {
 
   .center-wrapper {
     .pane-custom {
-      padding-top: em(50px, 14px);
+      padding-top: em(53px, 14px);
       padding-bottom: em(22px, 14px);
 
       .pane-title {
         font-size: em(30px, 14px);
         font-weight: normal;
-        padding-left: em(62px, 30px);
+        line-height: em(32px, 30px);
+        padding-left: em(63px, 30px);
       }
       .pane-content {
         padding-top: em(30px, 14px);
@@ -944,6 +945,48 @@ html, body {
       padding: em(25px, 14px) em(6px, 14px);
     }
   }
+
+  .pane-custom-howwework-utvikle {
+    .pane-title {
+      color: #44799D;
+      background: transparent url('../images/icons_howwework-title.png') no-repeat 6px top;
+    }
+  }
+  .field-name-body {
+    p {
+      margin-bottom: 1.5em;
+    }
+    ul {
+      margin-left: 1.2em;
+
+      li {
+        line-height: em(18px, 14px);
+        background: transparent url('../images/icon_bullet-plus-blue.png') no-repeat left 0.25em;
+        padding-left: em(34px, 14px);
+        margin-bottom: em(18px, 14px);
+        list-style: none;
+      }
+    }
+  }
+  .panel-col-last .field-name-body {
+    a {
+      color: #72C66D;
+      &:hover {
+        color: darken(#72C66D, 20%);
+      }
+    }
+    ul li {
+      background-image: url('../images/icon_bullet-plus-green.png');
+    }
+  }
+
+  .pane-custom-howwework-optimere {
+    .pane-title {
+      color: #17593D;
+      background: transparent url('../images/icons_howwework-title.png') no-repeat 6px bottom;
+    }
+  }
+
 
   .pane-users-block-single {
     padding: em(65px, 14px) 0;

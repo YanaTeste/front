@@ -15,4 +15,5 @@ features[ctools][] = views:views_default:3.0
 features[features_api][] = api:1
 features[page_manager_pages][] = home
 features[page_manager_pages][] = losninger
+features[page_manager_pages][] = slikjobbervi
 features[panels_mini][] = postscript

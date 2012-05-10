@@ -5830,6 +5830,9 @@ html, body {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
 }
+.page-kontakt .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
 
 #panel-kontakt .panel-col-first {
   display: inline;
@@ -5839,6 +5842,7 @@ html, body {
   width: 620px;
   padding-right: 80px;
   padding-top: 5em;
+  margin-bottom: 4em;
 }
 #panel-kontakt .panel-col-last {
   display: inline;
@@ -5997,12 +6001,12 @@ html, body {
   font-size: 1.071em;
   font-weight: bold;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(2.5%, #8cb2c8), color-stop(5%, #619bba), color-stop(52.5%, #2c83ad), color-stop(100%, #437ca1));
-  background-image: -webkit-linear-gradient(#8cb2c8 2.5%, #619bba 5%, #2c83ad, #437ca1);
-  background-image: -moz-linear-gradient(#8cb2c8 2.5%, #619bba 5%, #2c83ad, #437ca1);
-  background-image: -o-linear-gradient(#8cb2c8 2.5%, #619bba 5%, #2c83ad, #437ca1);
-  background-image: -ms-linear-gradient(#8cb2c8 2.5%, #619bba 5%, #2c83ad, #437ca1);
-  background-image: linear-gradient(#8cb2c8 2.5%, #619bba 5%, #2c83ad, #437ca1);
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #8cb2c8), color-stop(6%, #619bba), color-stop(53%, #2c83ad), color-stop(100%, #437ca1));
+  background-image: -webkit-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: -moz-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: -o-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: -ms-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   width: 13.067em;
   margin: 0;
   padding: 0.733em 0;
@@ -6011,6 +6015,81 @@ html, body {
   -webkit-border-radius: 1.467em;
   -moz-border-radius: 1.467em;
   border-radius: 1.467em;
+}
+#panel-kontakt .pane-custom-front-kontakt {
+  padding-left: 44.046%;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-title {
+  font-size: 1.429em;
+  font-weight: normal;
+  line-height: 1em;
+  overflow: hidden;
+  margin-bottom: 0.8em;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content img {
+  float: left;
+  display: block;
+  width: 68.513%;
+  height: auto;
+  margin-top: -2.571em;
+  margin-left: -78.717%;
+  padding: 9px;
+  background-color: #fff;
+  border: 1px solid #D3E2E2;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content ul {
+  color: #454545;
+  font-size: 1.071em;
+  margin: 0;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content ul li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content ul li:first-child {
+  float: left;
+  margin-right: 1.5em;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content ul strong {
+  color: #999;
+  font-size: 0.867em;
+  font-weight: normal;
+  display: block;
+}
+#panel-kontakt .pane-custom-front-kontakt .pane-content ul strong.inline {
+  display: inline-block;
+}
+#panel-kontakt .pane-custom-gamlebyen-fredrikstad {
+  clear: both;
+  padding-left: 44.046%;
+}
+#panel-kontakt .pane-custom-gamlebyen-fredrikstad .pane-title {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+#panel-kontakt .pane-custom-gamlebyen-fredrikstad .pane-content {
+  padding-top: 1px;
+}
+#panel-kontakt .pane-custom-gamlebyen-fredrikstad .pane-content p {
+  color: #4B5F6C;
+  font-size: 1.286em;
+  font-style: oblique;
+  line-height: 1.46em;
+  letter-spacing: -0.011em;
+}
+#panel-kontakt .pane-custom-gamlebyen-fredrikstad img {
+  float: left;
+  display: block;
+  width: 68.513%;
+  height: auto;
+  margin-left: -78.717%;
+  padding: 9px;
+  background-color: #fff;
+  border: 1px solid #D3E2E2;
+}
+#panel-kontakt .panel-col-first .panel-separator {
+  clear: both;
+  margin-bottom: 1.5em;
 }
 
 /*         Inner Pages

@@ -1113,6 +1113,9 @@ html, body {
   #page-title {
     @include element-invisible;
   }
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
 }
 
 #panel-kontakt {
@@ -1120,6 +1123,7 @@ html, body {
     @include grid(8);
     @include grid-suffix(1);
     padding-top: 5em;
+    margin-bottom: 4em;
   }
   .panel-col-last {
     @include grid(3);
@@ -1248,7 +1252,7 @@ html, body {
         font-size: em(15px, 14px);
         font-weight: bold;
         text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-        @include background-image(linear-gradient(#8CB2C8 2.5%, #619BBA 5%, #2C83AD, #437CA1));
+        @include background-image(linear-gradient(#8CB2C8 3%, #619BBA 6%, #2C83AD, #437CA1));
         width: em(196px, 15px);
         margin: 0;
         padding: em(11px, 15px) 0;
@@ -1257,6 +1261,88 @@ html, body {
         @include border-radius(em(22px, 15px));
       }
     }
+  }
+  .pane-custom-front-kontakt {
+    padding-left: perc(270px, 613px);
+
+    .pane-title {
+      font-size: em(20px, 14px);
+      font-weight: normal;
+      line-height: 1em;
+      overflow: hidden;
+      margin-bottom: em(16px, 20px);
+    }
+    .pane-content {
+      img {
+        float: left;
+        display: block;
+        width: perc(235px, 343px);
+        height: auto;
+        margin-top: em(-36px, 14px);
+        margin-left: perc(-270px, 343px);
+        padding: 9px;
+        background-color: #fff;
+        border: 1px solid #D3E2E2;
+      }
+      ul {
+        color: #454545;
+        font-size: em(15px, 14px);
+        margin: 0;
+
+        li {
+          list-style: none;
+          margin-bottom: 1em;
+
+          &:first-child {
+            float: left;
+            margin-right: 1.5em;
+          }
+        }
+        strong {
+          color: #999;
+          font-size: em(13px, 15px);
+          font-weight: normal;
+          display: block;
+
+          &.inline {
+            display: inline-block;
+          }
+        }
+      }
+    }
+  }
+  .pane-custom-gamlebyen-fredrikstad {
+    clear: both;
+    padding-left: perc(270px, 613px);
+
+    .pane-title {
+      @include element-invisible;
+    }
+    .pane-content {
+      padding-top: 1px;
+
+      p {
+        color: #4B5F6C;
+        font-size: em(18px, 14px);
+        font-style: oblique;
+        line-height: 1.46em;
+        letter-spacing: em(-0.2px, 18px);
+      }
+    }
+    img {
+      float: left;
+      display: block;
+      width: perc(235px, 343px);
+      height: auto;
+      margin-left: perc(-270px, 343px);
+      padding: 9px;
+      background-color: #fff;
+      border: 1px solid #D3E2E2;
+    }
+  }
+  .panel-col-first .panel-separator {
+    clear: both;
+    margin-bottom: em(21px, 14px);
   }
 }
 

@@ -5834,6 +5834,9 @@ html, body {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
 
+#panel-kontakt .inside {
+  margin: 0;
+}
 #panel-kontakt .panel-col-first {
   display: inline;
   float: left;
@@ -5850,8 +5853,7 @@ html, body {
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
-  background-color: #ddd;
-  height: 100px;
+  margin-top: 5em;
 }
 #panel-kontakt .webform-client-block .pane-title {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -5924,7 +5926,7 @@ html, body {
   background-color: #fff;
 }
 #panel-kontakt .webform-client-block .form-text {
-  width: 93.583%;
+  width: 93.662%;
 }
 #panel-kontakt .webform-client-block .form-select {
   height: 1.9em;
@@ -5966,7 +5968,7 @@ html, body {
   -webkit-border-radius: 1px;
   -moz-border-radius: 1px;
   border-radius: 1px;
-  width: 93.583%;
+  width: 93.662%;
   padding: 0.944em;
   position: relative;
   z-index: 0;
@@ -6017,7 +6019,7 @@ html, body {
   border-radius: 1.467em;
 }
 #panel-kontakt .pane-custom-front-kontakt {
-  padding-left: 44.046%;
+  padding-left: 43.548%;
 }
 #panel-kontakt .pane-custom-front-kontakt .pane-title {
   font-size: 1.429em;
@@ -6029,10 +6031,10 @@ html, body {
 #panel-kontakt .pane-custom-front-kontakt .pane-content img {
   float: left;
   display: block;
-  width: 68.513%;
+  width: 67.143%;
   height: auto;
   margin-top: -2.571em;
-  margin-left: -78.717%;
+  margin-left: -77.143%;
   padding: 9px;
   background-color: #fff;
   border: 1px solid #D3E2E2;
@@ -6061,7 +6063,7 @@ html, body {
 }
 #panel-kontakt .pane-custom-gamlebyen-fredrikstad {
   clear: both;
-  padding-left: 44.046%;
+  padding-left: 43.548%;
 }
 #panel-kontakt .pane-custom-gamlebyen-fredrikstad .pane-title {
   clip: rect(1px, 1px, 1px, 1px);
@@ -6080,9 +6082,9 @@ html, body {
 #panel-kontakt .pane-custom-gamlebyen-fredrikstad img {
   float: left;
   display: block;
-  width: 68.513%;
+  width: 67.143%;
   height: auto;
-  margin-left: -78.717%;
+  margin-left: -77.143%;
   padding: 9px;
   background-color: #fff;
   border: 1px solid #D3E2E2;
@@ -6092,10 +6094,50 @@ html, body {
   margin-bottom: 1.5em;
 }
 
+.panel-col-last .pane-menu-block {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+.panel-col-last .pane-menu-block .pane-title {
+  font-size: 0.786em;
+  text-transform: uppercase;
+}
+.panel-col-last .pane-menu-block ul.menu {
+  font-size: 1.143em;
+  margin-left: 0;
+}
+.panel-col-last .pane-menu-block ul.menu li {
+  background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
+  list-style: none;
+}
+.panel-col-last .pane-menu-block ul.menu li:last-child {
+  background-image: none;
+}
+.panel-col-last .pane-menu-block ul.menu a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+  display: block;
+  padding: 0.688em 0 0.75em 1.375em;
+}
+.panel-col-last .pane-menu-block ul.menu a:hover {
+  color: #F2CB2D;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.panel-col-last .pane-menu-block ul.menu .active a {
+  color: #F2CB2D;
+  background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 /*         Forms
 ------------------------------------------------*/
+/* Remove >> */
+.breadcrumb {
+  display: none;
+}
+
+/* << Remove */
 @media (max-width: 960px) {
   body:after {
     display: block;

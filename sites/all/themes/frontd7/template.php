@@ -181,6 +181,11 @@ function frontd7_preprocess_panels_pane(&$vars) {
     $clean_subtype = str_replace(range(0,9), '', $vars['pane']->subtype);
     $vars['classes_array'][] = ctools_cleanstring($clean_subtype);
   }
+  elseif (preg_match('/menu_block/i', $vars['pane']->subtype)) {
+    // Generic menu block class.
+    $clean_subtype = str_replace(range(0,9), '', $vars['pane']->subtype);
+    $vars['classes_array'][] = 'pane-'. ctools_cleanstring($clean_subtype);
+  }
 
   if (isset($vars['display']->css_id)) {
     $panel_id = str_replace('-', '_', $vars['display']->css_id);

@@ -1119,6 +1119,9 @@ html, body {
 }
 
 #panel-kontakt {
+  .inside {
+    margin: 0;
+  }
   .panel-col-first {
     @include grid(8);
     @include grid-suffix(1);
@@ -1127,9 +1130,7 @@ html, body {
   }
   .panel-col-last {
     @include grid(3);
-
-    background-color: #ddd;
-    height: 100px;
+    margin-top: em(70px, 14px);
   }
 
   .webform-client-block {
@@ -1180,7 +1181,7 @@ html, body {
       }
     }
     .form-text {
-      width: perc(525px, 561px);
+      width: perc(532px, 568px);
     }
     .form-select {
       height: 1.9em;
@@ -1219,7 +1220,7 @@ html, body {
       @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
       border: 1px solid #ccc;
       @include border-radius(1px);
-      width: perc(525px, 561px);
+      width: perc(532px, 568px);
       padding: em(17px, 18px);
       position: relative;
       z-index: 0;
@@ -1263,7 +1264,7 @@ html, body {
     }
   }
   .pane-custom-front-kontakt {
-    padding-left: perc(270px, 613px);
+    padding-left: perc(270px, 620px);
 
     .pane-title {
       font-size: em(20px, 14px);
@@ -1276,10 +1277,10 @@ html, body {
       img {
         float: left;
         display: block;
-        width: perc(235px, 343px);
+        width: perc(235px, 350px);
         height: auto;
         margin-top: em(-36px, 14px);
-        margin-left: perc(-270px, 343px);
+        margin-left: perc(-270px, 350px);
         padding: 9px;
         background-color: #fff;
         border: 1px solid #D3E2E2;
@@ -1313,7 +1314,7 @@ html, body {
   }
   .pane-custom-gamlebyen-fredrikstad {
     clear: both;
-    padding-left: perc(270px, 613px);
+    padding-left: perc(270px, 620px);
 
     .pane-title {
       @include element-invisible;
@@ -1332,9 +1333,9 @@ html, body {
     img {
       float: left;
       display: block;
-      width: perc(235px, 343px);
+      width: perc(235px, 350px);
       height: auto;
-      margin-left: perc(-270px, 343px);
+      margin-left: perc(-270px, 350px);
       padding: 9px;
       background-color: #fff;
       border: 1px solid #D3E2E2;
@@ -1346,8 +1347,52 @@ html, body {
   }
 }
 
+.panel-col-last .pane-menu-block {
+  font-family: $helveticaFontFamily;
+
+  .pane-title {
+    font-size: em(11px, 14px);
+    text-transform: uppercase;
+  }
+  ul.menu {
+    font-size: em(16px, 14px);
+    margin-left: 0;
+
+    li {
+      background: #343434 url('../images/bg_menu-block-dash.png') repeat-x left bottom;
+      list-style: none;
+
+      &:last-child {
+        background-image: none;
+      }
+    }
+    a {
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+      display: block;
+      padding: em(11px, 16px) 0 em(12px, 16px) em(22px, 16px);
+
+      &:hover {
+        color: #F2CB2D;
+        background-color: rgba(0,0,0,0.15);
+      }
+    }
+    .active a {
+      color: #F2CB2D;
+      background: transparent url('../images/icon_block-menu-active.png') no-repeat left center;
+    }
+  }
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 
 /*         Forms
 ------------------------------------------------*/
+
+/* Remove >> */
+.breadcrumb {
+  display: none;
+}
+/* << Remove */

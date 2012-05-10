@@ -133,6 +133,29 @@ function frontd7_item_list($variables) {
 }
 
 /**
+ * Implements hook_form_alter().
+ */
+function frontd7_form_alter(&$form, &$form_state, $form_id) {
+  // Create placeholders attributes for form elements.
+  if (isset($form['#node']) && $form['#node']->type == 'webform') {
+    $types = array('textfield', 'webform_email', 'textarea');
+
+    foreach ($form['submitted'] as $key => $component) {
+      if (is_array($component)) {
+        if (in_array($component['#type'], $types)) {
+          $form['submitted'][$key]['#attributes']['placeholder'] = $component['#title'];
+        }
+        if ($component['#type'] == 'textarea') {
+          $form['submitted'][$key]['#resizable'] = FALSE;
+        }
+      }
+    }
+  }
+}
+
+
+
+/**
  * Implements hook_form_search_form_alter().
  */
 function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
@@ -149,9 +172,14 @@ function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
  * Implements hook_preprocess_panels_pane().
  */
 function frontd7_preprocess_panels_pane(&$vars) {
-  // Use custom content machine name on classes.
   if ($vars['pane']->type == 'custom' && $vars['pane']->subtype != 'custom') {
+    // Use custom content machine name on classes.
     $vars['classes_array'][] = 'pane-custom-'. ctools_cleanstring($vars['pane']->subtype);
+  }
+  elseif (preg_match('/webform/i', $vars['pane']->subtype)) {
+    // Generic webform class.
+    $clean_subtype = str_replace(range(0,9), '', $vars['pane']->subtype);
+    $vars['classes_array'][] = ctools_cleanstring($clean_subtype);
   }
 
   if (isset($vars['display']->css_id)) {

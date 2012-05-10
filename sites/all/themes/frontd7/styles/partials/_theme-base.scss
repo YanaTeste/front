@@ -1107,6 +1107,50 @@ html, body {
 
 }
 
+/*         Contact
+------------------------------------------------*/
+.page-kontakt {
+  #page-title {
+    @include element-invisible;
+  }
+}
+
+#panel-kontakt {
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+  }
+  .panel-col-last {
+    @include grid(3);
+
+    background-color: #ddd;
+    height: 100px;
+  }
+
+  .webform-client-block {
+    .pane-title {
+      font-family: $helveticaFontFamily;
+      font-size: em(50px, 14px);
+      line-height: 1.2em;
+    }
+    #webform-component-teaser p {
+      font-family: $altFontFamily;
+      font-size: em(20px, 14px);
+      font-style: oblique;
+      line-height: 1.5em;
+    }
+  }
+  .form-actions {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+
+    input {
+      margin: 0;
+    }
+  }
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 

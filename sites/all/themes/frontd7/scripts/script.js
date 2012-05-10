@@ -27,6 +27,13 @@
                 $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
                 $('.center-wrapper .pane-node', $hww_panel).equalHeights();
             };
+            
+            // Move webforms select labels to 1st option.
+            if ($('form.webform-client-form select').length) {
+                $('form.webform-client-form select').each(function() {
+                    // wip...
+                });
+            };
         }
     };
 

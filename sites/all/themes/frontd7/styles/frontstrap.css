@@ -5824,6 +5824,50 @@ html, body {
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
 }
 
+/*         Contact
+------------------------------------------------*/
+.page-kontakt #page-title {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+
+#panel-kontakt .panel-col-first {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 620px;
+  padding-right: 80px;
+}
+#panel-kontakt .panel-col-last {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
+  background-color: #ddd;
+  height: 100px;
+}
+#panel-kontakt .webform-client-block .pane-title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3.571em;
+  line-height: 1.2em;
+}
+#panel-kontakt .webform-client-block #webform-component-teaser p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.429em;
+  font-style: oblique;
+  line-height: 1.5em;
+}
+#panel-kontakt .form-actions {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+#panel-kontakt .form-actions input {
+  margin: 0;
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 /*         Forms

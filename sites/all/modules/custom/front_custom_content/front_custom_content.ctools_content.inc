@@ -14,6 +14,38 @@ function front_custom_content_default_ctools_custom_content() {
   $content = new stdClass();
   $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
   $content->api_version = 1;
+  $content->name = 'front_kontakt';
+  $content->admin_title = 'Front Kontakt';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => 'Front Kommunikasjon AS',
+    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"349","attributes":{"alt":"","class":"media-image","height":"205","typeof":"foaf:Image","width":"235"}}]]</p> <ul><li><strong class="inline">Telefon</strong>&nbsp;69 30 44 00</li><li><strong class="inline">Faks</strong>&nbsp;69 30 44 01</li><li><strong>Besøksadresse&nbsp;</strong>Torvgaten 64, 1632 Gamle Fredrikstad</li><li><strong>Postadresse&nbsp;</strong>Postboks 1190, 1629 Gamle Fredrikstad</li><li><strong>Kart&nbsp;</strong>Se på kartet hvor vi er.</li></ul>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['front_kontakt'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'gamlebyen_fredrikstad';
+  $content->admin_title = 'Gamlebyen i Fredrikstad';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => 'Gamlebyen i Fredrikstad',
+    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"350","attributes":{"alt":"","class":"media-image","height":"129","typeof":"foaf:Image","width":"235"}}]]</p><p>Du finner oss i Gamlebyen i Fredrikstad. Her er du er mer en gjerne velkommen til å møte oss for en prat om mulighetene som kan passe for deg. Kontakt oss og avtal et møte.</p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $contents['gamlebyen_fredrikstad'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
   $content->name = 'howwework_intro';
   $content->admin_title = 'How We Work tagline + teaser';
   $content->admin_description = 'Solutions landing page tagline and teaser text.';
@@ -21,7 +53,7 @@ function front_custom_content_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => 'Solutions tagline + teaser',
     'title' => 'Vi jobber i to faser',
-    'body' => '<p>Etter et prosjekt er ferdig utviklet jobber vi videre med å optimere.<br>Ved å <a href="#">måle result</a> på tiltak lærer vi hva som virker, noe som igjen vil gi bedre resultater og økt ROI (Return on Investment)</p>',
+    'body' => '<p>Etter et prosjekt er ferdig utviklet jobber vi videre med å optimere.<br>Ved å måle resultat på tiltak lærer vi hva som virker, noe som igjen vil gi bedre resultater.</p>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -69,7 +101,7 @@ function front_custom_content_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => 'Solutions tagline + teaser',
     'title' => 'Vi gir deg de rette løsningene',
-    'body' => 'Om du har ideen om den neste “Facebook” eller å oppnå bedre resultater på nåværende hjemmeside, hjelper vi deg gjerne dit basert på vår <a href="#">kunnskap</a> innen <a href="#">strategi</a>, <a href="#">utførelse</a> og <a href="#">omtimering</a>.',
+    'body' => '<p>Enten du sitter inne med ideen om det neste store eller vil modernisere din nåværende hjemmeside - vi kan hjelpe deg med vår kunnskap innen strategi, utvikling og markedsføring</p>',
     'format' => 'full_html',
     'substitute' => 1,
   );

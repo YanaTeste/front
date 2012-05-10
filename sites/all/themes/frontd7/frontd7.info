@@ -58,6 +58,7 @@ styles[styles/frontstrap.css][options][media] = all
 ; scripts[] = scripts/bootstrap-typeahead.js
 
 scripts[] = scripts/jquery.equalheights.js
+scripts[] = scripts/jquery.customselect.js
 scripts[] = scripts/script.js
 
 

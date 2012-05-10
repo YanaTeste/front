@@ -1119,6 +1119,7 @@ html, body {
   .panel-col-first {
     @include grid(8);
     @include grid-suffix(1);
+    padding-top: 5em;
   }
   .panel-col-last {
     @include grid(3);
@@ -1132,21 +1133,129 @@ html, body {
       font-family: $helveticaFontFamily;
       font-size: em(50px, 14px);
       line-height: 1.2em;
+      letter-spacing: em(-2px, 50px);
+      margin-bottom: em(18px, 50px);
+      padding-left: em(4px, 50px);
     }
-    #webform-component-teaser p {
-      font-family: $altFontFamily;
-      font-size: em(20px, 14px);
-      font-style: oblique;
-      line-height: 1.5em;
+    header, label {
+      @include element-invisible;
     }
-  }
-  .form-actions {
-    background-color: transparent;
-    border: none;
-    padding: 0;
+    .field-name-body {
+      padding-left: em(3px, 14px);
 
-    input {
-      margin: 0;
+      p {
+        font-family: $altFontFamily;
+        font-size: em(20px, 14px);
+        font-style: oblique;
+        line-height: 1.5em;
+        margin-bottom: em(24px, 20px);
+      }
+    }
+    form {
+      background: #F9FAFB;
+      border: 1px solid #D3E2E2;
+      padding: em(25px, 14px) perc(25px, 611px);
+      @include clearfix;
+    }
+    .form-text,
+    .form-textarea,
+    .form-select {
+      color: #454545;
+      font-family: $helveticaFontFamily;
+      font-size: em(18px, 14px);
+      line-height: 1em;
+      margin-bottom: em(20px, 18px);
+      padding: em(17px, 18px);
+      background-color: #EFEFEF;
+      border-color: #ccc;
+      @include border-radius(1px);
+      @include input-placeholder(#454545);
+
+      &:focus {
+        background-color: #fff;
+      }
+    }
+    .form-text {
+      width: perc(525px, 561px);
+    }
+    .form-select {
+      height: 1.9em;
+      padding: 2px 2px 2px em(17px, 18px);
+
+      .js & {
+        margin-top: em(-60px, 18px);
+        @include opacity(0);
+        z-index: 0;
+      }
+    }
+    .form-textarea,
+    .form-select {
+      width: 100%;
+    }
+    .form-textarea {
+      font-size: 1em;
+      height: em(188px, 14px);
+      margin-bottom: em(20px, 14px);
+
+      &:-moz-placeholder {
+        font-size: em(18px, 14px);
+        height: em(188px, 18px);
+        margin-bottom: em(20px, 18px);
+      }
+      &::-webkit-input-placeholder {
+        font-size: em(18px, 14px);
+        height: em(188px, 18px);
+        margin-bottom: em(20px, 18px);
+      }
+    }
+    .customStyleSelectBox {
+      font-family: $helveticaFontFamily;
+      font-size: em(18px, 14px);
+      background: #efefef url('../images/icon_select-dropdown.png') no-repeat right center;
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+      border: 1px solid #ccc;
+      @include border-radius(1px);
+      width: perc(525px, 561px);
+      padding: em(17px, 18px);
+      position: relative;
+      z-index: 0;
+
+      &:focus {
+        background-color: #fff;
+      }
+    }
+    #webform-component-alternative {
+      float: right;
+
+      p {
+        font-size: em(13px, 14px);
+        margin: em(18px, 13px) 0 0;
+      }
+    }
+    .form-actions {
+      background: #DADBDB;
+      @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+      border: none;
+      float: left;
+      margin: 0 0 em(-10px, 15px);
+      padding: 3px;
+      border: 1px solid #D6D7D8;
+      @include border-radius(em(26px, 15px));
+
+      input {
+        color: #fff;
+        font-family: $helveticaFontFamily;
+        font-size: em(15px, 14px);
+        font-weight: bold;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+        @include background-image(linear-gradient(#8CB2C8 2.5%, #619BBA 5%, #2C83AD, #437CA1));
+        width: em(196px, 15px);
+        margin: 0;
+        padding: em(11px, 15px) 0;
+        border: 1px solid #44799D;
+        border-color: #8FAFC4 #437EA2 #44799D;
+        @include border-radius(em(22px, 15px));
+      }
     }
   }
 }

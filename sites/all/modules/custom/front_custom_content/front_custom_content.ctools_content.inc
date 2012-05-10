@@ -14,6 +14,54 @@ function front_custom_content_default_ctools_custom_content() {
   $content = new stdClass();
   $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
   $content->api_version = 1;
+  $content->name = 'howwework_intro';
+  $content->admin_title = 'How We Work tagline + teaser';
+  $content->admin_description = 'Solutions landing page tagline and teaser text.';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => 'Solutions tagline + teaser',
+    'title' => 'Vi jobber i to faser',
+    'body' => '<p>Etter et prosjekt er ferdig utviklet jobber vi videre med å optimere.<br>Ved å <a href="#">måle result</a> på tiltak lærer vi hva som virker, noe som igjen vil gi bedre resultater og økt ROI (Return on Investment)</p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $contents['howwework_intro'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'howwework_optimere';
+  $content->admin_title = 'How We Work - Optimere';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => 'Optimere',
+    'body' => '<ol><li>Mål</li><li>Strategi</li><li>Tiltak</li><li>Analyse</li></ol><p>Når vi skal optimere en side begynner vi med å  definerer mål som vi ønsker å oppnå.</p>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['howwework_optimere'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'howwework_utvikle';
+  $content->admin_title = 'How We Work - Utvikle';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => 'Utvikle',
+    'body' => '<ol><li>Strategi</li><li>Design</li><li>Teknisk</li><li>Innhold</li><li>Lansering</li></ol><p>I design stadiet jobber vi med <a href="#">Informasjonsarkitekturen</a> (IA) og bygger prototyper av mulige løsninger. Vi tar hensyn til kundens varemerke, og jobber alltid for å lage en <a href="#">brukervennlig</a> (UX) og målrettet side.</p>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['howwework_utvikle'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
   $content->name = 'solutions_intro';
   $content->admin_title = 'Solutions tagline + teaser';
   $content->admin_description = 'Solutions landing page tagline and teaser text.';

@@ -6114,8 +6114,10 @@ html, body {
 }
 .panel-col-last .pane-menu-block ul.menu a {
   color: #fff;
+  font-weight: 300;
   text-decoration: none;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.031em;
   display: block;
   padding: 0.688em 0 0.75em 1.375em;
 }

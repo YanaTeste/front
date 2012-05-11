@@ -985,7 +985,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Introduction text';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = 'Vi har som mål er at du skal oppnå best mulig resultat på din digitale satsning på <a href="#">Internet</a>, <a href="#">mobil</a> og i <a href="#">sosiale medier</a>.';
+  $handler->display->display_options['header']['area']['content'] = 'Vi hjelper deg med å skape verdier gjennom gode digitale totalløsninger.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
 
@@ -1171,7 +1171,7 @@ function front_views_views_default_views() {
     t('[field_link]'),
     t('Homepage services'),
     t('Introduction text'),
-    t('Vi har som mål er at du skal oppnå best mulig resultat på din digitale satsning på <a href="#">Internet</a>, <a href="#">mobil</a> og i <a href="#">sosiale medier</a>.'),
+    t('Vi hjelper deg med å skape verdier gjennom gode digitale totalløsninger.'),
     t('View panes'),
     t('Solutions services'),
   );

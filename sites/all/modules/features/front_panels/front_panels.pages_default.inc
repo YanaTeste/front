@@ -199,7 +199,7 @@ function front_panels_default_page_manager_pages() {
     $pane->pid = 'new-4';
     $pane->panel = 'left';
     $pane->type = 'block';
-    $pane->subtype = 'webform-client-block-1608';
+    $pane->subtype = 'webform-client-block-1628';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
@@ -453,7 +453,10 @@ function front_panels_default_page_manager_pages() {
   $page->admin_title = 'How We Work';
   $page->admin_description = '';
   $page->path = 'slik-jobber-vi';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Slik jobber vi',

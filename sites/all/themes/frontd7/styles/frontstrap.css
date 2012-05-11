@@ -4559,6 +4559,19 @@ html, body {
 }
 
 /* Typography */
+#page-title {
+  font-size: 3.571em;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.48em;
+  padding-bottom: 0;
+  border: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 /* Links */
 /* Header */
 .header-wrapper {
@@ -4701,6 +4714,7 @@ html, body {
 }
 
 .pane-blog-block-latest-posts .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1em;
   font-weight: normal;
   text-transform: uppercase;
@@ -4735,6 +4749,7 @@ html, body {
   background-color: #403a3a;
 }
 .pane-blog-block-latest-posts .views-field-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.286em;
   font-weight: normal;
   line-height: 1.1em;
@@ -4993,6 +5008,7 @@ html, body {
   padding-top: 2.286em;
 }
 .page-home .pane-home-featured-home .views-field-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.571em;
   font-weight: normal;
   letter-spacing: -0.04em;
@@ -5142,8 +5158,9 @@ html, body {
   height: 62px;
 }
 .page-home .pane-services-block-home .views-field-title {
-  line-height: 1.167em;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
+  line-height: 1.167em;
   margin-bottom: 0.167em;
 }
 .page-home .pane-services-block-home .views-field-body {
@@ -5194,6 +5211,7 @@ html, body {
   box-shadow: 0 0 3px #99ddff;
 }
 .page-home .pane-projects-block-latest-projects .views-field-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
 }
 
@@ -5222,6 +5240,7 @@ html, body {
   padding: 5.143em 0 2.857em;
 }
 #panel-solutions .pane-custom-solutions-intro .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.571em;
   font-weight: normal;
   line-height: 1;
@@ -5318,6 +5337,7 @@ html, body {
   height: 62px;
 }
 #panel-solutions .pane-services-block-solutions .views-field-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   line-height: 1.167em;
   font-weight: normal;
   margin-bottom: 0.167em;
@@ -5376,6 +5396,7 @@ html, body {
   background-color: rgba(255, 255, 255, 0.75);
 }
 #panel-solutions .pane-users-block-single .views-field-field-name {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1em;
   font-weight: normal;
   line-height: 1;
@@ -5449,6 +5470,7 @@ html, body {
 }
 #panel-solutions .pane-areas-block-services .pane-title {
   color: #263A43;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2.143em;
   font-weight: normal;
   line-height: 1;
@@ -5493,6 +5515,7 @@ html, body {
   width: 20%;
 }
 #panel-solutions .pane-areas-block-services .views-field-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   margin-bottom: 1em;
 }
@@ -5593,6 +5616,7 @@ html, body {
   padding: 5.143em 0 2.857em;
 }
 #panel-slikjobbervi .pane-custom-howwework-intro .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.571em;
   font-weight: normal;
   line-height: 1;
@@ -5625,6 +5649,7 @@ html, body {
   padding-bottom: 1.571em;
 }
 #panel-slikjobbervi .center-wrapper .pane-custom .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2.143em;
   font-weight: normal;
   line-height: 1.067em;
@@ -5757,6 +5782,7 @@ html, body {
   background-color: rgba(255, 255, 255, 0.75);
 }
 #panel-slikjobbervi .pane-users-block-single .views-field-field-name {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1em;
   font-weight: normal;
   line-height: 1;
@@ -5856,7 +5882,6 @@ html, body {
   margin-top: 5em;
 }
 #panel-kontakt .webform-client-block .pane-title {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.571em;
   line-height: 1.2em;
   letter-spacing: -0.04em;
@@ -6022,6 +6047,7 @@ html, body {
   padding-left: 43.548%;
 }
 #panel-kontakt .pane-custom-front-kontakt .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.429em;
   font-weight: normal;
   line-height: 1em;
@@ -6132,6 +6158,36 @@ html, body {
 
 /*         Inner Pages
 ------------------------------------------------*/
+.page-node .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
+.page-node #main {
+  margin-top: 5.357em;
+}
+.page-node .field-name-field-subheading {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.429em;
+  font-style: oblique;
+  line-height: 1.5em;
+  margin-bottom: 2.45em;
+}
+.page-node .field-name-body {
+  line-height: 1.71em;
+}
+.page-node .field-name-body p {
+  line-height: 1.71em;
+  margin-bottom: 1em;
+}
+.page-node .node-full {
+  margin-bottom: 2.5em;
+}
+.page-node .node-full img {
+  display: inline-block;
+  padding: 9px;
+  background-color: #fff;
+  border: 1px solid #D3E2E2;
+}
+
 /*         Forms
 ------------------------------------------------*/
 /* Remove >> */

@@ -144,7 +144,10 @@ function front_panels_default_page_manager_pages() {
   $page->admin_title = 'Contact';
   $page->admin_description = '';
   $page->path = 'kontakt';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Kontakt',
@@ -298,7 +301,7 @@ function front_panels_default_page_manager_pages() {
   $page->task = 'page';
   $page->admin_title = 'Solutions';
   $page->admin_description = '';
-  $page->path = 'losninger';
+  $page->path = 'tjenester';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
@@ -349,7 +352,7 @@ function front_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Losninger';
+  $display->title = 'Tjenester';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

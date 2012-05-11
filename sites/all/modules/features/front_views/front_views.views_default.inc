@@ -985,7 +985,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Introduction text';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = 'Vi hjelper deg med å skape verdier gjennom gode digitale totalløsninger.';
+  $handler->display->display_options['header']['area']['content'] = '<p></p>';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
 
@@ -1171,7 +1171,7 @@ function front_views_views_default_views() {
     t('[field_link]'),
     t('Homepage services'),
     t('Introduction text'),
-    t('Vi hjelper deg med å skape verdier gjennom gode digitale totalløsninger.'),
+    t('<p></p>'),
     t('View panes'),
     t('Solutions services'),
   );

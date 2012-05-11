@@ -5217,16 +5217,16 @@ h1, h2, h3, h4, h5, h6 {
 
 /*         Solutions
 ------------------------------------------------*/
-.page-losninger #page-title {
+.page-tjenester #page-title {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
 }
-.page-losninger #main {
+.page-tjenester #main {
   width: 100%;
   margin: -1px auto;
 }
-.page-losninger #main .tabs,
-.page-losninger #main .panel-pane-inner {
+.page-tjenester #main .tabs,
+.page-tjenester #main .panel-pane-inner {
   margin-left: auto;
   margin-right: auto;
   width: 960px;

@@ -21,15 +21,15 @@ function front_panels_default_page_manager_pages() {
     'settings' => NULL,
   );
   $page->menu = array(
-    'type' => 'normal',
-    'title' => 'Home',
-    'weight' => '0',
+    'type' => 'none',
+    'title' => '',
     'name' => 'main-menu',
+    'weight' => '',
     'parent' => array(
       'type' => 'none',
       'title' => '',
-      'weight' => 0,
       'name' => 'navigation',
+      'weight' => '0',
     ),
   );
   $page->arguments = array();
@@ -308,14 +308,14 @@ function front_panels_default_page_manager_pages() {
   );
   $page->menu = array(
     'type' => 'normal',
-    'title' => 'Losninger',
-    'weight' => '2',
+    'title' => 'Tjenester',
     'name' => 'main-menu',
+    'weight' => '1',
     'parent' => array(
       'type' => 'none',
       'title' => '',
-      'weight' => 0,
       'name' => 'navigation',
+      'weight' => '0',
     ),
   );
   $page->arguments = array();
@@ -464,7 +464,7 @@ function front_panels_default_page_manager_pages() {
     'type' => 'normal',
     'title' => 'Slik jobber vi',
     'name' => 'main-menu',
-    'weight' => '3',
+    'weight' => '2',
     'parent' => array(
       'type' => 'none',
       'title' => '',

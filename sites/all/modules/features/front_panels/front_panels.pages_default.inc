@@ -672,6 +672,125 @@ function front_panels_default_page_manager_pages() {
   $page->default_handlers[$handler->name] = $handler;
   $pages['slikjobbervi'] = $page;
 
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'tjenester';
+  $page->task = 'page';
+  $page->admin_title = 'Tjenester';
+  $page->admin_description = '';
+  $page->path = 'tjenester/%term';
+  $page->access = array();
+  $page->menu = array();
+  $page->arguments = array(
+    'term' => array(
+      'id' => 1,
+      'identifier' => 'Taxonomy term',
+      'name' => 'term',
+      'settings' => array(
+        'input_form' => 'term',
+        'vids' => array(
+          2 => '2',
+          3 => 0,
+          4 => 0,
+          1 => 0,
+        ),
+        'breadcrumb' => 1,
+        'transform' => 1,
+      ),
+    ),
+  );
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_tjenester_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'tjenester';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Default',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => 'page-tjenester',
+    'body_classes_to_add' => 'page-tjenester-term',
+    'css_id' => 'panel-tjenester',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+  );
+  $display = new panels_display();
+  $display->layout = 'twocol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%term:name';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-18';
+    $pane->panel = 'left';
+    $pane->type = 'term_description';
+    $pane->subtype = 'term_description';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'context' => 'argument_term_1',
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-18'] = $pane;
+    $display->panels['left'][0] = 'new-18';
+    $pane = new stdClass();
+    $pane->pid = 'new-19';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'tjenester-teasers';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '0',
+      'override_title' => 0,
+      'override_title_text' => '',
+      'arguments' => array(
+        'tid' => '%term:name',
+      ),
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-19'] = $pane;
+    $display->panels['left'][1] = 'new-19';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['tjenester'] = $page;
+
   return $pages;
 
 }

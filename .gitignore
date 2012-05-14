@@ -3,19 +3,5 @@ sites/*/settings*.php
 
 # Ignore paths that contain user-generated content.
 sites/*/files
-sites/*/legacy_files
 sites/*/private
-=======
-.DS_Store
-sites/default/files
-sites/default/settings.php
-.htaccess
-CVS
-robots.txt
-backup
-cache
-_MACOSX
-sites/all/modules/contrib/panels/plugins/cache
-index.html
-.sass-cache
-
+sites/*/legacy_files

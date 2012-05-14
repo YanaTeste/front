@@ -842,6 +842,53 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+.page-tjenester-term {
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+}
+
+#panel-tjenester {
+  .inside {
+    margin: 0;
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+    padding-top: 5em;
+    margin-bottom: 4em;
+  }
+  .panel-col-last {
+    @include grid(3);
+    margin-top: em(70px, 14px);
+  }
+  .pane-term-description {
+    p {
+      color: #333;
+      font-family: $altFontFamily;
+      font-size: em(20px, 14px);
+      font-style: oblique;
+      line-height: 1.5em;
+    }
+  }
+  .pane-tjenester-teasers {
+    .views-row {
+      background: transparent url('../images/bg_teaser-dashed-border.png') repeat-x left bottom;
+      padding: em(38px, 14px) 0 em(30px, 14px);
+    }
+    .views-row-last {
+      background: none;
+    }
+    .views-field-title {
+      font-size: em(22px, 14px);
+
+      a {
+        color: #000;
+      }
+    }
+  }
+}
+
 /*         How we work
 ------------------------------------------------*/
 .page-slik-jobber-vi {
@@ -1431,7 +1478,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .field-name-body {
     line-height: 1.71em;
-    
+
     p {
       line-height: 1.71em;
       margin-bottom: 1em;

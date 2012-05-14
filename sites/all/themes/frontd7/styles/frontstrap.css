@@ -5531,6 +5531,52 @@ h1, h2, h3, h4, h5, h6 {
   content: ' ››';
 }
 
+.page-tjenester-term .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
+
+#panel-tjenester .inside {
+  margin: 0;
+}
+#panel-tjenester .panel-col-first {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 620px;
+  padding-right: 80px;
+  padding-top: 5em;
+  margin-bottom: 4em;
+}
+#panel-tjenester .panel-col-last {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
+  margin-top: 5em;
+}
+#panel-tjenester .pane-term-description p {
+  color: #333;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.429em;
+  font-style: oblique;
+  line-height: 1.5em;
+}
+#panel-tjenester .pane-tjenester-teasers .views-row {
+  background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left bottom;
+  padding: 2.714em 0 2.143em;
+}
+#panel-tjenester .pane-tjenester-teasers .views-row-last {
+  background: none;
+}
+#panel-tjenester .pane-tjenester-teasers .views-field-title {
+  font-size: 1.571em;
+}
+#panel-tjenester .pane-tjenester-teasers .views-field-title a {
+  color: #000;
+}
+
 /*         How we work
 ------------------------------------------------*/
 .page-slik-jobber-vi #page-title {

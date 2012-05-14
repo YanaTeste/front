@@ -218,6 +218,7 @@ function front_content_field_default_fields() {
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
+        'default_image' => 0,
         'file_directory' => 'images/articles',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -268,6 +269,7 @@ function front_content_field_default_fields() {
             'parent' => '0',
           ),
         ),
+        'profile2_private' => FALSE,
       ),
       'translatable' => '0',
       'type' => 'taxonomy_term_reference',
@@ -653,6 +655,7 @@ Multiple classes should be separated by spaces.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 0,
+        'default_image' => 0,
         'file_directory' => 'images/banners',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -962,6 +965,7 @@ Multiple classes should be separated by spaces.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
+        'default_image' => 0,
         'file_directory' => 'images/articles',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1334,6 +1338,7 @@ Multiple classes should be separated by spaces.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
+        'default_image' => 0,
         'file_directory' => 'images/articles',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1414,7 +1419,78 @@ Multiple classes should be separated by spaces.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '5',
+        'weight' => '6',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-page-field_section'
+  $fields['node-page-field_section'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_section',
+      'foreign keys' => array(
+        'tid' => array(
+          'columns' => array(
+            'tid' => 'tid',
+          ),
+          'table' => 'taxonomy_term_data',
+        ),
+      ),
+      'indexes' => array(
+        'tid' => array(
+          0 => 'tid',
+        ),
+      ),
+      'module' => 'taxonomy',
+      'settings' => array(
+        'allowed_values' => array(
+          0 => array(
+            'vocabulary' => 'section',
+            'parent' => '0',
+          ),
+        ),
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'taxonomy_term_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'taxonomy',
+          'settings' => array(),
+          'type' => 'taxonomy_term_reference_link',
+          'weight' => 5,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_section',
+      'label' => 'Section',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '4',
       ),
     ),
   );
@@ -1481,7 +1557,7 @@ Multiple classes should be separated by spaces.',
           'rows' => '10',
         ),
         'type' => 'text_textarea',
-        'weight' => '4',
+        'weight' => '5',
       ),
     ),
   );
@@ -1687,6 +1763,7 @@ Multiple classes should be separated by spaces.',
       'required' => 0,
       'settings' => array(
         'alt_field' => 1,
+        'default_image' => 0,
         'file_directory' => 'images/projects',
         'file_extensions' => 'png gif jpg jpeg',
         'max_filesize' => '',
@@ -1790,6 +1867,7 @@ Multiple classes should be separated by spaces.',
   t('Page status');
   t('Related');
   t('SEO comments');
+  t('Section');
   t('Seksjon');
   t('Tags');
   t('Teaser');

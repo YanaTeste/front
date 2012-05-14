@@ -33,6 +33,7 @@ features[field][] = node-blog-field_tags
 features[field][] = node-page-body
 features[field][] = node-page-field_image
 features[field][] = node-page-field_page_status
+features[field][] = node-page-field_section
 features[field][] = node-page-field_seo_comments
 features[field][] = node-page-field_subheading
 features[field][] = node-project-body

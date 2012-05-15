@@ -1618,13 +1618,41 @@ h1, h2, h3, h4, h5, h6 {
   .panel-col-last {
     @include grid(3);
     margin-top: em(-72px, 14px);
+    
+    .panel-separator {
+      clear: both;
+      margin-bottom: em(25px, 14px);
+    }
   }
 
+  .pane-related-reverse,
   .pane-taxonomy-menu-tjenester {
     .pane-title {
       color: #000;
       font-size: em(11px, 14px);
       text-transform: uppercase;
+    }
+  }
+  .pane-related-reverse {
+    .pane-content {
+      background-color: #D3DDE2;
+      padding: 5px;
+    }
+    .view-content {
+      border: 1px dashed #72858C;
+      @include border-radius(2px);
+
+      ul {
+        color: #454545;
+
+        li {
+          line-height: 1em;
+          margin: 1.5em 0.5em 1.5em 0;
+        }
+        a {
+          color: #44799D;
+        }
+      }
     }
   }
 }

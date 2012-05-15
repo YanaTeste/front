@@ -6365,10 +6365,35 @@ h1, h2, h3, h4, h5, h6 {
   width: 220px;
   margin-top: -5.143em;
 }
+.page-node .region-content .panel-col-last .panel-separator {
+  clear: both;
+  margin-bottom: 1.786em;
+}
+.page-node .region-content .pane-related-reverse .pane-title,
 .page-node .region-content .pane-taxonomy-menu-tjenester .pane-title {
   color: #000;
   font-size: 0.786em;
   text-transform: uppercase;
+}
+.page-node .region-content .pane-related-reverse .pane-content {
+  background-color: #D3DDE2;
+  padding: 5px;
+}
+.page-node .region-content .pane-related-reverse .view-content {
+  border: 1px dashed #72858C;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+}
+.page-node .region-content .pane-related-reverse .view-content ul {
+  color: #454545;
+}
+.page-node .region-content .pane-related-reverse .view-content ul li {
+  line-height: 1em;
+  margin: 1.5em 0.5em 1.5em 0;
+}
+.page-node .region-content .pane-related-reverse .view-content ul a {
+  color: #44799D;
 }
 
 /*         Forms

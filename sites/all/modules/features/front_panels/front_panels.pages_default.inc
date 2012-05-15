@@ -789,6 +789,33 @@ function front_panels_default_page_manager_pages() {
     $display->panels['left'][1] = 'new-19';
     $pane = new stdClass();
     $pane->pid = 'new-20';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '',
+      'items_per_page' => '1',
+      'arguments' => array(
+        'field_name_value' => 'Per André Rønsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-20'] = $pane;
+    $display->panels['left'][2] = 'new-20';
+    $pane = new stdClass();
+    $pane->pid = 'new-21';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-tjenester';
@@ -806,8 +833,8 @@ function front_panels_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-20'] = $pane;
-    $display->panels['right'][0] = 'new-20';
+    $display->content['new-21'] = $pane;
+    $display->panels['right'][0] = 'new-21';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

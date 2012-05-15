@@ -21,16 +21,16 @@
     Drupal.behaviors.frontd7 = {
         attach: function(context) {
             // Set equalHeights on How We Work
-            if ($('#panel-slikjobbervi').length) {
-                var $hww_panel = $('#panel-slikjobbervi');
+            if ($('#panel-slikjobbervi', context).length) {
+                var $hww_panel = $('#panel-slikjobbervi', context);
 
                 $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
                 $('.center-wrapper .pane-node', $hww_panel).equalHeights();
             };
 
             // Improve webforms select elements.
-            if ($('form.webform-client-form select').length) {
-                var $select = $('form.webform-client-form select');
+            if ($('form.webform-client-form select', context).length) {
+                var $select = $('form.webform-client-form select', context);
 
                 $('option:first', $select).each(function() {
                     var $this = $(this);
@@ -40,6 +40,37 @@
                 });
                 $select.customSelect();
             };
+        }
+    };
+
+    Drupal.behaviors.frontMenu = {
+        attach: function(context) {
+            // Taxonomies menus.
+            if ($('.view-taxonomy-menu', context).length) {
+                $('.view-taxonomy-menu', context).each(function() {
+                    var $menu = $('.view-content', this);
+
+                    // Show children of the current active menu item.
+                    $('h3 a.active', $menu).toggleClass('open').parent('h3').next('ul').show();
+                    // Show siblings of the current active menu item
+                    // and activate the parent term link.
+                    $('ul a.active', $menu).parents('ul').show().prev('h3 a').toggleClass('open');
+
+                    // Slide down/up on click.
+                    $('h3 a', $menu).each(function() {
+                        var $this = $(this);
+
+                        $this.click(function(e) {
+                            if (!$this.hasClass('open')) {
+                                e.preventDefault();
+                                $('h3 a.open', $menu).toggleClass('open').parent('h3').next('ul').slideUp();
+                                $this.toggleClass('open').parent('h3').next('ul').slideDown();
+                            }
+                        });
+                    });
+                    
+                });
+            }
         }
     };
 

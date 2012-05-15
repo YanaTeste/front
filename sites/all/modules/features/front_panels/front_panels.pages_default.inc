@@ -730,6 +730,8 @@ function front_panels_default_page_manager_pages() {
     'style_settings' => array(
       'default' => NULL,
       'middle' => NULL,
+      'left' => NULL,
+      'right' => NULL,
     ),
   );
   $display->cache = array();
@@ -772,7 +774,7 @@ function front_panels_default_page_manager_pages() {
       'override_title' => 0,
       'override_title_text' => '',
       'arguments' => array(
-        'tid' => '%term:name',
+        'tid' => '%term:tid',
       ),
     );
     $pane->cache = array();

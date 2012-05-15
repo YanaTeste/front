@@ -6311,6 +6311,10 @@ h1, h2, h3, h4, h5, h6 {
 .page-node .page-wrapper {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
+.page-node #page-title {
+  margin-top: 1.44em;
+  margin-left: 10px;
+}
 .page-node #main {
   margin-top: 5.357em;
 }
@@ -6336,6 +6340,35 @@ h1, h2, h3, h4, h5, h6 {
   padding: 9px;
   background-color: #fff;
   border: 1px solid #D3E2E2;
+}
+
+.page-node .region-content {
+  margin-bottom: 2.5em;
+}
+.page-node .region-content .inside {
+  margin: 0;
+}
+.page-node .region-content .panel-col-first {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 620px;
+  padding-right: 80px;
+  margin-bottom: 4em;
+}
+.page-node .region-content .panel-col-last {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
+  margin-top: -5.143em;
+}
+.page-node .region-content .pane-taxonomy-menu-tjenester .pane-title {
+  color: #000;
+  font-size: 0.786em;
+  text-transform: uppercase;
 }
 
 /*         Forms

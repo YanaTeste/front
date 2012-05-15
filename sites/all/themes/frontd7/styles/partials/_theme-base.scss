@@ -1569,6 +1569,10 @@ h1, h2, h3, h4, h5, h6 {
   .page-wrapper {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
+  #page-title {
+    margin-top: em(72px, 50px);
+    margin-left: 10px;
+  }
   #main {
     margin-top: em(75px, 14px);
   }
@@ -1596,6 +1600,31 @@ h1, h2, h3, h4, h5, h6 {
       padding: 9px;
       background-color: #fff;
       border: 1px solid #D3E2E2;
+    }
+  }
+}
+
+.page-node .region-content {
+  margin-bottom: em(35px, 14px);
+
+  .inside {
+    margin: 0;
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+    margin-bottom: 4em;
+  }
+  .panel-col-last {
+    @include grid(3);
+    margin-top: em(-72px, 14px);
+  }
+
+  .pane-taxonomy-menu-tjenester {
+    .pane-title {
+      color: #000;
+      font-size: em(11px, 14px);
+      text-transform: uppercase;
     }
   }
 }

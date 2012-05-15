@@ -54,7 +54,7 @@
                     $('h3 a.active', $menu).toggleClass('open').parent('h3').next('ul').show();
                     // Show siblings of the current active menu item
                     // and activate the parent term link.
-                    $('ul a.active', $menu).parents('ul').show().prev('h3 a').toggleClass('open');
+                    $('ul a.active', $menu).parents('ul').show().prev('h3').find('a').toggleClass('open');
 
                     // Slide down/up on click.
                     $('h3 a', $menu).each(function() {

@@ -5534,6 +5534,10 @@ h1, h2, h3, h4, h5, h6 {
 .page-tjenester-term .page-wrapper {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
+.page-tjenester-term #page-title {
+  margin-top: 1.44em;
+  margin-left: 10px;
+}
 
 #panel-tjenester .inside {
   margin: 0;
@@ -5545,7 +5549,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 10px;
   width: 620px;
   padding-right: 80px;
-  padding-top: 5em;
   margin-bottom: 4em;
 }
 #panel-tjenester .panel-col-last {
@@ -5554,7 +5557,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
-  margin-top: 5em;
 }
 #panel-tjenester .pane-term-description p {
   color: #333;
@@ -5575,6 +5577,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 #panel-tjenester .pane-tjenester-teasers .views-field-title a {
   color: #000;
+}
+#panel-tjenester .pane-taxonomy-menu-tjenester .pane-title {
+  color: #000;
+  font-size: 0.786em;
+  text-transform: uppercase;
 }
 
 /*         How we work

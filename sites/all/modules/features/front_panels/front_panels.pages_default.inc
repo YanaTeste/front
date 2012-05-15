@@ -787,6 +787,27 @@ function front_panels_default_page_manager_pages() {
     $pane->locks = array();
     $display->content['new-19'] = $pane;
     $display->panels['left'][1] = 'new-19';
+    $pane = new stdClass();
+    $pane->pid = 'new-20';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'taxonomy_menu-tjenester';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => 'Kompetanse',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-20'] = $pane;
+    $display->panels['right'][0] = 'new-20';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

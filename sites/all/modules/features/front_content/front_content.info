@@ -17,6 +17,7 @@ features[features_api][] = api:1
 features[field][] = node-article-body
 features[field][] = node-article-field_files
 features[field][] = node-article-field_image
+features[field][] = node-article-field_related
 features[field][] = node-article-field_section
 features[field][] = node-article-field_subheading
 features[field][] = node-article-field_tags

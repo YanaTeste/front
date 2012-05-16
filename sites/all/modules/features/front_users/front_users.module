@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Front Users feature.
+ */
+
+include_once 'front_users.features.inc';

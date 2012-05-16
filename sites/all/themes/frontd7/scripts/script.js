@@ -26,7 +26,12 @@
 
                 $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
                 $('.center-wrapper .pane-node', $hww_panel).equalHeights();
-            };
+            }
+
+            // Set equalHeights on How We Work
+            if ($('#panel-medarbeidere', context).length) {
+                $('#panel-medarbeidere .view-employees .views-row', context).equalHeights();
+            }
 
             // Improve webforms select elements.
             if ($('form.webform-client-form select', context).length) {
@@ -39,7 +44,7 @@
                     };
                 });
                 $select.customSelect();
-            };
+            }
         }
     };
 

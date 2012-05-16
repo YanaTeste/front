@@ -6306,6 +6306,116 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.5em;
 }
 
+/*         Employees
+------------------------------------------------*/
+.page-medarbeidere .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
+.page-medarbeidere #page-title {
+  margin-top: 1.44em;
+  margin-left: 10px;
+}
+
+#panel-medarbeidere .inside {
+  margin: 0;
+}
+#panel-medarbeidere .panel-col-first {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 620px;
+  padding-right: 80px;
+}
+#panel-medarbeidere .panel-col-last {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 220px;
+}
+#panel-medarbeidere .view-employees .view-header p {
+  color: #333;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.429em;
+  font-style: oblique;
+  line-height: 1.5em;
+}
+#panel-medarbeidere .view-employees .view-content {
+  overflow: hidden;
+  margin-bottom: 1em;
+}
+#panel-medarbeidere .view-employees .views-row {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 280px;
+  margin: 2px 0 -2px;
+  padding: 1.357em 0;
+  border-bottom: 2px dotted #B6BABC;
+}
+#panel-medarbeidere .view-employees .views-row-odd {
+  clear: both;
+  padding-right: 1.357em;
+  border-right: 2px dotted #B6BABC;
+}
+#panel-medarbeidere .view-employees .views-row-even {
+  padding-left: 1.357em;
+}
+#panel-medarbeidere .view-employees .views-field-field-image {
+  float: left;
+  margin-right: 10px;
+}
+#panel-medarbeidere .view-employees .views-field-field-image img {
+  display: block;
+  background-color: #FFF;
+  padding: 9px;
+  border: 1px solid #D3E2E2;
+}
+#panel-medarbeidere .view-employees .views-field-field-name {
+  font-size: 1.143em;
+  font-weight: 300;
+  line-height: 1em;
+  margin: 0.5em 0 0.438em;
+}
+#panel-medarbeidere .view-employees .views-field-field-title {
+  color: #666;
+  font-size: 0.929em;
+  font-weight: 300;
+  line-height: 1em;
+  margin-bottom: 0.769em;
+}
+#panel-medarbeidere .view-employees .views-field-mail,
+#panel-medarbeidere .view-employees .views-field-url {
+  font-size: 0.929em;
+}
+#panel-medarbeidere .view-employees .views-field-mail a,
+#panel-medarbeidere .view-employees .views-field-url a {
+  color: #44799D;
+}
+#panel-medarbeidere .view-employees .views-field-nothing {
+  overflow: hidden;
+}
+#panel-medarbeidere .view-employees .views-field-nothing a {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background: transparent url("../images/icons_user-socialmedia.png") no-repeat;
+  float: left;
+  width: 22px;
+  height: 17px;
+}
+#panel-medarbeidere .view-employees .views-field-nothing a.link-twitter {
+  background-position: 0 0;
+}
+#panel-medarbeidere .view-employees .views-field-nothing a.link-facebook {
+  background-position: -44px 0;
+}
+#panel-medarbeidere .view-employees .views-field-nothing a.link-linkedin {
+  background-position: -22px 0;
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 .page-node .page-wrapper {

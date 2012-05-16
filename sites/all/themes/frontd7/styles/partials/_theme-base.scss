@@ -1563,6 +1563,112 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/*         Employees
+------------------------------------------------*/
+.page-medarbeidere {
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+  #page-title {
+    margin-top: em(72px, 50px);
+    margin-left: 10px;
+  }
+}
+
+#panel-medarbeidere {
+  .inside {
+    margin: 0;
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+  }
+  .panel-col-last {
+    @include grid(3);
+  }
+  .view-employees {
+    .view-header {
+      p {
+        color: #333;
+        font-family: $altFontFamily;
+        font-size: em(20px, 14px);
+        font-style: oblique;
+        line-height: 1.5em;
+      }
+    }
+    .view-content {
+      overflow: hidden;
+      margin-bottom: 1em;
+    }
+    .views-row {
+      @include grid(3.75);
+      margin: 2px 0 -2px;
+      padding: em(19px, 14px) 0;
+      border-bottom: 2px dotted #B6BABC;
+    }
+    .views-row-odd {
+      clear: both;
+      padding-right: em(19px, 14px);
+      border-right: 2px dotted #B6BABC;
+    }
+    .views-row-even {
+      padding-left: em(19px, 14px);
+    }
+    .views-field-field-image {
+      float: left;
+      margin-right: 10px;
+
+      img {
+        display: block;
+        background-color: #FFF;
+        padding: 9px;
+        border: 1px solid #D3E2E2;
+      }
+    }
+    .views-field-field-name {
+      font-size: em(16px, 14px);
+      font-weight: 300;
+      line-height: 1em;
+      margin: em(8px, 16px) 0 em(7px, 16px);
+    }
+    .views-field-field-title {
+      color: #666;
+      font-size: em(13px, 14px);
+      font-weight: 300;
+      line-height: 1em;
+      margin-bottom: em(10px, 13px);
+    }
+    .views-field-mail,
+    .views-field-url {
+      font-size: em(13px, 14px);
+      a {
+        color: #44799D;
+      }
+    }
+    .views-field-nothing {
+      overflow: hidden;
+
+      a {
+        @include hide-text;
+        background: transparent url('../images/icons_user-socialmedia.png') no-repeat;
+        float: left;
+        width: 22px;
+        height: 17px;
+
+        &.link-twitter {
+          background-position: 0 0;
+        }
+        &.link-facebook {
+          background-position: -44px 0;
+        }
+        &.link-linkedin {
+          background-position: -22px 0;
+        }
+      }
+    }
+  }
+}
+
 /*         Inner Pages
 ------------------------------------------------*/
 .page-node {

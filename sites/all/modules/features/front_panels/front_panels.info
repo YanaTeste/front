@@ -17,6 +17,7 @@ features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_pages][] = home
 features[page_manager_pages][] = kontakt
 features[page_manager_pages][] = losninger
+features[page_manager_pages][] = medarbeidere
 features[page_manager_pages][] = slikjobbervi
 features[page_manager_pages][] = tjenester
 features[panels_mini][] = postscript

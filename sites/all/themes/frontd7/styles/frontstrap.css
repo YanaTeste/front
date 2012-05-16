@@ -6333,6 +6333,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
+  margin-top: -5.143em;
+}
+#panel-medarbeidere .view-employees .view-header {
+  margin-bottom: 1.714em;
 }
 #panel-medarbeidere .view-employees .view-header p {
   color: #333;
@@ -6343,7 +6347,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #panel-medarbeidere .view-employees .view-content {
   overflow: hidden;
-  margin-bottom: 1em;
+  margin-bottom: 3.571em;
 }
 #panel-medarbeidere .view-employees .views-row {
   display: inline;

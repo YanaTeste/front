@@ -1585,9 +1585,12 @@ h1, h2, h3, h4, h5, h6 {
   }
   .panel-col-last {
     @include grid(3);
+    margin-top: em(-72px, 14px);
   }
   .view-employees {
     .view-header {
+      margin-bottom: em(24px, 14px);
+
       p {
         color: #333;
         font-family: $altFontFamily;
@@ -1598,7 +1601,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .view-content {
       overflow: hidden;
-      margin-bottom: 1em;
+      margin-bottom: em(50px, 14px);
     }
     .views-row {
       @include grid(3.75);

@@ -397,3 +397,24 @@ function front_custom_twitter_pull_blocks() {
     ),
   );
 }
+
+/**
+ * Allows altering a view at the very beginning of views processing.
+ */
+function front_custom_views_pre_view(&$view, &$display_id, &$args) {
+  // not in use.
+}
+
+/**
+ * This hook is called right before the render process.
+ */
+function front_custom_views_pre_render(&$view) {
+  // Make sure we pass the normal path so the comparison
+  // on the l() function returns true on active menu items.
+  if ($view->name == 'services_block' && $view->current_display == 'menu') {
+    foreach ($view->result as $key => $row) {
+      $raw_url = &$view->result[$key]->field_field_link[0]['raw']['url'];
+      $raw_url = drupal_get_normal_path($raw_url);
+    }
+  }
+}

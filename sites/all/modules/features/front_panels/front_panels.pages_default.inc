@@ -49,16 +49,15 @@ function front_panels_default_page_manager_handlers() {
           'not' => FALSE,
         ),
         1 => array(
-          'name' => 'term_has_parent',
+          'name' => 'term',
           'settings' => array(
             'vid' => '2',
-            'vid_3' => array(),
-            'vid_4' => array(),
-            'vid_2' => array(
+            3 => array(),
+            4 => array(),
+            2 => array(
               25 => '25',
             ),
-            'vid_1' => array(),
-            'include_self' => 1,
+            1 => array(),
           ),
           'context' => 'relationship_entity_from_field:field_section-node-taxonomy_term_1',
           'not' => FALSE,
@@ -113,12 +112,12 @@ function front_panels_default_page_manager_handlers() {
     $pane->pid = 'new-2';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
-    $pane->subtype = 'taxonomy_menu-tjenester';
+    $pane->subtype = 'services_block-menu';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Kompetanse',
+      'override_title_text' => 'Tjenester',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -151,8 +150,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-3'] = $pane;
     $display->panels['right'][1] = 'new-3';
-  $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = '0';
+  $display->hide_title = PANELS_TITLE_PANE;
+  $display->title_pane = 'new-1';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context'] = $handler;
 
@@ -271,7 +270,7 @@ function front_panels_default_page_manager_pages() {
       'use_pager' => 0,
       'pager_id' => '',
       'items_per_page' => '3',
-      'override_title' => 0,
+      'override_title' => 1,
       'override_title_text' => '',
     );
     $pane->cache = array();
@@ -611,7 +610,10 @@ function front_panels_default_page_manager_pages() {
   $page->admin_title = 'Medarbeidere';
   $page->admin_description = '';
   $page->path = 'medarbeidere';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Medarbeidere',
@@ -942,7 +944,10 @@ function front_panels_default_page_manager_pages() {
   $page->admin_title = 'Tjenester';
   $page->admin_description = '';
   $page->path = 'tjenester/%term';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array(
     'term' => array(

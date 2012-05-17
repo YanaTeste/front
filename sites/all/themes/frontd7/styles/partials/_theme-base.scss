@@ -1351,12 +1351,12 @@ h1, h2, h3, h4, h5, h6 {
   .panel-col-first {
     @include grid(8);
     @include grid-suffix(1);
-    padding-top: 5em;
+    padding-top: em(70px, 14px);
     margin-bottom: 4em;
   }
   .panel-col-last {
     @include grid(3);
-    margin-top: em(70px, 14px);
+    margin-top: em(78px, 14px);
   }
 
   .webform-client-block {
@@ -1573,6 +1573,198 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/*         Support
+------------------------------------------------*/
+.page-support {
+  #page-title {
+    margin-top: em(75px, 50px);
+    margin-left: 10px;
+  }
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+}
+
+#panel-support {
+  .inside {
+    margin: 0;
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+    margin-bottom: 4em;
+  }
+  .panel-col-last {
+    @include grid(3);
+    margin-top: em(-70px, 14px);
+  }
+
+  .pane-custom-support-intro {
+    p {
+      font-family: $altFontFamily;
+      font-size: em(20px, 14px);
+      font-style: oblique;
+      line-height: 1.5em;
+      margin-bottom: em(32px, 20px);
+    }
+  }
+  .pane-custom-support-video {
+    background: transparent url('../images/bg_teaser-dashed-border.png') repeat-x left bottom;
+    margin-bottom: em(34px, 14px);
+    padding-bottom: em(24px, 14px);
+    overflow: hidden;
+
+    .pane-content {
+      img {
+        float: left;
+        display: block;
+        background-color: #fff;
+        border: 1px solid #D3E2E2;
+        margin: -0.35em 2.25em 1em 0;
+        padding: 9px;
+      }
+      p {
+        line-height: 1.7em;
+        margin: 1.15em 0;
+      }
+    }
+  }
+  .pane-custom-front-kontaktinfo {
+    .pane-title {
+      font-size: em(11px, 14px);
+      text-transform: uppercase;
+    }
+    .pane-content {
+      background-color: #D3DDE2;
+      padding: 5px;
+    }
+    ul {
+      border: 1px dashed #72858C;
+      margin: 0;
+      padding: em(15px, 14px) em(15px, 14px) em(2px, 14px);
+      @include border-radius(2px);
+
+      li {
+        color: #454545;
+        font-size: em(18px, 14px);
+        font-weight: 300;
+        list-style: none;
+        margin-bottom: em(12px, 18px);
+
+        a {
+          color: #44799D;
+        }
+        strong {
+          color: #666;
+          font-size: em(13px, 18px);
+          font-weight: 300;
+          line-height: 1;
+          display: block;
+        }
+      }
+    }
+  }
+  .webform-client-block {
+    header, label {
+      @include element-invisible;
+    }
+    form {
+      background: #F9FAFB;
+      border: 1px solid #D3E2E2;
+      padding: em(25px, 14px) perc(25px, 611px);
+      @include clearfix;
+    }
+    .form-text,
+    .form-textarea {
+      color: #454545;
+      font-family: $helveticaFontFamily;
+      font-size: em(18px, 14px);
+      line-height: 1em;
+      margin-bottom: em(20px, 18px);
+      padding: em(17px, 18px);
+      background-color: #EFEFEF;
+      border-color: #ccc;
+      @include border-radius(1px);
+      @include input-placeholder(#454545);
+
+      &:focus {
+        background-color: #fff;
+      }
+    }
+    .form-text {
+      width: perc(532px, 568px);
+    }
+    .form-textarea {
+      width: 100%;
+    }
+    .form-textarea {
+      font-size: 1em;
+      height: em(188px, 14px);
+      margin-bottom: em(20px, 14px);
+
+      &:-moz-placeholder {
+        font-size: em(18px, 14px);
+        height: em(188px, 18px);
+        margin-bottom: em(20px, 18px);
+      }
+      &::-webkit-input-placeholder {
+        font-size: em(18px, 14px);
+        height: em(188px, 18px);
+        margin-bottom: em(20px, 18px);
+      }
+    }
+    .customStyleSelectBox {
+      font-family: $helveticaFontFamily;
+      font-size: em(18px, 14px);
+      background: #efefef url('../images/icon_select-dropdown.png') no-repeat right center;
+      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
+      border: 1px solid #ccc;
+      @include border-radius(1px);
+      width: perc(532px, 568px);
+      padding: em(17px, 18px);
+      position: relative;
+      z-index: 0;
+
+      &:focus {
+        background-color: #fff;
+      }
+    }
+    #webform-component-alternative {
+      float: right;
+
+      p {
+        font-size: em(13px, 14px);
+        margin: em(18px, 13px) 0 0;
+      }
+    }
+    .form-actions {
+      background: #DADBDB;
+      @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+      border: none;
+      float: left;
+      margin: 0 0 em(-10px, 15px);
+      padding: 3px;
+      border: 1px solid #D6D7D8;
+      @include border-radius(em(26px, 15px));
+
+      input {
+        color: #fff;
+        font-family: $helveticaFontFamily;
+        font-size: em(15px, 14px);
+        font-weight: bold;
+        text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+        @include background-image(linear-gradient(#8CB2C8 3%, #619BBA 6%, #2C83AD, #437CA1));
+        width: em(196px, 15px);
+        margin: 0;
+        padding: em(11px, 15px) 0;
+        border: 1px solid #44799D;
+        border-color: #8FAFC4 #437EA2 #44799D;
+        @include border-radius(em(22px, 15px));
+      }
+    }
+  }
+}
+
 /*         Employees
 ------------------------------------------------*/
 .page-medarbeidere {
@@ -1580,7 +1772,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
   #page-title {
-    margin-top: em(72px, 50px);
+    margin-top: em(75px, 50px);
     margin-left: 10px;
   }
 }
@@ -1595,7 +1787,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .panel-col-last {
     @include grid(3);
-    margin-top: em(-72px, 14px);
+    margin-top: em(-70px, 14px);
   }
   .view-employees {
     .view-header {

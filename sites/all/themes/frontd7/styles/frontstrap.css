@@ -6465,16 +6465,16 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #fff;
   border: 1px solid #D3E2E2;
 }
-.page-node img.media-image {
+.page-node .node-full img.media-image {
   margin: 0 1.429em;
 }
-.page-node hr {
+.page-node .node-full hr {
   background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left center;
   height: 3px;
   margin: 2.857em 0;
   border: none;
 }
-.page-node blockquote {
+.page-node .node-full blockquote {
   font-family: Georgia, "Times New Roman", Times, serif;
   margin: 2em 0;
   padding: 0.25em 2.857em;
@@ -6482,36 +6482,36 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   border: none;
 }
-.page-node blockquote:before, .page-node blockquote:after {
+.page-node .node-full blockquote:before, .page-node .node-full blockquote:after {
   color: #7a7a7a;
   font-size: 5.714em;
   line-height: 1;
   display: block;
   position: absolute;
 }
-.page-node blockquote:before {
+.page-node .node-full blockquote:before {
   content: "\201C";
   left: -0.125em;
   top: -0.038em;
 }
-.page-node blockquote:after {
+.page-node .node-full blockquote:after {
   content: '\201D';
   height: 0.313em;
   right: 0;
   bottom: 0.313em;
 }
-.page-node blockquote p {
+.page-node .node-full blockquote p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.429em;
   font-style: oblique;
   line-height: 1.5em;
 }
-.page-node blockquote cite {
+.page-node .node-full blockquote cite {
   color: #999;
   display: block;
   margin-top: 0.357em;
 }
-.page-node blockquote cite:before {
+.page-node .node-full blockquote cite:before {
   content: "\2014 \2009";
 }
 

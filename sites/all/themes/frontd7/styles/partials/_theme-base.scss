@@ -1711,62 +1711,62 @@ h1, h2, h3, h4, h5, h6 {
       padding: 9px;
       background-color: #fff;
       border: 1px solid #D3E2E2;
+      
+      &.media-image {
+        margin: 0 em(20px, 14px);
+      }
     }
-  }
-  img.media-image {
-    margin: 0 em(20px, 14px);
-  }
-  hr {
-    background: transparent url('../images/bg_teaser-dashed-border.png') repeat-x left center;
-    height: 3px;
-    margin: em(40px, 14px) 0;
-    border: none;
-  }
-  blockquote {
-    font-family: $altFontFamily;
-    margin: 2em 0;
-    padding: 0.25em em(40px, 14px);
-    line-height: 1.45;
-    position: relative;
-    border: none;
-
-    &:before,
-    &:after {
-      color: #7a7a7a;
-      font-size: em(80px, 14px);
-      line-height: 1;
-      display: block;
-      position: absolute;
+    hr {
+      background: transparent url('../images/bg_teaser-dashed-border.png') repeat-x left center;
+      height: 3px;
+      margin: em(40px, 14px) 0;
+      border: none;
     }
-    &:before {
-      content: "\201C";
-      left: em(-10px, 80px);
-      top: em(-3px, 80px);
-    }
-    &:after {
-      content: '\201D';
-      height: em(25px, 80px);
-      right: 0;
-      bottom: em(25px, 80px);
-    }
-
-    p {
+    blockquote {
       font-family: $altFontFamily;
-      font-size: em(20px, 14px);
-      font-style: oblique;
-      line-height: em(30px, 20px);
-    }
-    cite {
-      color: #999;
-      display: block;
-      margin-top: em(5px, 14px);
+      margin: 2em 0;
+      padding: 0.25em em(40px, 14px);
+      line-height: 1.45;
+      position: relative;
+      border: none;
 
+      &:before,
+      &:after {
+        color: #7a7a7a;
+        font-size: em(80px, 14px);
+        line-height: 1;
+        display: block;
+        position: absolute;
+      }
       &:before {
-        content: "\2014 \2009";
+        content: "\201C";
+        left: em(-10px, 80px);
+        top: em(-3px, 80px);
+      }
+      &:after {
+        content: '\201D';
+        height: em(25px, 80px);
+        right: 0;
+        bottom: em(25px, 80px);
+      }
+
+      p {
+        font-family: $altFontFamily;
+        font-size: em(20px, 14px);
+        font-style: oblique;
+        line-height: em(30px, 20px);
+      }
+      cite {
+        color: #999;
+        display: block;
+        margin-top: em(5px, 14px);
+
+        &:before {
+          content: "\2014 \2009";
+        }
       }
     }
   }
-
 }
 
 .page-node .region-content {

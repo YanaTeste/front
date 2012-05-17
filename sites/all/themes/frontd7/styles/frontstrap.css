@@ -4758,25 +4758,31 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
 }
 
-.pane-menu-block {
+.pane-menu-block,
+.pane-services-block-menu {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
-.pane-menu-block .pane-title {
+.pane-menu-block .pane-title,
+.pane-services-block-menu .pane-title {
   font-size: 0.786em;
   text-transform: uppercase;
 }
-.pane-menu-block ul.menu {
+.pane-menu-block ul.menu,
+.pane-services-block-menu ul.menu {
   font-size: 1.143em;
   margin-left: 0;
 }
-.pane-menu-block ul.menu li {
+.pane-menu-block ul.menu li,
+.pane-services-block-menu ul.menu li {
   background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
   list-style: none;
 }
-.pane-menu-block ul.menu li:last-child {
+.pane-menu-block ul.menu li:last-child,
+.pane-services-block-menu ul.menu li:last-child {
   background-image: none;
 }
-.pane-menu-block ul.menu a {
+.pane-menu-block ul.menu a,
+.pane-services-block-menu ul.menu a {
   color: #fff;
   font-weight: 300;
   text-decoration: none;
@@ -4785,11 +4791,15 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   padding: 0.688em 0 0.75em 1.375em;
 }
-.pane-menu-block ul.menu a:hover {
+.pane-menu-block ul.menu a:hover,
+.pane-services-block-menu ul.menu a:hover {
   color: #F2CB2D;
   background-color: rgba(0, 0, 0, 0.15);
 }
-.pane-menu-block ul.menu .active a {
+.pane-menu-block ul.menu .active a,
+.pane-menu-block ul.menu a.active,
+.pane-services-block-menu ul.menu .active a,
+.pane-services-block-menu ul.menu a.active {
   color: #F2CB2D;
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
@@ -6456,7 +6466,53 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #D3E2E2;
 }
 .page-node img.media-image {
-  margin: 0px 20px 0px 20px;
+  margin: 0 1.429em;
+}
+.page-node hr {
+  background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left center;
+  height: 3px;
+  margin: 2.857em 0;
+  border: none;
+}
+.page-node blockquote {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  margin: 2em 0;
+  padding: 0.25em 2.857em;
+  line-height: 1.45;
+  position: relative;
+  border: none;
+}
+.page-node blockquote:before, .page-node blockquote:after {
+  color: #7a7a7a;
+  font-size: 5.714em;
+  line-height: 1;
+  display: block;
+  position: absolute;
+}
+.page-node blockquote:before {
+  content: "\201C";
+  left: -0.125em;
+  top: -0.038em;
+}
+.page-node blockquote:after {
+  content: '\201D';
+  height: 0.313em;
+  right: 0;
+  bottom: 0.313em;
+}
+.page-node blockquote p {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 1.429em;
+  font-style: oblique;
+  line-height: 1.5em;
+}
+.page-node blockquote cite {
+  color: #999;
+  display: block;
+  margin-top: 0.357em;
+}
+.page-node blockquote cite:before {
+  content: "\2014 \2009";
 }
 
 .page-node .region-content {

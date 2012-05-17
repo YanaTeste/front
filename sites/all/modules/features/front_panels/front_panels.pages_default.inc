@@ -900,10 +900,13 @@ function front_panels_default_page_manager_pages() {
     $pane->pid = 'new-21';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'areas_block-services';
+    $pane->subtype = 'kompetanse-list';
     $pane->shown = TRUE;
     $pane->access = array();
-    $pane->configuration = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
     $pane->cache = array();
     $pane->style = array(
       'settings' => NULL,

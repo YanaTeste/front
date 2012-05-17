@@ -13,7 +13,7 @@ function front_content_taxonomy_default_vocabularies() {
       'name' => 'Seksjon',
       'machine_name' => 'section',
       'description' => '',
-      'hierarchy' => '1',
+      'hierarchy' => '0',
       'module' => 'nodeorder',
       'weight' => '0',
       'rdf_mapping' => array(

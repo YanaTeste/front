@@ -5486,12 +5486,12 @@ h1, h2, h3, h4, h5, h6 {
 #panel-solutions .pane-users-block-single .views-field-nothing {
   width: 200px;
 }
-#panel-solutions .pane-areas-block-services {
+#panel-solutions .pane-kompetanse-list {
   background: #dee2e5 url("../images/bg_latest-projects.png") repeat-x center top;
   padding-top: 7em;
   padding-bottom: 2.143em;
 }
-#panel-solutions .pane-areas-block-services .pane-title {
+#panel-solutions .pane-kompetanse-list .pane-title {
   color: #263A43;
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 2.143em;
@@ -5500,7 +5500,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   margin-bottom: 0.333em;
 }
-#panel-solutions .pane-areas-block-services .view-header {
+#panel-solutions .pane-kompetanse-list .view-header {
   text-align: center;
   display: inline;
   float: left;
@@ -5511,12 +5511,12 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   margin: 0 auto 3em;
 }
-#panel-solutions .pane-areas-block-services .view-header p {
+#panel-solutions .pane-kompetanse-list .view-header p {
   font-size: 1.286em;
   font-style: oblique;
   line-height: 1.611em;
 }
-#panel-solutions .pane-areas-block-services .view-content {
+#panel-solutions .pane-kompetanse-list .view-content {
   background-color: #fff;
   -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -5525,32 +5525,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 1.042% 2.143em;
   padding: 1.714em 2.128% 1.143em;
 }
-#panel-solutions .pane-areas-block-services .view-content:before, #panel-solutions .pane-areas-block-services .view-content:after {
+#panel-solutions .pane-kompetanse-list .view-content:before, #panel-solutions .pane-kompetanse-list .view-content:after {
   display: table;
   content: "";
 }
-#panel-solutions .pane-areas-block-services .view-content:after {
+#panel-solutions .pane-kompetanse-list .view-content:after {
   clear: both;
 }
-#panel-solutions .pane-areas-block-services .views-row {
+#panel-solutions .pane-kompetanse-list .view-content .column {
   display: inline;
   float: left;
   width: 20%;
 }
-#panel-solutions .pane-areas-block-services .views-field-title {
+#panel-solutions .pane-kompetanse-list .view-content h3 {
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
   margin-bottom: 1em;
 }
-#panel-solutions .pane-areas-block-services .views-row ul {
+#panel-solutions .pane-kompetanse-list .view-content ul {
   margin: 0;
   list-style: none;
 }
-#panel-solutions .pane-areas-block-services .views-row ul li {
+#panel-solutions .pane-kompetanse-list .view-content ul li {
   font-size: 0.929em;
   margin-bottom: 0.692em;
 }
-#panel-solutions .pane-areas-block-services .views-row ul a:after {
+#panel-solutions .pane-kompetanse-list .view-content ul a:after {
   content: ' ››';
 }
 

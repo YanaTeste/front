@@ -835,7 +835,7 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 
-  .pane-areas-block-services {
+  .pane-kompetanse-list {
     background: #dee2e5 url('../images/bg_latest-projects.png') repeat-x center top;
     padding-top: em(98px, 14px);
     padding-bottom: em(30px, 14px);
@@ -868,27 +868,28 @@ h1, h2, h3, h4, h5, h6 {
       @include clearfix;
       margin: 0 perc(10px, 960px) em(30px, 14px);
       padding: em(24px, 14px) perc(20px, 940px) em(16px, 14px);
-    }
-    .views-row {
-      display: inline;
-      float: left;
-      width: 20%;
-    }
-    .views-field-title {
-      font-family: $baseFontFamily;
-      font-weight: normal;
-      margin-bottom: 1em;
-    }
-    .views-row ul {
-      margin: 0;
-      list-style: none;
-
-      li {
-        font-size: em(13px, 14px);
-        margin-bottom: em(9px, 13px);
+      
+      .column {
+        display: inline;
+        float: left;
+        width: 20%;
       }
-      a:after {
-        content: ' ››';
+      h3 {
+        font-family: $baseFontFamily;
+        font-weight: normal;
+        margin-bottom: 1em;
+      }
+      ul {
+        margin: 0;
+        list-style: none;
+
+        li {
+          font-size: em(13px, 14px);
+          margin-bottom: em(9px, 13px);
+        }
+        a:after {
+          content: ' ››';
+        }
       }
     }
   }

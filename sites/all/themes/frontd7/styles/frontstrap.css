@@ -4695,6 +4695,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Sidebars */
 .view-taxonomy-menu {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 .view-taxonomy-menu .view-content h3 {
   color: #fff;
@@ -4752,6 +4753,9 @@ h1, h2, h3, h4, h5, h6 {
   margin: 0 -1px -1px;
   padding: 0.929em 5px 1em 1.5em;
 }
+.view-taxonomy-menu .view-content ul a:hover, .view-taxonomy-menu .view-content ul a.active {
+  color: #F2CB2D;
+}
 .view-taxonomy-menu .view-content ul .views-row-first a {
   -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
@@ -4761,6 +4765,7 @@ h1, h2, h3, h4, h5, h6 {
 .pane-menu-block,
 .pane-services-block-menu {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
 }
 .pane-menu-block .pane-title,
 .pane-services-block-menu .pane-title {
@@ -5549,18 +5554,18 @@ h1, h2, h3, h4, h5, h6 {
   content: ' ››';
 }
 
-.page-tjenester-term .page-wrapper {
+.page-kompetanse .page-wrapper {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
-.page-tjenester-term #page-title {
+.page-kompetanse #page-title {
   margin-top: 1.44em;
   margin-left: 10px;
 }
 
-#panel-tjenester .inside {
+#panel-kompetanse .inside {
   margin: 0;
 }
-#panel-tjenester .panel-col-first {
+#panel-kompetanse .panel-col-first {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5569,7 +5574,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 80px;
   margin-bottom: 4em;
 }
-#panel-tjenester .panel-col-last {
+#panel-kompetanse .panel-col-last {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5577,25 +5582,25 @@ h1, h2, h3, h4, h5, h6 {
   width: 220px;
   margin-top: -5.143em;
 }
-#panel-tjenester .pane-term-description p {
+#panel-kompetanse .pane-term-description p {
   color: #333;
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.429em;
   font-style: oblique;
   line-height: 1.5em;
 }
-#panel-tjenester .pane-tjenester-teasers .views-row {
+#panel-kompetanse .pane-tjenester-teasers .views-row {
   background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left bottom;
   padding: 3.571em 0 3.571em;
   overflow: hidden;
 }
-#panel-tjenester .pane-tjenester-teasers .views-row-first {
+#panel-kompetanse .pane-tjenester-teasers .views-row-first {
   padding-top: 3.571em;
 }
-#panel-tjenester .pane-tjenester-teasers .views-row-last {
+#panel-kompetanse .pane-tjenester-teasers .views-row-last {
   background: none;
 }
-#panel-tjenester .pane-tjenester-teasers .views-field-field-image {
+#panel-kompetanse .pane-tjenester-teasers .views-field-field-image {
   display: inline;
   float: left;
   margin-left: 10px;
@@ -5604,15 +5609,15 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 0;
   padding-right: 40px;
 }
-#panel-tjenester .pane-tjenester-teasers .views-field-title {
+#panel-kompetanse .pane-tjenester-teasers .views-field-title {
   font-size: 1.571em;
   line-height: 1.636em;
   margin-bottom: 0.409em;
 }
-#panel-tjenester .pane-tjenester-teasers .views-field-title a {
+#panel-kompetanse .pane-tjenester-teasers .views-field-title a {
   color: #000;
 }
-#panel-tjenester .pane-taxonomy-menu-tjenester .pane-title {
+#panel-kompetanse .pane-taxonomy-menu-kompetanse .pane-title {
   color: #000;
   font-size: 0.786em;
   text-transform: uppercase;
@@ -6543,7 +6548,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1.786em;
 }
 .page-node .region-content .pane-related-reverse .pane-title,
-.page-node .region-content .pane-taxonomy-menu-tjenester .pane-title {
+.page-node .region-content .pane-taxonomy-menu-kompetanse .pane-title {
   color: #000;
   font-size: 0.786em;
   text-transform: uppercase;
@@ -6572,6 +6577,7 @@ h1, h2, h3, h4, h5, h6 {
 /*         Forms
 ------------------------------------------------*/
 /* Remove >> */
+.not-logged-in .tabs,
 .breadcrumb {
   display: none;
 }

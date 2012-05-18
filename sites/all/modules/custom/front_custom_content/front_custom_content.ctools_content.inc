@@ -21,11 +21,27 @@ function front_custom_content_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => 'Front Kommunikasjon AS',
-    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"349","attributes":{"alt":"","class":"media-image","height":"205","typeof":"foaf:Image","width":"235"}}]]</p> <ul><li><strong class="inline">Telefon</strong>&nbsp;69 30 44 00</li><li><strong class="inline">Faks</strong>&nbsp;69 30 44 01</li><li><strong>Besøksadresse&nbsp;</strong>Torvgaten 64, 1632 Gamle Fredrikstad</li><li><strong>Postadresse&nbsp;</strong>Postboks 1190, 1629 Gamle Fredrikstad</li><li><strong>Kart&nbsp;</strong>Se på kartet hvor vi er.</li></ul>',
+    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"356","attributes":{"class":"media-image","height":"205","typeof":"foaf:Image","width":"235"}}]]</p> <ul><li><strong class="inline">Telefon</strong>&nbsp;69 30 44 00</li><li><strong class="inline">Faks</strong>&nbsp;69 30 44 01</li><li><strong>Besøksadresse&nbsp;</strong>Torvgaten 64, 1632 Gamle Fredrikstad</li><li><strong>Postadresse&nbsp;</strong>Postboks 1190, 1629 Gamle Fredrikstad</li><li><strong>Kart&nbsp;</strong>Se på kartet hvor vi er.</li></ul>',
     'format' => 'full_html',
     'substitute' => 0,
   );
   $contents['front_kontakt'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'front_kontaktinfo';
+  $content->admin_title = 'Front Kontaktinfo';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => 'Kontaktinfo',
+    'body' => '<p></p><ul><li><strong>Epost </strong>support@front.no</li><li><strong>Telefon </strong>69 30 44 00</li></ul><p></p>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['front_kontaktinfo'] = $content;
 
   $content = new stdClass();
   $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
@@ -37,9 +53,9 @@ function front_custom_content_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => 'Gamlebyen i Fredrikstad',
-    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"350","attributes":{"alt":"","class":"media-image","height":"129","typeof":"foaf:Image","width":"235"}}]]</p><p>Du finner oss i Gamlebyen i Fredrikstad. Her er du er mer en gjerne velkommen til å møte oss for en prat om mulighetene som kan passe for deg. Kontakt oss og avtal et møte.</p>',
+    'body' => '<p>[[{"type":"media","view_mode":"media_original","fid":"357","attributes":{"class":"media-image","height":"129","typeof":"foaf:Image","width":"235"}}]]</p><p>Du finner oss i Gamlebyen i Fredrikstad. Her er du er mer en gjerne velkommen til å møte oss for en prat om mulighetene som kan passe for deg. Kontakt oss og avtal et møte.</p>',
     'format' => 'full_html',
-    'substitute' => 1,
+    'substitute' => 0,
   );
   $contents['gamlebyen_fredrikstad'] = $content;
 
@@ -52,8 +68,8 @@ function front_custom_content_default_ctools_custom_content() {
   $content->category = 'Custom';
   $content->settings = array(
     'admin_title' => 'Solutions tagline + teaser',
-    'title' => 'Vi jobber i to faser',
-    'body' => '<p>Etter et prosjekt er ferdig utviklet jobber vi videre med å optimere.<br>Ved å måle resultat på tiltak lærer vi hva som virker, noe som igjen vil gi bedre resultater.</p>',
+    'title' => 'Hva er det <strong>egentlig</strong> du behøver?',
+    'body' => '<p align="left">Det kan være utfordrende å ta de riktige beslutningene på investeringer og strategi for digitale medier. Hvor trykker skoen? Hvilke muligheter har vi ?<span>&nbsp; </span>Trenger vi et nytt system, gjør vi arbeidet med det vi har? Hvor mye skal vi bruke av interne og eksterne ressurser?</p>',
     'format' => 'full_html',
     'substitute' => 1,
   );
@@ -106,6 +122,38 @@ function front_custom_content_default_ctools_custom_content() {
     'substitute' => 1,
   );
   $contents['solutions_intro'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'support_intro';
+  $content->admin_title = 'Support Intro';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => '',
+    'body' => '<p>Hvis du har et problem med en løsning vi har levert får du enkelt tak i oss gjennom vårt supportsenter. Vi foretrekker å få meldinger inn via <a href="#">skjema</a> eller på <a href="#">epost</a>. Da er det lett å følge historikken  både for oss og deg som kunde.</p>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['support_intro'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
+  $content->name = 'support_video';
+  $content->admin_title = 'Support video';
+  $content->admin_description = '';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => '',
+    'title' => '',
+    'body' => '<p><a href="#">[[{"type":"media","view_mode":"media_original","fid":"406","attributes":{"class":"media-image","height":"92","typeof":"foaf:Image","width":"160"}}]]</a></p><p>Sjekk ut våre <a href="#">opplæringsartikler og videoer</a> som tar for seg vanlig administrering av nettsider vi har levert. Det er godt mulig at du finner svaret på spørsmålet du har der.</p>',
+    'format' => 'full_html',
+    'substitute' => 0,
+  );
+  $contents['support_video'] = $content;
 
   return $contents;
 }

@@ -5107,7 +5107,7 @@ h1, h2, h3, h4, h5, h6 {
   float: none;
 }
 .page-home .pane-home-featured-home {
-  padding-top: 3.429em;
+  padding-top: 3.143em;
 }
 .page-home .pane-home-featured-home .view-content {
   overflow: hidden;
@@ -5127,8 +5127,13 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.571em;
   font-weight: normal;
+  line-height: 1em;
   letter-spacing: -0.04em;
   margin-bottom: 0.38em;
+}
+.page-home .pane-home-featured-home .views-field-title em {
+  font-size: 0.7em;
+  font-style: normal;
 }
 .page-home .pane-home-featured-home .views-field-body {
   margin-bottom: 1.643em;
@@ -5146,8 +5151,7 @@ h1, h2, h3, h4, h5, h6 {
   text-align: center;
   text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
   display: inline-block;
-  width: 9.611em;
-  padding: 0.778em 0 0.889em;
+  padding: 0.778em 1.833em 0.889em;
   background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #df701f), color-stop(13%, #e68022), color-stop(100%, #d14d1a));
   background-image: -webkit-linear-gradient(#df701f, #e68022 13%, #d14d1a);
   background-image: -moz-linear-gradient(#df701f, #e68022 13%, #d14d1a);
@@ -5207,6 +5211,7 @@ h1, h2, h3, h4, h5, h6 {
 .page-home .pane-services-block-home .panel-pane-inner {
   background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
   overflow: hidden;
+  padding-top: 3.214em;
 }
 .page-home .pane-services-block-home .pane-title {
   clip: rect(1px, 1px, 1px, 1px);
@@ -5283,8 +5288,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2.357em;
 }
 .page-home .pane-projects-block-latest-projects {
-  background: #e1e1e1 url("../images/bg_latest-projects.png") repeat-x center top;
-  padding-top: 1.786em;
+  background: #dee2e5 url("../images/bg_latest-projects.png") repeat-x center top;
+  padding-top: 3.214em;
   padding-bottom: 2.143em;
 }
 .page-home .pane-projects-block-latest-projects .pane-title {

@@ -399,13 +399,6 @@ function front_custom_twitter_pull_blocks() {
 }
 
 /**
- * Allows altering a view at the very beginning of views processing.
- */
-function front_custom_views_pre_view(&$view, &$display_id, &$args) {
-  // not in use.
-}
-
-/**
  * This hook is called right before the render process.
  */
 function front_custom_views_pre_render(&$view) {
@@ -417,4 +410,34 @@ function front_custom_views_pre_render(&$view) {
       $raw_url = drupal_get_normal_path($raw_url);
     }
   }
+}
+
+/**
+ * Implements hook_preprocess_views_view_fields().
+ */
+function front_custom_preprocess_views_view_fields(&$vars) {
+  if ($vars['view']->name == 'home_featured') {
+    $title = &$vars['fields']['title'];
+    $title->content = front_custom_convert2markup($title->raw);
+  }
+}
+
+/**
+ * Custom function to convert special characters to markup
+ * like markdown style :)
+ */
+function front_custom_convert2markup($text) {
+  $search = array(
+    '/\*(.*?)\*/',
+    '/\*\*(.*?)\*\*/',
+    '/\\\/',
+  );
+  $replace = array(
+    '<em>\\1</em>',
+    '<strong>\\1</strong>',
+    '<br>',
+  );
+  $markup = preg_replace($search, $replace, $text);
+
+  return $markup;
 }

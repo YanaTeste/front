@@ -493,7 +493,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .pane-home-featured-home {
-    padding-top: em(48px, 14px);
+    padding-top: em(44px, 14px);
 
     .view-content {
       overflow: hidden;
@@ -509,8 +509,14 @@ h1, h2, h3, h4, h5, h6 {
       font-family: $baseFontFamily;
       font-size: em(50px, 14px);
       font-weight: normal;
+      line-height: 1em;
       letter-spacing: em(-2px, 50px);
       margin-bottom: em(19px, 50px);
+
+      em {
+        font-size: em(35px, 50px);
+        font-style:normal;
+      }
     }
     .views-field-body {
       margin-bottom: em(23px, 14px);
@@ -530,8 +536,7 @@ h1, h2, h3, h4, h5, h6 {
         text-align: center;
         text-shadow: 0 1px 0 rgba(0,0,0,0.35);
         display: inline-block;
-        width: em(173px, 18px);
-        padding: em(14px, 18px) 0 em(16px, 18px);
+        padding: em(14px, 18px) em(33px, 18px) em(16px, 18px);
         @include background-image(linear-gradient(#DF701F, #E68022 13%, #D14D1A));
         @include border-radius(6px);
         border: 1px solid #D14D1A;
@@ -575,7 +580,6 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
   }
-
   .pane-services-block-home {
     background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
     padding: 2px 0 em(9px, 14px);
@@ -583,6 +587,7 @@ h1, h2, h3, h4, h5, h6 {
     .panel-pane-inner {
       background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
       overflow: hidden;
+      padding-top: em(45px, 14px);
     }
     .pane-title {
       @include element-invisible;
@@ -655,10 +660,9 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: em(33px, 14px);
     }
   }
-
   .pane-projects-block-latest-projects {
-    background: #e1e1e1 url('../images/bg_latest-projects.png') repeat-x center top;
-    padding-top: em(25px, 14px);
+    background: #DEE2E5 url('../images/bg_latest-projects.png') repeat-x center top;
+    padding-top: em(45px, 14px);
     padding-bottom: em(30px, 14px);
 
     .pane-title {

@@ -23,9 +23,9 @@ function front_users_field_group_info() {
     'label' => 'Social links',
     'weight' => '4',
     'children' => array(
-      0 => 'field_twitter',
-      1 => 'field_facebook',
-      2 => 'field_linkedin',
+      0 => 'field_facebook',
+      1 => 'field_linkedin',
+      2 => 'field_twitter',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

@@ -45,11 +45,11 @@ function front_users_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => 3,
+          'weight' => '2',
         ),
       ),
       'entity_type' => 'profile2',
@@ -111,11 +111,11 @@ function front_users_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'link_default',
-          'weight' => 5,
+          'type' => 'link_label',
+          'weight' => '4',
         ),
       ),
       'entity_type' => 'profile2',
@@ -191,10 +191,10 @@ function front_users_field_default_fields() {
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => 'thumbnail',
+            'image_style' => 'picture',
           ),
           'type' => 'image',
-          'weight' => '2',
+          'weight' => '0',
         ),
       ),
       'entity_type' => 'profile2',
@@ -262,11 +262,11 @@ function front_users_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'link_default',
-          'weight' => 6,
+          'type' => 'link_label',
+          'weight' => '5',
         ),
       ),
       'entity_type' => 'profile2',
@@ -339,10 +339,9 @@ function front_users_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'text',
           'settings' => array(),
-          'type' => 'text_default',
-          'weight' => '0',
+          'type' => 'hidden',
+          'weight' => '6',
         ),
       ),
       'entity_type' => 'profile2',
@@ -403,10 +402,9 @@ function front_users_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'list',
           'settings' => array(),
-          'type' => 'list_default',
-          'weight' => 7,
+          'type' => 'hidden',
+          'weight' => '7',
         ),
       ),
       'entity_type' => 'profile2',
@@ -528,11 +526,11 @@ function front_users_field_default_fields() {
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'link',
           'settings' => array(),
-          'type' => 'link_default',
-          'weight' => 4,
+          'type' => 'link_label',
+          'weight' => '3',
         ),
       ),
       'entity_type' => 'profile2',

@@ -4685,7 +4685,7 @@ h1, h2, h3, h4, h5, h6 {
   transition-duration: 0.75s;
 }
 #main-menu .main-menu a:hover, #main-menu .main-menu a:focus {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.95);
 }
 #main-menu .main-menu a.active {
   color: #F2CB2D;
@@ -5112,8 +5112,9 @@ h1, h2, h3, h4, h5, h6 {
 .page-home .pane-home-featured-home .view-content {
   overflow: hidden;
 }
-.page-home .pane-home-featured-home .views_slideshow_main {
-  margin-bottom: 1em;
+.page-home .pane-home-featured-home .skin-default {
+  padding-bottom: 3.429em;
+  overflow: hidden;
 }
 .page-home .pane-home-featured-home .views-fields-wrapper {
   display: inline;
@@ -5184,7 +5185,8 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   position: relative;
   left: 50%;
-  margin-bottom: 0.714em;
+  margin-top: 1.714em;
+  margin-bottom: -2.714em;
 }
 .page-home .pane-home-featured-home .views-slideshow-controls-bottom .widget_pager {
   float: left;

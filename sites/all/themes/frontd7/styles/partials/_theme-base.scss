@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6 {
 
       &:hover,
       &:focus {
-        background: rgba(0,0,0,0.2);
+        background: rgba(0,0,0,0.95);
       }
       &.active {
         color: #F2CB2D;
@@ -498,8 +498,9 @@ h1, h2, h3, h4, h5, h6 {
     .view-content {
       overflow: hidden;
     }
-    .views_slideshow_main {
-      margin-bottom: 1em;
+    .skin-default {
+      padding-bottom: em(48px, 14px);
+      overflow: hidden;
     }
     .views-fields-wrapper {
       @include grid(7);
@@ -559,7 +560,8 @@ h1, h2, h3, h4, h5, h6 {
       float: left;
       position: relative;
       left: 50%;
-      margin-bottom: em(10px, 14px);
+      margin-top: em(24px, 14px);
+      margin-bottom: em(-38px, 14px);
 
       .widget_pager {
         float: left;

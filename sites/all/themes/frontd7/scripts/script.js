@@ -62,6 +62,7 @@
                     $('ul a.active', $menu).parents('ul').show().prev('h3').find('a').toggleClass('open');
 
                     // Slide down/up on click.
+                    /* Remove?
                     $('h3 a', $menu).each(function() {
                         var $this = $(this);
 
@@ -73,7 +74,7 @@
                             }
                         });
                     });
-                    
+                    */
                 });
             }
         }

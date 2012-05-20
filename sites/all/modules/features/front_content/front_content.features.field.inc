@@ -718,7 +718,7 @@ Multiple classes should be separated by spaces.',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => 'large',
+            'image_style' => 'square_medium',
           ),
           'type' => 'image',
           'weight' => '1',
@@ -749,6 +749,13 @@ Multiple classes should be separated by spaces.',
         'active' => 1,
         'module' => 'image',
         'settings' => array(
+          'allowed_schemes' => array(
+            0 => 'public',
+            1 => 'private',
+          ),
+          'allowed_types' => array(
+            0 => 'image',
+          ),
           'preview_image_style' => 'thumbnail',
           'progress_indicator' => 'throbber',
         ),
@@ -1502,7 +1509,89 @@ Multiple classes should be separated by spaces.',
         'module' => 'options',
         'settings' => array(),
         'type' => 'options_select',
-        'weight' => '6',
+        'weight' => '7',
+      ),
+    ),
+  );
+
+  // Exported field: 'node-page-field_related'
+  $fields['node-page-field_related'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '-1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_related',
+      'foreign keys' => array(
+        'nid' => array(
+          'columns' => array(
+            'nid' => 'nid',
+          ),
+          'table' => 'node',
+        ),
+      ),
+      'indexes' => array(
+        'nid' => array(
+          0 => 'nid',
+        ),
+      ),
+      'module' => 'node_reference',
+      'settings' => array(
+        'profile2_private' => FALSE,
+        'referenceable_types' => array(
+          'article' => 'article',
+          'banner' => 0,
+          'blog' => 'blog',
+          'page' => 'page',
+          'project' => 0,
+          'webform' => 0,
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'node_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'page',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'node_reference',
+          'settings' => array(),
+          'type' => 'node_reference_default',
+          'weight' => 6,
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'node',
+      'field_name' => 'field_related',
+      'label' => 'Related',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'node_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'node_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'node_reference_autocomplete',
+        'weight' => '5',
       ),
     ),
   );
@@ -1639,7 +1728,7 @@ Multiple classes should be separated by spaces.',
           'rows' => '10',
         ),
         'type' => 'text_textarea',
-        'weight' => '5',
+        'weight' => '6',
       ),
     ),
   );
@@ -1936,10 +2025,88 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
+  // Exported field: 'taxonomy_term-section-field_contact_user'
+  $fields['taxonomy_term-section-field_contact_user'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_contact_user',
+      'foreign keys' => array(
+        'uid' => array(
+          'columns' => array(
+            'uid' => 'uid',
+          ),
+          'table' => 'users',
+        ),
+      ),
+      'indexes' => array(
+        'uid' => array(
+          0 => 'uid',
+        ),
+      ),
+      'module' => 'user_reference',
+      'settings' => array(
+        'profile2_private' => FALSE,
+        'referenceable_roles' => array(
+          2 => 0,
+          3 => 0,
+          4 => 0,
+        ),
+        'referenceable_status' => array(
+          0 => 0,
+          1 => '1',
+        ),
+        'view' => array(
+          'args' => array(),
+          'display_name' => '',
+          'view_name' => '',
+        ),
+      ),
+      'translatable' => '0',
+      'type' => 'user_reference',
+    ),
+    'field_instance' => array(
+      'bundle' => 'section',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'user_reference',
+          'settings' => array(),
+          'type' => 'user_reference_default',
+          'weight' => 0,
+        ),
+      ),
+      'entity_type' => 'taxonomy_term',
+      'field_name' => 'field_contact_user',
+      'label' => 'Contact user',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'user_reference',
+        'settings' => array(
+          'autocomplete_match' => 'contains',
+          'autocomplete_path' => 'user_reference/autocomplete',
+          'size' => '60',
+        ),
+        'type' => 'user_reference_autocomplete',
+        'weight' => '31',
+      ),
+    ),
+  );
+
   // Translatables
   // Included for use with string extractors like potx.
   t('Body');
   t('CSS Class');
+  t('Contact user');
   t('Enter a comma-separated list of words to describe your content.');
   t('Filer');
   t('Files');

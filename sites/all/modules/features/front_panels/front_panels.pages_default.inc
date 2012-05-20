@@ -488,7 +488,15 @@ function front_panels_default_page_manager_pages() {
     'css_id' => 'panel-kompetanse',
     'css' => '',
     'contexts' => array(),
-    'relationships' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'User from Taxonomy term (on Taxonomy term: Contact user [field_contact_user])',
+        'keyword' => 'user',
+        'name' => 'entity_from_field:field_contact_user-taxonomy_term-user',
+        'context' => 'argument_term_1',
+        'id' => 1,
+      ),
+    ),
   );
   $display = new panels_display();
   $display->layout = 'twocol';
@@ -502,7 +510,7 @@ function front_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = '%term:name';
+  $display->title = '%term:name %profile:field_name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -566,7 +574,7 @@ function front_panels_default_page_manager_pages() {
       'pager_id' => '',
       'items_per_page' => '1',
       'arguments' => array(
-        'field_name_value' => 'Per André Rønsen',
+        'field_name_value' => '%profile:field_name',
       ),
       'override_title' => 0,
       'override_title_text' => '',
@@ -881,7 +889,7 @@ function front_panels_default_page_manager_pages() {
       'pager_id' => '',
       'items_per_page' => '1',
       'arguments' => array(
-        'field_name_value' => 'Per André Rønsen',
+        'field_name_value' => 'Geir Gulland',
       ),
       'override_title' => 0,
       'override_title_text' => '',

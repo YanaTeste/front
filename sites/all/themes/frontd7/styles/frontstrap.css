@@ -5321,7 +5321,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .page-home .pane-projects-block-latest-projects .views-field-field-image img {
   background-color: #fff;
-  display: inline-block;
+  display: block;
   margin-bottom: 1em;
   padding: 7px;
   -webkit-border-radius: 1px;
@@ -5336,6 +5336,49 @@ h1, h2, h3, h4, h5, h6 {
 .page-home .pane-projects-block-latest-projects .views-field-title {
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-weight: normal;
+}
+
+.view-projects-block {
+  text-align: center;
+}
+.view-projects-block .jcarousel-container-horizontal {
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+.view-projects-block .jcarousel-clip-horizontal {
+  overflow: hidden;
+  width: auto;
+}
+.view-projects-block .jcarousel-item {
+  text-align: left;
+  margin: 0 10px;
+}
+.view-projects-block .jcarousel-item-placeholder {
+  background: url("throbber.gif") no-repeat scroll center center white;
+  color: #000000;
+}
+.view-projects-block .jcarousel-next,
+.view-projects-block .jcarousel-prev {
+  background-color: #fff;
+  display: block;
+  height: 50px;
+  width: 30px;
+}
+.view-projects-block .jcarousel-next-disabled,
+.view-projects-block .jcarousel-prev-disabled {
+  display: none;
+}
+.view-projects-block .jcarousel-prev-horizontal {
+  position: absolute;
+  top: 75px;
+  left: -40px;
+}
+.view-projects-block .jcarousel-next-horizontal {
+  position: absolute;
+  top: 75px;
+  right: -40px;
 }
 
 /*         Solutions

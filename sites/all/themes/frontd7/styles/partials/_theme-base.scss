@@ -684,7 +684,7 @@ h1, h2, h3, h4, h5, h6 {
     .views-field-field-image {
       img {
         background-color: #fff;
-        display: inline-block;
+        display: block;
         margin-bottom: 1em;
         padding: 7px;
         @include border-radius(1px);
@@ -697,6 +697,56 @@ h1, h2, h3, h4, h5, h6 {
       font-family: $baseFontFamily;
       font-weight: normal;
     }
+  }
+}
+
+.view-projects-block {
+  text-align: center;
+
+  .jcarousel-container-horizontal {
+    margin: auto;
+    padding: 0;
+    width: 100%;
+    height: auto;
+  }
+  .jcarousel-clip-horizontal {
+    overflow: hidden;
+    width: auto;
+  }
+  .jcarousel-item {
+    text-align: left;
+    margin: 0 10px;
+  }
+  .jcarousel-item-placeholder {
+    background: url('throbber.gif') no-repeat scroll center center #FFFFFF;
+    color: #000000;
+  }
+  .jcarousel-next,
+  .jcarousel-prev {
+    background-color: #fff;
+    display: block;
+    height: 50px;
+    width: 30px;
+  }
+  .jcarousel-next-disabled,
+  .jcarousel-prev-disabled {
+    display: none;
+  }
+  .jcarousel-prev-horizontal {
+    position: absolute;
+    top: 75px;
+    left: -40px;
+
+    &:hover {}
+    &:active {}
+  }
+  .jcarousel-next-horizontal {
+    position: absolute;
+    top: 75px;
+    right: -40px;
+
+    &:hover {}
+    &:active {}
   }
 }
 

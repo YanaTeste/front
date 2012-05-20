@@ -508,34 +508,6 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['hide_empty'] = 0;
   $handler->display->display_options['fields']['nothing']['empty_zero'] = 0;
   $handler->display->display_options['fields']['nothing']['hide_alter_empty'] = 0;
-  /* Field: Profile: URL */
-  $handler->display->display_options['fields']['url']['id'] = 'url';
-  $handler->display->display_options['fields']['url']['table'] = 'views_entity_profile2';
-  $handler->display->display_options['fields']['url']['field'] = 'url';
-  $handler->display->display_options['fields']['url']['label'] = '';
-  $handler->display->display_options['fields']['url']['alter']['alter_text'] = 1;
-  $handler->display->display_options['fields']['url']['alter']['text'] = 'Les mer ››';
-  $handler->display->display_options['fields']['url']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['url']['alter']['path'] = '[url]';
-  $handler->display->display_options['fields']['url']['alter']['absolute'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['external'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['replace_spaces'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['trim_whitespace'] = 1;
-  $handler->display->display_options['fields']['url']['alter']['nl2br'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['word_boundary'] = 1;
-  $handler->display->display_options['fields']['url']['alter']['ellipsis'] = 1;
-  $handler->display->display_options['fields']['url']['alter']['more_link'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['strip_tags'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['trim'] = 0;
-  $handler->display->display_options['fields']['url']['alter']['html'] = 0;
-  $handler->display->display_options['fields']['url']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['url']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['url']['element_default_classes'] = 1;
-  $handler->display->display_options['fields']['url']['hide_empty'] = 0;
-  $handler->display->display_options['fields']['url']['empty_zero'] = 0;
-  $handler->display->display_options['fields']['url']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['url']['display_as_link'] = 0;
-  $handler->display->display_options['fields']['url']['link_to_entity'] = 0;
   /* Sort criterion: Draggableviews: Weight */
   $handler->display->display_options['sorts']['weight']['id'] = 'weight';
   $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
@@ -568,8 +540,6 @@ function front_views_views_default_views() {
     t('[field_twitter]
 [field_facebook]
 [field_linkedin]'),
-    t('Les mer ››'),
-    t('[url]'),
     t('Content pane'),
     t('View panes'),
   );
@@ -758,7 +728,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_image']['hide_alter_empty'] = 1;
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
-    'image_style' => '',
+    'image_style' => 'banner',
     'image_link' => '',
   );
   $handler->display->display_options['fields']['field_image']['field_api_classes'] = 0;
@@ -2948,7 +2918,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = 1;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'contact/?user=[user]';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
   $handler->display->display_options['fields']['nothing']['alter']['absolute'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['external'] = 0;
   $handler->display->display_options['fields']['nothing']['alter']['replace_spaces'] = 0;
@@ -3023,7 +2993,7 @@ function front_views_views_default_views() {
     t('.'),
     t('user/[user]'),
     t('Kontakt oss'),
-    t('contact/?user=[user]'),
+    t('kontakt/?user=[user]'),
     t('All'),
     t('Single user'),
     t('View panes'),

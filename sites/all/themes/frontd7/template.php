@@ -21,7 +21,11 @@ function frontd7_js_alter(&$javascript) {
  * Implements hook_preprocess().
  */
 function frontd7_preprocess_page(&$variables) {
-  if (module_exists('search')) {
+  if (module_exists('search_api')) {
+    $search_box = module_invoke('search_api_page', 'block_view', 'front_main_search');
+    $variables['search_box'] = render($search_box);
+  }
+  else if (module_exists('search')) {
     $search_box = drupal_render(drupal_get_form('search_form'));
     $variables['search_box'] = $search_box;
   }
@@ -153,7 +157,16 @@ function frontd7_form_alter(&$form, &$form_state, $form_id) {
   }
 }
 
-
+/**
+ * Implements hook_form_search_api_page_search_form_front_main_search_alter().
+ */
+function frontd7_form_search_api_page_search_form_front_main_search_alter(&$form, &$form_state, $form_id) {
+  $form['#attributes']['class'][] = 'search-form';
+  $form['keys_1']['#attributes']['placeholder'] = t('Enter your keywords');
+  
+  $form['submit_1']['#type'] = 'image_button';
+  $form['submit_1']['#src'] = drupal_get_path('theme', 'frontd7') . '/images/icon_search-submit.png';
+}
 
 /**
  * Implements hook_form_search_form_alter().

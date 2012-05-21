@@ -287,7 +287,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Intro';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.';
+  $handler->display->display_options['header']['area']['content'] = 'Front Kommunikasjon er et kommunikasjonsbyrå for web og digitale medier. Vi leverer fullstendige løsninger fra A til Å, og fokuserer på gode prosesser og ubetinget suksess for kunden. Vi har kontorer i vakre omgivelser i Gamle Fredrikstad.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Profile: User uid */
@@ -535,7 +535,7 @@ function front_views_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Intro'),
-    t('Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis.'),
+    t('Front Kommunikasjon er et kommunikasjonsbyrå for web og digitale medier. Vi leverer fullstendige løsninger fra A til Å, og fokuserer på gode prosesser og ubetinget suksess for kunden. Vi har kontorer i vakre omgivelser i Gamle Fredrikstad.'),
     t('User'),
     t('[field_twitter]
 [field_facebook]
@@ -1438,6 +1438,11 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['promote']['table'] = 'node';
   $handler->display->display_options['filters']['promote']['field'] = 'promote';
   $handler->display->display_options['filters']['promote']['value'] = '1';
+  /* Filter criterion: Field: Image (field_image:fid) */
+  $handler->display->display_options['filters']['field_image_fid']['id'] = 'field_image_fid';
+  $handler->display->display_options['filters']['field_image_fid']['table'] = 'field_data_field_image';
+  $handler->display->display_options['filters']['field_image_fid']['field'] = 'field_image_fid';
+  $handler->display->display_options['filters']['field_image_fid']['operator'] = 'not empty';
 
   /* Display: Latest projects */
   $handler = $view->new_display('panel_pane', 'Latest projects', 'latest_projects');
@@ -1744,7 +1749,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['title_1']['hide_empty'] = 1;
   $handler->display->display_options['fields']['title_1']['empty_zero'] = 1;
   $handler->display->display_options['fields']['title_1']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['title_1']['link_to_node'] = 1;
+  $handler->display->display_options['fields']['title_1']['link_to_node'] = 0;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -2397,6 +2402,8 @@ function front_views_views_default_views() {
 
   /* Display: Tjenester menu */
   $handler = $view->new_display('panel_pane', 'Tjenester menu', 'tjenester');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Tjenester';
   $handler->display->display_options['defaults']['fields'] = FALSE;
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
@@ -2575,6 +2582,7 @@ function front_views_views_default_views() {
     t('Desc'),
     t('term'),
     t('Tjenester menu'),
+    t('Tjenester'),
     t('tjenester/[name]'),
     t('View panes'),
     t('Kompetanse menu'),
@@ -2989,6 +2997,43 @@ function front_views_views_default_views() {
       'label' => 'Name (full user name)',
     ),
   );
+
+  /* Display: Referenced user */
+  $handler = $view->new_display('panel_pane', 'Referenced user', 'referenced');
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Profile: User uid */
+  $handler->display->display_options['arguments']['user']['id'] = 'user';
+  $handler->display->display_options['arguments']['user']['table'] = 'profile';
+  $handler->display->display_options['arguments']['user']['field'] = 'user';
+  $handler->display->display_options['arguments']['user']['relationship'] = 'profile';
+  $handler->display->display_options['arguments']['user']['default_action'] = 'not found';
+  $handler->display->display_options['arguments']['user']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['user']['default_argument_skip_url'] = 0;
+  $handler->display->display_options['arguments']['user']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['user']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['user']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['user']['specify_validation'] = 1;
+  $handler->display->display_options['arguments']['user']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['user']['not'] = 0;
+  $handler->display->display_options['allow']['use_pager'] = 'use_pager';
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
+  $handler->display->display_options['argument_input'] = array(
+    'user' => array(
+      'type' => 'user',
+      'context' => 'entity:search_api_autocomplete_search.enabled',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'User uid',
+    ),
+  );
   $translatables['users_block'] = array(
     t('Master'),
     t('more'),
@@ -3005,6 +3050,7 @@ function front_views_views_default_views() {
     t('All'),
     t('Single user'),
     t('View panes'),
+    t('Referenced user'),
   );
   $export['users_block'] = $view;
 

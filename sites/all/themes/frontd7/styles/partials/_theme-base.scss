@@ -1026,7 +1026,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.pane-users-block-single {
+.pane-users-block-single,
+.pane-users-block-referenced {
   position: relative;
 
   .pane-content {
@@ -2053,6 +2054,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .pane-related-reverse,
+  .pane-taxonomy-menu-tjenester,
   .pane-taxonomy-menu-kompetanse {
     .pane-title {
       color: #000;

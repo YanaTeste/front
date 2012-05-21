@@ -4538,13 +4538,24 @@ table#blocks select {
 /*         General Sitewide Styles
 ------------------------------------------------*/
 /* Layout */
-#main, #header, #footer {
+#main, #header, #footer, .page-inner {
   margin-left: auto;
   margin-right: auto;
   width: 960px;
   display: block;
   position: relative;
   float: none;
+}
+
+.page-inner {
+  *zoom: 1;
+}
+.page-inner:before, .page-inner:after {
+  display: table;
+  content: "";
+}
+.page-inner:after {
+  clear: both;
 }
 
 /* General Styles (Colors, Backgrounds etc.) */
@@ -4643,6 +4654,16 @@ h1, h2, h3, h4, h5, h6 {
   -moz-box-shadow: none;
   box-shadow: none;
 }
+#header .search-form span.toggle {
+  display: block;
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  top: 1px;
+  right: 2px;
+  z-index: auto;
+  cursor: pointer;
+}
 #header .search-form.search-active .form-text {
   visibility: visible;
   width: 20em;
@@ -4659,6 +4680,19 @@ h1, h2, h3, h4, h5, h6 {
 #header .search-form.search-active .form-submit {
   opacity: 0;
   filter: alpha(opacity=0);
+}
+#header .search-form .form-type-textfield #autocomplete {
+  border-color: #f5f5f5;
+  -webkit-border-radius: 1px 1px 3px 3px;
+  -moz-border-radius: 1px 1px 3px 3px;
+  border-radius: 1px 1px 3px 3px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+}
+#header .search-form .form-type-textfield #autocomplete li {
+  color: #666;
+  padding: 1px 7px 1px 10px;
 }
 
 #main-menu {
@@ -4811,6 +4845,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Postscript */
 #postscript {
+  clear: both;
   background-color: #302725;
   padding-top: 2.5em;
   overflow: hidden;
@@ -6877,6 +6912,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 .page-node .region-content .pane-related-reverse .view-content ul a {
   color: #44799D;
+}
+
+/*         Forms
+------------------------------------------------*/
+.page-search .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
+.page-search #main {
+  margin-top: 5.357em;
+  margin-bottom: 5.357em;
 }
 
 /*         Forms

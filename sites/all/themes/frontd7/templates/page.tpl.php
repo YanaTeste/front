@@ -114,6 +114,10 @@
     </div><!-- /#featured -->
   <?php endif; ?>
 
+  <?php if ($page['sidebar_first'] || $page['sidebar_second']): ?>
+    <div class="page-inner">
+  <?php endif; ?>
+
   <div id="main">
     <?php if ($page['highlighted']): ?>
       <div id="highlighted">
@@ -159,6 +163,9 @@
     </aside><!-- /#sidebar-second -->
   <?php endif; ?>
 
+  <?php if ($page['sidebar_first'] || $page['sidebar_second']): ?>
+    </div><!-- .page-inner -->
+  <?php endif; ?>
 </div><!-- .page-wrapper -->
 
 <?php if ($page['postscript']): ?>

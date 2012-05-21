@@ -162,10 +162,16 @@ function frontd7_form_alter(&$form, &$form_state, $form_id) {
  */
 function frontd7_form_search_api_page_search_form_front_main_search_alter(&$form, &$form_state, $form_id) {
   $form['#attributes']['class'][] = 'search-form';
+
   $form['keys_1']['#attributes']['placeholder'] = t('Enter your keywords');
-  
+
   $form['submit_1']['#type'] = 'image_button';
   $form['submit_1']['#src'] = drupal_get_path('theme', 'frontd7') . '/images/icon_search-submit.png';
+
+  $form['close'] = array(
+    '#prefix' => '<span class="toggle">',
+    '#suffix' => '</span>',
+  );
 }
 
 /**

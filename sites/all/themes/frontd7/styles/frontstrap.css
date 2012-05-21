@@ -5361,7 +5361,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .view-projects-block .jcarousel-next,
 .view-projects-block .jcarousel-prev {
-  background-color: #fff;
+  background: transparent url("../images/icons_arrows.png") no-repeat;
   display: block;
   height: 50px;
   width: 30px;
@@ -5371,14 +5371,22 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 .view-projects-block .jcarousel-prev-horizontal {
+  background-position: left bottom;
   position: absolute;
   top: 75px;
   left: -40px;
 }
+.view-projects-block .jcarousel-prev-horizontal:hover {
+  background-position: left top;
+}
 .view-projects-block .jcarousel-next-horizontal {
+  background-position: right bottom;
   position: absolute;
   top: 75px;
   right: -40px;
+}
+.view-projects-block .jcarousel-next-horizontal:hover {
+  background-position: right top;
 }
 
 /*         Solutions

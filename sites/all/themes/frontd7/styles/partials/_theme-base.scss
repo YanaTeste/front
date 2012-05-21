@@ -723,7 +723,7 @@ h1, h2, h3, h4, h5, h6 {
   }
   .jcarousel-next,
   .jcarousel-prev {
-    background-color: #fff;
+    background: transparent url('../images/icons_arrows.png') no-repeat;
     display: block;
     height: 50px;
     width: 30px;
@@ -733,20 +733,24 @@ h1, h2, h3, h4, h5, h6 {
     display: none;
   }
   .jcarousel-prev-horizontal {
+    background-position: left bottom;
     position: absolute;
     top: 75px;
     left: -40px;
 
-    &:hover {}
-    &:active {}
+    &:hover {
+      background-position: left top;
+    }
   }
   .jcarousel-next-horizontal {
+    background-position: right bottom;
     position: absolute;
     top: 75px;
     right: -40px;
 
-    &:hover {}
-    &:active {}
+    &:hover {
+      background-position: right top;
+    }
   }
 }
 

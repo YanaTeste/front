@@ -955,7 +955,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.page-kompetanse {
+.page-kompetanse,
+.page-tjenester-term {
   .page-wrapper {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
@@ -965,6 +966,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+#panel-tjenester,
 #panel-kompetanse {
   .inside {
     margin: 0;
@@ -1014,6 +1016,7 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
   }
+  .pane-taxonomy-menu-tjenester,
   .pane-taxonomy-menu-kompetanse {
     .pane-title {
       color: #000;

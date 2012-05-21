@@ -5612,17 +5612,21 @@ h1, h2, h3, h4, h5, h6 {
   content: ' ››';
 }
 
-.page-kompetanse .page-wrapper {
+.page-kompetanse .page-wrapper,
+.page-tjenester-term .page-wrapper {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
-.page-kompetanse #page-title {
+.page-kompetanse #page-title,
+.page-tjenester-term #page-title {
   margin-top: 1.44em;
   margin-left: 10px;
 }
 
+#panel-tjenester .inside,
 #panel-kompetanse .inside {
   margin: 0;
 }
+#panel-tjenester .panel-col-first,
 #panel-kompetanse .panel-col-first {
   display: inline;
   float: left;
@@ -5632,6 +5636,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-right: 80px;
   margin-bottom: 4em;
 }
+#panel-tjenester .panel-col-last,
 #panel-kompetanse .panel-col-last {
   display: inline;
   float: left;
@@ -5640,6 +5645,7 @@ h1, h2, h3, h4, h5, h6 {
   width: 220px;
   margin-top: -5.143em;
 }
+#panel-tjenester .pane-term-description p,
 #panel-kompetanse .pane-term-description p {
   color: #333;
   font-family: Georgia, "Times New Roman", Times, serif;
@@ -5647,17 +5653,21 @@ h1, h2, h3, h4, h5, h6 {
   font-style: oblique;
   line-height: 1.5em;
 }
+#panel-tjenester .pane-tjenester-teasers .views-row,
 #panel-kompetanse .pane-tjenester-teasers .views-row {
   background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left bottom;
   padding: 3.571em 0 3.571em;
   overflow: hidden;
 }
+#panel-tjenester .pane-tjenester-teasers .views-row-first,
 #panel-kompetanse .pane-tjenester-teasers .views-row-first {
   padding-top: 3.571em;
 }
+#panel-tjenester .pane-tjenester-teasers .views-row-last,
 #panel-kompetanse .pane-tjenester-teasers .views-row-last {
   background: none;
 }
+#panel-tjenester .pane-tjenester-teasers .views-field-field-image,
 #panel-kompetanse .pane-tjenester-teasers .views-field-field-image {
   display: inline;
   float: left;
@@ -5667,14 +5677,19 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 0;
   padding-right: 40px;
 }
+#panel-tjenester .pane-tjenester-teasers .views-field-title,
 #panel-kompetanse .pane-tjenester-teasers .views-field-title {
   font-size: 1.571em;
   line-height: 1.636em;
   margin-bottom: 0.409em;
 }
+#panel-tjenester .pane-tjenester-teasers .views-field-title a,
 #panel-kompetanse .pane-tjenester-teasers .views-field-title a {
   color: #000;
 }
+#panel-tjenester .pane-taxonomy-menu-tjenester .pane-title,
+#panel-tjenester .pane-taxonomy-menu-kompetanse .pane-title,
+#panel-kompetanse .pane-taxonomy-menu-tjenester .pane-title,
 #panel-kompetanse .pane-taxonomy-menu-kompetanse .pane-title {
   color: #000;
   font-size: 0.786em;

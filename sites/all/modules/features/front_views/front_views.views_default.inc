@@ -219,7 +219,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['view_node']['hide_empty'] = 0;
   $handler->display->display_options['fields']['view_node']['empty_zero'] = 0;
   $handler->display->display_options['fields']['view_node']['hide_alter_empty'] = 1;
-  $handler->display->display_options['fields']['view_node']['text'] = 'Read more';
+  $handler->display->display_options['fields']['view_node']['text'] = 'Les mer';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -267,7 +267,7 @@ function front_views_views_default_views() {
     t('author'),
     t('[name] | '),
     t('[name][created]'),
-    t('Read more'),
+    t('Les mer'),
     t('Posts'),
     t('View panes'),
   );

@@ -5,11 +5,6 @@
   @include grid-container-center;
 }
 
-#main {
-  .one-sidebar.sidebar-second & {
-    
-  }
-}
 .page-inner {
   @include clearfix;
 }
@@ -512,6 +507,34 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+
+/*         Column + Sidebar layout
+------------------------------------------------*/
+.panel-onecolsidebar {
+  .page-node & {
+    margin-bottom: em(35px, 14px);
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include grid-suffix(1);
+    margin-bottom: 4em;
+  }
+  .panel-col-last {
+    @include grid(3);
+    margin-top: em(-72px, 14px);
+
+    .pane-title {
+      color: #000;
+      font-size: em(11px, 14px);
+      text-transform: uppercase;
+    }
+    .panel-separator {
+      clear: both;
+      margin-bottom: em(25px, 14px);
+    }
+  }
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home {
@@ -961,7 +984,7 @@ h1, h2, h3, h4, h5, h6 {
       @include clearfix;
       margin: 0 perc(10px, 960px) em(30px, 14px);
       padding: em(24px, 14px) perc(20px, 940px) em(16px, 14px);
-      
+
       .column {
         display: inline;
         float: left;
@@ -1996,7 +2019,7 @@ h1, h2, h3, h4, h5, h6 {
     @include grid(3);
     margin-top: em(-70px, 14px);
   }
-  
+
   .view-blog {
     .view-header {
       p {
@@ -2078,13 +2101,14 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/*         Inner Pages
+/*         Nodes
 ------------------------------------------------*/
 .page-node {
   .page-wrapper {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
   #page-title {
+    width: perc(620px, 960px);
     margin-top: em(72px, 50px);
     margin-left: 10px;
   }
@@ -2108,8 +2132,6 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
   .node-full {
-    margin-bottom: em(35px, 14px);
-
     img {
       display: inline-block;
       padding: 9px;
@@ -2127,100 +2149,27 @@ h1, h2, h3, h4, h5, h6 {
       border: none;
     }
     blockquote {
-      font-family: $altFontFamily;
-      margin: 2em 0;
-      padding: 0.25em em(40px, 14px);
-      line-height: 1.45;
-      position: relative;
-      border: none;
-
-      &:before,
-      &:after {
-        color: #7a7a7a;
-        font-size: em(80px, 14px);
-        line-height: 1;
-        display: block;
-        position: absolute;
-      }
-      &:before {
-        content: "\201C";
-        left: em(-10px, 80px);
-        top: em(-3px, 80px);
-      }
-      &:after {
-        content: '\201D';
-        height: em(25px, 80px);
-        right: 0;
-        bottom: em(25px, 80px);
-      }
-      p {
-        font-family: $altFontFamily;
-        font-size: em(20px, 14px);
-        font-style: oblique;
-        line-height: em(30px, 20px);
-      }
-      cite {
-        color: #999;
-        display: block;
-        margin-top: em(5px, 14px);
-
-        &:before {
-          content: "\2014 \2009";
-        }
-      }
+      @extend .blockquote;
     }
   }
 }
 
-.page-node .region-content {
-  margin-bottom: em(35px, 14px);
-
-  .inside {
-    margin: 0;
+.pane-related-reverse {
+  .pane-content {
+    background-color: #D3DDE2;
+    padding: 5px;
   }
-  .panel-col-first {
-    @include grid(8);
-    @include grid-suffix(1);
-    margin-bottom: 4em;
-  }
-  .panel-col-last {
-    @include grid(3);
-    margin-top: em(-72px, 14px);
-
-    .panel-separator {
-      clear: both;
-      margin-bottom: em(25px, 14px);
-    }
-  }
-
-  .pane-related-reverse,
-  .pane-taxonomy-menu-tjenester,
-  .pane-taxonomy-menu-kompetanse {
-    .pane-title {
-      color: #000;
-      font-size: em(11px, 14px);
-      text-transform: uppercase;
-    }
-  }
-  .pane-related-reverse {
-    .pane-content {
-      background-color: #D3DDE2;
-      padding: 5px;
-    }
-    .view-content {
-      border: 1px dashed #72858C;
-      @include border-radius(2px);
-
-      ul {
-        color: #454545;
-
-        li {
-          line-height: 1em;
-          margin: 1.5em 0.5em 1.5em 0;
-        }
-        a {
-          color: #44799D;
-        }
+  .view-content {
+    border: 1px dashed #72858C;
+    @include border-radius(2px);
+    ul {
+      color: #454545;
+      li {
+        line-height: 1em;
+        margin: 1.5em 0.5em 1.5em 0;
+      }
+      a {
+        color: #44799D;
       }
     }
   }

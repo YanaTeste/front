@@ -68,7 +68,7 @@ div.messages {
 }
 
 
-// Base
+// base
 .title,
 .profile h3 {
   @extend .page-header;
@@ -91,5 +91,49 @@ table#blocks {
   }
   select {
     margin-bottom: 0;
+  }
+}
+
+.blockquote {
+  font-family: $altFontFamily;
+  margin: 2em 0;
+  padding: 0.25em em(40px, 14px);
+  line-height: 1.45;
+  position: relative;
+  border: none;
+
+  &:before,
+  &:after {
+    color: #7a7a7a;
+    font-size: em(80px, 14px);
+    line-height: 1;
+    display: block;
+    position: absolute;
+  }
+  &:before {
+    content: "\201C";
+    left: em(-10px, 80px);
+    top: em(-3px, 80px);
+  }
+  &:after {
+    content: '\201D';
+    height: em(25px, 80px);
+    right: 0;
+    bottom: em(25px, 80px);
+  }
+  p {
+    font-family: $altFontFamily;
+    font-size: em(20px, 14px);
+    font-style: oblique;
+    line-height: em(30px, 20px);
+  }
+  cite {
+    color: #999;
+    display: block;
+    margin-top: em(5px, 14px);
+
+    &:before {
+      content: "\2014 \2009";
+    }
   }
 }

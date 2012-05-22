@@ -5,3 +5,7 @@ sites/*/settings*.php
 sites/*/files
 sites/*/private
 sites/*/legacy_files
+
+# Ignore robots.txt
+robots.txt
+robots_orig.txt

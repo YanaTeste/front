@@ -624,7 +624,7 @@ function front_content_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '1',
         ),
         'teaser' => array(
           'label' => 'hidden',
@@ -770,7 +770,7 @@ Multiple classes should be separated by spaces.',
             'image_style' => 'square_medium',
           ),
           'type' => 'image',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'teaser' => array(
           'label' => 'above',

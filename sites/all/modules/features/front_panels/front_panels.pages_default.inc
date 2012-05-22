@@ -75,7 +75,7 @@ function front_panels_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'twocol';
+  $display->layout = 'onecolsidebar';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(
@@ -255,7 +255,7 @@ function front_panels_default_page_manager_handlers() {
     ),
   );
   $display = new panels_display();
-  $display->layout = 'twocol';
+  $display->layout = 'onecolsidebar';
   $display->layout_settings = array();
   $display->panel_settings = array(
     'style_settings' => array(

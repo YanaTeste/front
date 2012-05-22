@@ -1204,7 +1204,7 @@ function front_views_views_default_views() {
   $view = new view;
   $view->name = 'order_nodes';
   $view->description = 'Generic node ordering view for taxonomy content (emulate Nodeorder module)';
-  $view->tag = 'default';
+  $view->tag = 'custom';
   $view->base_table = 'node';
   $view->human_name = 'Order nodes';
   $view->core = 7;
@@ -1316,7 +1316,7 @@ function front_views_views_default_views() {
   $view = new view;
   $view->name = 'order_profiles';
   $view->description = '';
-  $view->tag = 'default';
+  $view->tag = 'custom';
   $view->base_table = 'profile';
   $view->human_name = 'Order profiles';
   $view->core = 7;
@@ -2856,7 +2856,7 @@ function front_views_views_default_views() {
   $view = new view;
   $view->name = 'terms_menu';
   $view->description = 'List of terms assigned on nodes';
-  $view->tag = 'default';
+  $view->tag = 'custom';
   $view->base_table = 'taxonomy_term_data';
   $view->human_name = 'Terms menu';
   $view->core = 7;
@@ -2948,10 +2948,10 @@ function front_views_views_default_views() {
 
   $view = new view;
   $view->name = 'tjenester';
-  $view->description = 'List pages on Tjenester/Kompetanse sections.';
-  $view->tag = 'default';
+  $view->description = 'List pages on Tjenester section.';
+  $view->tag = 'custom';
   $view->base_table = 'node';
-  $view->human_name = 'Tjenester Kompetanse';
+  $view->human_name = 'Tjenester';
   $view->core = 7;
   $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
@@ -3053,12 +3053,6 @@ function front_views_views_default_views() {
     'trim_length' => '300',
   );
   $handler->display->display_options['fields']['body']['field_api_classes'] = 0;
-  /* Sort criterion: Draggableviews: Weight */
-  $handler->display->display_options['sorts']['weight']['id'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['table'] = 'draggableviews_structure';
-  $handler->display->display_options['sorts']['weight']['field'] = 'weight';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_view'] = 'order_nodes:page';
-  $handler->display->display_options['sorts']['weight']['draggableviews_setting_new_items_bottom_list'] = 1;
   /* Contextual filter: Content: Has taxonomy term ID */
   $handler->display->display_options['arguments']['tid']['id'] = 'tid';
   $handler->display->display_options['arguments']['tid']['table'] = 'taxonomy_index';
@@ -3071,7 +3065,11 @@ function front_views_views_default_views() {
   $handler->display->display_options['arguments']['tid']['summary_options']['items_per_page'] = '25';
   $handler->display->display_options['arguments']['tid']['specify_validation'] = 1;
   $handler->display->display_options['arguments']['tid']['validate']['type'] = 'taxonomy_term';
-  $handler->display->display_options['arguments']['tid']['validate_options']['transform'] = 0;
+  $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
+    'section' => 'section',
+  );
+  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'convert';
+  $handler->display->display_options['arguments']['tid']['validate_options']['transform'] = '1';
   $handler->display->display_options['arguments']['tid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['tid']['add_table'] = 0;
   $handler->display->display_options['arguments']['tid']['require_value'] = 0;
@@ -3091,7 +3089,6 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth']['ui_name'] = 'Has Tjenester term as parent';
   $handler->display->display_options['filters']['term_node_tid_depth']['value'] = array(
     25 => '25',
-    47 => '47',
   );
   $handler->display->display_options['filters']['term_node_tid_depth']['reduce_duplicates'] = 1;
   $handler->display->display_options['filters']['term_node_tid_depth']['type'] = 'select';
@@ -3113,9 +3110,9 @@ function front_views_views_default_views() {
   $handler->display->display_options['argument_input'] = array(
     'tid' => array(
       'type' => 'user',
-      'context' => 'terms.name_dashed',
+      'context' => 'entity:comment.author',
       'context_optional' => 0,
-      'panel' => '0',
+      'panel' => '1',
       'fixed' => '',
       'label' => 'Content: Has taxonomy term ID',
     ),

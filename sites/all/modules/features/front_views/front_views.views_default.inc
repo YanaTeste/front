@@ -2868,6 +2868,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'none';
@@ -2876,16 +2877,11 @@ function front_views_views_default_views() {
   $handler->display->display_options['style_options']['class'] = 'menu';
   $handler->display->display_options['style_options']['wrapper_class'] = '';
   $handler->display->display_options['row_plugin'] = 'fields';
-  /* Relationship: Taxonomy term: Representative node */
-  $handler->display->display_options['relationships']['tid_representative']['id'] = 'tid_representative';
-  $handler->display->display_options['relationships']['tid_representative']['table'] = 'taxonomy_term_data';
-  $handler->display->display_options['relationships']['tid_representative']['field'] = 'tid_representative';
-  $handler->display->display_options['relationships']['tid_representative']['label'] = 'Node';
-  $handler->display->display_options['relationships']['tid_representative']['required'] = 0;
-  $handler->display->display_options['relationships']['tid_representative']['subquery_sort'] = 'node.nid';
-  $handler->display->display_options['relationships']['tid_representative']['subquery_regenerate'] = 0;
-  $handler->display->display_options['relationships']['tid_representative']['subquery_view'] = '';
-  $handler->display->display_options['relationships']['tid_representative']['subquery_namespace'] = '';
+  /* Relationship: Taxonomy term: Content with term */
+  $handler->display->display_options['relationships']['nid']['id'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['relationships']['nid']['field'] = 'nid';
+  $handler->display->display_options['relationships']['nid']['required'] = 1;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -2914,12 +2910,6 @@ function front_views_views_default_views() {
     'topic' => 'topic',
   );
   $handler->display->display_options['filters']['machine_name']['group'] = 1;
-  /* Filter criterion: Content: Nid */
-  $handler->display->display_options['filters']['nid']['id'] = 'nid';
-  $handler->display->display_options['filters']['nid']['table'] = 'node';
-  $handler->display->display_options['filters']['nid']['field'] = 'nid';
-  $handler->display->display_options['filters']['nid']['relationship'] = 'tid_representative';
-  $handler->display->display_options['filters']['nid']['operator'] = 'not empty';
 
   /* Display: Topics (Emne) */
   $handler = $view->new_display('panel_pane', 'Topics (Emne)', 'topics');
@@ -2940,7 +2930,7 @@ function front_views_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Node'),
+    t('node'),
     t('Topics (Emne)'),
     t('View panes'),
   );

@@ -133,7 +133,7 @@ function front_custom_content_default_ctools_custom_content() {
   $content->settings = array(
     'admin_title' => '',
     'title' => '',
-    'body' => '<p>Hvis du har et problem med en løsning vi har levert får du enkelt tak i oss gjennom vårt supportsenter. Vi foretrekker å få meldinger inn via <a href="#">skjema</a> eller på <a href="#">epost</a>. Da er det lett å følge historikken  både for oss og deg som kunde.</p>',
+    'body' => '<p>Du får enkelt tak i oss gjennom vårt supportsenter. Vi foretrekker å få meldinger inn via <a href="#">skjema</a> eller på <a href="#">epost</a>. Da er det lett å følge historikken  både for oss og deg som kunde.</p>',
     'format' => 'full_html',
     'substitute' => 0,
   );

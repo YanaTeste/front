@@ -3058,7 +3058,6 @@ function front_views_views_default_views() {
   $handler->display->display_options['arguments']['tid']['validate_options']['vocabularies'] = array(
     'section' => 'section',
   );
-  $handler->display->display_options['arguments']['tid']['validate_options']['type'] = 'convert';
   $handler->display->display_options['arguments']['tid']['validate_options']['transform'] = '1';
   $handler->display->display_options['arguments']['tid']['break_phrase'] = 0;
   $handler->display->display_options['arguments']['tid']['add_table'] = 0;
@@ -3080,10 +3079,18 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['term_node_tid_depth']['value'] = array(
     25 => '25',
   );
+  $handler->display->display_options['filters']['term_node_tid_depth']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator_id'] = 'term_node_tid_depth_op';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['label'] = 'Has taxonomy terms (with depth)';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['operator'] = 'term_node_tid_depth_op';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['identifier'] = 'term_node_tid_depth';
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['required'] = 1;
+  $handler->display->display_options['filters']['term_node_tid_depth']['expose']['reduce'] = 0;
   $handler->display->display_options['filters']['term_node_tid_depth']['reduce_duplicates'] = 1;
   $handler->display->display_options['filters']['term_node_tid_depth']['type'] = 'select';
   $handler->display->display_options['filters']['term_node_tid_depth']['vocabulary'] = 'section';
   $handler->display->display_options['filters']['term_node_tid_depth']['hierarchy'] = 1;
+  $handler->display->display_options['filters']['term_node_tid_depth']['error_message'] = 1;
   $handler->display->display_options['filters']['term_node_tid_depth']['depth'] = '10';
 
   /* Display: Teasers */
@@ -3095,7 +3102,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['allow']['more_link'] = 0;
   $handler->display->display_options['allow']['path_override'] = 0;
   $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['exposed_form'] = 'exposed_form';
   $handler->display->display_options['allow']['fields_override'] = 0;
   $handler->display->display_options['argument_input'] = array(
     'tid' => array(
@@ -3116,6 +3123,7 @@ function front_views_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('All'),
+    t('Has taxonomy terms (with depth)'),
     t('Teasers'),
     t('View panes'),
   );

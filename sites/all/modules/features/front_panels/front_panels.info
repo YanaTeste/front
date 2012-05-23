@@ -24,6 +24,7 @@ features[page_manager_pages][] = kompetanse
 features[page_manager_pages][] = kontakt
 features[page_manager_pages][] = losninger
 features[page_manager_pages][] = medarbeidere
+features[page_manager_pages][] = prosjekter
 features[page_manager_pages][] = slikjobbervi
 features[page_manager_pages][] = support
 features[page_manager_pages][] = tjenester

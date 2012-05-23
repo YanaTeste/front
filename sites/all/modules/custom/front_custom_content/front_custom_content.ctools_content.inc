@@ -110,6 +110,22 @@ function front_custom_content_default_ctools_custom_content() {
   $content = new stdClass();
   $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
   $content->api_version = 1;
+  $content->name = 'projects_intro';
+  $content->admin_title = 'Projects tagline + teaser';
+  $content->admin_description = 'Projects landing page tagline and teaser text.';
+  $content->category = 'Custom';
+  $content->settings = array(
+    'admin_title' => 'Solutions tagline + teaser',
+    'title' => 'Prosjekter',
+    'body' => '<p>Duis eget euismod nisl ulla sit amet mollis urna ulla venenatis congue consequat aenean viverra magna quis lorem elementum&nbsp;venenatis congue consequat nec ultrices odio lacinia.</p>',
+    'format' => 'full_html',
+    'substitute' => 1,
+  );
+  $contents['projects_intro'] = $content;
+
+  $content = new stdClass();
+  $content->disabled = FALSE; /* Edit this to true to make a default content disabled initially */
+  $content->api_version = 1;
   $content->name = 'solutions_intro';
   $content->admin_title = 'Solutions tagline + teaser';
   $content->admin_description = 'Solutions landing page tagline and teaser text.';

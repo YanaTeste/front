@@ -2576,7 +2576,7 @@ function front_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Emne';
+  $handler->display->display_options['title'] = 'Kompetanse';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -2836,7 +2836,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['taxonomy_menu'] = array(
     t('Master'),
-    t('Emne'),
+    t('Kompetanse'),
     t('more'),
     t('Apply'),
     t('Reset'),

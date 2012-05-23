@@ -8,6 +8,7 @@ project = front_styles
 dependencies[] = image
 features[features_api][] = api:1
 features[image][] = banner
+features[image][] = featured
 features[image][] = picture
 features[image][] = rectangle_medium
 features[image][] = square_medium

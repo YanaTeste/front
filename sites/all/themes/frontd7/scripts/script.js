@@ -20,18 +20,20 @@
 
     Drupal.behaviors.frontd7 = {
         attach: function(context) {
-            // Set equalHeights on How We Work
-            if ($('#panel-slikjobbervi', context).length) {
-                var $hww_panel = $('#panel-slikjobbervi', context);
+            $(window).load(function() {
+                // Set equalHeights on How We Work
+                if ($('#panel-slikjobbervi', context).length) {
+                    var $hww_panel = $('#panel-slikjobbervi', context);
 
-                $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
-                $('.center-wrapper .pane-node', $hww_panel).equalHeights();
-            }
+                    $('.center-wrapper .pane-custom', $hww_panel).equalHeights();
+                    $('.center-wrapper .pane-node', $hww_panel).equalHeights();
+                }
 
-            // Set equalHeights on How We Work
-            if ($('#panel-medarbeidere', context).length) {
-                $('#panel-medarbeidere .view-employees .views-row', context).equalHeights();
-            }
+                // Set equalHeights on How We Work
+                if ($('#panel-medarbeidere', context).length) {
+                    $('#panel-medarbeidere .view-employees .views-row', context).equalHeights();
+                }
+            });
 
             // Improve webforms select elements.
             if ($('form.webform-client-form select', context).length) {

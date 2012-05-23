@@ -2032,7 +2032,7 @@ h1, h2, h3, h4, h5, h6 {
     .views-row {
       @include grid(3.75);
       margin: 2px 0 -2px;
-      padding: em(19px, 14px) 0;
+      padding: em(20px, 14px) 0;
       border-bottom: 2px dotted #B6BABC;
     }
     .views-row-odd {

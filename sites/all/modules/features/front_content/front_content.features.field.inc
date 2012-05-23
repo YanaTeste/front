@@ -51,7 +51,7 @@ function front_content_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -208,9 +208,13 @@ function front_content_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '2',
+          'module' => 'image',
+          'settings' => array(
+            'image_link' => '',
+            'image_style' => 'featured',
+          ),
+          'type' => 'image',
+          'weight' => '1',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -932,7 +936,7 @@ Multiple classes should be separated by spaces.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -1012,10 +1016,9 @@ Multiple classes should be separated by spaces.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'file',
           'settings' => array(),
-          'type' => 'file_default',
-          'weight' => '3',
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1089,14 +1092,14 @@ Multiple classes should be separated by spaces.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'featured',
           ),
           'type' => 'image',
-          'weight' => '4',
+          'weight' => '1',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -1192,9 +1195,8 @@ Multiple classes should be separated by spaces.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
+          'type' => 'hidden',
           'weight' => '5',
         ),
         'search_result' => array(
@@ -1267,11 +1269,11 @@ Multiple classes should be separated by spaces.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1348,10 +1350,9 @@ Multiple classes should be separated by spaces.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '2',
+          'type' => 'hidden',
+          'weight' => '3',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1428,10 +1429,9 @@ Multiple classes should be separated by spaces.',
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => 6,
+          'type' => 'hidden',
+          'weight' => '6',
         ),
         'teaser' => array(
           'label' => 'above',

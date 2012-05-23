@@ -259,35 +259,35 @@ function front_content_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_article';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['language_content_type_article'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_banner';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['language_content_type_banner'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_blog';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['language_content_type_blog'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_page';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['language_content_type_page'] = $strongarm;
 
   $strongarm = new stdClass();
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'language_content_type_project';
-  $strongarm->value = '0';
+  $strongarm->value = '1';
   $export['language_content_type_project'] = $strongarm;
 
   $strongarm = new stdClass();

@@ -2052,7 +2052,7 @@ Multiple classes should be separated by spaces.',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '0',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -2130,14 +2130,14 @@ Multiple classes should be separated by spaces.',
       'description' => 'Upload an image to go as featured image of this project.',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'image',
           'settings' => array(
             'image_link' => '',
-            'image_style' => '',
+            'image_style' => 'featured',
           ),
           'type' => 'image',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -2220,11 +2220,11 @@ Multiple classes should be separated by spaces.',
       'description' => '',
       'display' => array(
         'default' => array(
-          'label' => 'above',
+          'label' => 'hidden',
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '1',
+          'weight' => '0',
         ),
         'search_result' => array(
           'label' => 'above',

@@ -51,7 +51,7 @@ function front_content_field_default_fields() {
           'module' => 'text',
           'settings' => array(),
           'type' => 'text_default',
-          'weight' => '2',
+          'weight' => '1',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -116,8 +116,8 @@ function front_content_field_default_fields() {
       ),
       'module' => 'file',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'display_default' => 1,
+        'display_field' => 1,
         'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),
@@ -133,7 +133,7 @@ function front_content_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '3',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -153,7 +153,7 @@ function front_content_field_default_fields() {
       'label' => 'Filer',
       'required' => 0,
       'settings' => array(
-        'description_field' => 0,
+        'description_field' => 1,
         'file_directory' => 'attachments',
         'file_extensions' => 'pdf jpg jpeg png gif swf',
         'max_filesize' => '',
@@ -208,13 +208,9 @@ function front_content_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'hidden',
-          'module' => 'image',
-          'settings' => array(
-            'image_link' => '',
-            'image_style' => 'large',
-          ),
-          'type' => 'image',
-          'weight' => '1',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '2',
         ),
         'search_result' => array(
           'label' => 'hidden',
@@ -314,10 +310,9 @@ function front_content_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'node_reference',
           'settings' => array(),
-          'type' => 'node_reference_default',
-          'weight' => '6',
+          'type' => 'hidden',
+          'weight' => '5',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -397,7 +392,7 @@ function front_content_field_default_fields() {
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '6',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -545,10 +540,9 @@ function front_content_field_default_fields() {
       'display' => array(
         'default' => array(
           'label' => 'above',
-          'module' => 'taxonomy',
           'settings' => array(),
-          'type' => 'taxonomy_term_reference_link',
-          'weight' => '3',
+          'type' => 'hidden',
+          'weight' => '4',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1003,8 +997,8 @@ Multiple classes should be separated by spaces.',
       ),
       'module' => 'file',
       'settings' => array(
-        'display_default' => 0,
-        'display_field' => 0,
+        'display_default' => 1,
+        'display_field' => 1,
         'profile2_private' => FALSE,
         'uri_scheme' => 'public',
       ),

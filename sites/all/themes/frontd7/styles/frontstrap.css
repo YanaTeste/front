@@ -7147,6 +7147,55 @@ h1, h2, h3, h4, h5, h6 {
   color: #44799D;
 }
 
+.pane-projects-sidebar-latest .view-content {
+  background-color: #D3DDE2;
+}
+.pane-projects-sidebar-latest .views-row {
+  clear: both;
+  display: block;
+  padding: 0.857em;
+  padding-right: 0;
+  border-bottom: 1px dashed #9EADB3;
+  overflow: hidden;
+}
+.pane-projects-sidebar-latest .views-row-last {
+  border: none;
+}
+.pane-projects-sidebar-latest .views-field-field-image {
+  float: left;
+}
+.pane-projects-sidebar-latest .views-field-field-image img {
+  background-color: #fff;
+  display: block;
+  padding: 4px;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -ms-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.pane-projects-sidebar-latest .views-field-field-image img:hover {
+  background-color: #C6D1D7;
+}
+.pane-projects-sidebar-latest .views-field-title {
+  font-size: 0.929em;
+  line-height: 1.2em;
+  float: right;
+  width: 67.961%;
+}
+.pane-projects-sidebar-latest .views-field-title a {
+  color: #44799D;
+  text-decoration: none;
+}
+.pane-projects-sidebar-latest .views-field-title a:hover {
+  color: #005580;
+}
+
 /*         Forms
 ------------------------------------------------*/
 .page-search .page-wrapper {

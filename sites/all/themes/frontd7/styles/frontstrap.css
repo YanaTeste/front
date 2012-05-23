@@ -4526,44 +4526,53 @@ table#blocks select {
   margin-bottom: 0;
 }
 
-.blockquote, .page-node .node-full blockquote {
+.blockquote, .page-node .node-full blockquote,
+.page-node .pane-node-body blockquote {
   font-family: Georgia, "Times New Roman", Times, serif;
   margin: 2em 0;
   padding: 0.25em 2.857em;
   line-height: 1.45;
+  clear: both;
   position: relative;
   border: none;
 }
-.blockquote:before, .page-node .node-full blockquote:before, .blockquote:after, .page-node .node-full blockquote:after {
+.blockquote:before, .page-node .node-full blockquote:before,
+.page-node .pane-node-body blockquote:before, .blockquote:after, .page-node .node-full blockquote:after,
+.page-node .pane-node-body blockquote:after {
   color: #7a7a7a;
   font-size: 5.714em;
   line-height: 1;
   display: block;
   position: absolute;
 }
-.blockquote:before, .page-node .node-full blockquote:before {
+.blockquote:before, .page-node .node-full blockquote:before,
+.page-node .pane-node-body blockquote:before {
   content: "\201C";
   left: -0.125em;
   top: -0.038em;
 }
-.blockquote:after, .page-node .node-full blockquote:after {
+.blockquote:after, .page-node .node-full blockquote:after,
+.page-node .pane-node-body blockquote:after {
   content: '\201D';
   height: 0.313em;
   right: 0;
   bottom: 0.313em;
 }
-.blockquote p, .page-node .node-full blockquote p {
+.blockquote p, .page-node .node-full blockquote p,
+.page-node .pane-node-body blockquote p {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.429em;
   font-style: oblique;
   line-height: 1.5em;
 }
-.blockquote cite, .page-node .node-full blockquote cite {
+.blockquote cite, .page-node .node-full blockquote cite,
+.page-node .pane-node-body blockquote cite {
   color: #999;
   display: block;
   margin-top: 0.357em;
 }
-.blockquote cite:before, .page-node .node-full blockquote cite:before {
+.blockquote cite:before, .page-node .node-full blockquote cite:before,
+.page-node .pane-node-body blockquote cite:before {
   content: "\2014 \2009";
 }
 
@@ -7214,26 +7223,45 @@ h1, h2, h3, h4, h5, h6 {
 .page-node .field-name-field-tags ul.links a:hover {
   background-color: #0088cc;
 }
-.page-node .node-full img {
+.page-node .node-full img,
+.page-node .pane-node-body img {
   display: inline-block;
   padding: 9px;
   background-color: #fff;
   border: 1px solid #D3E2E2;
 }
-.page-node .node-full img.align-right {
+.page-node .node-full img.align-right,
+.page-node .pane-node-body img.align-right {
   margin: 0 0 1.429em 1.429em;
 }
-.page-node .node-full img.align-left {
+.page-node .node-full img.align-left,
+.page-node .pane-node-body img.align-left {
   margin: 0 1.429em 1.429em 0;
 }
-.page-node .node-full hr {
+.page-node .node-full hr,
+.page-node .pane-node-body hr {
   background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left center;
   height: 3px;
   margin: 2.857em 0;
   border: none;
 }
-.page-node .node-full .field {
+.page-node .node-full .field,
+.page-node .pane-node-body .field {
   margin-bottom: 2.5em;
+}
+
+.section-tjenester .panel-onecolsidebar .pane-node-field-image,
+.section-kompetanse .panel-onecolsidebar .pane-node-field-image {
+  float: left;
+}
+.section-tjenester .panel-onecolsidebar .pane-node-field-image img,
+.section-kompetanse .panel-onecolsidebar .pane-node-field-image img {
+  background: none;
+  display: inline-block;
+  margin-right: 1.5em;
+  margin-bottom: 1em;
+  padding: 0;
+  border: none;
 }
 
 .pane-related-related .pane-content,

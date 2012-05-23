@@ -2325,7 +2325,8 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
   }
-  .node-full {
+  .node-full,
+  .pane-node-body {
     img {
       display: inline-block;
       padding: 9px;
@@ -2350,6 +2351,22 @@ h1, h2, h3, h4, h5, h6 {
     }
     .field {
       margin-bottom: em(35px, 14px);
+    }
+  }
+}
+
+.section-tjenester .panel-onecolsidebar,
+.section-kompetanse .panel-onecolsidebar {
+  .pane-node-field-image {
+    float: left;
+
+    img {
+      background: none;
+      display: inline-block;
+      margin-right: 1.5em;
+      margin-bottom: 1em;
+      padding: 0;
+      border: none;
     }
   }
 }

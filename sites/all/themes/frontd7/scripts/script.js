@@ -13,6 +13,11 @@
                     e.preventDefault();
                     searchForm.toggleClass('search-active');
                     $('#main-menu', context).fadeToggle();
+                    $('input.form-text', searchForm).focus();
+
+                    window.setTimeout(function() {
+                        $('input.form-text', searchForm).focus();
+                    }, 800);
                 });
             }
         }
@@ -91,6 +96,19 @@
                 });
             }
         }
+    };
+
+    // Prevents the form from submitting if the suggestions popup is open
+    // and closes the suggestions popup when doing so.
+    //
+    // Changed: Only prevent form from submitting when an item in the autocomplete list is selected.
+    Drupal.autocompleteSubmit = function () {
+        if ($('#autocomplete .selected').length > 0) {
+            return $('#autocomplete').each(function () {
+                this.owner.hidePopup();
+            }).size() == 0;
+        }
+        return true;
     };
 
 })(jQuery);

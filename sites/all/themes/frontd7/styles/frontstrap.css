@@ -4715,7 +4715,7 @@ h1, h2, h3, h4, h5, h6 {
   opacity: 0;
   filter: alpha(opacity=0);
 }
-#header .search-form .form-type-textfield #autocomplete {
+#header .search-form #autocomplete {
   border-color: #f5f5f5;
   -webkit-border-radius: 1px 1px 3px 3px;
   -moz-border-radius: 1px 1px 3px 3px;
@@ -4724,9 +4724,13 @@ h1, h2, h3, h4, h5, h6 {
   -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
 }
-#header .search-form .form-type-textfield #autocomplete li {
+#header .search-form #autocomplete li {
   color: #666;
   padding: 1px 7px 1px 10px;
+}
+#header .search-form #autocomplete .selected {
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  background-color: #ddd;
 }
 
 #main-menu {

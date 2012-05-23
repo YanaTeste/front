@@ -16,6 +16,7 @@ features[features_api][] = api:1
 features[page_manager_handlers][] = node_view_panel_context
 features[page_manager_handlers][] = node_view_panel_context_2
 features[page_manager_handlers][] = node_view_panel_context_3
+features[page_manager_handlers][] = node_view_panel_context_4
 features[page_manager_pages][] = blogg
 features[page_manager_pages][] = home
 features[page_manager_pages][] = kompetanse

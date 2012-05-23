@@ -511,17 +511,18 @@ h1, h2, h3, h4, h5, h6 {
 /*         Column + Sidebar layout
 ------------------------------------------------*/
 .panel-onecolsidebar {
+  margin-bottom: 4em;
+
   .page-node & {
     margin-bottom: em(35px, 14px);
   }
   .panel-col-first {
     @include grid(8);
     @include grid-suffix(1);
-    margin-bottom: 4em;
   }
   .panel-col-last {
     @include grid(3);
-    margin-top: em(-72px, 14px);
+    /*margin-top: em(-72px, 14px);*/
 
     .pane-title {
       color: #000;
@@ -530,7 +531,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     .panel-separator {
       clear: both;
-      margin-bottom: em(25px, 14px);
+      margin-bottom: em(35px, 14px);
     }
   }
 }
@@ -2116,6 +2117,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: em(75px, 14px);
   }
 
+  .pane-node-field-image {
+    margin-bottom: em(25px, 14px);
+    img {
+      display: inline-block;
+      padding: 9px;
+      background-color: #fff;
+      border: 1px solid #D3E2E2;
+    }
+  }
   .field-name-field-subheading {
     font-family: $altFontFamily;
     font-size: em(20px, 14px);
@@ -2131,6 +2141,85 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: 1em;
     }
   }
+  .field-name-field-files {
+    padding-left: 24px;
+
+    .field-label {
+      float: left;
+      @include hide-text;
+      background: transparent url('../images/icon_download.png') no-repeat center center;
+      width: 21px;
+      height: 21px;
+      margin-left: -24px;
+      margin-right: 3px;
+    }
+    .field-item {
+      margin-bottom: 0.5em;
+      img {
+        background: none;
+        border: none;
+        margin-top: -3px;
+        padding: 0;
+      }
+    }
+    /* Table option */
+    table {
+      tbody {
+        font-size: em(11px, 14px);
+
+        td {
+          vertical-align: middle;
+        }
+        img {
+          background: none;
+          border: none;
+          padding: 0;
+        }
+        .file {
+          font-size: em(13px, 11px);
+        }
+      }
+    }
+  }
+  .field-name-field-tags {
+    padding-left: 24px;
+
+    .field-label {
+      float: left;
+      @include hide-text;
+      background: transparent url('../images/icon_tag.png') no-repeat center center;
+      width: 21px;
+      height: 21px;
+      margin-left: -24px;
+      margin-right: 3px;
+    }
+    ul.links {
+      font-size: em(11px, 14px);
+      margin-left: 0;
+      padding: 0;
+
+      li {
+        display: inline;
+        list-style: none;
+      }
+      a {
+        color: #fff;
+        text-decoration: none;
+        background-color: #999;
+        display: inline-block;
+        margin-right: 0.5em;
+        margin-bottom: 0.5em;
+        padding: 0 1em;
+        @include border-radius(1em);
+        @include transition-property(background-color);
+        @include transition-duration(0.5s);
+
+        &:hover {
+          background-color: $linkColor;
+        }
+      }
+    }
+  }
   .node-full {
     img {
       display: inline-block;
@@ -2138,8 +2227,11 @@ h1, h2, h3, h4, h5, h6 {
       background-color: #fff;
       border: 1px solid #D3E2E2;
 
-      &.media-image {
-        margin: 0 em(20px, 14px);
+      &.align-right {
+        margin: 0 0 em(20px, 14px) em(20px, 14px);
+      }
+      &.align-left {
+        margin: 0 em(20px, 14px) em(20px, 14px) 0;
       }
     }
     hr {
@@ -2151,9 +2243,13 @@ h1, h2, h3, h4, h5, h6 {
     blockquote {
       @extend .blockquote;
     }
+    .field {
+      margin-bottom: em(35px, 14px);
+    }
   }
 }
 
+.pane-related-related,
 .pane-related-reverse {
   .pane-content {
     background-color: #D3DDE2;

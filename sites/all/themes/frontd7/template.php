@@ -212,3 +212,29 @@ function frontd7_preprocess_panels_pane(&$vars) {
   }
 }
 
+/**
+ * Implements theme_image().
+ */
+function frontd7_image($variables) {
+  $attributes = $variables['attributes'];
+  $attributes['src'] = file_create_url($variables['path']);
+
+  foreach (array('width', 'height', 'alt', 'title') as $key) {
+
+    if (isset($variables[$key])) {
+      $attributes[$key] = $variables[$key];
+    }
+  }
+
+  // Assign helper classes to image alignments.
+  if (isset($attributes['style'])) {
+    if (preg_match('/float: right/i', $attributes['style'])) {
+      $attributes['class'] .= ' align-right';
+    }
+    if (preg_match('/float: left/i', $attributes['style'])) {
+      $attributes['class'] .= ' align-left';
+    }
+  }
+
+  return '<img' . drupal_attributes($attributes) . ' />';
+}

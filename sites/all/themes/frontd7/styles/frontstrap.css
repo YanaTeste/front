@@ -5171,6 +5171,9 @@ h1, h2, h3, h4, h5, h6 {
 
 /*         Column + Sidebar layout
 ------------------------------------------------*/
+.panel-onecolsidebar {
+  margin-bottom: 4em;
+}
 .page-node .panel-onecolsidebar {
   margin-bottom: 2.5em;
 }
@@ -5181,7 +5184,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 10px;
   width: 620px;
   padding-right: 80px;
-  margin-bottom: 4em;
 }
 .panel-onecolsidebar .panel-col-last {
   display: inline;
@@ -5189,7 +5191,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 220px;
-  margin-top: -5.143em;
+  /*margin-top: em(-72px, 14px);*/
 }
 .panel-onecolsidebar .panel-col-last .pane-title {
   color: #000;
@@ -5198,7 +5200,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .panel-onecolsidebar .panel-col-last .panel-separator {
   clear: both;
-  margin-bottom: 1.786em;
+  margin-bottom: 2.5em;
 }
 
 /*         Front Page
@@ -6985,6 +6987,15 @@ h1, h2, h3, h4, h5, h6 {
 .page-node #main {
   margin-top: 5.357em;
 }
+.page-node .pane-node-field-image {
+  margin-bottom: 1.786em;
+}
+.page-node .pane-node-field-image img {
+  display: inline-block;
+  padding: 9px;
+  background-color: #fff;
+  border: 1px solid #D3E2E2;
+}
 .page-node .field-name-field-subheading {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-size: 1.429em;
@@ -6999,14 +7010,103 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.71em;
   margin-bottom: 1em;
 }
+.page-node .field-name-field-files {
+  padding-left: 24px;
+  /* Table option */
+}
+.page-node .field-name-field-files .field-label {
+  float: left;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background: transparent url("../images/icon_download.png") no-repeat center center;
+  width: 21px;
+  height: 21px;
+  margin-left: -24px;
+  margin-right: 3px;
+}
+.page-node .field-name-field-files .field-item {
+  margin-bottom: 0.5em;
+}
+.page-node .field-name-field-files .field-item img {
+  background: none;
+  border: none;
+  margin-top: -3px;
+  padding: 0;
+}
+.page-node .field-name-field-files table tbody {
+  font-size: 0.786em;
+}
+.page-node .field-name-field-files table tbody td {
+  vertical-align: middle;
+}
+.page-node .field-name-field-files table tbody img {
+  background: none;
+  border: none;
+  padding: 0;
+}
+.page-node .field-name-field-files table tbody .file {
+  font-size: 1.182em;
+}
+.page-node .field-name-field-tags {
+  padding-left: 24px;
+}
+.page-node .field-name-field-tags .field-label {
+  float: left;
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background: transparent url("../images/icon_tag.png") no-repeat center center;
+  width: 21px;
+  height: 21px;
+  margin-left: -24px;
+  margin-right: 3px;
+}
+.page-node .field-name-field-tags ul.links {
+  font-size: 0.786em;
+  margin-left: 0;
+  padding: 0;
+}
+.page-node .field-name-field-tags ul.links li {
+  display: inline;
+  list-style: none;
+}
+.page-node .field-name-field-tags ul.links a {
+  color: #fff;
+  text-decoration: none;
+  background-color: #999;
+  display: inline-block;
+  margin-right: 0.5em;
+  margin-bottom: 0.5em;
+  padding: 0 1em;
+  -webkit-border-radius: 1em;
+  -moz-border-radius: 1em;
+  border-radius: 1em;
+  -webkit-transition-property: background-color;
+  -moz-transition-property: background-color;
+  -ms-transition-property: background-color;
+  -o-transition-property: background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -ms-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.page-node .field-name-field-tags ul.links a:hover {
+  background-color: #0088cc;
+}
 .page-node .node-full img {
   display: inline-block;
   padding: 9px;
   background-color: #fff;
   border: 1px solid #D3E2E2;
 }
-.page-node .node-full img.media-image {
-  margin: 0 1.429em;
+.page-node .node-full img.align-right {
+  margin: 0 0 1.429em 1.429em;
+}
+.page-node .node-full img.align-left {
+  margin: 0 1.429em 1.429em 0;
 }
 .page-node .node-full hr {
   background: transparent url("../images/bg_teaser-dashed-border.png") repeat-x left center;
@@ -7014,24 +7114,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: 2.857em 0;
   border: none;
 }
+.page-node .node-full .field {
+  margin-bottom: 2.5em;
+}
 
+.pane-related-related .pane-content,
 .pane-related-reverse .pane-content {
   background-color: #D3DDE2;
   padding: 5px;
 }
+.pane-related-related .view-content,
 .pane-related-reverse .view-content {
   border: 1px dashed #72858C;
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
 }
+.pane-related-related .view-content ul,
 .pane-related-reverse .view-content ul {
   color: #454545;
 }
+.pane-related-related .view-content ul li,
 .pane-related-reverse .view-content ul li {
   line-height: 1em;
   margin: 1.5em 0.5em 1.5em 0;
 }
+.pane-related-related .view-content ul a,
 .pane-related-reverse .view-content ul a {
   color: #44799D;
 }

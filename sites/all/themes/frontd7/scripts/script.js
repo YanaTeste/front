@@ -45,6 +45,17 @@
                 });
                 $select.customSelect();
             }
+
+            // Helper for image alignment
+            // @todo: remove this after fix registry / theme override issue.
+            $('.content img[style]').each(function() {
+                if ($('[style*"float: right"]', this)) {
+                    $(this).addClass('align-right');
+                }
+                else if ($('[style*"float: left"]', this)) {
+                    $(this).addClass('align-left');
+                }
+            });
         }
     };
 

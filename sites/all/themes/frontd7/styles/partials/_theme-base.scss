@@ -534,6 +534,12 @@ h1, h2, h3, h4, h5, h6 {
       margin-bottom: em(35px, 14px);
     }
   }
+  
+  .node-type-blog & {
+    .panel-col-last {
+      margin-top: em(-72px, 14px);
+    }
+  }
 }
 
 /*         Front Page

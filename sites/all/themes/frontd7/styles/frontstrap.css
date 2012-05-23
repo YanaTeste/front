@@ -5202,6 +5202,9 @@ h1, h2, h3, h4, h5, h6 {
   clear: both;
   margin-bottom: 2.5em;
 }
+.node-type-blog .panel-onecolsidebar .panel-col-last {
+  margin-top: -5.143em;
+}
 
 /*         Front Page
 ------------------------------------------------*/

@@ -1874,9 +1874,9 @@ function front_views_views_default_views() {
   $handler->display->display_options['argument_input'] = array(
     'nid' => array(
       'type' => 'panel',
-      'context' => 'entity:comment.author',
+      'context' => 'entity:node.nid',
       'context_optional' => 0,
-      'panel' => '1',
+      'panel' => '0',
       'fixed' => '',
       'label' => 'Content: Nid',
     ),

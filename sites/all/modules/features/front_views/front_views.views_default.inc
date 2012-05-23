@@ -1718,6 +1718,26 @@ function front_views_views_default_views() {
   $handler->display->display_options['allow']['title_override'] = 'title_override';
   $handler->display->display_options['allow']['exposed_form'] = 0;
   $handler->display->display_options['allow']['fields_override'] = 0;
+
+  /* Display: Projects */
+  $handler = $view->new_display('panel_pane', 'Projects', 'projects');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'fields';
+  $handler->display->display_options['row_options']['hide_empty'] = 1;
+  $handler->display->display_options['row_options']['default_field_elements'] = 0;
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['allow']['use_pager'] = 'use_pager';
+  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
+  $handler->display->display_options['allow']['offset'] = 0;
+  $handler->display->display_options['allow']['link_to_view'] = 0;
+  $handler->display->display_options['allow']['more_link'] = 0;
+  $handler->display->display_options['allow']['path_override'] = 0;
+  $handler->display->display_options['allow']['title_override'] = 'title_override';
+  $handler->display->display_options['allow']['exposed_form'] = 0;
+  $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['projects_block'] = array(
     t('Master'),
     t('Prosjekter'),
@@ -1729,6 +1749,7 @@ function front_views_views_default_views() {
     t('Desc'),
     t('Latest projects'),
     t('View panes'),
+    t('Projects'),
   );
   $export['projects_block'] = $view;
 
@@ -1837,18 +1858,6 @@ function front_views_views_default_views() {
     'project' => 'project',
   );
 
-  /* Display: Carousel */
-  $handler = $view->new_display('panel_pane', 'Carousel', 'carousel');
-  $handler->display->display_options['allow']['use_pager'] = 0;
-  $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
-  $handler->display->display_options['allow']['offset'] = 0;
-  $handler->display->display_options['allow']['link_to_view'] = 0;
-  $handler->display->display_options['allow']['more_link'] = 0;
-  $handler->display->display_options['allow']['path_override'] = 0;
-  $handler->display->display_options['allow']['title_override'] = 'title_override';
-  $handler->display->display_options['allow']['exposed_form'] = 0;
-  $handler->display->display_options['allow']['fields_override'] = 0;
-
   /* Display: Latest */
   $handler = $view->new_display('panel_pane', 'Latest', 'latest');
   $handler->display->display_options['allow']['use_pager'] = 0;
@@ -1869,9 +1878,8 @@ function front_views_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Carousel'),
-    t('View panes'),
     t('Latest'),
+    t('View panes'),
   );
   $export['projects_sidebar'] = $view;
 

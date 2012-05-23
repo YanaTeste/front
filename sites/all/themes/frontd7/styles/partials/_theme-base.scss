@@ -1460,6 +1460,103 @@ h1, h2, h3, h4, h5, h6 {
 
 }
 
+/*         Projects
+------------------------------------------------*/
+.page-prosjekter {
+  #page-title {
+    @include element-invisible;
+  }
+  #main {
+    width: 100%;
+    margin: -1px auto;
+
+    .tabs,
+    .panel-pane-inner {
+      @include grid-container-center;
+    }
+  }
+}
+
+#panel-prosjekter {
+  .pane-custom-projects-intro {
+    text-align: center;
+    padding: em(72px, 14px) 0 em(40px, 14px);
+
+    .pane-title {
+      font-family: $baseFontFamily;
+      font-size: em(50px, 14px);
+      font-weight: normal;
+      line-height: 1;
+      letter-spacing: em(-2px, 50px);
+      margin-bottom: em(12px, 50px);
+    }
+    .pane-content {
+      @include grid(8.5);
+      float: none;
+      display: block;
+      margin: 0 auto;
+
+      p {
+        font-size: em(20px, 14px);
+        font-style: italic;
+        line-height: em(29px, 20px);
+      }
+      a {
+        color: #D14C19;
+
+        &:hover {
+          color: darken(#D14C19, 10%);
+        }
+      }
+    }
+  }
+
+  .pane-projects-block-projects {
+    background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
+    padding: 2px 0 em(9px, 14px);
+
+    .panel-pane-inner {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      overflow: hidden;
+    }
+    .pane-title {
+      @include element-invisible;
+    }
+    .view-content {
+      margin: em(55px, 14px) 0;
+      @include clearfix;
+    }
+    .views-row {
+      @include grid(4);
+      margin-bottom: em(55px, 14px);
+      text-align: left;
+    }
+    .views-row-4, .views-row-7 {
+      clear: both;
+    }
+    .views-field-field-image {
+      img {
+        background-color: #fff;
+        display: block;
+        margin-bottom: 1em;
+        padding: 7px;
+        @include border-radius(1px);
+      }
+      a:hover img {
+        @include box-shadow(0 0 3px lighten($linkColor, 40%));
+      }
+    }
+    .views-field-title {
+      font-family: $baseFontFamily;
+      font-weight: normal;
+    }
+    .pagination {
+      margin-top: em(-55px, 14px);
+      margin-bottom: em(55px, 14px);
+    }
+  }
+}
+
 /*         Contact
 ------------------------------------------------*/
 .page-kontakt {
@@ -2001,7 +2098,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/*         Employees
+/*         Blog
 ------------------------------------------------*/
 .page-blogg {
   .page-wrapper {

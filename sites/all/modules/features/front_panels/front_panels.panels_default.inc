@@ -35,7 +35,7 @@ function front_panels_default_panels_mini() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-48';
+    $pane->pid = 'new-60';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'blog_block-latest_posts';
@@ -65,10 +65,10 @@ function front_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-48'] = $pane;
-    $display->panels['left'][0] = 'new-48';
+    $display->content['new-60'] = $pane;
+    $display->panels['left'][0] = 'new-60';
     $pane = new stdClass();
-    $pane->pid = 'new-49';
+    $pane->pid = 'new-61';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'front_custom-front_support';
@@ -86,8 +86,8 @@ function front_panels_default_panels_mini() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-49'] = $pane;
-    $display->panels['right'][0] = 'new-49';
+    $display->content['new-61'] = $pane;
+    $display->panels['right'][0] = 'new-61';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $mini->display = $display;

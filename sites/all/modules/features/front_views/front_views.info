@@ -21,6 +21,7 @@ features[views_view][] = order_nodes
 features[views_view][] = order_profiles
 features[views_view][] = pages_progress
 features[views_view][] = projects_block
+features[views_view][] = projects_sidebar
 features[views_view][] = related
 features[views_view][] = services_block
 features[views_view][] = services_home

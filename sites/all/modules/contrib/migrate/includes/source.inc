@@ -240,7 +240,7 @@ abstract class MigrateSource implements Iterator {
     migrate_instrument_stop(get_class($this) . ' performRewind');
     $this->next();
   }
-  
+
   /**
    * Implementation of Iterator::next() - subclasses of MigrateSource should
    * implement getNextRow() to retrieve the next valid source rocord to process.
@@ -306,7 +306,8 @@ abstract class MigrateSource implements Iterator {
         // Call prepareRow() here, in case the highwaterField needs preparation
         if ($this->prepareRow($row) !== FALSE) {
           if ($row->{$this->highwaterField['name']} > $this->activeMigration->getHighwater()) {
-            // Fall through
+            $this->currentRow = $row;
+            break;
           }
           else {
             // Skip

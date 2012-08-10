@@ -75,23 +75,42 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
   public function fields($migration = NULL) {
     $fields = array();
     // First the core (users table) properties
-    $fields['uid'] = t('User: Existing user ID');
-    $fields['name'] = t('User: Username');
-    $fields['pass'] = t('User: Password (plain text)');
-    $fields['mail'] = t('User: Email address');
-    $fields['roles'] = t('User: Role IDs');
-    $fields['theme'] = t('User: Default theme');
-    $fields['signature'] = t('User: Signature');
-    $fields['signature_format'] = t('User: Signature format');
-    $fields['created'] = t('User: Registered timestamp');
-    $fields['access'] = t('User: Last access timestamp');
-    $fields['login'] = t('User: Last login timestamp');
-    $fields['status'] = t('User: Status');
-    $fields['timezone'] = t('User: Timezone');
-    $fields['language'] = t('User: Language');
-    $fields['picture'] = t('User: Picture');
-    $fields['init'] = t('User: Init');
-    $fields['is_new'] = t('Option: Indicates a new user with the specified uid should be created');
+    $fields['uid'] = t('User: <a href="@doc">Existing user ID</a>',
+            array('@doc' => 'http://drupal.org/node/1349632#uid'));
+    $fields['mail'] = t('User: <a href="@doc">Email address</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#mail'));
+    $fields['name'] = t('User: <a href="@doc">Username</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#name'));
+    $fields['pass'] = t('User: <a href="@doc">Password (plain text)</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#pass'));
+    $fields['status'] = t('User: <a href="@doc">Status</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#status'));
+    $fields['created'] = t('User: <a href="@doc">Registered timestamp</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#created'));
+    $fields['access'] = t('User: <a href="@doc">Last access timestamp</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#access'));
+    $fields['login'] = t('User: <a href="@doc">Last login timestamp</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#login'));
+    $fields['roles'] = t('User: <a href="@doc">Role IDs</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#roles'));
+    $fields['role_names'] = t('User: <a href="@doc">Role Names</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#role_names'));
+    $fields['picture'] = t('User: <a href="@doc">Picture</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#picture'));
+    $fields['signature'] = t('User: <a href="@doc">Signature</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#signature'));
+    $fields['signature_format'] = t('User: <a href="@doc">Signature format</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#signature_format'));
+    $fields['timezone'] = t('User: <a href="@doc">Timezone</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#timezone'));
+    $fields['language'] = t('User: <a href="@doc">Language</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#language'));
+    $fields['theme'] = t('User: <a href="@doc">Default theme</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#theme'));
+    $fields['init'] = t('User: <a href="@doc">Init</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#init'));
+    $fields['is_new'] = t('Option: <a href="@doc">Indicates a new user with the specified uid should be created</a>',
+                array('@doc' => 'http://drupal.org/node/1349632#is_new'));
 
     // Then add in anything provided by handlers
     $fields += migrate_handler_invoke_all('Entity', 'fields', $this->entityType, $this->bundle, $migration);
@@ -129,6 +148,8 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
     $migration = Migration::currentMigration();
     // Updating previously-migrated content?
     if (isset($row->migrate_map_destid1)) {
+      // Make sure is_new is off
+      $account->is_new = FALSE;
       if (isset($account->uid)) {
         if ($account->uid != $row->migrate_map_destid1) {
           throw new MigrateException(t("Incoming uid !uid and map destination uid !destid1 don't match",
@@ -144,6 +165,10 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
         throw new MigrateException(t('System-of-record is DESTINATION, but no destination uid provided'));
       }
       $old_account = user_load($account->uid, TRUE);
+      if (empty($old_account)) {
+        throw new MigrateException(t('System-of-record is DESTINATION, but user !uid does not exist',
+          array('!uid' => $account->uid)));
+      }
     }
     else {
       $old_account = $account;
@@ -151,6 +176,17 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
 
     // Roles must be arrays keyed by the role id, which isn't how the data
     // naturally comes in. Fix them up.
+
+    // First, if names instead of IDs are presented, translate them
+    if (!empty($account->role_names)) {
+      $role_names = is_array($account->role_names) ? $account->role_names : array($account->role_names);
+      foreach ($role_names as $role_name) {
+        $role = user_role_load_by_name($role_name);
+        if ($role) {
+          $account->roles[] = $role->rid;
+        }
+      }
+    }
     if (!empty($account->roles)) {
       if (!is_array($account->roles)) {
         $account->roles = array($account->roles);
@@ -178,7 +214,7 @@ class MigrateDestinationUser extends MigrateDestinationEntity {
 
     // Normalize MD5 passwords to lowercase, as generated by Drupal 6 and previous
     if ($this->md5Passwords) {
-      $account->pass = strtolower($account->pass);
+      $account->pass = drupal_strtolower($account->pass);
     }
 
     // If any datetime values were included, ensure that they're in timestamp format.

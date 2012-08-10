@@ -73,9 +73,9 @@ class MigrateSQLMap extends MigrateMap {
       array $destination_key, $connection_key = 'default') {
     // Default generated table names, limited to 63 characters
     $this->mapTable = 'migrate_map_' . drupal_strtolower($machine_name);
-    $this->mapTable = substr($this->mapTable, 0, 63);
+    $this->mapTable = drupal_substr($this->mapTable, 0, 63);
     $this->messageTable = 'migrate_message_' . drupal_strtolower($machine_name);
-    $this->messageTable = substr($this->messageTable, 0, 63);
+    $this->messageTable = drupal_substr($this->messageTable, 0, 63);
     $this->sourceKey = $source_key;
     $this->destinationKey = $destination_key;
     $this->connection = Database::getConnection('default', $connection_key);
@@ -182,11 +182,8 @@ class MigrateSQLMap extends MigrateMap {
    */
   public function getRowBySource(array $source_id) {
     migrate_instrument_start('mapRowBySource');
-    $fields = $this->destinationKeyMap;
-    $fields[] = 'needs_update';
-    $fields[] = 'last_imported';
     $query = $this->connection->select($this->mapTable, 'map')
-              ->fields('map', $fields);
+              ->fields('map');
     foreach ($this->sourceKeyMap as $key_name) {
       $query = $query->condition("map.$key_name", array_shift($source_id), '=');
     }
@@ -202,11 +199,8 @@ class MigrateSQLMap extends MigrateMap {
    */
   public function getRowByDestination(array $destination_id) {
     migrate_instrument_start('mapRowByDestination');
-    $fields = $this->sourceKeyMap;
-    $fields[] = 'needs_update';
-    $fields[] = 'last_imported';
     $query = $this->connection->select($this->mapTable, 'map')
-              ->fields('map', $fields);
+              ->fields('map');
     foreach ($this->destinationKeyMap as $key_name) {
       $query = $query->condition("map.$key_name", array_shift($destination_id), '=');
     }
@@ -264,12 +258,10 @@ class MigrateSQLMap extends MigrateMap {
    *
    * @param array $source_id
    *  Array of source key values.
-   * @param Migration $destination_migration
-   *  Unused and deprecated. To be removed at next API update.
    * @return array
    *  Array of destination key values, or NULL on failure.
    */
-  public function lookupDestinationID(array $source_id, Migration $destination_migration = NULL) {
+  public function lookupDestinationID(array $source_id) {
     migrate_instrument_start('lookupDestinationID');
     $query = $this->connection->select($this->mapTable, 'map')
               ->fields('map', $this->destinationKeyMap);
@@ -578,8 +570,8 @@ class MigrateSQLMap extends MigrateMap {
     }
     */
     $this->result = $this->connection->select($this->mapTable, 'map')
-             ->fields('map', $fields)
-             ->execute();
+      ->fields('map', $fields)
+      ->execute();
     $this->next();
   }
 

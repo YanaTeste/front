@@ -95,7 +95,7 @@ class MigrateSourceSQL extends MigrateSource {
    *  Options applied to this source.
    */
   public function __construct(SelectQueryInterface $query, array $fields = array(),
-       SelectQueryInterface $count_query = NULL, array $options = array()) {
+      SelectQueryInterface $count_query = NULL, array $options = array()) {
     parent::__construct($options);
     $this->originalQuery = $query;
     $this->query = clone $query;
@@ -179,7 +179,8 @@ class MigrateSourceSQL extends MigrateSource {
       if (is_array($row)) {
         foreach ($row as $field_name => $field_value) {
           // Lower case, because Drupal forces lowercase on fetch
-          $fields[drupal_strtolower($field_name)] = t('Example Content: ') . $field_value;
+          $fields[drupal_strtolower($field_name)] = t('Example Content: !value',
+            array('!value' => $field_value));
         }
       }
     }
@@ -292,6 +293,11 @@ class MigrateSourceSQL extends MigrateSource {
         $condition_added = TRUE;
 
         // And as long as we have the map table, add its data to the row.
+        $count = 1;
+        foreach ($this->activeMap->getSourceKey() as $field_name => $field_schema) {
+          $map_key = 'sourceid' . $count++;
+          $this->query->addField($alias, $map_key, "migrate_map_$map_key");
+        }
         $count = 1;
         foreach ($this->activeMap->getDestinationKey() as $field_name => $field_schema) {
           $map_key = 'destid' . $count++;

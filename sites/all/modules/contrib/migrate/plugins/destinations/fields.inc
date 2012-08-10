@@ -175,7 +175,7 @@ abstract class MigrateSimpleFieldHandler extends MigrateFieldHandler {
 
     // Let the derived class skip empty values.
     if ($this->skipEmpty) {
-      $values = array_filter($values);
+      $values = array_filter($values, array($this, 'notNull'));
     }
 
     // Setup the Field API array for saving.
@@ -192,6 +192,16 @@ abstract class MigrateSimpleFieldHandler extends MigrateFieldHandler {
     }
     return isset($return) ? $return : NULL;
   }
+
+  /**
+   * Returns TRUE only for values which are not NULL.
+   *
+   * @param $value
+   * @return bool
+   */
+  protected function notNull($value) {
+    return !is_null($value);
+  }
 }
 
 class MigrateTextFieldHandler extends MigrateFieldHandler {
@@ -203,7 +213,7 @@ class MigrateTextFieldHandler extends MigrateFieldHandler {
     $arguments = array();
     if (!is_null($summary)) {
       $arguments['summary'] = $summary;
-   }
+    }
     if (!is_null($format)) {
       $arguments['format'] = $format;
     }
@@ -454,7 +464,7 @@ abstract class MigrateFileFieldBaseHandler extends MigrateFieldHandler {
     if ($migration->getOption('file_function')) {
       $file_class = $migration->getOption('file_function');
     }
-    else if (!empty($arguments['file_class'])) {
+    elseif (!empty($arguments['file_class'])) {
       $file_class = $arguments['file_class'];
     }
     else {

@@ -4665,17 +4665,14 @@ h1, h2, h3, h4, h5, h6 {
   visibility: hidden;
   -webkit-transition-property: all;
   -moz-transition-property: all;
-  -ms-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: 0.15s;
   -moz-transition-duration: 0.15s;
-  -ms-transition-duration: 0.15s;
   -o-transition-duration: 0.15s;
   transition-duration: 0.15s;
   -webkit-transition-timing-function: ease-in;
   -moz-transition-timing-function: ease-in;
-  -ms-transition-timing-function: ease-in;
   -o-transition-timing-function: ease-in;
   transition-timing-function: ease-in;
 }
@@ -4756,12 +4753,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 1em 0.857em 1.143em;
   -webkit-transition-property: background;
   -moz-transition-property: background;
-  -ms-transition-property: background;
   -o-transition-property: background;
   transition-property: background;
   -webkit-transition-duration: 0.75s;
   -moz-transition-duration: 0.75s;
-  -ms-transition-duration: 0.75s;
   -o-transition-duration: 0.75s;
   transition-duration: 0.75s;
 }
@@ -4943,12 +4938,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
-  -ms-transition-property: background-color;
   -o-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -4983,12 +4976,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 5px;
   -webkit-transition-property: all;
   -moz-transition-property: all;
-  -ms-transition-property: all;
   -o-transition-property: all;
   transition-property: all;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -5043,7 +5034,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#df701f, #e68022 13.13%, #d14d1a);
   background-image: -moz-linear-gradient(#df701f, #e68022 13.13%, #d14d1a);
   background-image: -o-linear-gradient(#df701f, #e68022 13.13%, #d14d1a);
-  background-image: -ms-linear-gradient(#df701f, #e68022 13.13%, #d14d1a);
   background-image: linear-gradient(#df701f, #e68022 13.13%, #d14d1a);
   border: 1px solid #d14d1a;
 }
@@ -5057,7 +5047,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#78ddfb, #78ddfb 13.13%, #5b9ec3);
   background-image: -moz-linear-gradient(#78ddfb, #78ddfb 13.13%, #5b9ec3);
   background-image: -o-linear-gradient(#78ddfb, #78ddfb 13.13%, #5b9ec3);
-  background-image: -ms-linear-gradient(#78ddfb, #78ddfb 13.13%, #5b9ec3);
   background-image: linear-gradient(#78ddfb, #78ddfb 13.13%, #5b9ec3);
   border: 1px solid #639EB3;
 }
@@ -5092,12 +5081,10 @@ h1, h2, h3, h4, h5, h6 {
   height: 50px;
   -webkit-transition-property: -webkit-transform;
   -moz-transition-property: -moz-transform;
-  -ms-transition-property: -ms-transform;
   -o-transition-property: -o-transform;
   transition-property: transform;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -5285,7 +5272,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#df701f, #e68022 13%, #d14d1a);
   background-image: -moz-linear-gradient(#df701f, #e68022 13%, #d14d1a);
   background-image: -o-linear-gradient(#df701f, #e68022 13%, #d14d1a);
-  background-image: -ms-linear-gradient(#df701f, #e68022 13%, #d14d1a);
   background-image: linear-gradient(#df701f, #e68022 13%, #d14d1a);
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
@@ -5836,7 +5822,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: -moz-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: -o-linear-gradient(#c0d0d9, #b7ccd5);
-  background-image: -ms-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: linear-gradient(#c0d0d9, #b7ccd5);
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
@@ -5928,7 +5913,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: -moz-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: -o-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
-  background-image: -ms-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   display: block;
   padding: 0.667em 0 0.733em;
@@ -6166,7 +6150,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: -moz-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: -o-linear-gradient(#c0d0d9, #b7ccd5);
-  background-image: -ms-linear-gradient(#c0d0d9, #b7ccd5);
   background-image: linear-gradient(#c0d0d9, #b7ccd5);
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
@@ -6248,7 +6231,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: -moz-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: -o-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
-  background-image: -ms-linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   background-image: linear-gradient(#ecad7d, #e37d29 5%, #e68328 10%, #d2521d);
   display: block;
   padding: 0.667em 0 0.733em;
@@ -6558,7 +6540,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: -moz-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: -o-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
-  background-image: -ms-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   width: 13.067em;
   margin: 0;
@@ -6852,7 +6833,6 @@ h1, h2, h3, h4, h5, h6 {
   background-image: -webkit-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: -moz-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: -o-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
-  background-image: -ms-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   background-image: linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
   width: 13.067em;
   margin: 0;
@@ -7043,12 +7023,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 2px;
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
-  -ms-transition-property: background-color;
   -o-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -7085,12 +7063,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 3px;
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
-  -ms-transition-property: background-color;
   -o-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -7211,12 +7187,10 @@ h1, h2, h3, h4, h5, h6 {
   border-radius: 1em;
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
-  -ms-transition-property: background-color;
   -o-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }
@@ -7313,12 +7287,10 @@ h1, h2, h3, h4, h5, h6 {
   padding: 4px;
   -webkit-transition-property: background-color;
   -moz-transition-property: background-color;
-  -ms-transition-property: background-color;
   -o-transition-property: background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
-  -ms-transition-duration: 0.5s;
   -o-transition-duration: 0.5s;
   transition-duration: 0.5s;
 }

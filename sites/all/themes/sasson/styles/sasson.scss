@@ -1,4 +1,7 @@
-/**
+/* #############################################
+ * ##### Sasson - advanced drupal theming. #####
+ * #############################################
+
  * @file sasson/styles/sasson.scss
  */
 
@@ -12,7 +15,7 @@
 //   $sidebar-second: 4;
 // ==========================================================================
 
-// Grid dimentions
+// Grid dimensions
 $ninesixty-grid-width: [grid-width];
 $ninesixty-columns: [columns];
 $ninesixty-gutter-width: [gutter-width];
@@ -21,12 +24,12 @@ $ninesixty-gutter-width: [gutter-width];
 $sidebar-first: [sidebar-first];
 $sidebar-second: [sidebar-second];
 
-@import "css3";
+@import "compass/css3";
 @import "960/grid";
-@import "clear";
+@import "partials/clear";
 
 @if [responsive] {
-  
+
   @if [desktop-first] {
 
     // ==== Media Queries for a Responsive Design. ============================
@@ -42,19 +45,19 @@ $sidebar-second: [sidebar-second];
 
     // Layout for medium viewports
     @media (max-width: [narrow]) {
-      @import "sasson-narrow"; 
+      @import "sasson-narrow";
     }
 
     // Layout for small viewports
     @media (max-width: [narrower]) {
-      @import "sasson-narrower"; 
+      @import "sasson-narrower";
     }
 
     // Layout for smallest viewports
     @media (max-width: [narrowest]) {
       @import "sasson-narrowest";
     }
-    
+
   } @else if [mobile-first] {
 
     // ==== Media Queries for Mobile-First Responsive Design. =======================
@@ -82,9 +85,9 @@ $sidebar-second: [sidebar-second];
     @media (min-width: [large]) {
       @import "sasson-mf-large";
     }
-    
+
   }
-  
+
 } @else {
 
   // Non responsive, simple layout.
@@ -117,7 +120,7 @@ $sidebar-second: [sidebar-second];
 @if [overlay] {
 
   // ==== Design Overlay. =============================================
-  //   Overlay a draggable image over the design for visual comparison 
+  //   Overlay a draggable image over the design for visual comparison
   // ==================================================================
   body.show-overlay #overlay {
     position: absolute;
@@ -199,7 +202,7 @@ $sidebar-second: [sidebar-second];
         content: "ON";
         right: -25px;
       }
-    } 
+    }
 
     &.off {
       div {

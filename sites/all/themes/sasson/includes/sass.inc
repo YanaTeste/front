@@ -6,11 +6,11 @@
  */
 
 /**
- *  Helper function for sass integration. 
+ *  Helper function for sass integration.
  */
 function sasson_sass_render() {
   $element = array(
-    '#items' => drupal_add_css(), 
+    '#items' => drupal_add_css(),
   );
   sasson_pre_render($element);
 }
@@ -20,17 +20,20 @@ function sasson_sass_render() {
  */
 function sasson_element_info_alter(&$type) {
   array_unshift($type['styles']['#pre_render'], 'sasson_pre_render');
-  // Show development messages once an hour.
-  if (theme_get_setting('sasson_clear_registry') && user_access('administer site configuration') && flood_is_allowed('sasson_registry_warning', 1)) {
-    flood_register_event('sasson_registry_warning');
-    drupal_set_message(t('Your theme registry is being rebuilt on every page request. Don\'t forget to <a href="!link">disable this feature</a> before going public.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'warning');
+  // Show recompilation message once an hour.
+  if (theme_get_setting('sasson_sass_recompile') && user_access('administer site configuration') && flood_is_allowed('sasson_sass_recompile_warning', 1)) {
+    flood_register_event('sasson_sass_recompile_warning');
+    drupal_set_message(t('Your Sass files are being recompiled on every page request. Don\'t forget to <a href="!link">disable this feature</a> before going public.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'warning');
   }
-  if (theme_get_setting('sasson_devel') && user_access('administer site configuration') && flood_is_allowed('sasson_devel_warning', 1)) {
+  // Show sprites development message once an hour.
+  if (theme_get_setting('sasson_sprites_recompile') && user_access('administer site configuration') && flood_is_allowed('sasson_sprites_recompile_warning', 1)) {
+    flood_register_event('sasson_sprites_recompile_warning');
+    drupal_set_message(t('Your image sprites are being regenerated on every page request. Don\'t forget to <a href="!link">disable this feature</a> before going public.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'warning');
+  }
+  // Show development message once a day.
+  if (theme_get_setting('sasson_devel') && user_access('administer site configuration') && flood_is_allowed('sasson_devel_warning', 1, 86400)) {
     flood_register_event('sasson_devel_warning');
-    drupal_set_message(t('Your SASS / SCSS files are being recompiled on every page request. Don\'t forget to <a href="!link">disable this feature</a> before going public.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'warning');
-  }
-  if (theme_get_setting('sasson_devel') && variable_get('preprocess_css') && user_access('administer site configuration')) {
-    drupal_set_message(t('Your SASS / SCSS files are being recompiled on every page request while your CSS compression is turned on. This makes no sense. You should <a href="!link">disable this feature</a>.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'error');
+    drupal_set_message(t('Your theme has development mode on. For better performance (smaller CSS files), don\'t forget to <a href="!link">disable this feature</a> before going public.', array('!link' => url('admin/appearance/settings/' . variable_get('theme_default','none')))), 'warning');
   }
 }
 
@@ -51,44 +54,38 @@ function sasson_element_info_alter(&$type) {
  *   The modified (pre-rendered) $elements parameter.
  */
 function sasson_pre_render($elements) {
-  $map = $original = variable_get('sasson_cache', array());
   $files = sasson_pick_files($elements['#items']);
   $devel = theme_get_setting('sasson_devel');
-  // We can bail out here if there are no SCSS files anyways.
-  if (function_exists('drupal_get_path')) {
-    $inc = DRUPAL_ROOT . '/' . drupal_get_path('theme', 'sasson') . "/phamlp/sass/SassParser.php";
-    if (is_file($inc)) {
-      require_once $inc;
-    }
-    else {
-      return;
-    }
+  $inc = DRUPAL_ROOT . '/' . drupal_get_path('theme', 'sasson') . "/phamlp/sass/SassParser.php";
+  if (is_file($inc)) {
+    require_once $inc;
   }
+  else {
+    return;
+  }
+  // We can bail out here if there are no SCSS files anyways.
   if (empty($files)) {
     // Remove the files from the array of stylesheets.
     $elements['#items'] = array_diff_key($elements['#items'], $files);
     return $elements;
   }
   foreach ($files as $key => $file) {
-    // Create a unique identifier for the file.
-    if ($file['recompile'] !== TRUE) {
-      $hash = hash('sha256', serialize($file));
-      $path = isset($map[$hash]) ? $map[$hash] : NULL;
-    }
     $parts = explode("/", $elements['#items'][$key]['data']);
     $last = end($parts);
-    $parts = explode(".", $last);
-    $name = reset($parts);
+    $fparts = explode(".", $last);
+    $name = reset($fparts);
     $directory = 'public://css';
     $path = $directory . '/' . $name . '.css';
-    
-    // We recompile this file if recompile equals TRUE, array (and thereby the
-    // hash value) changed, if the file doesn't exist, or if we are in development
-    // mode. NOTE: You can use the 'recompile' array for your CSS files to cache
-    // them based on advanced criteria.
-    if (!file_exists($path) || $file['recompile'] || filemtime($path) < filemtime($file['data']) && $devel) {
+    $theme_name = $parts[array_search('themes', $parts)+1];
+    $cid = 'sasson:css:' . $theme_name . ':' . $name;
+    $cached = cache_get($cid, 'cache_page');
+
+    // We recompile this file if the file doesn't exist, if recompile equals true,
+    // if cache was cleared or if the file have changed since it was last compiled.
+    if (!file_exists($path) || theme_get_setting('sasson_sass_recompile') || theme_get_setting('sasson_sprites_recompile') || $file['recompile'] || empty($cached->data) || (filemtime($path) < filemtime($file['data']))) {
+      cache_set($cid, time(), 'cache_page', CACHE_TEMPORARY);
       $data = sasson_load_stylesheet($file['data']);
-      if (!$output = sasson_parse($data, $file, $file['syntax'])) {
+      if (!$output = sasson_parse($data, $file, $file['syntax'], $theme_name)) {
         unset($elements['#items'][$key]);
         continue;
       }
@@ -102,17 +99,8 @@ function sasson_pre_render($elements) {
     // Update the item in the stylesheets array.
     $elements['#items'][$key] = $file;
     $elements['#items'][$key]['data'] = $path;
-    if ($file['recompile'] !== TRUE) {
-      // Don't cache this item if it is set to recompile on every page load.
-      $map[$hash] = $path;
-    }
   }
-  // If $map and $original don't match anymore that means we need to update the
-  // CSS cache.
-  if ($original !== $map) {
-    variable_set('sasson_cache', $map);
-  }
-  
+
   return $elements;
 }
 
@@ -166,9 +154,10 @@ function sasson_load_stylesheet($file) {
     $base = substr($base, strlen($GLOBALS['base_root']));
   }
   _drupal_build_css_path(NULL, $base . '/');
-  // Anchor all paths in the CSS with its base URL, ignoring external and
-  // absolute paths.
-  $data = preg_replace_callback('/url\(\s*[\'"]?(?![a-z]+:|\/+)([^\'")]+)[\'"]?\s*\)/i', '_drupal_build_css_path', $data);
+  // Anchor all paths in the CSS with its base URL, ignoring external, absolute
+  // paths, and compass url helper functions.
+  $data = preg_replace_callback('/(?<!-)url\(\s*[\'"]?(?![a-z]+:|\/+)([^\'")]+)[\'"]?\s*\)/i', '_drupal_build_css_path', $data);
+  // Quote all url(..) to ensure PhamlP doesn't strip them.
   $data = preg_replace("/url\(([^'\")]+)\)/i", "url('$1')", $data);
   return $data;
 }
@@ -187,11 +176,9 @@ function sasson_load_stylesheet($file) {
  * @return
  *   The transformed CSS as a string.
  */
-function sasson_parse($data, $file, $syntax) {
+function sasson_parse($data, $file, $syntax, $theme_name) {
   try {
     $data = sasson_get_libraries($syntax) . "\n\n" . $data;
-    // Quote all url(..) to ensure PhamlP doesn't strip them.
-    $data = preg_replace("/url\(([^'\")]+)\)/i", "url('$1')", $data);
     // Are we in development mode ?
     $devel = theme_get_setting('sasson_devel');
     $style = $devel ? 'expanded' : 'compressed';
@@ -204,6 +191,10 @@ function sasson_parse($data, $file, $syntax) {
         $paths[] = $dir;
       }
     }
+    $default_theme = variable_get('theme_default');
+    $images_path = theme_get_setting('sasson_images_path') ? theme_get_setting('sasson_images_path') : base_path() . drupal_get_path('theme', $theme_name) . '/images';
+    $fonts_path = theme_get_setting('sasson_fonts_path') ? theme_get_setting('sasson_fonts_path') : base_path() . drupal_get_path('theme', $theme_name) . '/fonts';
+    $stylesheets_path = theme_get_setting('sasson_stylesheets_path') ? theme_get_setting('sasson_stylesheets_path') : base_path() . drupal_get_path('theme', $theme_name) . '/styls';
     // Prepare vendor prefixes array
     // @see hook_prefixes_alter().
     $pref = array();
@@ -214,24 +205,28 @@ function sasson_parse($data, $file, $syntax) {
       'style' => $style,
       'cache' => FALSE,
       'syntax' => $syntax,
-      'filename' => $file['data'],  
+      'filename' => $file['data'],
       'load_paths' => $paths, // fix by http://code.google.com/p/phamlp/issues/detail?id=108
       'debug_info' => $devel,
       'vendor_properties'=> $pref,
-      'extensions' => array('compass' => array()),
+      'extensions' => array('compass' => array(
+        'images_path'=> $images_path,
+        'fonts_path'=> $fonts_path,
+        'css_path'=> $stylesheets_path,
+      )),
     );
     $parser = new SassParser($options);
-    
+
     // Alter SASS just before it is sent to the parser
     // @see hook_sasson_alter().
-    drupal_alter('sasson', $data);
-    
+    drupal_alter('sasson', $data, $theme_name);
+
     // parsing the data content of the file.
-    $data = $parser->toCss($data, FALSE); 
-    
+    $data = $parser->toCss($data, FALSE);
+
     // Alter SASS right after it comes back from the parser
     // @see hook_sasson_post_parse().
-    drupal_alter('sasson_post_parse', $data);
+    drupal_alter('sasson_post_parse', $data, $theme_name);
 
     return $data;
   }
@@ -299,4 +294,22 @@ function sasson_get_libraries($syntax) {
   if (isset($libraries[$syntax])) {
     return $libraries[$syntax];
   }
+}
+
+/**
+ * Creates a sprite image from a directory of images with the respective Sass
+ * mixin to represent the image position in the sprite.
+ *
+ * @param  string $sname      Sprite name
+ * @param  string $theme_name Theme name
+ * @return string             The mixins to be added to the Sass file.
+ */
+function sasson_sprites($sname, $theme_name) {
+  require_once dirname(__FILE__) . '/sprites.inc';
+  // create Sprite object
+  $Sprite = new Sprite;
+  // Start spriting
+  $output = $Sprite->generate_sprite($sname, $theme_name);
+  // Add the mixins to the Sass file
+  return $output;
 }

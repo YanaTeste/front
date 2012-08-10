@@ -7,15 +7,15 @@
 function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
 
   drupal_add_css(drupal_get_path('theme', 'sasson') .'/styles/theme-settings.css');
-  
+
   $form['sasson_settings'] = array(
     '#type' => 'vertical_tabs',
     '#weight' => -10,
-    '#prefix' => t('<h3>Theme configuration</h3>'),
+    '#prefix' => '<h3>' . t('Theme configuration') . '</h3>',
   );
 
-  $form['#submit'][] = 'sasson_flush_css';
-  
+  $form['#submit'][] = 'sasson_flush_cache';
+
   /**
    * Grid Settings
    */
@@ -28,7 +28,7 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Show grid background layer.'),
     '#description' => t('Display a visible background grid, for easier elements positioning'),
     '#default_value' => theme_get_setting('sasson_show_grid'),
-  );  
+  );
 
   $form['sasson_settings']['sasson_grid']['sasson_grid_dimensions'] = array(
     '#type' => 'fieldset',
@@ -55,7 +55,7 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#description' => t("This value represents the margin between grid elements"),
     '#default_value' => theme_get_setting('sasson_gutter_width'),
   );
-  
+
   $form['sasson_settings']['sasson_grid']['sasson_sidebars_dimensions'] = array(
     '#type' => 'fieldset',
     '#title' => t('Sidebars'),
@@ -175,6 +175,11 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#description' => t("Enter some CSS selectors for the menus you want to alter."),
     '#default_value' => theme_get_setting('sasson_responsive_menus_selectors'),
   );
+  $form['sasson_settings']['sasson_layout']['responsive_menus']['sasson_responsive_menus_autohide'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Auto-hide the standard menu'),
+    '#default_value' => theme_get_setting('sasson_responsive_menus_autohide'),
+  );
 
   /**
    * SASS Settings
@@ -191,17 +196,91 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
   );
   $form['sasson_settings']['sasson_sass']['sasson_devel'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Development mode - Recompile all SASS / SCSS files on every change (+FireSass support).'),
-    '#description' => t('SASS Development - Recompile SASS / SCSS files every time you change them and get <a href="!link">FireSass</a> support. WARNING: css output is way bigger, use only in development.', array('!link' => 'https://addons.mozilla.org/en-US/firefox/addon/firesass-for-firebug/')),
+    '#title' => t('Development mode - unminified output and FireSass support.'),
+    '#description' => t('SASS Development - Output unminified sass for better readability and add !firesass support. WARNING: css output is way bigger, use only while in development.', array('!firesass' => '<a target="blank" href="https://addons.mozilla.org/en-US/firefox/addon/firesass-for-firebug/">FireSass</a>')),
     '#default_value' => theme_get_setting('sasson_devel'),
   );
-  $form['sasson_settings']['sasson_sass']['sasson_flush'] = array(
-    '#type' => 'submit',
-    '#value' => 'Recompile SASS / SCSS files',
-    '#submit' => array('sasson_flush_css'),
+
+  $form['sasson_settings']['sasson_sass']['sasson_url_helpers'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Compass URL Helpers'),
   );
-  
-    /**
+  $form['sasson_settings']['sasson_sass']['sasson_url_helpers']['description'] = array(
+    '#markup' => '<div class="description">' . t('Here you may set the paths to be used with !helperslink, this allows you to easily restructure your theme or change them to be using asset hosts when moving to production.', array('!helperslink' => '<a target="_blank" href="http://compass-style.org/reference/compass/helpers/urls/">' . t('Compass URL helper functions') . '</a>')) . ' <strong>' . t('if none is set these functions will point to your theme\'s /images, /fonts and /styles directories.') . '</strong></div>',
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_url_helpers']['sasson_images_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Path to images directory'),
+    '#description' => t('Set the path to your images, this may be used with the !imageurl helper function.', array('!imageurl' => '<a target="_blank" href="http://compass-style.org/reference/compass/helpers/urls/#image-url">image-url(..)</a>')),
+    '#attributes' => array(
+      'placeholder' => t('e.g. /path/to/images or http://yourhost.com/path/to/images'),
+    ),
+    '#default_value' => theme_get_setting('sasson_images_path'),
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_url_helpers']['sasson_fonts_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Path to fonts directory'),
+    '#description' => t('Set the path to your fonts, this may be used with the !fontsurl helper function.', array('!fontsurl' => '<a target="_blank" href="http://compass-style.org/reference/compass/helpers/urls/#font-url">font-url(..)</a>')),
+    '#attributes' => array(
+      'placeholder' => t('e.g. /path/to/fonts or http://yourhost.com/path/to/fonts'),
+    ),
+    '#default_value' => theme_get_setting('sasson_fonts_path'),
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_url_helpers']['sasson_stylesheets_path'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Path to stylesheets directory'),
+    '#description' => t('Set the path to your stylesheets, this may be used with the !stylesheeturl helper function.', array('!stylesheeturl' => '<a target="_blank" href="http://compass-style.org/reference/compass/helpers/urls/#stylesheet-url">stylesheet-url(..)</a>')),
+    '#attributes' => array(
+      'placeholder' => t('e.g. /path/to/stylesheets or http://yourhost.com/path/to/stylesheets'),
+    ),
+    '#default_value' => theme_get_setting('sasson_stylesheets_path'),
+  );
+
+  $form['sasson_settings']['sasson_sass']['sasson_debbug'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Debugging'),
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_debbug']['description'] = array(
+    '#markup' => '<div class="description">' . t('During theme development, it may be useful, for debugging purposes, to force recompilation of Sass files and/or regeneration of sprite images on every page request. You usually won\'t need this on day-to-day development, both sass and image sprites are already being recompiled everytime they are updated and every time you clear your cache.') . '<br><strong>' . t('WARNING: both comes with a performance hit and should be turned off on production websites.') . '</strong></div>',
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_debbug']['sasson_sass_recompile'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Recompile all style sheets on every page request.'),
+    '#default_value' => theme_get_setting('sasson_sass_recompile'),
+  );
+  $form['sasson_settings']['sasson_sass']['sasson_debbug']['sasson_sprites_recompile'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Regenerate all image sprites on every page request.'),
+    '#default_value' => theme_get_setting('sasson_sprites_recompile'),
+  );
+
+  /**
+   * CSS resets
+   */
+  $form['sasson_settings']['sasson_reset'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('CSS resets'),
+  );
+  $form['sasson_settings']['sasson_reset']['sasson_cssreset'] = array(
+    '#type' => 'radios',
+    '#title' => t('Normalize VS Reset'),
+    '#options' => array(
+        'normalize' => t('Use !normalize from !h5bp.', array('!normalize' => l('normalize.css', 'http://necolas.github.com/normalize.css/', array('attributes' => array('target'=>'_blank'))), '!h5bp' => l('HTML5 Boilerplate', 'http://html5boilerplate.com/', array('attributes' => array('target'=>'_blank'))))),
+        'reset' => t("Use !meyer's CSS reset.", array('!meyer' => l('Eric Meyer', 'http://meyerweb.com/eric/tools/css/reset/', array('attributes' => array('target'=>'_blank'))))),
+        'none' => t("None"),
+      ),
+    '#description' => t('Normalize.css makes browsers render all elements more consistently and in line with modern standards, while preserving useful defaults, unlike many CSS resets.<br>
+      Reset.css takes the approach of reseting css values to reduce browser inconsistencies in things like default line heights, margins and font sizes of headings, and so on.'),
+    '#default_value' => theme_get_setting('sasson_cssreset'),
+  );
+  $form['sasson_settings']['sasson_reset']['sasson_formalize'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("Use !formalize to reset your forms.", array('!formalize' => l('Formalize', 'http://formalize.me/', array('attributes' => array('target'=>'_blank'))))),
+    '#description' => t('Break the cycle of inconsistent form defaults, style forms with impunity!'),
+    '#default_value' => theme_get_setting('sasson_formalize'),
+  );
+
+  /**
    * HTML5 IE support
    */
   $form['sasson_settings']['sasson_html5'] = array(
@@ -219,16 +298,22 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#description' => t('Makes IE understand HTML5 elements via <a href="!shivlink">HTML5 shiv</a>. disable if you use a different method.', array('!shivlink' => 'http://code.google.com/p/html5shiv/')),
     '#default_value' => theme_get_setting('sasson_html5shiv'),
   );
+  $form['sasson_settings']['sasson_html5']['sasson_ie_comments'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Add IE specific classes'),
+    '#description' => t('This will add conditional classes to the html tag for IE specific styling. see this <a href="!post">post</a> for more info.', array('!post' => 'http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/')),
+    '#default_value' => theme_get_setting('sasson_ie_comments'),
+  );
   $form['sasson_settings']['sasson_html5']['sasson_prompt_cf'] = array(
-    '#type' => 'select', 
+    '#type' => 'select',
     '#title' => t('Prompt IE users to install Chrome Frame'),
     '#default_value' => theme_get_setting('sasson_prompt_cf'),
     '#options' => drupal_map_assoc(array(
-       'Disabled', 
-       'IE 6', 
-       'IE 7', 
-       'IE 8', 
-       'IE 9', 
+       'Disabled',
+       'IE 6',
+       'IE 7',
+       'IE 8',
+       'IE 9',
     )),
       '#description' => t('Set the latest IE version you would like the prompt box to show on or disable if you want to support old IEs.'),
   );
@@ -241,8 +326,8 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#collapsible' => TRUE,
     '#collapsed' => TRUE,
     '#description' => t("
-      <strong>Experimental</strong> - Set a custom font to be used across the site. you may override typography settings in you sub-theme's css/sass/scss files.<br>
-      <strong>Note:</strong> Only fonts from !webfont are supported at the moment, if this is not enough you should check out !fontyourface module.", 
+      Set a custom font to be used across the site. you may override typography settings in you sub-theme's css/sass/scss files.<br>
+      <strong>Note:</strong> Only fonts from !webfont are supported at the moment, if this is not enough you should check out !fontyourface module.",
       array('!webfont' => l('google web fonts', 'http://www.google.com/webfonts', array('attributes' => array('target'=>'_blank'))), '!fontyourface' => l('@font-your-face', 'http://drupal.org/project/fontyourface', array('attributes' => array('target'=>'_blank'))))),
     '#title' => t('Fonts'),
   );
@@ -272,11 +357,29 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#type' => 'fieldset',
     '#title' => t('Development'),
   );
-  $form['sasson_settings']['sasson_development']['sasson_clear_registry'] = array(
+
+  $form['sasson_settings']['sasson_development']['sasson_watch'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('File Watcher'),
+  );
+  $form['sasson_settings']['sasson_development']['sasson_watch']['sasson_watcher'] = array(
     '#type' => 'checkbox',
-    '#title' => t('Rebuild theme registry on every page request.'),
-    '#description' => t('During theme development, it can be very useful to continuously <a href="!link">rebuild the theme registry</a>. WARNING: this is a huge performance penalty and must be turned off on production websites.', array('!link' => 'http://drupal.org/node/173880#theme-registry')),
-    '#default_value' => theme_get_setting('sasson_clear_registry'),
+    '#title' => t('Watch for file changes and automatically refresh the browser.'),
+    '#description' => t('With this feature on, you may enter a list of URLs for files to be watched, whenever a file is changed, your browser will automagically refresh itself.<br><strong>Turn this off when not actively developing.</strong>'),
+    '#default_value' => theme_get_setting('sasson_watcher'),
+  );
+  $form['sasson_settings']['sasson_development']['sasson_watch']['sasson_watch_file'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Files to watch'),
+    '#description' => t('Enter the internal path of the files to be watched. one file per line. no leading slash.<br> e.g. sites/all/themes/sasson/styles/sasson.scss<br>Lines starting with a semicolon (;) will be ignored.<br><strong>Keep this list short !</strong> Watch only the files you currently work on.'),
+    '#rows' => 3,
+    '#default_value' => theme_get_setting('sasson_watch_file'),
+  );
+  $form['sasson_settings']['sasson_development']['sasson_watch']['sasson_instant_watcher'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Update styles without refreshing.'),
+    '#description' => t('<strong>Experimental</strong> - this will instantly update your browser when a watched file is updated without refreshing the browser. note: this will work with stylesheets only (CSS/SASS/SCSS).'),
+    '#default_value' => theme_get_setting('sasson_instant_watcher'),
   );
 
   $form['sasson_settings']['sasson_development']['sasson_overlay'] = array(
@@ -295,7 +398,7 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#default_value' => theme_get_setting('sasson_overlay_url'),
   );
   $form['sasson_settings']['sasson_development']['sasson_overlay']['sasson_overlay_opacity'] = array(
-    '#type' => 'select', 
+    '#type' => 'select',
     '#title' => t('Overlay opacity'),
     '#default_value' => theme_get_setting('sasson_overlay_opacity'),
     '#options' => drupal_map_assoc(array(
@@ -346,7 +449,7 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
     '#title' => t('Breadcrumb separator'),
     '#default_value' => theme_get_setting('sasson_breadcrumb_separator'),
   );
-  
+
   $form['sasson_settings']['sasson_general']['sasson_rss'] = array(
     '#type' => 'fieldset',
     '#title' => t('RSS'),
@@ -359,11 +462,19 @@ function sasson_form_system_theme_settings_alter(&$form, &$form_state) {
 }
 
 /**
- * Flush the genrated css files so the get recompiled
+ * Flush all CSS and page caches so Sass files are recompiled.
+ *
+ * @see _admin_menu_flush_cache()
  */
-function sasson_flush_css() {
-  // @todo find a better method of doing that
-  variable_del('drupal_css_cache_files');
-  file_scan_directory('public://css', '/.*/', array('callback' => 'file_unmanaged_delete'));
+function sasson_flush_cache() {
+  // Change query-strings on css/js files to enforce reload for all users.
+  _drupal_flush_css_js();
+
+  drupal_clear_css_cache();
+  drupal_clear_js_cache();
+
+  // Clear the page cache, since cached HTML pages might link to old CSS and
+  // JS aggregates.
+  cache_clear_all('*', 'cache_page', TRUE);
   drupal_set_message(t('Your SASS / SCSS files will be recompiled'), 'status');
 }

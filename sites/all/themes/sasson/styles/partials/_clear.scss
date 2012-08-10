@@ -3,7 +3,7 @@
 // Contain floats: h5bp.com/q
 @mixin clear {
   &:before, &:after {
-    content: "\0020"; 
+    content: "\0020";
     display: table;
     @include has-layout;
   }

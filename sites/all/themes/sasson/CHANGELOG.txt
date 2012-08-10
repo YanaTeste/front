@@ -1,5 +1,38 @@
-Sasson 7.x-2.x-dev, 2012-02-21 (development release)
+Sasson 7.x-2.x-dev (development release)
 ---------------------------
+-
+
+Sasson 7.x-2.5, 2012-07-19
+---------------------------
+- Added keyboard shortcut to recompile stylesheets and image sprites
+- Better support for Compass URL helpers
+- Add sprites generator
+- Clearing the cache now trigger re-compilation of Sass files
+- Removed "rebuid registry" from the UI;
+- Added Sass and sprites debugging options through the UI (force recompilation);
+
+Sasson 7.x-2.3/4, 2012-06-22
+---------------------------
+- Issue #1367502 by ssherriff : Set compass image path;
+- Issue #1645280 by poeticninja : Internet Explorer 9 CSS Selectors;
+- Sub-theme script is now named to prevent conflicts with sub-sub-theming;
+- Better development message;
+- Fixed bug with default theme settings;
+
+Sasson 7.x-2.2, 2012-06-03
+---------------------------
+- Better file watcher - see changes instantaneously without a page refresh.
+- Issue #1474182 by erutan : Add more information in subtheme.
+- Updated normalize.css from H5BP (e.g. farewell hot pink selection)
+
+Sasson 7.x-2.1, 2012-04-25
+---------------------------
+- Switch between h5bp normalize.css and Eric Meyer's reset.css (or none)
+- Added Formalize (http://formalize.me/)
+- New feature - File watcher
+- Protocol agnostic google web-fonts loading (http/https)
+- Added no-flip functionality to the directionality flipper
+- Issue #1512202 by mint5auce, markedup, erutan : Remove clearfix from templates.
 
 
 Sasson 7.x-2.0, 2012-02-20

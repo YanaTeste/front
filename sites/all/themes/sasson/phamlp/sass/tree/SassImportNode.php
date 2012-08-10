@@ -53,9 +53,19 @@ class SassImportNode extends SassNode {
 				return "@import {$file}";
 			}
 			else {
-				$file = trim($file, '\'"');
-				$tree = SassFile::getTree(
-					SassFile::getFile($file, $this->parser), $this->parser);
+				// Sasson sprites taking over here.
+				if (strpos($file, 'sprites') !== false && function_exists('sasson_sprites')) {
+					$parts = explode("/", $this->parser->filename);
+					$theme_name = $parts[array_search('themes', $parts)+1];
+					$file = explode("/", trim($file, '\'"'));
+					$sname = end($file);
+					$tree = SassFile::getTree(sasson_sprites($sname, $theme_name), $this->parser);
+				}
+				else {
+					$file = trim($file, '\'"');
+					$tree = SassFile::getTree(
+						SassFile::getFile($file, $this->parser), $this->parser);
+				}
 				if (empty($tree)) {
 					throw new SassImportNodeException('Unable to create document tree for {file}', array('{file}'=>$file), $this);
 				}

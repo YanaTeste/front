@@ -8,7 +8,7 @@
  * @package			PHamlP
  * @subpackage	Sass.extensions.compass.functions
  */
- 
+
 /**
  * Compass extension SassScript urls functions class.
  * A collection of functions for use in SassSCript.
@@ -18,7 +18,7 @@
 class SassExtentionsCompassFunctionsUrls {
 	public function stylesheet_url($path, $only_path = null) {
 		$path = $path->value; # get to the string value of the literal.
-		
+
 		# Compute the $path to the stylesheet, either root relative or stylesheet relative
 		# or nil if the http_images_path is not set in the configuration.
 		if (SassExtentionsCompassConfig::config('relative_assets'))
@@ -96,15 +96,15 @@ class SassExtentionsCompassFunctionsUrls {
 
 		return new SassString(self::clean($path, $only_path));
 	}
-	
+
 	# takes off any leading "./".
 	# if $only_path emits a $path, else emits a url
 	private function clean($url, $only_path) {
 		if (!$only_path instanceof SassBoolean) {
 			$only_path = new SassBoolean('false');
 		}
-		
-		$url = (substr($url, 0, 2) === './' ? substr($url, 2) : $url);		
+
+		$url = (substr($url, 0, 2) === './' ? substr($url, 2) : $url);
 		return ($only_path->toBoolean() ? $url : "url('$url')");
 	}
 

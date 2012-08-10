@@ -33,9 +33,7 @@
  */
 ?>
 <?php print $doctype; ?>
-<!--[if lte IE 7 ]><html <?php print $html_attributes; ?> class="no-js ie7 lte-ie9 lte-ie8"><![endif]-->
-<!--[if IE 8 ]><html <?php print $html_attributes; ?> class="no-js ie8 lte-ie9 lte-ie8"><![endif]-->
-<!--[if gt IE 8]><!--> <html <?php print $html_attributes; ?> class="no-js"> <!--<![endif]-->
+<?php print $html; ?>
 <head<?php print $rdf->profile; ?>>
 
   <?php print $head; ?>

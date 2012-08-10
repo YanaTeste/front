@@ -12,13 +12,12 @@ if (theme_get_setting('sasson_sass')) {
 }
 
 
-// Auto-rebuild the theme registry during theme development.
-if (theme_get_setting('sasson_clear_registry')) {
-  // Rebuild .info data.
-  system_rebuild_theme_data();
-  // Rebuild theme registry.
-  drupal_theme_rebuild();
-}
+/**
+ * DEVELOPMENT ONLY
+ * Comment out to force rebuild of the theme registry on every page request
+ */
+// system_rebuild_theme_data();
+// drupal_theme_rebuild();
 
 
 /**
@@ -34,23 +33,25 @@ function sasson_css_alter(&$css) {
     // Only provide overrides for files.
     if ($item['type'] == 'file') {
       $path_parts = pathinfo($item['data']);
-      $extens = ".{$path_parts['extension']}";
-      // If the current language is LTR, add the file with the LTR overrides.
-      if ($language->direction == LANGUAGE_LTR) {
-        $dir_path = str_replace($extens, "-ltr{$extens}", $item['data']);
-      }
-      // If the current language is RTL, add the sass/scss file with the RTL overrides.
-      // Core already takes care of RTL css files.
-      elseif ($language->direction == LANGUAGE_RTL && ($extens == ".scss" || $extens == ".sass")) {
-        $dir_path = str_replace($extens, "-rtl{$extens}", $item['data']);
-      }
-      // If the file is exists, add the file with the dir (LTR/RTL) overrides.
-      if (isset($dir_path) && file_exists($dir_path) && !isset($css[$dir_path])) {
-        // Replicate the same item, but with the dir (RTL/LTR) path and a little larger
-        // weight so that it appears directly after the original CSS file.
-        $item['data'] = $dir_path;
-        $item['weight'] += 0.01;
-        $css[$dir_path] = $item;
+      if (!empty($path_parts['extension'])) {
+        $extens = ".{$path_parts['extension']}";
+        // If the current language is LTR, add the file with the LTR overrides.
+        if ($language->direction == LANGUAGE_LTR) {
+          $dir_path = str_replace($extens, "-ltr{$extens}", $item['data']);
+        }
+        // If the current language is RTL, add the sass/scss file with the RTL overrides.
+        // Core already takes care of RTL css files.
+        elseif ($language->direction == LANGUAGE_RTL && ($extens == ".scss" || $extens == ".sass")) {
+          $dir_path = str_replace($extens, "-rtl{$extens}", $item['data']);
+        }
+        // If the file is exists, add the file with the dir (LTR/RTL) overrides.
+        if (isset($dir_path) && file_exists($dir_path) && !isset($css[$dir_path])) {
+          // Replicate the same item, but with the dir (RTL/LTR) path and a little larger
+          // weight so that it appears directly after the original CSS file.
+          $item['data'] = $dir_path;
+          $item['weight'] += 0.01;
+          $css[$dir_path] = $item;
+        }
       }
     }
   }
@@ -65,11 +66,11 @@ function sasson_theme_dynasty() {
   $themes = list_themes();
   $dynasty = array();
   $dynasty[] = $obj = $themes[$theme_key];
-  
+
   while (isset($obj->base_theme) && isset($themes[$obj->base_theme]) && !empty($themes[$obj->base_theme])) {
     $dynasty[] = $obj = $themes[$obj->base_theme];
   }
-  
+
   return $dynasty;
 }
 
@@ -80,15 +81,15 @@ function sasson_theme_dynasty() {
 function sasson_css_include() {
 
   $dynasty = sasson_theme_dynasty();
-  
+
   foreach ($dynasty as $theme) {
-    $info = drupal_parse_info_file($theme->filename); 
-  
+    $info = drupal_parse_info_file($theme->filename);
+
     if (isset($info['styles']) && !empty($info['styles'])) {
       foreach ($info['styles'] as $file => $style) {
         if (file_exists($file = drupal_get_path('theme', $theme->name) . "/{$file}")) {
           drupal_add_css($file, $style['options']);
-        }   
+        }
       }
     }
   }
@@ -111,15 +112,52 @@ function sasson_html_head_alter(&$head_elements) {
  * Implements template_preprocess_html().
  */
 function sasson_preprocess_html(&$vars) {
-  
+
   $vars['doctype'] = _sasson_doctype();
   $vars['rdf'] = _sasson_rdf($vars);
   $vars['html_attributes'] = 'lang="' . $vars['language']->language . '" dir="' . $vars['language']->dir . '" ' . $vars['rdf']->version . $vars['rdf']->namespaces;
 
+  // IE coditional comments on the <html> tag
+  // http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/
+  if (theme_get_setting('sasson_ie_comments')) {
+    $vars['html'] = '<!--[if lte IE 7 ]><html ' . $vars['html_attributes'] . ' class="no-js ie7 lte-ie9 lte-ie8"><![endif]-->
+                     <!--[if IE 8 ]><html ' . $vars['html_attributes'] . ' class="no-js ie8 lte-ie9 lte-ie8"><![endif]-->
+                     <!--[if IE 9 ]><html ' . $vars['html_attributes'] . ' class="no-js ie9 lte-ie9"><![endif]-->
+                     <!--[if gt IE 9]><!--> <html ' . $vars['html_attributes'] . ' class="no-js"> <!--<![endif]-->';
+  } else {
+    $vars['html'] = '<html ' . $vars['html_attributes'] . ' class="no-js">';
+  }
+
+  // CSS resets
+  // normalize remains the default
+  $reset = theme_get_setting('sasson_cssreset') ? theme_get_setting('sasson_cssreset') : 'normalize';
+  if (theme_get_setting('sasson_cssreset') != 'none') {
+    drupal_add_css(drupal_get_path('theme', 'sasson') . '/styles/reset/' . $reset . '.css' , array('weight' => -1, 'every_page' => TRUE));
+  }
+  if (theme_get_setting('sasson_formalize')) {
+    drupal_add_css(drupal_get_path('theme', 'sasson') . '/styles/reset/formalize/css/formalize.css' , array('weight' => -1, 'every_page' => TRUE));
+    drupal_add_js(drupal_get_path('theme', 'sasson') . '/styles/reset/formalize/js/jquery.formalize.js' , array('scope' => 'footer'));
+  }
+
+  // File-Watcher - auto-refresh the browser when a file is updated
+  if (theme_get_setting('sasson_watcher')) {
+    global $base_url;
+    $list = array_map('trim',explode("\n", theme_get_setting('sasson_watch_file')));
+    $instant = theme_get_setting('sasson_instant_watcher');
+    $watcher = "(function () {\n";
+    foreach ($list as $file){
+      if (substr($file, 0, 1) !== ';') {
+        $watcher .= "  Drupal.sasson.watch('" . $base_url . "/" . $file . "', " . $instant . ");\n";
+      }
+    }
+    $watcher .= "}());";
+    drupal_add_js($watcher, array('type' => 'inline', 'scope' => 'footer'));
+  }
+
   // Custom fonts from Google web-fonts
   $font = str_replace(' ', '+', theme_get_setting('sasson_font'));
   if (theme_get_setting('sasson_font')) {
-    drupal_add_css('http://fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
+    drupal_add_css('//fonts.googleapis.com/css?family=' . $font , array('type' => 'external', 'group' => CSS_THEME));
   }
 
   // Enable HTML5 elements in IE
@@ -134,7 +172,7 @@ function sasson_preprocess_html(&$vars) {
         'http-equiv' => 'X-UA-Compatible',
         'content' =>  'IE=edge,chrome=1',
       )
-    );  
+    );
     drupal_add_html_head($meta_force_ie, 'meta_force_ie');
   }
 
@@ -146,7 +184,7 @@ function sasson_preprocess_html(&$vars) {
   } else {
     $vars['prompt_cf'] = '';
   }
-  
+
   //  Mobile viewport optimized: h5bp.com/viewport
   if (theme_get_setting('sasson_responsive')) {
     $mobile_viewport = array(
@@ -164,9 +202,9 @@ function sasson_preprocess_html(&$vars) {
   if (theme_get_setting('sasson_responsive')) {
     $mobiledropdown_width = str_replace('px', '', theme_get_setting('sasson_responsive_menus_width'));
     if ($mobiledropdown_width > 0) {
-      $mobiledropdown_selectors = theme_get_setting('sasson_responsive_menus_selectors');
-      $inline_code = 'jQuery("' . $mobiledropdown_selectors . '").mobileSelect({
-          deviceWidth: ' . $mobiledropdown_width . '
+      $inline_code = 'jQuery("' . theme_get_setting('sasson_responsive_menus_selectors') . '").mobileSelect({
+          deviceWidth: ' . $mobiledropdown_width . ',
+          autoHide: ' . theme_get_setting('sasson_responsive_menus_autohide') . ',
         });';
       drupal_add_js(drupal_get_path('theme', 'sasson') . '/scripts/jquery.mobileselect.js');
       drupal_add_js($inline_code,
@@ -174,7 +212,29 @@ function sasson_preprocess_html(&$vars) {
       );
     }
   }
-  
+
+  // Keyboard shortcut to recompile Sass and sprites
+  // ToDo: Remove the admin-menu dependency
+  if (theme_get_setting('sasson_devel') && module_exists('admin_menu')) {
+    $inline_code = 'jQuery(document).bind("keydown", "alt+c", function() {
+      var href = jQuery(\'#admin-menu a[href*="flush-cache/assets"]\').attr("href");
+      if (typeof href === "undefined") {
+        // Support older versions of admin-menu
+        href = jQuery(\'#admin-menu a[href*="flush-cache?"]\').attr("href");
+      }
+      if (typeof href !== "undefined") {
+        window.location.href = href;
+      }
+      else {
+        log("Could not find the path to clear cache");
+      }
+    });';
+    drupal_add_js(drupal_get_path('theme', 'sasson') . '/scripts/jquery.hotkeys.js');
+    drupal_add_js($inline_code,
+      array('type' => 'inline', 'scope' => 'footer')
+    );
+  }
+
   // Since menu is rendered in preprocess_page we need to detect it here to add body classes
   $has_main_menu = theme_get_setting('toggle_main_menu');
   $has_secondary_menu = theme_get_setting('toggle_secondary_menu');
@@ -196,11 +256,11 @@ function sasson_preprocess_html(&$vars) {
   if ($vars['is_admin']) {
     $vars['classes_array'][] = 'admin';
   }
-  
+
   if (theme_get_setting('sasson_show_grid')) {
     $vars['classes_array'][] = 'show-grid';
   }
-  
+
   if (theme_get_setting('sasson_overlay') && theme_get_setting('sasson_overlay_url')) {
     $vars['classes_array'][] = 'show-overlay';
     drupal_add_library('system', 'ui');
@@ -212,9 +272,9 @@ function sasson_preprocess_html(&$vars) {
       'overlay_opacity' => theme_get_setting('sasson_overlay_opacity'),
     )), 'setting');
   }
-  
+
   $vars['classes_array'][] = 'dir-' . $vars['language']->dir;
-  
+
   if (!$vars['is_front']) {
     // Add unique classes for each page and website section
     $path = drupal_get_path_alias($_GET['q']);
@@ -252,11 +312,11 @@ function sasson_preprocess_html(&$vars) {
  * Implements template_preprocess_page().
  */
 function sasson_preprocess_page(&$vars) {
-  
+
   if (isset($vars['node_title'])) {
     $vars['title'] = $vars['node_title'];
   }
-  
+
   // Site navigation links.
   $vars['main_menu_links'] = '';
   if (isset($vars['main_menu'])) {
@@ -304,7 +364,7 @@ function sasson_preprocess_page(&$vars) {
     // Make sure the shortcut link is the first item in title_suffix.
     $vars['title_suffix']['add_or_remove_shortcut']['#weight'] = -100;
   }
-  
+
   if(!theme_get_setting('sasson_feed_icons')) {
     $vars['feed_icons'] = '';
   }
@@ -341,11 +401,11 @@ function sasson_preprocess_node(&$vars) {
   if ($vars['uid'] && $vars['uid'] === $GLOBALS['user']->uid) {
     $classes[] = 'node-mine'; // Node is authored by current user.
   }
-  
+
   $vars['submitted'] = t('Submitted by !username on ', array('!username' => $vars['name']));
   $vars['submitted_date'] = t('!datetime', array('!datetime' => $vars['date']));
   $vars['submitted_pubdate'] = format_date($vars['created'], 'custom', 'Y-m-d\TH:i:s');
-  
+
   if ($vars['view_mode'] == 'full' && node_is_page($vars['node'])) {
     $vars['classes_array'][] = 'node-full';
   }
@@ -358,6 +418,8 @@ function sasson_preprocess_node(&$vars) {
 function sasson_preprocess_block(&$vars, $hook) {
   // Add a striping class.
   $vars['classes_array'][] = 'block-' . $vars['zebra'];
+
+  $vars['title_attributes_array']['class'][] = 'block-title';
 
   // In the header region visually hide block titles.
   if ($vars['block']->region == 'header') {
@@ -413,15 +475,15 @@ function sasson_field__taxonomy_term_reference($vars) {
  *  Return a themed breadcrumb trail
  */
 function sasson_breadcrumb($vars) {
-  
+
   $breadcrumb = isset($vars['breadcrumb']) ? $vars['breadcrumb'] : array();
-  
+
   if (theme_get_setting('sasson_breadcrumb_hideonlyfront')) {
     $condition = count($breadcrumb) > 1;
   } else {
     $condition = !empty($breadcrumb);
   }
-  
+
   if(theme_get_setting('sasson_breadcrumb_showtitle')) {
     $title = drupal_get_title();
     if(!empty($title)) {
@@ -429,13 +491,13 @@ function sasson_breadcrumb($vars) {
       $breadcrumb[] = $title;
     }
   }
-  
+
   $separator = theme_get_setting('sasson_breadcrumb_separator');
 
   if (!$separator) {
     $separator = '»';
   }
-  
+
   if ($condition) {
     return implode(" {$separator} ", $breadcrumb);
   }
@@ -500,7 +562,9 @@ function sasson_menu_link(array $vars) {
   // Adding a class depending on the TITLE of the link (not constant)
   $element['#attributes']['class'][] = drupal_html_id($element['#title']);
   // Adding a class depending on the ID of the link (constant)
-  $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
+  if (isset($element['#original_link']['mlid']) && !empty($element['#original_link']['mlid'])) {
+    $element['#attributes']['class'][] = 'mid-' . $element['#original_link']['mlid'];
+  }
   return '<li' . drupal_attributes($element['#attributes']) . '>' . $output . $sub_menu . "</li>\n";
 }
 

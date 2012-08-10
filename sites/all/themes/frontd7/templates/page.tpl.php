@@ -95,6 +95,12 @@
         </h1>
       <?php endif ?>
 
+      <?php if ($secondary_menu_links): ?>
+        <nav id="secondary-menu" role="navigation">
+          <?php print $secondary_menu_links; ?>
+        </nav><!-- /#navigation -->
+      <?php endif; ?>
+
       <?php if ($main_menu_links): ?>
         <nav id="main-menu" role="navigation">
           <?php print $main_menu_links; ?>

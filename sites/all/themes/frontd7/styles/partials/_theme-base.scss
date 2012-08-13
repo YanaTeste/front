@@ -124,6 +124,7 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaFontFamily;
   float: right;
   margin-right: em(50px, 14px);
+  clear:both;
 
   .main-menu {
     li {
@@ -147,6 +148,36 @@ h1, h2, h3, h4, h5, h6 {
     }
   }
 }
+
+#secondary-menu {
+  font-family: $helveticaFontFamily;
+  font-size: em(6px,8px);
+  float: right;
+  margin-right: em(50px, 14px);
+
+  .secondary-menu {
+    li {
+      float: left;
+    }
+    a {
+      color: #efefef;
+      display: inline-block;
+      padding: em(14px, 14px) em(12px, 14px) em(16px, 14px);
+      @include transition-property(background);
+      @include transition-duration(0.75s);
+
+      &:hover,
+      &:focus {
+        background: rgba(0,0,0,0.95);
+      }
+      &.active {
+        color: #F2CB2D;
+       // background: rgba(0,0,0,0.1) url('../images/icon_main-active-white.png') no-repeat center bottom;
+      }
+    }
+  }
+}
+
 
 /* Sidebars */
 .view-taxonomy-menu {

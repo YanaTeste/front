@@ -4528,7 +4528,7 @@ table#blocks select {
 
 .blockquote, .page-node .node-full blockquote,
 .page-node .pane-node-body blockquote {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   margin: 2em 0;
   padding: 0.25em 2.85714em;
   line-height: 1.45;
@@ -4560,7 +4560,7 @@ table#blocks select {
 }
 .blockquote p, .page-node .node-full blockquote p,
 .page-node .pane-node-body blockquote p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;
@@ -5618,7 +5618,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 80px;
   margin-bottom: 3.42857em;
 }
-#panel-solutions .pane-services-block-solutions .views-row-4 {
+#panel-solutions .pane-services-block-solutions .views-row-3 {
   clear: both;
 }
 #panel-solutions .pane-services-block-solutions .icon {
@@ -5792,9 +5792,8 @@ h1, h2, h3, h4, h5, h6 {
 #panel-tjenester .pane-term-description p,
 #panel-kompetanse .pane-term-description p {
   color: #333;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
-  font-style: oblique;
   line-height: 1.5em;
 }
 #panel-tjenester .pane-tjenester-teasers .views-row,
@@ -6362,7 +6361,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3.92857em;
   text-align: left;
 }
-#panel-prosjekter .pane-projects-block-projects .views-row-4, #panel-prosjekter .pane-projects-block-projects .views-row-7 {
+#panel-prosjekter .pane-projects-block-projects .views-row-3, #panel-prosjekter .pane-projects-block-projects .views-row-6 {
   clear: both;
 }
 #panel-prosjekter .pane-projects-block-projects .views-field-field-image img {
@@ -6434,7 +6433,7 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0.21429em;
 }
 #panel-kontakt .webform-client-block .field-name-body p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;
@@ -6688,7 +6687,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -5em;
 }
 #panel-support .pane-custom-support-intro p {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;
@@ -6908,7 +6907,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #panel-medarbeidere .view-employees .view-header p {
   color: #333;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;
@@ -7020,7 +7019,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #panel-blogg .view-blog .view-header p {
   color: #333;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;
@@ -7130,7 +7129,7 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid #D3E2E2;
 }
 .page-node .field-name-field-subheading {
-  font-family: Georgia, "Times New Roman", Times, serif;
+  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
   font-style: oblique;
   line-height: 1.5em;

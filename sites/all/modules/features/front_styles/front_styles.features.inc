@@ -10,7 +10,7 @@
 function front_styles_image_default_styles() {
   $styles = array();
 
-  // Exported image style: banner
+  // Exported image style: banner.
   $styles['banner'] = array(
     'name' => 'banner',
     'effects' => array(
@@ -49,7 +49,7 @@ function front_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: featured
+  // Exported image style: featured.
   $styles['featured'] = array(
     'name' => 'featured',
     'effects' => array(
@@ -72,7 +72,7 @@ function front_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: picture
+  // Exported image style: picture.
   $styles['picture'] = array(
     'name' => 'picture',
     'effects' => array(
@@ -94,7 +94,7 @@ function front_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: rectangle_medium
+  // Exported image style: rectangle_medium.
   $styles['rectangle_medium'] = array(
     'name' => 'rectangle_medium',
     'effects' => array(
@@ -116,7 +116,7 @@ function front_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: square_medium
+  // Exported image style: square_medium.
   $styles['square_medium'] = array(
     'name' => 'square_medium',
     'effects' => array(
@@ -138,7 +138,7 @@ function front_styles_image_default_styles() {
     ),
   );
 
-  // Exported image style: teaser_thumbnail
+  // Exported image style: teaser_thumbnail.
   $styles['teaser_thumbnail'] = array(
     'name' => 'teaser_thumbnail',
     'effects' => array(

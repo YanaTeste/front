@@ -10,7 +10,7 @@
 function front_users_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'profile2-profile-field_bio'
+  // Exported field: 'profile2-profile-field_bio'.
   $fields['profile2-profile-field_bio'] = array(
     'field_config' => array(
       'active' => '1',
@@ -31,6 +31,7 @@ function front_users_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => 0,
@@ -74,7 +75,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_facebook'
+  // Exported field: 'profile2-profile-field_facebook'.
   $fields['profile2-profile-field_facebook'] = array(
     'field_config' => array(
       'active' => '1',
@@ -84,6 +85,7 @@ function front_users_field_default_fields() {
       'field_name' => 'field_facebook',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -151,7 +153,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_image'
+  // Exported field: 'profile2-profile-field_image'.
   $fields['profile2-profile-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -172,6 +174,7 @@ function front_users_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -225,7 +228,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_linkedin'
+  // Exported field: 'profile2-profile-field_linkedin'.
   $fields['profile2-profile-field_linkedin'] = array(
     'field_config' => array(
       'active' => '1',
@@ -235,6 +238,7 @@ function front_users_field_default_fields() {
       'field_name' => 'field_linkedin',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -302,7 +306,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_name'
+  // Exported field: 'profile2-profile-field_name'.
   $fields['profile2-profile-field_name'] = array(
     'field_config' => array(
       'active' => '1',
@@ -323,6 +327,7 @@ function front_users_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -364,7 +369,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_public'
+  // Exported field: 'profile2-profile-field_public'.
   $fields['profile2-profile-field_public'] = array(
     'field_config' => array(
       'active' => '1',
@@ -378,6 +383,7 @@ function front_users_field_default_fields() {
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -426,7 +432,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_title'
+  // Exported field: 'profile2-profile-field_title'.
   $fields['profile2-profile-field_title'] = array(
     'field_config' => array(
       'active' => '1',
@@ -447,6 +453,7 @@ function front_users_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -489,7 +496,7 @@ function front_users_field_default_fields() {
     ),
   );
 
-  // Exported field: 'profile2-profile-field_twitter'
+  // Exported field: 'profile2-profile-field_twitter'.
   $fields['profile2-profile-field_twitter'] = array(
     'field_config' => array(
       'active' => '1',
@@ -499,6 +506,7 @@ function front_users_field_default_fields() {
       'field_name' => 'field_twitter',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(

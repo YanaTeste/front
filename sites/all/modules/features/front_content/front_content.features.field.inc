@@ -10,7 +10,7 @@
 function front_content_field_default_fields() {
   $fields = array();
 
-  // Exported field: 'node-article-body'
+  // Exported field: 'node-article-body'.
   $fields['node-article-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -33,6 +33,7 @@ function front_content_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -93,7 +94,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_files'
+  // Exported field: 'node-article-field_files'.
   $fields['node-article-field_files'] = array(
     'field_config' => array(
       'active' => '1',
@@ -114,6 +115,7 @@ function front_content_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 1,
@@ -171,7 +173,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_image'
+  // Exported field: 'node-article-field_image'.
   $fields['node-article-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -192,6 +194,7 @@ function front_content_field_default_fields() {
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -265,7 +268,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_related'
+  // Exported field: 'node-article-field_related'.
   $fields['node-article-field_related'] = array(
     'field_config' => array(
       'active' => '1',
@@ -286,6 +289,7 @@ function front_content_field_default_fields() {
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -352,7 +356,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_section'
+  // Exported field: 'node-article-field_section'.
   $fields['node-article-field_section'] = array(
     'field_config' => array(
       'active' => '1',
@@ -373,6 +377,7 @@ function front_content_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -427,7 +432,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_subheading'
+  // Exported field: 'node-article-field_subheading'.
   $fields['node-article-field_subheading'] = array(
     'field_config' => array(
       'active' => '1',
@@ -448,6 +453,7 @@ function front_content_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -502,7 +508,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-article-field_tags'
+  // Exported field: 'node-article-field_tags'.
   $fields['node-article-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -523,6 +529,7 @@ function front_content_field_default_fields() {
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -581,7 +588,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-banner-body'
+  // Exported field: 'node-banner-body'.
   $fields['node-banner-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -604,6 +611,7 @@ function front_content_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -656,7 +664,7 @@ function front_content_field_default_fields() {
     ),
   );
 
-  // Exported field: 'node-banner-field_css'
+  // Exported field: 'node-banner-field_css'.
   $fields['node-banner-field_css'] = array(
     'field_config' => array(
       'active' => '1',
@@ -677,6 +685,7 @@ function front_content_field_default_fields() {
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -725,7 +734,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-banner-field_image'
+  // Exported field: 'node-banner-field_image'.
   $fields['node-banner-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -746,6 +755,7 @@ Multiple classes should be separated by spaces.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -812,7 +822,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-banner-field_link'
+  // Exported field: 'node-banner-field_link'.
   $fields['node-banner-field_link'] = array(
     'field_config' => array(
       'active' => '1',
@@ -822,6 +832,7 @@ Multiple classes should be separated by spaces.',
       'field_name' => 'field_link',
       'foreign keys' => array(),
       'indexes' => array(),
+      'locked' => '0',
       'module' => 'link',
       'settings' => array(
         'attributes' => array(
@@ -895,7 +906,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-body'
+  // Exported field: 'node-blog-body'.
   $fields['node-blog-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -918,6 +929,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -978,7 +990,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_files'
+  // Exported field: 'node-blog-field_files'.
   $fields['node-blog-field_files'] = array(
     'field_config' => array(
       'active' => '1',
@@ -999,6 +1011,7 @@ Multiple classes should be separated by spaces.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'file',
       'settings' => array(
         'display_default' => 1,
@@ -1056,7 +1069,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_image'
+  // Exported field: 'node-blog-field_image'.
   $fields['node-blog-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1077,6 +1090,7 @@ Multiple classes should be separated by spaces.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1146,7 +1160,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_related'
+  // Exported field: 'node-blog-field_related'.
   $fields['node-blog-field_related'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1167,6 +1181,7 @@ Multiple classes should be separated by spaces.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1233,7 +1248,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_subheading'
+  // Exported field: 'node-blog-field_subheading'.
   $fields['node-blog-field_subheading'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1254,6 +1269,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -1308,7 +1324,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_tags'
+  // Exported field: 'node-blog-field_tags'.
   $fields['node-blog-field_tags'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1329,6 +1345,7 @@ Multiple classes should be separated by spaces.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1387,7 +1404,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-field_topic'
+  // Exported field: 'node-blog-field_topic'.
   $fields['node-blog-field_topic'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1408,6 +1425,7 @@ Multiple classes should be separated by spaces.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1457,7 +1475,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-body'
+  // Exported field: 'node-page-body'.
   $fields['node-page-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1480,6 +1498,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1540,7 +1559,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_image'
+  // Exported field: 'node-page-field_image'.
   $fields['node-page-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1561,6 +1580,7 @@ Multiple classes should be separated by spaces.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -1630,7 +1650,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_page_status'
+  // Exported field: 'node-page-field_page_status'.
   $fields['node-page-field_page_status'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1644,6 +1664,7 @@ Multiple classes should be separated by spaces.',
           0 => 'value',
         ),
       ),
+      'locked' => '0',
       'module' => 'list',
       'settings' => array(
         'allowed_values' => array(
@@ -1700,7 +1721,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_related'
+  // Exported field: 'node-page-field_related'.
   $fields['node-page-field_related'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1721,6 +1742,7 @@ Multiple classes should be separated by spaces.',
           0 => 'nid',
         ),
       ),
+      'locked' => '0',
       'module' => 'node_reference',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1787,7 +1809,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_section'
+  // Exported field: 'node-page-field_section'.
   $fields['node-page-field_section'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1808,6 +1830,7 @@ Multiple classes should be separated by spaces.',
           0 => 'tid',
         ),
       ),
+      'locked' => '0',
       'module' => 'taxonomy',
       'settings' => array(
         'allowed_values' => array(
@@ -1863,7 +1886,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_seo_comments'
+  // Exported field: 'node-page-field_seo_comments'.
   $fields['node-page-field_seo_comments'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1884,6 +1907,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -1936,7 +1960,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-field_subheading'
+  // Exported field: 'node-page-field_subheading'.
   $fields['node-page-field_subheading'] = array(
     'field_config' => array(
       'active' => '1',
@@ -1957,6 +1981,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2011,7 +2036,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-project-body'
+  // Exported field: 'node-project-body'.
   $fields['node-project-body'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2034,6 +2059,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'profile2_private' => FALSE,
@@ -2094,7 +2120,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-project-field_image'
+  // Exported field: 'node-project-field_image'.
   $fields['node-project-field_image'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2115,6 +2141,7 @@ Multiple classes should be separated by spaces.',
           0 => 'fid',
         ),
       ),
+      'locked' => '0',
       'module' => 'image',
       'settings' => array(
         'default_image' => 0,
@@ -2184,7 +2211,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-project-field_subheading'
+  // Exported field: 'node-project-field_subheading'.
   $fields['node-project-field_subheading'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2205,6 +2232,7 @@ Multiple classes should be separated by spaces.',
           0 => 'format',
         ),
       ),
+      'locked' => '0',
       'module' => 'text',
       'settings' => array(
         'max_length' => '255',
@@ -2259,7 +2287,7 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'taxonomy_term-section-field_contact_user'
+  // Exported field: 'taxonomy_term-section-field_contact_user'.
   $fields['taxonomy_term-section-field_contact_user'] = array(
     'field_config' => array(
       'active' => '1',
@@ -2280,6 +2308,7 @@ Multiple classes should be separated by spaces.',
           0 => 'uid',
         ),
       ),
+      'locked' => '0',
       'module' => 'user_reference',
       'settings' => array(
         'profile2_private' => FALSE,

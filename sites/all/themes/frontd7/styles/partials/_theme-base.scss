@@ -903,7 +903,8 @@ h1, h2, h3, h4, h5, h6 {
 
   .pane-services-block-solutions {
     background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
-    padding: 2px 0 em(9px, 14px);
+    //padding: 2px 0 em(9px, 14px);
+    padding-left: 100px;
 
     .panel-pane-inner {
       background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
@@ -917,12 +918,12 @@ h1, h2, h3, h4, h5, h6 {
       @include clearfix;
     }
     .views-row {
-      @include grid(3);
+      @include grid(4);
       @include grid-prefix(1);
       margin-bottom: em(48px, 14px);
     }
     .views-row-4 {
-      clear: both;
+      //clear: both;
     }
     .icon {
       background: transparent url('../images/icons_services-62px.png') no-repeat 0 0;
@@ -2494,3 +2495,5 @@ h1, h2, h3, h4, h5, h6 {
   display: none;
 }
 /* << Remove */
+
+

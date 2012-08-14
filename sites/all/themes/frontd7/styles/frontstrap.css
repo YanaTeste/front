@@ -5588,7 +5588,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #panel-solutions .pane-services-block-solutions {
   background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
-  padding: 2px 0 0.64286em;
+  padding-left: 100px;
 }
 #panel-solutions .pane-services-block-solutions .panel-pane-inner {
   background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
@@ -5614,12 +5614,9 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 220px;
+  width: 300px;
   padding-left: 80px;
   margin-bottom: 3.42857em;
-}
-#panel-solutions .pane-services-block-solutions .views-row-3 {
-  clear: both;
 }
 #panel-solutions .pane-services-block-solutions .icon {
   background: transparent url("../images/icons_services-62px.png") no-repeat 0 0;
@@ -6361,7 +6358,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 3.92857em;
   text-align: left;
 }
-#panel-prosjekter .pane-projects-block-projects .views-row-3, #panel-prosjekter .pane-projects-block-projects .views-row-6 {
+#panel-prosjekter .pane-projects-block-projects .views-row-4, #panel-prosjekter .pane-projects-block-projects .views-row-7 {
   clear: both;
 }
 #panel-prosjekter .pane-projects-block-projects .views-field-field-image img {

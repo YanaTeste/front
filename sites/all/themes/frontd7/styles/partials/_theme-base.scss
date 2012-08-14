@@ -905,6 +905,8 @@ h1, h2, h3, h4, h5, h6 {
     background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
     //padding: 2px 0 em(9px, 14px);
     padding-left: 100px;
+    padding-top: 2px;
+    padding-bottom: em(30px, 14px);
 
     .panel-pane-inner {
       background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;

@@ -5589,6 +5589,8 @@ h1, h2, h3, h4, h5, h6 {
 #panel-solutions .pane-services-block-solutions {
   background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
   padding-left: 100px;
+  padding-top: 2px;
+  padding-bottom: 2.14286em;
 }
 #panel-solutions .pane-services-block-solutions .panel-pane-inner {
   background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;

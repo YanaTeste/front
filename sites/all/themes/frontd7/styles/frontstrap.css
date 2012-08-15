@@ -32,6 +32,15 @@
   clear: both;
 }
 
+/*
+ * Fonts
+ */
+/*
+ * Sections
+ */
+/*
+ * Utilities
+ */
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
   display: block;
 }
@@ -4640,6 +4649,7 @@ h1, h2, h3, h4, h5, h6 {
 #header h1 a {
   display: inline-block;
   padding: 0.33333em 0 0;
+  height: 10px;
 }
 #header h1 img {
   display: block;
@@ -4751,18 +4761,18 @@ h1, h2, h3, h4, h5, h6 {
 #main-menu .main-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 1em 0.85714em 1.14286em;
+  padding: 0.28571em 0.85714em 0.28571em;
   -webkit-transition-property: background;
   -moz-transition-property: background;
   -o-transition-property: background;
   transition-property: background;
-  -webkit-transition-duration: 0.75s;
-  -moz-transition-duration: 0.75s;
-  -o-transition-duration: 0.75s;
-  transition-duration: 0.75s;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 #main-menu .main-menu a:hover, #main-menu .main-menu a:focus {
-  background: rgba(0, 0, 0, 0.95);
+  background: #f2cb2e;
 }
 #main-menu .main-menu a.active {
   color: #F2CB2D;
@@ -4771,9 +4781,9 @@ h1, h2, h3, h4, h5, h6 {
 
 #secondary-menu {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 0.75em;
+  font-size: 0.85714em;
   float: right;
-  margin-right: 3.57143em;
+  margin-right: 4.14286em;
 }
 #secondary-menu .secondary-menu li {
   float: left;
@@ -4781,18 +4791,18 @@ h1, h2, h3, h4, h5, h6 {
 #secondary-menu .secondary-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 1em 0.85714em 1.14286em;
+  padding: 0.28571em 0.85714em 0.28571em;
   -webkit-transition-property: background;
   -moz-transition-property: background;
   -o-transition-property: background;
   transition-property: background;
-  -webkit-transition-duration: 0.75s;
-  -moz-transition-duration: 0.75s;
-  -o-transition-duration: 0.75s;
-  transition-duration: 0.75s;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
 }
 #secondary-menu .secondary-menu a:hover, #secondary-menu .secondary-menu a:focus {
-  background: rgba(0, 0, 0, 0.95);
+  background: #f2cb2e;
 }
 #secondary-menu .secondary-menu a.active {
   color: #F2CB2D;
@@ -5788,12 +5798,30 @@ h1, h2, h3, h4, h5, h6 {
   width: 220px;
   margin-top: -5.14286em;
 }
+#panel-tjenester .pane-term-description,
+#panel-kompetanse .pane-term-description {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
 #panel-tjenester .pane-term-description p,
 #panel-kompetanse .pane-term-description p {
-  color: #333;
-  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
-  line-height: 1.5em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+#panel-tjenester .pane-term-description a,
+#panel-kompetanse .pane-term-description a {
+  color: #D14C19;
+}
+#panel-tjenester .pane-term-description a:hover,
+#panel-kompetanse .pane-term-description a:hover {
+  color: #a33b14;
 }
 #panel-tjenester .pane-tjenester-teasers .views-row,
 #panel-kompetanse .pane-tjenester-teasers .views-row {
@@ -6878,6 +6906,13 @@ h1, h2, h3, h4, h5, h6 {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
 .page-medarbeidere #page-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3.57143em;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.24em;
+  text-align: center;
   margin-top: 1.5em;
   margin-left: 10px;
 }
@@ -6890,8 +6925,7 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
   margin-left: 10px;
   margin-right: 10px;
-  width: 620px;
-  padding-right: 80px;
+  width: 940px;
 }
 #panel-medarbeidere .panel-col-last {
   display: inline;
@@ -6902,18 +6936,32 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: -5em;
 }
 #panel-medarbeidere .view-employees .view-header {
-  margin-bottom: 1.71429em;
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  float: none;
+  display: block;
+  margin: 0 auto;
 }
 #panel-medarbeidere .view-employees .view-header p {
-  color: #333;
-  font-family: ‘Arial Narrow’, sans-serif;
   font-size: 1.42857em;
-  font-style: oblique;
-  line-height: 1.5em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+#panel-medarbeidere .view-employees .view-header a {
+  color: #D14C19;
+}
+#panel-medarbeidere .view-employees .view-header a:hover {
+  color: #a33b14;
 }
 #panel-medarbeidere .view-employees .view-content {
   overflow: hidden;
+  width: 600px;
   margin-bottom: 3.57143em;
+  margin-left: auto;
+  margin-right: auto;
 }
 #panel-medarbeidere .view-employees .views-row {
   display: inline;
@@ -7358,6 +7406,209 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* << Remove */
+/*
+ * Services / Tjenester
+ */
+#panel-services {
+  /*
+    .pane-services-block-solutions {
+      background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
+      //padding: 2px 0 em(9px, 14px);
+      padding-left: 100px;
+      padding-top: 2px;
+      padding-bottom: em(30px, 14px);
+  
+      .panel-pane-inner {
+        background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+        overflow: hidden;
+      }
+      .pane-title {
+        @include element-invisible;
+      }
+      .view-content {
+        margin: em(55px, 14px) 0;
+        @include clearfix;
+      }
+      .views-row {
+        @include grid(4);
+        @include grid-prefix(1);
+        margin-bottom: em(48px, 14px);
+      }
+      .views-row-4 {
+        //clear: both;
+      }
+      .icon {
+        background: transparent url('../images/icons_services-62px.png') no-repeat 0 0;
+        float: left;
+        width: 62px;
+        height: 62px;
+        margin-left: -80px;
+  
+        &.icon-drupal {
+          background-position: 0 0;
+        }
+        &.icon-mobile {
+          background-position: -62px 0;
+        }
+        &.icon-cms {
+          background-position: -124px 0;
+        }
+        &.icon-marketing {
+          background-position: -186px 0;
+        }
+        &.icon-commerce {
+          background-position: -248px 0;
+        }
+        &.icon-applications {
+          background-position: -310px 0;
+        }
+        a {
+          @include hide-text;
+          display: block;
+          width: 62px;
+          height: 62px;
+        }
+      }
+      .views-field-title {
+        font-family: $baseFontFamily;
+        line-height: em(21px, 18px);
+        font-weight: normal;
+        margin-bottom: em(3px, 18px);
+      }
+      .views-field-body p {
+        margin-bottom: 0;
+      }
+      .views-field-field-link {
+        font-size: em(13px, 14px);
+        letter-spacing: em(-0.25px, 13px);
+        white-space: nowrap;
+  
+        a:after {
+          content: ' ››';
+        }
+      }
+    }
+  
+    .pane-users-block-single {
+      position: relative;
+  
+      .pane-content {
+        width: perc(720px, 960px);
+        margin: -52px auto;
+      }
+      .views-field-field-bio {
+        @include grid(4.5);
+      }
+      .views-field-nothing {
+        width: 200px;
+      }
+    }
+  
+    .pane-kompetanse-list {
+      background: #dee2e5 url('../images/bg_latest-projects.png') repeat-x center top;
+      padding-top: em(98px, 14px);
+      padding-bottom: em(30px, 14px);
+  
+      .pane-title {
+        color: #263A43;
+        font-family: $baseFontFamily;
+        font-size: em(30px, 14px);
+        font-weight: normal;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: em(10px, 30px);
+      }
+      .view-header {
+        text-align: center;
+        @include grid(9);
+        float: none;
+        display: block;
+        margin: 0 auto em(30px, 10px);
+  
+        p {
+          font-size: em(18px, 14px);
+          font-style: oblique;
+          line-height: em(29px, 18px);
+        }
+      }
+      .view-content {
+        background-color: #fff;
+        @include box-shadow(0 1px 2px rgba(0,0,0,0.1));
+        @include clearfix;
+        margin: 0 perc(10px, 960px) em(30px, 14px);
+        padding: em(24px, 14px) perc(20px, 940px) em(16px, 14px);
+  
+        .column {
+          display: inline;
+          float: left;
+          width: 20%;
+        }
+        h3 {
+          font-family: $baseFontFamily;
+          font-weight: normal;
+          margin-bottom: 1em;
+        }
+        ul {
+          margin: 0;
+          list-style: none;
+  
+          li {
+            font-size: em(13px, 14px);
+            margin-bottom: em(9px, 13px);
+          }
+          a:after {
+            content: ' ››';
+          }
+        }
+      }
+    }
+  
+     */
+}
+#panel-services .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3.57143em;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.24em;
+  text-align: center;
+  padding: 1em 0 1em;
+}
+#panel-services .view-header {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
+#panel-services .view-header p {
+  font-size: 1.42857em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+#panel-services .view-header a {
+  color: #D14C19;
+}
+#panel-services .view-header a:hover {
+  color: #a33b14;
+}
+#panel-services .view-filters {
+  margin: 0 auto;
+  width: 660px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.42857em;
+  float: none;
+  display: block;
+}
+#panel-services .view-filters .form-item {
+  float: left;
+  padding-right: 10px;
+}
+
 @media (max-width: 960px) {
   body:after {
     display: block;

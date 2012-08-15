@@ -4878,38 +4878,18 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
 }
 
-.pane-menu-block,
-.pane-services-block-menu,
-.pane-terms-menu-topics {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  overflow: hidden;
-}
-.pane-menu-block .pane-title,
-.pane-services-block-menu .pane-title,
-.pane-terms-menu-topics .pane-title {
-  font-size: 0.78571em;
-  text-transform: uppercase;
-}
-.pane-menu-block ul.menu,
-.pane-services-block-menu ul.menu,
-.pane-terms-menu-topics ul.menu {
+ul.menu {
   font-size: 1.14286em;
   margin-left: 0;
 }
-.pane-menu-block ul.menu li,
-.pane-services-block-menu ul.menu li,
-.pane-terms-menu-topics ul.menu li {
+ul.menu li {
   background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
   list-style: none;
 }
-.pane-menu-block ul.menu li:last-child,
-.pane-services-block-menu ul.menu li:last-child,
-.pane-terms-menu-topics ul.menu li:last-child {
+ul.menu li:last-child {
   background-image: none;
 }
-.pane-menu-block ul.menu a,
-.pane-services-block-menu ul.menu a,
-.pane-terms-menu-topics ul.menu a {
+ul.menu a {
   color: #fff;
   font-weight: 300;
   text-decoration: none;
@@ -4918,20 +4898,29 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   padding: 0.6875em 0 0.75em 1.375em;
 }
-.pane-menu-block ul.menu a:hover,
-.pane-services-block-menu ul.menu a:hover,
-.pane-terms-menu-topics ul.menu a:hover {
+ul.menu a:hover {
   color: #F2CB2D;
   background-color: rgba(0, 0, 0, 0.15);
 }
-.pane-menu-block ul.menu .active a,
-.pane-menu-block ul.menu a.active,
-.pane-services-block-menu ul.menu .active a,
-.pane-services-block-menu ul.menu a.active,
-.pane-terms-menu-topics ul.menu .active a,
-.pane-terms-menu-topics ul.menu a.active {
+ul.menu .active a,
+ul.menu a.active {
   color: #F2CB2D;
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
+}
+
+.pane-menu-block,
+.pane-services-block-menu,
+.pane-terms-menu-topics,
+#page-about-us {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+.pane-menu-block .pane-title,
+.pane-services-block-menu .pane-title,
+.pane-terms-menu-topics .pane-title,
+#page-about-us .pane-title {
+  font-size: 0.78571em;
+  text-transform: uppercase;
 }
 
 /* Postscript */

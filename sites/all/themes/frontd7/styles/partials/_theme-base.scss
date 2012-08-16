@@ -2088,7 +2088,7 @@ ul.menu {
     margin: 0;
   }
   .panel-col-first {
-    @include grid(12);
+    @include grid(8);
     //@include grid-suffix(1);
   }
   .panel-col-last {

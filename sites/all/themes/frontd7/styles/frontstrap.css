@@ -4878,36 +4878,6 @@ h1, h2, h3, h4, h5, h6 {
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
 }
 
-ul.menu {
-  font-size: 1.14286em;
-  margin-left: 0;
-}
-ul.menu li {
-  background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
-  list-style: none;
-}
-ul.menu li:last-child {
-  background-image: none;
-}
-ul.menu a {
-  color: #fff;
-  font-weight: 300;
-  text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.03125em;
-  display: block;
-  padding: 0.6875em 0 0.75em 1.375em;
-}
-ul.menu a:hover {
-  color: #F2CB2D;
-  background-color: rgba(0, 0, 0, 0.15);
-}
-ul.menu .active a,
-ul.menu a.active {
-  color: #F2CB2D;
-  background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
-}
-
 .pane-menu-block,
 .pane-services-block-menu,
 .pane-terms-menu-topics,
@@ -7632,6 +7602,36 @@ ul.menu a.active {
 }
 #block-front-custom-front-vcard .social-links .facebook:hover {
   background-position: bottom right;
+}
+
+ul.menu {
+  font-size: 1.14286em;
+  margin-left: 0;
+}
+ul.menu li {
+  background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
+  list-style: none;
+}
+ul.menu li:last-child {
+  background-image: none;
+}
+ul.menu a {
+  color: #fff;
+  font-weight: 300;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.03125em;
+  display: block;
+  padding: 0.6875em 0 0.75em 1.375em;
+}
+ul.menu a:hover {
+  color: #F2CB2D;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+ul.menu .active a,
+ul.menu a.active {
+  color: #F2CB2D;
+  background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
 
 @media (max-width: 960px) {

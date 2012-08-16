@@ -94,6 +94,10 @@
 // Layout for large viewports - default.
 // Fixed, pixel based layout, two sidebars floating (@see theme-base.scss).
 @import "partials/theme-base";
+@import "partials/pages";
+@import "partials/footer";
+@import "partials/menus";
+
 
 // Layout for medium viewports.
 // Fluid, precentage based layout, two sidebars floating (@see theme-narrow.scss).

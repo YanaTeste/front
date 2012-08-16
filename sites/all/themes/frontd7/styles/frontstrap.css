@@ -5229,60 +5229,21 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Drupal
 -------------------------------------------------*/
-#panel-drupal {
-  padding: 5.14286em 0 2.85714em;
-}
 #panel-drupal .pane-title {
-  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.57143em;
-  font-weight: normal;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
-  text-align: center;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.48em;
+  padding-bottom: 0;
+  border: none;
+  margin-top: 40px;
 }
-#panel-drupal .pane-content {
-  display: inline;
-  float: left;
-  margin-left: 10px;
-  margin-right: 10px;
-  width: 660px;
-  float: none;
-  display: block;
-  margin: 0 auto;
-}
-#panel-drupal .pane-content p {
-  font-size: 1.42857em;
-  font-style: italic;
-  line-height: 1.45em;
-}
-#panel-drupal .pane-content a {
-  color: #D14C19;
-}
-#panel-drupal .pane-content a:hover {
-  color: #a33b14;
+#panel-drupal .view-taxonomy-menu {
+  margin-top: 80px;
 }
 
 /*         Solutions
 ------------------------------------------------*/
-.page-tjenester #page-title {
-  clip: rect(1px, 1px, 1px, 1px);
-  position: absolute !important;
-}
-.page-tjenester #main {
-  width: 100%;
-  margin: -1px auto;
-}
-.page-tjenester #main .tabs,
-.page-tjenester #main .panel-pane-inner {
-  margin-left: auto;
-  margin-right: auto;
-  width: 960px;
-  display: block;
-  position: relative;
-  float: none;
-}
-
 #panel-solutions .pane-custom-solutions-intro {
   text-align: center;
   padding: 5.14286em 0 2.85714em;
@@ -6627,13 +6588,12 @@ h1, h2, h3, h4, h5, h6 {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
 .page-medarbeidere #page-title {
-  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.57143em;
-  font-weight: normal;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
-  text-align: center;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.48em;
+  padding-bottom: 0;
+  border: none;
   margin-top: 1.5em;
   margin-left: 10px;
 }

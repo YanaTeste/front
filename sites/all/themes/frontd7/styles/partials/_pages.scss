@@ -276,32 +276,46 @@
 /* Drupal
 -------------------------------------------------*/
 #panel-drupal{
-  @include title-centered-padding;
-  .pane-title{
-    @include title-centered;
+  .pane-title {
+    //@include element-invisible;
+    @include title-left;
+    margin-top: 40px;
   }
-  .pane-content{
-    @include ingress-main;
+  .pane-content {
+  }
+  .view-taxonomy-menu{
+        margin-top: 80px;
+
   }
 
+
+  // #main {
+  //   width: 100%;
+  //   margin: -1px auto;
+
+  //   .tabs,
+  //   .panel-pane-inner {
+  //     @include grid-container-center;
+  //   }
+  // }
 }
 
 /*         Solutions
 ------------------------------------------------*/
-.page-tjenester {  //may be deleted??
-  #page-title {
-    @include element-invisible;
-  }
-  #main {
-    width: 100%;
-    margin: -1px auto;
+// .page-tjenester {  //may be deleted??
+//   #page-title {
+//     @include element-invisible;
+//   }
+//   #main {
+//     width: 100%;
+//     margin: -1px auto;
 
-    .tabs,
-    .panel-pane-inner {
-      @include grid-container-center;
-    }
-  }
-}
+//     .tabs,
+//     .panel-pane-inner {
+//       @include grid-container-center;
+//     }
+//   }
+// }
 
 #panel-solutions {
   .pane-custom-solutions-intro {
@@ -1464,7 +1478,7 @@
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
   #page-title {
-    @include title-centered;
+    @include title-left;
     margin-top: em(75px, 50px);
     margin-left: 10px;
   }

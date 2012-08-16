@@ -8,7 +8,7 @@
   $eot: false,
   $weight: false,
   $style: false
-) {
+  ) {
   $iefont: unquote("#{$eot}?#iefix");
   @font-face {
     font-family: quote($name);
@@ -34,8 +34,8 @@
 }
 
 @mixin element-invisible {
-    clip: rect(1px, 1px, 1px, 1px);
-    position: absolute !important;
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
 }
 
 @mixin hide-text {
@@ -60,7 +60,7 @@
  * Fonts
  */
 
-@mixin title-centered {
+ @mixin title-centered {
   font-family: $baseFontFamily;
   font-size: em(50px, 14px);
   font-weight: normal;
@@ -77,20 +77,27 @@
       // letter-spacing: em(-2px, 50px);
       // margin-bottom: em(12px, 50px);
 
-}
+    }
 
-@mixin title-centered-padding{
-  padding: em(72px, 14px) 0 em(40px, 14px);
+    @mixin title-centered-padding{
+      padding: em(72px, 14px) 0 em(40px, 14px);
 
-}
-
+    }
+    @mixin title-left{
+      font-size: em(50px, 14px);
+      line-height: 1em;
+      letter-spacing: em(-2.5px, 50px);
+      margin-bottom: em(24px, 50px);
+      padding-bottom: 0;
+      border: none;
+    }
 
 
 
 /*
  * Sections
  */
-@mixin ingress-main {
+ @mixin ingress-main {
   @include grid(8.5);
   float: none;
   display: block;
@@ -119,7 +126,7 @@
 /*
  * Utilities
  */
-@function em($target-px, $context) {
+ @function em($target-px, $context) {
   @return ($target-px / $context) * 1em;
 }
 

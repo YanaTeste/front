@@ -5532,6 +5532,42 @@ ul.menu a.active {
   background-position: right top;
 }
 
+/* Drupal
+-------------------------------------------------*/
+#panel-drupal {
+  padding: 5.14286em 0 2.85714em;
+}
+#panel-drupal .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3.57143em;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.24em;
+  text-align: center;
+}
+#panel-drupal .pane-content {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
+#panel-drupal .pane-content p {
+  font-size: 1.42857em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+#panel-drupal .pane-content a {
+  color: #D14C19;
+}
+#panel-drupal .pane-content a:hover {
+  color: #a33b14;
+}
+
 /*         Solutions
 ------------------------------------------------*/
 .page-tjenester #page-title {
@@ -6323,6 +6359,7 @@ ul.menu a.active {
   line-height: 1;
   letter-spacing: -0.04em;
   margin-bottom: 0.24em;
+  text-align: center;
 }
 #panel-prosjekter .pane-custom-projects-intro .pane-content {
   display: inline;
@@ -7395,9 +7432,8 @@ ul.menu a.active {
 }
 
 /* << Remove */
-/*
- * Services / Tjenester
- */
+/* Services / Tjenester
+--------------------------------------------------*/
 #panel-services {
   /*
     .pane-services-block-solutions {

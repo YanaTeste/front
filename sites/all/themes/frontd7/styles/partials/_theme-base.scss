@@ -886,9 +886,22 @@ ul.menu {
   }
 }
 
+/* Drupal
+-------------------------------------------------*/
+#panel-drupal{
+  @include title-centered-padding;
+  .pane-title{
+    @include title-centered;
+  }
+  .pane-content{
+    @include ingress-main;
+  }
+
+}
+
 /*         Solutions
 ------------------------------------------------*/
-.page-tjenester {
+.page-tjenester {  //may be deleted??
   #page-title {
     @include element-invisible;
   }
@@ -1546,15 +1559,16 @@ ul.menu {
 #panel-prosjekter {
   .pane-custom-projects-intro {
     text-align: center;
-    padding: em(72px, 14px) 0 em(40px, 14px);
+    @include title-centered-padding;
 
     .pane-title {
-      font-family: $baseFontFamily;
-      font-size: em(50px, 14px);
-      font-weight: normal;
-      line-height: 1;
-      letter-spacing: em(-2px, 50px);
-      margin-bottom: em(12px, 50px);
+      @include title-centered;
+      // font-family: $baseFontFamily;
+      // font-size: em(50px, 14px);
+      // font-weight: normal;
+      // line-height: 1;
+      // letter-spacing: em(-2px, 50px);
+      // margin-bottom: em(12px, 50px);
     }
     .pane-content {
       @include ingress-main;
@@ -2063,7 +2077,7 @@ ul.menu {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
   #page-title {
-    @include title-main;
+    @include title-centered;
     margin-top: em(75px, 50px);
     margin-left: 10px;
   }
@@ -2527,12 +2541,11 @@ ul.menu {
 /* << Remove */
 
 
-/*
- * Services / Tjenester
- */
+/* Services / Tjenester
+--------------------------------------------------*/
  #panel-services{
   .pane-title {
-    @include title-main;
+    @include title-centered;
     padding: em(14px, 14px) 0 em(14px, 14px);
   }
   .view-header {

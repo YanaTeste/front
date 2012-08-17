@@ -5168,6 +5168,8 @@ h1, h2, h3, h4, h5, h6 {
 
 /*         Solutions
 ------------------------------------------------*/
+/*    Kurs
+---------------------------------------------------*/
 .page-kurs #page-title {
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 3.57143em;
@@ -5198,6 +5200,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 .page-kurs .ingress a:hover {
   color: #a33b14;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 {
+  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
 }
 
 #panel-solutions .pane-custom-solutions-intro {
@@ -7247,6 +7252,9 @@ h1, h2, h3, h4, h5, h6 {
 #panel-services .view-filters .form-item {
   float: left;
   padding-right: 10px;
+}
+#panel-services .view-content {
+  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
 }
 
 /* Postscript */

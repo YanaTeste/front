@@ -9,6 +9,8 @@ $headingsFontFamily:    inherit !default; // empty to use BS default, @baseFontF
 $headingsFontWeight:    bold !default;    // instead of browser default, bold
 $headingsColor:         inherit !default; // empty to use BS default, @textColor
 $yellowLogoColor: 			#F2CB2E	;
+$bodyBackgroundLower:		#eff2f4 url('../images/bg_home-services.png') repeat-x center top; // For the lower half of a lot of pages
+$bodyBackgroundLowest:	#DEE2E5 url('../images/bg_latest-projects.png') repeat-x center top;
 
 // Fonts directory path
 $font_path: 'fontawesome-webfont';

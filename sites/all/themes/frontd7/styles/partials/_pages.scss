@@ -93,7 +93,7 @@
     }
   }
   .pane-projects-block-latest-projects {
-    background: #DEE2E5 url('../images/bg_latest-projects.png') repeat-x center top;
+    background: $bodyBackgroundLowest;
     padding-top: em(45px, 14px);
     padding-bottom: em(30px, 14px);
 
@@ -195,7 +195,7 @@
   .pane-content {
   }
   .view-taxonomy-menu{
-        margin-top: 80px;
+    margin-top: 80px;
 
   }
 
@@ -228,13 +228,17 @@
 //   }
 // }
 
-
+/*    Kurs
+---------------------------------------------------*/
 .page-kurs {
   #page-title{
     @include title-centered;
   }
   .ingress{
     @include ingress-main;
+  }
+  .pane-kurs-overview-panel-pane-2{
+    background: $bodyBackgroundLower;
   }
 }
 
@@ -915,7 +919,7 @@
   }
 
   .pane-projects-block-projects {
-    background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
+    background: $bodyBackgroundLower;
     padding: 2px 0 em(9px, 14px);
 
     .panel-pane-inner {
@@ -1865,7 +1869,7 @@
 
 /* Services / Tjenester
 --------------------------------------------------*/
- #panel-services{
+#panel-services{
   .pane-title {
     @include title-centered;
     padding: em(14px, 14px) 0 em(14px, 14px);
@@ -1875,16 +1879,16 @@
   }
   .view-filters{
     @include tabs-main;
-    //display: block;
 
     .form-item{
       float:left;
-     // margin: 0 auto;
-    //  padding: 0 20px 0 0;
-    padding-right: 10px;
-
+      padding-right: 10px;
+    }
   }
-}
+  .view-content{
+    background: $bodyBackgroundLower;
+    //background: red;
+  }
 
 /*
   .pane-services-block-solutions {

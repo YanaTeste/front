@@ -97,7 +97,7 @@
 /*
  * Sections
  */
- @mixin ingress-main {
+ @mixin ingress {
   @include grid(8.5);
   text-align: center;
   float: none;

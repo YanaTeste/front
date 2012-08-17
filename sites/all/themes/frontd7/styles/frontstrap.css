@@ -4641,6 +4641,7 @@ html, body {
   float: none;
   display: block;
   margin: 0 auto;
+  text-align: center;
 }
 .ingress p {
   font-size: 1.42857em;
@@ -4651,6 +4652,30 @@ html, body {
   color: #D14C19;
 }
 .ingress a:hover {
+  color: #a33b14;
+}
+
+.ingress-left {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  text-align: center;
+  float: none;
+  display: block;
+  margin: 0 auto;
+  text-align: left;
+}
+.ingress-left p {
+  font-size: 1.42857em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+.ingress-left a {
+  color: #D14C19;
+}
+.ingress-left a:hover {
   color: #a33b14;
 }
 
@@ -5163,11 +5188,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 40px;
 }
 #panel-drupal .view-taxonomy-menu {
-  margin-top: 80px;
+  margin-top: 40px;
 }
 
-/*         Solutions
-------------------------------------------------*/
 /*    Kurs
 ---------------------------------------------------*/
 .page-kurs #page-title {
@@ -7562,14 +7585,17 @@ ul.menu a.active {
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
 
-.pane-kurs-overview-panel-pane-1 h2 {
+.pane-kurs-overview-panel-pane-1 .pane-title {
   font-size: 3.57143em;
   line-height: 1em;
   letter-spacing: -0.05em;
   margin-bottom: 0.48em;
   padding-bottom: 0;
   border: none;
-  color: red;
+  font-size: 1.71429em;
+}
+.pane-kurs-overview-panel-pane-1 .field-name-title h2 {
+  font-size: 0.85714em;
 }
 
 /*

@@ -195,38 +195,10 @@
   .pane-content {
   }
   .view-taxonomy-menu{
-    margin-top: 80px;
+    margin-top: 40px;
 
   }
-
-
-  // #main {
-  //   width: 100%;
-  //   margin: -1px auto;
-
-  //   .tabs,
-  //   .panel-pane-inner {
-  //     @include grid-container-center;
-  //   }
-  // }
 }
-
-/*         Solutions
-------------------------------------------------*/
-// .page-tjenester {  //may be deleted??
-//   #page-title {
-//     @include element-invisible;
-//   }
-//   #main {
-//     width: 100%;
-//     margin: -1px auto;
-
-//     .tabs,
-//     .panel-pane-inner {
-//       @include grid-container-center;
-//     }
-//   }
-// }
 
 /*    Kurs
 ---------------------------------------------------*/
@@ -235,7 +207,7 @@
     @include title-centered;
   }
   .ingress{
-    @include ingress-main;
+    @include ingress;
   }
   .pane-kurs-overview-panel-pane-2{
     background: $bodyBackgroundLower;
@@ -455,7 +427,7 @@
     margin-top: em(-72px, 14px);
   }
   .pane-term-description {
-    @include ingress-main;
+    @include ingress;
   }
   .pane-tjenester-teasers {
     .views-row {
@@ -897,7 +869,7 @@
       // margin-bottom: em(12px, 50px);
     }
     .pane-content {
-      @include ingress-main;
+      @include ingress;
       // @include grid(8.5);
       // float: none;
       // display: block;
@@ -1423,7 +1395,7 @@
   }
   .view-employees {
     .view-header {
-      @include ingress-main;
+      @include ingress;
     }
     .view-content {
       overflow: hidden;
@@ -1875,7 +1847,7 @@
     padding: em(14px, 14px) 0 em(14px, 14px);
   }
   .view-header {
-    @include ingress-main;
+    @include ingress;
   }
   .view-filters{
     @include tabs-main;

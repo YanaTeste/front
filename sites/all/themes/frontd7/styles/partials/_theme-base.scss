@@ -25,7 +25,13 @@ html, body {
 }
 
 .ingress {
-  @include ingress-main;
+  @include ingress;
+  text-align: center;
+
+}
+.ingress-left {
+  @include ingress;
+  text-align: left;
 }
 
 h1, h2, h3, h4, h5, h6 {

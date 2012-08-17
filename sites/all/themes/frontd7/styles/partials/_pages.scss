@@ -214,8 +214,10 @@
   }
 }
 
-#panel-solutions {
-  .pane-custom-solutions-intro {
+#panel-solutions,
+#panel-services {
+
+  .pane-custom {
     text-align: center;
     padding: em(72px, 14px) 0 em(40px, 14px);
 

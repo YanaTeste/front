@@ -67,6 +67,14 @@ function front_content_node_info() {
       'title_label' => t('Tittel'),
       'help' => '',
     ),
+    'video' => array(
+      'name' => t('Video'),
+      'base' => 'node_content',
+      'description' => t('Last opp en ny opplæringsvideo'),
+      'has_title' => '1',
+      'title_label' => t('Title'),
+      'help' => '',
+    ),
     'webform' => array(
       'name' => t('Webform'),
       'base' => 'node_content',

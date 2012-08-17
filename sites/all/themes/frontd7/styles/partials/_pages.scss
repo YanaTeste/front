@@ -228,6 +228,16 @@
 //   }
 // }
 
+
+.page-kurs {
+  #page-title{
+    @include title-centered;
+  }
+  .ingress{
+    @include ingress-main;
+  }
+}
+
 #panel-solutions {
   .pane-custom-solutions-intro {
     text-align: center;

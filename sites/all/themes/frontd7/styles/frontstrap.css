@@ -4631,6 +4631,29 @@ html, body {
   border: none;
 }
 
+.ingress {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  text-align: center;
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
+.ingress p {
+  font-size: 1.42857em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+.ingress a {
+  color: #D14C19;
+}
+.ingress a:hover {
+  color: #a33b14;
+}
+
 h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
@@ -5145,6 +5168,38 @@ h1, h2, h3, h4, h5, h6 {
 
 /*         Solutions
 ------------------------------------------------*/
+.page-kurs #page-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 3.57143em;
+  font-weight: normal;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.24em;
+  text-align: center;
+}
+.page-kurs .ingress {
+  display: inline;
+  float: left;
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 660px;
+  text-align: center;
+  float: none;
+  display: block;
+  margin: 0 auto;
+}
+.page-kurs .ingress p {
+  font-size: 1.42857em;
+  font-style: italic;
+  line-height: 1.45em;
+}
+.page-kurs .ingress a {
+  color: #D14C19;
+}
+.page-kurs .ingress a:hover {
+  color: #a33b14;
+}
+
 #panel-solutions .pane-custom-solutions-intro {
   text-align: center;
   padding: 5.14286em 0 2.85714em;
@@ -5387,6 +5442,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 660px;
+  text-align: center;
   float: none;
   display: block;
   margin: 0 auto;
@@ -5924,6 +5980,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 660px;
+  text-align: center;
   float: none;
   display: block;
   margin: 0 auto;
@@ -6523,6 +6580,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 660px;
+  text-align: center;
   float: none;
   display: block;
   margin: 0 auto;
@@ -7162,6 +7220,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-left: 10px;
   margin-right: 10px;
   width: 660px;
+  text-align: center;
   float: none;
   display: block;
   margin: 0 auto;

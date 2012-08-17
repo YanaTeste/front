@@ -133,55 +133,55 @@
 .view-projects-block {
   text-align: center;
 
-  .jcarousel-container-horizontal {
-    margin: auto;
-    padding: 0;
-    width: 100%;
-    height: auto;
-  }
-  .jcarousel-clip-horizontal {
-    overflow: hidden;
-    width: auto;
-  }
-  .jcarousel-item {
-    text-align: left;
-    margin: 0 10px;
-  }
-  .jcarousel-item-placeholder {
-    background: url('throbber.gif') no-repeat scroll center center #FFFFFF;
-    color: #000000;
-  }
-  .jcarousel-next,
-  .jcarousel-prev {
-    background: transparent url('../images/icons_arrows.png') no-repeat;
-    display: block;
-    height: 50px;
-    width: 30px;
-  }
-  .jcarousel-next-disabled,
-  .jcarousel-prev-disabled {
-    display: none;
-  }
-  .jcarousel-prev-horizontal {
-    background-position: left bottom;
-    position: absolute;
-    top: 75px;
-    left: -40px;
+  // .jcarousel-container-horizontal {
+  //   margin: auto;
+  //   padding: 0;
+  //   width: 100%;
+  //   height: auto;
+  // }
+  // .jcarousel-clip-horizontal {
+  //   overflow: hidden;
+  //   width: auto;
+  // }
+  // .jcarousel-item {
+  //   text-align: left;
+  //   margin: 0 10px;
+  // }
+  // .jcarousel-item-placeholder {
+  //   background: url('throbber.gif') no-repeat scroll center center #FFFFFF;
+  //   color: #000000;
+  // }
+  // .jcarousel-next,
+  // .jcarousel-prev {
+  //   background: transparent url('../images/icons_arrows.png') no-repeat;
+  //   display: block;
+  //   height: 50px;
+  //   width: 30px;
+  // }
+  // .jcarousel-next-disabled,
+  // .jcarousel-prev-disabled {
+  //   display: none;
+  // }
+  // .jcarousel-prev-horizontal {
+  //   background-position: left bottom;
+  //   position: absolute;
+  //   top: 75px;
+  //   left: -40px;
 
-    &:hover {
-      background-position: left top;
-    }
-  }
-  .jcarousel-next-horizontal {
-    background-position: right bottom;
-    position: absolute;
-    top: 75px;
-    right: -40px;
+  //   &:hover {
+  //     background-position: left top;
+  //   }
+  // }
+  // .jcarousel-next-horizontal {
+  //   background-position: right bottom;
+  //   position: absolute;
+  //   top: 75px;
+  //   right: -40px;
 
-    &:hover {
-      background-position: right top;
-    }
-  }
+  //   &:hover {
+  //     background-position: right top;
+  //   }
+  // }
 }
 
 /* Drupal

@@ -5123,53 +5123,6 @@ h1, h2, h3, h4, h5, h6 {
 .view-projects-block {
   text-align: center;
 }
-.view-projects-block .jcarousel-container-horizontal {
-  margin: auto;
-  padding: 0;
-  width: 100%;
-  height: auto;
-}
-.view-projects-block .jcarousel-clip-horizontal {
-  overflow: hidden;
-  width: auto;
-}
-.view-projects-block .jcarousel-item {
-  text-align: left;
-  margin: 0 10px;
-}
-.view-projects-block .jcarousel-item-placeholder {
-  background: url("throbber.gif") no-repeat scroll center center white;
-  color: #000000;
-}
-.view-projects-block .jcarousel-next,
-.view-projects-block .jcarousel-prev {
-  background: transparent url("../images/icons_arrows.png") no-repeat;
-  display: block;
-  height: 50px;
-  width: 30px;
-}
-.view-projects-block .jcarousel-next-disabled,
-.view-projects-block .jcarousel-prev-disabled {
-  display: none;
-}
-.view-projects-block .jcarousel-prev-horizontal {
-  background-position: left bottom;
-  position: absolute;
-  top: 75px;
-  left: -40px;
-}
-.view-projects-block .jcarousel-prev-horizontal:hover {
-  background-position: left top;
-}
-.view-projects-block .jcarousel-next-horizontal {
-  background-position: right bottom;
-  position: absolute;
-  top: 75px;
-  right: -40px;
-}
-.view-projects-block .jcarousel-next-horizontal:hover {
-  background-position: right top;
-}
 
 /* Drupal
 -------------------------------------------------*/
@@ -7690,6 +7643,63 @@ ul.menu a.active {
 }
 .pane-home-featured-home .views-slideshow-controls-bottom .views-slideshow-pager-field-item.active, #pane-om-oss-featured .views-slideshow-controls-bottom .views-slideshow-pager-field-item.active {
   background-position: top left;
+}
+
+/*
+------- jcarousels  */
+.jcarousel-container-horizontal {
+  margin: auto;
+  padding: 0;
+  width: 100%;
+  height: auto;
+}
+
+.jcarousel-clip-horizontal {
+  overflow: hidden;
+  width: auto;
+}
+
+.jcarousel-item {
+  text-align: left;
+  margin: 0 10px;
+}
+
+.jcarousel-item-placeholder {
+  background: url("throbber.gif") no-repeat scroll center center white;
+  color: #000000;
+}
+
+.jcarousel-next,
+.jcarousel-prev {
+  background: transparent url("../images/icons_arrows.png") no-repeat;
+  display: block;
+  height: 50px;
+  width: 30px;
+}
+
+.jcarousel-next-disabled,
+.jcarousel-prev-disabled {
+  display: none;
+}
+
+.jcarousel-prev-horizontal {
+  background-position: left bottom;
+  position: absolute;
+  top: 75px;
+  left: -40px;
+}
+.jcarousel-prev-horizontal:hover {
+  background-position: left top;
+}
+
+.jcarousel-next-horizontal {
+  background-position: right bottom;
+  position: absolute;
+  top: 75px;
+  right: -40px;
+}
+.jcarousel-next-horizontal:hover {
+  background-position: right top;
 }
 
 @media (max-width: 960px) {

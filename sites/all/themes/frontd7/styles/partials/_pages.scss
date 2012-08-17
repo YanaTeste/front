@@ -841,6 +841,9 @@
 
 /*         Projects
 ------------------------------------------------*/
+
+/*         Projects
+------------------------------------------------*/
 .page-prosjekter {
   #page-title {
     @include element-invisible;
@@ -1843,7 +1846,9 @@
 
 /* Services / Tjenester
 --------------------------------------------------*/
-#panel-services{
+#panel-services {
+  padding: 0 !important;
+
   .pane-title {
     @include title-centered;
     padding: em(14px, 14px) 0 em(14px, 14px);
@@ -1851,18 +1856,24 @@
   .view-header {
     @include ingress;
   }
-  .view-filters{
+  .view-filters {
     @include tabs-main;
 
-    .form-item{
-      float:left;
+    .views-exposed-form .views-exposed-widget {
+      float: none;
+    }
+
+    .form-item {
+      display: inline;
       padding-right: 10px;
     }
   }
-  .view-content{
+  .view-content {
     background: $bodyBackgroundLower;
-    //background: red;
+    padding: 2px 0 em(9px, 14px);
   }
+
+  
 
 /*
   .pane-services-block-solutions {
@@ -1872,10 +1883,7 @@
     padding-top: 2px;
     padding-bottom: em(30px, 14px);
 
-    .panel-pane-inner {
-      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
-      overflow: hidden;
-    }
+    
     .pane-title {
       @include element-invisible;
     }
@@ -2019,3 +2027,38 @@
 
    */
  }
+
+/*         Tjenester
+------------------------------------------------*/
+ .page-tjenester {
+  #page-title {
+    @include element-invisible;
+  }
+  #main {
+    width: 100%;
+    margin: -1px auto;
+
+    .column {
+      @include grid-container-center;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      width: 49%;
+
+      div.node {
+        padding: 0 10px;
+      }
+
+      .field-name-field-image {
+        float: right;
+      }
+    }
+  }
+}

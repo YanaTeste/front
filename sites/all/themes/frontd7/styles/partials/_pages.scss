@@ -189,8 +189,8 @@
 #panel-drupal{
   .pane-title {
     //@include element-invisible;
-    @include title-left;
-    margin-top: 40px;
+   // @include title-left;
+    //margin-top: 40px;
   }
   .pane-content {
   }

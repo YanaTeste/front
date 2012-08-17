@@ -13,8 +13,10 @@ $headingsColor:         inherit !default; // empty to use BS default, @textColor
 $yellowLogoColor: 			#F2CB2E	;
 
 // Backgrounds
-$bodyBackgroundLower:		#eff2f4 url('../images/bg_home-services.png') repeat-x center top; // For the lower half of a lot of pages
-$bodyBackgroundLowest:	#DEE2E5 url('../images/bg_latest-projects.png') repeat-x center top; // For the lowest half of a lot of pages
+$backgroundLower:				#eff2f4;
+$backgroundLowest:			#DEE2E5;
+$bodyBackgroundLower:		$backgroundLower url('../images/bg_home-services.png') repeat-x center top; // For the lower half of a lot of pages
+$bodyBackgroundLowest:	$backgroundLowest url('../images/bg_latest-projects.png') repeat-x center top; // For the lowest half of a lot of pages
 
 // Fonts directory path
 $font_path: 'fontawesome-webfont';

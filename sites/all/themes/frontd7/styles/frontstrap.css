@@ -4965,11 +4965,6 @@ h1, h2, h3, h4, h5, h6 {
   width: 220px;
   /*margin-top: em(-72px, 14px);*/
 }
-.panel-onecolsidebar .panel-col-last .pane-title {
-  color: #000;
-  font-size: 0.78571em;
-  text-transform: uppercase;
-}
 .panel-onecolsidebar .panel-col-last .panel-separator {
   clear: both;
   margin-bottom: 2.5em;
@@ -5178,15 +5173,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Drupal
 -------------------------------------------------*/
-#panel-drupal .pane-title {
-  font-size: 3.57143em;
-  line-height: 1em;
-  letter-spacing: -0.05em;
-  margin-bottom: 0.48em;
-  padding-bottom: 0;
-  border: none;
-  margin-top: 40px;
-}
 #panel-drupal .view-taxonomy-menu {
   margin-top: 40px;
 }
@@ -7597,10 +7583,15 @@ ul.menu a.active {
 .pane-kurs-overview-panel-pane-1 .field-name-title h2 {
   font-size: 0.85714em;
 }
+.pane-kurs-overview-panel-pane-1 .view-content .views-row-odd {
+  background: #dee2e5;
+}
+.pane-kurs-overview-panel-pane-1 .view-content .views-row-even {
+  background: #eff2f4;
+}
 
-/*
- * Banners
- */
+/* Banners
+-----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
   padding-top: 3.14286em;
 }

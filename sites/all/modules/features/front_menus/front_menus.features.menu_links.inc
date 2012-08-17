@@ -10,6 +10,20 @@
 function front_menus_menu_default_menu_links() {
   $menu_links = array();
 
+  // Exported menu link: main-menu:drupal
+  $menu_links['main-menu:drupal'] = array(
+    'menu_name' => 'main-menu',
+    'link_path' => 'drupal',
+    'router_path' => 'drupal',
+    'link_title' => 'Drupal',
+    'options' => array(),
+    'module' => 'system',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+  );
   // Exported menu link: main-menu:løsninger
   $menu_links['main-menu:løsninger'] = array(
     'menu_name' => 'main-menu',
@@ -22,39 +36,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-40',
-  );
-  // Exported menu link: main-menu:løsninger/drupal
-  $menu_links['main-menu:løsninger/drupal'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'løsninger/drupal',
-    'router_path' => 'løsninger/%',
-    'link_title' => 'Drupal',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
-  );
-  // Exported menu link: main-menu:medarbeidere
-  $menu_links['main-menu:medarbeidere'] = array(
-    'menu_name' => 'main-menu',
-    'link_path' => 'medarbeidere',
-    'router_path' => 'medarbeidere',
-    'link_title' => 'Medarbeidere',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-49',
   );
   // Exported menu link: main-menu:om-oss
   $menu_links['main-menu:om-oss'] = array(
@@ -68,7 +50,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '50',
+    'weight' => '-45',
   );
   // Exported menu link: main-menu:prosjekter
   $menu_links['main-menu:prosjekter'] = array(
@@ -82,7 +64,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '40',
+    'weight' => '-47',
   );
   // Exported menu link: main-menu:tjenester
   $menu_links['main-menu:tjenester'] = array(
@@ -112,20 +94,6 @@ function front_menus_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '5',
   );
-  // Exported menu link: user-menu:jobb-i-front
-  $menu_links['user-menu:jobb-i-front'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'jobb-i-front',
-    'router_path' => 'jobb-i-front',
-    'link_title' => 'Jobb i Front',
-    'options' => array(),
-    'module' => 'system',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '0',
-  );
   // Exported menu link: user-menu:kontakt
   $menu_links['user-menu:kontakt'] = array(
     'menu_name' => 'user-menu',
@@ -154,6 +122,24 @@ function front_menus_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '0',
   );
+  // Exported menu link: user-menu:node/1657
+  $menu_links['user-menu:node/1657'] = array(
+    'menu_name' => 'user-menu',
+    'link_path' => 'node/1657',
+    'router_path' => 'node/%',
+    'link_title' => 'Jobb i Front',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
+    'hidden' => '0',
+    'external' => '0',
+    'has_children' => '0',
+    'expanded' => '0',
+    'weight' => '-50',
+  );
   // Exported menu link: user-menu:support
   $menu_links['user-menu:support'] = array(
     'menu_name' => 'user-menu',
@@ -176,9 +162,12 @@ function front_menus_menu_default_menu_links() {
     'link_title' => 'User account',
     'options' => array(
       'alter' => TRUE,
+      'attributes' => array(
+        'title' => '',
+      ),
     ),
     'module' => 'system',
-    'hidden' => '0',
+    'hidden' => '1',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
@@ -207,7 +196,6 @@ function front_menus_menu_default_menu_links() {
   t('Kurs');
   t('Log out');
   t('Løsninger');
-  t('Medarbeidere');
   t('Om oss');
   t('Prosjekter');
   t('Support');

@@ -4800,7 +4800,6 @@ h1, h2, h3, h4, h5, h6 {
 #main-menu {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   float: right;
-  margin-right: 3.571em;
   clear: both;
 }
 #main-menu .main-menu {
@@ -4809,10 +4808,14 @@ h1, h2, h3, h4, h5, h6 {
 #main-menu .main-menu li {
   float: left;
 }
+#main-menu .main-menu li.last a {
+  margin-right: 0;
+}
 #main-menu .main-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 0.286em 0.857em 0.714em;
+  padding: 0.286em 0 0.571em;
+  margin: 0 0.857em;
   -webkit-transition-property: -webkit-background;
   -moz-transition-property: -moz-background;
   -o-transition-property: -o-background;
@@ -4835,15 +4838,18 @@ h1, h2, h3, h4, h5, h6 {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 0.857em;
   float: right;
-  margin-right: 4.143em;
 }
 #secondary-menu .secondary-menu li {
   float: left;
 }
+#secondary-menu .secondary-menu li.last a {
+  margin-right: 0;
+}
 #secondary-menu .secondary-menu a {
   color: #979392;
   display: inline-block;
-  padding: 0.286em 0.857em 0.286em;
+  padding: 0.286em 0 0.286em;
+  margin: 0 0.857em;
   -webkit-transition-property: -webkit-background;
   -moz-transition-property: -moz-background;
   -o-transition-property: -o-background;

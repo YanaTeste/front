@@ -129,7 +129,6 @@ h1, h2, h3, h4, h5, h6 {
 #main-menu {
   font-family: $helveticaFontFamily;
   float: right;
-  margin-right: em(50px, 14px);
   clear:both;
 
   .main-menu {
@@ -137,11 +136,16 @@ h1, h2, h3, h4, h5, h6 {
 
     li {
       float: left;
+
+      &.last a {
+        margin-right: 0;
+      }
     }
     a {
       color: #efefef;
       display: inline-block;
-      padding: em(4px, 14px) em(12px, 14px) em(10px, 14px);
+      padding: em(4px, 14px) 0 em(7px, 14px);
+      margin: 0 em(12px, 14px);
       @include transition-property(background);
       @include transition-duration(0.3s);
 
@@ -162,16 +166,20 @@ h1, h2, h3, h4, h5, h6 {
   font-family: $helveticaFontFamily;
   font-size: em(12px,14px);
   float: right;
-  margin-right: em(58px, 14px);
 
   .secondary-menu {
     li {
       float: left;
+
+      &.last a {
+        margin-right: 0;
+      }
     }
     a {
       color: $navSecondColorMenu;
       display: inline-block;
-      padding: em(4px, 14px) em(12px, 14px) em(4px, 14px);
+      padding: em(4px, 14px) 0 em(4px, 14px);
+      margin: 0 em(12px, 14px);
       @include transition-property(background);
       @include transition-duration(0.3s);
 

@@ -107,7 +107,7 @@
         </nav><!-- /#navigation -->
       <?php endif; ?>
 
-      <?php if ($search_box): print $search_box; endif; ?>
+      <!--<?php if ($search_box): print $search_box; endif; ?>-->
     </header><!-- /#header -->
   </div><!-- .header-wrapper -->
 <?php endif; ?>

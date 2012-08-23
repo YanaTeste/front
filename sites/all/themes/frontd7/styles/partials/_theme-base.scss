@@ -133,23 +133,26 @@ h1, h2, h3, h4, h5, h6 {
   clear:both;
 
   .main-menu {
+    font-size: em(18px, 14px);
+
     li {
       float: left;
     }
     a {
       color: #efefef;
       display: inline-block;
-      padding: em(4px, 14px) em(12px, 14px) em(4px, 14px);
+      padding: em(4px, 14px) em(12px, 14px) em(10px, 14px);
       @include transition-property(background);
       @include transition-duration(0.3s);
 
       &:hover,
       &:focus {
-        background: $yellowLogoColor;
+        color: $yellowLogoColor;
+        background: none;
       }
       &.active {
-        color: #F2CB2D;
-        background: rgba(0,0,0,0.1) url('../images/icon_main-active-white.png') no-repeat center bottom;
+        color: $yellowLogoColor;
+        background: transparent url('../images/icon_main-active-white.png') no-repeat center bottom;
       }
     }
   }
@@ -166,7 +169,7 @@ h1, h2, h3, h4, h5, h6 {
       float: left;
     }
     a {
-      color: #efefef;
+      color: $navSecondColorMenu;
       display: inline-block;
       padding: em(4px, 14px) em(12px, 14px) em(4px, 14px);
       @include transition-property(background);
@@ -174,10 +177,11 @@ h1, h2, h3, h4, h5, h6 {
 
       &:hover,
       &:focus {
-        background: $yellowLogoColor;
+        color: lighten($navSecondColorMenu, 10%);
+        background: none;
       }
       &.active {
-        color: #F2CB2D;
+        color: $yellowLogoColor;
        // background: rgba(0,0,0,0.1) url('../images/icon_main-active-white.png') no-repeat center bottom;
      }
    }

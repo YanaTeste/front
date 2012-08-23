@@ -4697,7 +4697,7 @@ h1, h2, h3, h4, h5, h6 {
 #header h1 a {
   display: inline-block;
   padding: 0.333em 0 0;
-  height: 10px;
+  height: 14px;
 }
 #header h1 img {
   display: block;
@@ -4803,13 +4803,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 3.571em;
   clear: both;
 }
+#main-menu .main-menu {
+  font-size: 1.286em;
+}
 #main-menu .main-menu li {
   float: left;
 }
 #main-menu .main-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 0.286em 0.857em 0.286em;
+  padding: 0.286em 0.857em 0.714em;
   -webkit-transition-property: -webkit-background;
   -moz-transition-property: -moz-background;
   -o-transition-property: -o-background;
@@ -4820,11 +4823,12 @@ h1, h2, h3, h4, h5, h6 {
   transition-duration: 0.3s;
 }
 #main-menu .main-menu a:hover, #main-menu .main-menu a:focus {
-  background: #f2cb2e;
+  color: #ebb700;
+  background: none;
 }
 #main-menu .main-menu a.active {
-  color: #F2CB2D;
-  background: rgba(0, 0, 0, 0.1) url("../images/icon_main-active-white.png") no-repeat center bottom;
+  color: #ebb700;
+  background: transparent url("../images/icon_main-active-white.png") no-repeat center bottom;
 }
 
 #secondary-menu {
@@ -4837,7 +4841,7 @@ h1, h2, h3, h4, h5, h6 {
   float: left;
 }
 #secondary-menu .secondary-menu a {
-  color: #efefef;
+  color: #979392;
   display: inline-block;
   padding: 0.286em 0.857em 0.286em;
   -webkit-transition-property: -webkit-background;
@@ -4850,10 +4854,11 @@ h1, h2, h3, h4, h5, h6 {
   transition-duration: 0.3s;
 }
 #secondary-menu .secondary-menu a:hover, #secondary-menu .secondary-menu a:focus {
-  background: #f2cb2e;
+  color: #b0adac;
+  background: none;
 }
 #secondary-menu .secondary-menu a.active {
-  color: #F2CB2D;
+  color: #ebb700;
 }
 
 /* Sidebars */

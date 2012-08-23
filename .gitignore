@@ -13,3 +13,6 @@ robots_orig.txt
 /sites/all/modules/contrib/devel_themer/
 /sites/all/modules/contrib/file_redirect/
 /sites/all/modules/contrib/simplehtmldom/
+
+# Osx files
+.DS_Store

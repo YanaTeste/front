@@ -309,10 +309,7 @@
       }
     }
     .views-field-title {
-      font-family: $baseFontFamily;
-      line-height: em(21px, 18px);
-      font-weight: normal;
-      margin-bottom: em(3px, 18px);
+      @include sub-heading;
     }
     .views-field-body p {
       margin-bottom: 0;
@@ -1856,16 +1853,34 @@
   .view-header {
     @include ingress;
   }
+
+  .views-widget {
+    color: $yellowProfileColorDark;
+
+    a:hover,
+    a:active {
+      color: $yellowProfileColorDark;
+    }
+  }
+
   .view-filters {
     @include tabs-main;
+
+    form {
+      margin-bottom: 0;
+    }
 
     .views-exposed-form .views-exposed-widget {
       float: none;
     }
 
-    .form-item {
+    .views-exposed-form .views-exposed-widgets {
+      margin-bottom: 6px; //em(10px, 14px);
+    }
+
+    .form-item .form-item {
       display: inline;
-      padding-right: 10px;
+      padding: 0 15px;
     }
   }
   .view-content {
@@ -2031,15 +2046,21 @@
 /*         Tjenester
 ------------------------------------------------*/
  .page-tjenester {
+  
   #page-title {
     @include element-invisible;
   }
+  
   #main {
     width: 100%;
     margin: -1px auto;
 
     .column {
       @include grid-container-center;
+      // TODO: Check with rob if there is a reson grid-container isn't in percent
+      width: 100%;
+      max-width: 960px;
+      padding: em(55px, 14px) 0;
     }
 
     ul {
@@ -2050,14 +2071,35 @@
     li {
       list-style: none;
       display: inline-block;
-      width: 49%;
+      width: 45%;
+      vertical-align: top;
+      margin-bottom: 5%;
+
+      &.views-row-odd {
+        margin-right: 8%;
+      }
 
       div.node {
         padding: 0 10px;
       }
 
+      .field-name-title .list-title {
+        @include sub-heading;
+        margin-bottom: 0;
+      }
+
       .field-name-field-image {
         float: right;
+        max-width: 62px;
+        width: 15%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .field-type-text-with-summary {
+        margin-right: 18%;
       }
     }
   }

@@ -4684,6 +4684,17 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Links */
+a,
+a:visited {
+  color: #703d29;
+}
+
+a:hover,
+a:active {
+  color: #6e4a38;
+  text-decoration: none;
+}
+
 /* Header */
 .header-wrapper {
   background: #302725;
@@ -4814,7 +4825,7 @@ h1, h2, h3, h4, h5, h6 {
 #main-menu .main-menu a {
   color: #efefef;
   display: inline-block;
-  padding: 0.286em 0 0.571em;
+  padding: 0.286em 0 0.5em;
   margin: 0 0.857em;
   -webkit-transition-property: -webkit-background;
   -moz-transition-property: -moz-background;
@@ -5083,7 +5094,7 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 2.357em;
 }
 .page-home .pane-projects-block-latest-projects {
-  background: #dee2e5 url("../images/bg_latest-projects.png") repeat-x center top;
+  background: #f6f5f4 url("../images/bg_latest-projects.png") repeat-x center top;
   padding-top: 3.214em;
   padding-bottom: 2.143em;
 }
@@ -5175,7 +5186,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #a33b14;
 }
 .page-kurs .pane-kurs-overview-panel-pane-2 {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
 }
 
 #panel-solutions .pane-custom,
@@ -6020,7 +6031,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #a33b14;
 }
 #panel-prosjekter .pane-projects-block-projects {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding: 2px 0 0.643em;
 }
 #panel-prosjekter .pane-projects-block-projects .panel-pane-inner {
@@ -7257,6 +7268,13 @@ h1, h2, h3, h4, h5, h6 {
 #panel-services .view-header a:hover {
   color: #a33b14;
 }
+#panel-services .views-widget {
+  color: #d8a107;
+}
+#panel-services .views-widget a:hover,
+#panel-services .views-widget a:active {
+  color: #d8a107;
+}
 #panel-services .view-filters {
   text-align: center;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -7264,15 +7282,21 @@ h1, h2, h3, h4, h5, h6 {
   float: none;
   display: block;
 }
+#panel-services .view-filters form {
+  margin-bottom: 0;
+}
 #panel-services .view-filters .views-exposed-form .views-exposed-widget {
   float: none;
 }
-#panel-services .view-filters .form-item {
+#panel-services .view-filters .views-exposed-form .views-exposed-widgets {
+  margin-bottom: 6px;
+}
+#panel-services .view-filters .form-item .form-item {
   display: inline;
-  padding-right: 10px;
+  padding: 0 15px;
 }
 #panel-services .view-content {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding: 2px 0 0.643em;
 }
 
@@ -7293,6 +7317,9 @@ h1, h2, h3, h4, h5, h6 {
   display: block;
   position: relative;
   float: none;
+  width: 100%;
+  max-width: 960px;
+  padding: 3.929em 0;
 }
 .page-tjenester #main ul {
   list-style: none;
@@ -7301,13 +7328,33 @@ h1, h2, h3, h4, h5, h6 {
 .page-tjenester #main li {
   list-style: none;
   display: inline-block;
-  width: 49%;
+  width: 45%;
+  vertical-align: top;
+  margin-bottom: 5%;
+}
+.page-tjenester #main li.views-row-odd {
+  margin-right: 8%;
 }
 .page-tjenester #main li div.node {
   padding: 0 10px;
 }
+.page-tjenester #main li .field-name-title .list-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.167em;
+  font-weight: normal;
+  margin-bottom: 0.167em;
+  margin-bottom: 0;
+}
 .page-tjenester #main li .field-name-field-image {
   float: right;
+  max-width: 62px;
+  width: 15%;
+}
+.page-tjenester #main li .field-name-field-image img {
+  width: 100%;
+}
+.page-tjenester #main li .field-type-text-with-summary {
+  margin-right: 18%;
 }
 
 /* Postscript */
@@ -7316,6 +7363,15 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #302725;
   padding-top: 2.5em;
   overflow: hidden;
+}
+#postscript a,
+#postscript a:link,
+#postscript a:visited {
+  color: #aa6552;
+}
+#postscript a:hover,
+#postscript a:active {
+  color: #bc8373;
 }
 
 .block-panels-mini {
@@ -7628,10 +7684,10 @@ ul.menu a.active {
   font-size: 0.857em;
 }
 .pane-kurs-overview-panel-pane-1 .view-content .views-row-odd {
-  background: #dee2e5;
+  background: #f6f5f4;
 }
 .pane-kurs-overview-panel-pane-1 .view-content .views-row-even {
-  background: #eff2f4;
+  background: #edeae9;
 }
 
 /* Banners

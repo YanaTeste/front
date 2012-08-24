@@ -39,6 +39,16 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Links */
+a,
+a:visited {
+  color: $brownProfileColorLight;
+}
+
+a:hover,
+a:active {
+  color: lighten($brownProfileColor, 10%);
+  text-decoration: none;
+}
 
 /* Header */
 .header-wrapper {

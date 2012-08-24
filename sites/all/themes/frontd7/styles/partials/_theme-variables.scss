@@ -10,12 +10,19 @@ $headingsFontWeight:    bold !default;    // instead of browser default, bold
 
 // Colorpalette
 $headingsColor:         inherit !default; // empty to use BS default, @textColor
-$yellowLogoColor: 			#EBB700;
+$yellowProfileColor:    #EBB700;
+$yellowLogoColor: 			$yellowProfileColor;
+$yellowProfileColorDark:#D8A107;
+$brownProfileColor:     #4C3327;
+$brownProfileColorDark: #302725;
+$brownProfileColorLight:#703D29;
 $navSecondColorMenu:    #979392;
 
+$postscriptLinkColor:   #AA6552;
+
 // Backgrounds
-$backgroundLower:				#eff2f4;
-$backgroundLowest:			#DEE2E5;
+$backgroundLower:				#EDEAE9; // old blueish #eff2f4;
+$backgroundLowest:			#F6F5F4; // old blueish #DEE2E5;
 $bodyBackgroundLower:		$backgroundLower url('../images/bg_home-services.png') repeat-x center top; // For the lower half of a lot of pages
 $bodyBackgroundLowest:	$backgroundLowest url('../images/bg_latest-projects.png') repeat-x center top; // For the lowest half of a lot of pages
 

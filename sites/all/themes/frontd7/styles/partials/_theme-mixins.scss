@@ -92,7 +92,12 @@
       border: none;
     }
 
-
+@mixin sub-heading {
+  font-family: $baseFontFamily;
+  line-height: em(21px, 18px);
+  font-weight: normal;
+  margin-bottom: em(3px, 18px);
+}
 
 /*
  * Sections

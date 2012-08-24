@@ -1,9 +1,20 @@
 /* Postscript */
 #postscript {
   clear: both;
-  background-color: #302725;
+  background-color: $brownProfileColorDark;
   padding-top: em(35px, 14px);
   overflow: hidden;
+
+  a,
+  a:link,
+  a:visited {
+    color: $postscriptLinkColor;
+  }
+
+  a:hover,
+  a:active {
+    color: lighten($postscriptLinkColor, 10%);
+  }
 }
 
 .block-panels-mini {

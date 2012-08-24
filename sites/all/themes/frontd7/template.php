@@ -32,6 +32,12 @@ function frontd7_preprocess_page(&$variables) {
   if (isset($variables['tabs']['#primary']) && empty($variables['tabs']['#primary'])) {
     unset($variables['tabs']);
   }
+  // Adds a square_medium icon next to the title if it exists;
+  if($variables['node']->field_image['und'][0]['uri']){
+    $image_uri = file_build_uri($variables['node']->field_image['und'][0]['filename']);
+    $variables['pageicon'] = theme('image_style', array('style_name' => 'square_medium', 'path' => $image_uri));
+    dsm( $variables['pageicon']);
+  }
 }
 
 /**

@@ -130,6 +130,25 @@
   }
 }
 
+/* About us / Om oss
+------------------------------------------------------*/
+.page-om-oss{
+  .pane-custom-front-kontaktinfo{
+    @include grid(9);
+    // float: left;
+  }
+  .pane-custom-gamlebyen-fredrikstad{
+    @include grid(9);
+    // float: left;
+
+  }
+  .pane-custom-about-us-menu{
+    @include grid(3);
+    float: right;
+    margin-top: -100px;
+  }
+}
+
 .view-projects-block {
   text-align: center;
 
@@ -1888,7 +1907,7 @@
     padding: 2px 0 em(9px, 14px);
   }
 
-  
+
 
 /*
   .pane-services-block-solutions {
@@ -2045,8 +2064,8 @@
 
 /*         Tjenester
 ------------------------------------------------*/
- .page-tjenester {
-  
+.page-tjenester {
+
   #page-title {
     @include element-invisible;
   }

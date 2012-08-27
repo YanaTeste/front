@@ -7509,7 +7509,7 @@ a:active {
   margin-right: 1.4em;
 }
 .pane-front-custom-front-support .pane-content .links a {
-  color: #fff;
+  color: #fff !important;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 1.07143em;
   font-weight: bold;

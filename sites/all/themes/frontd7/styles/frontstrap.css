@@ -7703,7 +7703,7 @@ ul.menu {
   margin-left: 0;
 }
 ul.menu li {
-  background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
+  background: #302725 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
   list-style: none;
 }
 ul.menu li:last-child {
@@ -7726,6 +7726,22 @@ ul.menu .active a,
 ul.menu a.active {
   color: #F2CB2D;
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
+}
+
+#sidebar-navigation-block h2, .pane-custom-about-us-menu h2 {
+  color: #ebb700;
+  font-size: 1.14286em;
+  font-weight: normal;
+  line-height: 1.3125em;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.03125em;
+  display: block;
+  padding: 0.6875em 0 0.75em 1.375em;
+  background: #4c3327 url("../images/icon_block-menu-active.png") no-repeat left center;
+  -webkit-box-shadow: 0 2px 0 black;
+  -moz-box-shadow: 0 2px 0 black;
+  box-shadow: 0 2px 0 black;
 }
 
 .pane-kurs-overview-panel-pane-1 .pane-title {

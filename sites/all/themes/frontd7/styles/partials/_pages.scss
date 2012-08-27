@@ -302,15 +302,16 @@
 
   .pane-custom {
     text-align: center;
-    padding: em(72px, 14px) 0 em(40px, 14px);
+    padding: 0 0 em(40px, 14px);
 
     .pane-title {
-      font-family: $baseFontFamily;
-      font-size: em(50px, 14px);
-      font-weight: normal;
-      line-height: 1;
-      letter-spacing: em(-2px, 50px);
-      margin-bottom: em(12px, 50px);
+      // font-family: $baseFontFamily;
+      // font-size: em(50px, 14px);
+      // font-weight: normal;
+      // line-height: 1;
+      // letter-spacing: em(-2px, 50px);
+      // margin-bottom: em(12px, 50px);
+      @include title-centered;
     }
     .pane-content {
       @include grid(8.5);
@@ -942,7 +943,6 @@
 #panel-prosjekter {
   .pane-custom-projects-intro {
     text-align: center;
-    @include title-centered-padding;
 
     .pane-title {
       @include title-centered;
@@ -1931,7 +1931,6 @@
 
   .pane-title {
     @include title-centered;
-    padding: em(14px, 14px) 0 em(14px, 14px);
   }
   .view-header {
     @include ingress;

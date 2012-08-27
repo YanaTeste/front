@@ -4952,21 +4952,6 @@ a:active {
   margin-right: 30px;
 }
 
-.pane-menu-block,
-.pane-services-block-menu,
-.pane-terms-menu-topics,
-#page-about-us {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  overflow: hidden;
-}
-.pane-menu-block .pane-title,
-.pane-services-block-menu .pane-title,
-.pane-terms-menu-topics .pane-title,
-#page-about-us .pane-title {
-  font-size: 0.78571em;
-  text-transform: uppercase;
-}
-
 /*         Column + Sidebar layout
 ------------------------------------------------*/
 .panel-onecolsidebar {
@@ -5190,8 +5175,9 @@ a:active {
   font-weight: normal;
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
+  margin: 0;
   text-align: center;
+  padding: 1em 0 1em;
 }
 .page-kurs .ingress {
   display: inline;
@@ -5249,7 +5235,7 @@ a:active {
 #panel-solutions .pane-custom,
 #panel-services .pane-custom {
   text-align: center;
-  padding: 5.14286em 0 2.85714em;
+  padding: 0 0 2.85714em;
 }
 #panel-solutions .pane-custom .pane-title,
 #panel-services .pane-custom .pane-title {
@@ -5258,7 +5244,9 @@ a:active {
   font-weight: normal;
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
+  margin: 0;
+  text-align: center;
+  padding: 1em 0 1em;
 }
 #panel-solutions .pane-custom .pane-content,
 #panel-services .pane-custom .pane-content {
@@ -6054,7 +6042,6 @@ a:active {
 
 #panel-prosjekter .pane-custom-projects-intro {
   text-align: center;
-  padding: 5.14286em 0 2.85714em;
 }
 #panel-prosjekter .pane-custom-projects-intro .pane-title {
   font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -6062,8 +6049,9 @@ a:active {
   font-weight: normal;
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
+  margin: 0;
   text-align: center;
+  padding: 1em 0 1em;
 }
 #panel-prosjekter .pane-custom-projects-intro .pane-content {
   display: inline;
@@ -7299,7 +7287,7 @@ a:active {
   font-weight: normal;
   line-height: 1;
   letter-spacing: -0.04em;
-  margin-bottom: 0.24em;
+  margin: 0;
   text-align: center;
   padding: 1em 0 1em;
 }
@@ -7728,7 +7716,9 @@ ul.menu a.active {
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
 
-#sidebar-navigation-block h2, .pane-custom-about-us-menu h2 {
+#sidebar-navigation-block h2,
+.pane-custom-about-us-menu h2,
+.pane-terms-menu-topics h2 {
   color: #ebb700;
   font-size: 1.14286em;
   font-weight: normal;

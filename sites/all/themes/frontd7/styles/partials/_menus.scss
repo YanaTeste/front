@@ -32,7 +32,9 @@ ul.menu {
 }
 
 
-#sidebar-navigation-block, .pane-custom-about-us-menu{
+#sidebar-navigation-block,
+.pane-custom-about-us-menu,
+.pane-terms-menu-topics{
   h2{
     color: $yellowLogoColor;
     font-size: em(16px, 14px);

@@ -34,9 +34,10 @@ function frontd7_preprocess_page(&$variables) {
   }
   // Adds a square_medium icon next to the title if it exists;
   if($variables['node']->field_image['und'][0]['uri']){
-    $image_uri = file_build_uri($variables['node']->field_image['und'][0]['filename']);
-    $variables['pageicon'] = theme('image_style', array('style_name' => 'square_medium', 'path' => $image_uri));
-    dsm( $variables['pageicon']);
+    $fid = $variables['node']->field_image['und'][0]['fid'];
+    $file = file_load($fid);
+    $image_uri = $file->uri;
+    $variables['pageicon'] = theme_image_style ( array('style_name' => 'square_small', 'path' => $image_uri));
   }
 }
 

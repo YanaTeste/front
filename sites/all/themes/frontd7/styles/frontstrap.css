@@ -4888,7 +4888,6 @@ a:active {
   font-size: 1.14286em;
   font-weight: normal;
   line-height: 1.3125em;
-  background: #343434 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
   -webkit-box-shadow: 0 2px 0 black;
   -moz-box-shadow: 0 2px 0 black;
   box-shadow: 0 2px 0 black;
@@ -4914,10 +4913,10 @@ a:active {
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
 .view-taxonomy-menu .view-content h3 a.open {
-  background-color: #343434;
+  background-color: #4c3327;
 }
 .view-taxonomy-menu .view-content ul {
-  background-color: #555;
+  background-color: #302725;
   margin: 0 2px 1px;
 }
 .js .view-taxonomy-menu .view-content ul {
@@ -4946,6 +4945,11 @@ a:active {
   -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
   box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
+}
+
+.pageicon {
+  float: left;
+  margin-right: 30px;
 }
 
 .pane-menu-block,
@@ -5211,8 +5215,35 @@ a:active {
 .page-kurs .ingress a:hover {
   color: #a33b14;
 }
+.page-kurs .pane-videos-panel-pane-1 .pane-title {
+  color: #4c3327;
+}
 .page-kurs .pane-kurs-overview-panel-pane-2 {
   background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
+  padding: 5px 30px;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 h2 {
+  color: #4c3327;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 h3 {
+  font-size: 1em;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 ul {
+  list-style: none;
+  margin: 0;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 li {
+  list-style: none;
+  display: inline-block;
+  width: 45%;
+  vertical-align: top;
+  margin-bottom: 5%;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 li.views-row-odd {
+  margin-right: 8%;
+}
+.page-kurs .pane-kurs-overview-panel-pane-2 li .field-type-datetime {
+  color: #703d29;
 }
 
 #panel-solutions .pane-custom,

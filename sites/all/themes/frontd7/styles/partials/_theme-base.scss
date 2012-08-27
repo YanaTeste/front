@@ -218,7 +218,7 @@ a:active {
       font-size: em(16px, 14px);
       font-weight: normal;
       line-height: em(21px, 16px);
-      background: #343434 url('../images/bg_menu-block-dash.png') repeat-x left bottom;
+      //background: #343434 url('../images/bg_menu-block-dash.png') repeat-x left bottom;
       @include box-shadow(0 2px 0 rgba(0,0,0,1));
 
       &:last-of-type {
@@ -243,12 +243,12 @@ a:active {
           background: transparent url('../images/icon_block-menu-active.png') no-repeat left center;
         }
         &.open {
-          background-color: #343434;
+          background-color: $brownProfileColor;
         }
       }
     }
     ul {
-      background-color: #555;
+      background-color: $brownProfileColorDark;
       margin: 0 2px 1px;
 
       .js & {
@@ -285,7 +285,10 @@ a:active {
 }
 
 
-
+.pageicon{
+  float:left;
+  margin-right: 30px;
+}
 
 .pane-menu-block,
 .pane-services-block-menu,

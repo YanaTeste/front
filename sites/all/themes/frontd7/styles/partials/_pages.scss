@@ -228,9 +228,73 @@
   .ingress{
     @include ingress;
   }
+
+  .pane-videos-panel-pane-1{
+    .pane-title{
+      color: $brownProfileColor;
+    }
+  }
+
   .pane-kurs-overview-panel-pane-2{
     background: $bodyBackgroundLower;
+    padding: 5px 30px;
+
+
+    h2{
+      color: $brownProfileColor;
+      //font-size: em(12px,14px);
+    }
+    h3{
+      font-size: em(14px,14px);
+    }
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    li {
+      list-style: none;
+      display: inline-block;
+      width: 45%;
+      vertical-align: top;
+      margin-bottom: 5%;
+
+      &.views-row-odd {
+        margin-right: 8%;
+      }
+
+      // div.node {
+      //   padding: 0 10px;
+      // }
+
+      // .field-name-title .list-title {
+      //   @include sub-heading;
+      //   margin-bottom: 0;
+      // }
+
+      // .field-name-field-image {
+      //   float: right;
+      //   max-width: 62px;
+      //   width: 15%;
+
+      //   img {
+      //     width: 100%;
+      //   }
+      // }
+
+      // .field-type-text-with-summary {
+      //   margin-right: 18%;
+      // }
+      .field-type-datetime{
+        color: $brownProfileColorLight;
+      }
+    }
+
+
+
   }
+
+
 }
 
 #panel-solutions,

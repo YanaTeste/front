@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Front Display suite feature.
+ */
+
+include_once 'front_display_suite.features.inc';

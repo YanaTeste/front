@@ -1212,6 +1212,109 @@ function front_panels_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
+  $handler->name = 'node_view_panel_context_7';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -25;
+  $handler->conf = array(
+    'title' => 'Video',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => 'page-video',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'video' => 'video',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-32';
+    $pane->panel = 'left';
+    $pane->type = 'entity_view';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'full',
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-32'] = $pane;
+    $display->panels['left'][0] = 'new-32';
+    $pane = new stdClass();
+    $pane->pid = 'new-33';
+    $pane->panel = 'right';
+    $pane->type = 'custom';
+    $pane->subtype = 'about_us_menu';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'menu',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-33'] = $pane;
+    $display->panels['right'][0] = 'new-33';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = 'new-32';
+  $handler->conf['display'] = $display;
+  $export['node_view_panel_context_7'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
   $handler->name = 'term_view_panel_context';
   $handler->task = 'term_view';
   $handler->subtask = '';
@@ -1243,7 +1346,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-32';
+    $pane->pid = 'new-34';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -1264,10 +1367,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-32'] = $pane;
-    $display->panels['left'][0] = 'new-32';
+    $display->content['new-34'] = $pane;
+    $display->panels['left'][0] = 'new-34';
     $pane = new stdClass();
-    $pane->pid = 'new-33';
+    $pane->pid = 'new-35';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'blog-posts';
@@ -1291,10 +1394,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-33'] = $pane;
-    $display->panels['left'][1] = 'new-33';
+    $display->content['new-35'] = $pane;
+    $display->panels['left'][1] = 'new-35';
     $pane = new stdClass();
-    $pane->pid = 'new-34';
+    $pane->pid = 'new-36';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'terms_menu-topics';
@@ -1312,10 +1415,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-34'] = $pane;
-    $display->panels['right'][0] = 'new-34';
+    $display->content['new-36'] = $pane;
+    $display->panels['right'][0] = 'new-36';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-32';
+  $display->title_pane = 'new-34';
   $handler->conf['display'] = $display;
   $export['term_view_panel_context'] = $handler;
 

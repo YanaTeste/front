@@ -55,7 +55,7 @@ function front_panels_default_panels_mini() {
         'view_node' => 1,
       ),
       'override_title' => 1,
-      'override_title_text' => 'Blog',
+      'override_title_text' => 'Blogg',
     );
     $pane->cache = array();
     $pane->style = array(

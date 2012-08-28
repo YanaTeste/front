@@ -494,7 +494,7 @@ function front_content_strongarm() {
         'custom_settings' => TRUE,
       ),
       'short_teaser' => array(
-        'custom_settings' => TRUE,
+        'custom_settings' => FALSE,
       ),
       'rss' => array(
         'custom_settings' => FALSE,
@@ -622,7 +622,7 @@ function front_content_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '3',
+          'weight' => '6',
         ),
       ),
       'display' => array(),

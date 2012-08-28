@@ -672,7 +672,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Intro';
   $handler->display->display_options['header']['area']['empty'] = FALSE;
-  $handler->display->display_options['header']['area']['content'] = 'Det som kjennetegner en Frontmedarbeider er ikke bare faglig dyktighet men også at han er en problemløser.';
+  $handler->display->display_options['header']['area']['content'] = 'Her er vårt team av dedikerte utviklere, prosjektledere og problemløsere. ';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   $handler->display->display_options['header']['area']['tokenize'] = 0;
   /* Relationship: Profile: User uid */
@@ -926,7 +926,7 @@ function front_views_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('Intro'),
-    t('Det som kjennetegner en Frontmedarbeider er ikke bare faglig dyktighet men også at han er en problemløser.'),
+    t('Her er vårt team av dedikerte utviklere, prosjektledere og problemløsere. '),
     t('User'),
     t('[field_twitter]
 [field_facebook]
@@ -995,7 +995,8 @@ function front_views_views_default_views() {
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['weight'] = '1';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_controls']['type'] = 'views_slideshow_controls_text';
   $handler->display->display_options['style_options']['widgets']['bottom']['views_slideshow_slide_counter']['weight'] = '1';
-  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '5000';
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['transition_advanced'] = 1;
+  $handler->display->display_options['style_options']['views_slideshow_cycle']['timeout'] = '8000';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['speed'] = '700';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['delay'] = '0';
   $handler->display->display_options['style_options']['views_slideshow_cycle']['action_advanced'] = 1;
@@ -1365,6 +1366,7 @@ function front_views_views_default_views() {
 
   /* Display: Tjenester Exposed Filter */
   $handler = $view->new_display('panel_pane', 'Tjenester Exposed Filter', 'panel_pane_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['exposed_form'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'better_exposed_filters';
   $handler->display->display_options['exposed_form']['options']['autosubmit'] = 1;
@@ -1379,6 +1381,7 @@ function front_views_views_default_views() {
       ),
     ),
   );
+  $handler->display->display_options['defaults']['header'] = FALSE;
   $handler->display->display_options['defaults']['filters'] = FALSE;
   /* Filter criterion: Content: Published */
   $handler->display->display_options['filters']['status']['id'] = 'status';
@@ -1492,7 +1495,7 @@ function front_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Kurs/opplæring';
+  $handler->display->display_options['title'] = 'Kommende kurs';
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
@@ -1565,7 +1568,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['defaults']['row_options'] = FALSE;
   $translatables['kurs_overview'] = array(
     t('Master'),
-    t('Kurs/opplæring'),
+    t('Kommende kurs'),
     t('more'),
     t('Apply'),
     t('Reset'),

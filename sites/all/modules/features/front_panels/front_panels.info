@@ -37,4 +37,5 @@ features[page_manager_pages][] = slikjobbervi
 features[page_manager_pages][] = support
 features[page_manager_pages][] = tjenester
 features[page_manager_pages][] = tjenester_new
+features[page_manager_pages][] = videoer
 features[panels_mini][] = postscript

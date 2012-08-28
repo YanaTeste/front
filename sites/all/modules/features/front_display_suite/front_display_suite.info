@@ -1,6 +1,7 @@
 name = Front Display suite
 core = 7.x
 package = Front
+php = 5.2.4
 version = 7.x-1.0
 project = front_display_suite
 dependencies[] = ctools

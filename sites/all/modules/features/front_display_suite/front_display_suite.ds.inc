@@ -92,10 +92,15 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'video';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'vimeo_video' => array(
+    'title' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|video|teaser'] = $ds_fieldsetting;
@@ -255,11 +260,13 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'vimeo_video',
+        0 => 'title',
+        1 => 'body',
       ),
     ),
     'fields' => array(
-      'vimeo_video' => 'ds_content',
+      'title' => 'ds_content',
+      'body' => 'ds_content',
     ),
     'classes' => array(),
   );

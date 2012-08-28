@@ -170,7 +170,7 @@ function front_panels_default_page_manager_handlers() {
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_image';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'label' => 'hidden',
@@ -1732,7 +1732,7 @@ function front_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Blogg';
+  $display->title = 'Bloggtemaer';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -1924,7 +1924,7 @@ Utstyrt med en kraftig blanding av funksjoner og konfigurerbarhet kan Drupal stÃ
       'links' => 1,
       'leave_node_title' => 0,
       'identifier' => '',
-      'build_mode' => 'teaser',
+      'build_mode' => 'preview',
       'link_node_title' => 0,
       'override_title' => 1,
       'override_title_text' => '',

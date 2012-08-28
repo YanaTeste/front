@@ -637,6 +637,9 @@ function front_content_strongarm() {
       'short_teaser' => array(
         'custom_settings' => FALSE,
       ),
+      'preview' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

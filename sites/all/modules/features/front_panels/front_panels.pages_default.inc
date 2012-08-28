@@ -1348,30 +1348,6 @@ function front_panels_default_page_manager_handlers() {
     $pane = new stdClass();
     $pane->pid = 'new-34';
     $pane->panel = 'left';
-    $pane->type = 'custom';
-    $pane->subtype = 'custom';
-    $pane->shown = TRUE;
-    $pane->access = array();
-    $pane->configuration = array(
-      'admin_title' => '',
-      'title' => 'foo',
-      'body' => 'bar',
-      'format' => 'filtered_html',
-      'substitute' => 1,
-    );
-    $pane->cache = array();
-    $pane->style = array(
-      'settings' => NULL,
-    );
-    $pane->css = array();
-    $pane->extras = array();
-    $pane->position = 0;
-    $pane->locks = array();
-    $display->content['new-34'] = $pane;
-    $display->panels['left'][0] = 'new-34';
-    $pane = new stdClass();
-    $pane->pid = 'new-35';
-    $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'blog-posts';
     $pane->shown = TRUE;
@@ -1392,12 +1368,12 @@ function front_panels_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 1;
+    $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-35'] = $pane;
-    $display->panels['left'][1] = 'new-35';
+    $display->content['new-34'] = $pane;
+    $display->panels['left'][0] = 'new-34';
     $pane = new stdClass();
-    $pane->pid = 'new-36';
+    $pane->pid = 'new-35';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'terms_menu-topics';
@@ -1415,10 +1391,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-36'] = $pane;
-    $display->panels['right'][0] = 'new-36';
+    $display->content['new-35'] = $pane;
+    $display->panels['right'][0] = 'new-35';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-34';
+  $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['term_view_panel_context'] = $handler;
 

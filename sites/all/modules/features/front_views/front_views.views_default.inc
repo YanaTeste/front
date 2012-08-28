@@ -4270,5 +4270,162 @@ function front_views_views_default_views() {
   );
   $export['users_block'] = $view;
 
+  $view = new view;
+  $view->name = 'videos';
+  $view->description = '';
+  $view->tag = 'default';
+  $view->base_table = 'node';
+  $view->human_name = 'Videos';
+  $view->core = 7;
+  $view->api_version = '3.0';
+  $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Master */
+  $handler = $view->new_display('default', 'Master', 'default');
+  $handler->display->display_options['title'] = 'Siste videoer';
+  $handler->display->display_options['use_more'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['query_comment'] = FALSE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '4';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'jcarousel';
+  $handler->display->display_options['style_options']['wrap'] = '0';
+  $handler->display->display_options['style_options']['skin'] = '';
+  $handler->display->display_options['style_options']['visible'] = '';
+  $handler->display->display_options['style_options']['auto'] = '0';
+  $handler->display->display_options['style_options']['autoPause'] = 1;
+  $handler->display->display_options['style_options']['easing'] = '';
+  $handler->display->display_options['style_options']['vertical'] = 0;
+  $handler->display->display_options['style_options']['ajax'] = 1;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['view_mode'] = 'preview';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'preview';
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Vimeo Video ID */
+  $handler->display->display_options['fields']['field_vimeo_video_id']['id'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['table'] = 'field_data_field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['field'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['alter_text'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['text'] = '<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="500" height="334" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['absolute'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['external'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['replace_spaces'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['trim_whitespace'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['nl2br'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['more_link'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['element_label_colon'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['element_default_classes'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['hide_alter_empty'] = 1;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['field_api_classes'] = 0;
+  /* Sort criterion: Content: Dato (field_date) */
+  $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
+  /* Sort criterion: Content: Post date */
+  $handler->display->display_options['sorts']['created']['id'] = 'created';
+  $handler->display->display_options['sorts']['created']['table'] = 'node';
+  $handler->display->display_options['sorts']['created']['field'] = 'created';
+  $handler->display->display_options['sorts']['created']['order'] = 'DESC';
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'video' => 'video',
+  );
+
+  /* Display: jCarousel */
+  $handler = $view->new_display('panel_pane', 'jCarousel', 'panel_pane_1');
+
+  /* Display: HTML list 4 latest */
+  $handler = $view->new_display('panel_pane', 'HTML list 4 latest', 'panel_pane_2');
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+
+  /* Display: All Videos */
+  $handler = $view->new_display('panel_pane', 'All Videos', 'panel_pane_3');
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['alternating'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $translatables['videos'] = array(
+    t('Master'),
+    t('Siste videoer'),
+    t('more'),
+    t('Apply'),
+    t('Reset'),
+    t('Sort by'),
+    t('Asc'),
+    t('Desc'),
+    t('Vimeo Video ID'),
+    t('<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="500" height="334" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'),
+    t('jCarousel'),
+    t('View panes'),
+    t('HTML list 4 latest'),
+    t('All Videos'),
+  );
+  $export['videos'] = $view;
+
   return $export;
 }

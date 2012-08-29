@@ -4903,17 +4903,14 @@ a:active {
   letter-spacing: 0.03125em;
   display: block;
   padding: 0.6875em 0 0.75em 1.375em;
+  background-color: #4c3327;
 }
 .view-taxonomy-menu .view-content h3 a:hover {
-  color: #F2CB2D;
-  background-color: rgba(0, 0, 0, 0.15);
+  color: #ebb700;
 }
 .view-taxonomy-menu .view-content h3 a.active {
-  color: #F2CB2D;
-  background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
-}
-.view-taxonomy-menu .view-content h3 a.open {
-  background-color: #4c3327;
+  color: #ebb700;
+  background: #4c3327 url("../images/icon_block-menu-active.png") no-repeat left center;
 }
 .view-taxonomy-menu .view-content ul {
   background-color: #302725;

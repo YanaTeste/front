@@ -77,6 +77,11 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'video';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'testfield' => array(
+      'weight' => '4',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'vimeo_video' => array(
       'weight' => '2',
       'label' => 'hidden',
@@ -251,6 +256,7 @@ function front_display_suite_ds_layout_settings_info() {
         1 => 'body',
         2 => 'vimeo_video',
         3 => 'field_tags',
+        4 => 'testfield',
       ),
     ),
     'fields' => array(
@@ -258,6 +264,7 @@ function front_display_suite_ds_layout_settings_info() {
       'body' => 'ds_content',
       'vimeo_video' => 'ds_content',
       'field_tags' => 'ds_content',
+      'testfield' => 'ds_content',
     ),
     'classes' => array(),
   );

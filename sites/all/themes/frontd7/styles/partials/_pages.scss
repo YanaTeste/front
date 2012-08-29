@@ -335,7 +335,7 @@
   }
 
   .pane-services-block-solutions {
-    background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
+    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
     //padding: 2px 0 em(9px, 14px);
     padding-left: 100px;
     padding-top: 2px;
@@ -1947,6 +1947,7 @@
 
   .view-filters {
     @include tabs-main;
+    margin-top: em(-47px, 20px);
 
     form {
       margin-bottom: 0;
@@ -1965,10 +1966,10 @@
       padding: 0 15px;
     }
   }
-  .view-content {
-    background: $bodyBackgroundLower;
-    padding: 2px 0 em(9px, 14px);
-  }
+  // .view-content {
+  //   background: $bodyBackgroundLower;
+  //   padding: 2px 0 em(9px, 14px);
+  // }
 
 
 
@@ -2127,62 +2128,106 @@
 
 /*         Tjenester
 ------------------------------------------------*/
-.page-tjenester {
+ .page-tjenester {
 
   #page-title {
     @include element-invisible;
   }
-  
+
+  .pane-kompetanse-panel-pane-1 {
+    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
+    padding-left: 100px;
+    padding-top: 2px;
+    padding-bottom: em(30px, 14px);
+    margin-top: em(25px, 14px);
+
+    .pane-content {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+    }
+
+    .view-kompetanse {
+      margin: 0;
+      @include clearfix;
+    }
+
+    .view-content {
+
+    }
+
+    .views-row {
+      @include grid(4);
+      @include grid-prefix(1);
+      margin-bottom: em(48px, 14px);
+    }
+
+    .field-name-field-image {
+      float: left;
+      margin-left: em(-70px, 14px);
+    }
+
+    .field-name-title .list-title {
+      @include sub-heading;
+      margin-bottom: 0;
+    }
+    
+    // ul {
+    //   list-style: none;
+    //   margin: 0;
+    // }
+
+    // li {
+    //   list-style: none;
+    //   display: inline-block;
+    //   width: 45%;
+    //   vertical-align: top;
+    //   margin-bottom: 5%;
+
+    //   &.views-row-odd {
+    //     margin-right: 8%;
+    //   }
+
+    //   div.node {
+    //     padding: 0 10px;
+    //   }
+
+    //   .field-name-title .list-title {
+    //     @include sub-heading;
+    //     margin-bottom: 0;
+    //   }
+
+    //   .field-name-field-image {
+    //     float: right;
+    //     max-width: 62px;
+    //     width: 15%;
+
+    //     img {
+    //       width: 100%;
+    //     }
+    //   }
+
+    //   .field-type-text-with-summary {
+    //     margin-right: 18%;
+    //   }
+    // }
+  }
+}
+
+/*         Løsninger
+------------------------------------------------*/
+.page-tjenester,
+.section-lsninger {
+
   #main {
     width: 100%;
     margin: -1px auto;
+  }
 
-    .column {
-      @include grid-container-center;
-      // TODO: Check with rob if there is a reson grid-container isn't in percent
-      width: 100%;
-      max-width: 960px;
-      padding: em(55px, 14px) 0;
-    }
-
-    ul {
-      list-style: none;
-      margin: 0;
-    }
-
-    li {
-      list-style: none;
-      display: inline-block;
-      width: 45%;
-      vertical-align: top;
-      margin-bottom: 5%;
-
-      &.views-row-odd {
-        margin-right: 8%;
-      }
-
-      div.node {
-        padding: 0 10px;
-      }
-
-      .field-name-title .list-title {
-        @include sub-heading;
-        margin-bottom: 0;
-      }
-
-      .field-name-field-image {
-        float: right;
-        max-width: 62px;
-        width: 15%;
-
-        img {
-          width: 100%;
-        }
-      }
-
-      .field-type-text-with-summary {
-        margin-right: 18%;
-      }
-    }
+  .panel-pane-inner,
+  .view-content {
+    @include grid-container-center;
+    // TODO: Check with rob if there is a reson grid-container isn't in percent
+    width: 100%;
+    max-width: 960px;
+    padding: em(55px, 14px) 0;
   }
 }

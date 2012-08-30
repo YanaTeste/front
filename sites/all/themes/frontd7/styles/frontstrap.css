@@ -7258,6 +7258,33 @@ a:active {
   padding: 3.92857em 0;
 }
 
+#pages-videos {
+  margin-top: 5.35714em;
+}
+#pages-videos .pane-videos-panel-pane-3 .pane-title {
+  font-size: 3.57143em;
+  line-height: 1em;
+  letter-spacing: -0.05em;
+  margin-bottom: 0.48em;
+  padding-bottom: 0;
+  border: none;
+}
+#pages-videos .pane-videos-panel-pane-3 .views-row {
+  margin-top: 30px;
+}
+#pages-videos .pane-videos-panel-pane-3 ul {
+  list-style: none;
+  margin: 0;
+}
+#pages-videos .pane-videos-panel-pane-3 ul .field-name-title {
+  font-size: 1.57143em;
+  line-height: 1.09091em;
+  margin: 0.13636em 0;
+}
+#pages-videos .pane-videos-panel-pane-3 ul .field-name-title a {
+  color: #000;
+}
+
 /* Postscript */
 #postscript {
   clear: both;

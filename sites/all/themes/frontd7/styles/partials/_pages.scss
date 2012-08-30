@@ -328,14 +328,14 @@
     padding-bottom: em(30px, 14px);
 
     .panel-pane-inner {
-      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
       overflow: hidden;
     }
     .pane-title {
       @include element-invisible;
     }
     .view-content {
-      margin: em(55px, 14px) 0;
+      // margin: em(55px, 14px) 0;
       @include clearfix;
     }
     .views-row {
@@ -1889,7 +1889,7 @@
     margin-top: em(25px, 14px);
 
     .pane-content {
-      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
     }
 
     .view-kompetanse {

@@ -5919,7 +5919,6 @@ ul.menu a.active {
 }
 #panel-solutions .pane-services-block-solutions .panel-pane-inner,
 #panel-services .pane-services-block-solutions .panel-pane-inner {
-  background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
   overflow: hidden;
 }
 #panel-solutions .pane-services-block-solutions .pane-title,
@@ -5929,7 +5928,6 @@ ul.menu a.active {
 }
 #panel-solutions .pane-services-block-solutions .view-content,
 #panel-services .pane-services-block-solutions .view-content {
-  margin: 3.92857em 0;
   *zoom: 1;
 }
 #panel-solutions .pane-services-block-solutions .view-content:before, #panel-solutions .pane-services-block-solutions .view-content:after,
@@ -7716,9 +7714,6 @@ ul.menu a.active {
   padding-top: 2px;
   padding-bottom: 2.14286em;
   margin-top: 1.78571em;
-}
-.page-tjenester .pane-kompetanse-panel-pane-1 .pane-content {
-  background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
 .page-tjenester .pane-kompetanse-panel-pane-1 .view-kompetanse {
   margin: 0;

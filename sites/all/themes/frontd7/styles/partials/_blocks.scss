@@ -167,3 +167,87 @@
 		background-position: right top;
 	}
 }
+
+
+.pane-users-block-single,
+.pane-users-block-referenced {
+  position: relative;
+  width: 620px;
+
+
+  .pane-content {
+    height: 96px;
+    background-color: #BECFD8;
+    @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
+    @include background-clip(padding-box);
+    border: 4px solid #BECED8;
+    @include border-radius(51px);
+    overflow: hidden;
+  }
+  .view-content {
+    padding: 21px 25px 0;
+  }
+  .views-field-field-image {
+    @include grid(1);
+    @include omega;
+
+    img {
+      display: inline-block;
+      background-color: #fff;
+      padding: 3px;
+    }
+    a:hover img {
+      background-color: rgba(255,255,255,0.75);
+    }
+  }
+  .views-field-field-name {
+    font-family: $baseFontFamily;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1;
+    @include grid(4.5);
+
+    a {
+      color: #D14C19;
+      &:hover {
+        color: darken(#D14C19, 10%);
+      }
+    }
+  }
+  .views-field-field-bio {
+    color: #535353;
+    font-style: oblique;
+    line-height: 1.5em;
+    @include grid(4.25);
+  }
+  .views-field-nothing {
+    float: right;
+    width: 130px;
+    @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+    background-color: #A5B4BC;
+    margin-top: em(-11px, 14px);
+    padding: 4px;
+    @include border-radius(26px);
+
+    a {
+      color: #fff;
+      font-family: $helveticaFontFamily;
+      font-weight: bold;
+      font-size: em(15px, 14px);
+      text-align: center;
+      text-decoration: none;
+      text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+      @include background-image(linear-gradient(#ECAD7D, #E37D29 5%, #E68328 10%, #D2521D));
+      display: block;
+      padding: em(10px, 15px) 0 em(11px, 15px);
+      border: 1px solid #D14D1A;
+      border-color: #E39476 #DE7E50 #D14D1A;
+      @include border-radius(22px);
+
+      &:hover {
+        text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
+        @include box-shadow(0 0 4px rgba(0,0,0,0.25));
+      }
+    }
+  }
+}

@@ -227,17 +227,26 @@
   }
   .ingress{
     @include ingress;
+    text-align: left;
   }
 
+  // Siste videoer
   .pane-videos-panel-pane-1{
     .pane-title{
       color: $brownProfileColor;
     }
+
+    .view-footer{
+      float:right;
+    }
   }
 
+  //Kommende kurs
   .pane-kurs-overview-panel-pane-2{
+    clear: both;
     background: $bodyBackgroundLower;
     padding: 5px 30px;
+    margin-bottom: 30px;
 
 
     h2{
@@ -262,39 +271,16 @@
       &.views-row-odd {
         margin-right: 8%;
       }
-
-      // div.node {
-      //   padding: 0 10px;
-      // }
-
-      // .field-name-title .list-title {
-      //   @include sub-heading;
-      //   margin-bottom: 0;
-      // }
-
-      // .field-name-field-image {
-      //   float: right;
-      //   max-width: 62px;
-      //   width: 15%;
-
-      //   img {
-      //     width: 100%;
-      //   }
-      // }
-
-      // .field-type-text-with-summary {
-      //   margin-right: 18%;
-      // }
       .field-type-datetime{
         color: $brownProfileColorLight;
       }
     }
+  }
+  .pane-users-block-single{
 
-
+    margin: 0 auto 30px;
 
   }
-
-
 }
 
 #panel-solutions,
@@ -411,10 +397,11 @@
 
   .pane-users-block-single {
     position: relative;
+      margin: 0 auto;
 
     .pane-content {
-      width: perc(720px, 960px);
-      margin: -52px auto;
+      //width: perc(720px, 960px);
+      //margin: -52px auto;
     }
     .views-field-field-bio {
       @include grid(4.5);
@@ -549,86 +536,6 @@
   }
 }
 
-.pane-users-block-single,
-.pane-users-block-referenced {
-  position: relative;
-
-  .pane-content {
-    height: 96px;
-    background-color: #BECFD8;
-    @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
-    @include background-clip(padding-box);
-    border: 4px solid #BECED8;
-    @include border-radius(51px);
-    overflow: hidden;
-  }
-  .view-content {
-    padding: 21px 25px 0;
-  }
-  .views-field-field-image {
-    @include grid(1);
-    @include omega;
-
-    img {
-      display: inline-block;
-      background-color: #fff;
-      padding: 3px;
-    }
-    a:hover img {
-      background-color: rgba(255,255,255,0.75);
-    }
-  }
-  .views-field-field-name {
-    font-family: $baseFontFamily;
-    font-size: 1em;
-    font-weight: normal;
-    line-height: 1;
-    @include grid(4.5);
-
-    a {
-      color: #D14C19;
-      &:hover {
-        color: darken(#D14C19, 10%);
-      }
-    }
-  }
-  .views-field-field-bio {
-    color: #535353;
-    font-style: oblique;
-    line-height: 1.5em;
-    @include grid(4.25);
-  }
-  .views-field-nothing {
-    float: right;
-    width: 130px;
-    @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
-    background-color: #A5B4BC;
-    margin-top: em(-11px, 14px);
-    padding: 4px;
-    @include border-radius(26px);
-
-    a {
-      color: #fff;
-      font-family: $helveticaFontFamily;
-      font-weight: bold;
-      font-size: em(15px, 14px);
-      text-align: center;
-      text-decoration: none;
-      text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-      @include background-image(linear-gradient(#ECAD7D, #E37D29 5%, #E68328 10%, #D2521D));
-      display: block;
-      padding: em(10px, 15px) 0 em(11px, 15px);
-      border: 1px solid #D14D1A;
-      border-color: #E39476 #DE7E50 #D14D1A;
-      @include border-radius(22px);
-
-      &:hover {
-        text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
-        @include box-shadow(0 0 4px rgba(0,0,0,0.25));
-      }
-    }
-  }
-}
 
 /*         How we work
 ------------------------------------------------*/
@@ -2024,13 +1931,14 @@
 
   .panel-pane-inner,
   .view-content {
-    @include grid-container-center;
+    //@include grid-container-center;
     // TODO: Check with rob if there is a reson grid-container isn't in percent
-    width: 100%;
-    max-width: 960px;
+    //width: 100%;
+    //max-width: 960px;
     padding: em(55px, 14px) 0;
   }
 }
+
 #pages-videos{
   margin-top: em(75px, 14px);
 

@@ -5080,7 +5080,7 @@ a:active {
   margin-bottom: 2.35714em;
 }
 .page-home .pane-projects-block-latest-projects {
-  background: #dee2e5 url("../images/bg_latest-projects.png") repeat-x center top;
+  background: #f6f5f4 url("../images/bg_latest-projects.png") repeat-x center top;
   padding-top: 3.21429em;
   padding-bottom: 2.14286em;
 }
@@ -5202,7 +5202,7 @@ a:active {
   color: #4c3327;
 }
 .page-kurs .pane-kurs-overview-panel-pane-2 {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding: 5px 30px;
 }
 .page-kurs .pane-kurs-overview-panel-pane-2 h2 {
@@ -5272,7 +5272,7 @@ a:active {
 }
 #panel-solutions .pane-services-block-solutions,
 #panel-services .pane-services-block-solutions {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding-left: 100px;
   padding-top: 2px;
   padding-bottom: 2.14286em;
@@ -6073,7 +6073,7 @@ a:active {
   color: #a33b14;
 }
 #panel-prosjekter .pane-projects-block-projects {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding: 2px 0 0.64286em;
 }
 #panel-prosjekter .pane-projects-block-projects .panel-pane-inner {
@@ -7195,7 +7195,7 @@ a:active {
   position: absolute !important;
 }
 .page-tjenester .pane-kompetanse-panel-pane-1 {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
   padding-left: 100px;
   padding-top: 2px;
   padding-bottom: 2.14286em;
@@ -7256,33 +7256,6 @@ a:active {
   width: 100%;
   max-width: 960px;
   padding: 3.92857em 0;
-}
-
-#pages-videos {
-  margin-top: 5.35714em;
-}
-#pages-videos .pane-videos-panel-pane-3 .pane-title {
-  font-size: 3.57143em;
-  line-height: 1em;
-  letter-spacing: -0.05em;
-  margin-bottom: 0.48em;
-  padding-bottom: 0;
-  border: none;
-}
-#pages-videos .pane-videos-panel-pane-3 .views-row {
-  margin-top: 30px;
-}
-#pages-videos .pane-videos-panel-pane-3 ul {
-  list-style: none;
-  margin: 0;
-}
-#pages-videos .pane-videos-panel-pane-3 ul .field-name-title {
-  font-size: 1.57143em;
-  line-height: 1.09091em;
-  margin: 0.13636em 0;
-}
-#pages-videos .pane-videos-panel-pane-3 ul .field-name-title a {
-  color: #000;
 }
 
 /* Postscript */
@@ -7630,10 +7603,10 @@ ul.menu a.active {
   font-size: 0.85714em;
 }
 .pane-kurs-overview-panel-pane-1 .view-content .views-row-odd {
-  background: #dee2e5;
+  background: #f6f5f4;
 }
 .pane-kurs-overview-panel-pane-1 .view-content .views-row-even {
-  background: #eff2f4;
+  background: #edeae9;
 }
 
 /* Banners

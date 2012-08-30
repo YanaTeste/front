@@ -1624,7 +1624,13 @@
       }
     }
     .views-field-title {
-        @include title-post;
+      font-size: em(22px, 14px);
+      line-height: em(24px, 22px);
+      margin: em(3px, 22px) 0;
+
+      a {
+        color: #000;
+      }
     }
     .views-field-created {
       color: #999;
@@ -1968,11 +1974,11 @@
 
 
 
-}
+ }
 
 /*         Tjenester
 ------------------------------------------------*/
-.page-tjenester {
+ .page-tjenester {
 
   #page-title {
     @include element-invisible;
@@ -2013,46 +2019,6 @@
       @include sub-heading;
       margin-bottom: 0;
     }
-    
-    // ul {
-    //   list-style: none;
-    //   margin: 0;
-    // }
-
-    // li {
-    //   list-style: none;
-    //   display: inline-block;
-    //   width: 45%;
-    //   vertical-align: top;
-    //   margin-bottom: 5%;
-
-    //   &.views-row-odd {
-    //     margin-right: 8%;
-    //   }
-
-    //   div.node {
-    //     padding: 0 10px;
-    //   }
-
-    //   .field-name-title .list-title {
-    //     @include sub-heading;
-    //     margin-bottom: 0;
-    //   }
-
-    //   .field-name-field-image {
-    //     float: right;
-    //     max-width: 62px;
-    //     width: 15%;
-
-    //     img {
-    //       width: 100%;
-    //     }
-    //   }
-
-    //   .field-type-text-with-summary {
-    //     margin-right: 18%;
-    //   }
-    // }
   }
 }
 
@@ -2073,26 +2039,5 @@
     width: 100%;
     max-width: 960px;
     padding: em(55px, 14px) 0;
-  }
-}
-
-#pages-videos{
-  margin-top: em(75px, 14px);
-
-  .pane-videos-panel-pane-3{
-
-    .pane-title{
-      @include title-left;
-    }
-    .views-row{
-      margin-top: 30px;
-    }
-    ul{
-      list-style: none;
-      margin: 0;
-      .field-name-title{
-        @include title-post;
-      }
-    }
   }
 }

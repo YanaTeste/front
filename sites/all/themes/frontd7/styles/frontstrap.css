@@ -5620,14 +5620,6 @@ ul.menu a.active {
   box-shadow: 0 0 2px #d14d1a;
 }
 
-.pane-custom-front-kontakt .pane-title {
-  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.429em;
-  font-weight: normal;
-  line-height: 1em;
-  overflow: hidden;
-  margin-bottom: 0.8em;
-}
 .pane-custom-front-kontakt .pane-content img {
   float: left;
   display: block;

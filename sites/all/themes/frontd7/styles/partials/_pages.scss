@@ -331,7 +331,7 @@
     //padding-bottom: em(30px, 14px);
 
     .panel-pane-inner {
-      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
       overflow: hidden;
     }
     .pane-title {
@@ -1874,7 +1874,7 @@
     margin-top: em(25px, 14px);
 
     .pane-content {
-      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
     }
 
     .view-kompetanse {
@@ -1884,12 +1884,19 @@
 
     .view-content {
       padding-top: 60px;
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
     }
 
     .views-row {
       @include grid(4);
       @include grid-prefix(1);
       margin-bottom: em(48px, 14px);
+    }
+
+    .views-row-odd {
+      margin-right: 25px;
     }
 
     .field-name-field-image {
@@ -1937,7 +1944,12 @@
     .views-row{
       margin-top: 30px;
     }
-    ul{
+
+    .views-row-odd {
+      margin-right: 25px;
+    }
+
+    ul {
       list-style: none;
       margin: 0;
       .field-name-title{

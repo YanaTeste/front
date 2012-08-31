@@ -133,6 +133,9 @@
 /* About us / Om oss
 ------------------------------------------------------*/
 .page-om-oss{
+  #main{
+
+  }
   .pane-custom-front-kontaktinfo{
     @include grid(9);
     // float: left;
@@ -323,9 +326,9 @@
   .pane-services-block-solutions {
     background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
     //padding: 2px 0 em(9px, 14px);
-    padding-left: 100px;
+    padding-left: 150px;
     padding-top: 2px;
-    padding-bottom: em(30px, 14px);
+    //padding-bottom: em(30px, 14px);
 
     .panel-pane-inner {
       // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
@@ -397,7 +400,7 @@
 
   .pane-users-block-single {
     position: relative;
-      margin: 0 auto;
+    margin: 0 auto;
 
     .pane-content {
       //width: perc(720px, 960px);
@@ -853,32 +856,10 @@
 
     .pane-title {
       @include title-centered;
-      // font-family: $baseFontFamily;
-      // font-size: em(50px, 14px);
-      // font-weight: normal;
-      // line-height: 1;
-      // letter-spacing: em(-2px, 50px);
-      // margin-bottom: em(12px, 50px);
     }
     .pane-content {
       @include ingress;
-      // @include grid(8.5);
-      // float: none;
-      // display: block;
-      // margin: 0 auto;
-
-      // p {
-      //   font-size: em(20px, 14px);
-      //   font-style: italic;
-      //   line-height: em(29px, 20px);
-      // }
-      // a {
-      //   color: #D14C19;
-
-      //   &:hover {
-      //     color: darken(#D14C19, 10%);
-      //   }
-      // }
+      padding-bottom:20px;
     }
   }
 
@@ -887,7 +868,7 @@
     padding: 2px 0 em(9px, 14px);
 
     .panel-pane-inner {
-      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
       overflow: hidden;
     }
     .pane-title {
@@ -1876,6 +1857,10 @@
 /*         Tjenester
 ------------------------------------------------*/
 .page-tjenester {
+  #main {
+    width: 100%;
+    margin: -1px auto;
+  }
 
   #page-title {
     @include element-invisible;
@@ -1898,7 +1883,7 @@
     }
 
     .view-content {
-
+      padding-top: 60px;
     }
 
     .views-row {
@@ -1921,21 +1906,23 @@
 
 /*         Løsninger
 ------------------------------------------------*/
-.page-tjenester,
 .section-lsninger {
 
   #main {
     width: 100%;
     margin: -1px auto;
   }
+  .pane-custom-solutions-intro{
 
-  .panel-pane-inner,
-  .view-content {
-    //@include grid-container-center;
-    // TODO: Check with rob if there is a reson grid-container isn't in percent
-    //width: 100%;
-    //max-width: 960px;
-    padding: em(55px, 14px) 0;
+  }
+  .pane-services-block-solutions{
+    .panel-pane-inner,
+    .view-content {
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
+      padding: em(40px, 14px) 0;
+    }
   }
 }
 

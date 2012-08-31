@@ -5913,9 +5913,8 @@ ul.menu a.active {
 #panel-solutions .pane-services-block-solutions,
 #panel-services .pane-services-block-solutions {
   background: #edeae9 url("../images/bg_home-services.png") repeat-x center top;
-  padding-left: 100px;
+  padding-left: 150px;
   padding-top: 2px;
-  padding-bottom: 2.14286em;
 }
 #panel-solutions .pane-services-block-solutions .panel-pane-inner,
 #panel-services .pane-services-block-solutions .panel-pane-inner {
@@ -6574,6 +6573,7 @@ ul.menu a.active {
   float: none;
   display: block;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 #panel-prosjekter .pane-custom-projects-intro .pane-content p {
   font-size: 1.42857em;
@@ -6591,7 +6591,6 @@ ul.menu a.active {
   padding: 2px 0 0.64286em;
 }
 #panel-prosjekter .pane-projects-block-projects .panel-pane-inner {
-  background: transparent url("../images/bg_home-services-inner.jpg") no-repeat center top;
   overflow: hidden;
 }
 #panel-prosjekter .pane-projects-block-projects .pane-title {
@@ -7704,6 +7703,10 @@ ul.menu a.active {
 
 /*         Tjenester
 ------------------------------------------------*/
+.page-tjenester #main {
+  width: 100%;
+  margin: -1px auto;
+}
 .page-tjenester #page-title {
   clip: rect(1px, 1px, 1px, 1px);
   position: absolute !important;
@@ -7725,6 +7728,9 @@ ul.menu a.active {
 }
 .page-tjenester .pane-kompetanse-panel-pane-1 .view-kompetanse:after {
   clear: both;
+}
+.page-tjenester .pane-kompetanse-panel-pane-1 .view-content {
+  padding-top: 60px;
 }
 .page-tjenester .pane-kompetanse-panel-pane-1 .views-row {
   display: inline;
@@ -7749,16 +7755,21 @@ ul.menu a.active {
 
 /*         Løsninger
 ------------------------------------------------*/
-.page-tjenester #main,
 .section-lsninger #main {
   width: 100%;
   margin: -1px auto;
 }
-.page-tjenester .panel-pane-inner,
-.page-tjenester .view-content,
-.section-lsninger .panel-pane-inner,
-.section-lsninger .view-content {
-  padding: 3.92857em 0;
+.section-lsninger .pane-services-block-solutions .panel-pane-inner,
+.section-lsninger .pane-services-block-solutions .view-content {
+  margin-left: auto;
+  margin-right: auto;
+  width: 960px;
+  display: block;
+  position: relative;
+  float: none;
+  width: 100%;
+  max-width: 960px;
+  padding: 2.85714em 0;
 }
 
 #pages-videos {

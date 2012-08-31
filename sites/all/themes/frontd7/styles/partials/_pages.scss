@@ -1081,56 +1081,7 @@
       }
     }
   }
-  .pane-custom-front-kontakt {
-    padding-left: perc(270px, 620px);
 
-    .pane-title {
-      font-family: $baseFontFamily;
-      font-size: em(20px, 14px);
-      font-weight: normal;
-      line-height: 1em;
-      overflow: hidden;
-      margin-bottom: em(16px, 20px);
-    }
-    .pane-content {
-      img {
-        float: left;
-        display: block;
-        width: perc(235px, 350px);
-        height: auto;
-        margin-top: em(-36px, 14px);
-        margin-left: perc(-270px, 350px);
-        padding: 9px;
-        background-color: #fff;
-        border: 1px solid #D3E2E2;
-      }
-      ul {
-        color: #454545;
-        font-size: em(15px, 14px);
-        margin: 0;
-
-        li {
-          list-style: none;
-          margin-bottom: 1em;
-
-          &:first-child {
-            float: left;
-            margin-right: 1.5em;
-          }
-        }
-        strong {
-          color: #999;
-          font-size: em(13px, 15px);
-          font-weight: normal;
-          display: block;
-
-          &.inline {
-            display: inline-block;
-          }
-        }
-      }
-    }
-  }
   .pane-custom-gamlebyen-fredrikstad {
     clear: both;
     padding-left: perc(270px, 620px);

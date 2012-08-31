@@ -5620,6 +5620,48 @@ ul.menu a.active {
   box-shadow: 0 0 2px #d14d1a;
 }
 
+.pane-custom-front-kontakt .pane-title {
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.429em;
+  font-weight: normal;
+  line-height: 1em;
+  overflow: hidden;
+  margin-bottom: 0.8em;
+}
+.pane-custom-front-kontakt .pane-content img {
+  float: left;
+  display: block;
+  width: 67.143%;
+  height: auto;
+  margin-top: -2.571em;
+  margin-left: -77.143%;
+  padding: 9px;
+  background-color: #fff;
+  border: 1px solid #D3E2E2;
+}
+.pane-custom-front-kontakt .pane-content ul {
+  color: #454545;
+  font-size: 1.071em;
+  margin: 0;
+}
+.pane-custom-front-kontakt .pane-content ul li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+.pane-custom-front-kontakt .pane-content ul li:first-child {
+  float: left;
+  margin-right: 1.5em;
+}
+.pane-custom-front-kontakt .pane-content ul strong {
+  color: #999;
+  font-size: 0.867em;
+  font-weight: normal;
+  display: block;
+}
+.pane-custom-front-kontakt .pane-content ul strong.inline {
+  display: inline-block;
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home #main {
@@ -6853,50 +6895,6 @@ ul.menu a.active {
   -webkit-border-radius: 1.467em;
   -moz-border-radius: 1.467em;
   border-radius: 1.467em;
-}
-#panel-kontakt .pane-custom-front-kontakt {
-  padding-left: 43.548%;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-title {
-  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.429em;
-  font-weight: normal;
-  line-height: 1em;
-  overflow: hidden;
-  margin-bottom: 0.8em;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content img {
-  float: left;
-  display: block;
-  width: 67.143%;
-  height: auto;
-  margin-top: -2.571em;
-  margin-left: -77.143%;
-  padding: 9px;
-  background-color: #fff;
-  border: 1px solid #D3E2E2;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content ul {
-  color: #454545;
-  font-size: 1.071em;
-  margin: 0;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content ul li {
-  list-style: none;
-  margin-bottom: 1em;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content ul li:first-child {
-  float: left;
-  margin-right: 1.5em;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content ul strong {
-  color: #999;
-  font-size: 0.867em;
-  font-weight: normal;
-  display: block;
-}
-#panel-kontakt .pane-custom-front-kontakt .pane-content ul strong.inline {
-  display: inline-block;
 }
 #panel-kontakt .pane-custom-gamlebyen-fredrikstad {
   clear: both;

@@ -5509,8 +5509,8 @@ ul.menu a.active {
   background-position: right top;
 }
 
-.pane-users-block-single,
-.pane-users-block-referenced {
+.pane-users-block-single .panel-pane-inner,
+.pane-users-block-referenced .panel-pane-inner {
   position: relative;
   width: 620px;
 }
@@ -5518,18 +5518,12 @@ ul.menu a.active {
 .pane-users-block-referenced .pane-content {
   height: 96px;
   background-color: #BECFD8;
-  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #c0d0d9), color-stop(100%, #b7ccd5));
-  background-image: -webkit-linear-gradient(#c0d0d9, #b7ccd5);
-  background-image: -moz-linear-gradient(#c0d0d9, #b7ccd5);
-  background-image: -o-linear-gradient(#c0d0d9, #b7ccd5);
-  background-image: linear-gradient(#c0d0d9, #b7ccd5);
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
   background-clip: padding-box;
-  border: 4px solid #BECED8;
-  -webkit-border-radius: 51px;
-  -moz-border-radius: 51px;
-  border-radius: 51px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
   overflow: hidden;
 }
 .pane-users-block-single .view-content,
@@ -5566,6 +5560,7 @@ ul.menu a.active {
   margin-left: 10px;
   margin-right: 10px;
   width: 340px;
+  width: auto;
 }
 .pane-users-block-single .views-field-field-name a,
 .pane-users-block-referenced .views-field-field-name a {
@@ -5878,7 +5873,7 @@ ul.menu a.active {
 .page-kurs .pane-kurs-overview-panel-pane-2 li .field-type-datetime {
   color: #703d29;
 }
-.page-kurs .pane-users-block-single {
+.page-kurs .pane-users-block-single .panel-pane-inner {
   margin: 0 auto 30px;
 }
 
@@ -5924,8 +5919,20 @@ ul.menu a.active {
   color: #a33b14;
 }
 #panel-solutions .pane-services-block-solutions,
+#panel-solutions .pane-users-block-single,
+#panel-services .pane-services-block-solutions,
+#panel-services .pane-users-block-single {
+  background-color: #eff2f4;
+}
+#panel-solutions .pane-users-block-single,
+#panel-services .pane-users-block-single {
+  padding-bottom: 2.143em;
+}
+#panel-solutions .pane-services-block-solutions,
 #panel-services .pane-services-block-solutions {
-  background: #eff2f4 url("../images/bg_home-services.png") repeat-x center top;
+  background-image: url("../images/bg_home-services.png");
+  background-repeat: repeat-x;
+  background-position: center top;
   padding-left: 150px;
   padding-top: 2px;
 }
@@ -6027,6 +6034,10 @@ ul.menu a.active {
 }
 #panel-solutions .pane-users-block-single,
 #panel-services .pane-users-block-single {
+  background-image: #eff2f4;
+}
+#panel-solutions .pane-users-block-single .panel-pane-inner,
+#panel-services .pane-users-block-single .panel-pane-inner {
   position: relative;
   margin: 0 auto;
 }
@@ -6037,10 +6048,6 @@ ul.menu a.active {
   margin-left: 10px;
   margin-right: 10px;
   width: 340px;
-}
-#panel-solutions .pane-users-block-single .views-field-nothing,
-#panel-services .pane-users-block-single .views-field-nothing {
-  width: 200px;
 }
 #panel-solutions .pane-kompetanse-list,
 #panel-services .pane-kompetanse-list {
@@ -6433,7 +6440,7 @@ ul.menu a.active {
 #panel-slikjobbervi .pane-custom-howwework-optimere .pane-content p {
   margin-top: 1.786em;
 }
-#panel-slikjobbervi .pane-users-block-single {
+#panel-slikjobbervi .pane-users-block-single .panel-pane-inner {
   padding: 4.643em 0;
 }
 #panel-slikjobbervi .pane-users-block-single .pane-content {
@@ -7797,7 +7804,7 @@ ul.menu a.active {
   float: none;
   width: 100%;
   max-width: 960px;
-  padding: 2.857em 0;
+  padding: 2.857em 0 1em;
 }
 
 #pages-videos {

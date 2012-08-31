@@ -171,17 +171,19 @@
 
 .pane-users-block-single,
 .pane-users-block-referenced {
-  position: relative;
-  width: 620px;
 
+  .panel-pane-inner {
+    position: relative;
+    width: 620px;
+  }
 
   .pane-content {
     height: 96px;
     background-color: #BECFD8;
-    @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
+    // @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
     @include background-clip(padding-box);
-    border: 4px solid #BECED8;
-    @include border-radius(51px);
+    // border: 4px solid #BECED8;
+    @include border-radius(10px);
     overflow: hidden;
   }
   .view-content {
@@ -206,6 +208,7 @@
     font-weight: normal;
     line-height: 1;
     @include grid(4.5);
+    width: auto;
 
     a {
       color: #D14C19;

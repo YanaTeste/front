@@ -3803,7 +3803,7 @@ function _menu_router_save($menu, $masks) {
       'type' => $item['type'],
       'description' => $item['description'],
       'position' => $item['position'],
-      'weight' => $item['weight'],
+      'weight' => 1,
       'include_file' => $item['include file'],
     ));
 

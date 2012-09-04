@@ -5641,11 +5641,12 @@ ul.menu a.active {
 /* Kurs block
 -----------------------------------*/
 .view-kurs-overview article {
-  background: #eff2f4;
-  padding: 0.929em 0.714em;
-  border-bottom: 3px dotted white;
+  padding-bottom: 0.929em;
+  margin-bottom: 0.929em;
+  border-bottom: 3px dotted #dee2e5;
 }
 .view-kurs-overview article.views-row-last {
+  padding-bottom: 0;
   margin-bottom: 0;
   border: none;
 }

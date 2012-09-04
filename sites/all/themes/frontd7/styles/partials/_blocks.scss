@@ -273,12 +273,14 @@
 .view-kurs-overview {
 
   article {
-    background: $backgroundLower;
-    padding: em(13px, 14px) em(10px, 14px);
+    // background: $backgroundLower;
+    padding-bottom: em(13px, 14px);
+    margin-bottom: em(13px, 14px);
     // margin-bottom: 3px;
-    border-bottom: 3px dotted white;
+    border-bottom: 3px dotted $backgroundLowest;
 
     &.views-row-last {
+      padding-bottom: 0;
       margin-bottom: 0;
       border: none;
     }

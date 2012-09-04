@@ -5331,25 +5331,6 @@ ul.menu a.active {
   box-shadow: 0 2px 0 black;
 }
 
-.pane-kurs-overview-panel-pane-1 .pane-title {
-  font-size: 3.571em;
-  line-height: 1em;
-  letter-spacing: -0.05em;
-  margin-bottom: 0.48em;
-  padding-bottom: 0;
-  border: none;
-  font-size: 1.714em;
-}
-.pane-kurs-overview-panel-pane-1 .field-name-title h2 {
-  font-size: 0.857em;
-}
-.pane-kurs-overview-panel-pane-1 .view-content .views-row-odd {
-  background: #dee2e5;
-}
-.pane-kurs-overview-panel-pane-1 .view-content .views-row-even {
-  background: #eff2f4;
-}
-
 /* Banners
 -----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
@@ -5655,6 +5636,30 @@ ul.menu a.active {
 }
 .pane-custom-front-kontakt .pane-content ul strong.inline {
   display: inline-block;
+}
+
+/* Kurs block
+-----------------------------------*/
+.view-kurs-overview article {
+  background: #eff2f4;
+  padding: 0.929em 0.714em;
+  border-bottom: 3px dotted white;
+}
+.view-kurs-overview article.views-row-last {
+  margin-bottom: 0;
+  border: none;
+}
+.view-kurs-overview .field-name-title h2 {
+  font-size: 1.143em;
+  line-height: 1.1em;
+  margin-bottom: 0.357em;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+.view-kurs-overview .field-name-date-with-icon,
+.view-kurs-overview .field-name-field-location {
+  font-size: 0.857em;
+  line-height: 1.2em;
 }
 
 /*         Front Page

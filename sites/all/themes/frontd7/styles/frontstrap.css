@@ -1251,7 +1251,7 @@ table thead:first-child tr:first-child th, .table thead:first-child tr:first-chi
 }
 
 .table tbody tr:hover td, table tbody tr:hover td, .table tbody tr:hover th, table tbody tr:hover th {
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
 }
 
 table .span1 {
@@ -2699,7 +2699,7 @@ li[class*=" icon-"].icon-large:before {
   text-align: center;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
   vertical-align: middle;
-  background-color: whitesmoke;
+  background-color: #f5f5f5;
   background-image: -moz-linear-gradient(top, white, #e6e6e6);
   background-image: -ms-linear-gradient(top, white, #e6e6e6);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#e6e6e6));
@@ -3519,11 +3519,11 @@ div.messages .close {
   margin: 0 0 21px;
   list-style: none;
   background-color: #fbfbfb;
-  background-image: -moz-linear-gradient(top, white, whitesmoke);
-  background-image: -ms-linear-gradient(top, white, whitesmoke);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(whitesmoke));
-  background-image: -webkit-linear-gradient(top, white, whitesmoke);
-  background-image: -o-linear-gradient(top, white, whitesmoke);
+  background-image: -moz-linear-gradient(top, white, #f5f5f5);
+  background-image: -ms-linear-gradient(top, white, #f5f5f5);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(white), to(#f5f5f5));
+  background-image: -webkit-linear-gradient(top, white, #f5f5f5);
+  background-image: -o-linear-gradient(top, white, #f5f5f5);
   background-image: linear-gradient(top, #ffffff, #f5f5f5);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFFFFFFF', endColorstr='#FFF5F5F5', GradientType=0);
@@ -4165,11 +4165,11 @@ a.thumbnail:hover {
   height: 18px;
   margin-bottom: 18px;
   background-color: #f6f6f6;
-  background-image: -moz-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -ms-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(whitesmoke), to(#f9f9f9));
-  background-image: -webkit-linear-gradient(top, whitesmoke, #f9f9f9);
-  background-image: -o-linear-gradient(top, whitesmoke, #f9f9f9);
+  background-image: -moz-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -ms-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f5f5), to(#f9f9f9));
+  background-image: -webkit-linear-gradient(top, #f5f5f5, #f9f9f9);
+  background-image: -o-linear-gradient(top, #f5f5f5, #f9f9f9);
   background-image: linear-gradient(top, #f5f5f5, #f9f9f9);
   background-repeat: repeat-x;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF5F5F5', endColorstr='#FFF9F9F9', GradientType=0);
@@ -4735,9 +4735,9 @@ a:active {
   box-shadow: inset 0 1px 0 black;
   margin: 0;
   visibility: hidden;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
+  -webkit-transition-property: -webkit-all;
+  -moz-transition-property: -moz-all;
+  -o-transition-property: -o-all;
   transition-property: all;
   -webkit-transition-duration: 0.15s;
   -moz-transition-duration: 0.15s;
@@ -4830,9 +4830,9 @@ a:active {
   display: inline-block;
   padding: 0.286em 0 0.5em;
   margin: 0 0.857em;
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  -o-transition-property: background;
+  -webkit-transition-property: -webkit-background;
+  -moz-transition-property: -moz-background;
+  -o-transition-property: -o-background;
   transition-property: background;
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
@@ -4864,9 +4864,9 @@ a:active {
   display: inline-block;
   padding: 0.286em 0 0.286em;
   margin: 0 0.857em;
-  -webkit-transition-property: background;
-  -moz-transition-property: background;
-  -o-transition-property: background;
+  -webkit-transition-property: -webkit-background;
+  -moz-transition-property: -moz-background;
+  -o-transition-property: -o-background;
   transition-property: background;
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
@@ -5035,9 +5035,9 @@ a:active {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -5073,9 +5073,9 @@ a:active {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
-  -webkit-transition-property: all;
-  -moz-transition-property: all;
-  -o-transition-property: all;
+  -webkit-transition-property: -webkit-all;
+  -moz-transition-property: -moz-all;
+  -o-transition-property: -o-all;
   transition-property: all;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -7335,9 +7335,9 @@ ul.menu a.active {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -7375,9 +7375,9 @@ ul.menu a.active {
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -7499,9 +7499,9 @@ ul.menu a.active {
   -webkit-border-radius: 1em;
   -moz-border-radius: 1em;
   border-radius: 1em;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;
@@ -7599,9 +7599,9 @@ ul.menu a.active {
   background-color: #fff;
   display: block;
   padding: 4px;
-  -webkit-transition-property: background-color;
-  -moz-transition-property: background-color;
-  -o-transition-property: background-color;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
   transition-property: background-color;
   -webkit-transition-duration: 0.5s;
   -moz-transition-duration: 0.5s;

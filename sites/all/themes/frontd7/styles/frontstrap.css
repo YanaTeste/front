@@ -5509,6 +5509,10 @@ ul.menu a.active {
   background-position: right top;
 }
 
+.pane-users-block-single,
+.pane-users-block-referenced {
+  padding: 1.429em 0 2.143em;
+}
 .pane-users-block-single .panel-pane-inner,
 .pane-users-block-referenced .panel-pane-inner {
   position: relative;
@@ -5958,7 +5962,7 @@ ul.menu a.active {
 }
 #panel-solutions .pane-users-block-single,
 #panel-services .pane-users-block-single {
-  padding-bottom: 2.143em;
+  padding-top: 0;
 }
 #panel-solutions .pane-services-block-solutions,
 #panel-services .pane-services-block-solutions {

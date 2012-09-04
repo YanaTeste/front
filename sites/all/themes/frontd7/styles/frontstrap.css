@@ -5663,6 +5663,52 @@ ul.menu a.active {
   line-height: 1.2em;
 }
 
+/* Siste prosjekter
+-----------------------------------*/
+.pane-projects-sidebar-latest article {
+  padding-bottom: 0.929em;
+  margin-bottom: 0.929em;
+  border-bottom: 3px dotted #dee2e5;
+}
+.pane-projects-sidebar-latest article.views-row-last {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  border: none;
+}
+.pane-projects-sidebar-latest article:after {
+  content: ".";
+  visibility: hidden;
+  display: block;
+  height: 0;
+  clear: both;
+}
+.pane-projects-sidebar-latest .views-field-field-image {
+  float: left;
+}
+.pane-projects-sidebar-latest .views-field-field-image img {
+  background-color: #fff;
+  display: block;
+  padding: 4px;
+  -webkit-transition-property: -webkit-background-color;
+  -moz-transition-property: -moz-background-color;
+  -o-transition-property: -o-background-color;
+  transition-property: background-color;
+  -webkit-transition-duration: 0.5s;
+  -moz-transition-duration: 0.5s;
+  -o-transition-duration: 0.5s;
+  transition-duration: 0.5s;
+}
+.pane-projects-sidebar-latest .views-field-field-image img:hover {
+  background-color: #C6D1D7;
+}
+.pane-projects-sidebar-latest .views-field-title {
+  margin-left: 4em;
+  font-size: 1.143em;
+  line-height: 1.1em;
+  font-family: "Muli", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home #main {
@@ -7585,53 +7631,6 @@ ul.menu a.active {
 .pane-related-related .view-content ul a,
 .pane-related-reverse .view-content ul a {
   color: #44799D;
-}
-
-.pane-projects-sidebar-latest .view-content {
-  background-color: #D3DDE2;
-}
-.pane-projects-sidebar-latest .views-row {
-  clear: both;
-  display: block;
-  padding: 0.857em;
-  padding-right: 0;
-  border-bottom: 1px dashed #9EADB3;
-  overflow: hidden;
-}
-.pane-projects-sidebar-latest .views-row-last {
-  border: none;
-}
-.pane-projects-sidebar-latest .views-field-field-image {
-  float: left;
-}
-.pane-projects-sidebar-latest .views-field-field-image img {
-  background-color: #fff;
-  display: block;
-  padding: 4px;
-  -webkit-transition-property: -webkit-background-color;
-  -moz-transition-property: -moz-background-color;
-  -o-transition-property: -o-background-color;
-  transition-property: background-color;
-  -webkit-transition-duration: 0.5s;
-  -moz-transition-duration: 0.5s;
-  -o-transition-duration: 0.5s;
-  transition-duration: 0.5s;
-}
-.pane-projects-sidebar-latest .views-field-field-image img:hover {
-  background-color: #C6D1D7;
-}
-.pane-projects-sidebar-latest .views-field-title {
-  font-size: 0.929em;
-  line-height: 1.2em;
-  float: right;
-  width: 67.961%;
-}
-.pane-projects-sidebar-latest .views-field-title a {
-  color: #44799D;
-  text-decoration: none;
-}
-.pane-projects-sidebar-latest .views-field-title a:hover {
-  color: #005580;
 }
 
 /*         Forms

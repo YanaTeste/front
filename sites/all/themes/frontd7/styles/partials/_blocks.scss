@@ -27,14 +27,16 @@
 	.view-content {
 		overflow: hidden;
 	}
+
 	.skin-default {
 		padding-bottom: em(48px, 14px);
 		overflow: hidden;
 	}
+
 	.views-fields-wrapper {
 		@include grid(7);
-		padding-top: em(32px, 14px);
 	}
+
 	.views-field-title {
 		font-family: $baseFontFamily;
 		font-size: em(50px, 14px);

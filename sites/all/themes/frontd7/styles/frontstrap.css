@@ -5713,7 +5713,9 @@ ul.menu a.active {
 ------------------------------------------------*/
 .page-node .page-wrapper,
 .page-drupal .page-wrapper,
-.page-om-oss .page-wrapper {
+.page-om-oss .page-wrapper,
+.page-jobb-i-front .page-wrapper,
+.page-videoer .page-wrapper {
   background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
 }
 

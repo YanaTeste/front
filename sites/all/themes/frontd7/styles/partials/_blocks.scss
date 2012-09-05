@@ -161,7 +161,6 @@
 	}
 
 	.pane-content {
-		height: 96px;
 		background-color: #BECFD8;
     // @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
     @include background-clip(padding-box);
@@ -208,6 +207,7 @@
   }
   .views-field-nothing {
   	float: right;
+    margin-bottom: 20px;
 
   	a {
   		@include btn-cta;

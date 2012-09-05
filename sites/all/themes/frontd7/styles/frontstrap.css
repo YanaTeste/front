@@ -5500,7 +5500,6 @@ ul.menu a.active {
 }
 .pane-users-block-single .pane-content,
 .pane-users-block-referenced .pane-content {
-  height: 96px;
   background-color: #BECFD8;
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding-box;
@@ -5568,6 +5567,7 @@ ul.menu a.active {
 .pane-users-block-single .views-field-nothing,
 .pane-users-block-referenced .views-field-nothing {
   float: right;
+  margin-bottom: 20px;
 }
 .pane-users-block-single .views-field-nothing a,
 .pane-users-block-referenced .views-field-nothing a {

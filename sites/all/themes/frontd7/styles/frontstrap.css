@@ -5709,6 +5709,14 @@ ul.menu a.active {
   font-weight: normal;
 }
 
+/*         Page wrapper
+------------------------------------------------*/
+.page-node .page-wrapper,
+.page-drupal .page-wrapper,
+.page-om-oss .page-wrapper {
+  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home #main {
@@ -5887,10 +5895,6 @@ ul.menu a.active {
 
 /* Drupal
 -------------------------------------------------*/
-#panel-drupal .view-taxonomy-menu {
-  margin-top: 40px;
-}
-
 /*    Kurs
 ---------------------------------------------------*/
 .page-kurs #page-title {
@@ -7448,9 +7452,6 @@ ul.menu a.active {
 
 /*         Nodes
 ------------------------------------------------*/
-.page-node .page-wrapper {
-  background: #eff2f4 url("../images/bg_home-services-inner.jpg") no-repeat center top;
-}
 .page-node #page-title {
   width: 64.583%;
   margin-top: 1.44em;

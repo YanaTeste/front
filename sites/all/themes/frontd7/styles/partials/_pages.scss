@@ -1,3 +1,13 @@
+/*         Page wrapper
+------------------------------------------------*/
+.page-node,
+.page-drupal,
+.page-om-oss {
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home {
@@ -217,8 +227,6 @@
   .pane-content {
   }
   .view-taxonomy-menu{
-    margin-top: 40px;
-
   }
 }
 
@@ -1519,9 +1527,7 @@
 /*         Nodes
 ------------------------------------------------*/
 .page-node {
-  .page-wrapper {
-    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
-  }
+
   #page-title {
     width: perc(620px, 960px);
     margin-top: em(72px, 50px);

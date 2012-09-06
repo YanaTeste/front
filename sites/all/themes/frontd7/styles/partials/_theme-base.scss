@@ -32,6 +32,7 @@ html, body {
 .ingress-left {
   @include ingress;
   text-align: left;
+  margin-bottom: em(25px, 20px);
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -319,6 +320,7 @@ a.btn-cta {
   }
   .panel-col-first {
     @include grid(8);
+    @include alpha();
     @include grid-suffix(1);
   }
   .panel-col-last {

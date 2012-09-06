@@ -11,7 +11,7 @@
   }
 
   #main {
-    margin-top: em(75px, 14px);
+    margin-top: em(40px, 14px);
   }
 }
 
@@ -1914,16 +1914,12 @@
 
 /*         Videos
 ------------------------------------------------*/
-#pages-videos{
-  margin-top: em(75px, 14px);
+#pages-videos {
 
-  .pane-videos-panel-pane-3{
+  .pane-videos-panel-pane-3 {
 
-    .pane-title{
+    .pane-title {
       @include title-left;
-    }
-    .views-row{
-      margin-top: 30px;
     }
 
     .views-row-odd {
@@ -1933,7 +1929,8 @@
     ul {
       list-style: none;
       margin: 0;
-      .field-name-title{
+      
+      .field-name-title {
         @include title-post;
       }
     }

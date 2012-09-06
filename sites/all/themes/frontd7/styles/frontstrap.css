@@ -4669,6 +4669,7 @@ html, body {
   display: block;
   margin: 0 auto;
   text-align: left;
+  margin-bottom: 1.25em;
 }
 .ingress-left p {
   font-size: 1.429em;
@@ -4998,6 +4999,7 @@ a.btn-cta:hover {
   margin-left: 10px;
   margin-right: 10px;
   width: 620px;
+  margin-left: 0;
   padding-right: 80px;
 }
 .panel-onecolsidebar .panel-col-last {
@@ -5758,7 +5760,7 @@ ul.menu a.active {
 .page-jobb-i-front #main,
 .page-videoer #main,
 .page-taxonomy-term #main {
-  margin-top: 5.357em;
+  margin-top: 2.857em;
 }
 
 /*         Front Page
@@ -7893,9 +7895,6 @@ ul.menu a.active {
 
 /*         Videos
 ------------------------------------------------*/
-#pages-videos {
-  margin-top: 5.357em;
-}
 #pages-videos .pane-videos-panel-pane-3 .pane-title {
   font-size: 3.571em;
   line-height: 1em;
@@ -7903,9 +7902,6 @@ ul.menu a.active {
   margin-bottom: 0.48em;
   padding-bottom: 0;
   border: none;
-}
-#pages-videos .pane-videos-panel-pane-3 .views-row {
-  margin-top: 30px;
 }
 #pages-videos .pane-videos-panel-pane-3 .views-row-odd {
   margin-right: 25px;

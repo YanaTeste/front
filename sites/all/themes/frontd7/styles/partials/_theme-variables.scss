@@ -25,6 +25,8 @@ $backgroundLower:				#eff2f4; // Alternative new brownish #EDEAE9;
 $backgroundLowest:			#DEE2E5; // Alternative new brownish #F6F5F4;
 $bodyBackgroundLower:		$backgroundLower url('../images/bg_home-services.png') repeat-x center top; // For the lower half of a lot of pages
 $bodyBackgroundLowest:	$backgroundLowest url('../images/bg_latest-projects.png') repeat-x center top; // For the lowest half of a lot of pages
+$contacktBlockBackground: #BECFD8;
+$blockBorderColor:      $contacktBlockBackground;
 
 // Fonts directory path
 $font_path: 'fontawesome-webfont';

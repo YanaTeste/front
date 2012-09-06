@@ -4,9 +4,14 @@
 .page-drupal,
 .page-om-oss,
 .page-jobb-i-front,
-.page-videoer {
+.page-videoer,
+.page-taxonomy-term {
   .page-wrapper {
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+
+  #main {
+    margin-top: em(75px, 14px);
   }
 }
 
@@ -1535,9 +1540,6 @@
     margin-top: em(72px, 50px);
     margin-left: 10px;
   }
-  #main {
-    margin-top: em(75px, 14px);
-  }
 
   .pane-node-field-image {
     margin-bottom: em(25px, 14px);
@@ -1840,6 +1842,54 @@
   }
 }
 
+/*         Page Open source
+------------------------------------------------*/
+.page-open-source {
+  #main {
+    width: 100%;
+    margin: -1px auto;
+  }
+
+  #page-title {
+    @include element-invisible;
+  }
+
+  .pane-node {
+    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
+    padding-left: 100px;
+    padding-top: 2px;
+    padding-bottom: em(30px, 14px);
+    margin-top: em(25px, 14px);
+
+    .pane-content {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+    }
+
+    .panel-pane-inner {
+      padding-top: 60px;
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .node-bilde {
+      border: 1px solid $blockBorderColor;
+      padding: 10px 10px 5px;
+      text-align: center;
+      background: white;
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: em(12px, 14px);
+        color: gray;
+      }
+    }
+  }
+}
 /*         Løsninger
 ------------------------------------------------*/
 .page-losninger {
@@ -1862,6 +1912,8 @@
   }
 }
 
+/*         Videos
+------------------------------------------------*/
 #pages-videos{
   margin-top: em(75px, 14px);
 

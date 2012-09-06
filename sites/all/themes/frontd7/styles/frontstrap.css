@@ -7789,8 +7789,12 @@ ul.menu a.active {
 
 /*         Løsninger
 ------------------------------------------------*/
-.section-lsninger .pane-services-block-solutions .panel-pane-inner,
-.section-lsninger .pane-services-block-solutions .view-content {
+.page-losninger #main {
+  width: 100%;
+  margin: -1px auto;
+}
+.page-losninger .pane-services-block-solutions .panel-pane-inner,
+.page-losninger .pane-services-block-solutions .view-content {
   margin-left: auto;
   margin-right: auto;
   width: 960px;

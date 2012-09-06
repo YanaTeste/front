@@ -5521,6 +5521,7 @@ ul.menu a.active {
   margin-right: 10px;
   width: 60px;
   margin-right: 0;
+  margin-left: 0;
 }
 .pane-users-block-single .views-field-field-image img,
 .pane-users-block-referenced .views-field-field-image img {

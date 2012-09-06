@@ -5,8 +5,8 @@ ul.menu {
 .view-taxonomy-menu {
   @include sidebar-menu;
 
-  .views-row {
-    margin-left: em(10px, 14px);
+  .views-row a {
+    padding-left: em(35px, 14px);
   }
 
   h3 a {

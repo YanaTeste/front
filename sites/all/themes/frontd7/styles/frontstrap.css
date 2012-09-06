@@ -4915,71 +4915,6 @@ a.btn-cta:hover {
 }
 
 /* Sidebars */
-.view-taxonomy-menu {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  overflow: hidden;
-}
-.view-taxonomy-menu .view-content h3 {
-  color: #fff;
-  font-size: 1.143em;
-  font-weight: normal;
-  line-height: 1.313em;
-  -webkit-box-shadow: 0 2px 0 black;
-  -moz-box-shadow: 0 2px 0 black;
-  box-shadow: 0 2px 0 black;
-}
-.view-taxonomy-menu .view-content h3:last-of-type {
-  background-image: none;
-}
-.view-taxonomy-menu .view-content h3 a {
-  color: #fff;
-  font-weight: 300;
-  text-decoration: none;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
-  letter-spacing: 0.031em;
-  display: block;
-  padding: 0.688em 0 0.75em 1.375em;
-  background-color: #4c3327;
-}
-.view-taxonomy-menu .view-content h3 a:hover {
-  color: #ebb700;
-}
-.view-taxonomy-menu .view-content h3 a.active {
-  color: #ebb700;
-  background: #4c3327 url("../images/icon_block-menu-active.png") no-repeat left center;
-}
-.view-taxonomy-menu .view-content ul {
-  background-color: #302725;
-  margin: 0 2px 1px;
-}
-.js .view-taxonomy-menu .view-content ul {
-  display: none;
-}
-.view-taxonomy-menu .view-content ul li {
-  background: transparent url("../images/bg_menu-block-sub-dash.png") repeat-x left bottom;
-  list-style: none;
-  overflow: hidden;
-}
-.view-taxonomy-menu .view-content ul li.views-row-last {
-  background: none;
-}
-.view-taxonomy-menu .view-content ul a {
-  color: #eee;
-  line-height: 1.214em;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-  display: block;
-  margin: 0 -1px -1px;
-  padding: 0.929em 5px 1em 1.5em;
-}
-.view-taxonomy-menu .view-content ul a:hover, .view-taxonomy-menu .view-content ul a.active {
-  color: #F2CB2D;
-}
-.view-taxonomy-menu .view-content ul .views-row-first a {
-  -webkit-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
-  box-shadow: inset 0 2px 2px rgba(0, 0, 0, 0.75);
-}
-
 .pageicon {
   float: left;
   margin-right: 30px;
@@ -5345,6 +5280,54 @@ ul.menu .active a,
 ul.menu a.active {
   color: #F2CB2D;
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
+}
+
+.view-taxonomy-menu {
+  font-size: 1.143em;
+  margin-left: 0;
+}
+.view-taxonomy-menu li {
+  background: #302725 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
+  list-style: none;
+}
+.view-taxonomy-menu li:last-child {
+  background-image: none;
+}
+.view-taxonomy-menu a {
+  color: #fff;
+  font-weight: 300;
+  text-decoration: none;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.031em;
+  display: block;
+  padding: 0.688em 0 0.75em 1.375em;
+}
+.view-taxonomy-menu a:hover {
+  color: #F2CB2D;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+.view-taxonomy-menu .active a, .view-taxonomy-menu a.active {
+  color: #F2CB2D;
+  background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
+}
+.view-taxonomy-menu .views-row a {
+  padding-left: 2.143em;
+}
+.view-taxonomy-menu h3 a {
+  background: #302725 url("../images/bg_menu-block-dash.png") repeat-x left bottom;
+}
+.view-taxonomy-menu h3 a:hover, .view-taxonomy-menu h3 a:active {
+  background: #302725;
+}
+.view-taxonomy-menu ul {
+  margin: 0;
+}
+.js .view-taxonomy-menu ul {
+  display: none;
+}
+.view-taxonomy-menu li {
+  background-color: #27201e;
+  font-size: 0.875em;
 }
 
 #sidebar-navigation-block h2,

@@ -5310,8 +5310,8 @@ ul.menu a.active {
   color: #F2CB2D;
   background: transparent url("../images/icon_block-menu-active.png") no-repeat left center;
 }
-.view-taxonomy-menu .views-row a {
-  padding-left: 2.143em;
+.view-taxonomy-menu .views-row {
+  margin-left: 0.714em;
 }
 .view-taxonomy-menu h3 a {
   background: #302725 url("../images/bg_menu-block-dash.png") repeat-x left bottom;

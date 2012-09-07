@@ -1,3 +1,20 @@
+/*         Page wrapper
+------------------------------------------------*/
+.page-node,
+.page-drupal,
+.page-om-oss,
+.page-jobb-i-front,
+.page-videoer,
+.page-taxonomy-term {
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+
+  #main {
+    margin-top: em(40px, 14px);
+  }
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home {
@@ -217,8 +234,6 @@
   .pane-content {
   }
   .view-taxonomy-menu{
-    margin-top: 40px;
-
   }
 }
 
@@ -329,7 +344,7 @@
   }
 
   .pane-users-block-single {
-    padding-bottom: em(30px, 14px);
+    padding-top: 0;
   }
 
   .pane-services-block-solutions {
@@ -1519,16 +1534,11 @@
 /*         Nodes
 ------------------------------------------------*/
 .page-node {
-  .page-wrapper {
-    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
-  }
+
   #page-title {
     width: perc(620px, 960px);
     margin-top: em(72px, 50px);
     margin-left: 10px;
-  }
-  #main {
-    margin-top: em(75px, 14px);
   }
 
   .pane-node-field-image {
@@ -1702,53 +1712,6 @@
   }
 }
 
-.pane-projects-sidebar-latest {
-  .view-content {
-    background-color: #D3DDE2;
-  }
-  .views-row {
-    clear: both;
-    display: block;
-    padding: em(12px, 14px);
-    padding-right: 0;
-    border-bottom: 1px dashed #9EADB3;
-    overflow: hidden;
-  }
-  .views-row-last {
-    border: none;
-  }
-  .views-field-field-image {
-    float: left;
-
-    img {
-      background-color: #fff;
-      display: block;
-      padding: 4px;
-      @include transition-property(background-color);
-      @include transition-duration(0.5s);
-
-      &:hover {
-        background-color: #C6D1D7;
-      }
-    }
-  }
-  .views-field-title {
-    font-size: em(13px, 14px);
-    line-height: 1.2em;
-    float: right;
-    width: perc(140px, 206px);
-
-    a {
-      color: #44799D;
-      text-decoration: none;
-
-      &:hover {
-        color: $linkColorHover;
-      }
-    }
-  }
-}
-
 /*         Forms
 ------------------------------------------------*/
 .page-search {
@@ -1879,9 +1842,57 @@
   }
 }
 
+/*         Page Open source
+------------------------------------------------*/
+.page-open-source {
+  #main {
+    width: 100%;
+    margin: -1px auto;
+  }
+
+  #page-title {
+    @include element-invisible;
+  }
+
+  .pane-node {
+    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
+    padding-left: 100px;
+    padding-top: 2px;
+    padding-bottom: em(30px, 14px);
+    margin-top: em(25px, 14px);
+
+    .pane-content {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+    }
+
+    .panel-pane-inner {
+      padding-top: 60px;
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .node-bilde {
+      border: 1px solid $blockBorderColor;
+      padding: 10px 10px 5px;
+      text-align: center;
+      background: white;
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: em(12px, 14px);
+        color: gray;
+      }
+    }
+  }
+}
 /*         Løsninger
 ------------------------------------------------*/
-.section-lsninger {
+.page-losninger {
 
   #main {
     width: 100%;
@@ -1901,16 +1912,14 @@
   }
 }
 
-#pages-videos{
-  margin-top: em(75px, 14px);
+/*         Videos
+------------------------------------------------*/
+#pages-videos {
 
-  .pane-videos-panel-pane-3{
+  .pane-videos-panel-pane-3 {
 
-    .pane-title{
+    .pane-title {
       @include title-left;
-    }
-    .views-row{
-      margin-top: 30px;
     }
 
     .views-row-odd {
@@ -1920,7 +1929,8 @@
     ul {
       list-style: none;
       margin: 0;
-      .field-name-title{
+      
+      .field-name-title {
         @include title-post;
       }
     }

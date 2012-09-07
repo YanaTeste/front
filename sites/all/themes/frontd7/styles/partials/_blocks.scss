@@ -1,24 +1,3 @@
-.pane-kurs-overview-panel-pane-1 {
-	.pane-title {
-		@include title-left;
-		font-size: em(24px,14px);
-		//color:red;
-	}
-	.field-name-title h2{
-		font-size: em(12px,14px);
-	}
-	.view-content{
-		.views-row-odd{
-			background:$backgroundLowest;
-		}
-		.views-row-even{
-			background:$backgroundLower;
-
-		}
-	}
-}
-
-
 /* Banners
 -----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
@@ -27,14 +6,16 @@
 	.view-content {
 		overflow: hidden;
 	}
+
 	.skin-default {
 		padding-bottom: em(48px, 14px);
 		overflow: hidden;
 	}
+
 	.views-fields-wrapper {
 		@include grid(7);
-		padding-top: em(32px, 14px);
 	}
+
 	.views-field-title {
 		font-family: $baseFontFamily;
 		font-size: em(50px, 14px);
@@ -171,6 +152,8 @@
 
 .pane-users-block-single,
 .pane-users-block-referenced {
+  
+  padding: em(20px, 14px) 0 em(30px, 14px);
 
 	.panel-pane-inner {
 		position: relative;
@@ -178,7 +161,6 @@
 	}
 
 	.pane-content {
-		height: 96px;
 		background-color: #BECFD8;
     // @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
     @include background-clip(padding-box);
@@ -192,6 +174,7 @@
   .views-field-field-image {
   	@include grid(1);
   	@include omega;
+    @include alpha;
 
   	img {
   		display: inline-block;
@@ -225,6 +208,7 @@
   }
   .views-field-nothing {
   	float: right;
+    margin-bottom: 20px;
 
   	a {
   		@include btn-cta;
@@ -283,4 +267,67 @@
 			}
 		}
 	}
+}
+
+/* Kurs block
+-----------------------------------*/
+.view-kurs-overview {
+
+  article {
+    @include sidebar-list;
+  }
+
+  .field-name-title h2 {
+    font-size: em(16px, 14px);
+    line-height: 1.1em;
+    margin-bottom: em(5px, 14px);
+    font-family: $baseFontFamily;
+    font-weight: normal;
+  }
+
+  .field-name-date-with-icon,
+  .field-name-field-location {
+    font-size: em(12px, 14px);
+    line-height: 1.2em;
+  }
+}
+
+/* Siste prosjekter
+-----------------------------------*/
+.pane-projects-sidebar-latest {
+
+  article {
+    @include sidebar-list;
+
+    &:after {
+      content: "."; 
+      visibility: hidden; 
+      display: block; 
+      height: 0; 
+      clear: both;
+    }
+  }
+
+  .views-field-field-image {
+    float: left;
+
+    img {
+      background-color: #fff;
+      display: block;
+      padding: 4px;
+      @include transition-property(background-color);
+      @include transition-duration(0.5s);
+
+      &:hover {
+        background-color: #C6D1D7;
+      }
+    }
+  }
+  .views-field-title {
+    margin-left: em(64px, 16px);
+    font-size: em(16px, 14px);
+    line-height: 1.1em;
+    font-family: $baseFontFamily;
+    font-weight: normal;
+  }
 }

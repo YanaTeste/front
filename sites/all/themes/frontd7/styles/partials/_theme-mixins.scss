@@ -69,29 +69,28 @@
   margin: 0;
   text-align: center;
   padding: em(14px, 14px) 0 em(14px, 14px);
+}
 
+@mixin title-centered-padding{
+  padding: em(72px, 14px) 0 em(40px, 14px);
 
-      // font-family: $baseFontFamily;
-      // font-size: em(50px, 14px);
-      // font-weight: normal;
-      // line-height: 1;
-      // letter-spacing: em(-2px, 50px);
-      // margin-bottom: em(12px, 50px);
-
-    }
-
-    @mixin title-centered-padding{
-      padding: em(72px, 14px) 0 em(40px, 14px);
-
-    }
-    @mixin title-left{
-      font-size: em(50px, 14px);
-      line-height: 1em;
-      letter-spacing: em(-2.5px, 50px);
-      margin-bottom: em(24px, 50px);
-      padding-bottom: 0;
-      border: none;
-    }
+}
+@mixin title-left{
+  font-size: em(50px, 14px);
+  line-height: 1em;
+  letter-spacing: em(-2.5px, 50px);
+  margin-bottom: em(24px, 50px);
+  padding-bottom: 0;
+  border: none;
+}
+@mixin title-post{
+  font-size: em(22px, 14px);
+  line-height: em(24px, 22px);
+  margin: em(3px, 22px) 0;
+  a {
+    color: #000;
+  }
+}
 
 @mixin sub-heading {
   font-family: $baseFontFamily;
@@ -138,4 +137,117 @@
 
 @function perc($target-px, $context) {
   @return ($target-px / $context) * 100%;
+}
+
+/**
+ * Elements
+ */
+
+// Base of default button
+@mixin btn-base {
+  color: #fff !important;
+  font-family: $helveticaFontFamily;
+  font-size: em(15px, 14px);
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+  display: inline-block;
+  width: em(173px, 15px);
+  margin: 3px;
+  padding: 1em 0;
+  @include box-shadow(0 1px 0 rgba(0,0,0,0.2));
+  @include border-radius(6px);
+}
+
+// Default button to use
+@mixin btn-default {
+  @include btn-base;
+  @include background-image(linear-gradient(#78DDFB, #78DDFB 13.13%, #5B9EC3));
+  border: 1px solid #639EB3;
+
+  &:hover {
+    @include box-shadow(0 0 2px #639EB3);
+  }
+}
+
+// Call to action version of default button
+@mixin btn-cta {
+  @include btn-base;
+  @include background-image(linear-gradient(#DF701F, #E68022 13.13%, #D14D1A));
+        border: 1px solid #d14d1a;
+
+        &:hover {
+          @include box-shadow(0 0 2px #d14d1a);
+        }
+}
+
+// "btn-rounded" is from the original design, but will not be used on the 
+// site any more.
+@mixin btn-rounded {
+  color: #fff;
+  font-family: $helveticaFontFamily;
+  font-weight: bold;
+  font-size: em(15px, 14px);
+  text-align: center;
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(0,0,0,0.35);
+  @include background-image(linear-gradient(#ECAD7D, #E37D29 5%, #E68328 10%, #D2521D));
+  display: block;
+  padding: em(10px, 15px) 0 em(11px, 15px);
+  border: 1px solid #D14D1A;
+  border-color: #E39476 #DE7E50 #D14D1A;
+  @include border-radius(22px);
+
+  &:hover {
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
+    @include box-shadow(0 0 4px rgba(0,0,0,0.25));
+  }
+}
+
+// Sidebar listing
+@mixin sidebar-list {
+  padding-bottom: em(13px, 14px);
+  margin-bottom: em(13px, 14px);
+  border-bottom: 3px dotted $backgroundLowest;
+
+  &.views-row-last {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    border: none;
+  }
+}
+
+// Menu
+@mixin sidebar-menu {
+  font-size: em(16px, 14px);
+  margin-left: 0;
+
+  li {
+    background: $brownProfileColorDark url('../images/bg_menu-block-dash.png') repeat-x left bottom;
+    list-style: none;
+
+    &:last-child {
+      background-image: none;
+    }
+  }
+  a {
+    color: #fff;
+    font-weight: 300;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.8);
+    letter-spacing: em(0.5px, 16px);
+    display: block;
+    padding: em(11px, 16px) 0 em(12px, 16px) em(22px, 16px);
+
+    &:hover {
+      color: #F2CB2D;
+      background-color: rgba(0,0,0,0.15);
+    }
+  }
+  .active a,
+  a.active {
+    color: #F2CB2D;
+    background: transparent url('../images/icon_block-menu-active.png') no-repeat left center;
+  }
 }

@@ -2703,7 +2703,10 @@ Utstyrt med en kraftig blanding av funksjoner og konfigurerbarhet kan Drupal st�
   $page->admin_title = 'Kurs';
   $page->admin_description = '';
   $page->path = 'kurs';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Kurs',
@@ -3968,7 +3971,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
   $page->admin_title = 'Tjenester';
   $page->admin_description = '';
   $page->path = 'tjenester';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Tjenester panel',
@@ -4082,7 +4088,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
   $page->admin_title = 'Videoer';
   $page->admin_description = '';
   $page->path = 'videoer';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array();
   $page->arguments = array();
   $page->conf = array(

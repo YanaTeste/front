@@ -16,3 +16,5 @@ robots_orig.txt
 
 # Osx files
 .DS_Store
+/nbproject/private/
+/nbproject/

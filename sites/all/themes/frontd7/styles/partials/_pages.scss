@@ -1,3 +1,20 @@
+/*         Page wrapper
+------------------------------------------------*/
+.page-node,
+.page-drupal,
+.page-om-oss,
+.page-jobb-i-front,
+.page-videoer,
+.page-taxonomy-term {
+  .page-wrapper {
+    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
+  }
+
+  #main {
+    margin-top: em(40px, 14px);
+  }
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home {
@@ -133,6 +150,9 @@
 /* About us / Om oss
 ------------------------------------------------------*/
 .page-om-oss{
+  #main{
+
+  }
   .pane-custom-front-kontaktinfo{
     @include grid(9);
     // float: left;
@@ -145,7 +165,7 @@
   .pane-custom-about-us-menu{
     @include grid(3);
     float: right;
-    margin-top: -100px;
+    //margin-top: -100px;
   }
 }
 
@@ -214,8 +234,6 @@
   .pane-content {
   }
   .view-taxonomy-menu{
-    margin-top: 40px;
-
   }
 }
 
@@ -227,17 +245,26 @@
   }
   .ingress{
     @include ingress;
+    //text-align: left;
   }
 
+  // Siste videoer
   .pane-videos-panel-pane-1{
     .pane-title{
       color: $brownProfileColor;
     }
+
+    .view-footer{
+      float:right;
+    }
   }
 
+  //Kommende kurs
   .pane-kurs-overview-panel-pane-2{
+    clear: both;
     background: $bodyBackgroundLower;
     padding: 5px 30px;
+    margin-bottom: 30px;
 
 
     h2{
@@ -262,39 +289,17 @@
       &.views-row-odd {
         margin-right: 8%;
       }
-
-      // div.node {
-      //   padding: 0 10px;
-      // }
-
-      // .field-name-title .list-title {
-      //   @include sub-heading;
-      //   margin-bottom: 0;
-      // }
-
-      // .field-name-field-image {
-      //   float: right;
-      //   max-width: 62px;
-      //   width: 15%;
-
-      //   img {
-      //     width: 100%;
-      //   }
-      // }
-
-      // .field-type-text-with-summary {
-      //   margin-right: 18%;
-      // }
       .field-type-datetime{
         color: $brownProfileColorLight;
       }
     }
-
-
-
   }
+  .pane-users-block-single {
 
-
+    .panel-pane-inner {
+      margin: 0 auto 30px;
+    }
+  }
 }
 
 #panel-solutions,
@@ -333,13 +338,23 @@
       }
     }
   }
+  .pane-services-block-solutions,
+  .pane-users-block-single {
+    background-color: $backgroundLower;
+  }
+
+  .pane-users-block-single {
+    padding-top: 0;
+  }
 
   .pane-services-block-solutions {
-    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
+    background-image: url('../images/bg_home-services.png');
+    background-repeat: repeat-x;
+    background-position: center top;
     //padding: 2px 0 em(9px, 14px);
-    padding-left: 100px;
+    padding-left: 150px;
     padding-top: 2px;
-    padding-bottom: em(30px, 14px);
+    //padding-bottom: em(30px, 14px);
 
     .panel-pane-inner {
       background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
@@ -349,7 +364,7 @@
       @include element-invisible;
     }
     .view-content {
-      margin: em(55px, 14px) 0;
+      // margin: em(55px, 14px) 0;
       @include clearfix;
     }
     .views-row {
@@ -410,17 +425,21 @@
   }
 
   .pane-users-block-single {
-    position: relative;
+    background-image: $backgroundLower;
+    .panel-pane-inner {
+      position: relative;
+      margin: 0 auto;
+    }
 
     .pane-content {
-      width: perc(720px, 960px);
-      margin: -52px auto;
+      //width: perc(720px, 960px);
+      //margin: -52px auto;
     }
     .views-field-field-bio {
       @include grid(4.5);
     }
     .views-field-nothing {
-      width: 200px;
+
     }
   }
 
@@ -549,86 +568,6 @@
   }
 }
 
-.pane-users-block-single,
-.pane-users-block-referenced {
-  position: relative;
-
-  .pane-content {
-    height: 96px;
-    background-color: #BECFD8;
-    @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
-    @include background-clip(padding-box);
-    border: 4px solid #BECED8;
-    @include border-radius(51px);
-    overflow: hidden;
-  }
-  .view-content {
-    padding: 21px 25px 0;
-  }
-  .views-field-field-image {
-    @include grid(1);
-    @include omega;
-
-    img {
-      display: inline-block;
-      background-color: #fff;
-      padding: 3px;
-    }
-    a:hover img {
-      background-color: rgba(255,255,255,0.75);
-    }
-  }
-  .views-field-field-name {
-    font-family: $baseFontFamily;
-    font-size: 1em;
-    font-weight: normal;
-    line-height: 1;
-    @include grid(4.5);
-
-    a {
-      color: #D14C19;
-      &:hover {
-        color: darken(#D14C19, 10%);
-      }
-    }
-  }
-  .views-field-field-bio {
-    color: #535353;
-    font-style: oblique;
-    line-height: 1.5em;
-    @include grid(4.25);
-  }
-  .views-field-nothing {
-    float: right;
-    width: 130px;
-    @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
-    background-color: #A5B4BC;
-    margin-top: em(-11px, 14px);
-    padding: 4px;
-    @include border-radius(26px);
-
-    a {
-      color: #fff;
-      font-family: $helveticaFontFamily;
-      font-weight: bold;
-      font-size: em(15px, 14px);
-      text-align: center;
-      text-decoration: none;
-      text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-      @include background-image(linear-gradient(#ECAD7D, #E37D29 5%, #E68328 10%, #D2521D));
-      display: block;
-      padding: em(10px, 15px) 0 em(11px, 15px);
-      border: 1px solid #D14D1A;
-      border-color: #E39476 #DE7E50 #D14D1A;
-      @include border-radius(22px);
-
-      &:hover {
-        text-shadow: 0 -1px 0 rgba(0,0,0,0.35);
-        @include box-shadow(0 0 4px rgba(0,0,0,0.25));
-      }
-    }
-  }
-}
 
 /*         How we work
 ------------------------------------------------*/
@@ -837,7 +776,10 @@
   }
 
   .pane-users-block-single {
-    padding: em(65px, 14px) 0;
+
+    .panel-pane-inner {
+      padding: em(65px, 14px) 0;
+    }
 
     .pane-content {
       width: perc(720px, 960px);
@@ -946,32 +888,10 @@
 
     .pane-title {
       @include title-centered;
-      // font-family: $baseFontFamily;
-      // font-size: em(50px, 14px);
-      // font-weight: normal;
-      // line-height: 1;
-      // letter-spacing: em(-2px, 50px);
-      // margin-bottom: em(12px, 50px);
     }
     .pane-content {
       @include ingress;
-      // @include grid(8.5);
-      // float: none;
-      // display: block;
-      // margin: 0 auto;
-
-      // p {
-      //   font-size: em(20px, 14px);
-      //   font-style: italic;
-      //   line-height: em(29px, 20px);
-      // }
-      // a {
-      //   color: #D14C19;
-
-      //   &:hover {
-      //     color: darken(#D14C19, 10%);
-      //   }
-      // }
+      padding-bottom:20px;
     }
   }
 
@@ -980,7 +900,7 @@
     padding: 2px 0 em(9px, 14px);
 
     .panel-pane-inner {
-      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+      // background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
       overflow: hidden;
     }
     .pane-title {
@@ -1176,56 +1096,7 @@
       }
     }
   }
-  .pane-custom-front-kontakt {
-    padding-left: perc(270px, 620px);
 
-    .pane-title {
-      font-family: $baseFontFamily;
-      font-size: em(20px, 14px);
-      font-weight: normal;
-      line-height: 1em;
-      overflow: hidden;
-      margin-bottom: em(16px, 20px);
-    }
-    .pane-content {
-      img {
-        float: left;
-        display: block;
-        width: perc(235px, 350px);
-        height: auto;
-        margin-top: em(-36px, 14px);
-        margin-left: perc(-270px, 350px);
-        padding: 9px;
-        background-color: #fff;
-        border: 1px solid #D3E2E2;
-      }
-      ul {
-        color: #454545;
-        font-size: em(15px, 14px);
-        margin: 0;
-
-        li {
-          list-style: none;
-          margin-bottom: 1em;
-
-          &:first-child {
-            float: left;
-            margin-right: 1.5em;
-          }
-        }
-        strong {
-          color: #999;
-          font-size: em(13px, 15px);
-          font-weight: normal;
-          display: block;
-
-          &.inline {
-            display: inline-block;
-          }
-        }
-      }
-    }
-  }
   .pane-custom-gamlebyen-fredrikstad {
     clear: both;
     padding-left: perc(270px, 620px);
@@ -1624,13 +1495,7 @@
       }
     }
     .views-field-title {
-      font-size: em(22px, 14px);
-      line-height: em(24px, 22px);
-      margin: em(3px, 22px) 0;
-
-      a {
-        color: #000;
-      }
+      @include title-post;
     }
     .views-field-created {
       color: #999;
@@ -1669,16 +1534,11 @@
 /*         Nodes
 ------------------------------------------------*/
 .page-node {
-  .page-wrapper {
-    background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
-  }
+
   #page-title {
     width: perc(620px, 960px);
     margin-top: em(72px, 50px);
     margin-left: 10px;
-  }
-  #main {
-    margin-top: em(75px, 14px);
   }
 
   .pane-node-field-image {
@@ -1852,53 +1712,6 @@
   }
 }
 
-.pane-projects-sidebar-latest {
-  .view-content {
-    background-color: #D3DDE2;
-  }
-  .views-row {
-    clear: both;
-    display: block;
-    padding: em(12px, 14px);
-    padding-right: 0;
-    border-bottom: 1px dashed #9EADB3;
-    overflow: hidden;
-  }
-  .views-row-last {
-    border: none;
-  }
-  .views-field-field-image {
-    float: left;
-
-    img {
-      background-color: #fff;
-      display: block;
-      padding: 4px;
-      @include transition-property(background-color);
-      @include transition-duration(0.5s);
-
-      &:hover {
-        background-color: #C6D1D7;
-      }
-    }
-  }
-  .views-field-title {
-    font-size: em(13px, 14px);
-    line-height: 1.2em;
-    float: right;
-    width: perc(140px, 206px);
-
-    a {
-      color: #44799D;
-      text-decoration: none;
-
-      &:hover {
-        color: $linkColorHover;
-      }
-    }
-  }
-}
-
 /*         Forms
 ------------------------------------------------*/
 .page-search {
@@ -1966,169 +1779,19 @@
       padding: 0 15px;
     }
   }
-  // .view-content {
-  //   background: $bodyBackgroundLower;
-  //   padding: 2px 0 em(9px, 14px);
-  // }
+}
 
 
 
-/*
-  .pane-services-block-solutions {
-    background: #eff2f4 url('../images/bg_home-services.png') repeat-x center top;
-    //padding: 2px 0 em(9px, 14px);
-    padding-left: 100px;
-    padding-top: 2px;
-    padding-bottom: em(30px, 14px);
 
-    
-    .pane-title {
-      @include element-invisible;
-    }
-    .view-content {
-      margin: em(55px, 14px) 0;
-      @include clearfix;
-    }
-    .views-row {
-      @include grid(4);
-      @include grid-prefix(1);
-      margin-bottom: em(48px, 14px);
-    }
-    .views-row-4 {
-      //clear: both;
-    }
-    .icon {
-      background: transparent url('../images/icons_services-62px.png') no-repeat 0 0;
-      float: left;
-      width: 62px;
-      height: 62px;
-      margin-left: -80px;
-
-      &.icon-drupal {
-        background-position: 0 0;
-      }
-      &.icon-mobile {
-        background-position: -62px 0;
-      }
-      &.icon-cms {
-        background-position: -124px 0;
-      }
-      &.icon-marketing {
-        background-position: -186px 0;
-      }
-      &.icon-commerce {
-        background-position: -248px 0;
-      }
-      &.icon-applications {
-        background-position: -310px 0;
-      }
-      a {
-        @include hide-text;
-        display: block;
-        width: 62px;
-        height: 62px;
-      }
-    }
-    .views-field-title {
-      font-family: $baseFontFamily;
-      line-height: em(21px, 18px);
-      font-weight: normal;
-      margin-bottom: em(3px, 18px);
-    }
-    .views-field-body p {
-      margin-bottom: 0;
-    }
-    .views-field-field-link {
-      font-size: em(13px, 14px);
-      letter-spacing: em(-0.25px, 13px);
-      white-space: nowrap;
-
-      a:after {
-        content: ' ››';
-      }
-    }
-  }
-
-  .pane-users-block-single {
-    position: relative;
-
-    .pane-content {
-      width: perc(720px, 960px);
-      margin: -52px auto;
-    }
-    .views-field-field-bio {
-      @include grid(4.5);
-    }
-    .views-field-nothing {
-      width: 200px;
-    }
-  }
-
-  .pane-kompetanse-list {
-    background: #dee2e5 url('../images/bg_latest-projects.png') repeat-x center top;
-    padding-top: em(98px, 14px);
-    padding-bottom: em(30px, 14px);
-
-    .pane-title {
-      color: #263A43;
-      font-family: $baseFontFamily;
-      font-size: em(30px, 14px);
-      font-weight: normal;
-      line-height: 1;
-      text-align: center;
-      margin-bottom: em(10px, 30px);
-    }
-    .view-header {
-      text-align: center;
-      @include grid(9);
-      float: none;
-      display: block;
-      margin: 0 auto em(30px, 10px);
-
-      p {
-        font-size: em(18px, 14px);
-        font-style: oblique;
-        line-height: em(29px, 18px);
-      }
-    }
-    .view-content {
-      background-color: #fff;
-      @include box-shadow(0 1px 2px rgba(0,0,0,0.1));
-      @include clearfix;
-      margin: 0 perc(10px, 960px) em(30px, 14px);
-      padding: em(24px, 14px) perc(20px, 940px) em(16px, 14px);
-
-      .column {
-        display: inline;
-        float: left;
-        width: 20%;
-      }
-      h3 {
-        font-family: $baseFontFamily;
-        font-weight: normal;
-        margin-bottom: 1em;
-      }
-      ul {
-        margin: 0;
-        list-style: none;
-
-        li {
-          font-size: em(13px, 14px);
-          margin-bottom: em(9px, 13px);
-        }
-        a:after {
-          content: ' ››';
-        }
-      }
-    }
-  }
-
-   */
- }
 
 /*         Tjenester
 ------------------------------------------------*/
- .page-tjenester {
+.page-tjenester {
+  #main {
+    width: 100%;
+    margin: -1px auto;
+  }
 
   #page-title {
     @include element-invisible;
@@ -2151,13 +1814,20 @@
     }
 
     .view-content {
-
+      padding-top: 60px;
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
     }
 
     .views-row {
       @include grid(4);
       @include grid-prefix(1);
       margin-bottom: em(48px, 14px);
+    }
+
+    .views-row-odd {
+      margin-right: 25px;
     }
 
     .field-name-field-image {
@@ -2169,65 +1839,114 @@
       @include sub-heading;
       margin-bottom: 0;
     }
-    
-    // ul {
-    //   list-style: none;
-    //   margin: 0;
-    // }
-
-    // li {
-    //   list-style: none;
-    //   display: inline-block;
-    //   width: 45%;
-    //   vertical-align: top;
-    //   margin-bottom: 5%;
-
-    //   &.views-row-odd {
-    //     margin-right: 8%;
-    //   }
-
-    //   div.node {
-    //     padding: 0 10px;
-    //   }
-
-    //   .field-name-title .list-title {
-    //     @include sub-heading;
-    //     margin-bottom: 0;
-    //   }
-
-    //   .field-name-field-image {
-    //     float: right;
-    //     max-width: 62px;
-    //     width: 15%;
-
-    //     img {
-    //       width: 100%;
-    //     }
-    //   }
-
-    //   .field-type-text-with-summary {
-    //     margin-right: 18%;
-    //   }
-    // }
   }
 }
 
-/*         Løsninger
+/*         Page Open source
 ------------------------------------------------*/
-.page-tjenester,
-.section-lsninger {
-
+.page-open-source {
   #main {
     width: 100%;
     margin: -1px auto;
   }
 
-  .panel-pane-inner,
-  .view-content {
-    @include grid-container-center;
-    // TODO: Check with rob if there is a reson grid-container isn't in percent
-    width: 100%;
-    max-width: 960px;
-    padding: em(55px, 14px) 0;
+  #page-title {
+    @include element-invisible;
   }
+
+  .pane-node {
+    background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
+    padding-left: 100px;
+    padding-top: 2px;
+    padding-bottom: em(30px, 14px);
+    margin-top: em(25px, 14px);
+
+    .pane-content {
+      background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;
+    }
+
+    .panel-pane-inner {
+      padding-top: 60px;
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .node-bilde {
+      border: 1px solid $blockBorderColor;
+      padding: 10px 10px 5px;
+      text-align: center;
+      background: white;
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        margin: 4px 0 0;
+        font-size: em(12px, 14px);
+        color: gray;
+      }
+    }
+  }
+}
+/*         Løsninger
+------------------------------------------------*/
+.page-losninger {
+
+  #main {
+    width: 100%;
+    margin: -1px auto;
+  }
+  .pane-custom-solutions-intro{
+
+  }
+  .pane-services-block-solutions{
+    .panel-pane-inner,
+    .view-content {
+      @include grid-container-center;
+      width: 100%;
+      max-width: 960px;
+      padding: em(40px, 14px) 0 em(14px, 14px);
+    }
+  }
+}
+
+/*         Videos
+------------------------------------------------*/
+#pages-videos {
+
+  .pane-videos-panel-pane-3 {
+
+    .pane-title {
+      @include title-left;
+    }
+
+    .views-row-odd {
+      margin-right: 25px;
+    }
+
+    ul {
+      list-style: none;
+      margin: 0;
+      
+      .field-name-title {
+        @include title-post;
+      }
+    }
+  }
+}
+
+/* Jobb i front
+-------------------------------------------------------*/
+.page-jobb-i-front{
+  .national-flag{
+    float: left;
+    margin-right: 20px;
+    margin-bottom:5px;
+    margin-top: 10px;
+  }
+  .national-text{
+  }
+
 }

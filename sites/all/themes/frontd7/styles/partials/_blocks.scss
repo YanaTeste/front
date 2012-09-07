@@ -1,24 +1,3 @@
-.pane-kurs-overview-panel-pane-1 {
-	.pane-title {
-		@include title-left;
-		font-size: em(24px,14px);
-		//color:red;
-	}
-	.field-name-title h2{
-		font-size: em(12px,14px);
-	}
-	.view-content{
-		.views-row-odd{
-			background:$backgroundLowest;
-		}
-		.views-row-even{
-			background:$backgroundLower;
-
-		}
-	}
-}
-
-
 /* Banners
 -----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
@@ -27,14 +6,16 @@
 	.view-content {
 		overflow: hidden;
 	}
+
 	.skin-default {
 		padding-bottom: em(48px, 14px);
 		overflow: hidden;
 	}
+
 	.views-fields-wrapper {
 		@include grid(7);
-		padding-top: em(32px, 14px);
 	}
+
 	.views-field-title {
 		font-family: $baseFontFamily;
 		font-size: em(50px, 14px);
@@ -166,4 +147,187 @@
 	&:hover {
 		background-position: right top;
 	}
+}
+
+
+.pane-users-block-single,
+.pane-users-block-referenced {
+  
+  padding: em(20px, 14px) 0 em(30px, 14px);
+
+	.panel-pane-inner {
+		position: relative;
+		width: 620px;
+	}
+
+	.pane-content {
+		background-color: #BECFD8;
+    // @include background-image(linear-gradient(lighten(#BECFD8, 0.5%), darken(#B9CDD6, 0.5%)));
+    @include background-clip(padding-box);
+    // border: 4px solid #BECED8;
+    @include border-radius(10px);
+    overflow: hidden;
+  }
+  .view-content {
+  	padding: 21px 25px 0;
+  }
+  .views-field-field-image {
+  	@include grid(1);
+  	@include omega;
+    @include alpha;
+
+  	img {
+  		display: inline-block;
+  		background-color: #fff;
+  		padding: 3px;
+  	}
+  	a:hover img {
+  		background-color: rgba(255,255,255,0.75);
+  	}
+  }
+  .views-field-field-name {
+  	font-family: $baseFontFamily;
+  	font-size: 1em;
+  	font-weight: normal;
+  	line-height: 1;
+  	@include grid(4.5);
+  	width: auto;
+
+  	a {
+  		color: #D14C19;
+  		&:hover {
+  			color: darken(#D14C19, 10%);
+  		}
+  	}
+  }
+  .views-field-field-bio {
+  	color: #535353;
+  	font-style: oblique;
+  	line-height: 1.5em;
+  	@include grid(4.25);
+  }
+  .views-field-nothing {
+  	float: right;
+    margin-bottom: 20px;
+
+  	a {
+  		@include btn-cta;
+  		width: em(130px, 15px);
+  		padding: 0.7em 0;
+  	}
+  }
+}
+
+.pane-custom-front-kontakt {
+	//padding-left: perc(270px, 620px);
+
+	// .pane-title {
+	// 	font-family: $baseFontFamily;
+	// 	font-size: em(20px, 14px);
+	// 	font-weight: normal;
+	// 	line-height: 1em;
+	// 	overflow: hidden;
+	// 	margin-bottom: em(16px, 20px);
+	// }
+	.pane-content {
+		img {
+			float: left;
+			display: block;
+			width: perc(235px, 350px);
+			height: auto;
+			margin-top: em(-36px, 14px);
+			margin-left: perc(-270px, 350px);
+			padding: 9px;
+			background-color: #fff;
+			border: 1px solid #D3E2E2;
+		}
+		ul {
+			color: #454545;
+			font-size: em(15px, 14px);
+			margin: 0;
+
+			li {
+				list-style: none;
+				margin-bottom: 1em;
+
+				&:first-child {
+					float: left;
+					margin-right: 1.5em;
+				}
+			}
+			strong {
+				color: #999;
+				font-size: em(13px, 15px);
+				font-weight: normal;
+				display: block;
+
+				&.inline {
+					display: inline-block;
+				}
+			}
+		}
+	}
+}
+
+/* Kurs block
+-----------------------------------*/
+.view-kurs-overview {
+
+  article {
+    @include sidebar-list;
+  }
+
+  .field-name-title h2 {
+    font-size: em(16px, 14px);
+    line-height: 1.1em;
+    margin-bottom: em(5px, 14px);
+    font-family: $baseFontFamily;
+    font-weight: normal;
+  }
+
+  .field-name-date-with-icon,
+  .field-name-field-location {
+    font-size: em(12px, 14px);
+    line-height: 1.2em;
+  }
+}
+
+/* Siste prosjekter
+-----------------------------------*/
+.pane-projects-sidebar-latest {
+
+  article {
+    @include sidebar-list;
+
+    &:after {
+      content: "."; 
+      visibility: hidden; 
+      display: block; 
+      height: 0; 
+      clear: both;
+    }
+  }
+
+  .views-field-field-image {
+    float: left;
+
+    img {
+      background-color: #fff;
+      display: block;
+      padding: 4px;
+      @include transition-property(background-color);
+      @include transition-duration(0.5s);
+
+      &:hover {
+        background-color: #C6D1D7;
+      }
+    }
+  }
+  .views-field-title {
+    margin-left: em(64px, 16px);
+    font-size: em(16px, 14px);
+    line-height: 1.1em;
+    font-family: $baseFontFamily;
+    font-weight: normal;
+  }
 }

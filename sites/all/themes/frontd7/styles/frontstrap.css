@@ -5571,8 +5571,8 @@ ul.menu a.active {
 .pane-users-block-referenced .views-field-field-name a:hover {
   color: #a33b14;
 }
-.pane-users-block-single .views-field-field-bio,
-.pane-users-block-referenced .views-field-field-bio {
+.pane-users-block-single .views-field-field-about-placed-on-pages,
+.pane-users-block-referenced .views-field-field-about-placed-on-pages {
   color: #535353;
   font-style: oblique;
   line-height: 1.5em;

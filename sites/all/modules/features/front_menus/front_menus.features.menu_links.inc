@@ -36,7 +36,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-49',
+    'weight' => '-40',
   );
   // Exported menu link: main-menu:om-oss
   $menu_links['main-menu:om-oss'] = array(
@@ -50,7 +50,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-45',
+    'weight' => '50',
   );
   // Exported menu link: main-menu:prosjekter
   $menu_links['main-menu:prosjekter'] = array(
@@ -64,21 +64,21 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-47',
+    'weight' => '40',
   );
   // Exported menu link: main-menu:tjenester
   $menu_links['main-menu:tjenester'] = array(
     'menu_name' => 'main-menu',
     'link_path' => 'tjenester',
     'router_path' => 'tjenester',
-    'link_title' => 'Tjenester',
+    'link_title' => 'Tjenester panel',
     'options' => array(),
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-48',
+    'weight' => '-30',
   );
   // Exported menu link: user-menu:blogg
   $menu_links['user-menu:blogg'] = array(
@@ -162,12 +162,9 @@ function front_menus_menu_default_menu_links() {
     'link_title' => 'User account',
     'options' => array(
       'alter' => TRUE,
-      'attributes' => array(
-        'title' => '',
-      ),
     ),
     'module' => 'system',
-    'hidden' => '1',
+    'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
@@ -199,7 +196,7 @@ function front_menus_menu_default_menu_links() {
   t('Om oss');
   t('Prosjekter');
   t('Support');
-  t('Tjenester');
+  t('Tjenester panel');
   t('User account');
 
 

@@ -84,7 +84,7 @@ function front_content_strongarm() {
   $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
   $strongarm->api_version = 1;
   $strongarm->name = 'comment_blog';
-  $strongarm->value = '2';
+  $strongarm->value = '1';
   $export['comment_blog'] = $strongarm;
 
   $strongarm = new stdClass();
@@ -643,6 +643,9 @@ function front_content_strongarm() {
       'preview' => array(
         'custom_settings' => TRUE,
       ),
+      'large_preview' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -650,10 +653,33 @@ function front_content_strongarm() {
           'weight' => '0',
         ),
         'path' => array(
-          'weight' => '6',
+          'weight' => '8',
         ),
       ),
-      'display' => array(),
+      'display' => array(
+        'fb_social_Comments' => array(
+          'preview' => array(
+            'weight' => '14',
+            'visible' => FALSE,
+          ),
+          'default' => array(
+            'weight' => '20',
+            'visible' => TRUE,
+          ),
+          'large_preview' => array(
+            'weight' => '15',
+            'visible' => FALSE,
+          ),
+          'full' => array(
+            'weight' => '5',
+            'visible' => TRUE,
+          ),
+          'teaser' => array(
+            'weight' => '16',
+            'visible' => FALSE,
+          ),
+        ),
+      ),
     ),
   );
   $export['field_bundle_settings_node__video'] = $strongarm;
@@ -749,7 +775,8 @@ function front_content_strongarm() {
   $strongarm->api_version = 1;
   $strongarm->name = 'menu_options_page';
   $strongarm->value = array(
-    0 => 'main-menu',
+    0 => 'menu-drupal',
+    1 => 'main-menu',
   );
   $export['menu_options_page'] = $strongarm;
 

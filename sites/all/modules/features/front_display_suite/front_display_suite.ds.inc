@@ -37,14 +37,24 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'kurs';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
-    'title' => array(
+    'date_with_icon' => array(
       'weight' => '1',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
+    'title' => array(
+      'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
         'wrapper' => 'h2',
         'class' => '',
+      ),
+    ),
+    'field_location' => array(
+      'ft' => array(
+        'lb' => 'Sted',
       ),
     ),
   );
@@ -77,7 +87,7 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'video';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
-    'vimeo_video' => array(
+    'video_620px' => array(
       'weight' => '3',
       'label' => 'hidden',
       'format' => 'default',
@@ -86,6 +96,11 @@ function front_display_suite_ds_field_settings_info() {
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
+      'formatter_settings' => array(
+        'link' => '1',
+        'wrapper' => 'h2',
+        'class' => '',
+      ),
     ),
   );
   $export['node|video|full'] = $ds_fieldsetting;
@@ -97,7 +112,7 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'video';
   $ds_fieldsetting->view_mode = 'preview';
   $ds_fieldsetting->settings = array(
-    'vimeo_video' => array(
+    'video_300px' => array(
       'weight' => '0',
       'label' => 'hidden',
       'format' => 'default',
@@ -112,6 +127,11 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'video';
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
+    'video_620px' => array(
+      'weight' => '3',
+      'label' => 'hidden',
+      'format' => 'default',
+    ),
     'title' => array(
       'weight' => '0',
       'label' => 'hidden',
@@ -200,14 +220,14 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_date',
-        1 => 'title',
+        0 => 'title',
+        1 => 'date_with_icon',
         2 => 'field_location',
       ),
     ),
     'fields' => array(
-      'field_date' => 'ds_content',
       'title' => 'ds_content',
+      'date_with_icon' => 'ds_content',
       'field_location' => 'ds_content',
     ),
     'classes' => array(),
@@ -255,16 +275,18 @@ function front_display_suite_ds_layout_settings_info() {
         0 => 'title',
         1 => 'field_date',
         2 => 'body',
-        3 => 'vimeo_video',
+        3 => 'video_620px',
         4 => 'field_tags',
+        5 => 'fb_social_Comments',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'field_date' => 'ds_content',
       'body' => 'ds_content',
-      'vimeo_video' => 'ds_content',
+      'video_620px' => 'ds_content',
       'field_tags' => 'ds_content',
+      'fb_social_Comments' => 'ds_content',
     ),
     'classes' => array(),
   );
@@ -282,11 +304,11 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'vimeo_video',
+        0 => 'video_300px',
       ),
     ),
     'fields' => array(
-      'vimeo_video' => 'ds_content',
+      'video_300px' => 'ds_content',
     ),
     'classes' => array(),
   );
@@ -306,11 +328,15 @@ function front_display_suite_ds_layout_settings_info() {
       'ds_content' => array(
         0 => 'title',
         1 => 'body',
+        2 => 'field_date',
+        3 => 'video_620px',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
       'body' => 'ds_content',
+      'field_date' => 'ds_content',
+      'video_620px' => 'ds_content',
     ),
     'classes' => array(),
   );

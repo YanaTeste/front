@@ -16,6 +16,12 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'nodeorder',
       'weight' => '0',
+      'metatags' => array(),
+      'microdata' => array(
+        '#attributes' => array(
+          'itemscope' => '',
+        ),
+      ),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -39,6 +45,12 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
+      'microdata' => array(
+        '#attributes' => array(
+          'itemscope' => '',
+        ),
+      ),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',
@@ -56,12 +68,18 @@ function front_content_taxonomy_default_vocabularies() {
       ),
     ),
     'topic' => array(
-      'name' => 'Emne',
+      'name' => 'Bloggemne',
       'machine_name' => 'topic',
       'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'metatags' => array(),
+      'microdata' => array(
+        '#attributes' => array(
+          'itemscope' => '',
+        ),
+      ),
       'rdf_mapping' => array(
         'rdftype' => array(
           0 => 'skos:ConceptScheme',

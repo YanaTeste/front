@@ -26,6 +26,8 @@ function front_users_default_profile2_type() {
     "label" : "Profile",
     "weight" : "0",
     "data" : { "registration" : 0, "use_page" : 0 },
+    "metatags" : [],
+    "microdata" : { "#attributes" : { "itemscope" : "" } },
     "rdf_mapping" : []
   }');
   return $items;

@@ -116,7 +116,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Introduction text';
-  $handler->display->display_options['header']['area']['content'] = 'Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.';
+  $handler->display->display_options['header']['area']['content'] = 'Artikler om webteknologier, Drupal, FrontKom og andre ting som er verd å skrive om.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -267,7 +267,7 @@ function front_views_views_default_views() {
     t('neste ›'),
     t('siste »'),
     t('Introduction text'),
-    t('Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.'),
+    t('Artikler om webteknologier, Drupal, FrontKom og andre ting som er verd å skrive om.'),
     t('author'),
     t('[name] | '),
     t('[name][created]'),
@@ -481,7 +481,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
   $handler->display->display_options['fields']['field_image']['settings'] = array(
     'image_style' => 'picture',
-    'image_link' => 'content',
+    'image_link' => '',
   );
   /* Field: Profile: Name */
   $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
@@ -810,15 +810,7 @@ function front_views_views_default_views() {
   );
   $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['style_plugin'] = 'list';
-  $handler->display->display_options['style_options']['grouping'] = array(
-    0 => array(
-      'field' => 'name',
-      'rendered' => 1,
-      'rendered_strip' => 0,
-    ),
-  );
-  $handler->display->display_options['style_options']['wrapper_class'] = 'column';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
   $handler->display->display_options['row_options']['grouping'] = 0;
@@ -2448,7 +2440,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['path'] = 'løsninger/[name]';
+  $handler->display->display_options['fields']['name']['alter']['path'] = '[name]';
   $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -2507,6 +2499,14 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
   $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
   $handler->display->display_options['fields']['title']['element_label_colon'] = FALSE;
+  /* Field: Taxonomy term: Term ID */
+  $handler->display->display_options['fields']['tid']['id'] = 'tid';
+  $handler->display->display_options['fields']['tid']['table'] = 'taxonomy_term_data';
+  $handler->display->display_options['fields']['tid']['field'] = 'tid';
+  $handler->display->display_options['fields']['tid']['relationship'] = 'term_node_tid';
+  $handler->display->display_options['fields']['tid']['label'] = '';
+  $handler->display->display_options['fields']['tid']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['tid']['element_label_colon'] = FALSE;
   /* Field: Taxonomy term: Name */
   $handler->display->display_options['fields']['name']['id'] = 'name';
   $handler->display->display_options['fields']['name']['table'] = 'taxonomy_term_data';
@@ -2515,7 +2515,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['name']['label'] = '';
   $handler->display->display_options['fields']['name']['exclude'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['name']['alter']['path'] = 'kompetanse/[name]';
+  $handler->display->display_options['fields']['name']['alter']['path'] = 'tjenester?tid=[tid]';
   $handler->display->display_options['fields']['name']['alter']['replace_spaces'] = TRUE;
   $handler->display->display_options['fields']['name']['alter']['path_case'] = 'lower';
   $handler->display->display_options['fields']['name']['element_label_colon'] = FALSE;
@@ -2630,6 +2630,8 @@ function front_views_views_default_views() {
     t('View panes'),
     t('Tjenester menu'),
     t('Tjenester'),
+    t('.'),
+    t(','),
     t('Drupal menu'),
   );
   $export['taxonomy_menu'] = $view;
@@ -2907,6 +2909,17 @@ function front_views_views_default_views() {
     'image_style' => 'teaser_thumbnail',
     'image_link' => 'content',
   );
+  /* Field: Contact link */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Contact link';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   /* Field: Profile: Name */
   $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
   $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
@@ -2933,17 +2946,6 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_bio']['settings'] = array(
     'trim_length' => '120',
   );
-  /* Field: Contact link */
-  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['table'] = 'views';
-  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
-  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Contact link';
-  $handler->display->display_options['fields']['nothing']['label'] = '';
-  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
-  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
-  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   /* Contextual filter: Profile: Name (field_name) */
   $handler->display->display_options['arguments']['field_name_value']['id'] = 'field_name_value';
   $handler->display->display_options['arguments']['field_name_value']['table'] = 'field_data_field_name';
@@ -2990,6 +2992,67 @@ function front_views_views_default_views() {
   /* Display: Referenced user */
   $handler = $view->new_display('panel_pane', 'Referenced user', 'referenced');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: User uid */
+  $handler->display->display_options['fields']['user']['id'] = 'user';
+  $handler->display->display_options['fields']['user']['table'] = 'profile';
+  $handler->display->display_options['fields']['user']['field'] = 'user';
+  $handler->display->display_options['fields']['user']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['user']['label'] = '';
+  $handler->display->display_options['fields']['user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user']['separator'] = '';
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'teaser_thumbnail',
+    'image_link' => 'content',
+  );
+  /* Field: Contact link */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Contact link';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
+  /* Field: Profile: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_name']['label'] = '';
+  $handler->display->display_options['fields']['field_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_name']['alter']['path'] = 'user/[user]';
+  $handler->display->display_options['fields']['field_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_name']['element_wrapper_type'] = 'h3';
+  $handler->display->display_options['fields']['field_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_name']['empty_zero'] = TRUE;
+  /* Field: Profile: Bio */
+  $handler->display->display_options['fields']['field_bio']['id'] = 'field_bio';
+  $handler->display->display_options['fields']['field_bio']['table'] = 'field_data_field_bio';
+  $handler->display->display_options['fields']['field_bio']['field'] = 'field_bio';
+  $handler->display->display_options['fields']['field_bio']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_bio']['label'] = '';
+  $handler->display->display_options['fields']['field_bio']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_bio']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_bio']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_bio']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_bio']['settings'] = array(
+    'trim_length' => '300',
+  );
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Profile: User uid */
   $handler->display->display_options['arguments']['user']['id'] = 'user';
@@ -3078,6 +3141,12 @@ function front_views_views_default_views() {
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'preview';
+  /* Footer: Global: Text area */
+  $handler->display->display_options['footer']['area']['id'] = 'area';
+  $handler->display->display_options['footer']['area']['table'] = 'views';
+  $handler->display->display_options['footer']['area']['field'] = 'area';
+  $handler->display->display_options['footer']['area']['content'] = '<a href="/drupal/videoer">Se alle videoer</a>';
+  $handler->display->display_options['footer']['area']['format'] = 'filtered_html';
   /* Field: Content: Title */
   $handler->display->display_options['fields']['title']['id'] = 'title';
   $handler->display->display_options['fields']['title']['table'] = 'node';
@@ -3089,12 +3158,22 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_vimeo_video_id']['id'] = 'field_vimeo_video_id';
   $handler->display->display_options['fields']['field_vimeo_video_id']['table'] = 'field_data_field_vimeo_video_id';
   $handler->display->display_options['fields']['field_vimeo_video_id']['field'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['label'] = '';
   $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['alter_text'] = TRUE;
   $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['text'] = '<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="500" height="334" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['element_label_colon'] = FALSE;
+  /* Field: Content: Vimeo Video ID */
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['id'] = 'field_vimeo_video_id_1';
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['table'] = 'field_data_field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['field'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['alter']['text'] = '<iframe src="http://player.vimeo.com/video/43450705" _mce_src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="620" height="414" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>';
+  $handler->display->display_options['fields']['field_vimeo_video_id_1']['hide_empty'] = TRUE;
   /* Sort criterion: Content: Dato (field_date) */
   $handler->display->display_options['sorts']['field_date_value']['id'] = 'field_date_value';
   $handler->display->display_options['sorts']['field_date_value']['table'] = 'field_data_field_date';
   $handler->display->display_options['sorts']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['sorts']['field_date_value']['order'] = 'DESC';
   /* Sort criterion: Content: Post date */
   $handler->display->display_options['sorts']['created']['id'] = 'created';
   $handler->display->display_options['sorts']['created']['table'] = 'node';
@@ -3134,26 +3213,102 @@ function front_views_views_default_views() {
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
 
   /* Display: All Videos */
   $handler = $view->new_display('panel_pane', 'All Videos', 'panel_pane_3');
+  $handler->display->display_options['defaults']['title'] = FALSE;
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['defaults']['pager'] = FALSE;
   $handler->display->display_options['pager']['type'] = 'some';
   $handler->display->display_options['pager']['options']['items_per_page'] = '0';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
-  $handler->display->display_options['style_plugin'] = 'list';
+  $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
   $handler->display->display_options['defaults']['row_plugin'] = FALSE;
   $handler->display->display_options['row_plugin'] = 'ds';
   $handler->display->display_options['row_options']['load_comments'] = 0;
-  $handler->display->display_options['row_options']['alternating'] = 0;
   $handler->display->display_options['row_options']['grouping'] = 0;
   $handler->display->display_options['row_options']['advanced'] = 0;
   $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
   $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
   $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Vimeo Video ID */
+  $handler->display->display_options['fields']['field_vimeo_video_id']['id'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['table'] = 'field_data_field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['field'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['label'] = '';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['text'] = '<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="600" height="414" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['element_label_colon'] = FALSE;
+
+  /* Display: All Videos with tag */
+  $handler = $view->new_display('panel_pane', 'All Videos with tag', 'panel_pane_4');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['pager'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '0';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['defaults']['style_plugin'] = FALSE;
+  $handler->display->display_options['style_plugin'] = 'default';
+  $handler->display->display_options['defaults']['style_options'] = FALSE;
+  $handler->display->display_options['defaults']['row_plugin'] = FALSE;
+  $handler->display->display_options['row_plugin'] = 'ds';
+  $handler->display->display_options['row_options']['load_comments'] = 0;
+  $handler->display->display_options['row_options']['grouping'] = 0;
+  $handler->display->display_options['row_options']['advanced'] = 0;
+  $handler->display->display_options['row_options']['grouping_fieldset']['group_field'] = 'field_data_field_date|field_date_value';
+  $handler->display->display_options['row_options']['default_fieldset']['view_mode'] = 'teaser';
+  $handler->display->display_options['defaults']['row_options'] = FALSE;
+  $handler->display->display_options['defaults']['footer'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = '';
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = FALSE;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = FALSE;
+  /* Field: Content: Vimeo Video ID */
+  $handler->display->display_options['fields']['field_vimeo_video_id']['id'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['table'] = 'field_data_field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['field'] = 'field_vimeo_video_id';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['label'] = '';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['alter_text'] = TRUE;
+  $handler->display->display_options['fields']['field_vimeo_video_id']['alter']['text'] = '<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="600" height="414" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+  $handler->display->display_options['fields']['field_vimeo_video_id']['element_label_colon'] = FALSE;
+  $handler->display->display_options['defaults']['arguments'] = FALSE;
+  /* Contextual filter: Field: Tags (field_tags) */
+  $handler->display->display_options['arguments']['field_tags_tid']['id'] = 'field_tags_tid';
+  $handler->display->display_options['arguments']['field_tags_tid']['table'] = 'field_data_field_tags';
+  $handler->display->display_options['arguments']['field_tags_tid']['field'] = 'field_tags_tid';
+  $handler->display->display_options['arguments']['field_tags_tid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['field_tags_tid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['field_tags_tid']['summary']['number_of_records'] = '0';
+  $handler->display->display_options['arguments']['field_tags_tid']['summary']['format'] = 'default_summary';
+  $handler->display->display_options['arguments']['field_tags_tid']['summary_options']['items_per_page'] = '25';
+  $handler->display->display_options['arguments']['field_tags_tid']['specify_validation'] = TRUE;
+  $handler->display->display_options['argument_input'] = array(
+    'field_tags_tid' => array(
+      'type' => 'user',
+      'context' => 'entity:search_api_autocomplete_search.enabled',
+      'context_optional' => 0,
+      'panel' => '0',
+      'fixed' => '',
+      'label' => 'Field: Tags',
+    ),
+  );
   $translatables['videos'] = array(
     t('Master'),
     t('Siste videoer'),
@@ -3163,12 +3318,17 @@ function front_views_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Vimeo Video ID'),
+    t('<a href="/drupal/videoer">Se alle videoer</a>'),
     t('<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="500" height="334" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'),
+    t('Vimeo Video ID'),
+    t('<iframe src="http://player.vimeo.com/video/43450705" _mce_src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="620" height="414" frameborder="0" webkitallowfullscreen="" mozallowfullscreen="" allowfullscreen=""></iframe>'),
     t('jCarousel'),
     t('View panes'),
     t('HTML list 4 latest'),
     t('All Videos'),
+    t('<iframe src="http://player.vimeo.com/video/[field_vimeo_video_id]" width="600" height="414" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'),
+    t('All Videos with tag'),
+    t('All'),
   );
   $export['videos'] = $view;
 

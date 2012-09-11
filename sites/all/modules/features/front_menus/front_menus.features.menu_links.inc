@@ -34,7 +34,7 @@ function front_menus_menu_default_menu_links() {
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '0',
+    'has_children' => '1',
     'expanded' => '0',
     'weight' => '-49',
   );
@@ -48,7 +48,7 @@ function front_menus_menu_default_menu_links() {
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '0',
+    'has_children' => '1',
     'expanded' => '0',
     'weight' => '-45',
   );
@@ -122,24 +122,6 @@ function front_menus_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '0',
   );
-  // Exported menu link: user-menu:node/1657
-  $menu_links['user-menu:node/1657'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'node/1657',
-    'router_path' => 'node/%',
-    'link_title' => 'Jobb i Front',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
-  );
   // Exported menu link: user-menu:support
   $menu_links['user-menu:support'] = array(
     'menu_name' => 'user-menu',
@@ -191,7 +173,6 @@ function front_menus_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Blogg');
   t('Drupal');
-  t('Jobb i Front');
   t('Kontakt');
   t('Kurs');
   t('Log out');

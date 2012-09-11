@@ -18,7 +18,6 @@ features[menu_links][] = main-menu:tjenester
 features[menu_links][] = user-menu:blogg
 features[menu_links][] = user-menu:kontakt
 features[menu_links][] = user-menu:kurs
-features[menu_links][] = user-menu:node/1657
 features[menu_links][] = user-menu:support
 features[menu_links][] = user-menu:user
 features[menu_links][] = user-menu:user/logout

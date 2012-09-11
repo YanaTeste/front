@@ -32,5 +32,6 @@ features[views_view][] = services_home
 features[views_view][] = taxonomy_menu
 features[views_view][] = terms_menu
 features[views_view][] = tjenester
+features[views_view][] = tjenester_listing
 features[views_view][] = users_block
 features[views_view][] = videos

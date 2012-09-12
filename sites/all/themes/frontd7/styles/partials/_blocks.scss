@@ -39,22 +39,10 @@
 	}
 	.views-field-field-link {
 		a {
-			color: #fff;
-			font-family: $helveticaFontFamily;
-			font-size: em(18px, 14px);
-			font-weight: bold;
-			text-decoration: none;
-			text-align: center;
-			text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-			display: inline-block;
-			padding: em(14px, 18px) em(33px, 18px) em(16px, 18px);
-			@include background-image(linear-gradient(#DF701F, #E68022 13%, #D14D1A));
-			@include border-radius(6px);
-			border: 1px solid #D14D1A;
-
-			&:hover {
-				@include box-shadow(0 0 2px #D14D1A);
-			}
+			@include btn-cta;
+      font-size: em(18px, 14px);
+      width: auto;
+      padding: em(14px, 18px) em(33px, 18px) em(16px, 18px);
 		}
 	}
 	.views-field-field-image {
@@ -200,7 +188,7 @@
   		}
   	}
   }
-  .views-field-field-bio {
+  .views-field-field-about-placed-on-pages {
   	color: #535353;
   	font-style: oblique;
   	line-height: 1.5em;

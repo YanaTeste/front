@@ -1080,28 +1080,15 @@
       }
     }
     .form-actions {
-      background: #DADBDB;
-      @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+      background: none;
       border: none;
       float: left;
       margin: 0 0 em(-10px, 15px);
-      padding: 3px;
-      border: 1px solid #D6D7D8;
-      @include border-radius(em(26px, 15px));
+      padding: 0;
 
       input {
-        color: #fff;
-        font-family: $helveticaFontFamily;
-        font-size: em(15px, 14px);
-        font-weight: bold;
-        text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-        @include background-image(linear-gradient(#8CB2C8 3%, #619BBA 6%, #2C83AD, #437CA1));
-        width: em(196px, 15px);
-        margin: 0;
-        padding: em(11px, 15px) 0;
-        border: 1px solid #44799D;
-        border-color: #8FAFC4 #437EA2 #44799D;
-        @include border-radius(em(22px, 15px));
+        @include btn-default;
+        width: em(100px, 15px);
       }
     }
   }
@@ -1306,28 +1293,15 @@
       }
     }
     .form-actions {
-      background: #DADBDB;
-      @include box-shadow(inset 0 1px 2px rgba(0,0,0,0.1));
+      background: none;
       border: none;
       float: left;
       margin: 0 0 em(-10px, 15px);
-      padding: 3px;
-      border: 1px solid #D6D7D8;
-      @include border-radius(em(26px, 15px));
+      padding: 0;
 
       input {
-        color: #fff;
-        font-family: $helveticaFontFamily;
-        font-size: em(15px, 14px);
-        font-weight: bold;
-        text-shadow: 0 1px 0 rgba(0,0,0,0.35);
-        @include background-image(linear-gradient(#8CB2C8 3%, #619BBA 6%, #2C83AD, #437CA1));
-        width: em(196px, 15px);
-        margin: 0;
-        padding: em(11px, 15px) 0;
-        border: 1px solid #44799D;
-        border-color: #8FAFC4 #437EA2 #44799D;
-        @include border-radius(em(22px, 15px));
+        @include btn-default;
+        width: em(100px, 15px);
       }
     }
   }

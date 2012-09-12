@@ -179,7 +179,7 @@ function sasson_preprocess_html(&$vars) {
   // Prompt IE users to install Chrome Frame
   if (theme_get_setting('sasson_prompt_cf') != 'Disabled') {
     $vars['prompt_cf'] = "<!--[if lte " . theme_get_setting('sasson_prompt_cf') . " ]>
-      <p class='chromeframe'>Your browser is <em>ancient!</em> <a href='http://browsehappy.com/'>Upgrade to a different browser</a> or <a href='http://www.google.com/chromeframe/?redirect=true'>install Google Chrome Frame</a> to experience this site.</p>
+      <p class='chromeframe'>Nettleseren din er fra <em>oldtiden!</em> <a href='http://browsehappy.com/'>Oppgrader til en annen nettleser</a> eller <a href='http://www.google.com/chromeframe/?redirect=true'>installer Google Chrome Frame</a> for &aring; oppleve denne nettsiden best mulig.</p>
     <![endif]-->";
   } else {
     $vars['prompt_cf'] = '';

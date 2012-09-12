@@ -15,6 +15,16 @@
   }
 }
 
+.page-strategi {
+  .page-wrapper {
+    background: #fff;
+  }
+
+  #main {
+
+  }
+}
+
 /*         Front Page
 ------------------------------------------------*/
 .page-home {
@@ -302,8 +312,7 @@
   }
 }
 
-#panel-solutions,
-#panel-services {
+#panel-solutions {
 
   .pane-custom {
     text-align: center;
@@ -1758,9 +1767,22 @@
     }
   }
 
-  .view-filters {
+  .view-tjenester-listing {
     @include tabs-main;
-    margin-top: em(-47px, 20px);
+
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    li {
+      display: inline-block;
+      margin: 0 em(15px, 14px);
+    }
+
+    a.active {
+      color: $yellowProfileColorDark;
+    }
 
     form {
       margin-bottom: 0;
@@ -1797,12 +1819,46 @@
     @include element-invisible;
   }
 
-  .pane-kompetanse-panel-pane-1 {
+  .pane-custom {
+    text-align: center;
+    padding: 0 0 em(40px, 14px);
+
+    .pane-title {
+      // font-family: $baseFontFamily;
+      // font-size: em(50px, 14px);
+      // font-weight: normal;
+      // line-height: 1;
+      // letter-spacing: em(-2px, 50px);
+      // margin-bottom: em(12px, 50px);
+      @include title-centered;
+    }
+    .pane-content {
+      @include grid(8.5);
+      float: none;
+      display: block;
+      margin: 0 auto;
+
+      p {
+        font-size: em(20px, 14px);
+        font-style: italic;
+        line-height: em(29px, 20px);
+      }
+      a {
+        color: #D14C19;
+
+        &:hover {
+          color: darken(#D14C19, 10%);
+        }
+      }
+    }
+  }
+
+  .pane-kompetanse-list {
     background: $backgroundLower url('../images/bg_home-services.png') repeat-x center top;
     padding-left: 100px;
     padding-top: 2px;
     padding-bottom: em(30px, 14px);
-    margin-top: em(25px, 14px);
+    margin-top: em(10px, 14px);
 
     .pane-content {
       background: transparent url('../images/bg_home-services-inner.jpg') no-repeat center top;

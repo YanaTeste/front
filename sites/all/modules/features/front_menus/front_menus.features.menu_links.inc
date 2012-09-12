@@ -66,19 +66,23 @@ function front_menus_menu_default_menu_links() {
     'expanded' => '0',
     'weight' => '40',
   );
-  // Exported menu link: main-menu:tjenester
-  $menu_links['main-menu:tjenester'] = array(
+  // Exported menu link: main-menu:taxonomy/term/48
+  $menu_links['main-menu:taxonomy/term/48'] = array(
     'menu_name' => 'main-menu',
-    'link_path' => 'tjenester',
-    'router_path' => 'tjenester',
-    'link_title' => 'Tjenester panel',
-    'options' => array(),
-    'module' => 'system',
+    'link_path' => 'taxonomy/term/48',
+    'router_path' => 'taxonomy/term/%',
+    'link_title' => 'Tjenester',
+    'options' => array(
+      'attributes' => array(
+        'title' => '',
+      ),
+    ),
+    'module' => 'menu',
     'hidden' => '0',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-30',
+    'weight' => '0',
   );
   // Exported menu link: user-menu:blogg
   $menu_links['user-menu:blogg'] = array(
@@ -121,24 +125,6 @@ function front_menus_menu_default_menu_links() {
     'has_children' => '0',
     'expanded' => '0',
     'weight' => '0',
-  );
-  // Exported menu link: user-menu:node/1657
-  $menu_links['user-menu:node/1657'] = array(
-    'menu_name' => 'user-menu',
-    'link_path' => 'node/1657',
-    'router_path' => 'node/%',
-    'link_title' => 'Jobb i Front',
-    'options' => array(
-      'attributes' => array(
-        'title' => '',
-      ),
-    ),
-    'module' => 'menu',
-    'hidden' => '0',
-    'external' => '0',
-    'has_children' => '0',
-    'expanded' => '0',
-    'weight' => '-50',
   );
   // Exported menu link: user-menu:support
   $menu_links['user-menu:support'] = array(
@@ -188,7 +174,6 @@ function front_menus_menu_default_menu_links() {
   // Included for use with string extractors like potx.
   t('Blogg');
   t('Drupal');
-  t('Jobb i Front');
   t('Kontakt');
   t('Kurs');
   t('Log out');
@@ -196,7 +181,7 @@ function front_menus_menu_default_menu_links() {
   t('Om oss');
   t('Prosjekter');
   t('Support');
-  t('Tjenester panel');
+  t('Tjenester');
   t('User account');
 
 

@@ -1651,9 +1651,9 @@ function front_panels_default_page_manager_handlers() {
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
-    'body_classes_to_add' => '',
+    'body_classes_to_add' => 'page-tjenester',
     'css_id' => 'panel-services',
-    'css' => '',
+    'css' => 'tjenester',
     'contexts' => array(),
     'relationships' => array(),
     'access' => array(

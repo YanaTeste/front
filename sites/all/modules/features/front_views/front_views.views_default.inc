@@ -3107,20 +3107,13 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_name']['element_wrapper_type'] = 'h3';
   $handler->display->display_options['fields']['field_name']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_name']['empty_zero'] = TRUE;
-  /* Field: Profile: Bio */
-  $handler->display->display_options['fields']['field_bio']['id'] = 'field_bio';
-  $handler->display->display_options['fields']['field_bio']['table'] = 'field_data_field_bio';
-  $handler->display->display_options['fields']['field_bio']['field'] = 'field_bio';
-  $handler->display->display_options['fields']['field_bio']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_bio']['label'] = '';
-  $handler->display->display_options['fields']['field_bio']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_bio']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_bio']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_bio']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_bio']['type'] = 'text_summary_or_trimmed';
-  $handler->display->display_options['fields']['field_bio']['settings'] = array(
-    'trim_length' => '120',
-  );
+  /* Field: User: About_placed_on_pages */
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['id'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['table'] = 'field_data_field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['field'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['label'] = '';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_wrapper_type'] = 'div';
   /* Contextual filter: Profile: Name (field_name) */
   $handler->display->display_options['arguments']['field_name_value']['id'] = 'field_name_value';
   $handler->display->display_options['arguments']['field_name_value']['table'] = 'field_data_field_name';
@@ -3215,19 +3208,13 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['field_name']['element_wrapper_type'] = 'h3';
   $handler->display->display_options['fields']['field_name']['hide_empty'] = TRUE;
   $handler->display->display_options['fields']['field_name']['empty_zero'] = TRUE;
-  /* Field: Profile: Bio */
-  $handler->display->display_options['fields']['field_bio']['id'] = 'field_bio';
-  $handler->display->display_options['fields']['field_bio']['table'] = 'field_data_field_bio';
-  $handler->display->display_options['fields']['field_bio']['field'] = 'field_bio';
-  $handler->display->display_options['fields']['field_bio']['relationship'] = 'profile';
-  $handler->display->display_options['fields']['field_bio']['label'] = '';
-  $handler->display->display_options['fields']['field_bio']['element_label_colon'] = FALSE;
-  $handler->display->display_options['fields']['field_bio']['element_wrapper_type'] = 'div';
-  $handler->display->display_options['fields']['field_bio']['hide_empty'] = TRUE;
-  $handler->display->display_options['fields']['field_bio']['empty_zero'] = TRUE;
-  $handler->display->display_options['fields']['field_bio']['settings'] = array(
-    'trim_length' => '300',
-  );
+  /* Field: User: About_placed_on_pages */
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['id'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['table'] = 'field_data_field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['field'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['label'] = '';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_wrapper_type'] = 'div';
   $handler->display->display_options['defaults']['arguments'] = FALSE;
   /* Contextual filter: Profile: User uid */
   $handler->display->display_options['arguments']['user']['id'] = 'user';

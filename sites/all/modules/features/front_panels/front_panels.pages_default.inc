@@ -1699,7 +1699,7 @@ function front_panels_default_page_manager_handlers() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Bloggtema: %term:name';
+  $display->title = 'Tjeneste: %term:name';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -1768,7 +1768,7 @@ function front_panels_default_page_manager_handlers() {
     $pane->locks = array();
     $display->content['new-41'] = $pane;
     $display->panels['middle'][2] = 'new-41';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $export['term_view_panel_context_3'] = $handler;
@@ -4001,7 +4001,9 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     'body_classes_to_remove' => '',
     'body_classes_to_add' => 'page-losninger',
     'css_id' => 'panel-solutions',
-    'css' => '',
+    'css' => 'h1#page-title {
+  display: none;
+}',
     'contexts' => array(),
     'relationships' => array(),
   );
@@ -4015,7 +4017,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Løsninger';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -4132,7 +4134,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->locks = array();
     $display->content['new-64'] = $pane;
     $display->panels['middle'][4] = 'new-64';
-  $display->hide_title = PANELS_TITLE_NONE;
+  $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
@@ -5317,7 +5319,7 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     'settings' => NULL,
   );
   $page->menu = array(
-    'type' => 'normal',
+    'type' => 'none',
     'title' => 'Tjenester panel',
     'name' => 'main-menu',
     'weight' => '-30',

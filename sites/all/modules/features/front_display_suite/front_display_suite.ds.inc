@@ -88,19 +88,9 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'video_620px' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
-    ),
-    'title' => array(
-      'weight' => '0',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h2',
-        'class' => '',
-      ),
     ),
   );
   $export['node|video|full'] = $ds_fieldsetting;
@@ -272,20 +262,22 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
-        1 => 'field_date',
-        2 => 'body',
-        3 => 'video_620px',
-        4 => 'field_tags',
-        5 => 'fb_social_Comments',
+        0 => 'field_date',
+        1 => 'body',
+        2 => 'video_620px',
+        3 => 'field_tags',
+        4 => 'field_dato_iso_',
+        5 => 'field_lengde_iso',
+        6 => 'fb_social_Comments',
       ),
     ),
     'fields' => array(
-      'title' => 'ds_content',
       'field_date' => 'ds_content',
       'body' => 'ds_content',
       'video_620px' => 'ds_content',
       'field_tags' => 'ds_content',
+      'field_dato_iso_' => 'ds_content',
+      'field_lengde_iso' => 'ds_content',
       'fb_social_Comments' => 'ds_content',
     ),
     'classes' => array(),

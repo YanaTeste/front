@@ -517,6 +517,9 @@ function front_content_strongarm() {
         'path' => array(
           'weight' => '30',
         ),
+        'metatags' => array(
+          'weight' => '10',
+        ),
       ),
       'display' => array(),
     ),
@@ -650,10 +653,13 @@ function front_content_strongarm() {
     'extra_fields' => array(
       'form' => array(
         'title' => array(
-          'weight' => '0',
+          'weight' => '1',
         ),
         'path' => array(
           'weight' => '8',
+        ),
+        'metatags' => array(
+          'weight' => '9',
         ),
       ),
       'display' => array(
@@ -671,7 +677,7 @@ function front_content_strongarm() {
             'visible' => FALSE,
           ),
           'full' => array(
-            'weight' => '5',
+            'weight' => '6',
             'visible' => TRUE,
           ),
           'teaser' => array(

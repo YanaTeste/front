@@ -3007,7 +3007,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
   $page->admin_title = 'Jobb i Front';
   $page->admin_description = '';
   $page->path = 'om-oss/jobb-i-front';
-  $page->access = array();
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
   $page->menu = array(
     'type' => 'normal',
     'title' => 'Jobb i Front',

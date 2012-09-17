@@ -17,14 +17,38 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->bundle = 'kurs';
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
+    'date_with_icon' => array(
+      'weight' => '2',
+      'label' => 'inline',
+      'format' => 'default',
+      'ft' => array(
+        'func' => 'theme_ds_field_expert',
+        'lb' => 'Dato',
+        'lb-el' => 'h4',
+      ),
+    ),
     'title' => array(
-      'weight' => '0',
+      'weight' => '1',
       'label' => 'hidden',
       'format' => 'default',
       'formatter_settings' => array(
         'link' => '1',
         'wrapper' => 'h3',
         'class' => '',
+      ),
+    ),
+    'field_location' => array(
+      'ft' => array(
+        'func' => 'theme_ds_field_expert',
+        'lb' => 'Sted',
+        'lb-el' => 'h4',
+      ),
+    ),
+    'field_instructor' => array(
+      'ft' => array(
+        'func' => 'theme_ds_field_expert',
+        'lb' => 'Kursholder',
+        'lb-el' => 'h4',
       ),
     ),
   );
@@ -182,17 +206,23 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'title',
-        1 => 'body',
-        2 => 'field_date',
+        0 => 'meta_description',
+        1 => 'title',
+        2 => 'date_with_icon',
         3 => 'field_location',
+        4 => 'field_instructor',
+        5 => 'body',
+        6 => 'field_date',
       ),
     ),
     'fields' => array(
+      'meta_description' => 'ds_content',
       'title' => 'ds_content',
+      'date_with_icon' => 'ds_content',
+      'field_location' => 'ds_content',
+      'field_instructor' => 'ds_content',
       'body' => 'ds_content',
       'field_date' => 'ds_content',
-      'field_location' => 'ds_content',
     ),
     'classes' => array(),
   );
@@ -262,16 +292,18 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'field_date',
-        1 => 'body',
-        2 => 'video_620px',
-        3 => 'field_tags',
-        4 => 'field_dato_iso_',
-        5 => 'field_lengde_iso',
-        6 => 'fb_social_Comments',
+        0 => 'meta_description',
+        1 => 'field_date',
+        2 => 'body',
+        3 => 'video_620px',
+        4 => 'field_tags',
+        5 => 'field_dato_iso_',
+        6 => 'field_lengde_iso',
+        7 => 'fb_social_Comments',
       ),
     ),
     'fields' => array(
+      'meta_description' => 'ds_content',
       'field_date' => 'ds_content',
       'body' => 'ds_content',
       'video_620px' => 'ds_content',

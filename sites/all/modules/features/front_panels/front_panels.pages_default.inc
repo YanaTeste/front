@@ -2142,7 +2142,7 @@ function front_panels_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => 'Om Oss tekst',
       'title' => '',
-      'body' => 'FrontKom er et kommunikasjonsbyrå for web og digitale medier. Vi har levert fullstendige løsninger fra A til Å siden år 2000, og har fokus på gode resultater for kundene våre. ',
+      'body' => 'Frontkom er et kommunikasjonsbyrå for web og digitale medier. Vi har levert fullstendige løsninger fra A til Å siden år 2000, og har fokus på gode resultater for kundene våre. ',
       'format' => 'filtered_html',
       'substitute' => TRUE,
     );
@@ -2298,7 +2298,7 @@ function front_panels_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => '',
       'title' => 'Madeira',
-      'body' => 'FrontKom har et satelittkontor i Funchal på Madeira. I tillegg til suverene medarbeidere har vi også et flott kontorlokale i solrike omgivelser.',
+      'body' => 'Frontkom har et satelittkontor i Funchal på Madeira. I tillegg til suverene medarbeidere har vi også et flott kontorlokale i solrike omgivelser.',
       'format' => 'filtered_html',
       'substitute' => TRUE,
     );
@@ -2999,16 +2999,16 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
   $page->api_version = 1;
   $page->name = 'jobb_i_front';
   $page->task = 'page';
-  $page->admin_title = 'Jobb i Front';
+  $page->admin_title = 'Jobb i Frontkom';
   $page->admin_description = '';
-  $page->path = 'om-oss/jobb-i-front';
+  $page->path = 'om-oss/jobb-i-frontkom';
   $page->access = array(
     'type' => 'none',
     'settings' => NULL,
   );
   $page->menu = array(
     'type' => 'normal',
-    'title' => 'Jobb i Front',
+    'title' => 'Jobb i Frontkom',
     'name' => 'user-menu',
     'weight' => '0',
     'parent' => array(
@@ -3146,8 +3146,8 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
-      'title' => 'Jobb i FrontKom',
-      'body' => 'FrontKom har et stadig voksende nettverk av utviklere over hele verden. Vi kommuniserer gjennom daglig kontakt, Skype, konferansemøter og \'fysiske\' møter (det går faktisk også an). Vi er alltid interessert i å bli kjent med virkelig gode webutviklere og designere. Du kan være en strålende prosjektleder, fantastisk programmerer (php, rails, javascript) eller funky designer. Vi vil uansett høre fra deg! Vårt hovedkontor er i Norge, og vi har også et satelittkontor på Madeira, Portugal. Kunnskap kjenner dog ikke grenser så det trenger ikke nødvendigvis bety noe. Kanskje vi har noe arbeid som passer perfekt for deg?',
+      'title' => 'Jobb i Frontkom',
+      'body' => 'Frontkom har et stadig voksende nettverk av utviklere over hele verden. Vi kommuniserer gjennom daglig kontakt, Skype, konferansemøter og \'fysiske\' møter (det går faktisk også an). Vi er alltid interessert i å bli kjent med virkelig gode webutviklere og designere. Du kan være en strålende prosjektleder, fantastisk programmerer (php, rails, javascript) eller funky designer. Vi vil uansett høre fra deg! Vårt hovedkontor er i Norge, og vi har også et satelittkontor på Madeira, Portugal. Kunnskap kjenner dog ikke grenser så det trenger ikke nødvendigvis bety noe. Kanskje vi har noe arbeid som passer perfekt for deg?',
       'format' => 'filtered_html',
       'substitute' => TRUE,
     );
@@ -3200,8 +3200,8 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
-      'title' => ' FrontKom is hiring! ',
-      'body' => 'FrontKom has an ever-growing community of developers all over the world. We communicate through daily contact, Skype, conference meetings and \'fysical\' meetings (yes, those still exist). We are always interested in getting to know really good webdevelopers and designers. Maybe you are an amazing project manager, awesome programmer (php, rails, javascript) or funky designer. We\'d like to hear from you either way!
+      'title' => ' Frontkom is hiring! ',
+      'body' => 'Frontkom has an ever-growing community of developers all over the world. We communicate through daily contact, Skype, conference meetings and \'fysical\' meetings (yes, those still exist). We are always interested in getting to know really good webdevelopers and designers. Maybe you are an amazing project manager, awesome programmer (php, rails, javascript) or funky designer. We\'d like to hear from you either way!
 
 Our main office is in Norway and our satellite office is in Madeira, Portugal, but knowledge doesn\'t follow borders. Maybe we have some work that is well suited for you?',
       'format' => 'filtered_html',
@@ -3256,8 +3256,8 @@ Our main office is in Norway and our satellite office is in Madeira, Portugal, b
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
-      'title' => 'A FrontKom está a contratar. ',
-      'body' => 'A FrontKom tem uma equipa de Developers em expansão, em todo o mundo.
+      'title' => 'A Frontkom está a contratar. ',
+      'body' => 'A Frontkom tem uma equipa de Developers em expansão, em todo o mundo.
 
 Nós comunicamos diáriamente através do Skype, conferências e reuniões "fisicas" (sim, aquelas que ainda existem).
 
@@ -3620,7 +3620,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->access = array();
     $pane->configuration = array(
       'override_title' => 1,
-      'override_title_text' => 'Kontakt FrontKom',
+      'override_title_text' => 'Kontakt Frontkom',
     );
     $pane->cache = array();
     $pane->style = array(
@@ -3838,7 +3838,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
       'title' => '',
       'body' => 'I systemer med avansert arbeidsflyt kan det være frustrende å jobbe hvis man ikke har en veldig god kjennskap til hvordan systemet fungerer. 
 
-Vi hjelper deg med opplæring og kurs av våre systemene vi lager, både ved hjelp av videoer, opplæringsmateriell og personlig opplæring.
+Vi hjelper deg med opplæring og kurs i systemene vi lager, både ved hjelp av videoer, opplæringsmateriell og personlig opplæring.
 
 Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer å bruke Drupal.',
       'format' => 'filtered_html',
@@ -4377,8 +4377,14 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
       'right' => NULL,
     ),
   );
-  $display->cache = array();
-  $display->title = 'Medarbeidere i FrontKom';
+  $display->cache = array(
+    'method' => 'simple',
+    'settings' => array(
+      'lifetime' => '3600',
+      'granularity' => 'none',
+    ),
+  );
+  $display->title = 'Medarbeidere i Frontkom';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

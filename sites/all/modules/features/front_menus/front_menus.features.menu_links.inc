@@ -48,7 +48,7 @@ function front_menus_menu_default_menu_links() {
     'module' => 'system',
     'hidden' => '0',
     'external' => '0',
-    'has_children' => '0',
+    'has_children' => '1',
     'expanded' => '0',
     'weight' => '50',
   );
@@ -96,7 +96,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '5',
+    'weight' => '-45',
   );
   // Exported menu link: user-menu:kontakt
   $menu_links['user-menu:kontakt'] = array(
@@ -110,7 +110,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '7',
+    'weight' => '-44',
   );
   // Exported menu link: user-menu:kurs
   $menu_links['user-menu:kurs'] = array(
@@ -124,7 +124,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '0',
+    'weight' => '-46',
   );
   // Exported menu link: user-menu:support
   $menu_links['user-menu:support'] = array(
@@ -138,7 +138,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '7',
+    'weight' => '-43',
   );
   // Exported menu link: user-menu:user
   $menu_links['user-menu:user'] = array(
@@ -150,11 +150,11 @@ function front_menus_menu_default_menu_links() {
       'alter' => TRUE,
     ),
     'module' => 'system',
-    'hidden' => '0',
+    'hidden' => '1',
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '-10',
+    'weight' => '-47',
   );
   // Exported menu link: user-menu:user/logout
   $menu_links['user-menu:user/logout'] = array(
@@ -168,7 +168,7 @@ function front_menus_menu_default_menu_links() {
     'external' => '0',
     'has_children' => '0',
     'expanded' => '0',
-    'weight' => '10',
+    'weight' => '-42',
   );
   // Translatables
   // Included for use with string extractors like potx.

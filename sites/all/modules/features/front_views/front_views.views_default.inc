@@ -116,7 +116,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['header']['area']['table'] = 'views';
   $handler->display->display_options['header']['area']['field'] = 'area';
   $handler->display->display_options['header']['area']['label'] = 'Introduction text';
-  $handler->display->display_options['header']['area']['content'] = 'Artikler om webteknologier, Drupal, FrontKom og andre ting som er verd å skrive om.';
+  $handler->display->display_options['header']['area']['content'] = 'Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.';
   $handler->display->display_options['header']['area']['format'] = 'full_html';
   /* Relationship: Content: Author */
   $handler->display->display_options['relationships']['uid']['id'] = 'uid';
@@ -267,7 +267,7 @@ function front_views_views_default_views() {
     t('neste ›'),
     t('siste »'),
     t('Introduction text'),
-    t('Artikler om webteknologier, Drupal, FrontKom og andre ting som er verd å skrive om.'),
+    t('Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.'),
     t('author'),
     t('[name] | '),
     t('[name][created]'),

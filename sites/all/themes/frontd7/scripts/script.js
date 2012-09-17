@@ -26,6 +26,8 @@
     Drupal.behaviors.frontd7 = {
         attach: function(context) {
             $(window).load(function() {
+                $('input[placeholder], textarea[placeholder]').placeholder();
+
                 // Set equalHeights on How We Work
                 if ($('#panel-slikjobbervi', context).length) {
                     var $hww_panel = $('#panel-slikjobbervi', context);

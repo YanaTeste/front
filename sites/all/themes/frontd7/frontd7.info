@@ -61,6 +61,7 @@ scripts[] = scripts/jquery.equalheights.js
 scripts[] = scripts/jquery.customselect.js
 scripts[] = scripts/script.js
 scripts[] = scripts/jquery.placeholder.js
+scripts[] = scripts/ios-orientationchange.js
 
 
 ; Regions -----------------------------------------------------------------

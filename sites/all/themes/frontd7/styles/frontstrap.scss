@@ -40,26 +40,26 @@
 
 // Grid system and page structure
 @import 'partials/bootstrap/scaffolding';
-@import 'partials/bootstrap/grid';
-@import 'partials/bootstrap/layouts';
+// @import 'partials/bootstrap/grid';
+// @import 'partials/bootstrap/layouts';
 
 // Base CSS
 @import 'partials/bootstrap/type';
-@import 'partials/bootstrap/code';
+// @import 'partials/bootstrap/code';
 @import 'partials/bootstrap/forms';
 @import 'partials/bootstrap/tables';
 
 // Components: Common
-@import 'partials/font-awesome';
-@import 'partials/bootstrap/sprites';
-@import 'partials/bootstrap/dropdowns';
-@import 'partials/bootstrap/wells';
-@import 'partials/bootstrap/component-animations';
-@import 'partials/bootstrap/close';
+// @import 'partials/font-awesome';
+// @import 'partials/bootstrap/sprites';
+// @import 'partials/bootstrap/dropdowns';
+// @import 'partials/bootstrap/wells';
+// @import 'partials/bootstrap/component-animations';
+// @import 'partials/bootstrap/close';
 
 // Components: Buttons & Alerts
 @import 'partials/bootstrap/buttons';
-@import 'partials/bootstrap/button-groups';
+// @import 'partials/bootstrap/button-groups';
 @import 'partials/bootstrap/alerts'; // Note: alerts share common CSS with buttons and thus have styles in buttons.scss
 
 // Components: Nav
@@ -70,18 +70,18 @@
 @import 'partials/bootstrap/pager';
 
 // Components: Popovers
-@import 'partials/bootstrap/modals';
-@import 'partials/bootstrap/tooltip';
-@import 'partials/bootstrap/popovers';
+// @import 'partials/bootstrap/modals';
+// @import 'partials/bootstrap/tooltip';
+// @import 'partials/bootstrap/popovers';
 
 // Components: Misc
-@import 'partials/bootstrap/thumbnails';
-@import 'partials/bootstrap/labels';
-@import 'partials/bootstrap/badges';
-@import 'partials/bootstrap/progress-bars';
-@import 'partials/bootstrap/accordion';
-@import 'partials/bootstrap/carousel';
-@import 'partials/bootstrap/hero-unit';
+// @import 'partials/bootstrap/thumbnails';
+// @import 'partials/bootstrap/labels';
+// @import 'partials/bootstrap/badges';
+// @import 'partials/bootstrap/progress-bars';
+// @import 'partials/bootstrap/accordion';
+// @import 'partials/bootstrap/carousel';
+// @import 'partials/bootstrap/hero-unit';
 
 // Utility classes
 @import 'partials/bootstrap/utilities'; // Has to be last to override when necessary

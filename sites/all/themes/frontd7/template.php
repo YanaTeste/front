@@ -1,11 +1,56 @@
 <?php
 
 /**
+ * Implements hook_html_head_alter().
+ */
+function frontd7_html_head_alter(&$head_elements) {
+  $head_elements['handheldfriendly'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'HandheldFriendly',
+      'content' => 'True',
+    ),
+    '#weight' => 1,
+  );
+
+  $head_elements['mobileoptimized'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'MobileOptimized',
+      'content' => '320',
+    ),
+    '#weight' => 2,
+  );
+
+  $head_elements['viewport'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'name' => 'viewport',
+      'content' => 'width=device-width, initial-scale=1.0, minimum-scale=1.0',
+    ),
+    '#weight' => 3,
+  );
+
+  $head_elements['cleartype'] = array(
+    '#type' => 'html_tag',
+    '#tag' => 'meta',
+    '#attributes' => array(
+      'http-equiv' => 'cleartype',
+      'content' => 'no',
+    ),
+    '#weight' => 4,
+  );
+}
+
+/**
  * Implements hook_css_alter().
  */
 function frontd7_css_alter(&$css) {
   // Remove SASSON files
-  // TODO: make this configurable, choosing between TBS reset/grid and SASSON
+  // TODO: make this configurable, choosing between TBS reset/grid and SASSON.
   unset($css[drupal_get_path('theme', 'sasson') . '/styles/boilerplate.css']);
 }
 
@@ -25,7 +70,7 @@ function frontd7_preprocess_page(&$variables) {
     $search_box = module_invoke('search_api_page', 'block_view', 'front_main_search');
     $variables['search_box'] = render($search_box);
   }
-  else if (module_exists('search')) {
+  elseif (module_exists('search')) {
     $search_box = drupal_render(drupal_get_form('search_form'));
     $variables['search_box'] = $search_box;
   }
@@ -33,16 +78,16 @@ function frontd7_preprocess_page(&$variables) {
     unset($variables['tabs']);
   }
   // Adds a square_medium icon next to the title if it exists;
-  if($variables['node']->field_image['und'][0]['uri']){
+  if ($variables['node']->field_image['und'][0]['uri']) {
     $fid = $variables['node']->field_image['und'][0]['fid'];
     $file = file_load($fid);
     $image_uri = $file->uri;
-    $variables['pageicon'] = theme_image_style ( array('style_name' => 'square_small', 'path' => $image_uri));
+    $variables['pageicon'] = theme_image_style(array('style_name' => 'square_small', 'path' => $image_uri));
   }
 }
 
 /**
- * Return a themed breadcrumb trail
+ * Return a themed breadcrumb trail.
  */
 function frontd7_breadcrumb($vars) {
   $breadcrumb = isset($vars['breadcrumb']) ? $vars['breadcrumb'] : array();
@@ -54,10 +99,10 @@ function frontd7_breadcrumb($vars) {
     $condition = !empty($breadcrumb);
   }
 
-  if(theme_get_setting('sasson_breadcrumb_showtitle')) {
+  if (theme_get_setting('sasson_breadcrumb_showtitle')) {
     $title = drupal_get_title();
-    if(!empty($title)) {
-      $condition = true;
+    if (!empty($title)) {
+      $condition = TRUE;
       $breadcrumb[] = $title;
     }
   }
@@ -200,17 +245,17 @@ function frontd7_form_search_form_alter(&$form, &$form_state, $form_id) {
 function frontd7_preprocess_panels_pane(&$vars) {
   if ($vars['pane']->type == 'custom' && $vars['pane']->subtype != 'custom') {
     // Use custom content machine name on classes.
-    $vars['classes_array'][] = 'pane-custom-'. ctools_cleanstring($vars['pane']->subtype);
+    $vars['classes_array'][] = 'pane-custom-' . ctools_cleanstring($vars['pane']->subtype);
   }
   elseif (preg_match('/webform/i', $vars['pane']->subtype)) {
     // Generic webform class.
-    $clean_subtype = str_replace(range(0,9), '', $vars['pane']->subtype);
+    $clean_subtype = str_replace(range(0, 9), '', $vars['pane']->subtype);
     $vars['classes_array'][] = ctools_cleanstring($clean_subtype);
   }
   elseif (preg_match('/menu_block/i', $vars['pane']->subtype)) {
     // Generic menu block class.
-    $clean_subtype = str_replace(range(0,9), '', $vars['pane']->subtype);
-    $vars['classes_array'][] = 'pane-'. ctools_cleanstring($clean_subtype);
+    $clean_subtype = str_replace(range(0, 9), '', $vars['pane']->subtype);
+    $vars['classes_array'][] = 'pane-' . ctools_cleanstring($clean_subtype);
   }
 
   if (isset($vars['display']->css_id)) {

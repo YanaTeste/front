@@ -556,6 +556,12 @@ function front_content_strongarm() {
       'preview' => array(
         'custom_settings' => FALSE,
       ),
+      'image_with_copyright' => array(
+        'custom_settings' => FALSE,
+      ),
+      'large_preview' => array(
+        'custom_settings' => FALSE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(

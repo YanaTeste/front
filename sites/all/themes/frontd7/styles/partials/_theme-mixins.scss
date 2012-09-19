@@ -56,6 +56,11 @@
   }
 }
 
+@mixin responsive-image {
+  max-width: 100%;
+  height: auto;
+}
+
 /*
  * Fonts
  */
@@ -71,11 +76,11 @@
   padding: em(14px, 14px) 0 em(14px, 14px);
 }
 
-@mixin title-centered-padding{
+@mixin title-centered-padding {
   padding: em(72px, 14px) 0 em(40px, 14px);
 
 }
-@mixin title-left{
+@mixin title-left {
   font-size: em(50px, 14px);
   line-height: 1em;
   letter-spacing: em(-2.5px, 50px);
@@ -83,7 +88,7 @@
   padding-bottom: 0;
   border: none;
 }
-@mixin title-post{
+@mixin title-post {
   font-size: em(22px, 14px);
   line-height: em(24px, 22px);
   margin: em(3px, 22px) 0;
@@ -120,7 +125,7 @@
     }
   }
 }
-@mixin tabs-main{
+@mixin tabs-main {
   text-align: center;
   font-family: $helveticaFontFamily;
   font-size: em(20px, 14px);
@@ -188,7 +193,7 @@
   }
 }
 
-// "btn-rounded" is from the original design, but will not be used on the 
+// "btn-rounded" is from the original design, but will not be used on the
 // site any more.
 @mixin btn-rounded {
   color: #fff;

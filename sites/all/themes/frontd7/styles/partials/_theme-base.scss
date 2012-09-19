@@ -215,8 +215,8 @@ a.btn-cta {
 
 /* Sidebars */
 
-.pageicon{
-  float:left;
+.pageicon {
+  float: left;
   margin-right: 30px;
 }
 
@@ -261,7 +261,7 @@ a.btn-cta {
       margin-bottom: em(35px, 14px);
     }
   }
-  
+
   .node-type-blog & {
     .panel-col-last {
       margin-top: em(-72px, 14px);
@@ -272,6 +272,6 @@ a.btn-cta {
 // @import 'pages';
 // @import 'footer';
 .field-name-field-dato-iso-,
-.field-name-field-lengde-iso{
+.field-name-field-lengde-iso {
   display: none;
 }

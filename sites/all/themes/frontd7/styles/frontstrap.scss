@@ -99,6 +99,9 @@
 @import "partials/blocks";
 @import "partials/pages";
 
+// Set 960 grid to use percentage values.
+$ninesixty-gutter-width: 2%;
+$ninesixty-grid-width: 96%;
 
 // Layout for medium viewports.
 // Fluid, precentage based layout, two sidebars floating (@see theme-narrow.scss).

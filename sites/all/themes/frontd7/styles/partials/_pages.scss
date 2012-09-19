@@ -121,7 +121,7 @@
   }
   .pane-projects-block-latest-projects {
     background: $bodyBackgroundLowest;
-    padding-top: em(45px, 14px);
+    padding-top: em(40px, 14px);
     padding-bottom: em(30px, 14px);
 
     .pane-title {
@@ -139,6 +139,7 @@
       @include grid(4);
     }
     .views-field-field-image {
+      padding-top: 5px;
       img {
         background-color: #fff;
         display: block;
@@ -1959,7 +1960,7 @@
     ul {
       list-style: none;
       margin: 0;
-      
+
       .field-name-title {
         @include title-post;
       }

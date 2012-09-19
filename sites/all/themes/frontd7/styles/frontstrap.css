@@ -2798,7 +2798,7 @@ ul.menu a.active {
   box-shadow: 0 2px 0 black;
 }
 
-/* Banners
+/*         Banners
 -----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
   padding-top: 3.143em;
@@ -2910,8 +2910,8 @@ ul.menu a.active {
   background-position: top left;
 }
 
-/*
-------- jcarousels  */
+/*         jCarousels
+-----------------------------------*/
 .jcarousel-container-horizontal {
   margin: auto;
   padding: 0;
@@ -3121,7 +3121,7 @@ ul.menu a.active {
   display: inline-block;
 }
 
-/* Kurs block
+/*         Kurs block
 -----------------------------------*/
 .view-kurs-overview article {
   padding-bottom: 0.929em;
@@ -3146,7 +3146,7 @@ ul.menu a.active {
   line-height: 1.2em;
 }
 
-/* Siste prosjekter
+/*         Siste prosjekter
 -----------------------------------*/
 .pane-projects-sidebar-latest article {
   padding-bottom: 0.929em;
@@ -3317,7 +3317,7 @@ ul.menu a.active {
 }
 .page-home .pane-projects-block-latest-projects {
   background: #dee2e5 url("../images/bg_latest-projects.png") repeat-x center top;
-  padding-top: 3.214em;
+  padding-top: 2.857em;
   padding-bottom: 2.143em;
 }
 .page-home .pane-projects-block-latest-projects .pane-title {
@@ -3344,6 +3344,9 @@ ul.menu a.active {
   margin-left: 10px;
   margin-right: 10px;
   width: 300px;
+}
+.page-home .pane-projects-block-latest-projects .views-field-field-image {
+  padding-top: 5px;
 }
 .page-home .pane-projects-block-latest-projects .views-field-field-image img {
   background-color: #fff;
@@ -5405,6 +5408,7 @@ ul.menu a.active {
 }
 
 @media (max-width: 960px) {
+  /* @media (max-width: 960px) */
   /* Layout */
   #main, #header, #footer {
     width: 97.9167%;
@@ -5416,8 +5420,122 @@ ul.menu a.active {
   /* Typography */
   /* Links */
   /* Header */
-  #main-menu .main-menu a {
-    padding: 1em 0.714em 1.143em;
+  #secondary-menu {
+    font-size: 0.929em;
+  }
+
+  /* Footer */
+  #postscript {
+    padding-top: 1.786em;
+  }
+
+  .block-panels-mini {
+    margin-bottom: 2.143em;
+  }
+  .block-panels-mini .content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    display: block;
+    position: relative;
+    float: none;
+  }
+
+  .pane-blog-block-latest-posts article {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+  .pane-blog-block-latest-posts .views-field-field-image {
+    display: none;
+  }
+
+  .pane-front-custom-front-support .pane-content .links .contact a {
+    width: 9.5em;
+  }
+  .pane-front-custom-front-support .pane-content .links .support a {
+    width: 9.5em;
+  }
+
+  .block-twitter-pull .content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    display: block;
+    position: relative;
+    float: none;
+  }
+
+  /* Front Page */
+  .page-home #main .tabs,
+  .page-home #main .panel-pane-inner {
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    display: block;
+    position: relative;
+    float: none;
+  }
+  .page-home .pane-services-block-home .panel-pane-inner {
+    padding-top: 2.5em;
+  }
+  .page-home .pane-services-block-home .views-row {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 34%;
+    padding-left: 10%;
+  }
+  .page-home .pane-services-block-home .views-row-odd {
+    padding-right: 4%;
+  }
+  .page-home .pane-projects-block-latest-projects .jcarousel-container-horizontal {
+    max-width: 640px;
+  }
+  .page-home .pane-projects-block-latest-projects .views-row {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 30%;
+  }
+
+  /* Banners */
+  .pane-home-featured-home,
+  #pane-om-oss-featured {
+    padding-top: 2.429em;
+  }
+  .pane-home-featured-home .views-fields-wrapper,
+  #pane-om-oss-featured .views-fields-wrapper {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 62%;
+  }
+  .pane-home-featured-home .views-field-title em,
+  #pane-om-oss-featured .views-field-title em {
+    display: inline-block;
+    line-height: 1em;
+    margin-top: 0.286em;
+  }
+  .pane-home-featured-home .views-field-field-link a,
+  #pane-om-oss-featured .views-field-field-link a {
+    font-size: 1.143em;
+    padding: 0.778em 1.667em 0.889em;
+  }
+  .pane-home-featured-home .views-field-field-image,
+  #pane-om-oss-featured .views-field-field-image {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 30%;
+  }
+  .pane-home-featured-home .views-field-field-image img,
+  #pane-om-oss-featured .views-field-field-image img {
+    max-width: 100%;
+    height: auto;
   }
 }
 @media (max-width: 767px) {

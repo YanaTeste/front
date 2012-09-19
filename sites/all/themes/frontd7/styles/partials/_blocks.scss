@@ -1,4 +1,4 @@
-/* Banners
+/*         Banners
 -----------------------------------*/
 .pane-home-featured-home, #pane-om-oss-featured {
 	padding-top: em(44px, 14px);
@@ -81,12 +81,8 @@
 	}
 }
 
-
-
-
-
-/*
-------- jcarousels  */
+/*         jCarousels
+-----------------------------------*/
 .jcarousel-container-horizontal {
 	margin: auto;
 	padding: 0;
@@ -140,7 +136,7 @@
 
 .pane-users-block-single,
 .pane-users-block-referenced {
-  
+
   padding: em(20px, 14px) 0 em(30px, 14px);
 
 	.panel-pane-inner {
@@ -257,7 +253,7 @@
 	}
 }
 
-/* Kurs block
+/*         Kurs block
 -----------------------------------*/
 .view-kurs-overview {
 
@@ -280,7 +276,7 @@
   }
 }
 
-/* Siste prosjekter
+/*         Siste prosjekter
 -----------------------------------*/
 .pane-projects-sidebar-latest {
 
@@ -288,10 +284,10 @@
     @include sidebar-list;
 
     &:after {
-      content: "."; 
-      visibility: hidden; 
-      display: block; 
-      height: 0; 
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
       clear: both;
     }
   }

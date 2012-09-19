@@ -1,3 +1,5 @@
+/* @media (max-width: 960px) */
+
 /* Layout */
 #main, #header, #footer {
   width: 97.9167%;
@@ -12,10 +14,112 @@
 /* Links */
 
 /* Header */
-#main-menu {
-  .main-menu {
+#secondary-menu {
+  font-size: em(13px,14px);
+}
+
+#main-menu {}
+
+/* Footer */
+#postscript {
+  padding-top: em(25px, 14px);
+}
+
+.block-panels-mini {
+  margin-bottom: em(30px, 14px);
+
+  .content {
+    @include grid-container-center;
+  }
+}
+
+.pane-blog-block-latest-posts {
+  article {
+    padding-left: 0;
+    margin-top: 12px;
+  }
+  .views-field-field-image {
+    display: none;
+  }
+}
+
+.pane-front-custom-front-support {
+  .pane-content {
+    .links {
+      .contact a {
+        width: 9.5em;
+      }
+      .support a {
+        width: 9.5em;
+      }
+    }
+  }
+}
+
+.block-twitter-pull {
+  .content {
+    @include grid-container-center;
+  }
+}
+
+
+/* Front Page */
+.page-home {
+  #main {
+    .tabs,
+    .panel-pane-inner {
+      @include grid-container-center;
+    }
+  }
+
+  .pane-services-block-home {
+    .panel-pane-inner {
+      padding-top: em(35px, 14px);
+    }
+    .views-row {
+      @include grid(4.5);
+      @include grid-prefix(1.25);
+    }
+    .views-row-odd {
+      @include grid-suffix(0.5);
+    }
+  }
+  .pane-projects-block-latest-projects {
+    .jcarousel-container-horizontal {
+      max-width: 640px;
+    }
+    .views-row {
+      @include grid(4);
+    }
+  }
+}
+
+/* Banners */
+.pane-home-featured-home,
+#pane-om-oss-featured {
+  padding-top: em(34px, 14px);
+
+  .views-fields-wrapper {
+    @include grid(8);
+  }
+  .views-field-title {
+    em {
+      display: inline-block;
+      line-height: 1em;
+      margin-top: em(10px, 35px);
+    }
+  }
+  .views-field-body {}
+  .views-field-field-link {
     a {
-      padding: em(14px, 14px) em(10px, 14px) em(16px, 14px);
+      font-size: em(16px, 14px);
+      padding: em(14px, 18px) em(30px, 18px) em(16px, 18px);
+    }
+  }
+  .views-field-field-image {
+    @include grid(4);
+    img {
+      @include responsive-image;
     }
   }
 }

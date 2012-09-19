@@ -62,6 +62,33 @@
   }
 }
 
+/* Column + Sidebar layout */
+.panel-onecolsidebar {
+  margin-bottom: 4em;
+
+  .page-node & {
+    margin-bottom: em(35px, 14px);
+  }
+  .panel-col-first {
+    @include grid(7.5);
+    @include alpha();
+    @include grid-suffix(1);
+  }
+  .panel-col-last {
+    @include grid(4);
+  }
+
+  .node-type-blog & {
+    .panel-col-last {
+      margin-top: em(-72px, 14px);
+      margin-top: 0;
+    }
+  }
+
+  .ingress-left {
+    width: 100%;
+  }
+}
 
 /* Front Page */
 .page-home {
@@ -94,6 +121,148 @@
   }
 }
 
+#panel-solutions {
+  .pane-custom {
+    .pane-content {
+      @include grid(9.4);
+      float: none;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+  .pane-services-block-solutions {
+    padding: 2px 2% 0;
+    .views-row {
+      @include grid(4);
+      @include grid-prefix(2);
+      margin-bottom: em(48px, 14px);
+    }
+    .views-row-odd {
+      clear: both;
+    }
+  }
+}
+
+.page-tjenester {
+  .pane-custom {
+    padding: 0 0 em(30px, 14px);
+    .pane-content {
+      @include grid(11.5);
+      float: none;
+      display: block;
+      margin: 0 auto;
+    }
+  }
+
+  .pane-kompetanse-list {
+    padding: 2px 0 0;
+    .views-row {
+      @include grid(4);
+      @include grid-prefix(2);
+      margin-bottom: em(48px, 14px);
+    }
+    .views-row-odd {
+      clear: both;
+    }
+  }
+}
+
+.page-prosjekter {
+  #main {
+    .tabs,
+    .panel-pane-inner {
+      @include grid-container-center;
+    }
+  }
+}
+
+#panel-prosjekter {
+  .pane-custom-projects-intro {
+    .pane-content {
+      @include grid(11.5);
+      float: none;
+      display: block;
+      margin: 0 auto;
+      padding-bottom: 20px;
+    }
+  }
+
+  .pane-projects-block-projects {
+    .views-row {
+      @include grid(4);
+      margin-left: 1.5%;
+      margin-right: 1.5%;
+      margin-bottom: (45px, 14px);
+      text-align: left;
+    }
+    .views-row-4, .views-row-7 {
+      clear: both;
+    }
+    .views-field-field-image {
+      img {
+        margin-bottom: 0.5em;
+        max-width: 94%;
+        height: auto;
+      }
+    }
+  }
+}
+
+#panel-medarbeidere {
+  .panel-col-first {
+    @include grid(8);
+    @include alpha();
+    @include grid-suffix(0.5);
+  }
+  .panel-col-last {
+    @include grid(4);
+    margin-top: 0;
+  }
+  .view-employees {
+    .view-header {
+      width: auto;
+    }
+    .view-content {
+      width: 100%;
+    }
+    .views-row {
+      @include grid(5.9);
+      margin: 2px 0 -2px;
+    }
+    .views-field-field-image {
+      max-width: 25%;
+      padding-right: 10px;
+
+      img {
+        padding: 5px;
+        @include responsive-image;
+      }
+    }
+    .views-field-field-title {
+      white-space: nowrap;
+    }
+    .views-field-nothing {
+      float: right;
+    }
+  }
+}
+
+#panel-kontakt,
+#panel-support,
+#panel-blogg {
+  .inside {
+    margin: 0;
+  }
+  .panel-col-first {
+    @include grid(8);
+    @include alpha();
+    @include grid-suffix(0.5);
+  }
+  .panel-col-last {
+    @include grid(4);
+  }
+}
+
 /* Banners */
 .pane-home-featured-home,
 #pane-om-oss-featured {
@@ -121,5 +290,45 @@
     img {
       @include responsive-image;
     }
+  }
+}
+
+.pane-users-block-single,
+.pane-users-block-referenced {
+  .views-field-field-image {
+    @include grid(2.5);
+    @include omega;
+    @include alpha;
+  }
+  .views-field-field-name {
+    width: auto;
+    margin: 1.4em 0 0;
+  }
+  .views-field-field-about-placed-on-pages {
+    width: auto;
+    margin: 0.5em 0;
+  }
+  .views-field-nothing {
+    margin-bottom: 0;
+    a {
+      @include btn-cta;
+      width: em(150px, 15px);
+      padding: 0.7em 0;
+    }
+  }
+}
+
+/* Elements */
+.fluid-width-video-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 }

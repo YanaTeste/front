@@ -64,8 +64,7 @@
 /*
  * Fonts
  */
-
- @mixin title-centered {
+@mixin title-centered {
   font-family: $baseFontFamily;
   font-size: em(50px, 14px);
   font-weight: normal;
@@ -73,13 +72,13 @@
   letter-spacing: em(-2px, 50px);
   margin: 0;
   text-align: center;
-  padding: em(14px, 14px) 0 em(14px, 14px);
+  padding: 1em 0;
 }
 
 @mixin title-centered-padding {
   padding: em(72px, 14px) 0 em(40px, 14px);
-
 }
+
 @mixin title-left {
   font-size: em(50px, 14px);
   line-height: 1em;

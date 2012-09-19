@@ -129,7 +129,7 @@
     </div><!-- .breadcrumb -->
   <?php endif; ?>
     <?php print render($title_prefix); ?>
-    <?php if ($pageicon): ?>
+    <?php if (isset($pageicon)): ?>
       <div class="pageicon" id="pageicon"><?php print $pageicon; ?></div>
     <?php endif; ?>
     <?php if ($title): ?>

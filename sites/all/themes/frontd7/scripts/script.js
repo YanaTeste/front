@@ -65,6 +65,10 @@
                     $(this).addClass('align-left');
                 }
             });
+
+            // Responsive video players
+            // Buggy... review this.
+            // $('.node-video .field-item').fitVids();
         }
     };
 

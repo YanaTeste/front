@@ -35,8 +35,9 @@
                 'datetime' => date('Y-m-d\TH:i:sP', $tweet->timestamp),
               ),
           );
-
-          print l($tweet->time_ago, 'http://twitter.com/' . $tweet->username . '/status/' . $tweet->id, $time_opts);
+          if (isset($tweet->time_ago)) {
+            print l($tweet->time_ago, 'http://twitter.com/' . $tweet->username . '/status/' . $tweet->id, $time_opts);
+          }
         ?>
 
         <?php

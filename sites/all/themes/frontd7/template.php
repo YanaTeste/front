@@ -78,7 +78,7 @@ function frontd7_preprocess_page(&$variables) {
     unset($variables['tabs']);
   }
   // Adds a square_medium icon next to the title if it exists;
-  if ($variables['node']->field_image['und'][0]['uri']) {
+  if (isset($variables['node']->field_image['und'][0]['uri'])) {
     $fid = $variables['node']->field_image['und'][0]['fid'];
     $file = file_load($fid);
     $image_uri = $file->uri;

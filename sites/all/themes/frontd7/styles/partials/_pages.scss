@@ -1524,9 +1524,12 @@
     margin-top: em(72px, 50px);
     margin-left: 10px;
   }
-
+  img {
+    @include responsive-image;
+  }
   .pane-node-field-image {
     margin-bottom: em(25px, 14px);
+
     img {
       display: inline-block;
       padding: 9px;
@@ -1777,10 +1780,6 @@
     }
   }
 }
-
-
-
-
 
 /*         Tjenester
 ------------------------------------------------*/

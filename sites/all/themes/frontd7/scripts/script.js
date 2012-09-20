@@ -67,8 +67,7 @@
             });
 
             // Responsive video players
-            // Buggy... review this.
-            // $('.node-video .field-item').fitVids();
+            $('.node-video .field-name-video-620px .field-item').fitVids();
         }
     };
 

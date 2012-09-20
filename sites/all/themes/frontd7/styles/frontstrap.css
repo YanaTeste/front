@@ -3194,6 +3194,20 @@ ul.menu a.active {
   font-weight: normal;
 }
 
+/* Responsive Video */
+.fluid-width-video-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 0;
+}
+.fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 /*         Page wrapper
 ------------------------------------------------*/
 .page-node .page-wrapper,
@@ -5703,6 +5717,21 @@ ul.menu a.active {
     margin-right: 1%;
     width: 30%;
   }
+  #panel-kontakt .webform-client-block .form-text,
+  #panel-support .webform-client-block .form-text,
+  #panel-blogg .webform-client-block .form-text {
+    width: 91.549%;
+  }
+
+  .page-kurs .ingress {
+    width: auto;
+  }
+  .page-kurs .pane-videos-panel-pane-1 .jcarousel-container-horizontal {
+    max-width: 640px;
+  }
+  .page-kurs .pane-users-block-single {
+    max-width: 500px;
+  }
 
   /* Banners */
   .pane-home-featured-home,
@@ -5803,20 +5832,6 @@ ul.menu a.active {
     -webkit-box-shadow: 0 0 2px #d14d1a;
     -moz-box-shadow: 0 0 2px #d14d1a;
     box-shadow: 0 0 2px #d14d1a;
-  }
-
-  /* Elements */
-  .fluid-width-video-wrapper {
-    width: 100%;
-    position: relative;
-    padding: 0;
-  }
-  .fluid-width-video-wrapper iframe, .fluid-width-video-wrapper object, .fluid-width-video-wrapper embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
   }
 }
 @media (max-width: 767px) {

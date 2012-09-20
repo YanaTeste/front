@@ -194,7 +194,7 @@ a.btn-cta {
     a {
       color: $navSecondColorMenu;
       display: inline-block;
-      padding: em(4px, 14px) 0 em(4px, 14px);
+      padding: em(4px, 14px) 0;
       margin: 0 em(12px, 14px);
       @include transition-property(background);
       @include transition-duration(0.3s);
@@ -207,8 +207,8 @@ a.btn-cta {
       &.active {
         color: $yellowLogoColor;
        // background: rgba(0,0,0,0.1) url('../images/icon_main-active-white.png') no-repeat center bottom;
-     }
-   }
+    }
+  }
  }
 }
 

@@ -3,21 +3,252 @@
 /* General Styles (Colors, Backgrounds etc.) */
 
 /* Typography */
+.page-node #page-title {
+  margin-top: 0.48em;
+}
 
 /* Links */
 
 /* Header */
-#main-menu {
-  .main-menu {
-    font-size: em(12px, 14px);
+#secondary-menu {
+  float: none;
+  display: block;
+  padding-top: 2em;
+
+  .secondary-menu {
+    overflow: hidden;
+    margin: 0;
     a {
-      padding: em(14px, 12px) em(8px, 12px) em(16px, 12px);
+      padding: em(10px, 14px) 0;
     }
   }
 }
 
-#header {
-  width: 97.9167%;
-  margin-left: 1.0417%;
-  margin-right: 1.0417%;
+#main-menu {
+  float: none;
+  display: block;
+  padding-top: 1px; // hack :)
+
+  .main-menu {
+    a {
+      margin: 0 em(10px, 16px);
+    }
+  }
+}
+
+/* Footer */
+#postscript {
+  padding-top: em(15px, 14px);
+}
+
+.block-panels-mini {
+  margin-bottom: em(20px, 14px);
+
+  .panel-panel {
+    @include grid-container-center;
+  }
+}
+
+.pane-blog-block-latest-posts {
+  article {
+    padding-left: 80px;
+    margin-bottom: 2em;
+  }
+  .views-field-field-image {
+    display: block;
+    float: left;
+  }
+}
+
+.pane-front-custom-front-support {
+  .pane-content {
+    .links {
+      .contact a,
+      .support a {
+        width: 11em;
+      }
+    }
+  }
+}
+
+/* Column + Sidebar layout */
+.panel-onecolsidebar {
+  margin-bottom: 4em;
+
+  .page-node & {
+    margin-bottom: em(35px, 14px);
+  }
+  .panel-col-first,
+  .panel-col-last {
+    @include grid-reset;
+    margin-bottom: 2em;
+
+    .inside {
+      margin: 0 2%;
+    }
+  }
+  .ingress-left {
+    width: auto;
+  }
+  .panel-col-last {
+    ul.menu {
+      max-width: 500px;
+    }
+  }
+}
+
+/* Front Page */
+.page-home {
+  .pane-services-block-home {
+    .panel-pane-inner {
+      padding-top: em(35px, 14px);
+    }
+    .views-row {
+      @include grid-reset;
+      padding-left: 90px;
+    }
+  }
+  .pane-projects-block-latest-projects {
+    .jcarousel-container-horizontal {
+      max-width: 320px;
+    }
+  }
+}
+
+.pane-home-featured-home,
+#pane-om-oss-featured {
+  padding-top: em(24px, 14px);
+
+  .views-fields-wrapper {
+    @include grid-reset;
+  }
+  .views-field-title {
+    font-size: em(40px, 14px);
+
+    em {
+      margin-top: em(10px, 40px);
+    }
+  }
+  .views-field-field-image {
+    display: none;
+  }
+}
+
+#panel-solutions,
+.page-tjenester {
+  .pane-custom {
+    .pane-title {
+      font-size: em(40px, 14px);
+    }
+    .pane-content {
+      @include grid-reset;
+      margin: 0 2%;
+    }
+  }
+  .pane-services-block-solutions,
+  .pane-kompetanse-list {
+    .panel-pane-inner {
+      padding: 0;
+    }
+    .views-row {
+      @include grid-reset;
+      margin-bottom: em(28px, 14px);
+      padding-left: 90px;
+    }
+  }
+}
+
+#panel-services {
+  .view-tjenester-listing {
+    font-size: em(18px, 14px);
+    li {
+      margin: 0 em(8px, 14px);
+    }
+  }
+}
+
+#panel-prosjekter {
+  .pane-custom-projects-intro {
+    .pane-title {
+      font-size: em(40px, 14px);
+    }
+    .pane-content {
+      @include grid-reset;
+      margin: 0 2%;
+    }
+  }
+
+  .pane-projects-block-projects {
+    .views-row {
+      margin-bottom: em(30px, 14px);
+    }
+    .views-field-title {
+      font-size: 1em;
+    }
+  }
+}
+
+#panel-medarbeidere {
+  .panel-col-first,
+  .panel-col-last {
+    @include grid-reset;
+    margin-bottom: 2em;
+  }
+  .view-employees {
+    .view-header {
+      text-align: left;
+      margin: 0 2%;
+    }
+  }
+}
+
+#page-about-us {
+  .panel-col-first,
+  .panel-col-last {
+    @include grid-reset;
+    margin-bottom: 2em;
+  }
+}
+
+.page-support {
+  #page-title {
+    margin-top: 0.48em;
+    margin-left: 0;
+  }
+}
+
+#panel-kontakt,
+#panel-support,
+#panel-blogg {
+  .panel-col-first,
+  .panel-col-last {
+    @include grid-reset;
+    margin-bottom: 2em;
+  }
+
+  .webform-client-block {
+    .pane-title {
+      margin-top: 0.48em;
+    }
+    .form-text {
+      width: perc(520px, 568px);
+    }
+  }
+}
+
+.page-kurs {
+  .pane-custom {
+    .pane-title {
+      font-size: em(40px, 14px);
+    }
+    .pane-content {
+      @include grid-reset;
+      margin: 0 2%;
+    }
+  }
+  .pane-videos-panel-pane-1 {
+    .jcarousel-container-horizontal {
+      max-width: 320px;
+    }
+  }
 }

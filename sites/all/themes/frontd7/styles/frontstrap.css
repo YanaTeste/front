@@ -2326,7 +2326,7 @@ a.btn-cta:hover, a.btn-cta:active {
 #secondary-menu .secondary-menu a {
   color: #979392;
   display: inline-block;
-  padding: 0.286em 0 0.286em;
+  padding: 0.286em 0;
   margin: 0 0.857em;
   -webkit-transition-property: background;
   -moz-transition-property: background;
@@ -5467,9 +5467,7 @@ ul.menu a.active {
     display: none;
   }
 
-  .pane-front-custom-front-support .pane-content .links .contact a {
-    width: 9.5em;
-  }
+  .pane-front-custom-front-support .pane-content .links .contact a,
   .pane-front-custom-front-support .pane-content .links .support a {
     width: 9.5em;
   }
@@ -5633,7 +5631,7 @@ ul.menu a.active {
     width: 30%;
     margin-left: 1.5%;
     margin-right: 1.5%;
-    margin-bottom: 45px, 14px;
+    margin-bottom: 3.214em;
     text-align: left;
   }
   #panel-prosjekter .pane-projects-block-projects .views-row-4, #panel-prosjekter .pane-projects-block-projects .views-row-7 {
@@ -5838,19 +5836,256 @@ ul.menu a.active {
   /* Layout */
   /* General Styles (Colors, Backgrounds etc.) */
   /* Typography */
-  /* Links */
-  /* Header */
-  #main-menu .main-menu {
-    font-size: 0.857em;
-  }
-  #main-menu .main-menu a {
-    padding: 1.167em 0.667em 1.333em;
+  .page-node #page-title {
+    margin-top: 0.48em;
   }
 
-  #header {
-    width: 97.9167%;
-    margin-left: 1.0417%;
-    margin-right: 1.0417%;
+  /* Links */
+  /* Header */
+  #secondary-menu {
+    float: none;
+    display: block;
+    padding-top: 2em;
+  }
+  #secondary-menu .secondary-menu {
+    overflow: hidden;
+    margin: 0;
+  }
+  #secondary-menu .secondary-menu a {
+    padding: 0.714em 0;
+  }
+
+  #main-menu {
+    float: none;
+    display: block;
+    padding-top: 1px;
+  }
+  #main-menu .main-menu a {
+    margin: 0 0.625em;
+  }
+
+  /* Footer */
+  #postscript {
+    padding-top: 1.071em;
+  }
+
+  .block-panels-mini {
+    margin-bottom: 1.429em;
+  }
+  .block-panels-mini .panel-panel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    display: block;
+    position: relative;
+    float: none;
+  }
+
+  .pane-blog-block-latest-posts article {
+    padding-left: 80px;
+    margin-bottom: 2em;
+  }
+  .pane-blog-block-latest-posts .views-field-field-image {
+    display: block;
+    float: left;
+  }
+
+  .pane-front-custom-front-support .pane-content .links .contact a,
+  .pane-front-custom-front-support .pane-content .links .support a {
+    width: 11em;
+  }
+
+  /* Column + Sidebar layout */
+  .panel-onecolsidebar {
+    margin-bottom: 4em;
+  }
+  .page-node .panel-onecolsidebar {
+    margin-bottom: 2.5em;
+  }
+  .panel-onecolsidebar .panel-col-first,
+  .panel-onecolsidebar .panel-col-last {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+  }
+  .panel-onecolsidebar .panel-col-first .inside,
+  .panel-onecolsidebar .panel-col-last .inside {
+    margin: 0 2%;
+  }
+  .panel-onecolsidebar .ingress-left {
+    width: auto;
+  }
+  .panel-onecolsidebar .panel-col-last ul.menu {
+    max-width: 500px;
+  }
+
+  /* Front Page */
+  .page-home .pane-services-block-home .panel-pane-inner {
+    padding-top: 2.5em;
+  }
+  .page-home .pane-services-block-home .views-row {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    padding-left: 90px;
+  }
+  .page-home .pane-projects-block-latest-projects .jcarousel-container-horizontal {
+    max-width: 320px;
+  }
+
+  .pane-home-featured-home,
+  #pane-om-oss-featured {
+    padding-top: 1.714em;
+  }
+  .pane-home-featured-home .views-fields-wrapper,
+  #pane-om-oss-featured .views-fields-wrapper {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+  }
+  .pane-home-featured-home .views-field-title,
+  #pane-om-oss-featured .views-field-title {
+    font-size: 2.857em;
+  }
+  .pane-home-featured-home .views-field-title em,
+  #pane-om-oss-featured .views-field-title em {
+    margin-top: 0.25em;
+  }
+  .pane-home-featured-home .views-field-field-image,
+  #pane-om-oss-featured .views-field-field-image {
+    display: none;
+  }
+
+  #panel-solutions .pane-custom .pane-title,
+  .page-tjenester .pane-custom .pane-title {
+    font-size: 2.857em;
+  }
+  #panel-solutions .pane-custom .pane-content,
+  .page-tjenester .pane-custom .pane-content {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin: 0 2%;
+  }
+  #panel-solutions .pane-services-block-solutions .panel-pane-inner,
+  #panel-solutions .pane-kompetanse-list .panel-pane-inner,
+  .page-tjenester .pane-services-block-solutions .panel-pane-inner,
+  .page-tjenester .pane-kompetanse-list .panel-pane-inner {
+    padding: 0;
+  }
+  #panel-solutions .pane-services-block-solutions .views-row,
+  #panel-solutions .pane-kompetanse-list .views-row,
+  .page-tjenester .pane-services-block-solutions .views-row,
+  .page-tjenester .pane-kompetanse-list .views-row {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+    padding-left: 90px;
+  }
+
+  #panel-services .view-tjenester-listing {
+    font-size: 1.286em;
+  }
+  #panel-services .view-tjenester-listing li {
+    margin: 0 0.571em;
+  }
+
+  #panel-prosjekter .pane-custom-projects-intro .pane-title {
+    font-size: 2.857em;
+  }
+  #panel-prosjekter .pane-custom-projects-intro .pane-content {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin: 0 2%;
+  }
+  #panel-prosjekter .pane-projects-block-projects .views-row {
+    margin-bottom: 2.143em;
+  }
+  #panel-prosjekter .pane-projects-block-projects .views-field-title {
+    font-size: 1em;
+  }
+
+  #panel-medarbeidere .panel-col-first,
+  #panel-medarbeidere .panel-col-last {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+  }
+  #panel-medarbeidere .view-employees .view-header {
+    text-align: left;
+    margin: 0 2%;
+  }
+
+  #page-about-us .panel-col-first,
+  #page-about-us .panel-col-last {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+  }
+
+  .page-support #page-title {
+    margin-top: 0.48em;
+    margin-left: 0;
+  }
+
+  #panel-kontakt .panel-col-first,
+  #panel-kontakt .panel-col-last,
+  #panel-support .panel-col-first,
+  #panel-support .panel-col-last,
+  #panel-blogg .panel-col-first,
+  #panel-blogg .panel-col-last {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 2em;
+  }
+  #panel-kontakt .webform-client-block .pane-title,
+  #panel-support .webform-client-block .pane-title,
+  #panel-blogg .webform-client-block .pane-title {
+    margin-top: 0.48em;
+  }
+  #panel-kontakt .webform-client-block .form-text,
+  #panel-support .webform-client-block .form-text,
+  #panel-blogg .webform-client-block .form-text {
+    width: 91.549%;
+  }
+
+  .page-kurs .pane-custom .pane-title {
+    font-size: 2.857em;
+  }
+  .page-kurs .pane-custom .pane-content {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    margin: 0 2%;
+  }
+  .page-kurs .pane-videos-panel-pane-1 .jcarousel-container-horizontal {
+    max-width: 320px;
   }
 }
 @media (max-width: 480px) {

@@ -9,13 +9,157 @@
 /* Links */
 
 /* Header */
-#main-menu {
+#header h1 {
+  line-height: normal;
+  text-align: center;
+  width: 100%;
+  margin: 0 auto 1em;
+}
+
+#main-menu,
+#secondary-menu {
+  font-size: 1em;
+  text-align: center;
+  clear: none;
+  padding: 0;
+
+  .main-menu,
+  .secondary-menu {
+    display: none;
+  }
   select {
-    margin: em(11px, 14px) 0 0;
-    border: 1px solid red;
+    font-size: em(16px, 14px);
+    line-height: normal;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 1em;
+
+    .default {
+      font-weight: bold;
+      margin-bottom: 0.1em;
+      padding-bottom: 0.1em;
+    }
   }
 }
 
-#header {
-  width: 100%;
+#main-menu {
+  float: left;
+  width: 59.75%;
+}
+
+#secondary-menu {
+  float: right;
+  width: 39.75%;
+}
+
+/* Footer */
+.block-panels-mini {
+  .panel-panel {
+    @include grid-container-center;
+    .inside {
+      margin: 0;
+    }
+  }
+}
+
+.pane-blog-block-latest-posts {
+  article {
+    padding-left: 0;
+  }
+  .views-field-field-image {
+    display: none;
+  }
+}
+
+.pane-front-custom-front-support {
+  .pane-content {
+    .links {
+      li {
+        text-align: center;
+        width: 50%;
+        margin: 0;
+        float: left;
+      }
+      .contact a,
+      .support a {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+/* Front Page */
+.page-home {
+  .pane-projects-block-latest-projects {
+    .jcarousel-container-horizontal {
+      max-width: 280px;
+
+      img {
+        max-width: 246px;
+        height: auto;
+      }
+    }
+  }
+}
+
+.pane-home-featured-home,
+#pane-om-oss-featured {
+  .views-field-title {
+    font-size: em(30px, 14px);
+  }
+  .views-field-field-image {
+    display: none;
+  }
+  .views-slideshow-controls-bottom {
+    margin-top: 1em;
+  }
+}
+
+#panel-solutions,
+#panel-services {
+  .pane-custom {
+    .pane-title {
+      font-size: em(30px, 14px);
+    }
+    .pane-content {
+      p {
+        font-size: em(16px, 14px);
+      }
+    }
+  }
+}
+
+#panel-services {
+  .view-tjenester-listing {
+    font-size: em(17px, 14px);
+    li {
+      margin: 0 em(6px, 17px);
+    }
+  }
+}
+
+/* Other */
+.jcarousel-prev-horizontal {
+  top: 65px;
+  left: -21px;
+}
+.jcarousel-next-horizontal {
+  top: 65px;
+  right: -21px;
+}
+
+.pane-users-block-single,
+.pane-users-block-referenced {
+  .views-field-field-image {
+    margin-bottom: 1em;
+  }
+  .views-field-field-name {
+    text-align: left;
+    float: none;
+    clear: both;
+    display: block;
+    margin: 0;
+  }
 }

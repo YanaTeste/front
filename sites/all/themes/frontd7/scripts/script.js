@@ -4,6 +4,11 @@
 
 (function($) {
 
+    var responsiveMenus = function() {
+        $('#main-menu .main-menu').mobileSelect({ defaultOption: Drupal.t("Main menu") });
+        $('#secondary-menu .secondary-menu').mobileSelect({ defaultOption: Drupal.t("Secondary") });
+    };
+
     Drupal.behaviors.frontSearch = {
         attach: function(context) {
             if ($('#header .search-form', context).length) {
@@ -40,6 +45,12 @@
                 if ($('#panel-medarbeidere', context).length) {
                     $('#panel-medarbeidere .view-employees .views-row', context).equalHeights();
                 }
+
+                // Responsive menus
+                // todo: fix this bug (we need to re-run mobile select on load sometimes...)
+                if (!$('#main-menu select').length) {
+                    responsiveMenus();
+                }
             });
 
             // Improve webforms select elements.
@@ -65,6 +76,11 @@
                     $(this).addClass('align-left');
                 }
             });
+
+            // Responsive menus
+            if (!$('#main-menu select').length) {
+                responsiveMenus();
+            }
 
             // Responsive video players
             $('.node-video .field-name-video-620px .field-item').fitVids();

@@ -5958,9 +5958,13 @@ ul.menu a.active {
   #pane-om-oss-featured .views-field-title em {
     margin-top: 0.25em;
   }
-  .pane-home-featured-home .views-field-field-image,
-  #pane-om-oss-featured .views-field-field-image {
-    display: none;
+  .pane-home-featured-home .views-field-body,
+  #pane-om-oss-featured .views-field-body {
+    margin-bottom: 1em;
+  }
+  .pane-home-featured-home .views-field-body p,
+  #pane-om-oss-featured .views-field-body p {
+    font-size: 1.143em;
   }
 
   #panel-solutions .pane-custom .pane-title,
@@ -5995,6 +5999,9 @@ ul.menu a.active {
     padding-left: 90px;
   }
 
+  #panel-services .pane-custom .pane-title {
+    font-size: 2.857em;
+  }
   #panel-services .view-tjenester-listing {
     font-size: 1.286em;
   }
@@ -6096,12 +6103,158 @@ ul.menu a.active {
   /* Typography */
   /* Links */
   /* Header */
-  #main-menu select {
-    margin: 0.786em 0 0;
-    border: 1px solid red;
+  #header h1 {
+    line-height: normal;
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 1em;
   }
 
-  #header {
+  #main-menu,
+  #secondary-menu {
+    font-size: 1em;
+    text-align: center;
+    clear: none;
+    padding: 0;
+  }
+  #main-menu .main-menu,
+  #main-menu .secondary-menu,
+  #secondary-menu .main-menu,
+  #secondary-menu .secondary-menu {
+    display: none;
+  }
+  #main-menu select,
+  #secondary-menu select {
+    font-size: 1.143em;
+    line-height: normal;
     width: 100%;
+    height: auto;
+    margin: 0 auto 1em;
+  }
+  #main-menu select .default,
+  #secondary-menu select .default {
+    font-weight: bold;
+    margin-bottom: 0.1em;
+    padding-bottom: 0.1em;
+  }
+
+  #main-menu {
+    float: left;
+    width: 59.75%;
+  }
+
+  #secondary-menu {
+    float: right;
+    width: 39.75%;
+  }
+
+  /* Footer */
+  .block-panels-mini .panel-panel {
+    margin-left: auto;
+    margin-right: auto;
+    width: 96%;
+    display: block;
+    position: relative;
+    float: none;
+  }
+  .block-panels-mini .panel-panel .inside {
+    margin: 0;
+  }
+
+  .pane-blog-block-latest-posts article {
+    padding-left: 0;
+  }
+  .pane-blog-block-latest-posts .views-field-field-image {
+    display: none;
+  }
+
+  .pane-front-custom-front-support .pane-content .links li {
+    text-align: center;
+    width: 50%;
+    margin: 0;
+    float: left;
+  }
+  .pane-front-custom-front-support .pane-content .links .contact a,
+  .pane-front-custom-front-support .pane-content .links .support a {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Front Page */
+  .page-home .pane-projects-block-latest-projects .jcarousel-container-horizontal {
+    max-width: 280px;
+  }
+  .page-home .pane-projects-block-latest-projects .jcarousel-container-horizontal img {
+    max-width: 246px;
+    height: auto;
+  }
+
+  .pane-home-featured-home .views-field-title,
+  #pane-om-oss-featured .views-field-title {
+    font-size: 2.143em;
+  }
+  .pane-home-featured-home .views-field-field-image,
+  #pane-om-oss-featured .views-field-field-image {
+    display: none;
+  }
+  .pane-home-featured-home .views-slideshow-controls-bottom,
+  #pane-om-oss-featured .views-slideshow-controls-bottom {
+    margin-top: 1em;
+  }
+
+  #panel-solutions .pane-custom .pane-title,
+  #panel-services .pane-custom .pane-title {
+    font-size: 2.143em;
+  }
+  #panel-solutions .pane-custom .pane-content p,
+  #panel-services .pane-custom .pane-content p {
+    font-size: 1.143em;
+  }
+
+  #panel-services .view-tjenester-listing {
+    font-size: 1.214em;
+  }
+  #panel-services .view-tjenester-listing li {
+    margin: 0 0.353em;
+  }
+
+  /* Other */
+  .jcarousel-prev-horizontal {
+    top: 65px;
+    left: -21px;
+  }
+
+  .jcarousel-next-horizontal {
+    top: 65px;
+    right: -21px;
+  }
+
+  .pane-users-block-single .views-field-field-image,
+  .pane-users-block-referenced .views-field-field-image {
+    margin-bottom: 1em;
+  }
+  .pane-users-block-single .views-field-field-name,
+  .pane-users-block-referenced .views-field-field-name {
+    text-align: left;
+    float: none;
+    clear: both;
+    display: block;
+    margin: 0;
+  }
+}
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  #header h1 {
+    margin: 0 auto;
+  }
+  #header h1 a {
+    background: transparent url(../logo-2x.png) no-repeat center center;
+    background-size: 190px 40px;
+    width: 190px;
+    height: 40px;
+    margin-top: 0.333em;
+  }
+  #header h1 img {
+    display: none;
   }
 }

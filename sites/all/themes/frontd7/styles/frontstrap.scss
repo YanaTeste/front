@@ -120,3 +120,8 @@ $ninesixty-grid-width: 96%;
 @media (max-width: 480px) {
   @import "partials/theme-narrowest";
 }
+
+// High de
+@media only screen and (-moz-min-device-pixel-ratio: 2), only screen and (-o-min-device-pixel-ratio: 2/1), only screen and (-webkit-min-device-pixel-ratio: 2), only screen and (min-device-pixel-ratio: 2) {
+  @import "partials/theme-retina";
+}

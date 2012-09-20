@@ -129,8 +129,12 @@
       margin-top: em(10px, 40px);
     }
   }
-  .views-field-field-image {
-    display: none;
+  .views-field-body {
+    margin-bottom: 1em;
+
+    p {
+      font-size: em(16px, 14px);
+    }
   }
 }
 
@@ -159,6 +163,11 @@
 }
 
 #panel-services {
+  .pane-custom {
+    .pane-title {
+      font-size: em(40px, 14px);
+    }
+  }
   .view-tjenester-listing {
     font-size: em(18px, 14px);
     li {

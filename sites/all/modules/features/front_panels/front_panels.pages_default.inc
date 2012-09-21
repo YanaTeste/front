@@ -1928,7 +1928,7 @@ function front_panels_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => 'The Power of Open Source',
       'title' => 'The Power of Open Source',
-      'body' => '<p>Open Source software er programvare som er utviklet, testet, og forbedret gjennom åpne communities - basert på deling og fremtidig utvikling.</p> <div><a class="btn-cta" href="/drupal">Les mer om Drupal</a></div>',
+      'body' => '<p>Open Source software er programvare som er utviklet, testet og forbedret gjennom åpne communities - basert på deling og fremtidig utvikling.</p> <div><a class="btn-cta" href="/drupal">Les mer om Drupal</a></div>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
@@ -2721,7 +2721,7 @@ Utstyrt med en kraftig blanding av funksjoner og konfigurerbarhet kan Drupal st�
       'admin_title' => 'Advanced and simple',
       'title' => '',
       'body' => '<h2>Avansert</h2> Drupal er langt mer enn et CMS. Det er også et fullstendig rammeverk for utvikling av webapplikasjoner. Og ikke minst: Drupal har Verdens Beste Community™.
-Front Kommunikasjon i likhet med byråer verden over, anbefaler Drupal som plattform for sosiale nettsteder. Vi pleier i å illustrere Drupals fleksibilitet ved å si at endel CMS-er er som Playmo; de har et glatt og fint ytre, men det er begrenset hvor mye man kan bygge ut av figurene. Drupal derimot, er som Lego; med disse klossene kan man bygge nærmest hva som helst. 
+Frontkom, i likhet med byråer verden over, anbefaler Drupal som plattform for sosiale nettsteder. Vi pleier i å illustrere Drupals fleksibilitet ved å si at endel CMS-er er som Playmo; de har et glatt og fint ytre, men det er begrenset hvor mye man kan bygge ut av figurene. Drupal derimot, er som Lego; med disse klossene kan man bygge nærmest hva som helst. 
 
 <h2>Enkelt</h2> Drupals fleksible arkitektur gjør løsningen enkel og kjapp å bruke for redaktører og skribenter. Ved å konfigurere oppsett som passer til kundens arbeidsflyt, kan vi strippe bort alle forvirrende elementer. Slik skaper vi en løsningen som er kraftig, fleksibel og brukervennlig.
 I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil si ferdig konfigurerte installasjoner tilrettelagt for spesifikke oppgaver: Drupal for aviser, Drupal for nyhetsaggregering, Drupal intranett, Drupal sosiale nettverk, Drupal webshop, med flere. Alle disse er bygd av de samme klossene, og dermed 100% kompatible med hverandre. Nevnte vi at det er gratis? 
@@ -3836,9 +3836,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->configuration = array(
       'admin_title' => 'Kurs',
       'title' => '',
-      'body' => 'I systemer med avansert arbeidsflyt kan det være frustrende å jobbe hvis man ikke har en veldig god kjennskap til hvordan systemet fungerer. 
-
-Vi hjelper deg med opplæring og kurs i systemene vi lager, både ved hjelp av videoer, opplæringsmateriell og personlig opplæring.
+      'body' => 'Vi arrangerer kurs og opplæring i systemene vi lager, både i form av kurs for ansatte ved din bedrift, videoer og annet opplæringsmateriell.
 
 Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer å bruke Drupal.',
       'format' => 'filtered_html',
@@ -3861,8 +3859,8 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->pid = 'new-56';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'videos-panel_pane_1';
-    $pane->shown = TRUE;
+    $pane->subtype = 'videos-panel_pane_2';
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
@@ -3879,8 +3877,8 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->pid = 'new-57';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'videos-panel_pane_2';
-    $pane->shown = FALSE;
+    $pane->subtype = 'kurs_overview-panel_pane_1';
+    $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
@@ -3897,7 +3895,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->pid = 'new-58';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
-    $pane->subtype = 'kurs_overview-panel_pane_1';
+    $pane->subtype = 'videos-panel_pane_1';
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array();

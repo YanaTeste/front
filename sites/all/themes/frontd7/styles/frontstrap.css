@@ -6069,6 +6069,14 @@ ul.menu a.active {
     padding: 0;
     margin-bottom: 2em;
   }
+  #panel-kontakt .panel-col-first .inside,
+  #panel-kontakt .panel-col-last .inside,
+  #panel-support .panel-col-first .inside,
+  #panel-support .panel-col-last .inside,
+  #panel-blogg .panel-col-first .inside,
+  #panel-blogg .panel-col-last .inside {
+    margin: 0 2%;
+  }
   #panel-kontakt .webform-client-block .pane-title,
   #panel-support .webform-client-block .pane-title,
   #panel-blogg .webform-client-block .pane-title {
@@ -6080,7 +6088,7 @@ ul.menu a.active {
     width: 91.549%;
   }
 
-  .page-kurs .pane-custom .pane-title {
+  .page-kurs #page-title {
     font-size: 2.857em;
   }
   .page-kurs .pane-custom .pane-content {
@@ -6101,6 +6109,25 @@ ul.menu a.active {
   /* Layout */
   /* General Styles (Colors, Backgrounds etc.) */
   /* Typography */
+  .page-node #page-title,
+  .page-medarbeidere #page-title {
+    font-size: 2.857em;
+    margin-top: 0;
+    margin-left: 2%;
+  }
+
+  .page-blogg #page-title,
+  .page-support #page-title {
+    font-size: 2.857em;
+    margin-top: 0.48em;
+    margin-left: 2%;
+  }
+
+  .ingress p,
+  .ingress-left p {
+    font-size: 1.143em;
+  }
+
   /* Links */
   /* Header */
   #header h1 {
@@ -6204,19 +6231,121 @@ ul.menu a.active {
   }
 
   #panel-solutions .pane-custom .pane-title,
-  #panel-services .pane-custom .pane-title {
+  #panel-services .pane-custom .pane-title,
+  #panel-prosjekter .pane-custom .pane-title {
     font-size: 2.143em;
   }
   #panel-solutions .pane-custom .pane-content p,
-  #panel-services .pane-custom .pane-content p {
+  #panel-services .pane-custom .pane-content p,
+  #panel-prosjekter .pane-custom .pane-content p {
     font-size: 1.143em;
   }
 
-  #panel-services .view-tjenester-listing {
-    font-size: 1.214em;
+  #panel-prosjekter .pane-projects-block-projects .view-content {
+    margin-top: 2.143em;
   }
-  #panel-services .view-tjenester-listing li {
-    margin: 0 0.353em;
+  #panel-prosjekter .pane-projects-block-projects .views-row {
+    clear: none;
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 44%;
+    padding-left: 2%;
+    margin-bottom: 2em;
+  }
+  #panel-prosjekter .pane-projects-block-projects .views-field-title {
+    white-space: nowrap;
+  }
+
+  #panel-medarbeidere .view-employees .view-header p {
+    font-size: 1.143em;
+  }
+  #panel-medarbeidere .view-employees .views-row {
+    display: block;
+    float: none;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    height: auto!important;
+    margin: 0 2%;
+    padding: 1em 0;
+    border-left: none;
+    border-right: none;
+  }
+  #panel-medarbeidere .view-employees .views-row-last {
+    border-bottom: none;
+  }
+
+  #panel-support .pane-custom-support-intro p {
+    font-size: 1.143em;
+  }
+  #panel-support .webform-client-block .form-text {
+    width: 87.148%;
+  }
+  #panel-support .webform-client-block .form-textarea {
+    margin-bottom: 0;
+  }
+
+  #panel-kontakt .webform-client-block .pane-title,
+  #panel-support .webform-client-block .pane-title {
+    font-size: 2.857em;
+    margin-left: 0;
+  }
+  #panel-kontakt .webform-client-block .field-name-body p,
+  #panel-support .webform-client-block .field-name-body p {
+    font-size: 1.143em;
+  }
+  #panel-kontakt .webform-client-block .form-text,
+  #panel-support .webform-client-block .form-text {
+    width: 87.148%;
+  }
+  #panel-kontakt .webform-client-block .form-textarea,
+  #panel-support .webform-client-block .form-textarea {
+    margin-bottom: 0;
+  }
+
+  #panel-blogg .view-blog .view-header p {
+    font-size: 1.143em;
+  }
+  #panel-blogg .view-blog .views-row {
+    padding: 2em 0;
+  }
+  #panel-blogg .view-blog .views-row-first {
+    padding-top: 1em;
+  }
+  #panel-blogg .view-blog .views-field-field-image {
+    display: inline;
+    float: left;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 22%;
+    margin-left: 0;
+    padding-right: 4%;
+  }
+  #panel-blogg .view-blog .views-field-field-image img {
+    padding: 4px;
+    max-width: 100%;
+    height: auto;
+  }
+  #panel-blogg .view-blog .views-field-created {
+    font-size: 0.714em;
+  }
+  #panel-blogg .view-blog .pagination {
+    margin-top: 0;
+  }
+
+  .page-kurs #page-title {
+    font-size: 2.143em;
+  }
+  .page-kurs .pane-custom .pane-content {
+    margin: 0;
+  }
+  .page-kurs .pane-custom .pane-content p {
+    font-size: 1.143em;
+  }
+  .page-kurs .pane-videos-panel-pane-1 .jcarousel-container-horizontal {
+    max-width: 280px;
   }
 
   /* Other */

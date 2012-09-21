@@ -5,6 +5,26 @@
 /* General Styles (Colors, Backgrounds etc.) */
 
 /* Typography */
+.page-node #page-title,
+.page-medarbeidere #page-title {
+  font-size: em(40px, 14px);
+  margin-top: 0;
+  margin-left: 2%;
+}
+
+.page-blogg #page-title,
+.page-support #page-title {
+  font-size: em(40px, 14px);
+  margin-top: 0.48em;
+  margin-left: 2%;
+}
+
+.ingress,
+.ingress-left {
+  p {
+    font-size: em(16px, 14px);
+  }
+}
 
 /* Links */
 
@@ -118,7 +138,8 @@
 }
 
 #panel-solutions,
-#panel-services {
+#panel-services,
+#panel-prosjekter {
   .pane-custom {
     .pane-title {
       font-size: em(30px, 14px);
@@ -131,11 +152,135 @@
   }
 }
 
-#panel-services {
-  .view-tjenester-listing {
-    font-size: em(17px, 14px);
-    li {
-      margin: 0 em(6px, 17px);
+#panel-prosjekter {
+  .pane-projects-block-projects {
+    .view-content {
+      margin-top: em(30px, 14px);
+    }
+    .views-row {
+      clear: none;
+      @include grid(5.75);
+      @include grid-prefix(0.25);
+      margin-bottom: 2em;
+    }
+    .views-field-title {
+      white-space: nowrap;
+    }
+  }
+}
+
+#panel-medarbeidere {
+  .view-employees {
+    .view-header {
+      p {
+        font-size: em(16px, 14px);
+      }
+    }
+    .views-row {
+      @include grid-reset;
+      height: auto!important;
+      margin: 0 2%;
+      padding: 1em 0;
+      border-left: none;
+      border-right: none;
+    }
+    .views-row-last {
+      border-bottom: none;
+    }
+    .views-field-field-image {}
+    .views-field-field-title {}
+    .views-field-nothing {}
+  }
+}
+
+#panel-support {
+  .pane-custom-support-intro {
+    p {
+      font-size: em(16px, 14px);
+    }
+  }
+  .webform-client-block {
+    .form-text {
+      width: perc(495px, 568px);
+    }
+    .form-textarea {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#panel-kontakt,
+#panel-support {
+  .webform-client-block {
+    .pane-title {
+      font-size: em(40px, 14px);
+      margin-left: 0;
+    }
+    .field-name-body {
+      p {
+        font-size: em(16px, 14px);
+      }
+    }
+    .form-text {
+      width: perc(495px, 568px);
+    }
+    .form-textarea {
+      margin-bottom: 0;
+    }
+  }
+}
+
+#panel-blogg {
+  .view-blog {
+    .view-header {
+      p {
+        font-size: em(16px, 14px);
+      }
+    }
+    .views-row {
+      padding: 2em 0;
+    }
+    .views-row-first {
+      padding-top: 1em;
+    }
+    .views-field-field-image {
+      @include grid(3);
+      @include alpha;
+      @include grid-suffix(0.5);
+
+      img {
+        padding: 4px;
+        @include responsive-image;
+      }
+    }
+    .views-field-created {
+      font-size: em(10px, 14px);
+    }
+    .views-field-body {
+    }
+    .views-field-view-node {
+    }
+    .pagination {
+      margin-top: 0;
+    }
+  }
+}
+
+.page-kurs {
+  #page-title {
+    font-size: em(30px, 14px);
+  }
+  .pane-custom {
+    .pane-content {
+      margin: 0;
+      p {
+        font-size: em(16px, 14px);
+      }
+    }
+  }
+  .pane-videos-panel-pane-1 {
+    .jcarousel-container-horizontal {
+      max-width: 280px;
     }
   }
 }

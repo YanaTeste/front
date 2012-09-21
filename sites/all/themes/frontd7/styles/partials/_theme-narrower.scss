@@ -233,6 +233,10 @@
   .panel-col-last {
     @include grid-reset;
     margin-bottom: 2em;
+
+    .inside {
+      margin: 0 2%;
+    }
   }
 
   .webform-client-block {
@@ -246,10 +250,10 @@
 }
 
 .page-kurs {
+  #page-title {
+    font-size: em(40px, 14px);
+  }
   .pane-custom {
-    .pane-title {
-      font-size: em(40px, 14px);
-    }
     .pane-content {
       @include grid-reset;
       margin: 0 2%;

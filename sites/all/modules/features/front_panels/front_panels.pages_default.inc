@@ -2625,7 +2625,7 @@ function front_panels_default_page_manager_pages() {
     ),
   );
   $display->cache = array();
-  $display->title = 'Drupal';
+  $display->title = 'Drupal CMS';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -3823,7 +3823,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     ),
   );
   $display->cache = array();
-  $display->title = '';
+  $display->title = 'Drupal Kurs';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
@@ -5985,7 +5985,7 @@ tjenester',
     ),
   );
   $display->cache = array();
-  $display->title = 'Opplæringsvideoer';
+  $display->title = 'Drupal Opplæringsvideoer';
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();

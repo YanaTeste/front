@@ -26,7 +26,7 @@ function front_content_node_info() {
     'article' => array(
       'name' => t('Artikkel'),
       'base' => 'node_content',
-      'description' => t('Opprett en nyhetssak, featureartikkel, kunngjøring, e.l.'),
+      'description' => t('Not in use'),
       'has_title' => '1',
       'title_label' => t('Tittel'),
       'help' => '',

@@ -142,7 +142,7 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'teaser';
   $ds_fieldsetting->settings = array(
     'video_620px' => array(
-      'weight' => '3',
+      'weight' => '2',
       'label' => 'hidden',
       'format' => 'default',
     ),
@@ -351,16 +351,16 @@ function front_display_suite_ds_layout_settings_info() {
     'regions' => array(
       'ds_content' => array(
         0 => 'title',
-        1 => 'body',
-        2 => 'field_date',
-        3 => 'video_620px',
+        1 => 'field_date',
+        2 => 'video_620px',
+        3 => 'body',
       ),
     ),
     'fields' => array(
       'title' => 'ds_content',
-      'body' => 'ds_content',
       'field_date' => 'ds_content',
       'video_620px' => 'ds_content',
+      'body' => 'ds_content',
     ),
     'classes' => array(),
   );

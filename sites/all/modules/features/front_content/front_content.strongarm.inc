@@ -687,7 +687,7 @@ function front_content_strongarm() {
             'visible' => TRUE,
           ),
           'teaser' => array(
-            'weight' => '16',
+            'weight' => '20',
             'visible' => FALSE,
           ),
         ),

@@ -3165,7 +3165,8 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt';
+  $handler->display->display_options['fields']['nothing']['alter']['alt'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   /* Field: Profile: Name */
@@ -3266,7 +3267,8 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt';
+  $handler->display->display_options['fields']['nothing']['alter']['alt'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   /* Field: Profile: Name */

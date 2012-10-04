@@ -1726,7 +1726,7 @@ function front_panels_default_page_manager_handlers() {
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array();
     $pane->cache = array();
@@ -1741,6 +1741,36 @@ function front_panels_default_page_manager_handlers() {
     $display->panels['middle'][1] = 'new-40';
     $pane = new stdClass();
     $pane->pid = 'new-41';
+    $pane->panel = 'middle';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-tjenester';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-tjenester',
+      'parent_mlid' => 'menu-tjenester:0',
+      'title_link' => 0,
+      'admin_title' => '',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-41'] = $pane;
+    $display->panels['middle'][2] = 'new-41';
+    $pane = new stdClass();
+    $pane->pid = 'new-42';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-list';
@@ -1759,10 +1789,10 @@ function front_panels_default_page_manager_handlers() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 2;
+    $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-41'] = $pane;
-    $display->panels['middle'][2] = 'new-41';
+    $display->content['new-42'] = $pane;
+    $display->panels['middle'][3] = 'new-42';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;

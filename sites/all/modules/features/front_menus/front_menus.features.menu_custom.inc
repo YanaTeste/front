@@ -16,6 +16,12 @@ function front_menus_menu_default_menu_custom() {
     'title' => 'Main menu',
     'description' => 'The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.',
   );
+  // Exported menu: menu-tjenester.
+  $menus['menu-tjenester'] = array(
+    'menu_name' => 'menu-tjenester',
+    'title' => 'Tjenester',
+    'description' => '',
+  );
   // Exported menu: user-menu.
   $menus['user-menu'] = array(
     'menu_name' => 'user-menu',
@@ -27,6 +33,7 @@ function front_menus_menu_default_menu_custom() {
   t('Main menu');
   t('The <em>Main</em> menu is used on many sites to show the major sections of the site, often in a top navigation bar.');
   t('The <em>User</em> menu contains links related to the user\'s account, as well as the \'Log out\' link.');
+  t('Tjenester');
   t('User menu');
 
 

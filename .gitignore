@@ -10,6 +10,8 @@ sites/*/legacy_files
 robots.txt
 robots_orig.txt
 
+.htaccess
+
 /sites/all/modules/contrib/devel_themer/
 /sites/all/modules/contrib/file_redirect/
 /sites/all/modules/contrib/simplehtmldom/

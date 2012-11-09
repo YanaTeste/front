@@ -8,3 +8,4 @@ sites/*/private
 .DS_Store
 file_redirect
 robots.txt
+.htaccess

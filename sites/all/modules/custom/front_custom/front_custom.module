@@ -59,6 +59,7 @@ function front_custom_block_configure($delta = '') {
       'url' => '',
       'twitter' => '',
       'facebook' => '',
+      'googleplus' => '',
     );
     $front_vcard = variable_get('front_vcard', '');
 
@@ -160,6 +161,13 @@ function front_custom_block_configure($delta = '') {
       '#maxlength' => 255,
       '#default_value' => $vcard['facebook'],
     );
+    $form['vcard']['social_links']['googleplus'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Google+'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $vcard['googleplus'],
+    );
   }
   elseif ($delta == 'front_support') {
     $support = array(
@@ -245,6 +253,7 @@ function front_custom_block_save($delta = '', $edit = array()) {
       'url' => '',
       'twitter' => '',
       'facebook' => '',
+      'googleplus' => '',
     );
 
     foreach ($vcard as $key => $value) {
@@ -336,6 +345,9 @@ function theme_front_vcard() {
     }
     if (!empty($v['facebook'])) {
       $hcard .= ' <a class="facebook url" href="' . $v['facebook'] . '">Facebook</a>';
+    }
+    if (!empty($v['googleplus'])) {
+      $hcard .= ' <a class="googleplus url" href="' . $v['googleplus'] . '">Google+</a>';
     }
     $hcard .= '</div>';
   }

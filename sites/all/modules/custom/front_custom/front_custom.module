@@ -441,3 +441,16 @@ function front_custom_convert2markup($text) {
 
   return $markup;
 }
+
+function front_custom_panels_pre_render($display) {
+  // Render node full view mode to trigger hook_node_view() and get Metatags
+  // working on node panels overrides.
+  if (isset($display->context['argument_entity_id:node_1'])) {
+    $nid = $display->context['argument_entity_id:node_1']->argument;
+
+    if (is_numeric($nid)) {
+      $node = node_load($nid);
+      $node_view = node_view($node);
+    }
+  }
+}

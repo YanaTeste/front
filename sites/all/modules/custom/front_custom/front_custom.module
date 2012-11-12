@@ -59,6 +59,7 @@ function front_custom_block_configure($delta = '') {
       'url' => '',
       'twitter' => '',
       'facebook' => '',
+      'googleplus' => '',
     );
     $front_vcard = variable_get('front_vcard', '');
 
@@ -160,6 +161,13 @@ function front_custom_block_configure($delta = '') {
       '#maxlength' => 255,
       '#default_value' => $vcard['facebook'],
     );
+    $form['vcard']['social_links']['googleplus'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Google+'),
+      '#size' => 40,
+      '#maxlength' => 255,
+      '#default_value' => $vcard['googleplus'],
+    );
   }
   elseif ($delta == 'front_support') {
     $support = array(
@@ -245,6 +253,7 @@ function front_custom_block_save($delta = '', $edit = array()) {
       'url' => '',
       'twitter' => '',
       'facebook' => '',
+      'googleplus' => '',
     );
 
     foreach ($vcard as $key => $value) {
@@ -336,6 +345,9 @@ function theme_front_vcard() {
     }
     if (!empty($v['facebook'])) {
       $hcard .= ' <a class="facebook url" href="' . $v['facebook'] . '">Facebook</a>';
+    }
+    if (!empty($v['googleplus'])) {
+      $hcard .= ' <a class="googleplus url" href="' . $v['googleplus'] . '">Google+</a>';
     }
     $hcard .= '</div>';
   }
@@ -440,4 +452,17 @@ function front_custom_convert2markup($text) {
   $markup = preg_replace($search, $replace, $text);
 
   return $markup;
+}
+
+function front_custom_panels_pre_render($display) {
+  // Render node full view mode to trigger hook_node_view() and get Metatags
+  // working on node panels overrides.
+  if (isset($display->context['argument_entity_id:node_1'])) {
+    $nid = $display->context['argument_entity_id:node_1']->argument;
+
+    if (is_numeric($nid)) {
+      $node = node_load($nid);
+      $node_view = node_view($node);
+    }
+  }
 }

@@ -1504,7 +1504,7 @@ function front_panels_default_page_manager_handlers() {
     $pane->shown = TRUE;
     $pane->access = array();
     $pane->configuration = array(
-      'use_pager' => 1,
+      'use_pager' => 0,
       'pager_id' => '0',
       'items_per_page' => '10',
       'arguments' => array(

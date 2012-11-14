@@ -1480,62 +1480,6 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-blog-meta_description'.
-  $fields['node-blog-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'blog',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => 7,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'node-kurs-body'.
   $fields['node-kurs-body'] = array(
     'field_config' => array(
@@ -1897,69 +1841,6 @@ Multiple classes should be separated by spaces.',
         ),
         'type' => 'text_textfield',
         'weight' => '33',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-kurs-meta_description'.
-  $fields['node-kurs-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'kurs',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => 4,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
       ),
     ),
   );
@@ -2664,62 +2545,6 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
-  // Exported field: 'node-page-meta_description'.
-  $fields['node-page-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'page',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => '0',
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'node-project-body'.
   $fields['node-project-body'] = array(
     'field_config' => array(
@@ -3015,75 +2840,6 @@ Multiple classes should be separated by spaces.',
         ),
         'type' => 'text_textfield',
         'weight' => '1',
-      ),
-    ),
-  );
-
-  // Exported field: 'node-project-meta_description'.
-  $fields['node-project-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'project',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => 3,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => '0',
-        ),
-        'short_teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
       ),
     ),
   );
@@ -3961,81 +3717,6 @@ F.eks er P0000-00-00T00:10:00 lik 10 minutter.',
     ),
   );
 
-  // Exported field: 'node-video-meta_description'.
-  $fields['node-video-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'video',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => 10,
-        ),
-        'full' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => '0',
-        ),
-        'large_preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'preview' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => 0,
-        ),
-        'teaser' => array(
-          'label' => 'above',
-          'settings' => array(),
-          'type' => 'hidden',
-          'weight' => '11',
-        ),
-      ),
-      'entity_type' => 'node',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Exported field: 'node-webform-body'.
   $fields['node-webform-body'] = array(
     'field_config' => array(
@@ -4189,59 +3870,8 @@ F.eks er P0000-00-00T00:10:00 lik 10 minutter.',
     ),
   );
 
-  // Exported field: 'taxonomy_term-topic-meta_description'.
-  $fields['taxonomy_term-topic-meta_description'] = array(
-    'field_config' => array(
-      'active' => '1',
-      'cardinality' => '1',
-      'deleted' => '0',
-      'entity_types' => array(),
-      'field_name' => 'meta_description',
-      'foreign keys' => array(),
-      'indexes' => array(),
-      'locked' => '0',
-      'module' => 'metatags_quick',
-      'settings' => array(
-        'max_length' => '160',
-        'meta_name' => 'description',
-      ),
-      'translatable' => '0',
-      'type' => 'metatags_quick',
-    ),
-    'field_instance' => array(
-      'bundle' => 'topic',
-      'default_value' => NULL,
-      'deleted' => '0',
-      'description' => '',
-      'display' => array(
-        'default' => array(
-          'label' => 'above',
-          'module' => 'metatags_quick',
-          'settings' => array(),
-          'type' => 'metatags_quick_default',
-          'weight' => 0,
-        ),
-      ),
-      'entity_type' => 'taxonomy_term',
-      'field_name' => 'meta_description',
-      'formatter' => 'metatags_quick_default',
-      'label' => '(Meta)Description',
-      'required' => FALSE,
-      'settings' => array(
-        'user_register_form' => FALSE,
-      ),
-      'widget' => array(
-        'module' => 'metatags_quick',
-        'settings' => array(),
-        'type' => 'metatags_quick_textarea',
-        'weight' => 0,
-      ),
-    ),
-  );
-
   // Translatables
   // Included for use with string extractors like potx.
-  t('(Meta)Description');
   t('Beskrivelse');
   t('Body');
   t('CSS Class');

@@ -103,14 +103,8 @@ function front_views_views_default_views() {
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'full';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
-  $handler->display->display_options['pager']['options']['id'] = '0';
-  $handler->display->display_options['pager']['options']['tags']['first'] = '« første';
-  $handler->display->display_options['pager']['options']['tags']['previous'] = '‹ forrige';
-  $handler->display->display_options['pager']['options']['tags']['next'] = 'neste ›';
-  $handler->display->display_options['pager']['options']['tags']['last'] = 'siste »';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
   $handler->display->display_options['row_options']['hide_empty'] = TRUE;
@@ -232,6 +226,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'blog' => 'blog',
   );
+  $handler->display->display_options['filters']['type']['group'] = 1;
 
   /* Display: Posts */
   $handler = $view->new_display('panel_pane', 'Posts', 'posts');
@@ -255,6 +250,55 @@ function front_views_views_default_views() {
       'label' => 'Content: Has taxonomy term ID',
     ),
   );
+
+  /* Display: Planet Drupal RSS Feed */
+  $handler = $view->new_display('feed', 'Planet Drupal RSS Feed', 'feed_1');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Planet Drupal feed by Frontkom';
+  $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['pager']['options']['offset'] = '0';
+  $handler->display->display_options['style_plugin'] = 'rss';
+  $handler->display->display_options['row_plugin'] = 'node_rss';
+  $handler->display->display_options['row_options']['item_length'] = 'rss';
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Content: Published */
+  $handler->display->display_options['filters']['status']['id'] = 'status';
+  $handler->display->display_options['filters']['status']['table'] = 'node';
+  $handler->display->display_options['filters']['status']['field'] = 'status';
+  $handler->display->display_options['filters']['status']['value'] = 1;
+  $handler->display->display_options['filters']['status']['group'] = 1;
+  $handler->display->display_options['filters']['status']['expose']['operator'] = FALSE;
+  /* Filter criterion: Content: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'blog' => 'blog',
+  );
+  /* Filter criterion: Content: Has taxonomy term */
+  $handler->display->display_options['filters']['tid']['id'] = 'tid';
+  $handler->display->display_options['filters']['tid']['table'] = 'taxonomy_index';
+  $handler->display->display_options['filters']['tid']['field'] = 'tid';
+  $handler->display->display_options['filters']['tid']['operator'] = 'and';
+  $handler->display->display_options['filters']['tid']['value'] = array(
+    0 => '38',
+  );
+  $handler->display->display_options['filters']['tid']['expose']['operator_id'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['label'] = 'Has taxonomy term';
+  $handler->display->display_options['filters']['tid']['expose']['operator'] = 'tid_op';
+  $handler->display->display_options['filters']['tid']['expose']['identifier'] = 'tid';
+  $handler->display->display_options['filters']['tid']['expose']['remember_roles'] = array(
+    2 => '2',
+    1 => 0,
+    3 => 0,
+    4 => 0,
+  );
+  $handler->display->display_options['filters']['tid']['vocabulary'] = 'topic';
+  $handler->display->display_options['filters']['tid']['error_message'] = FALSE;
+  $handler->display->display_options['path'] = 'blogg/planet-drupal/rss';
+  $handler->display->display_options['sitename_title'] = 0;
   $translatables['blog'] = array(
     t('Master'),
     t('more'),
@@ -263,13 +307,6 @@ function front_views_views_default_views() {
     t('Sort by'),
     t('Asc'),
     t('Desc'),
-    t('Items per page'),
-    t('- All -'),
-    t('Offset'),
-    t('« første'),
-    t('‹ forrige'),
-    t('neste ›'),
-    t('siste »'),
     t('Introduction text'),
     t('Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.'),
     t('author'),
@@ -279,6 +316,9 @@ function front_views_views_default_views() {
     t('All'),
     t('Posts'),
     t('View panes'),
+    t('Planet Drupal RSS Feed'),
+    t('Planet Drupal feed by Frontkom'),
+    t('Has taxonomy term'),
   );
   $export['blog'] = $view;
 
@@ -298,15 +338,15 @@ function front_views_views_default_views() {
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '518400';
+  $handler->display->display_options['cache']['results_lifespan'] = '3600';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
+  $handler->display->display_options['cache']['output_lifespan'] = '3600';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
   $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['options']['items_per_page'] = '1';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['row_plugin'] = 'fields';
@@ -1196,6 +1236,13 @@ function front_views_views_default_views() {
   $handler->display->display_options['filters']['type']['value'] = array(
     'kurs' => 'kurs',
   );
+  /* Filter criterion: Content: Dato (field_date) */
+  $handler->display->display_options['filters']['field_date_value']['id'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['table'] = 'field_data_field_date';
+  $handler->display->display_options['filters']['field_date_value']['field'] = 'field_date_value';
+  $handler->display->display_options['filters']['field_date_value']['operator'] = '>';
+  $handler->display->display_options['filters']['field_date_value']['default_date'] = 'now';
+  $handler->display->display_options['filters']['field_date_value']['year_range'] = '-1:+10';
 
   /* Display: Teasers */
   $handler = $view->new_display('panel_pane', 'Teasers', 'panel_pane_1');
@@ -1256,6 +1303,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['title'] = 'Order nodes';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
+  $handler->display->display_options['access']['perm'] = 'administer taxonomy';
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '518400';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
@@ -1640,16 +1688,11 @@ function front_views_views_default_views() {
   $handler->display->display_options['title'] = 'Prosjekter';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '518400';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
   $handler->display->display_options['exposed_form']['type'] = 'basic';
-  $handler->display->display_options['pager']['type'] = 'some';
-  $handler->display->display_options['pager']['options']['items_per_page'] = '10';
+  $handler->display->display_options['pager']['type'] = 'none';
   $handler->display->display_options['pager']['options']['offset'] = '0';
   $handler->display->display_options['style_plugin'] = 'jcarousel';
   $handler->display->display_options['style_options']['wrap'] = '0';
@@ -1744,6 +1787,12 @@ function front_views_views_default_views() {
   /* Display: Projects */
   $handler = $view->new_display('panel_pane', 'Projects', 'projects');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['cache'] = FALSE;
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '518400';
+  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['output_lifespan'] = '518400';
+  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['defaults']['style_plugin'] = FALSE;
   $handler->display->display_options['style_plugin'] = 'default';
   $handler->display->display_options['defaults']['style_options'] = FALSE;
@@ -2521,7 +2570,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '518400';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -2811,11 +2860,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['title'] = 'Bloggtemaer';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
-  $handler->display->display_options['cache']['type'] = 'time';
-  $handler->display->display_options['cache']['results_lifespan'] = '518400';
-  $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
-  $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
+  $handler->display->display_options['cache']['type'] = 'none';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['query']['options']['distinct'] = TRUE;
   $handler->display->display_options['query']['options']['query_comment'] = FALSE;
@@ -3036,7 +3081,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['cache']['type'] = 'time';
   $handler->display->display_options['cache']['results_lifespan'] = '518400';
   $handler->display->display_options['cache']['results_lifespan_custom'] = '0';
-  $handler->display->display_options['cache']['output_lifespan'] = '518400';
+  $handler->display->display_options['cache']['output_lifespan'] = '-1';
   $handler->display->display_options['cache']['output_lifespan_custom'] = '0';
   $handler->display->display_options['query']['type'] = 'views_query';
   $handler->display->display_options['exposed_form']['type'] = 'basic';
@@ -3165,8 +3210,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['fields']['nothing']['label'] = '';
   $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
   $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
-  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt';
-  $handler->display->display_options['fields']['nothing']['alter']['alt'] = 'Kontakt oss';
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt/?user=[user]';
   $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
   $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
   /* Field: Profile: Name */
@@ -3211,6 +3255,62 @@ function front_views_views_default_views() {
   /* Display: Single user */
   $handler = $view->new_display('panel_pane', 'Single user', 'single');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Profile: User uid */
+  $handler->display->display_options['fields']['user']['id'] = 'user';
+  $handler->display->display_options['fields']['user']['table'] = 'profile';
+  $handler->display->display_options['fields']['user']['field'] = 'user';
+  $handler->display->display_options['fields']['user']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['user']['label'] = '';
+  $handler->display->display_options['fields']['user']['exclude'] = TRUE;
+  $handler->display->display_options['fields']['user']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['user']['separator'] = '';
+  /* Field: Field: Image */
+  $handler->display->display_options['fields']['field_image']['id'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['table'] = 'field_data_field_image';
+  $handler->display->display_options['fields']['field_image']['field'] = 'field_image';
+  $handler->display->display_options['fields']['field_image']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_image']['label'] = '';
+  $handler->display->display_options['fields']['field_image']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_image']['element_wrapper_type'] = 'div';
+  $handler->display->display_options['fields']['field_image']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['empty_zero'] = TRUE;
+  $handler->display->display_options['fields']['field_image']['click_sort_column'] = 'fid';
+  $handler->display->display_options['fields']['field_image']['settings'] = array(
+    'image_style' => 'teaser_thumbnail',
+    'image_link' => 'content',
+  );
+  /* Field: Contact link */
+  $handler->display->display_options['fields']['nothing']['id'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['table'] = 'views';
+  $handler->display->display_options['fields']['nothing']['field'] = 'nothing';
+  $handler->display->display_options['fields']['nothing']['ui_name'] = 'Contact link';
+  $handler->display->display_options['fields']['nothing']['label'] = '';
+  $handler->display->display_options['fields']['nothing']['alter']['text'] = 'Kontakt oss';
+  $handler->display->display_options['fields']['nothing']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['nothing']['alter']['path'] = 'kontakt';
+  $handler->display->display_options['fields']['nothing']['alter']['alt'] = 'Kontakt oss';
+  $handler->display->display_options['fields']['nothing']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['nothing']['element_wrapper_type'] = 'div';
+  /* Field: Profile: Name */
+  $handler->display->display_options['fields']['field_name']['id'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['table'] = 'field_data_field_name';
+  $handler->display->display_options['fields']['field_name']['field'] = 'field_name';
+  $handler->display->display_options['fields']['field_name']['relationship'] = 'profile';
+  $handler->display->display_options['fields']['field_name']['label'] = '';
+  $handler->display->display_options['fields']['field_name']['alter']['make_link'] = TRUE;
+  $handler->display->display_options['fields']['field_name']['alter']['path'] = 'user/[user]';
+  $handler->display->display_options['fields']['field_name']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_name']['element_wrapper_type'] = 'h3';
+  $handler->display->display_options['fields']['field_name']['hide_empty'] = TRUE;
+  $handler->display->display_options['fields']['field_name']['empty_zero'] = TRUE;
+  /* Field: User: About_placed_on_pages */
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['id'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['table'] = 'field_data_field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['field'] = 'field_about_placed_on_pages';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['label'] = '';
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_label_colon'] = FALSE;
+  $handler->display->display_options['fields']['field_about_placed_on_pages']['element_wrapper_type'] = 'div';
   $handler->display->display_options['allow']['use_pager'] = 'use_pager';
   $handler->display->display_options['allow']['items_per_page'] = 'items_per_page';
   $handler->display->display_options['allow']['offset'] = 0;

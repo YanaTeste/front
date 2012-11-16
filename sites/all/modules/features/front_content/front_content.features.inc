@@ -42,7 +42,7 @@ function front_content_node_info() {
     'blog' => array(
       'name' => t('Blogginnlegg'),
       'base' => 'node_content',
-      'description' => t('Et standard innlegg i Löplabbetbloggen.'),
+      'description' => t('Et standard innlegg i bloggen.'),
       'has_title' => '1',
       'title_label' => t('Tittel'),
       'help' => '',

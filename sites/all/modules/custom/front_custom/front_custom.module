@@ -27,6 +27,19 @@ function front_custom_ctools_plugin_directory($module, $plugin) {
 }
 
 /**
+ * Implements hook_menu_alter().
+ */
+function front_custom_menu_alter(&$items) {
+  // Workaround for PDOException warning on _menu_router_save() after update to
+  // Drupal 7.14
+  foreach ($items as $key => $item) {
+    if (!isset($item['weight']) || (isset($item['weight']) && empty($item['weight']))) {
+      $items[$key]['weight'] = 0;
+    }
+  }
+}
+
+/**
  * Implements hook_block_info().
  */
 function front_custom_block_info() {

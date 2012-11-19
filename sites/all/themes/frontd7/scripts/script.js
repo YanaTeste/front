@@ -5,8 +5,8 @@
 (function($) {
 
     var responsiveMenus = function() {
-        $('#main-menu .main-menu').mobileSelect({ defaultOption: Drupal.t("Main menu") });
-        $('#secondary-menu .secondary-menu').mobileSelect({ defaultOption: Drupal.t("Secondary") });
+        $('#main-menu .main-menu').mobileSelect({ defaultOption: Drupal.t('Main menu') });
+        $('#secondary-menu .secondary-menu').mobileSelect({ defaultOption: Drupal.t('Secondary') });
     };
 
     Drupal.behaviors.frontSearch = {
@@ -60,8 +60,8 @@
                 $('option:first', $select).each(function() {
                     var $this = $(this);
                     if (!$this.val().length) {
-                        $this.text($this.parent().prev('label').text().replace('*',''));
-                    };
+                        $this.text($this.parent().prev('label').text().replace('*', ''));
+                    }
                 });
                 $select.customSelect();
             }
@@ -101,7 +101,6 @@
                     $('ul a.active', $menu).parents('ul').show().prev('h3').find('a').toggleClass('open');
 
                     // Slide down/up on click.
-                    /* Remove?
                     $('h3 a', $menu).each(function() {
                         var $this = $(this);
 
@@ -113,7 +112,6 @@
                             }
                         });
                     });
-                    */
                 });
             }
         }
@@ -123,9 +121,9 @@
     // and closes the suggestions popup when doing so.
     //
     // Changed: Only prevent form from submitting when an item in the autocomplete list is selected.
-    Drupal.autocompleteSubmit = function () {
+    Drupal.autocompleteSubmit = function() {
         if ($('#autocomplete .selected').length > 0) {
-            return $('#autocomplete').each(function () {
+            return $('#autocomplete').each(function() {
                 this.owner.hidePopup();
             }).size() == 0;
         }

@@ -4622,7 +4622,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     'contexts' => array(),
     'relationships' => array(),
     'panels_page_title_state' => 1,
-    'panels_page_title' => 'Prosjekter - våre referanser på Drupal CMS og andre Open Source CMS',
+    'panels_page_title' => 'Våre referanser på Drupal CMS og andre Open Source CMS',
   );
   $display = new panels_display();
   $display->layout = 'onecol';

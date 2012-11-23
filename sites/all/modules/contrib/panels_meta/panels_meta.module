@@ -1,0 +1,160 @@
+<?php
+
+/**
+ * @file
+ * Integrates meta options in Page Manager
+ */
+
+/**
+ * Implements hook_page_manager_variant_operations_alter()
+ */
+function panels_meta_page_manager_variant_operations_alter(&$operations, $handler) {
+
+  reset($operations['children']);
+  $operation = array();
+  while (list($key, $value) = each($operations['children'])) {
+    $operation[$key] = $value;
+    if ($key == 'summary') {
+      $operation['panels_meta'] = array(
+        'title' => t('Meta tags'),
+        'description' => t('Add meta tags. U may use substitions in any field if available.'),
+        'form' => 'panels_meta_variant_template',
+      );
+    }
+  }
+  $operations['children'] = $operation;
+}
+
+function panels_meta_variant_template($form, &$form_state) {
+  $cache = panels_edit_cache_get('panel_context:' . $form_state['task_name'] . ':' . $form_state['handler_id']);
+  $display = $cache->display;
+  $handler = $form_state['handler'];
+  $conf = $handler->conf;
+
+  $form['keywords'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Keywords'),
+    '#description' => t('A comma-separated list of keywords about the page.'),
+    '#default_value' => (isset($conf['keywords'])) ? $conf['keywords'] : '',
+  );
+  $form['description'] = array(
+    '#type' => 'textarea',
+    '#title' => t('Description'),
+    '#description' => t('A summary of the page\'s content, should be 150 characters or less.'),
+    '#default_value' => (isset($conf['description'])) ? $conf['description'] : '',
+  );
+  $form['advanced'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Advanced'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['advanced']['robots'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Robots'),
+    '#options' => array(
+      'noindex' => t('noindex'),
+      'nofollow' => t('nofollow'),
+      'noarchive' => t('noarchive'),
+    ),
+    '#default_value' => (isset($conf['robots'])) ? $conf['robots'] : array(),
+  );
+  $form['advanced']['canonical'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Canonical URL'),
+    '#default_value' => (isset($conf['canonical'])) ? $conf['canonical'] : '',
+  );
+
+  $rows = array();
+  foreach ($display->context as $context) {
+    foreach (ctools_context_get_converters('%' . check_plain($context->keyword) . ':', $context) as $keyword => $title) {
+      $rows[] = array(
+        check_plain($keyword),
+        t('@identifier: @title', array('@title' => $title, '@identifier' => $context->identifier)),
+      );
+    }
+  }
+
+  $header = array(t('Keyword'), t('Value'));
+  $form['display_title']['contexts'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Substitutions'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#value' => theme('table', array('header' => $header, 'rows' => $rows)),
+  );
+
+  return $form;
+}
+
+function panels_meta_variant_template_submit(&$form, &$form_state) {
+  $form_state['handler']->conf['description'] = $form_state['values']['description'];
+  $form_state['handler']->conf['keywords'] = $form_state['values']['keywords'];
+  $form_state['handler']->conf['robots'] = $form_state['values']['robots'];
+  $form_state['handler']->conf['canonical'] = $form_state['values']['canonical'];
+}
+
+/**
+ * Implements hook_ctools_render_alter()
+ */
+function panels_meta_ctools_render_alter($info, $page, $context) {
+
+  $handler = $context['handler'];
+  $conf = $handler->conf;
+  $display = $conf['display'];
+
+  if (!empty($conf['description'])) {
+
+    $description = ctools_context_keyword_substitute($conf['description'], array(), $display->context);
+
+    $description_meta = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'description',
+        'content' => $description,
+      ),
+    );
+    drupal_add_html_head($description_meta, 'meta_description');
+  }
+  if (!empty($conf['keywords'])) {
+    $keywords = ctools_context_keyword_substitute($conf['keywords'], array(), $display->context);
+
+    $keywords_meta = array(
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'keywords',
+        'content' => strtolower($keywords),
+      ),
+    );
+    drupal_add_html_head($keywords_meta, 'meta_keywords');
+  }
+  if (isset($conf['robots'])) {
+    foreach ($conf['robots'] as $key => $value) {
+      if ($key === $value) {
+        $robots[] = $value;
+      }
+    }
+		if (isset($robots)) {
+			$robots_meta = array(
+				'#tag' => 'meta',
+				'#attributes' => array(
+					'name' => 'robots',
+					'content' => implode(', ', $robots),
+				),
+			);
+			drupal_add_html_head($robots_meta, 'meta_robots');
+		}
+  }
+  if (!empty($conf['canonical'])) {
+    $canonical = ctools_context_keyword_substitute($conf['canonical'], array(), $display->context);
+
+    $canonical_meta = array(
+      '#tag' => 'link',
+      '#attributes' => array(
+        'rel' => 'canonical',
+        'href' => $canonical,
+      ),
+    );
+    drupal_add_html_head($canonical_meta, 'meta_canonical');
+  }
+}

@@ -1,0 +1,6 @@
+name = Panels Meta
+description = Provides meta options for Page Manager.
+package = Panels
+core = 7.x
+dependencies[] = panels
+dependencies[] = page_manager

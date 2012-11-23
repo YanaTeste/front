@@ -18,23 +18,13 @@ function front_display_suite_ds_field_settings_info() {
   $ds_fieldsetting->view_mode = 'full';
   $ds_fieldsetting->settings = array(
     'date_with_icon' => array(
-      'weight' => '2',
+      'weight' => '0',
       'label' => 'inline',
       'format' => 'default',
       'ft' => array(
         'func' => 'theme_ds_field_expert',
         'lb' => 'Dato',
         'lb-el' => 'h4',
-      ),
-    ),
-    'title' => array(
-      'weight' => '1',
-      'label' => 'hidden',
-      'format' => 'default',
-      'formatter_settings' => array(
-        'link' => '1',
-        'wrapper' => 'h3',
-        'class' => '',
       ),
     ),
     'field_location' => array(
@@ -206,18 +196,14 @@ function front_display_suite_ds_layout_settings_info() {
     'hide_sidebars' => 0,
     'regions' => array(
       'ds_content' => array(
-        0 => 'meta_description',
-        1 => 'title',
-        2 => 'date_with_icon',
-        3 => 'field_location',
-        4 => 'field_instructor',
-        5 => 'body',
-        6 => 'field_date',
+        0 => 'date_with_icon',
+        1 => 'field_location',
+        2 => 'field_instructor',
+        3 => 'body',
+        4 => 'field_date',
       ),
     ),
     'fields' => array(
-      'meta_description' => 'ds_content',
-      'title' => 'ds_content',
       'date_with_icon' => 'ds_content',
       'field_location' => 'ds_content',
       'field_instructor' => 'ds_content',

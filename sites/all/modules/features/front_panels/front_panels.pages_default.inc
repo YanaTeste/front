@@ -1927,6 +1927,14 @@ function front_panels_default_page_manager_pages() {
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'The Power of Open Source',
+    'description' => 'Open Source software er programvare som er utviklet, testet og forbedret gjennom åpne communities - basert på deling og fremtidig utvikling.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -2141,6 +2149,14 @@ function front_panels_default_page_manager_pages() {
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Kontaktinformasjon for Frontkom',
+    'description' => 'Frontkom er et kommunikasjonsbyrå for web og digitale medier.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecolsidebar';
@@ -2518,6 +2534,14 @@ function front_panels_default_page_manager_pages() {
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Blogg - våre artikler om Drupal og andre ting vi finner verd å skrive om',
+    'description' => 'Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'twocol';
@@ -2665,6 +2689,14 @@ function front_panels_default_page_manager_pages() {
     ),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Drupal CMS - Åpen kildekode-plattform og publiseringsløsning',
+    'description' => 'Drupal er en åpen kildekode-plattform og publiseringsløsning (CMS) for bygging av dynamiske nettsteder. Vi er dine Drupal-eksperter i Norge.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecolsidebar';
@@ -2966,6 +2998,14 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     'css' => '',
     'contexts' => array(),
     'relationships' => array(),
+    'description' => 'Drupal-ekspertene i Frontkom leverer løsninger fra A til Å med bred kompetanse innenfor digital strategi, prosjektledelse, kommunikasjon og teknologi.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -3096,6 +3136,14 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Jobb i Frontkom - Frontkom is hiring - A Frontkom está a contratar',
+    'description' => 'Vi er alltid interessert i å bli kjent med virkelig gode webutviklere og designere. Kanskje vi har noe arbeid som passer perfekt for deg?',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecolsidebar';
@@ -3653,6 +3701,14 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Kontaktskjema - henvendelser til Frontkom',
+    'description' => 'Kontakt oss hvis du ønsker å avtale et møte med oss, har tilbakemelding eller lurer på noe.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'twocol';
@@ -3869,6 +3925,14 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Drupal Kurs - Opplæring i Drupal CMS på norsk, tilpasset deg',
+    'description' => 'Drupal kurs. Vi tilbyr både generelle kurs i Drupal CMS og opplæring i systemene vi lager. Vi skreddersyr gjerne kurs for deg. Kontakt oss for et tilbud!',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -4094,6 +4158,14 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Gode løsninger innenfor digital strategi, prosjektledelse, kommunikasjon og teknologi',
+    'description' => 'Med bred kompetanse og gode løsninger innenfor digital strategi, prosjektledelse, kommunikasjon og teknologi hjelper vi deg med å lykkes på nett. ',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -4451,6 +4523,14 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Medarbeidere i Frontkom',
+    'description' => 'Her er vårt team av dedikerte utviklere, prosjektledere og problemløsere.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecolsidebar';
@@ -4623,6 +4703,14 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Våre referanser på Drupal CMS og andre Open Source CMS',
+    'description' => 'Se et utvalg av kunder og prosjekter vi har jobbet med på Drupal og andre Open Source-plattformer.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecol';
@@ -5016,6 +5104,14 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Frontkom Supportsenter',
+    'description' => 'Du får enkelt tak i oss gjennom vårt supportsenter.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'twocol';
@@ -6066,6 +6162,14 @@ tjenester',
     'relationships' => array(),
     'panels_page_title_state' => 1,
     'panels_page_title' => 'Drupal Opplæringsvideoer - lær Drupal CMS med videoer på norsk',
+    'description' => 'Frontkom gir deg opplæringsvideoer for Drupal på norsk. Kom og lær av oss!',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
   );
   $display = new panels_display();
   $display->layout = 'onecolsidebar';

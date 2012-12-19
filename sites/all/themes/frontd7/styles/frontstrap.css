@@ -6206,6 +6206,10 @@ ul.menu a.active {
     margin-top: 1em;
   }
 
+  .page-home .pane-projects-block-latest-projects .views-field-title {
+    text-align: center;
+  }
+
   #panel-solutions .pane-custom .pane-title,
   #panel-services .pane-custom .pane-title,
   #panel-prosjekter .pane-custom .pane-title {

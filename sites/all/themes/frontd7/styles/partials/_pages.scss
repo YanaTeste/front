@@ -253,6 +253,7 @@
 .page-kurs {
   #page-title{
     @include title-centered;
+    padding: 0.7em 0;
   }
   .ingress{
     @include ingress;
@@ -263,10 +264,12 @@
   .pane-videos-panel-pane-1{
     .pane-title{
       color: $brownProfileColor;
+      padding-left: 10px;
     }
 
     .view-footer{
-      float:right;
+      clear: both;
+      text-align: center;
     }
   }
 

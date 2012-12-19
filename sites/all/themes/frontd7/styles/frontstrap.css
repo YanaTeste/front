@@ -3405,6 +3405,7 @@ ul.menu a.active {
   margin: 0;
   text-align: center;
   padding: 1em 0;
+  padding: 0.7em 0;
 }
 .page-kurs .ingress {
   display: inline;
@@ -3430,9 +3431,11 @@ ul.menu a.active {
 }
 .page-kurs .pane-videos-panel-pane-1 .pane-title {
   color: #4c3327;
+  padding-left: 10px;
 }
 .page-kurs .pane-videos-panel-pane-1 .view-footer {
-  float: right;
+  clear: both;
+  text-align: center;
 }
 .page-kurs .pane-kurs-overview-panel-pane-2 {
   clear: both;

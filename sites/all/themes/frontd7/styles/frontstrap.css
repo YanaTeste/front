@@ -6324,8 +6324,16 @@ ul.menu a.active {
   .page-kurs .pane-custom .pane-content p {
     font-size: 1.14286em;
   }
+  .page-kurs .pane-title {
+    text-align: center;
+  }
   .page-kurs .pane-videos-panel-pane-1 .jcarousel-container-horizontal {
     max-width: 280px;
+  }
+  .page-kurs .pane-videos-panel-pane-1 .view-footer {
+    float: none;
+    clear: both;
+    text-align: center;
   }
 
   /* Other */

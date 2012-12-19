@@ -288,9 +288,17 @@
       }
     }
   }
+  .pane-title {
+    text-align: center;
+  }
   .pane-videos-panel-pane-1 {
     .jcarousel-container-horizontal {
       max-width: 280px;
+    }
+    .view-footer {
+      float: none;
+      clear: both;
+      text-align: center;
     }
   }
 }

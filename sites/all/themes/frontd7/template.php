@@ -43,6 +43,19 @@ function frontd7_html_head_alter(&$head_elements) {
     ),
     '#weight' => 4,
   );
+
+  // Remove "?page=n" from search engines index.
+  if (isset($_GET['page']) || isset($_GET['sort'])) {
+    $head_elements['robots'] = array(
+      '#type' => 'html_tag',
+      '#tag' => 'meta',
+      '#attributes' => array(
+        'name' => 'robots',
+        'content' => 'noindex,follow',
+      ),
+      '#weight' => 5,
+    );
+  }
 }
 
 /**
@@ -60,6 +73,18 @@ function frontd7_css_alter(&$css) {
 function frontd7_js_alter(&$javascript) {
   // Swap out jQuery to use an updated version of the library.
   $javascript['misc/jquery.js']['data'] = 'https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js';
+}
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function frontd7_preprocess_html(&$variables, $hook) {
+  static $hooks;
+
+  // Avoid duplicated title SEO penalty.
+  if (isset($_GET['page'])) {
+    $variables['head_title'] .= ' | ' . t('Page') . ' ' . check_plain($_GET['page']);
+  }
 }
 
 /**

@@ -16,6 +16,8 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'nodeorder',
       'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '0',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',
@@ -44,6 +46,8 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '0',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',
@@ -72,6 +76,8 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
+      'language' => 'und',
+      'i18n_mode' => '4',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',

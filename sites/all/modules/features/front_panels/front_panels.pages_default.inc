@@ -235,11 +235,281 @@ function front_panels_default_page_manager_handlers() {
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
   $handler->api_version = 1;
-  $handler->name = 'node_view_panel_context_2';
+  $handler->name = 'node_view_panel_context_10';
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
   $handler->weight = -29;
+  $handler->conf = array(
+    'title' => 'Page - Wordpress',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => 'section-drupal',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'Taxonomy term from: Section',
+        'keyword' => 'section',
+        'name' => 'entity_from_field:field_section-node-taxonomy_term',
+        'context' => 'argument_entity_id:node_1',
+        'id' => 1,
+      ),
+      1 => array(
+        'identifier' => 'User from Taxonomy term (on Taxonomy term: Contact user [field_contact_user])',
+        'keyword' => 'profile',
+        'name' => 'entity_from_field:field_contact_user-taxonomy_term-user',
+        'context' => 'relationship_entity_from_field:field_section-node-taxonomy_term_1',
+        'id' => 1,
+      ),
+    ),
+    'access' => array(
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'page' => 'page',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+        2 => array(
+          'name' => 'term_has_parent',
+          'settings' => array(
+            'vid' => '2',
+            'vid_3' => array(),
+            'vid_4' => array(),
+            'vid_2' => array(
+              73 => '73',
+            ),
+            'vid_1' => array(),
+            'include_self' => 1,
+          ),
+          'context' => 'relationship_entity_from_field:field_section-node-taxonomy_term_1',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '%node:title';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-6';
+    $pane->panel = 'left';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_subheading';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-6'] = $pane;
+    $display->panels['left'][0] = 'new-6';
+    $pane = new stdClass();
+    $pane->pid = 'new-7';
+    $pane->panel = 'left';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:body';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'text_default',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-7'] = $pane;
+    $display->panels['left'][1] = 'new-7';
+    $pane = new stdClass();
+    $pane->pid = 'new-8';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'field_name_value' => 'Henrik Akselsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-8'] = $pane;
+    $display->panels['left'][2] = 'new-8';
+    $pane = new stdClass();
+    $pane->pid = 'new-9';
+    $pane->panel = 'right';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-drupal';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-drupal',
+      'parent_mlid' => 'menu-drupal:0',
+      'title_link' => 0,
+      'admin_title' => '',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-9'] = $pane;
+    $display->panels['right'][0] = 'new-9';
+    $pane = new stdClass();
+    $pane->pid = 'new-10';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'taxonomy_menu-panel_pane_1';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-10'] = $pane;
+    $display->panels['right'][1] = 'new-10';
+    $pane = new stdClass();
+    $pane->pid = 'new-11';
+    $pane->panel = 'right';
+    $pane->type = 'entity_field';
+    $pane->subtype = 'node:field_image';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'label' => 'hidden',
+      'formatter' => 'image',
+      'delta_limit' => 0,
+      'delta_offset' => '0',
+      'delta_reversed' => FALSE,
+      'formatter_settings' => array(
+        'file_view_mode' => 'media_small',
+        'image_style' => 'medium',
+        'image_link' => '',
+      ),
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-11'] = $pane;
+    $display->panels['right'][2] = 'new-11';
+    $pane = new stdClass();
+    $pane->pid = 'new-12';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'menu-menu-wordpress';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-12'] = $pane;
+    $display->panels['right'][3] = 'new-12';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['node_view_panel_context_10'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view_panel_context_2';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -28;
   $handler->conf = array(
     'title' => 'Page - Kompetanse',
     'no_blocks' => 1,
@@ -312,7 +582,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-6';
+    $pane->pid = 'new-13';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_subheading';
@@ -337,10 +607,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-6'] = $pane;
-    $display->panels['left'][0] = 'new-6';
+    $display->content['new-13'] = $pane;
+    $display->panels['left'][0] = 'new-13';
     $pane = new stdClass();
-    $pane->pid = 'new-7';
+    $pane->pid = 'new-14';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_image';
@@ -368,10 +638,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-7'] = $pane;
-    $display->panels['left'][1] = 'new-7';
+    $display->content['new-14'] = $pane;
+    $display->panels['left'][1] = 'new-14';
     $pane = new stdClass();
-    $pane->pid = 'new-8';
+    $pane->pid = 'new-15';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
@@ -396,10 +666,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-8'] = $pane;
-    $display->panels['left'][2] = 'new-8';
+    $display->content['new-15'] = $pane;
+    $display->panels['left'][2] = 'new-15';
     $pane = new stdClass();
-    $pane->pid = 'new-9';
+    $pane->pid = 'new-16';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-referenced';
@@ -423,10 +693,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-9'] = $pane;
-    $display->panels['left'][3] = 'new-9';
+    $display->content['new-16'] = $pane;
+    $display->panels['left'][3] = 'new-16';
     $pane = new stdClass();
-    $pane->pid = 'new-10';
+    $pane->pid = 'new-17';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-kompetanse';
@@ -444,10 +714,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-10'] = $pane;
-    $display->panels['right'][0] = 'new-10';
+    $display->content['new-17'] = $pane;
+    $display->panels['right'][0] = 'new-17';
     $pane = new stdClass();
-    $pane->pid = 'new-11';
+    $pane->pid = 'new-18';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'related-reverse';
@@ -465,8 +735,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-11'] = $pane;
-    $display->panels['right'][1] = 'new-11';
+    $display->content['new-18'] = $pane;
+    $display->panels['right'][1] = 'new-18';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -479,7 +749,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -22;
+  $handler->weight = -21;
   $handler->conf = array(
     'title' => 'Generic',
     'no_blocks' => 1,
@@ -509,7 +779,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-12';
+    $pane->pid = 'new-19';
     $pane->panel = 'left';
     $pane->type = 'entity_view';
     $pane->subtype = 'node';
@@ -529,14 +799,14 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-12'] = $pane;
-    $display->panels['left'][0] = 'new-12';
+    $display->content['new-19'] = $pane;
+    $display->panels['left'][0] = 'new-19';
     $pane = new stdClass();
-    $pane->pid = 'new-13';
+    $pane->pid = 'new-20';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'use_pager' => 0,
@@ -556,14 +826,14 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-13'] = $pane;
-    $display->panels['left'][1] = 'new-13';
+    $display->content['new-20'] = $pane;
+    $display->panels['left'][1] = 'new-20';
     $pane = new stdClass();
-    $pane->pid = 'new-14';
+    $pane->pid = 'new-21';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
-    $pane->shown = TRUE;
+    $pane->shown = FALSE;
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
@@ -580,8 +850,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-14'] = $pane;
-    $display->panels['right'][0] = 'new-14';
+    $display->content['new-21'] = $pane;
+    $display->panels['right'][0] = 'new-21';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -594,7 +864,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -27;
+  $handler->weight = -26;
   $handler->conf = array(
     'title' => 'Blog',
     'no_blocks' => 1,
@@ -636,7 +906,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-15';
+    $pane->pid = 'new-22';
     $pane->panel = 'left';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -661,10 +931,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-15'] = $pane;
-    $display->panels['left'][0] = 'new-15';
+    $display->content['new-22'] = $pane;
+    $display->panels['left'][0] = 'new-22';
     $pane = new stdClass();
-    $pane->pid = 'new-16';
+    $pane->pid = 'new-23';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_files';
@@ -689,10 +959,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-16'] = $pane;
-    $display->panels['left'][1] = 'new-16';
+    $display->content['new-23'] = $pane;
+    $display->panels['left'][1] = 'new-23';
     $pane = new stdClass();
-    $pane->pid = 'new-17';
+    $pane->pid = 'new-24';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'terms_menu-topics';
@@ -710,10 +980,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-17'] = $pane;
-    $display->panels['right'][0] = 'new-17';
+    $display->content['new-24'] = $pane;
+    $display->panels['right'][0] = 'new-24';
     $pane = new stdClass();
-    $pane->pid = 'new-18';
+    $pane->pid = 'new-25';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_tags';
@@ -738,10 +1008,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-18'] = $pane;
-    $display->panels['right'][1] = 'new-18';
+    $display->content['new-25'] = $pane;
+    $display->panels['right'][1] = 'new-25';
     $pane = new stdClass();
-    $pane->pid = 'new-19';
+    $pane->pid = 'new-26';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'related-related';
@@ -756,10 +1026,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-19'] = $pane;
-    $display->panels['right'][2] = 'new-19';
+    $display->content['new-26'] = $pane;
+    $display->panels['right'][2] = 'new-26';
     $pane = new stdClass();
-    $pane->pid = 'new-20';
+    $pane->pid = 'new-27';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'addthis-addthis_block';
@@ -777,8 +1047,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-20'] = $pane;
-    $display->panels['right'][3] = 'new-20';
+    $display->content['new-27'] = $pane;
+    $display->panels['right'][3] = 'new-27';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -791,7 +1061,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -26;
+  $handler->weight = -25;
   $handler->conf = array(
     'title' => 'Project',
     'no_blocks' => 1,
@@ -833,7 +1103,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-21';
+    $pane->pid = 'new-28';
     $pane->panel = 'left';
     $pane->type = 'node_content';
     $pane->subtype = 'node_content';
@@ -858,10 +1128,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-21'] = $pane;
-    $display->panels['left'][0] = 'new-21';
+    $display->content['new-28'] = $pane;
+    $display->panels['left'][0] = 'new-28';
     $pane = new stdClass();
-    $pane->pid = 'new-22';
+    $pane->pid = 'new-29';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'projects_sidebar-latest';
@@ -880,8 +1150,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-22'] = $pane;
-    $display->panels['right'][0] = 'new-22';
+    $display->content['new-29'] = $pane;
+    $display->panels['right'][0] = 'new-29';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -894,7 +1164,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -25;
+  $handler->weight = -24;
   $handler->conf = array(
     'title' => 'About us pages',
     'no_blocks' => 1,
@@ -965,7 +1235,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-23';
+    $pane->pid = 'new-30';
     $pane->panel = 'left';
     $pane->type = 'node_title';
     $pane->subtype = 'node_title';
@@ -985,10 +1255,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-23'] = $pane;
-    $display->panels['left'][0] = 'new-23';
+    $display->content['new-30'] = $pane;
+    $display->panels['left'][0] = 'new-30';
     $pane = new stdClass();
-    $pane->pid = 'new-24';
+    $pane->pid = 'new-31';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
@@ -1015,10 +1285,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-24'] = $pane;
-    $display->panels['left'][1] = 'new-24';
+    $display->content['new-31'] = $pane;
+    $display->panels['left'][1] = 'new-31';
     $pane = new stdClass();
-    $pane->pid = 'new-25';
+    $pane->pid = 'new-32';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
@@ -1043,10 +1313,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-25'] = $pane;
-    $display->panels['left'][2] = 'new-25';
+    $display->content['new-32'] = $pane;
+    $display->panels['left'][2] = 'new-32';
     $pane = new stdClass();
-    $pane->pid = 'new-26';
+    $pane->pid = 'new-33';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -1067,10 +1337,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-26'] = $pane;
-    $display->panels['right'][0] = 'new-26';
+    $display->content['new-33'] = $pane;
+    $display->panels['right'][0] = 'new-33';
     $pane = new stdClass();
-    $pane->pid = 'new-27';
+    $pane->pid = 'new-34';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-panel_pane_1';
@@ -1088,10 +1358,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-27'] = $pane;
-    $display->panels['right'][1] = 'new-27';
+    $display->content['new-34'] = $pane;
+    $display->panels['right'][1] = 'new-34';
     $pane = new stdClass();
-    $pane->pid = 'new-28';
+    $pane->pid = 'new-35';
     $pane->panel = 'right';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_image';
@@ -1120,8 +1390,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-28'] = $pane;
-    $display->panels['right'][2] = 'new-28';
+    $display->content['new-35'] = $pane;
+    $display->panels['right'][2] = 'new-35';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1134,7 +1404,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -24;
+  $handler->weight = -23;
   $handler->conf = array(
     'title' => 'Video',
     'no_blocks' => 0,
@@ -1176,7 +1446,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-29';
+    $pane->pid = 'new-36';
     $pane->panel = 'left';
     $pane->type = 'entity_view';
     $pane->subtype = 'node';
@@ -1196,10 +1466,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-29'] = $pane;
-    $display->panels['left'][0] = 'new-29';
+    $display->content['new-36'] = $pane;
+    $display->panels['left'][0] = 'new-36';
     $pane = new stdClass();
-    $pane->pid = 'new-30';
+    $pane->pid = 'new-37';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -1223,12 +1493,139 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-30'] = $pane;
-    $display->panels['right'][0] = 'new-30';
+    $display->content['new-37'] = $pane;
+    $display->panels['right'][0] = 'new-37';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-29';
+  $display->title_pane = 'new-36';
   $handler->conf['display'] = $display;
   $export['node_view_panel_context_7'] = $handler;
+
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'node_view_panel_context_8';
+  $handler->task = 'node_view';
+  $handler->subtask = '';
+  $handler->handler = 'panel_context';
+  $handler->weight = -22;
+  $handler->conf = array(
+    'title' => 'Kurs',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => '',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'access' => array(
+      'logic' => 'and',
+      'plugins' => array(
+        0 => array(
+          'name' => 'node_type',
+          'settings' => array(
+            'type' => array(
+              'kurs' => 'kurs',
+            ),
+          ),
+          'context' => 'argument_entity_id:node_1',
+          'not' => FALSE,
+        ),
+      ),
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = '';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-38';
+    $pane->panel = 'left';
+    $pane->type = 'entity_view';
+    $pane->subtype = 'node';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'view_mode' => 'full',
+      'context' => 'argument_entity_id:node_1',
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-38'] = $pane;
+    $display->panels['left'][0] = 'new-38';
+    $pane = new stdClass();
+    $pane->pid = 'new-39';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'field_name_value' => 'Thor Andre Gretland',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-39'] = $pane;
+    $display->panels['left'][1] = 'new-39';
+    $pane = new stdClass();
+    $pane->pid = 'new-40';
+    $pane->panel = 'right';
+    $pane->type = 'custom';
+    $pane->subtype = 'about_us_menu';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-40'] = $pane;
+    $display->panels['right'][0] = 'new-40';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $export['node_view_panel_context_8'] = $handler;
 
   $handler = new stdClass();
   $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
@@ -1237,7 +1634,7 @@ function front_panels_default_page_manager_handlers() {
   $handler->task = 'node_view';
   $handler->subtask = '';
   $handler->handler = 'panel_context';
-  $handler->weight = -28;
+  $handler->weight = -27;
   $handler->conf = array(
     'title' => 'Page - Løsninger',
     'no_blocks' => 1,
@@ -1310,7 +1707,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-31';
+    $pane->pid = 'new-41';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:field_subheading';
@@ -1335,10 +1732,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-31'] = $pane;
-    $display->panels['left'][0] = 'new-31';
+    $display->content['new-41'] = $pane;
+    $display->panels['left'][0] = 'new-41';
     $pane = new stdClass();
-    $pane->pid = 'new-32';
+    $pane->pid = 'new-42';
     $pane->panel = 'left';
     $pane->type = 'entity_field';
     $pane->subtype = 'node:body';
@@ -1363,10 +1760,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-32'] = $pane;
-    $display->panels['left'][1] = 'new-32';
+    $display->content['new-42'] = $pane;
+    $display->panels['left'][1] = 'new-42';
     $pane = new stdClass();
-    $pane->pid = 'new-33';
+    $pane->pid = 'new-43';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-referenced';
@@ -1390,10 +1787,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-33'] = $pane;
-    $display->panels['left'][2] = 'new-33';
+    $display->content['new-43'] = $pane;
+    $display->panels['left'][2] = 'new-43';
     $pane = new stdClass();
-    $pane->pid = 'new-34';
+    $pane->pid = 'new-44';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -1420,10 +1817,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-34'] = $pane;
-    $display->panels['right'][0] = 'new-34';
+    $display->content['new-44'] = $pane;
+    $display->panels['right'][0] = 'new-44';
     $pane = new stdClass();
-    $pane->pid = 'new-35';
+    $pane->pid = 'new-45';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'related-reverse';
@@ -1441,8 +1838,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-35'] = $pane;
-    $display->panels['right'][1] = 'new-35';
+    $display->content['new-45'] = $pane;
+    $display->panels['right'][1] = 'new-45';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1497,7 +1894,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-36';
+    $pane->pid = 'new-46';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'blog-posts';
@@ -1521,10 +1918,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-36'] = $pane;
-    $display->panels['left'][0] = 'new-36';
+    $display->content['new-46'] = $pane;
+    $display->panels['left'][0] = 'new-46';
     $pane = new stdClass();
-    $pane->pid = 'new-37';
+    $pane->pid = 'new-47';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'terms_menu-topics';
@@ -1542,8 +1939,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-37'] = $pane;
-    $display->panels['right'][0] = 'new-37';
+    $display->content['new-47'] = $pane;
+    $display->panels['right'][0] = 'new-47';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1598,7 +1995,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-38';
+    $pane->pid = 'new-48';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'videos-panel_pane_4';
@@ -1617,10 +2014,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-38'] = $pane;
-    $display->panels['left'][0] = 'new-38';
+    $display->content['new-48'] = $pane;
+    $display->panels['left'][0] = 'new-48';
     $pane = new stdClass();
-    $pane->pid = 'new-39';
+    $pane->pid = 'new-49';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'menu-drupal';
@@ -1647,10 +2044,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-39'] = $pane;
-    $display->panels['right'][0] = 'new-39';
+    $display->content['new-49'] = $pane;
+    $display->panels['right'][0] = 'new-49';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-38';
+  $display->title_pane = 'new-48';
   $handler->conf['display'] = $display;
   $export['term_view_panel_context_2'] = $handler;
 
@@ -1719,7 +2116,7 @@ function front_panels_default_page_manager_handlers() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-40';
+    $pane->pid = 'new-50';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -1740,10 +2137,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-40'] = $pane;
-    $display->panels['middle'][0] = 'new-40';
+    $display->content['new-50'] = $pane;
+    $display->panels['middle'][0] = 'new-50';
     $pane = new stdClass();
-    $pane->pid = 'new-41';
+    $pane->pid = 'new-51';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -1758,10 +2155,10 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-41'] = $pane;
-    $display->panels['middle'][1] = 'new-41';
+    $display->content['new-51'] = $pane;
+    $display->panels['middle'][1] = 'new-51';
     $pane = new stdClass();
-    $pane->pid = 'new-42';
+    $pane->pid = 'new-52';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-list';
@@ -1782,8 +2179,8 @@ function front_panels_default_page_manager_handlers() {
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-42'] = $pane;
-    $display->panels['middle'][2] = 'new-42';
+    $display->content['new-52'] = $pane;
+    $display->panels['middle'][2] = 'new-52';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -1856,9 +2253,10 @@ function front_panels_default_page_manager_pages() {
     $pane->configuration = array(
       'admin_title' => '404 Ikke funnet',
       'title' => 'Feilkode 404 - Siden ble ikke funnet',
-      'body' => '<p>Siden du forsøkte å vise ser ikke ut til å finnes, i alle fall ikke akkurat nå.</p>
-<p>Men se, her er tre sauer fra Madeira som er glade for å se deg! Hils på dem før du kanskje besøker <a href="/">forsiden</a>.</p>
-<p><img src="/sites/default/files/ovelhas.gif"></p>',
+      'body' => '<p>Man kan tydeligvis ikke stole på denne nymotens EDB-teknologien, for den fant ikke siden du prøvde å åpne.</p>
+<p>Bruk gjerne menyen over for å finne frem til det du trenger! Eller så kan du hilse på sauene våre mens du tenker over hvordan du havnet her...</p>
+<p><img src="/sites/default/files/ovelhas.gif"></p>
+<p><a href="http://www.frontkom.no/kontakt">Kontakt</a> oss gjerne dersom dette er en feil vi burde vite om...</p>',
       'format' => 'full_html',
       'substitute' => TRUE,
     );
@@ -2490,7 +2888,7 @@ function front_panels_default_page_manager_pages() {
   $page->api_version = 1;
   $page->name = 'blogg';
   $page->task = 'page';
-  $page->admin_title = 'Blogg';
+  $page->admin_title = 'Blogg (Norwegian)';
   $page->admin_description = '';
   $page->path = 'blogg';
   $page->access = array(
@@ -2523,7 +2921,7 @@ function front_panels_default_page_manager_pages() {
   $handler->handler = 'panel_context';
   $handler->weight = 0;
   $handler->conf = array(
-    'title' => 'Default',
+    'title' => 'Norwegian',
     'no_blocks' => 0,
     'pipeline' => 'standard',
     'body_classes_to_remove' => '',
@@ -2542,6 +2940,20 @@ function front_panels_default_page_manager_pages() {
       'noarchive' => 0,
     ),
     'canonical' => '',
+    'access' => array(
+      'plugins' => array(
+        1 => array(
+          'name' => 'path_visibility',
+          'settings' => array(
+            'visibility_setting' => '1',
+            'paths' => 'blogg',
+          ),
+          'context' => 'empty',
+          'not' => FALSE,
+        ),
+      ),
+      'logic' => 'and',
+    ),
   );
   $display = new panels_display();
   $display->layout = 'twocol';
@@ -2559,6 +2971,27 @@ function front_panels_default_page_manager_pages() {
   $display->panels = array();
     $pane = new stdClass();
     $pane->pid = 'new-20';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'locale-language';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-20'] = $pane;
+    $display->panels['left'][0] = 'new-20';
+    $pane = new stdClass();
+    $pane->pid = 'new-21';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'blog-posts';
@@ -2580,12 +3013,12 @@ function front_panels_default_page_manager_pages() {
     );
     $pane->css = array();
     $pane->extras = array();
-    $pane->position = 0;
+    $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-20'] = $pane;
-    $display->panels['left'][0] = 'new-20';
+    $display->content['new-21'] = $pane;
+    $display->panels['left'][1] = 'new-21';
     $pane = new stdClass();
-    $pane->pid = 'new-21';
+    $pane->pid = 'new-22';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'terms_menu-topics';
@@ -2603,10 +3036,10 @@ function front_panels_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-21'] = $pane;
-    $display->panels['right'][0] = 'new-21';
+    $display->content['new-22'] = $pane;
+    $display->panels['right'][0] = 'new-22';
     $pane = new stdClass();
-    $pane->pid = 'new-22';
+    $pane->pid = 'new-23';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'addthis-addthis_block';
@@ -2624,13 +3057,233 @@ function front_panels_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-22'] = $pane;
-    $display->panels['right'][1] = 'new-22';
+    $display->content['new-23'] = $pane;
+    $display->panels['right'][1] = 'new-23';
+    $pane = new stdClass();
+    $pane->pid = 'new-24';
+    $pane->panel = 'right';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => 'Hello!',
+      'body' => '<div class="btn"><a href="/blog">Check out our english posts!</a></div>',
+      'format' => 'unfiltered',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-24'] = $pane;
+    $display->panels['right'][2] = 'new-24';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['blogg'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'blogg_english_';
+  $page->task = 'page';
+  $page->admin_title = 'Blogg (English)';
+  $page->admin_description = '';
+  $page->path = 'blog';
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
+  $page->menu = array(
+    'type' => 'none',
+    'title' => 'Blogg',
+    'name' => 'user-menu',
+    'weight' => '5',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_blogg_english__panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'blogg_english_';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'English',
+    'no_blocks' => 0,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => '',
+    'body_classes_to_add' => '',
+    'css_id' => 'panel-blogg',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(),
+    'panels_page_title_state' => 1,
+    'panels_page_title' => 'Blogg - våre artikler om Drupal og andre ting vi finner verd å skrive om',
+    'description' => 'Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
+    'access' => array(
+      'plugins' => array(),
+      'logic' => 'and',
+    ),
+  );
+  $display = new panels_display();
+  $display->layout = 'twocol';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Blog';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-25';
+    $pane->panel = 'left';
+    $pane->type = 'block';
+    $pane->subtype = 'locale-language';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-25'] = $pane;
+    $display->panels['left'][0] = 'new-25';
+    $pane = new stdClass();
+    $pane->pid = 'new-26';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'blog-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'tid' => '',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-26'] = $pane;
+    $display->panels['left'][1] = 'new-26';
+    $pane = new stdClass();
+    $pane->pid = 'new-27';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'terms_menu-topics';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => 'Blogg',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-27'] = $pane;
+    $display->panels['right'][0] = 'new-27';
+    $pane = new stdClass();
+    $pane->pid = 'new-28';
+    $pane->panel = 'right';
+    $pane->type = 'block';
+    $pane->subtype = 'addthis-addthis_block';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-28'] = $pane;
+    $display->panels['right'][1] = 'new-28';
+    $pane = new stdClass();
+    $pane->pid = 'new-29';
+    $pane->panel = 'right';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => 'Hallo',
+      'body' => '<div class="btn"><a href="blogg">Check out our Norwegian posts also!</a></div>',
+      'format' => 'unfiltered',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-29'] = $pane;
+    $display->panels['right'][2] = 'new-29';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['blogg_english_'] = $page;
 
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -2714,7 +3367,7 @@ function front_panels_default_page_manager_pages() {
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-23';
+    $pane->pid = 'new-30';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -2739,10 +3392,10 @@ function front_panels_default_page_manager_pages() {
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-23'] = $pane;
-    $display->panels['left'][0] = 'new-23';
+    $display->content['new-30'] = $pane;
+    $display->panels['left'][0] = 'new-30';
     $pane = new stdClass();
-    $pane->pid = 'new-24';
+    $pane->pid = 'new-31';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -2766,10 +3419,10 @@ Utstyrt med en kraftig blanding av funksjoner og konfigurerbarhet kan Drupal st�
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-24'] = $pane;
-    $display->panels['left'][1] = 'new-24';
+    $display->content['new-31'] = $pane;
+    $display->panels['left'][1] = 'new-31';
     $pane = new stdClass();
-    $pane->pid = 'new-25';
+    $pane->pid = 'new-32';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -2793,10 +3446,10 @@ Utstyrt med en kraftig blanding av funksjoner og konfigurerbarhet kan Drupal st�
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-25'] = $pane;
-    $display->panels['left'][2] = 'new-25';
+    $display->content['new-32'] = $pane;
+    $display->panels['left'][2] = 'new-32';
     $pane = new stdClass();
-    $pane->pid = 'new-26';
+    $pane->pid = 'new-33';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -2823,10 +3476,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-26'] = $pane;
-    $display->panels['left'][3] = 'new-26';
+    $display->content['new-33'] = $pane;
+    $display->panels['left'][3] = 'new-33';
     $pane = new stdClass();
-    $pane->pid = 'new-27';
+    $pane->pid = 'new-34';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
@@ -2850,10 +3503,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-27'] = $pane;
-    $display->panels['left'][4] = 'new-27';
+    $display->content['new-34'] = $pane;
+    $display->panels['left'][4] = 'new-34';
     $pane = new stdClass();
-    $pane->pid = 'new-28';
+    $pane->pid = 'new-35';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'menu-drupal';
@@ -2880,10 +3533,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-28'] = $pane;
-    $display->panels['right'][0] = 'new-28';
+    $display->content['new-35'] = $pane;
+    $display->panels['right'][0] = 'new-35';
     $pane = new stdClass();
-    $pane->pid = 'new-29';
+    $pane->pid = 'new-36';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-panel_pane_1';
@@ -2901,10 +3554,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-29'] = $pane;
-    $display->panels['right'][1] = 'new-29';
+    $display->content['new-36'] = $pane;
+    $display->panels['right'][1] = 'new-36';
     $pane = new stdClass();
-    $pane->pid = 'new-30';
+    $pane->pid = 'new-37';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'support_video';
@@ -2925,10 +3578,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-30'] = $pane;
-    $display->panels['right'][2] = 'new-30';
+    $display->content['new-37'] = $pane;
+    $display->panels['right'][2] = 'new-37';
     $pane = new stdClass();
-    $pane->pid = 'new-31';
+    $pane->pid = 'new-38';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'kurs_overview-panel_pane_1';
@@ -2943,8 +3596,8 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-31'] = $pane;
-    $display->panels['right'][3] = 'new-31';
+    $display->content['new-38'] = $pane;
+    $display->panels['right'][3] = 'new-38';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -3021,7 +3674,7 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-32';
+    $pane->pid = 'new-39';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'home_featured-home';
@@ -3036,10 +3689,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-32'] = $pane;
-    $display->panels['middle'][0] = 'new-32';
+    $display->content['new-39'] = $pane;
+    $display->panels['middle'][0] = 'new-39';
     $pane = new stdClass();
-    $pane->pid = 'new-33';
+    $pane->pid = 'new-40';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'services_block-home';
@@ -3054,10 +3707,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-33'] = $pane;
-    $display->panels['middle'][1] = 'new-33';
+    $display->content['new-40'] = $pane;
+    $display->panels['middle'][1] = 'new-40';
     $pane = new stdClass();
-    $pane->pid = 'new-34';
+    $pane->pid = 'new-41';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'projects_block-latest_projects';
@@ -3079,8 +3732,8 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-34'] = $pane;
-    $display->panels['middle'][2] = 'new-34';
+    $display->content['new-41'] = $pane;
+    $display->panels['middle'][2] = 'new-41';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -3160,7 +3813,7 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-35';
+    $pane->pid = 'new-42';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -3181,10 +3834,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-35'] = $pane;
-    $display->panels['left'][0] = 'new-35';
+    $display->content['new-42'] = $pane;
+    $display->panels['left'][0] = 'new-42';
     $pane = new stdClass();
-    $pane->pid = 'new-36';
+    $pane->pid = 'new-43';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -3208,10 +3861,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-36'] = $pane;
-    $display->panels['left'][1] = 'new-36';
+    $display->content['new-43'] = $pane;
+    $display->panels['left'][1] = 'new-43';
     $pane = new stdClass();
-    $pane->pid = 'new-37';
+    $pane->pid = 'new-44';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -3238,10 +3891,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-37'] = $pane;
-    $display->panels['left'][2] = 'new-37';
+    $display->content['new-44'] = $pane;
+    $display->panels['left'][2] = 'new-44';
     $pane = new stdClass();
-    $pane->pid = 'new-38';
+    $pane->pid = 'new-45';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -3262,10 +3915,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-38'] = $pane;
-    $display->panels['left'][3] = 'new-38';
+    $display->content['new-45'] = $pane;
+    $display->panels['left'][3] = 'new-45';
     $pane = new stdClass();
-    $pane->pid = 'new-39';
+    $pane->pid = 'new-46';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -3292,10 +3945,10 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-39'] = $pane;
-    $display->panels['left'][4] = 'new-39';
+    $display->content['new-46'] = $pane;
+    $display->panels['left'][4] = 'new-46';
     $pane = new stdClass();
-    $pane->pid = 'new-40';
+    $pane->pid = 'new-47';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -3318,10 +3971,10 @@ Our main office is in Norway and our satellite office is in Madeira, Portugal, b
     $pane->extras = array();
     $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-40'] = $pane;
-    $display->panels['left'][5] = 'new-40';
+    $display->content['new-47'] = $pane;
+    $display->panels['left'][5] = 'new-47';
     $pane = new stdClass();
-    $pane->pid = 'new-41';
+    $pane->pid = 'new-48';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -3348,10 +4001,10 @@ Our main office is in Norway and our satellite office is in Madeira, Portugal, b
     $pane->extras = array();
     $pane->position = 6;
     $pane->locks = array();
-    $display->content['new-41'] = $pane;
-    $display->panels['left'][6] = 'new-41';
+    $display->content['new-48'] = $pane;
+    $display->panels['left'][6] = 'new-48';
     $pane = new stdClass();
-    $pane->pid = 'new-42';
+    $pane->pid = 'new-49';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -3380,10 +4033,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 7;
     $pane->locks = array();
-    $display->content['new-42'] = $pane;
-    $display->panels['left'][7] = 'new-42';
+    $display->content['new-49'] = $pane;
+    $display->panels['left'][7] = 'new-49';
     $pane = new stdClass();
-    $pane->pid = 'new-43';
+    $pane->pid = 'new-50';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
@@ -3407,10 +4060,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 8;
     $pane->locks = array();
-    $display->content['new-43'] = $pane;
-    $display->panels['left'][8] = 'new-43';
+    $display->content['new-50'] = $pane;
+    $display->panels['left'][8] = 'new-50';
     $pane = new stdClass();
-    $pane->pid = 'new-44';
+    $pane->pid = 'new-51';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -3431,10 +4084,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-44'] = $pane;
-    $display->panels['right'][0] = 'new-44';
+    $display->content['new-51'] = $pane;
+    $display->panels['right'][0] = 'new-51';
     $pane = new stdClass();
-    $pane->pid = 'new-45';
+    $pane->pid = 'new-52';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -3461,10 +4114,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-45'] = $pane;
-    $display->panels['right'][1] = 'new-45';
+    $display->content['new-52'] = $pane;
+    $display->panels['right'][1] = 'new-52';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-35';
+  $display->title_pane = 'new-42';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['jobb_i_front'] = $page;
@@ -3547,7 +4200,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-46';
+    $pane->pid = 'new-53';
     $pane->panel = 'left';
     $pane->type = 'term_description';
     $pane->subtype = 'term_description';
@@ -3566,10 +4219,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-46'] = $pane;
-    $display->panels['left'][0] = 'new-46';
+    $display->content['new-53'] = $pane;
+    $display->panels['left'][0] = 'new-53';
     $pane = new stdClass();
-    $pane->pid = 'new-47';
+    $pane->pid = 'new-54';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester-teasers';
@@ -3596,10 +4249,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-47'] = $pane;
-    $display->panels['left'][1] = 'new-47';
+    $display->content['new-54'] = $pane;
+    $display->panels['left'][1] = 'new-54';
     $pane = new stdClass();
-    $pane->pid = 'new-48';
+    $pane->pid = 'new-55';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-referenced';
@@ -3623,10 +4276,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-48'] = $pane;
-    $display->panels['left'][2] = 'new-48';
+    $display->content['new-55'] = $pane;
+    $display->panels['left'][2] = 'new-55';
     $pane = new stdClass();
-    $pane->pid = 'new-49';
+    $pane->pid = 'new-56';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-kompetanse';
@@ -3644,8 +4297,8 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-49'] = $pane;
-    $display->panels['right'][0] = 'new-49';
+    $display->content['new-56'] = $pane;
+    $display->panels['right'][0] = 'new-56';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -3725,7 +4378,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-50';
+    $pane->pid = 'new-57';
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'webform-client-block-1628';
@@ -3743,10 +4396,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-50'] = $pane;
-    $display->panels['left'][0] = 'new-50';
+    $display->content['new-57'] = $pane;
+    $display->panels['left'][0] = 'new-57';
     $pane = new stdClass();
-    $pane->pid = 'new-51';
+    $pane->pid = 'new-58';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'front_kontakt';
@@ -3767,10 +4420,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-51'] = $pane;
-    $display->panels['left'][1] = 'new-51';
+    $display->content['new-58'] = $pane;
+    $display->panels['left'][1] = 'new-58';
     $pane = new stdClass();
-    $pane->pid = 'new-52';
+    $pane->pid = 'new-59';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'gamlebyen_fredrikstad';
@@ -3791,10 +4444,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-52'] = $pane;
-    $display->panels['left'][2] = 'new-52';
+    $display->content['new-59'] = $pane;
+    $display->panels['left'][2] = 'new-59';
     $pane = new stdClass();
-    $pane->pid = 'new-53';
+    $pane->pid = 'new-60';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -3821,10 +4474,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-53'] = $pane;
-    $display->panels['right'][0] = 'new-53';
+    $display->content['new-60'] = $pane;
+    $display->panels['right'][0] = 'new-60';
     $pane = new stdClass();
-    $pane->pid = 'new-54';
+    $pane->pid = 'new-61';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-1';
@@ -3842,10 +4495,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-54'] = $pane;
-    $display->panels['right'][1] = 'new-54';
+    $display->content['new-61'] = $pane;
+    $display->panels['right'][1] = 'new-61';
     $pane = new stdClass();
-    $pane->pid = 'new-55';
+    $pane->pid = 'new-62';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -3866,8 +4519,8 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-55'] = $pane;
-    $display->panels['right'][2] = 'new-55';
+    $display->content['new-62'] = $pane;
+    $display->panels['right'][2] = 'new-62';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -3950,7 +4603,7 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-56';
+    $pane->pid = 'new-63';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -3971,10 +4624,10 @@ O nosso escritório principal é na Noruega e o nosso escritório satélite é n
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-56'] = $pane;
-    $display->panels['middle'][0] = 'new-56';
+    $display->content['new-63'] = $pane;
+    $display->panels['middle'][0] = 'new-63';
     $pane = new stdClass();
-    $pane->pid = 'new-57';
+    $pane->pid = 'new-64';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -4000,10 +4653,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-57'] = $pane;
-    $display->panels['middle'][1] = 'new-57';
+    $display->content['new-64'] = $pane;
+    $display->panels['middle'][1] = 'new-64';
     $pane = new stdClass();
-    $pane->pid = 'new-58';
+    $pane->pid = 'new-65';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'videos-panel_pane_2';
@@ -4018,10 +4671,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-58'] = $pane;
-    $display->panels['middle'][2] = 'new-58';
+    $display->content['new-65'] = $pane;
+    $display->panels['middle'][2] = 'new-65';
     $pane = new stdClass();
-    $pane->pid = 'new-59';
+    $pane->pid = 'new-66';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kurs_overview-panel_pane_1';
@@ -4036,10 +4689,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-59'] = $pane;
-    $display->panels['middle'][3] = 'new-59';
+    $display->content['new-66'] = $pane;
+    $display->panels['middle'][3] = 'new-66';
     $pane = new stdClass();
-    $pane->pid = 'new-60';
+    $pane->pid = 'new-67';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'videos-panel_pane_1';
@@ -4054,10 +4707,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-60'] = $pane;
-    $display->panels['middle'][4] = 'new-60';
+    $display->content['new-67'] = $pane;
+    $display->panels['middle'][4] = 'new-67';
     $pane = new stdClass();
-    $pane->pid = 'new-61';
+    $pane->pid = 'new-68';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kurs_overview-panel_pane_2';
@@ -4072,10 +4725,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-61'] = $pane;
-    $display->panels['middle'][5] = 'new-61';
+    $display->content['new-68'] = $pane;
+    $display->panels['middle'][5] = 'new-68';
     $pane = new stdClass();
-    $pane->pid = 'new-62';
+    $pane->pid = 'new-69';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
@@ -4099,10 +4752,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 6;
     $pane->locks = array();
-    $display->content['new-62'] = $pane;
-    $display->panels['middle'][6] = 'new-62';
+    $display->content['new-69'] = $pane;
+    $display->panels['middle'][6] = 'new-69';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-57';
+  $display->title_pane = 'new-64';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['kurs'] = $page;
@@ -4181,7 +4834,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-63';
+    $pane->pid = 'new-70';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -4202,10 +4855,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-63'] = $pane;
-    $display->panels['middle'][0] = 'new-63';
+    $display->content['new-70'] = $pane;
+    $display->panels['middle'][0] = 'new-70';
     $pane = new stdClass();
-    $pane->pid = 'new-64';
+    $pane->pid = 'new-71';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'solutions_intro';
@@ -4226,10 +4879,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-64'] = $pane;
-    $display->panels['middle'][1] = 'new-64';
+    $display->content['new-71'] = $pane;
+    $display->panels['middle'][1] = 'new-71';
     $pane = new stdClass();
-    $pane->pid = 'new-65';
+    $pane->pid = 'new-72';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'services_block-solutions';
@@ -4244,10 +4897,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-65'] = $pane;
-    $display->panels['middle'][2] = 'new-65';
+    $display->content['new-72'] = $pane;
+    $display->panels['middle'][2] = 'new-72';
     $pane = new stdClass();
-    $pane->pid = 'new-66';
+    $pane->pid = 'new-73';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
@@ -4271,10 +4924,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-66'] = $pane;
-    $display->panels['middle'][3] = 'new-66';
+    $display->content['new-73'] = $pane;
+    $display->panels['middle'][3] = 'new-73';
     $pane = new stdClass();
-    $pane->pid = 'new-67';
+    $pane->pid = 'new-74';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-list';
@@ -4292,13 +4945,274 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-67'] = $pane;
-    $display->panels['middle'][4] = 'new-67';
+    $display->content['new-74'] = $pane;
+    $display->panels['middle'][4] = 'new-74';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['losninger'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'magento';
+  $page->task = 'page';
+  $page->admin_title = 'Magento';
+  $page->admin_description = '';
+  $page->path = 'magento';
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
+  $page->menu = array(
+    'type' => 'none',
+    'title' => 'Wordpress',
+    'name' => 'main-menu',
+    'weight' => '-50',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_magento_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'magento';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Drupal',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => 'page-tjenester',
+    'body_classes_to_add' => '',
+    'css_id' => 'panel-drupal',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'User from Taxonomy term (on Taxonomy term: Contact user [field_contact_user])',
+        'keyword' => 'profile',
+        'name' => 'entity_from_field:field_contact_user-taxonomy_term-user',
+        'context' => 'argument_term_1',
+        'id' => 1,
+      ),
+    ),
+    'panels_page_title_state' => 1,
+    'panels_page_title' => 'Magento nettbutikk - Open Source webshop',
+    'description' => 'Magento er en åpen kildekode-plattform spesialisert på nettbutikk.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Magento nettbutikk';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-75';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Magento tagline',
+      'title' => '',
+      'body' => 'Magento er verdens mest populære løsning for nettbutikker. Denne Open Source-suksessen skyldes en kombinasjon av solid teknisk arkitektur, og formidable investeringer. Magento eiers i dag av Ebay, og er sikret tett oppfølging og videreutvikling for mange år fram i tid.',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ingress-left',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-75'] = $pane;
+    $display->panels['left'][0] = 'new-75';
+    $pane = new stdClass();
+    $pane->pid = 'new-76';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Magento introtext',
+      'title' => '',
+      'body' => 'Etter Magento ble introdusert på markedet i 2008, ble det snart tydelig at en vektig aktør var på vei. Eldre systemer som OS Commerce, Zen Cart og Virtuemart ble raskt skjøvet nedover på listen. I dag finnes det trolig 150.000 butikker på Magento, og pilene peker oppover. Dette er ikke ufortjent.',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-76'] = $pane;
+    $display->panels['left'][1] = 'new-76';
+    $pane = new stdClass();
+    $pane->pid = 'new-77';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Body text',
+      'title' => '',
+      'body' => '<br>
+<h2>Se Magento i bruk</h2>
+<iframe width="620" height="340" src="http://www.youtube.com/embed/hZod3JocAZs" frameborder="0" allowfullscreen></iframe>
+<br>
+<h2>Alle funksjoner</h2>
+<p>Plattformen er et trygt valg for deg som virkelig trenger en lang rekke avanserte shop-funksjoner. Spesielt Enterprise-versjonen har lagt til rette for at selv den mest kresne kunden vil nikke anerkjennende. Her mangler ingenting.</p>
+
+<h2>Magento vs Drupal Commerce</h2>
+<p>I det senere, har Drupal relansert sin nettbutikk-løsning, kalt Drupal Commerce. Siden også dette er en svært god Open Source-løsning, er det nyttig å stille noen spørsmål som kan hjelpe til med å velge blant disse to.</p>
+
+<h3>Magento er bedre enn Drupal Commerce …</h3>
+<ul><li>Når du vil ha den løsningen som er mest populær
+</li><li>Når du kun trenger en ren nettbutikk, og ikke er avhengig av et fullstendig CMS i tillegg
+</li><li>Når redaktøren ikke trenger å flytte elementer på siden rundt så ofte
+</li></ul>
+<h3>Drupal Commerce er bedre enn Magento …</h3>
+<ul><li>Når du trenger et godt CMS integrert i nettbutikken
+</li><li>Når du trenger et stort utvalg av sosiale funksjoner
+</li><li>Når gratis moduler er viktig
+</li><li>Når et større utvalg av norske kvalitetsleverandører er viktig</li></ul>
+
+Når det kommer til stykket, er software bare software; det er designprosessen i forkant og vedlikeholdet i etterkant som vil bety en forskjell når valget står mellom disse.
+
+<p><a href="/tjenester">Les mer om hvordan vi jobber ››</a></p>
+',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-77'] = $pane;
+    $display->panels['left'][2] = 'new-77';
+    $pane = new stdClass();
+    $pane->pid = 'new-78';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'field_name_value' => 'Per Andre Rønsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-78'] = $pane;
+    $display->panels['left'][3] = 'new-78';
+    $pane = new stdClass();
+    $pane->pid = 'new-79';
+    $pane->panel = 'right';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-magento';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-magento',
+      'parent_mlid' => 'menu-magento:0',
+      'title_link' => 0,
+      'admin_title' => 'Magento menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-79'] = $pane;
+    $display->panels['right'][0] = 'new-79';
+    $pane = new stdClass();
+    $pane->pid = 'new-80';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'kurs_overview-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-80'] = $pane;
+    $display->panels['right'][1] = 'new-80';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['magento'] = $page;
 
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -4378,7 +5292,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-68';
+    $pane->pid = 'new-81';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -4402,10 +5316,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-68'] = $pane;
-    $display->panels['middle'][0] = 'new-68';
+    $display->content['new-81'] = $pane;
+    $display->panels['middle'][0] = 'new-81';
     $pane = new stdClass();
-    $pane->pid = 'new-69';
+    $pane->pid = 'new-82';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_1';
@@ -4423,10 +5337,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-69'] = $pane;
-    $display->panels['middle'][1] = 'new-69';
+    $display->content['new-82'] = $pane;
+    $display->panels['middle'][1] = 'new-82';
     $pane = new stdClass();
-    $pane->pid = 'new-70';
+    $pane->pid = 'new-83';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -4448,10 +5362,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-70'] = $pane;
-    $display->panels['middle'][2] = 'new-70';
+    $display->content['new-83'] = $pane;
+    $display->panels['middle'][2] = 'new-83';
     $pane = new stdClass();
-    $pane->pid = 'new-71';
+    $pane->pid = 'new-84';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_2';
@@ -4466,8 +5380,8 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-71'] = $pane;
-    $display->panels['middle'][3] = 'new-71';
+    $display->content['new-84'] = $pane;
+    $display->panels['middle'][3] = 'new-84';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -4553,7 +5467,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-72';
+    $pane->pid = 'new-85';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'employees-list';
@@ -4571,10 +5485,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-72'] = $pane;
-    $display->panels['left'][0] = 'new-72';
+    $display->content['new-85'] = $pane;
+    $display->panels['left'][0] = 'new-85';
     $pane = new stdClass();
-    $pane->pid = 'new-73';
+    $pane->pid = 'new-86';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -4601,10 +5515,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-73'] = $pane;
-    $display->panels['right'][0] = 'new-73';
+    $display->content['new-86'] = $pane;
+    $display->panels['right'][0] = 'new-86';
     $pane = new stdClass();
-    $pane->pid = 'new-74';
+    $pane->pid = 'new-87';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-1';
@@ -4622,10 +5536,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-74'] = $pane;
-    $display->panels['right'][1] = 'new-74';
+    $display->content['new-87'] = $pane;
+    $display->panels['right'][1] = 'new-87';
     $pane = new stdClass();
-    $pane->pid = 'new-75';
+    $pane->pid = 'new-88';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -4646,8 +5560,8 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-75'] = $pane;
-    $display->panels['right'][2] = 'new-75';
+    $display->content['new-88'] = $pane;
+    $display->panels['right'][2] = 'new-88';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -4726,7 +5640,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-76';
+    $pane->pid = 'new-89';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'projects_intro';
@@ -4747,10 +5661,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-76'] = $pane;
-    $display->panels['middle'][0] = 'new-76';
+    $display->content['new-89'] = $pane;
+    $display->panels['middle'][0] = 'new-89';
     $pane = new stdClass();
-    $pane->pid = 'new-77';
+    $pane->pid = 'new-90';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'projects_block-projects';
@@ -4771,13 +5685,284 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-77'] = $pane;
-    $display->panels['middle'][1] = 'new-77';
+    $display->content['new-90'] = $pane;
+    $display->panels['middle'][1] = 'new-90';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['prosjekter'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'riktig_teknologi_for_riktig_jobb';
+  $page->task = 'page';
+  $page->admin_title = 'Riktig teknologi for riktig jobb';
+  $page->admin_description = '';
+  $page->path = 'teknologi';
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+    'plugins' => array(),
+    'logic' => 'and',
+  );
+  $page->menu = array(
+    'type' => 'none',
+    'title' => 'Wordpress',
+    'name' => 'main-menu',
+    'weight' => '-50',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_riktig_teknologi_for_riktig_jobb_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'riktig_teknologi_for_riktig_jobb';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Riktig teknologi for riktig jobb',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => 'page-tjenester',
+    'body_classes_to_add' => '',
+    'css_id' => 'panel-drupal',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'User from Taxonomy term (on Taxonomy term: Contact user [field_contact_user])',
+        'keyword' => 'profile',
+        'name' => 'entity_from_field:field_contact_user-taxonomy_term-user',
+        'context' => 'argument_term_1',
+        'id' => 1,
+      ),
+    ),
+    'panels_page_title_state' => 1,
+    'panels_page_title' => 'Riktig teknologi for riktig jobb',
+    'description' => 'Hvordan vi hjelper deg i valget av CMS, rammeverk eller minimalisme.',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Riktig teknologi for riktig jobb';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-91';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Tek tagline',
+      'title' => '',
+      'body' => 'Om CMS, rammeverk og minimalisme',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ingress-left',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-91'] = $pane;
+    $display->panels['left'][0] = 'new-91';
+    $pane = new stdClass();
+    $pane->pid = 'new-92';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Tek introtext',
+      'title' => '',
+      'body' => '<h2>Frontkom tilbyr:</h2>
+
+CMS: Drupal og Wordpress
+
+Rammeverk: Rails og Node.js
+
+Minimalisme: Ren HTML/CSS i Jekyll',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-92'] = $pane;
+    $display->panels['left'][1] = 'new-92';
+    $pane = new stdClass();
+    $pane->pid = 'new-93';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Body text',
+      'title' => '',
+      'body' => '<h2>Hvorfor disse teknologiene?</h2>
+
+Tre kriterier:
+
+1. Best i bransjen
+2. Open source
+3. Utfylle de andre alternativene
+
+<h2>Hvordan velge?</h2>
+
+Teknologi velges på grunnlag av:
+
+Mål. Hva vil vi oppnå?
+
+Hypoteser. Hva må vi teste?
+
+Design. Hvilke funksjoner trenger vi?
+
+<h2>Minimalisme: Jekyll</h2>
+<ul>
+<li>Statiske sider med lite funksjonalitet</li>
+<li>Billigst og kjappest</li>
+<li>Best ytelse</li>
+<li>Mest design for pengene</li>
+<li>Ingen CMS (nesten)</li>
+</ul>
+
+<h2>CMS: Drupal og Wordpress</h2>
+
+Drupal: Høy grad av funksjoner og kompleksitet.
+
+Wordpress: Standardisert CMS, lav kompleksitet.
+
+<h2>Rammeverk: Hva er det?</h2>
+
+Et sett av filer og konvensjoner for å løse alt fra supersmå til gigantiske oppgaver.
+
+Alle språk (PHP, Ruby, Java, etc) har sine rammeverk.
+
+Mer teknisk krevende enn Wordpress-utvikling.
+
+Brukes av: Twitter, Linkedin, backend for apps, etc.
+
+<h2>Rammeverk: Når?</h2>
+
+Grunner til å vurdere:
+<ul>
+<li>Man lager en "web app" (som Twitter)</li>
+<li>Høy grad av skreddersøm</li>
+<li>Trenger ingen frontend (backend for apps)</li>
+<li>Uvanlig funksjonalitet</li>
+<li>Høy ytelse</li>
+</ul>
+
+<h2>Rammeverk: Ruby on Rails</h2>
+
+Tradisjonelt og sikkert valg i Ruby; benyttes av store suksessprodukter.
+
+Når velger vi Rails framfor Node?
+<ul>
+<li>Produktet er en typisk web app med innhold, brukere, integrasjoner og dynamikk</li>
+<li>Når vi trenger et bibliotek som er ferdig integrert med Rails</li>
+</ul>
+
+<h2>Rammeverk: Node.js</h2>
+
+Superhipt og nytt rammeverk i Javascript, med over 20k moduler.
+
+Når velger vi Node fremfor Rails?
+<ul>
+<li>Real time-funksjonalitet</li>
+<li>Ekstrem høy ytelse</li>
+<li>Uvanlige applikasjoner som ikke passer inn i det strikte mønsteret som Rails tilbyr</li>
+<li>Miniapplikasjoner</li>
+</ul>',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-93'] = $pane;
+    $display->panels['left'][2] = 'new-93';
+    $pane = new stdClass();
+    $pane->pid = 'new-94';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'field_name_value' => 'Per André Rønsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-94'] = $pane;
+    $display->panels['left'][3] = 'new-94';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['riktig_teknologi_for_riktig_jobb'] = $page;
 
   $page = new stdClass();
   $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
@@ -4845,7 +6030,7 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-78';
+    $pane->pid = 'new-95';
     $pane->panel = 'bottom';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-single';
@@ -4869,10 +6054,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-78'] = $pane;
-    $display->panels['bottom'][0] = 'new-78';
+    $display->content['new-95'] = $pane;
+    $display->panels['bottom'][0] = 'new-95';
     $pane = new stdClass();
-    $pane->pid = 'new-79';
+    $pane->pid = 'new-96';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'howwework_utvikle';
@@ -4893,10 +6078,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-79'] = $pane;
-    $display->panels['left'][0] = 'new-79';
+    $display->content['new-96'] = $pane;
+    $display->panels['left'][0] = 'new-96';
     $pane = new stdClass();
-    $pane->pid = 'new-80';
+    $pane->pid = 'new-97';
     $pane->panel = 'left';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -4920,10 +6105,10 @@ Vi arrangerer også generelle kurs i Drupal som passer godt for den som vurderer
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-80'] = $pane;
-    $display->panels['left'][1] = 'new-80';
+    $display->content['new-97'] = $pane;
+    $display->panels['left'][1] = 'new-97';
     $pane = new stdClass();
-    $pane->pid = 'new-81';
+    $pane->pid = 'new-98';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -4946,10 +6131,10 @@ Våre metoder og valg av plattformer bidrar til at du får løsninger som er god
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-81'] = $pane;
-    $display->panels['left'][2] = 'new-81';
+    $display->content['new-98'] = $pane;
+    $display->panels['left'][2] = 'new-98';
     $pane = new stdClass();
-    $pane->pid = 'new-82';
+    $pane->pid = 'new-99';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'howwework_optimere';
@@ -4970,10 +6155,10 @@ Våre metoder og valg av plattformer bidrar til at du får løsninger som er god
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-82'] = $pane;
-    $display->panels['right'][0] = 'new-82';
+    $display->content['new-99'] = $pane;
+    $display->panels['right'][0] = 'new-99';
     $pane = new stdClass();
-    $pane->pid = 'new-83';
+    $pane->pid = 'new-100';
     $pane->panel = 'right';
     $pane->type = 'node';
     $pane->subtype = 'node';
@@ -4997,10 +6182,10 @@ Våre metoder og valg av plattformer bidrar til at du får løsninger som er god
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-83'] = $pane;
-    $display->panels['right'][1] = 'new-83';
+    $display->content['new-100'] = $pane;
+    $display->panels['right'][1] = 'new-100';
     $pane = new stdClass();
-    $pane->pid = 'new-84';
+    $pane->pid = 'new-101';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -5023,10 +6208,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-84'] = $pane;
-    $display->panels['right'][2] = 'new-84';
+    $display->content['new-101'] = $pane;
+    $display->panels['right'][2] = 'new-101';
     $pane = new stdClass();
-    $pane->pid = 'new-85';
+    $pane->pid = 'new-102';
     $pane->panel = 'top';
     $pane->type = 'custom';
     $pane->subtype = 'howwework_intro';
@@ -5047,8 +6232,8 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-85'] = $pane;
-    $display->panels['top'][0] = 'new-85';
+    $display->content['new-102'] = $pane;
+    $display->panels['top'][0] = 'new-102';
   $display->hide_title = PANELS_TITLE_NONE;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5128,7 +6313,7 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-86';
+    $pane->pid = 'new-103';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'front_kontaktinfo';
@@ -5149,10 +6334,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-86'] = $pane;
-    $display->panels['left'][0] = 'new-86';
+    $display->content['new-103'] = $pane;
+    $display->panels['left'][0] = 'new-103';
     $pane = new stdClass();
-    $pane->pid = 'new-87';
+    $pane->pid = 'new-104';
     $pane->panel = 'left';
     $pane->type = 'custom';
     $pane->subtype = 'support_intro';
@@ -5173,10 +6358,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-87'] = $pane;
-    $display->panels['left'][1] = 'new-87';
+    $display->content['new-104'] = $pane;
+    $display->panels['left'][1] = 'new-104';
     $pane = new stdClass();
-    $pane->pid = 'new-88';
+    $pane->pid = 'new-105';
     $pane->panel = 'left';
     $pane->type = 'block';
     $pane->subtype = 'webform-client-block-1646';
@@ -5194,10 +6379,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-88'] = $pane;
-    $display->panels['left'][2] = 'new-88';
+    $display->content['new-105'] = $pane;
+    $display->panels['left'][2] = 'new-105';
     $pane = new stdClass();
-    $pane->pid = 'new-89';
+    $pane->pid = 'new-106';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -5224,10 +6409,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-89'] = $pane;
-    $display->panels['right'][0] = 'new-89';
+    $display->content['new-106'] = $pane;
+    $display->panels['right'][0] = 'new-106';
     $pane = new stdClass();
-    $pane->pid = 'new-90';
+    $pane->pid = 'new-107';
     $pane->panel = 'right';
     $pane->type = 'block';
     $pane->subtype = 'menu_block-1';
@@ -5245,10 +6430,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-90'] = $pane;
-    $display->panels['right'][1] = 'new-90';
+    $display->content['new-107'] = $pane;
+    $display->panels['right'][1] = 'new-107';
     $pane = new stdClass();
-    $pane->pid = 'new-91';
+    $pane->pid = 'new-108';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -5269,10 +6454,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-91'] = $pane;
-    $display->panels['right'][2] = 'new-91';
+    $display->content['new-108'] = $pane;
+    $display->panels['right'][2] = 'new-108';
     $pane = new stdClass();
-    $pane->pid = 'new-92';
+    $pane->pid = 'new-109';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'support_video';
@@ -5293,10 +6478,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-92'] = $pane;
-    $display->panels['right'][3] = 'new-92';
+    $display->content['new-109'] = $pane;
+    $display->panels['right'][3] = 'new-109';
     $pane = new stdClass();
-    $pane->pid = 'new-93';
+    $pane->pid = 'new-110';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'kurs_overview-panel_pane_1';
@@ -5311,8 +6496,8 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-93'] = $pane;
-    $display->panels['right'][4] = 'new-93';
+    $display->content['new-110'] = $pane;
+    $display->panels['right'][4] = 'new-110';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5397,7 +6582,7 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-94';
+    $pane->pid = 'new-111';
     $pane->panel = 'left';
     $pane->type = 'term_description';
     $pane->subtype = 'term_description';
@@ -5416,10 +6601,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-94'] = $pane;
-    $display->panels['left'][0] = 'new-94';
+    $display->content['new-111'] = $pane;
+    $display->panels['left'][0] = 'new-111';
     $pane = new stdClass();
-    $pane->pid = 'new-95';
+    $pane->pid = 'new-112';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester-teasers';
@@ -5446,10 +6631,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-95'] = $pane;
-    $display->panels['left'][1] = 'new-95';
+    $display->content['new-112'] = $pane;
+    $display->panels['left'][1] = 'new-112';
     $pane = new stdClass();
-    $pane->pid = 'new-96';
+    $pane->pid = 'new-113';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'users_block-referenced';
@@ -5473,10 +6658,10 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-96'] = $pane;
-    $display->panels['left'][2] = 'new-96';
+    $display->content['new-113'] = $pane;
+    $display->panels['left'][2] = 'new-113';
     $pane = new stdClass();
-    $pane->pid = 'new-97';
+    $pane->pid = 'new-114';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-tjenester';
@@ -5494,8 +6679,8 @@ En kontinuerlig optimering av de digitale løsningene, sammen med kompetansehevi
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-97'] = $pane;
-    $display->panels['right'][0] = 'new-97';
+    $display->content['new-114'] = $pane;
+    $display->panels['right'][0] = 'new-114';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5581,7 +6766,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-98';
+    $pane->pid = 'new-115';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -5605,10 +6790,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-98'] = $pane;
-    $display->panels['middle'][0] = 'new-98';
+    $display->content['new-115'] = $pane;
+    $display->panels['middle'][0] = 'new-115';
     $pane = new stdClass();
-    $pane->pid = 'new-99';
+    $pane->pid = 'new-116';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -5623,10 +6808,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-99'] = $pane;
-    $display->panels['middle'][1] = 'new-99';
+    $display->content['new-116'] = $pane;
+    $display->panels['middle'][1] = 'new-116';
     $pane = new stdClass();
-    $pane->pid = 'new-100';
+    $pane->pid = 'new-117';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_2';
@@ -5644,8 +6829,8 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-100'] = $pane;
-    $display->panels['middle'][2] = 'new-100';
+    $display->content['new-117'] = $pane;
+    $display->panels['middle'][2] = 'new-117';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5699,7 +6884,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-101';
+    $pane->pid = 'new-118';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -5723,10 +6908,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-101'] = $pane;
-    $display->panels['middle'][0] = 'new-101';
+    $display->content['new-118'] = $pane;
+    $display->panels['middle'][0] = 'new-118';
     $pane = new stdClass();
-    $pane->pid = 'new-102';
+    $pane->pid = 'new-119';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -5741,10 +6926,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-102'] = $pane;
-    $display->panels['middle'][1] = 'new-102';
+    $display->content['new-119'] = $pane;
+    $display->panels['middle'][1] = 'new-119';
     $pane = new stdClass();
-    $pane->pid = 'new-103';
+    $pane->pid = 'new-120';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_6';
@@ -5762,8 +6947,8 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-103'] = $pane;
-    $display->panels['middle'][2] = 'new-103';
+    $display->content['new-120'] = $pane;
+    $display->panels['middle'][2] = 'new-120';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5817,7 +7002,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-104';
+    $pane->pid = 'new-121';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -5841,10 +7026,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-104'] = $pane;
-    $display->panels['middle'][0] = 'new-104';
+    $display->content['new-121'] = $pane;
+    $display->panels['middle'][0] = 'new-121';
     $pane = new stdClass();
-    $pane->pid = 'new-105';
+    $pane->pid = 'new-122';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -5859,10 +7044,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-105'] = $pane;
-    $display->panels['middle'][1] = 'new-105';
+    $display->content['new-122'] = $pane;
+    $display->panels['middle'][1] = 'new-122';
     $pane = new stdClass();
-    $pane->pid = 'new-106';
+    $pane->pid = 'new-123';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_5';
@@ -5880,8 +7065,8 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-106'] = $pane;
-    $display->panels['middle'][2] = 'new-106';
+    $display->content['new-123'] = $pane;
+    $display->panels['middle'][2] = 'new-123';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -5935,7 +7120,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-107';
+    $pane->pid = 'new-124';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -5959,10 +7144,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-107'] = $pane;
-    $display->panels['middle'][0] = 'new-107';
+    $display->content['new-124'] = $pane;
+    $display->panels['middle'][0] = 'new-124';
     $pane = new stdClass();
-    $pane->pid = 'new-108';
+    $pane->pid = 'new-125';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -5977,10 +7162,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-108'] = $pane;
-    $display->panels['middle'][1] = 'new-108';
+    $display->content['new-125'] = $pane;
+    $display->panels['middle'][1] = 'new-125';
     $pane = new stdClass();
-    $pane->pid = 'new-109';
+    $pane->pid = 'new-126';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_3';
@@ -5998,8 +7183,8 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-109'] = $pane;
-    $display->panels['middle'][2] = 'new-109';
+    $display->content['new-126'] = $pane;
+    $display->panels['middle'][2] = 'new-126';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -6053,7 +7238,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-110';
+    $pane->pid = 'new-127';
     $pane->panel = 'middle';
     $pane->type = 'custom';
     $pane->subtype = 'custom';
@@ -6077,10 +7262,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-110'] = $pane;
-    $display->panels['middle'][0] = 'new-110';
+    $display->content['new-127'] = $pane;
+    $display->panels['middle'][0] = 'new-127';
     $pane = new stdClass();
-    $pane->pid = 'new-111';
+    $pane->pid = 'new-128';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'tjenester_listing-panel_pane_1';
@@ -6095,10 +7280,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-111'] = $pane;
-    $display->panels['middle'][1] = 'new-111';
+    $display->content['new-128'] = $pane;
+    $display->panels['middle'][1] = 'new-128';
     $pane = new stdClass();
-    $pane->pid = 'new-112';
+    $pane->pid = 'new-129';
     $pane->panel = 'middle';
     $pane->type = 'views_panes';
     $pane->subtype = 'kompetanse-panel_pane_4';
@@ -6116,8 +7301,8 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-112'] = $pane;
-    $display->panels['middle'][2] = 'new-112';
+    $display->content['new-129'] = $pane;
+    $display->panels['middle'][2] = 'new-129';
   $display->hide_title = PANELS_TITLE_FIXED;
   $display->title_pane = '0';
   $handler->conf['display'] = $display;
@@ -6186,7 +7371,7 @@ tjenester',
   $display->content = array();
   $display->panels = array();
     $pane = new stdClass();
-    $pane->pid = 'new-113';
+    $pane->pid = 'new-130';
     $pane->panel = 'left';
     $pane->type = 'views_panes';
     $pane->subtype = 'videos-panel_pane_3';
@@ -6201,10 +7386,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-113'] = $pane;
-    $display->panels['left'][0] = 'new-113';
+    $display->content['new-130'] = $pane;
+    $display->panels['left'][0] = 'new-130';
     $pane = new stdClass();
-    $pane->pid = 'new-114';
+    $pane->pid = 'new-131';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'menu-drupal';
@@ -6231,10 +7416,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 0;
     $pane->locks = array();
-    $display->content['new-114'] = $pane;
-    $display->panels['right'][0] = 'new-114';
+    $display->content['new-131'] = $pane;
+    $display->panels['right'][0] = 'new-131';
     $pane = new stdClass();
-    $pane->pid = 'new-115';
+    $pane->pid = 'new-132';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-panel_pane_1';
@@ -6252,10 +7437,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 1;
     $pane->locks = array();
-    $display->content['new-115'] = $pane;
-    $display->panels['right'][1] = 'new-115';
+    $display->content['new-132'] = $pane;
+    $display->panels['right'][1] = 'new-132';
     $pane = new stdClass();
-    $pane->pid = 'new-116';
+    $pane->pid = 'new-133';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'main-menu';
@@ -6282,10 +7467,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 2;
     $pane->locks = array();
-    $display->content['new-116'] = $pane;
-    $display->panels['right'][2] = 'new-116';
+    $display->content['new-133'] = $pane;
+    $display->panels['right'][2] = 'new-133';
     $pane = new stdClass();
-    $pane->pid = 'new-117';
+    $pane->pid = 'new-134';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'taxonomy_menu-panel_pane_1';
@@ -6303,10 +7488,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 3;
     $pane->locks = array();
-    $display->content['new-117'] = $pane;
-    $display->panels['right'][3] = 'new-117';
+    $display->content['new-134'] = $pane;
+    $display->panels['right'][3] = 'new-134';
     $pane = new stdClass();
-    $pane->pid = 'new-118';
+    $pane->pid = 'new-135';
     $pane->panel = 'right';
     $pane->type = 'menu_tree';
     $pane->subtype = 'user-menu';
@@ -6333,10 +7518,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 4;
     $pane->locks = array();
-    $display->content['new-118'] = $pane;
-    $display->panels['right'][4] = 'new-118';
+    $display->content['new-135'] = $pane;
+    $display->panels['right'][4] = 'new-135';
     $pane = new stdClass();
-    $pane->pid = 'new-119';
+    $pane->pid = 'new-136';
     $pane->panel = 'right';
     $pane->type = 'custom';
     $pane->subtype = 'about_us_menu';
@@ -6357,10 +7542,10 @@ tjenester',
     $pane->extras = array();
     $pane->position = 5;
     $pane->locks = array();
-    $display->content['new-119'] = $pane;
-    $display->panels['right'][5] = 'new-119';
+    $display->content['new-136'] = $pane;
+    $display->panels['right'][5] = 'new-136';
     $pane = new stdClass();
-    $pane->pid = 'new-120';
+    $pane->pid = 'new-137';
     $pane->panel = 'right';
     $pane->type = 'views_panes';
     $pane->subtype = 'kurs_overview-panel_pane_1';
@@ -6375,13 +7560,349 @@ tjenester',
     $pane->extras = array();
     $pane->position = 6;
     $pane->locks = array();
-    $display->content['new-120'] = $pane;
-    $display->panels['right'][6] = 'new-120';
+    $display->content['new-137'] = $pane;
+    $display->panels['right'][6] = 'new-137';
   $display->hide_title = PANELS_TITLE_FIXED;
-  $display->title_pane = 'new-119';
+  $display->title_pane = 'new-136';
   $handler->conf['display'] = $display;
   $page->default_handlers[$handler->name] = $handler;
   $pages['videoer'] = $page;
+
+  $page = new stdClass();
+  $page->disabled = FALSE; /* Edit this to true to make a default page disabled initially */
+  $page->api_version = 1;
+  $page->name = 'wordpress';
+  $page->task = 'page';
+  $page->admin_title = 'Wordpress';
+  $page->admin_description = '';
+  $page->path = 'wordpress';
+  $page->access = array(
+    'type' => 'none',
+    'settings' => NULL,
+  );
+  $page->menu = array(
+    'type' => 'normal',
+    'title' => 'Wordpress',
+    'name' => 'main-menu',
+    'weight' => '-50',
+    'parent' => array(
+      'type' => 'none',
+      'title' => '',
+      'name' => 'navigation',
+      'weight' => '0',
+    ),
+  );
+  $page->arguments = array();
+  $page->conf = array(
+    'admin_paths' => FALSE,
+  );
+  $page->default_handlers = array();
+  $handler = new stdClass();
+  $handler->disabled = FALSE; /* Edit this to true to make a default handler disabled initially */
+  $handler->api_version = 1;
+  $handler->name = 'page_wordpress_panel_context';
+  $handler->task = 'page';
+  $handler->subtask = 'wordpress';
+  $handler->handler = 'panel_context';
+  $handler->weight = 0;
+  $handler->conf = array(
+    'title' => 'Drupal',
+    'no_blocks' => 1,
+    'pipeline' => 'standard',
+    'body_classes_to_remove' => 'page-tjenester',
+    'body_classes_to_add' => '',
+    'css_id' => 'panel-drupal',
+    'css' => '',
+    'contexts' => array(),
+    'relationships' => array(
+      0 => array(
+        'identifier' => 'User from Taxonomy term (on Taxonomy term: Contact user [field_contact_user])',
+        'keyword' => 'profile',
+        'name' => 'entity_from_field:field_contact_user-taxonomy_term-user',
+        'context' => 'argument_term_1',
+        'id' => 1,
+      ),
+    ),
+    'panels_page_title_state' => 1,
+    'panels_page_title' => 'Wordpress CMS - Åpen publiseringsløsning',
+    'description' => 'Wordpress er en åpen kildekode-plattform og publiseringsløsning (CMS).',
+    'keywords' => '',
+    'robots' => array(
+      'noindex' => 0,
+      'nofollow' => 0,
+      'noarchive' => 0,
+    ),
+    'canonical' => '',
+  );
+  $display = new panels_display();
+  $display->layout = 'onecolsidebar';
+  $display->layout_settings = array();
+  $display->panel_settings = array(
+    'style_settings' => array(
+      'default' => NULL,
+      'middle' => NULL,
+      'left' => NULL,
+      'right' => NULL,
+    ),
+  );
+  $display->cache = array();
+  $display->title = 'Wordpress CMS';
+  $display->content = array();
+  $display->panels = array();
+    $pane = new stdClass();
+    $pane->pid = 'new-138';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'WP tagline',
+      'title' => '',
+      'body' => 'Wordpress er verdens mest populære publiseringsløsning, med omkring 1/5 av markedet. Suksessen skyldes blant annet at Wordpress er frydefullt enkelt, og at det er kjapt å komme i gang også for den uerfarne bruker. ',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array(
+      'css_id' => '',
+      'css_class' => 'ingress-left',
+    );
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-138'] = $pane;
+    $display->panels['left'][0] = 'new-138';
+    $pane = new stdClass();
+    $pane->pid = 'new-139';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'WP introtext',
+      'title' => '',
+      'body' => 'Mens Wordpress er mest kjent som en plattform for blogging, ble det i 2012 gjort grep for å etablere systemet som et fullverdig CMS. Vi ser i denne løsningen en balansert kombinasjon av funksjoner og eleganse. Et perfekt CMS for enkle behov med brukervennlighet i sentrum!',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-139'] = $pane;
+    $display->panels['left'][1] = 'new-139';
+    $pane = new stdClass();
+    $pane->pid = 'new-140';
+    $pane->panel = 'left';
+    $pane->type = 'custom';
+    $pane->subtype = 'custom';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => 'Body text',
+      'title' => '',
+      'body' => '<h2>Se siste versjon av Wordpress</h2>
+<embed type="application/x-shockwave-flash" src="http://s0.videopress.com/player.swf?v=1.03" width="620" height="324" wmode="direct" seamlesstabbing="true" allowfullscreen="true" allowscriptaccess="always" overstretch="true" flashvars="guid=jQDfEbzZ&amp;isDynamicSeeking=true"></embed>
+
+<h2>Lett å lære</h2>
+<p>Med Wordpress trenger du ikke betale for opplæring; publisering og administrasjon er enkelt, og det er vanskelig å gjøre katastrofale feil. </p>
+
+<p>Når du  står fast, finnes det god dokumentasjon på nettet. Med Wordpress er du i trygge hender!</p>
+
+<h2>Wordpress skalerer</h2>
+<p>Wordpress som system er ikke like sofistikert og fleksibelt som Drupal. Men nettopp denne enkelheten gir plattformen andre fortrinn når den skal implementeres i større skala: </p>
+
+<ul><li>Eksisterende (store) nettsteder ligner på din installasjon, så du trenger ikke lure på om plattformen vil fungere eller ei.
+</li><li>Det er færre avgjørelser som må tas i prosjektutviklingen, siden backend er mer eller mindre ferdig ut av boksen.
+</li><li>Vedlikehold er enklere, siden du vil trenge færre plugins med den grad av standardisering
+</li><li>Wordpress har <a href="http://wordpress.org/extend/mobile/">offisielle apps for iOS og Android</a>,  for innholdsbehandling av nettstedet ditt
+</li></ul>
+
+<br>
+<img src="http://www.opensourcecms.no/img/wordpress-screenshot.png" />
+<br>
+
+Når det kommer til stykket, er software bare software; det er designprosessen i forkant og vedlikeholdet i etterkant som vil bety en forskjell. 
+
+<p><a href="/tjenester">Les mer om hvordan vi jobber ››</a></p>
+',
+      'format' => 'full_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-140'] = $pane;
+    $display->panels['left'][2] = 'new-140';
+    $pane = new stdClass();
+    $pane->pid = 'new-141';
+    $pane->panel = 'left';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'users_block-single';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'use_pager' => 0,
+      'pager_id' => '0',
+      'items_per_page' => '10',
+      'arguments' => array(
+        'field_name_value' => 'Henrik Akselsen',
+      ),
+      'override_title' => 0,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-141'] = $pane;
+    $display->panels['left'][3] = 'new-141';
+    $pane = new stdClass();
+    $pane->pid = 'new-142';
+    $pane->panel = 'right';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-wordpress';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-wordpress',
+      'parent_mlid' => 'menu-wordpress:0',
+      'title_link' => 0,
+      'admin_title' => 'Wordpress menu',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 0;
+    $pane->locks = array();
+    $display->content['new-142'] = $pane;
+    $display->panels['right'][0] = 'new-142';
+    $pane = new stdClass();
+    $pane->pid = 'new-143';
+    $pane->panel = 'right';
+    $pane->type = 'menu_tree';
+    $pane->subtype = 'menu-drupal';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'menu_name' => 'menu-drupal',
+      'parent_mlid' => 'menu-drupal:0',
+      'title_link' => 0,
+      'admin_title' => '',
+      'level' => '1',
+      'follow' => 0,
+      'depth' => 0,
+      'expanded' => 0,
+      'sort' => 0,
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 1;
+    $pane->locks = array();
+    $display->content['new-143'] = $pane;
+    $display->panels['right'][1] = 'new-143';
+    $pane = new stdClass();
+    $pane->pid = 'new-144';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'taxonomy_menu-panel_pane_1';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'override_title' => 1,
+      'override_title_text' => '',
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 2;
+    $pane->locks = array();
+    $display->content['new-144'] = $pane;
+    $display->panels['right'][2] = 'new-144';
+    $pane = new stdClass();
+    $pane->pid = 'new-145';
+    $pane->panel = 'right';
+    $pane->type = 'custom';
+    $pane->subtype = 'support_video';
+    $pane->shown = FALSE;
+    $pane->access = array();
+    $pane->configuration = array(
+      'admin_title' => '',
+      'title' => '',
+      'body' => '',
+      'format' => 'filtered_html',
+      'substitute' => TRUE,
+    );
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 3;
+    $pane->locks = array();
+    $display->content['new-145'] = $pane;
+    $display->panels['right'][3] = 'new-145';
+    $pane = new stdClass();
+    $pane->pid = 'new-146';
+    $pane->panel = 'right';
+    $pane->type = 'views_panes';
+    $pane->subtype = 'kurs_overview-panel_pane_1';
+    $pane->shown = TRUE;
+    $pane->access = array();
+    $pane->configuration = array();
+    $pane->cache = array();
+    $pane->style = array(
+      'settings' => NULL,
+    );
+    $pane->css = array();
+    $pane->extras = array();
+    $pane->position = 4;
+    $pane->locks = array();
+    $display->content['new-146'] = $pane;
+    $display->panels['right'][4] = 'new-146';
+  $display->hide_title = PANELS_TITLE_FIXED;
+  $display->title_pane = '0';
+  $handler->conf['display'] = $display;
+  $page->default_handlers[$handler->name] = $handler;
+  $pages['wordpress'] = $page;
 
   return $pages;
 

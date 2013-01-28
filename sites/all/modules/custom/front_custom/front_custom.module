@@ -581,5 +581,4 @@ function front_custom_contact_form_submit($form, &$form_state){
      'data' => $data
      )
    ); 
-  dpm($response);
 }

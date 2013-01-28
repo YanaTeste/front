@@ -1,4 +1,3 @@
-@charset "UTF-8";
 /*
  * ##### Sasson - advanced drupal theming. #####
  *
@@ -4405,6 +4404,152 @@ ul.menu a.active {
   width: 6.66667em;
 }
 #panel-kontakt .webform-client-block .form-actions input:hover, #panel-kontakt .webform-client-block .form-actions input:active {
+  background-color: #66a5c7;
+  -webkit-box-shadow: 0 0 2px #639eb3;
+  -moz-box-shadow: 0 0 2px #639eb3;
+  box-shadow: 0 0 2px #639eb3;
+}
+#panel-kontakt #contact-form .pane-title {
+  font-size: 3.57143em;
+  line-height: 1.2em;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.36em;
+  padding-left: 0.08em;
+}
+#panel-kontakt #contact-form header, #panel-kontakt #contact-form label {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+}
+#panel-kontakt #contact-form .field-name-body {
+  padding-left: 0.21429em;
+}
+#panel-kontakt #contact-form .field-name-body p {
+  font-family: ‘Arial Narrow’, sans-serif;
+  font-size: 1.42857em;
+  font-style: oblique;
+  line-height: 1.5em;
+  margin-bottom: 1.2em;
+}
+#panel-kontakt #contact-form form {
+  background: #F9FAFB;
+  border: 1px solid #D3E2E2;
+  padding: 1.78571em 4.09165%;
+  *zoom: 1;
+}
+#panel-kontakt #contact-form form:before, #panel-kontakt #contact-form form:after {
+  display: table;
+  content: "";
+}
+#panel-kontakt #contact-form form:after {
+  clear: both;
+}
+#panel-kontakt #contact-form input[type=text],
+#panel-kontakt #contact-form textarea,
+#panel-kontakt #contact-form input[type=select] {
+  color: #454545;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.28571em;
+  line-height: 1em;
+  margin-bottom: 1.11111em;
+  padding: 0.94444em;
+  background-color: #EFEFEF;
+  border-color: #ccc;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  border-radius: 1px;
+}
+#panel-kontakt #contact-form input[type=text].placeholder,
+#panel-kontakt #contact-form textarea.placeholder,
+#panel-kontakt #contact-form input[type=select].placeholder {
+  color: #454545;
+}
+#panel-kontakt #contact-form input[type=text]:-moz-placeholder,
+#panel-kontakt #contact-form textarea:-moz-placeholder,
+#panel-kontakt #contact-form input[type=select]:-moz-placeholder {
+  color: #454545;
+}
+#panel-kontakt #contact-form input[type=text]::-webkit-input-placeholder,
+#panel-kontakt #contact-form textarea::-webkit-input-placeholder,
+#panel-kontakt #contact-form input[type=select]::-webkit-input-placeholder {
+  color: #454545;
+}
+#panel-kontakt #contact-form input[type=text]:focus,
+#panel-kontakt #contact-form textarea:focus,
+#panel-kontakt #contact-form input[type=select]:focus {
+  background-color: #fff;
+}
+#panel-kontakt #contact-form input[type=text] {
+  width: 93.66197%;
+}
+#panel-kontakt #contact-form input[type=select] {
+  height: 1.9em;
+  padding: 2px 2px 2px 0.94444em;
+}
+.js #panel-kontakt #contact-form input[type=select] {
+  margin-top: -3.33333em;
+  opacity: 0;
+  filter: alpha(opacity=0);
+  z-index: 0;
+}
+#panel-kontakt #contact-form textarea,
+#panel-kontakt #contact-form input[type=select] {
+  width: 100%;
+}
+#panel-kontakt #contact-form textarea {
+  font-size: 1em;
+  height: 13.42857em;
+  margin-bottom: 1.42857em;
+}
+#panel-kontakt #contact-form textarea:-moz-placeholder {
+  font-size: 1.28571em;
+  height: 10.44444em;
+  margin-bottom: 1.11111em;
+}
+#panel-kontakt #contact-form textarea::-webkit-input-placeholder {
+  font-size: 1.28571em;
+  height: 10.44444em;
+  margin-bottom: 1.11111em;
+}
+#panel-kontakt #contact-form #alternative {
+  float: right;
+}
+#panel-kontakt #contact-form #alternative p {
+  font-size: 0.92857em;
+  margin: 1.38462em 0 0;
+}
+#panel-kontakt #contact-form input[type=submit] {
+  background: none;
+  border: none;
+  float: left;
+  margin: 0 0 -0.66667em;
+  padding: 0;
+  color: #fff !important;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 1.07143em;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.35);
+  display: inline-block;
+  width: 11.53333em;
+  margin: 3px;
+  padding: 1em 0;
+  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  background-color: #5B9EC3;
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(3%, #8cb2c8), color-stop(6%, #619bba), color-stop(53%, #2c83ad), color-stop(100%, #437ca1));
+  background-image: -webkit-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: -moz-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: -o-linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  background-image: linear-gradient(#8cb2c8 3%, #619bba 6%, #2c83ad, #437ca1);
+  border: 1px solid #639EB3;
+  width: 6.66667em;
+}
+#panel-kontakt #contact-form input[type=submit]:hover, #panel-kontakt #contact-form input[type=submit]:active {
   background-color: #66a5c7;
   -webkit-box-shadow: 0 0 2px #639eb3;
   -moz-box-shadow: 0 0 2px #639eb3;

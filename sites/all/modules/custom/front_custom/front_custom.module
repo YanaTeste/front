@@ -490,7 +490,6 @@ function front_custom_panels_pre_render($display) {
 
 
 function front_custom_contact_form($form, &$form_state) {
-  $form['#action'] = 'https://service.capsulecrm.com/service/newlead';
 
   // Hidden fields
   $form['FORM_ID'] = array(
@@ -550,25 +549,37 @@ function front_custom_contact_form($form, &$form_state) {
     '#type' => 'submit',
     '#value' => 'Send',
     );
-  unset($form['#redirect']);
-  $form_state['redirect'] = 'node/1684';
 
+  // $form['#action'] = url('https://service.capsulecrm.com/service/newlead', array('external' => true));;
   return $form;
 }
-
-
-
-/*
- * Implents HOOK_form_alter
- */
- function front_custom_form_alter(&$form, &$form_state, $form_id){
-  if($form_id=='front_custom_contact_form') {
-    array_push($form['#submit'], 'custom_contact_form_submit_handler');
-  }
+function front_custom_contact_form_validate($form, &$form_state){
+  // Not necessary
 }
+function front_custom_contact_form_submit($form, &$form_state){
 
-function custom_contact_form_submit_handler(&$form, &$form_state){
+  // use of drupal_http_request 
+  $url = url('https://service.capsulecrm.com/service/newlead', array('external' => true));
+  $headers = array('Content-Type' => 'application/x-www-form-urlencoded');
 
-  // TODO: THis submit handler doesn't get called.
-  $form_state['redirect'] = 'node/1684';
+  $relevant_arguments = array('FORM_ID', 'COMPLETE_URL', 'FIRST_NAME', 'LAST_NAME', 'EMAIL', 'PHONE', 'NOTE');
+  $submit_data = array();
+  foreach($form_state['values'] as $key => $value){
+    if (in_array($key, $relevant_arguments)){
+      $submit_data[$key] = $value;
+    }
+  }
+
+  $data = http_build_query($submit_data, '', '&');
+  
+  // the actual sending of the data
+  $response = drupal_http_request(
+   $url, 
+   array(
+     'headers' => $headers, 
+     'method' => 'POST', 
+     'data' => $data
+     )
+   ); 
+  dpm($response);
 }

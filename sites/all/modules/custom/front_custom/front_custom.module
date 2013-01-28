@@ -8,28 +8,28 @@
 /**
  * Implements hook_theme().
  */
-function front_custom_theme($existing, $type, $theme, $path) {
+ function front_custom_theme($existing, $type, $theme, $path) {
   return array(
     'front_vcard' => array(),
     'front_support' => array(),
     'front_custom_simple_tweet' => array(
       'arguments' => array('tweets' => NULL, 'twitkey' => NULL, 'title' => NULL),
       'template' => 'front-custom-simple-tweet'
-    ),
-  );
+      ),
+    );
 }
 
 /**
  * Implements hook_ctools_plugin_directory().
  */
-function front_custom_ctools_plugin_directory($module, $plugin) {
+ function front_custom_ctools_plugin_directory($module, $plugin) {
   return "plugins/$plugin";
 }
 
 /**
  * Implements hook_menu_alter().
  */
-function front_custom_menu_alter(&$items) {
+ function front_custom_menu_alter(&$items) {
   // Workaround for PDOException warning on _menu_router_save() after update to
   // Drupal 7.14
   foreach ($items as $path => $item) {
@@ -42,22 +42,24 @@ function front_custom_menu_alter(&$items) {
 /**
  * Implements hook_block_info().
  */
-function front_custom_block_info() {
+ function front_custom_block_info() {
   // Front vCard used on footer.
   $blocks['front_vcard'] = array(
     'info' => t('Front vCard'),
-  );
+    );
   $blocks['front_support'] = array(
     'info' => t('Front Contact/Support'),
-  );
-
+    );
+  $blocks['front_contact'] = array(
+    'info' => t('Front Contact Form'),
+    );
   return $blocks;
 }
 
 /**
  * Implements hook_block_configure().
  */
-function front_custom_block_configure($delta = '') {
+ function front_custom_block_configure($delta = '') {
   $form = array();
 
   if ($delta == 'front_vcard') {
@@ -73,7 +75,7 @@ function front_custom_block_configure($delta = '') {
       'twitter' => '',
       'facebook' => '',
       'googleplus' => '',
-    );
+      );
     $front_vcard = variable_get('front_vcard', '');
 
     foreach ($vcard as $key => $value) {
@@ -86,7 +88,7 @@ function front_custom_block_configure($delta = '') {
       '#type' => 'fieldset',
       '#title' => t('vCard'),
       '#collapsible' => FALSE,
-    );
+      );
 
     $form['vcard']['given_name'] = array(
       '#type' => 'textfield',
@@ -94,21 +96,21 @@ function front_custom_block_configure($delta = '') {
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['given_name'],
-    );
+      );
     $form['vcard']['organization_name'] = array(
       '#type' => 'textfield',
       '#title' => t('Organization name'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['organization_name'],
-    );
+      );
 
     // Address.
     $form['vcard']['address'] = array(
       '#type' => 'fieldset',
       '#title' => t('Address'),
       '#collapsible' => FALSE,
-    );
+      );
 
     $form['vcard']['address']['street_address'] = array(
       '#type' => 'textfield',
@@ -116,42 +118,42 @@ function front_custom_block_configure($delta = '') {
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['street_address'],
-    );
+      );
     $form['vcard']['address']['locality'] = array(
       '#type' => 'textfield',
       '#title' => t('Locality'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['locality'],
-    );
+      );
     $form['vcard']['address']['region'] = array(
       '#type' => 'textfield',
       '#title' => t('Region'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['region'],
-    );
+      );
     $form['vcard']['address']['postal_code'] = array(
       '#type' => 'textfield',
       '#title' => t('Postal code'),
       '#size' => 20,
       '#maxlength' => 20,
       '#default_value' => $vcard['postal_code'],
-    );
+      );
     $form['vcard']['address']['country'] = array(
       '#type' => 'textfield',
       '#title' => t('Country'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['country'],
-    );
+      );
 
     // Social links.
     $form['vcard']['social_links'] = array(
       '#type' => 'fieldset',
       '#title' => t('Social links'),
       '#collapsible' => FALSE,
-    );
+      );
 
     $form['vcard']['social_links']['url'] = array(
       '#type' => 'textfield',
@@ -159,28 +161,28 @@ function front_custom_block_configure($delta = '') {
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['url'],
-    );
+      );
     $form['vcard']['social_links']['twitter'] = array(
       '#type' => 'textfield',
       '#title' => t('Twitter'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['twitter'],
-    );
+      );
     $form['vcard']['social_links']['facebook'] = array(
       '#type' => 'textfield',
       '#title' => t('Facebook'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['facebook'],
-    );
+      );
     $form['vcard']['social_links']['googleplus'] = array(
       '#type' => 'textfield',
       '#title' => t('Google+'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $vcard['googleplus'],
-    );
+      );
   }
   elseif ($delta == 'front_support') {
     $support = array(
@@ -189,7 +191,7 @@ function front_custom_block_configure($delta = '') {
       'contact_link' => '',
       'support_label' => '',
       'support_link' => '',
-    );
+      );
     $front_support = variable_get('front_support', '');
 
     foreach ($support as $key => $value) {
@@ -205,45 +207,45 @@ function front_custom_block_configure($delta = '') {
       '#rows' => 5,
       '#default_value' => (isset($support['text']['value'])) ? $support['text']['value'] : $support['text'],
       '#format' => (isset($support['text']['format'])) ? $support['text']['format'] : NULL,
-    );
+      );
     $form['contact'] = array(
       '#type' => 'fieldset',
       '#title' => t('Contact'),
       '#collapsible' => FALSE,
-    );
+      );
     $form['contact']['contact_label'] = array(
       '#type' => 'textfield',
       '#title' => t('Label'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $support['contact_label'],
-    );
+      );
     $form['contact']['contact_link'] = array(
       '#type' => 'textfield',
       '#title' => t('Link'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $support['contact_link'],
-    );
+      );
     $form['support'] = array(
       '#type' => 'fieldset',
       '#title' => t('Support'),
       '#collapsible' => FALSE,
-    );
+      );
     $form['support']['support_label'] = array(
       '#type' => 'textfield',
       '#title' => t('Label'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $support['support_label'],
-    );
+      );
     $form['support']['support_link'] = array(
       '#type' => 'textfield',
       '#title' => t('Link'),
       '#size' => 40,
       '#maxlength' => 255,
       '#default_value' => $support['support_link'],
-    );
+      );
   }
 
   return $form;
@@ -252,7 +254,7 @@ function front_custom_block_configure($delta = '') {
 /**
  * Implements hook_block_save().
  */
-function front_custom_block_save($delta = '', $edit = array()) {
+ function front_custom_block_save($delta = '', $edit = array()) {
   // This example comes from node.module.
   if ($delta == 'front_vcard') {
     $vcard = array(
@@ -267,7 +269,7 @@ function front_custom_block_save($delta = '', $edit = array()) {
       'twitter' => '',
       'facebook' => '',
       'googleplus' => '',
-    );
+      );
 
     foreach ($vcard as $key => $value) {
       if (isset($edit[$key])) {
@@ -283,7 +285,7 @@ function front_custom_block_save($delta = '', $edit = array()) {
       'contact_link' => '',
       'support_label' => '',
       'support_link' => '',
-    );
+      );
 
     foreach ($support as $key => $value) {
       if (isset($edit[$key])) {
@@ -302,21 +304,27 @@ function front_custom_block_save($delta = '', $edit = array()) {
 /**
  * Implements hook_block_view().
  */
-function front_custom_block_view($delta = '') {
+ function front_custom_block_view($delta = '') {
   // This example comes from node.module. Note that you can also return a
   // renderable array rather than rendered HTML for 'content'.
   $block = array();
 
   switch ($delta) {
     case 'front_vcard':
-      $block['subject'] = t('vCard');
-      $block['content'] = theme('front_vcard');
-      break;
+    $block['subject'] = t('vCard');
+    $block['content'] = theme('front_vcard');
+    break;
 
     case 'front_support':
-      $block['subject'] = t('Front Support');
-      $block['content'] = theme('front_support');
-      break;
+    $block['subject'] = t('Front Support');
+    $block['content'] = theme('front_support');
+    break;
+
+    case 'front_contact':
+    $block['subject'] = t('Contact us');
+    $block['content'] = drupal_get_form('front_custom_contact_form');
+    break;
+
   }
   return $block;
 }
@@ -324,7 +332,7 @@ function front_custom_block_view($delta = '') {
 /**
  * Return vCard data as a hCard.
  */
-function theme_front_vcard() {
+ function theme_front_vcard() {
   $v = variable_get('front_vcard', '');
 
   if (empty($v)) return;
@@ -344,12 +352,12 @@ function theme_front_vcard() {
   }
 
   $hcard .= '<span class="adr">
-              <span class="street-address">' . $v['street_address'] . '</span>,
-              <span class="postal-code">' . $v['postal_code'] . '</span>
-              <span class="locality">' . $v['locality'] . '</span>
-              <span class="region">' . $v['region'] . '</span>,
-              <span class="country-name">' . $v['country'] . '</span>
-            </span>';
+  <span class="street-address">' . $v['street_address'] . '</span>,
+  <span class="postal-code">' . $v['postal_code'] . '</span>
+  <span class="locality">' . $v['locality'] . '</span>
+  <span class="region">' . $v['region'] . '</span>,
+  <span class="country-name">' . $v['country'] . '</span>
+  </span>';
 
   if (!empty($v['twitter']) || !empty($v['facebook'])) {
     $hcard .= '<div class="social-links">' . t('Follow us on');
@@ -373,7 +381,7 @@ function theme_front_vcard() {
 /**
  * Return contact and support information.
  */
-function theme_front_support() {
+ function theme_front_support() {
   $support = variable_get('front_support', '');
 
   if (empty($support)) return;
@@ -389,13 +397,13 @@ function theme_front_support() {
     $links['contact'] = array(
       'href'  => $support['contact_link'],
       'title' => $support['contact_label'],
-    );
+      );
   }
   if (!empty($support['support_link'])) {
     $links['support'] = array(
       'href'  => $support['support_link'],
       'title' => $support['support_label'],
-    );
+      );
   }
 
   if (!empty($links)) {
@@ -410,7 +418,7 @@ function theme_front_support() {
 /**
  * Implementation of hook_twitter_pull_blocks().
  */
-function front_custom_twitter_pull_blocks() {
+ function front_custom_twitter_pull_blocks() {
   return array(
     0 => (object) array(
       'delta' => 'front_custom_twitter_pull',
@@ -419,14 +427,14 @@ function front_custom_twitter_pull_blocks() {
       'name' => t('FrontKom on Twitter'),
       'number_of_items' => '1',
       'theme_key' => 'front_custom_simple_tweet',
-    ),
-  );
+      ),
+    );
 }
 
 /**
  * This hook is called right before the render process.
  */
-function front_custom_views_pre_render(&$view) {
+ function front_custom_views_pre_render(&$view) {
   // Make sure we pass the normal path so the comparison
   // on the l() function returns true on active menu items.
   if ($view->name == 'services_block' && $view->current_display == 'menu') {
@@ -440,7 +448,7 @@ function front_custom_views_pre_render(&$view) {
 /**
  * Implements hook_preprocess_views_view_fields().
  */
-function front_custom_preprocess_views_view_fields(&$vars) {
+ function front_custom_preprocess_views_view_fields(&$vars) {
   if ($vars['view']->name == 'home_featured') {
     $title = &$vars['fields']['title'];
     $title->content = front_custom_convert2markup($title->raw);
@@ -450,18 +458,18 @@ function front_custom_preprocess_views_view_fields(&$vars) {
 /**
  * Custom function to convert special characters to markup
  * like markdown style :)
- */
+*/
 function front_custom_convert2markup($text) {
   $search = array(
     '/\*(.*?)\*/',
     '/\*\*(.*?)\*\*/',
     '/\\\/',
-  );
+    );
   $replace = array(
     '<em>\\1</em>',
     '<strong>\\1</strong>',
     '<br>',
-  );
+    );
   $markup = preg_replace($search, $replace, $text);
 
   return $markup;
@@ -478,4 +486,89 @@ function front_custom_panels_pre_render($display) {
       $node_view = node_view($node);
     }
   }
+}
+
+
+function front_custom_contact_form($form, &$form_state) {
+  $form['#action'] = 'https://service.capsulecrm.com/service/newlead';
+
+  // Hidden fields
+  $form['FORM_ID'] = array(
+    '#type' => 'hidden',
+    '#value' =>  '95f0d613-2476-4776-b617-08177412460e'
+    );
+  $form['COMPLETE_URL'] = array(
+    '#type' => 'hidden',
+    '#value' => 'http://www.frontkom.no'
+    );
+
+  // User input fields
+  $form['FIRST_NAME'] = array(
+    '#title' => t('First Name'),
+    '#attributes' => array(
+      'placeholder' => t('First Name'),
+      ),
+    '#type' => 'textfield',
+    '#required' => true,
+    );
+  $form['LAST_NAME'] = array(
+    '#title' => t('Last Name'),
+    '#attributes' => array(
+      'placeholder' => t('Last Name'),
+      ),
+    '#type' => 'textfield',
+    '#required' => true,
+    );
+  $form['EMAIL'] = array(
+    '#title' => t('Email'),
+    '#attributes' => array(
+      'placeholder' => t('Email'),
+      ),
+    '#type' => 'textfield',
+    '#required' => true,
+    );
+  $form['PHONE'] = array(
+    '#title' => t('Phone'),
+    '#attributes' => array(
+      'placeholder' => t('Phone'),
+      ),
+    '#type' => 'textfield',
+    '#required' => false,
+    );
+  $form['NOTE'] = array(
+    '#title' => t('Message'),
+    '#attributes' => array(
+      'placeholder' => t('Message'),
+      ),
+    '#type' => 'textarea',
+    '#required' => TRUE,
+    '#resizable' => false
+    );
+
+  // Submit
+  $form['submit'] = array(
+    '#type' => 'submit',
+    '#value' => 'Send',
+    );
+  unset($form['#redirect']);
+  $form_state['redirect'] = 'node/1684';
+
+  return $form;
+}
+
+
+
+/*
+ * Implents HOOK_form_alter
+ */
+ function front_custom_form_alter(&$form, &$form_state, $form_id){
+  if($form_id=='front_custom_contact_form') {
+    array_push($form['#submit'], 'custom_contact_form_submit_handler');
+  }
+}
+
+function custom_contact_form_submit_handler(&$form, &$form_state){
+
+  // TODO: THis submit handler doesn't get called.
+  $form_state['redirect'] = 'node/1684';
 }

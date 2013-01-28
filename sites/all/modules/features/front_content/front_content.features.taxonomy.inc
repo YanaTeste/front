@@ -16,8 +16,6 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '1',
       'module' => 'nodeorder',
       'weight' => '0',
-      'language' => 'und',
-      'i18n_mode' => '0',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',
@@ -46,8 +44,6 @@ function front_content_taxonomy_default_vocabularies() {
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
-      'language' => 'und',
-      'i18n_mode' => '0',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',
@@ -70,14 +66,40 @@ function front_content_taxonomy_default_vocabularies() {
       ),
     ),
     'topic' => array(
-      'name' => 'Bloggemne',
+      'name' => 'Blog topic (Norwegian)',
       'machine_name' => 'topic',
       'description' => '',
       'hierarchy' => '0',
       'module' => 'taxonomy',
       'weight' => '0',
-      'language' => 'und',
-      'i18n_mode' => '4',
+      'microdata' => array(
+        '#attributes' => array(
+          'itemscope' => '',
+        ),
+      ),
+      'rdf_mapping' => array(
+        'rdftype' => array(
+          0 => 'skos:ConceptScheme',
+        ),
+        'name' => array(
+          'predicates' => array(
+            0 => 'dc:title',
+          ),
+        ),
+        'description' => array(
+          'predicates' => array(
+            0 => 'rdfs:comment',
+          ),
+        ),
+      ),
+    ),
+    'topic_english' => array(
+      'name' => 'Blog topic (english)',
+      'machine_name' => 'topic_english',
+      'description' => '',
+      'hierarchy' => '0',
+      'module' => 'taxonomy',
+      'weight' => '0',
       'microdata' => array(
         '#attributes' => array(
           'itemscope' => '',

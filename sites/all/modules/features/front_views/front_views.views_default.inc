@@ -2958,7 +2958,7 @@ function front_views_views_default_views() {
 
   /* Display: Master */
   $handler = $view->new_display('default', 'Master', 'default');
-  $handler->display->display_options['title'] = 'Bloggtemaer';
+  $handler->display->display_options['title'] = 'Blog topics';
   $handler->display->display_options['use_more_always'] = FALSE;
   $handler->display->display_options['access']['type'] = 'perm';
   $handler->display->display_options['cache']['type'] = 'none';
@@ -2997,9 +2997,19 @@ function front_views_views_default_views() {
     'topic' => 'topic',
   );
   $handler->display->display_options['filters']['machine_name']['group'] = 1;
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    'nb' => 'nb',
+  );
 
-  /* Display: Topics (Emne) */
-  $handler = $view->new_display('panel_pane', 'Topics (Emne)', 'topics');
+  /* Display: Norwegian topics */
+  $handler = $view->new_display('panel_pane', 'Norwegian topics', 'topics');
+  $handler->display->display_options['defaults']['title'] = FALSE;
+  $handler->display->display_options['title'] = 'Bloggemner';
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
@@ -3014,6 +3024,24 @@ function front_views_views_default_views() {
   /* Display: English topics */
   $handler = $view->new_display('panel_pane', 'English topics', 'panel_pane_1');
   $handler->display->display_options['defaults']['hide_admin_links'] = FALSE;
+  $handler->display->display_options['defaults']['filter_groups'] = FALSE;
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter criterion: Taxonomy vocabulary: Machine name */
+  $handler->display->display_options['filters']['machine_name']['id'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['table'] = 'taxonomy_vocabulary';
+  $handler->display->display_options['filters']['machine_name']['field'] = 'machine_name';
+  $handler->display->display_options['filters']['machine_name']['value'] = array(
+    'topic_english' => 'topic_english',
+  );
+  $handler->display->display_options['filters']['machine_name']['group'] = 1;
+  /* Filter criterion: Content: Language */
+  $handler->display->display_options['filters']['language']['id'] = 'language';
+  $handler->display->display_options['filters']['language']['table'] = 'node';
+  $handler->display->display_options['filters']['language']['field'] = 'language';
+  $handler->display->display_options['filters']['language']['relationship'] = 'nid';
+  $handler->display->display_options['filters']['language']['value'] = array(
+    'en' => 'en',
+  );
   $handler->display->display_options['allow']['use_pager'] = 0;
   $handler->display->display_options['allow']['items_per_page'] = 0;
   $handler->display->display_options['allow']['offset'] = 0;
@@ -3025,7 +3053,7 @@ function front_views_views_default_views() {
   $handler->display->display_options['allow']['fields_override'] = 0;
   $translatables['terms_menu'] = array(
     t('Master'),
-    t('Bloggtemaer'),
+    t('Blog topics'),
     t('more'),
     t('Apply'),
     t('Reset'),
@@ -3033,7 +3061,8 @@ function front_views_views_default_views() {
     t('Asc'),
     t('Desc'),
     t('node'),
-    t('Topics (Emne)'),
+    t('Norwegian topics'),
+    t('Bloggemner'),
     t('View panes'),
     t('English topics'),
   );

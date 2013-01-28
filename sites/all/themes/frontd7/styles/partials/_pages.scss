@@ -964,6 +964,22 @@
     background: #EFF2F4 url('../images/bg_home-services-inner.jpg') no-repeat center top;
   }
 }
+#intro-text{
+  h2 {
+    font-size: em(40px, 14px);
+    margin-top: 0;
+    margin-left: 2%;
+  }
+  .pane-content p {
+   color: #333;
+   font-family: $altFontFamily;
+   font-size: em(20px, 14px);
+   font-style: oblique;
+   line-height: 1.5em;
+   margin-top: 10px;
+ }
+
+}
 
 #panel-kontakt {
   .inside {
@@ -985,131 +1001,8 @@
 
 
 
-  .webform-client-block {
-    .pane-title {
-      font-size: em(50px, 14px);
-      line-height: 1.2em;
-      letter-spacing: em(-2px, 50px);
-      margin-bottom: em(18px, 50px);
-      padding-left: em(4px, 50px);
-    }
-    header, label {
-      @include element-invisible;
-    }
-    .field-name-body {
-      padding-left: em(3px, 14px);
 
-      p {
-        font-family: $altFontFamily;
-        font-size: em(20px, 14px);
-        font-style: oblique;
-        line-height: 1.5em;
-        margin-bottom: em(24px, 20px);
-      }
-    }
-    form {
-      background: #F9FAFB;
-      border: 1px solid #D3E2E2;
-      padding: em(25px, 14px) perc(25px, 611px);
-      @include clearfix;
-    }
-    .form-text,
-    .form-textarea,
-    .form-select {
-      color: #454545;
-      font-family: $helveticaFontFamily;
-      font-size: em(18px, 14px);
-      line-height: 1em;
-      margin-bottom: em(20px, 18px);
-      padding: em(17px, 18px);
-      background-color: #EFEFEF;
-      border-color: #ccc;
-      @include border-radius(1px);
-      @include input-placeholder(#454545);
-
-      &:focus {
-        background-color: #fff;
-      }
-    }
-    .form-text {
-      width: perc(532px, 568px);
-    }
-    .form-select {
-      height: 1.9em;
-      padding: 2px 2px 2px em(17px, 18px);
-
-      .js & {
-        margin-top: em(-60px, 18px);
-        @include opacity(0);
-        z-index: 0;
-      }
-    }
-    .form-textarea,
-    .form-select {
-      width: 100%;
-    }
-    .form-textarea {
-      font-size: 1em;
-      height: em(188px, 14px);
-      margin-bottom: em(20px, 14px);
-
-      &:-moz-placeholder {
-        font-size: em(18px, 14px);
-        height: em(188px, 18px);
-        margin-bottom: em(20px, 18px);
-      }
-      &::-webkit-input-placeholder {
-        font-size: em(18px, 14px);
-        height: em(188px, 18px);
-        margin-bottom: em(20px, 18px);
-      }
-    }
-    .customStyleSelectBox {
-      font-family: $helveticaFontFamily;
-      font-size: em(18px, 14px);
-      background: #efefef url('../images/icon_select-dropdown.png') no-repeat right center;
-      @include box-shadow(inset 0 1px 1px rgba(0, 0, 0, 0.075));
-      border: 1px solid #ccc;
-      @include border-radius(1px);
-      width: perc(532px, 568px);
-      padding: em(17px, 18px);
-      position: relative;
-      z-index: 0;
-
-      &:focus {
-        background-color: #fff;
-      }
-    }
-    #webform-component-alternative {
-      float: right;
-
-      p {
-        font-size: em(13px, 14px);
-        margin: em(18px, 13px) 0 0;
-      }
-    }
-    .form-actions {
-      background: none;
-      border: none;
-      float: left;
-      margin: 0 0 em(-10px, 15px);
-      padding: 0;
-
-      input {
-        @include btn-default;
-        width: em(100px, 15px);
-      }
-    }
-  }
-
-
-
-
-
-
-
-
-  #contact-form {
+  #front-custom-contact-form {
     .pane-title {
       font-size: em(50px, 14px);
       line-height: 1.2em;
@@ -1222,8 +1115,8 @@
       margin: 0 0 em(-10px, 15px);
       padding: 0;
 
-        @include btn-default;
-        width: em(100px, 15px);
+      @include btn-default;
+      width: em(100px, 15px);
 
     }
   }

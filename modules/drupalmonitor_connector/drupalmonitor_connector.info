@@ -1,5 +1,0 @@
-name = Drupalmonitor Connector
-description = "This module enables drupalmonitor.com to gather data about this Drupal site."
-core = 7.x
-
-configure = admin/config/system/drupalmonitor

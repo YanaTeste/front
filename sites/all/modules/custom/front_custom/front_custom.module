@@ -548,6 +548,7 @@ function front_custom_contact_form($form, &$form_state) {
   $form['submit'] = array(
     '#type' => 'submit',
     '#value' => 'Send',
+    '#weight' => 100
     );
 
   // $form['#action'] = url('https://service.capsulecrm.com/service/newlead', array('external' => true));;
@@ -583,14 +584,20 @@ function front_custom_contact_form_submit($form, &$form_state){
    ); 
 }
 
-function front_custom_mollom_form_list(){
+/*
+ * Implements hook_mollom_form_list()
+ */
+ function front_custom_mollom_form_list(){
   $forms['front_custom_contact_form'] = array(
     'title' => t('Contact form (To CRM, Built in code)')
     );
   return $forms;
 }
 
-function front_custom_mollom_form_info() {
+/*
+ * Implements hook_mollom_form_info()
+ */
+ function front_custom_mollom_form_info() {
   $form_info = array(
     'mode' => MOLLOM_MODE_ANALYSIS,
     'bypass access' => array('administer privatemsg'),
@@ -603,8 +610,9 @@ function front_custom_mollom_form_info() {
       'NOTE' => t('Note'),
       ),
     'mapping' => array(
-      'post_id' => 'mid',
-      'post_title' => 'subject',
+      'author_name' => 'FIRST_NAME',
+      'author_mail' => 'EMAIL',
+      'post_body' => 'NOTE',
       ),
     );
 

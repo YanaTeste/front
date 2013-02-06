@@ -3082,7 +3082,7 @@ function front_panels_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
-      'title' => 'Hello!',
+      'title' => 'Tired of æøå?',
       'body' => '<div class="btn"><a href="/blog">Check out our english posts!</a></div>',
       'format' => 'unfiltered',
       'substitute' => TRUE,
@@ -3151,8 +3151,8 @@ function front_panels_default_page_manager_pages() {
     'contexts' => array(),
     'relationships' => array(),
     'panels_page_title_state' => 1,
-    'panels_page_title' => 'Blogg - våre artikler om Drupal og andre ting vi finner verd å skrive om',
-    'description' => 'Artikler om webteknologier, Drupal, Frontkom og andre ting som er verd å skrive om.',
+    'panels_page_title' => 'Blog - our articles on Drupal and other stuff we find interesting',
+    'description' => 'Articles on web technology, Drupal, Frontkom and other stuff worth writing about.',
     'keywords' => '',
     'robots' => array(
       'noindex' => 0,
@@ -3312,7 +3312,7 @@ function front_panels_default_page_manager_pages() {
     $pane->access = array();
     $pane->configuration = array(
       'admin_title' => '',
-      'title' => 'Hallo!',
+      'title' => 'Not enough moose?',
       'body' => '<div class="btn"><a href="/blogg">Check out our Norwegian posts!</a></div>',
       'format' => 'unfiltered',
       'substitute' => TRUE,

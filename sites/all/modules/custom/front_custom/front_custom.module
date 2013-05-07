@@ -558,6 +558,7 @@ function front_custom_contact_form_validate($form, &$form_state){
   // Not necessary
 }
 function front_custom_contact_form_submit($form, &$form_state){
+  $form_state['redirect'] = 'confirm';
 
   // use of drupal_http_request 
   $url = url('https://service.capsulecrm.com/service/newlead', array('external' => true));

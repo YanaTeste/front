@@ -1035,7 +1035,7 @@ Multiple classes should be separated by spaces.',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '4',
+          'weight' => '7',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1165,6 +1165,76 @@ Multiple classes should be separated by spaces.',
     ),
   );
 
+  // Exported field: 'node-blog-field_language'.
+  $fields['node-blog-field_language'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_language',
+      'foreign keys' => array(),
+      'indexes' => array(
+        'value' => array(
+          0 => 'value',
+        ),
+      ),
+      'locked' => '0',
+      'module' => 'list',
+      'settings' => array(
+        'allowed_values' => array(
+          'English' => 'English',
+          'Norwegian' => 'Norwegian',
+        ),
+        'allowed_values_function' => '',
+        'profile2_private' => FALSE,
+      ),
+      'translatable' => '0',
+      'type' => 'list_text',
+    ),
+    'field_instance' => array(
+      'bundle' => 'blog',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '5',
+        ),
+        'rss' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => '14',
+        ),
+        'teaser' => array(
+          'label' => 'above',
+          'settings' => array(),
+          'type' => 'hidden',
+          'weight' => 0,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'node',
+      'field_name' => 'field_language',
+      'label' => 'Language',
+      'required' => 0,
+      'settings' => array(
+        'user_register_form' => FALSE,
+      ),
+      'widget' => array(
+        'active' => 1,
+        'module' => 'options',
+        'settings' => array(),
+        'type' => 'options_select',
+        'weight' => '18',
+      ),
+    ),
+  );
+
   // Exported field: 'node-blog-field_related'.
   $fields['node-blog-field_related'] = array(
     'field_config' => array(
@@ -1217,7 +1287,7 @@ Multiple classes should be separated by spaces.',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '5',
+          'weight' => '8',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1376,7 +1446,7 @@ Multiple classes should be separated by spaces.',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '3',
+          'weight' => '6',
         ),
         'search_result' => array(
           'label' => 'above',
@@ -1458,7 +1528,7 @@ Multiple classes should be separated by spaces.',
           'label' => 'above',
           'settings' => array(),
           'type' => 'hidden',
-          'weight' => '6',
+          'weight' => '9',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1531,7 +1601,7 @@ Multiple classes should be separated by spaces.',
           'module' => 'taxonomy',
           'settings' => array(),
           'type' => 'taxonomy_term_reference_link',
-          'weight' => 7,
+          'weight' => '3',
         ),
         'teaser' => array(
           'label' => 'above',
@@ -1742,6 +1812,7 @@ Multiple classes should be separated by spaces.',
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 1,
           'increment' => '15',
           'input_format' => 'm/d/Y - H:i:s',
           'input_format_custom' => '',
@@ -1749,7 +1820,7 @@ Multiple classes should be separated by spaces.',
           'text_parts' => array(),
           'year_range' => '-3:+3',
         ),
-        'type' => 'date_select',
+        'type' => 'date_popup',
         'weight' => '32',
       ),
     ),
@@ -3123,6 +3194,7 @@ Multiple classes should be separated by spaces.',
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '15',
           'input_format' => 'd/m/Y - H:i:s',
           'input_format_custom' => '',
@@ -3227,6 +3299,7 @@ Multiple classes should be separated by spaces.',
         'active' => 1,
         'module' => 'date',
         'settings' => array(
+          'display_all_day' => 0,
           'increment' => '15',
           'input_format' => 'd/m/Y - H:i:s',
           'input_format_custom' => '',
@@ -3973,6 +4046,7 @@ F.eks er P0000-00-00T00:10:00 lik 10 minutter.');
   t('Image');
   t('Internal field that should never be viewed for non admins. Contains info and numbers about the SEO considerations for a page.');
   t('Kursholder');
+  t('Language');
   t('Lengde (ISO)');
   t('Link');
   t('Lokasjon');

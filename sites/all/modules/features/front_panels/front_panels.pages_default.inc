@@ -4019,7 +4019,7 @@ I de senere år, har det blitt laget en rekke distribusjoner av Drupal, det vil 
     $pane->configuration = array(
       'admin_title' => '',
       'title' => ' Frontkom is hiring! ',
-      'body' => 'Frontkom has an ever-growing community of developers all over the world. We communicate through daily contact, Skype, conference meetings and \'fysical\' meetings (yes, those still exist). We are always interested in getting to know really good webdevelopers and designers. Maybe you are an amazing project manager, awesome programmer (php, rails, javascript) or funky designer. We\'d like to hear from you either way!
+      'body' => 'Frontkom has an ever-growing community of developers all over the world. We communicate through daily contact, Skype, conference meetings and \'physical\' meetings (yes, those still exist). We are always interested in getting to know really good webdevelopers and designers. Maybe you are an amazing project manager, awesome programmer (php, rails, javascript) or funky designer. We\'d like to hear from you either way!
 
 Our main office is in Norway and our satellite office is in Madeira, Portugal, but knowledge doesn\'t follow borders. Maybe we have some work that is well suited for you?',
       'format' => 'filtered_html',
@@ -7812,7 +7812,7 @@ tjenester',
 
 Når det kommer til stykket, er software bare software; det er designprosessen i forkant og vedlikeholdet i etterkant som vil bety en forskjell. 
 
-<p><a href="/tjenester">Les mer om hvordan vi jobber ››</a></p>
+<p><a href="/tjenester/strategi">Les mer om hvordan vi jobber ››</a></p>
 ',
       'format' => 'full_html',
       'substitute' => TRUE,

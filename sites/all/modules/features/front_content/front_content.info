@@ -35,6 +35,7 @@ features[field][] = node-banner-field_link
 features[field][] = node-blog-body
 features[field][] = node-blog-field_files
 features[field][] = node-blog-field_image
+features[field][] = node-blog-field_language
 features[field][] = node-blog-field_related
 features[field][] = node-blog-field_subheading
 features[field][] = node-blog-field_tags

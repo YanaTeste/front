@@ -9,3 +9,6 @@ sites/*/private
 file_redirect
 robots.txt
 .htaccess
+/drush/
+/frontkom-postsync
+/sites/all/modules/contrib/mail_redirect/

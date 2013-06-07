@@ -53,6 +53,9 @@
   $blocks['front_contact'] = array(
     'info' => t('Front Contact Form'),
     );
+  $blocks['front_about_the_author'] = array(
+    'info' => t('Front About the Author')
+    );
   return $blocks;
 }
 
@@ -325,8 +328,30 @@
     $block['content'] = drupal_get_form('front_custom_contact_form');
     break;
 
+    case 'front_about_the_author':
+    $block['subject'] = t('About the author');
+    $block['content'] = front_about_the_author();
+    break;
+    
   }
   return $block;
+}
+
+function front_about_the_author(){
+  $output = '';
+  if (arg(0) == 'node' && is_numeric(arg(1))) {
+    $nid = arg(1);
+  }
+  $node = $nid ? node_load($nid) : null;
+  $author = profile2_by_uid_load($node->uid, 'profile');
+  $name = $author->field_name['und'][0]['value'] ? $author->field_name['und'][0]['value'] : '';
+  $image = image_style_url('square_small', $author->field_image['und'][0]['uri']);
+  $googleplus = $author->field_google_plus['und'][0]['url'] ? $author->field_google_plus['und'][0]['url'] . '?rel=author' : '';
+  $output .= '<div class="author">';
+  $output .= '<img src="' . $image . '"></img>';
+  $output .= '<a href="' . $googleplus . '">' . $name . '</a>';
+  $output .= '</div>';
+  return $output;
 }
 
 /**

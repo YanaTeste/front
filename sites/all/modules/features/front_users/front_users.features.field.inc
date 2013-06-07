@@ -154,6 +154,85 @@ function front_users_field_default_fields() {
     ),
   );
 
+  // Exported field: 'profile2-profile-field_google_plus'.
+  $fields['profile2-profile-field_google_plus'] = array(
+    'field_config' => array(
+      'active' => '1',
+      'cardinality' => '1',
+      'deleted' => '0',
+      'entity_types' => array(),
+      'field_name' => 'field_google_plus',
+      'foreign keys' => array(),
+      'indexes' => array(),
+      'locked' => '0',
+      'module' => 'link',
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'rel' => '',
+          'target' => 'default',
+        ),
+        'display' => array(
+          'url_cutoff' => 80,
+        ),
+        'enable_tokens' => 1,
+        'profile2_private' => 0,
+        'title' => 'optional',
+        'title_maxlength' => 128,
+        'title_value' => '',
+        'url' => 0,
+      ),
+      'translatable' => '0',
+      'type' => 'link_field',
+    ),
+    'field_instance' => array(
+      'bundle' => 'profile',
+      'default_value' => NULL,
+      'deleted' => '0',
+      'description' => '',
+      'display' => array(
+        'default' => array(
+          'label' => 'above',
+          'module' => 'link',
+          'settings' => array(),
+          'type' => 'link_default',
+          'weight' => 8,
+        ),
+      ),
+      'ds_extras_field_template' => '',
+      'entity_type' => 'profile2',
+      'field_name' => 'field_google_plus',
+      'label' => 'Google plus',
+      'required' => 0,
+      'settings' => array(
+        'attributes' => array(
+          'class' => '',
+          'configurable_title' => 0,
+          'rel' => '',
+          'target' => 'default',
+          'title' => '',
+        ),
+        'display' => array(
+          'url_cutoff' => '80',
+        ),
+        'enable_tokens' => 1,
+        'title' => 'none',
+        'title_maxlength' => '255',
+        'title_value' => '',
+        'url' => 0,
+        'user_register_form' => FALSE,
+        'validate_url' => 1,
+      ),
+      'widget' => array(
+        'active' => 0,
+        'module' => 'link',
+        'settings' => array(),
+        'type' => 'link_field',
+        'weight' => '8',
+      ),
+    ),
+  );
+
   // Exported field: 'profile2-profile-field_image'.
   $fields['profile2-profile-field_image'] = array(
     'field_config' => array(
@@ -367,7 +446,7 @@ function front_users_field_default_fields() {
           'size' => '60',
         ),
         'type' => 'text_textfield',
-        'weight' => 0,
+        'weight' => '0',
       ),
     ),
   );
@@ -582,6 +661,7 @@ function front_users_field_default_fields() {
   // Included for use with string extractors like potx.
   t('Bio');
   t('Facebook');
+  t('Google plus');
   t('If checked, the profile is shown to all users.');
   t('LinkedIn');
   t('Name');

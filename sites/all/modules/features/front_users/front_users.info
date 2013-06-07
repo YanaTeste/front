@@ -20,6 +20,7 @@ features[ctools][] = field_group:field_group:1
 features[features_api][] = api:1
 features[field][] = profile2-profile-field_bio
 features[field][] = profile2-profile-field_facebook
+features[field][] = profile2-profile-field_google_plus
 features[field][] = profile2-profile-field_image
 features[field][] = profile2-profile-field_linkedin
 features[field][] = profile2-profile-field_name

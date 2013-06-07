@@ -26,6 +26,7 @@ function front_users_field_group_info() {
       0 => 'field_facebook',
       1 => 'field_linkedin',
       2 => 'field_twitter',
+      3 => 'field_google_plus',
     ),
     'format_type' => 'fieldset',
     'format_settings' => array(

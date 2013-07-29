@@ -54,21 +54,21 @@ function contentanalysis_menu() {
     'access arguments' => array('perform content analysis'),
     'type' => MENU_NORMAL_ITEM,
   );  
-  $items['contentanalysis/analyze_js'] = array(
+  $items['admin/contentanalysis/analyze_js'] = array(
     'title' => '',
     'page callback' => 'contentanalysis_analyze_js',
     'access callback' => TRUE,
     'access arguments' => array('perform content analysis'),
     'type' => MENU_CALLBACK,
   );
-  $items['contentanalysis/ajax/analysis'] = array(
+  $items['admin/contentanalysis/ajax/analysis'] = array(
     'title' => '',
     'page callback' => 'contentanalysis_modal_popup',
     'access callback' => TRUE,
     'access arguments' => array('perform content analysis'),
     'type' => MENU_CALLBACK,
   );
-  $items['contentanalysis/ajax/analysis_only'] = array(
+  $items['admin/contentanalysis/ajax/analysis_only'] = array(
     'title' => '',
     'page callback' => 'contentanalysis_modal_popup_only',
     'access callback' => TRUE,
@@ -288,7 +288,7 @@ function contentanalysis_analysis_form($form_state, $analysis = array(), $node =
   if (!$js_added) {
     drupal_add_js(
       array('contentanalysis' => array(
-        'analyze_callback' => variable_get('contentanalysis_host', '') . base_path() . 'contentanalysis/analyze_js',
+        'analyze_callback' => variable_get('contentanalysis_host', '') . base_path() . 'admin/contentanalysis/analyze_js',
         'base_path' => base_path(),
         'path_to_module' => base_path() . drupal_get_path('module', 'contentanalysis'),
         'nid' => isset($node->nid) ? $node->nid : -1,
@@ -327,27 +327,27 @@ function contentanalysis_analysis_form($form_state, $analysis = array(), $node =
     if ($report_style == 'both') {
       $form['clickme'] = array(
         '#type' => 'markup',
-        '#markup' => '<div id="contentanalysis-buttons">' .   $output = ctools_ajax_text_button(t('Analyze content'), 'contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
+        '#markup' => '<div id="contentanalysis-buttons">' .   $output = ctools_ajax_text_button(t('Analyze content'), 'admin/contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
       );
     }
     elseif ($report_style == 'dialog') {
       $form['clickme'] = array(
         '#type' => 'markup',
-        '#markup' => '<div id="contentanalysis-buttons">' .   $output = ctools_ajax_text_button(t('Analyze content'), 'contentanalysis/ajax/analysis_only', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
+        '#markup' => '<div id="contentanalysis-buttons">' .   $output = ctools_ajax_text_button(t('Analyze content'), 'admin/contentanalysis/ajax/analysis_only', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
       ); 
     } 
     elseif ($report_style == 'inline') {
       $form['clickme'] = array(
         '#type' => 'markup',
-        '#markup' => '<div id="contentanalysis-buttons">' . l(t('Analyze content'), base_path() . 'contentanalysis/analyze_js', array('attributes' => array('id' => 'contentanalysis-ininline-analysis-button', 'class' => "contentanalysis-analyze-content contentanalysis-button", "onclick" => "contentanalysis_inline_analysis(); return (false);"))) . '</div>'
+        '#markup' => '<div id="contentanalysis-buttons">' . l(t('Analyze content'), base_path() . 'admin/contentanalysis/analyze_js', array('attributes' => array('id' => 'contentanalysis-ininline-analysis-button', 'class' => "contentanalysis-analyze-content contentanalysis-button", "onclick" => "contentanalysis_inline_analysis(); return (false);"))) . '</div>'
       );    
     }
     else {
       $v = '<div id="contentanalysis-buttons">';
       $v .= t('Analyze content') . ': ';
-      $v .= ctools_ajax_text_button(t('Full reports'), 'contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal');
+      $v .= ctools_ajax_text_button(t('Full reports'), 'admin/contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal');
       $v .= ' ';
-      $v .= ctools_ajax_text_button(t('Main report'), 'contentanalysis/ajax/analysis_only', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal');
+      $v .= ctools_ajax_text_button(t('Main report'), 'admin/contentanalysis/ajax/analysis_only', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal');
       $v .= ' ';
       $v .= '<a href="#" id="contentanalysis-ininline-analysis-button" class="contentanalysis-analyze-content contentanalysis-button" onclick="contentanalysis_inline_analysis(); return (false);">' . t('Inline reports') . '</a>';
       //$v .= l(t('Inline recommendations'), '#', array('attributes' => array('class' => "contentanalysis-analyze-content", "onclick" => "contentanalysis_inline_analysis(); return (false);")));
@@ -362,13 +362,13 @@ function contentanalysis_analysis_form($form_state, $analysis = array(), $node =
     $form = $fields;
     $form['clickme'] = array(
       '#type' => 'markup',
-      '#markup' => '<div>' . $output = ctools_ajax_text_button(t('Analyze content'), 'contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
+      '#markup' => '<div>' . $output = ctools_ajax_text_button(t('Analyze content'), 'admin/contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
     );  
   } 
   else {
     $form['clickme'] = array(
       '#type' => 'markup',
-      '#markup' => '<div>' . $output = ctools_ajax_text_button(t('Analyze content'), 'contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
+      '#markup' => '<div>' . $output = ctools_ajax_text_button(t('Analyze content'), 'admin/contentanalysis/ajax/analysis', t('Content Analysis'), 'contentanalysis-button', 'ctools-use-modal') . '</div>'
     );
     
     $form['contentanalysis_options'] = array(
@@ -461,7 +461,7 @@ function contentanalysis_analyze_js() {
     watchdog('contentanalysis', 'Blocked invalid attempt ' . $_SESSION['contentanalysis']['code'] . ' != ' . $_POST['code']);
     exit;
   }
-
+  
   $context = contentanalysis_get_default_context();
   $context['form_id'] = 'contentanalysis_analyze_js';
   
@@ -482,7 +482,7 @@ function contentanalysis_analyze_js() {
   
   $context['source'] = $_POST['source'];  
   $context['nid'] = $context['inputs']['nid'];
-  $context['url'] = $context['inputs']['url'];    
+  $context['url'] = $context['inputs']['url']; 
   
   // load analyzers using hook_contentanalysis_analyzers
   $analyzer_defs = contentanalysis_analyzer_info();
@@ -732,6 +732,7 @@ function contentanalysis_parse_context_node_edit($context, &$analysis) {
   
   // get metatag context
   $context = contentanalysis_parse_context_metatags($context);
+//dsm($context);
   return $context;
 }
 
@@ -908,8 +909,21 @@ function contentanalysis_parse_context_metatags($context) {
     
     $nodemeta = metatag_metatags_view('node:' . $context['node']->type , $metatags, $options); 
     $globalmeta = metatag_metatags_view('global', array(), $options); 
-
-    if (isset($nodemeta['title']['#attached']['metatag_set_preprocess_variable'][0][2])) {
+    
+    // init data for toke_replace
+    $types = array();  
+    if (isset($context['node'])) {
+      $types['node'] = $context['node'];
+    }     
+    if (!empty($context['inputs']['meta_title'])) {
+      $types['meta_title'] = NULL; 
+      $context['meta_title'] = token_replace($context['inputs']['meta_title'], $types);
+    }
+    elseif (!empty($context['node']->metatags[$context['node']->language]['title']['value'])) {
+      $types['meta_title'] = NULL; 
+      $context['meta_title'] = token_replace($context['node']->metatags[$context['node']->language]['title']['value'], $types);      
+    } 
+    elseif (isset($nodemeta['title']['#attached']['metatag_set_preprocess_variable'][0][2])) {
       $context['meta_title'] = $nodemeta['title']['#attached']['metatag_set_preprocess_variable'][0][2]; 
     }
     if (isset($nodemeta['keywords']['#attached']['drupal_add_html_head'][0][0]['#value'])) {
@@ -1297,10 +1311,9 @@ function theme_contentanalysis_status_report($analysisi, $show = 'all') {
   $rows = array();
 
   if (($show == 'all') || ($show == 'general')) {
-
-    $stats = theme_contentanalysis_analysis_stats($analysisi['stats']);
-    $msgs = theme_contentanalysis_analysis_messages($analysisi['messages']);
-    $status = ($analysisi['#status'])?$analysisi['#status']:'status';
+    $stats = isset($analysisi['stats']) ? theme_contentanalysis_analysis_stats($analysisi['stats']) : '';
+    $msgs = isset($analysisi['messages']) ? theme_contentanalysis_analysis_messages($analysisi['messages']) : '';
+    $status = (isset($analysisi['#status'])) ? $analysisi['#status']:'status';
     if ($stats || $msgs) {
       $rows[] = array(
         array(
@@ -1511,6 +1524,7 @@ function contentanalysis_form_alter(&$form, &$form_state, $form_id) {
       '#collapsed' => variable_get('contentanalysis_node_edit_form_collapsed', 0),
       //'#attributes' => array('class' => 'contentanalysis'),
       '#group' => 'additional_settings',
+      '#weight' => -99,
     );
     
     $form['contentanalysis'] = array_merge($form['contentanalysis'], contentanalysis_analysis_form($form_state, array(), $node, 'node-edit'));
@@ -1523,7 +1537,7 @@ function contentanalysis_form_alter(&$form, &$form_state, $form_id) {
       '#collapsible' => TRUE,
       '#collapsed' => TRUE,
       '#tree' => TRUE,
-      '#group' => 'additional_settings',
+      '#group' => 'additional_settings',      
     );
     $form['contentanalysis']['enable'] = array(
       '#type' => 'checkboxes',

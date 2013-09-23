@@ -608,6 +608,26 @@ function front_custom_contact_form_submit($form, &$form_state){
      'data' => $data
      )
    ); 
+
+
+  /**
+   * Send and email to Geir as well
+   */
+  $relevant_arguments = array( 'FIRST_NAME', 'LAST_NAME', 'EMAIL', 'PHONE', 'NOTE');
+  $message =  drupal_mail('front_custom', 'key', 'geir@front.no', language_default(), $params = array(), $from = 'front@front.no', FALSE);
+  foreach($form_state['values'] as $key => $value){
+    if (in_array($key, $relevant_arguments)){
+      $message['body'][] = $key . ": " . ($form_state['values'][$key] ? $form_state['values'][$key] : t('Ikke oppgitt'));
+    }
+  }
+  $message['subject'] = 'Ny forespørsel på frontkom.no fra ' . $form_state['values']['FIRST_NAME'] . ' ' . $form_state['values']['LAST_NAME'] ;
+
+  $system = drupal_mail_system('front_custom', 'key');
+  $message = $system->format($message);
+  $message['result'] = $system->mail($message);
+  if ($message['result' == FALSE]){
+    watchdog('front_custom', 'No email sent to Geir, check the front_custom module', array(), WATCHDOG_CRITICAL, '');
+  }
 }
 
 /*
